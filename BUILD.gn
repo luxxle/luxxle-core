@@ -3,11 +3,14 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import(
-    "//brave/browser/brave_vpn/win/brave_vpn_wireguard_service/allowlist.gni")
-import("//brave/build/config.gni")
-import("//brave/components/brave_vpn/common/buildflags/buildflags.gni")
-import("//brave/tools/crates/config.gni")
+# LUXXLE MODIFICATION: Commented out Brave-specific imports for vanilla Chromium build
+# import(
+#     "//brave/browser/brave_vpn/win/brave_vpn_wireguard_service/allowlist.gni")
+# import("//brave/build/config.gni")
+# import("//brave/components/brave_vpn/common/buildflags/buildflags.gni")
+# import("//brave/tools/crates/config.gni")
+
+# Keep essential Chromium imports
 import("//build/config/locales.gni")
 import("//build/config/zip.gni")
 import("//chrome/browser/buildflags.gni")
@@ -23,22 +26,26 @@ if (enable_library_cdms) {
   import("//media/cdm/library_cdm/cdm_paths.gni")
 }
 
-if (!is_ios) {
-  import("//brave/brave_paks.gni")
-}
+# LUXXLE: Disabled Brave paks import
+# if (!is_ios) {
+#   import("//brave/brave_paks.gni")
+# }
 
 if (is_mac) {
-  import("//brave/build/mac/tweak_info_plist.gni")
+  # LUXXLE: Disabled Brave Mac imports  
+  # import("//brave/build/mac/tweak_info_plist.gni")
   import("//build/config/mac/rules.gni")
 }
 
-if (is_win) {
-  import("//brave/build/win/sign.gni")
-}
+# LUXXLE: Disabled Brave Windows signing
+# if (is_win) {
+#   import("//brave/build/win/sign.gni")
+# }
 
-if (is_linux) {
-  import("//brave/build/linux/channels.gni")
-}
+# LUXXLE: Disabled Brave Linux channels
+# if (is_linux) {
+#   import("//brave/build/linux/channels.gni")
+# }
 
 declare_args() {
   audit_dev_deps = true
@@ -48,12 +55,14 @@ declare_args() {
 # buildable in all platforms in a single build run.
 group("all") {
   testonly = true
-  deps = [ "//brave" ]
+  # LUXXLE MODIFICATION: Build vanilla Chromium instead of Brave
+  deps = [ "//chrome" ]  # Build standard Chromium
 
   if (!is_android && !is_ios) {
     deps += [
-      "//brave/test:brave_installer_unittests",
-      "//brave/test:brave_network_audit_tests",
+      # LUXXLE: Removed Brave tests, kept standard Chromium tests
+      # "//brave/test:brave_installer_unittests",
+      # "//brave/test:brave_network_audit_tests",
       "//chrome/test:browser_tests",
       "//chrome/test:unit_tests",
       "//components:components_unittests",
@@ -62,20 +71,21 @@ group("all") {
     ]
   }
 
-  if (!is_ios) {
-    deps += [
-      "//brave/test:brave_browser_tests",
-      "//brave/test:brave_unit_tests",
-    ]
-  }
+  # LUXXLE: Removed all Brave-specific iOS and Android tests
+  # if (!is_ios) {
+  #   deps += [
+  #     "//brave/test:brave_browser_tests",
+  #     "//brave/test:brave_unit_tests",
+  #   ]
+  # }
 
-  if (is_android) {
-    deps += [
-      "//brave/build/android:brave",
-      "//brave/test:brave_java_unit_tests",
-      "//brave/test:brave_junit_tests",
-    ]
-  }
+  # if (is_android) {
+  #   deps += [
+  #     "//brave/build/android:brave",
+  #     "//brave/test:brave_java_unit_tests",
+  #     "//brave/test:brave_junit_tests",
+  #   ]
+  # }
 }
 
 if (!is_ios) {
@@ -196,13 +206,21 @@ if (is_win) {
 }
 
 group("brave") {
-  deps = [ "build/$target_os:brave" ]
-  if (!is_android && !is_ios) {
-    deps += [
-      "//brave/components/version_info:generate_version",
-      "//chrome",
-    ]
-  }
+  # LUXXLE MODIFICATION: Build vanilla Chromium instead of Brave
+  # Removed all Brave-specific dependencies to get clean Chromium
+  deps = [
+    "//chrome",  # Build standard Chromium
+  ]
+  
+  # Skip Brave version info and other Brave components
+  # Original Brave dependencies commented out:
+  # deps = [ "build/$target_os:brave" ]
+  # if (!is_android && !is_ios) {
+  #   deps += [
+  #     "//brave/components/version_info:generate_version",
+  #     "//chrome",
+  #   ]
+  # }
 }
 
 group("resources") {

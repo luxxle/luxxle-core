@@ -21,101 +21,19 @@ const ActionGuard = require('./actionGuard')
 process.setMaxListeners(0)
 
 async function applyPatches(printPatchFailuresInJson) {
-  const GitPatcher = require('./gitPatcher')
-  Log.progressStart('apply patches')
-  // Always detect if we need to apply patches, since user may have modified
-  // either chromium source files, or .patch files manually
-  const coreRepoPath = config.braveCoreDir
-  const patchesPath = path.join(coreRepoPath, 'patches')
-  const v8PatchesPath = path.join(patchesPath, 'v8')
-  const catapultPatchesPath = path.join(patchesPath, 'third_party', 'catapult')
-  const devtoolsFrontendPatchesPath = path.join(
-    patchesPath,
-    'third_party',
-    'devtools-frontend',
-    'src',
-  )
-  const searchEngineDataPatchesPath = path.join(
-    patchesPath,
-    'third_party',
-    'search_engines_data',
-    'resources',
-  )
-
-  const chromiumRepoPath = config.srcDir
-  const v8RepoPath = path.join(chromiumRepoPath, 'v8')
-  const catapultRepoPath = path.join(
-    chromiumRepoPath,
-    'third_party',
-    'catapult',
-  )
-  const devtoolsFrontendRepoPath = path.join(
-    chromiumRepoPath,
-    'third_party',
-    'devtools-frontend',
-    'src',
-  )
-  const searchEngineDataRepoPath = path.join(
-    chromiumRepoPath,
-    'third_party',
-    'search_engines_data',
-    'resources',
-  )
-
-  const chromiumPatcher = new GitPatcher(patchesPath, chromiumRepoPath)
-  const v8Patcher = new GitPatcher(v8PatchesPath, v8RepoPath)
-  const catapultPatcher = new GitPatcher(catapultPatchesPath, catapultRepoPath)
-  const devtoolsFrontendPatcher = new GitPatcher(
-    devtoolsFrontendPatchesPath,
-    devtoolsFrontendRepoPath,
-  )
-  const searchEngineDataPatcher = new GitPatcher(
-    searchEngineDataPatchesPath,
-    searchEngineDataRepoPath,
-  )
-
-  const chromiumPatchStatus = await chromiumPatcher.applyPatches()
-  const v8PatchStatus = await v8Patcher.applyPatches()
-  const catapultPatchStatus = await catapultPatcher.applyPatches()
-  const devtoolsFrontendPatchStatus =
-    await devtoolsFrontendPatcher.applyPatches()
-  const searchEngineDataPatchStatus =
-    await searchEngineDataPatcher.applyPatches()
-
-  // Log status for all patches
-  // Differentiate entries for logging
-  v8PatchStatus.forEach((s) => (s.path = path.join('v8', s.path)))
-  catapultPatchStatus.forEach(
-    (s) => (s.path = path.join('third_party', 'catapult', s.path)),
-  )
-  devtoolsFrontendPatchStatus.forEach(
-    (s) =>
-      (s.path = path.join('third_party', 'devtools-frontend', 'src', s.path)),
-  )
-  const allPatchStatus = [
-    ...chromiumPatchStatus,
-    ...v8PatchStatus,
-    ...catapultPatchStatus,
-    ...devtoolsFrontendPatchStatus,
-    ...searchEngineDataPatchStatus,
-  ]
-  if (printPatchFailuresInJson) {
-    Log.printFailedPatchesInJsonFormat(allPatchStatus, config.braveCoreDir)
-  } else {
-    Log.allPatchStatus(allPatchStatus, 'Chromium')
-  }
-
-  const hasPatchError = allPatchStatus.some((p) => p.error)
-  // Exit on error in any patch
-  if (hasPatchError) {
-    Log.error('Exiting as not all patches were successful!')
-    process.exit(1)
-  }
-
-  await updateUnsafeBuffersPaths()
-
+  // LUXXLE MODIFICATION: Skip all patch application to get vanilla Chromium
+  // This allows us to build without any Brave modifications while keeping patch files as reference
+  const Log = require('./logging')
+  Log.progressStart('apply patches (skipped for vanilla Chromium)')
+  console.log('🚀 LUXXLE: Skipping all patch application - building vanilla Chromium')
+  console.log('📁 Patch files are preserved in patches/ directory for reference')
+  
+  // Skip all patch operations but still call the chrome version update
   updateChromeVersion()
-  Log.progressFinish('apply patches')
+  Log.progressFinish('apply patches (skipped for vanilla Chromium)')
+  
+  // Return empty status array since no patches were applied
+  return []
 }
 
 const isOverrideNewer = (original, override) => {
