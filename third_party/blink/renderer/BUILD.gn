@@ -12,7 +12,8 @@ component("renderer") {
 
   deps = [
     "//brave/components/brave_drm:brave_drm_blink",
-    "//brave/components/brave_shields/core/common:mojom",
+    # Commented out: removed Brave components - using Chromium defaults instead
+    # "//brave/components/brave_shields/core/common:mojom",
   ]
 
   defines = [ "BLINK_IMPLEMENTATION=1" ]
