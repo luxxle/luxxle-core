@@ -20,6 +20,7 @@
 #include "base/functional/callback_helpers.h"
 #include "base/logging.h"
 #include "base/metrics/histogram_macros.h"
+#include "base/strings/string_util.h"
 #include "base/strings/sys_string_conversions.h"
 #include "base/task/sequenced_task_runner.h"
 #include "base/task/thread_pool.h"
@@ -248,6 +249,17 @@ constexpr NSString* kAdsResourceComponentMetadataVersion = @".v1";
   [self setProfilePref:ntp_background_images::prefs::
                            kNewTabPageShowSponsoredImagesBackgroundImage
                  value:base::Value(isEnabled)];
+}
+
+- (BOOL)isSurveyPanelistEnabled {
+  return self.profilePrefService->GetBoolean(
+      ntp_background_images::prefs::kNewTabPageSponsoredImagesSurveyPanelist);
+}
+
+- (void)setIsSurveyPanelistEnabled:(BOOL)enabled {
+  [self setProfilePref:ntp_background_images::prefs::
+                           kNewTabPageSponsoredImagesSurveyPanelist
+                 value:base::Value(enabled)];
 }
 
 - (BOOL)isEnabled {

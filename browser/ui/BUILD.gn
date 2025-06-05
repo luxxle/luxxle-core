@@ -32,7 +32,6 @@ group("ui_public_dependencies") {
     "//chrome/browser/ui:ui_public_dependencies",
   ]
   public_deps = [
-    ":brave_rewards_source",
     ":brave_tab_features",
     ":brave_tab_prefs",
     "//brave/components/brave_wayback_machine/buildflags",
@@ -828,7 +827,6 @@ source_set("ui") {
     "//brave/components/misc_metrics",
     "//brave/components/ntp_background_images/browser",
     "//brave/components/ntp_background_images/common",
-    "//brave/components/ntp_widget_utils/browser",
     "//brave/components/p3a",
     "//brave/components/p3a:buildflags",
     "//brave/components/p3a_utils",
@@ -1399,23 +1397,6 @@ source_set("brave_tab_features") {
   deps = [
     "//base",
     "//chrome/browser/ui:ui_features",
-  ]
-}
-
-source_set("brave_rewards_source") {
-  sources = [
-    "webui/brave_rewards_source.cc",
-    "webui/brave_rewards_source.h",
-  ]
-
-  deps = [
-    "//base",
-    "//chrome/browser/bitmap_fetcher",
-    "//chrome/browser/profiles",
-    "//content/public/browser",
-    "//skia",
-    "//ui/gfx/codec",
-    "//url",
   ]
 }
 

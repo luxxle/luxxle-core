@@ -46,8 +46,6 @@ base::span<const webui::LocalizedString> GetLocalizedStrings() {
        {"introMessage-chat-qwen", IDS_CHAT_UI_INTRO_MESSAGE_CHAT_QWEN},
        {"introMessage-chat-deepseek-r1",
         IDS_CHAT_UI_INTRO_MESSAGE_CHAT_DEEPSEEK_R1},
-       {"introMessage-chat-leo-expanded",
-        IDS_CHAT_UI_INTRO_MESSAGE_CHAT_LEO_EXPANDED},
        {"introMessage-chat-claude-instant",
         IDS_CHAT_UI_INTRO_MESSAGE_CHAT_LEO_CLAUDE_INSTANT},
        {"introMessage-chat-claude-haiku",
@@ -127,8 +125,6 @@ base::span<const webui::LocalizedString> GetLocalizedStrings() {
        {"feedbackError", IDS_CHAT_UI_FEEDBACK_SUBMIT_ERROR},
        {"ratingError", IDS_CHAT_UI_RATING_ERROR},
        {"braveLeoModelSubtitle-chat-basic", IDS_CHAT_UI_CHAT_BASIC_SUBTITLE},
-       {"braveLeoModelSubtitle-chat-leo-expanded",
-        IDS_CHAT_UI_CHAT_LEO_EXPANDED_SUBTITLE},
        {"braveLeoModelSubtitle-chat-claude-instant",
         IDS_CHAT_UI_CHAT_CLAUDE_INSTANT_SUBTITLE},
        {"braveLeoModelSubtitle-chat-claude-haiku",
@@ -241,7 +237,9 @@ base::span<const webui::LocalizedString> GetLocalizedStrings() {
        {"startConversationLabel", IDS_AI_CHAT_START_CONVERSATION_LABEL},
        {"goBackToActiveConversationButton",
         IDS_AI_CHAT_GO_BACK_TO_ACTIVE_CONVERSATION_BUTTON},
-       {"conversationListUntitled", IDS_AI_CHAT_CONVERSATION_LIST_UNTITLED}});
+       {"conversationListUntitled", IDS_AI_CHAT_CONVERSATION_LIST_UNTITLED},
+       {"temporaryChatLabel", IDS_AI_CHAT_TEMPORARY_CHAT_LABEL},
+       {"temporaryChatInfo", IDS_AI_CHAT_TEMPORARY_CHAT_DESCRIPTION}});
 
   return kLocalizedStrings;
 }

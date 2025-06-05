@@ -48,7 +48,7 @@ public class BrowserViewController: UIViewController {
   private(set) lazy var topToolbar: TopToolbarView = {
     // Setup the URL bar, wrapped in a view to get transparency effect
     let topToolbar = TopToolbarView(
-      voiceSearchSupported: speechRecognizer.isVoiceSearchAvailable,
+      speechRecognizer: speechRecognizer,
       privateBrowsingManager: privateBrowsingManager
     )
     topToolbar.translatesAutoresizingMaskIntoConstraints = false
@@ -539,8 +539,8 @@ public class BrowserViewController: UIViewController {
 
       guard let sites = sites, !sites.isEmpty else { return }
 
-      DispatchQueue.main.async {
-        let defaultFavorites = FavoritesPreloadedData.getList()
+      Task { @MainActor in
+        let defaultFavorites = await FavoritesPreloadedData.getList()
         let currentFavorites = Favorite.allFavorites
 
         if defaultFavorites.count != currentFavorites.count {
@@ -744,7 +744,7 @@ public class BrowserViewController: UIViewController {
   }
 
   @objc func appWillTerminateNotification() {
-    tabManager.saveAllTabs()
+    tabManager.saveAllTabs(synchronously: true)
   }
 
   @objc private func tappedCollapsedURLBar() {
@@ -762,6 +762,12 @@ public class BrowserViewController: UIViewController {
   @objc func sceneWillResignActiveNotification(_ notification: NSNotification) {
     guard let scene = notification.object as? UIScene, scene == currentScene else {
       return
+    }
+
+    // TODO: brave/brave-browser/issues/46565
+    // Remove when all direct mutations on CoreData types are replaced
+    DataController.performOnMainContext { context in
+      try? context.save()
     }
 
     tabManager.saveAllTabs()
@@ -2166,20 +2172,10 @@ public class BrowserViewController: UIViewController {
       // VoiceOver will sometimes be stuck on the element, not allowing user to move
       // forward/backward. Strange, but LayoutChanged fixes that.
       UIAccessibility.post(notification: .layoutChanged, argument: nil)
+    }
 
-      DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
-        self.screenshotHelper.takeScreenshot(tab)
-      }
-    } else if tab.isWebViewCreated {
-      // To Screenshot a tab that is hidden we must add the webView,
-      // then wait enough time for the webview to render.
-      view.insertSubview(tab.view, at: 0)
-      DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
-        self.screenshotHelper.takeScreenshot(tab)
-        if tab.view.superview == self.view {
-          tab.view.removeFromSuperview()
-        }
-      }
+    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+      self.screenshotHelper.takeScreenshot(tab)
     }
   }
 

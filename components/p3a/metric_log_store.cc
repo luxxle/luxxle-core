@@ -14,7 +14,6 @@
 #include "base/metrics/histogram_macros.h"
 #include "base/rand_util.h"
 #include "base/strings/string_number_conversions.h"
-#include "base/strings/string_util.h"
 #include "brave/components/p3a/metric_log_type.h"
 #include "brave/components/p3a/uploader.h"
 #include "components/prefs/pref_registry_simple.h"
@@ -156,7 +155,9 @@ void MetricLogStore::ResetUploadStamps() {
       DCHECK(!it->second.sent_timestamp.is_null());
       DCHECK(!unsent_entries_.contains(it->first));
 
-      if (delegate_->IsEphemeralMetric(it->first)) {
+      auto metric_log_type = delegate_->GetLogTypeForHistogram(it->first);
+      if (!metric_log_type || metric_log_type != type_ ||
+          delegate_->IsEphemeralMetric(it->first)) {
         // Ephemeral metrics should only be sent once.
         // Remove value from log store so it doesn't get
         // sent again (unless another histogram value is recorded)
@@ -283,19 +284,9 @@ void MetricLogStore::LoadPersistedUnsentLogs() {
 
   const char* pref_name = GetPrefName();
 
-  std::vector<std::string> metrics_to_remove;
-
   const base::Value::Dict& log_dict = local_state_->GetDict(pref_name);
   for (const auto [name, value] : log_dict) {
     LogEntry entry;
-    // Check if the metric is obsolete.
-    auto metric_log_type = delegate_->GetLogTypeForHistogram(name);
-    if (!metric_log_type || metric_log_type != type_) {
-      // Drop it from the local state.
-      metrics_to_remove.push_back(name);
-      continue;
-    }
-    // Value.
     const base::Value::Dict& dict = value.GetDict();
     if (const std::string* v = dict.FindString(kLogValueKey)) {
       if (!base::StringToUint64(*v, &entry.value)) {
@@ -326,12 +317,18 @@ void MetricLogStore::LoadPersistedUnsentLogs() {
       unsent_entries_.insert(name);
     }
   }
+}
 
-  if (!metrics_to_remove.empty()) {
-    ScopedDictPrefUpdate update(&*local_state_, pref_name);
-    for (const std::string& name : metrics_to_remove) {
-      update->Remove(name);
+void MetricLogStore::RemoveObsoleteLogs() {
+  std::vector<std::string> metrics_to_remove;
+  for (const auto& [name, entry] : log_) {
+    auto metric_log_type = delegate_->GetLogTypeForHistogram(name);
+    if (!metric_log_type || *metric_log_type != type_) {
+      metrics_to_remove.push_back(name);
     }
+  }
+  for (const auto& name : metrics_to_remove) {
+    RemoveValueIfExists(name);
   }
 }
 

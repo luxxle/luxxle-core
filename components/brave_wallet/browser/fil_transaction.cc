@@ -17,7 +17,6 @@
 #include "base/json/json_reader.h"
 #include "base/json/json_writer.h"
 #include "base/strings/string_number_conversions.h"
-#include "base/strings/string_util.h"
 #include "base/values.h"
 #include "brave/components/brave_wallet/common/eth_address.h"
 #include "brave/components/brave_wallet/common/hash_utils.h"
@@ -308,8 +307,7 @@ std::optional<std::string> FilTransaction::ConvertMessageStringFieldsToInt64(
     const std::string& path,
     const std::string& json) {
   std::string converted_json =
-      json::convert_string_value_to_int64(path + "/GasLimit", json, true)
-          .c_str();
+      json::convert_string_value_to_int64(path + "/GasLimit", json, true);
   converted_json = json::convert_string_value_to_uint64(path + "/Nonce",
                                                         converted_json, true);
   converted_json = json::convert_string_value_to_uint64(path + "/Method",

@@ -8,6 +8,7 @@
 #include <string>
 
 #include "base/strings/string_number_conversions.h"
+#include "base/strings/string_util.h"
 #include "base/strings/utf_string_conversions.h"
 #include "brave/browser/shell_integrations/buildflags/buildflags.h"
 #include "brave/browser/ui/webui/brave_settings_ui.h"
@@ -94,6 +95,9 @@ constexpr char16_t kTabOrganizationLearnMoreURL[] =
 
 constexpr char16_t kLeoPrivacyPolicyURL[] =
     u"https://brave.com/privacy/browser/#brave-leo";
+
+constexpr char16_t kSurveyPanelistLearnMoreURL[] =
+    u"https://support.brave.com/hc/en-us/articles/36550092449165";
 
 void BraveAddCommonStrings(content::WebUIDataSource* html_source,
                            Profile* profile) {
@@ -556,8 +560,6 @@ void BraveAddCommonStrings(content::WebUIDataSource* html_source,
       {"braveLeoAssistantModelSelectionLabel",
        IDS_SETTINGS_LEO_ASSISTANT_MODEL_SELECTION_LABEL},
       {"braveLeoModelSubtitle-chat-basic", IDS_CHAT_UI_CHAT_BASIC_SUBTITLE},
-      {"braveLeoModelSubtitle-chat-leo-expanded",
-       IDS_CHAT_UI_CHAT_LEO_EXPANDED_SUBTITLE},
       {"braveLeoModelSubtitle-chat-claude-instant",
        IDS_CHAT_UI_CHAT_CLAUDE_INSTANT_SUBTITLE},
       {"braveLeoModelSubtitle-chat-claude-haiku",
@@ -639,6 +641,11 @@ void BraveAddCommonStrings(content::WebUIDataSource* html_source,
       {"braveLeoAssistantModelSystemPromptDesc",
        IDS_SETTINGS_LEO_ASSISTANT_MODEL_SYSTEM_PROMPT_DESC},
       {"braveLeoAssistantTokensCount", IDS_SETTINGS_LEO_ASSISTANT_TOKENS_COUNT},
+
+      // Survey Panelist Page
+      {"surveyPanelist", IDS_SETTINGS_SURVEY_PANELIST},
+      {"braveSurveyPanelistLabel", IDS_SETTINGS_SURVEY_PANELIST_LABEL},
+      {"braveSurveyPanelistDesc", IDS_SETTINGS_SURVEY_PANELIST_DESC},
 
       // New Tab Page
       {"braveNewTab", IDS_SETTINGS_NEW_TAB},
@@ -1042,6 +1049,14 @@ void BraveAddCommonStrings(content::WebUIDataSource* html_source,
       "braveLeoAssistantAboutLeoDesc2",
       l10n_util::GetStringFUTF16(IDS_SETTINGS_LEO_ASSISTANT_ABOUT_LEO_DESC_2,
                                  kLeoPrivacyPolicyURL));
+
+  html_source->AddString("braveSurveyPanelistLearnMoreURL",
+                         kSurveyPanelistLearnMoreURL);
+
+  html_source->AddString(
+      "braveSurveyPanelistDesc",
+      l10n_util::GetStringFUTF16(IDS_SETTINGS_SURVEY_PANELIST_DESC,
+                                 kSurveyPanelistLearnMoreURL));
 }  // NOLINT(readability/fn_size)
 
 void BraveAddResources(content::WebUIDataSource* html_source,

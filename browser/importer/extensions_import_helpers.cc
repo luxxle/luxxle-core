@@ -211,8 +211,16 @@ void ExtensionsImporter::Prepare(OnReady on_ready) {
 bool ExtensionsImporter::Import(OnExtensionImported on_extension) {
   CHECK(!IsImportInProgress());
 
+  if (extensions_.empty()) {
+    return false;
+  }
+
+  in_progress_count_ = extensions_.size();
   for (auto& extension : extensions_) {
     if (extension.is_installed) {
+      // Force tests to fail if |this| is deleted while enumerating extensions.
+      DCHECK(weak_factory_.GetWeakPtr());
+      --in_progress_count_;
       on_extension.Run(extension.id, ExtensionImportStatus::kOk);
       continue;
     }
@@ -227,7 +235,6 @@ bool ExtensionsImporter::Import(OnExtensionImported on_extension) {
         },
         weak_factory_.GetWeakPtr(), on_extension);
 
-    ++in_progress_count_;
     auto& installer = GetExtensionInstallerForTesting();  // IN-TEST
     if (installer) {
       const auto status = installer.Run(extension.id);
@@ -248,7 +255,7 @@ bool ExtensionsImporter::Import(OnExtensionImported on_extension) {
     }
   }
 
-  return IsImportInProgress();
+  return true;
 }
 
 const ImportingExtension* ExtensionsImporter::GetExtension(

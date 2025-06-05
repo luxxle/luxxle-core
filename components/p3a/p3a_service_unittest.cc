@@ -91,6 +91,7 @@ class P3AServiceTest : public testing::Test {
 
     p3a_service_->DisableStarAttestationForTesting();
     p3a_service_->Init(shared_url_loader_factory_);
+    p3a_service_->remote_config_manager()->LoadRemoteConfig({});
     task_environment_.RunUntilIdle();
   }
 
@@ -174,7 +175,7 @@ TEST_F(P3AServiceTest, UpdateLogsAndSendTypical) {
 
   for (size_t i = 0; i < test_histograms.size(); i++) {
     base::UmaHistogramExactLinear(test_histograms[i], i + 1, 8);
-    p3a_service_->OnHistogramChanged(test_histograms[i].c_str(), 0, i + 1);
+    p3a_service_->OnHistogramChanged(test_histograms[i], 0, i + 1);
     task_environment_.RunUntilIdle();
   }
 
@@ -228,7 +229,7 @@ TEST_F(P3AServiceTest, UpdateLogsAndSendExpress) {
 
   for (size_t i = 0; i < test_histograms.size(); i++) {
     base::UmaHistogramExactLinear(test_histograms[i], i + 1, 8);
-    p3a_service_->OnHistogramChanged(test_histograms[i].c_str(), 0, i + 1);
+    p3a_service_->OnHistogramChanged(test_histograms[i], 0, i + 1);
     task_environment_.RunUntilIdle();
   }
 
@@ -256,7 +257,7 @@ TEST_F(P3AServiceTest, UpdateLogsAndSendExpress) {
 
   for (size_t i = 1; i < test_histograms.size(); i++) {
     base::UmaHistogramExactLinear(test_histograms[i], i + 1, 8);
-    p3a_service_->OnHistogramChanged(test_histograms[i].c_str(), 0, i + 1);
+    p3a_service_->OnHistogramChanged(test_histograms[i], 0, i + 1);
     task_environment_.RunUntilIdle();
   }
   task_environment_.FastForwardBy(base::Seconds(kUploadIntervalSeconds * 10));
@@ -295,7 +296,7 @@ TEST_F(P3AServiceTest, MAYBE_UpdateLogsAndSendSlow) {
 
   for (size_t i = 0; i < test_histograms.size(); i++) {
     base::UmaHistogramExactLinear(test_histograms[i], i + 1, 8);
-    p3a_service_->OnHistogramChanged(test_histograms[i].c_str(), 0, i + 1);
+    p3a_service_->OnHistogramChanged(test_histograms[i], 0, i + 1);
     task_environment_.RunUntilIdle();
   }
 
@@ -358,7 +359,7 @@ TEST_F(P3AServiceTest, MetricSentCallback) {
 
   for (size_t i = 0; i < test_histograms.size(); i++) {
     base::UmaHistogramExactLinear(test_histograms[i], i + 1, 8);
-    p3a_service_->OnHistogramChanged(test_histograms[i].c_str(), 0, i + 1);
+    p3a_service_->OnHistogramChanged(test_histograms[i], 0, i + 1);
     task_environment_.RunUntilIdle();
   }
 
@@ -379,7 +380,7 @@ TEST_F(P3AServiceTest, ShouldNotSendIfDisabled) {
 
   for (const std::string& histogram_name : test_histograms) {
     base::UmaHistogramExactLinear(histogram_name, 5, 8);
-    p3a_service_->OnHistogramChanged(histogram_name.c_str(), 0, 5);
+    p3a_service_->OnHistogramChanged(histogram_name, 0, 5);
   }
 
   local_state_.SetBoolean(kP3AEnabled, false);
