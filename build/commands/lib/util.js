@@ -1049,7 +1049,7 @@ const util = {
       return supportedExts.includes(path.extname(file))
     }
 
-    const chromiumSrcDir = path.join(config.srcDir, 'brave', 'chromium_src')
+    const chromiumSrcDir = path.join(config.srcDir, 'luxxle', 'chromium_src')
     const sourceFiles = util.walkSync(chromiumSrcDir, applyFileFilter)
     const additionalGen = getAdditionalGenLocation()
 
