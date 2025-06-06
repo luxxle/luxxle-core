@@ -13,7 +13,8 @@ source_set("browsertest") {
 
   deps = [
     "//base/test:test_support",
-    "//brave/components/ai_rewriter/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_rewriter/common",
     "//chrome/browser/ui",
     "//chrome/test:test_support_ui",
     "//content/test:test_support",

@@ -19,7 +19,7 @@
 namespace component_updater {
 
 void OnCRLSetRegistered() {
-// https://github.com/brave/browser-android-tabs/issues/857
+// https://github.com/luxxle/browser-android-tabs/issues/857
 #if !BUILDFLAG(IS_ANDROID)
   brave_component_updater::BraveOnDemandUpdater::GetInstance()->EnsureInstalled(
       crl_set_extension_id);

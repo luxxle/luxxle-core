@@ -13,13 +13,13 @@ source_set("model") {
   ]
   deps = [
     "//base",
-    "//brave/ios/browser/api/ai_chat",
-    "//brave/ios/browser/api/webcompat_reporter",
-    "//brave/ios/browser/brave_ads",
-    "//brave/ios/browser/brave_wallet",
-    "//brave/ios/browser/debounce",
-    "//brave/ios/browser/favicon",
-    "//brave/ios/browser/skus",
-    "//brave/ios/browser/url_sanitizer",
+    "//luxxle/ios/browser/api/ai_chat",
+    "//luxxle/ios/browser/api/webcompat_reporter",
+    "//luxxle/ios/browser/brave_ads",
+    "//luxxle/ios/browser/brave_wallet",
+    "//luxxle/ios/browser/debounce",
+    "//luxxle/ios/browser/favicon",
+    "//luxxle/ios/browser/skus",
+    "//luxxle/ios/browser/url_sanitizer",
   ]
 }

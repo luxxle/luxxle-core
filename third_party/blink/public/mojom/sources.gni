@@ -5,6 +5,6 @@
 
 # Commented out: removed Brave components - using Chromium defaults instead
 # brave_third_party_blink_public_mojom_platform_public_deps =
-#     [ "//brave/components/brave_shields/core/common:mojom" ]
+#     [ "//luxxle/components/brave_shields/core/common:mojom" ]
 
 brave_third_party_blink_public_mojom_platform_public_deps = []

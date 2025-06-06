@@ -12,21 +12,21 @@ cargo_crate("lib") {
   crate_name = "pasta_curves"
   epoch = "0.5"
   crate_type = "rlib"
-  crate_root = "//brave/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/lib.rs"
+  crate_root = "//luxxle/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/arithmetic.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/arithmetic/curves.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/arithmetic/fields.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/curves.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/fields.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/fields/fp.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/fields/fq.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/hashtocurve.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/lib.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/macros.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/pallas.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/serde_impl.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/vesta.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/arithmetic.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/arithmetic/curves.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/arithmetic/fields.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/curves.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/fields.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/fields/fp.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/fields/fq.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/hashtocurve.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/macros.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/pallas.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/serde_impl.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/pasta_curves-v0_5/src/vesta.rs",
   ]
   inputs = []
 
@@ -45,13 +45,13 @@ cargo_crate("lib") {
   proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
   proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
   deps = [
-    "//brave/third_party/rust/blake2b_simd/v1:lib",
-    "//brave/third_party/rust/ff/v0_13:lib",
-    "//brave/third_party/rust/group/v0_13:lib",
-    "//brave/third_party/rust/lazy_static/v1:lib",
-    "//brave/third_party/rust/rand/v0_8:lib",
-    "//brave/third_party/rust/static_assertions/v1:lib",
-    "//brave/third_party/rust/subtle/v2:lib",
+    "//luxxle/third_party/rust/blake2b_simd/v1:lib",
+    "//luxxle/third_party/rust/ff/v0_13:lib",
+    "//luxxle/third_party/rust/group/v0_13:lib",
+    "//luxxle/third_party/rust/lazy_static/v1:lib",
+    "//luxxle/third_party/rust/rand/v0_8:lib",
+    "//luxxle/third_party/rust/static_assertions/v1:lib",
+    "//luxxle/third_party/rust/subtle/v2:lib",
   ]
   features = [
     "alloc",

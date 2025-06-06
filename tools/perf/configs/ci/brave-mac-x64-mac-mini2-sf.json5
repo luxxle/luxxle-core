@@ -1,7 +1,7 @@
 {
   "configurations": [{
     "dashboard-bot-name": "mac-mini-x64-typical",
-    "browser-type": "brave",
+    "browser-type": "luxxle",
     "profile": "brave-typical-mac",
     "extra-browser-args": [
       "--disable-component-update",

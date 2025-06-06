@@ -8,25 +8,27 @@ brave_browser_new_tab_deps = []
 
 if (!is_android) {
   brave_browser_new_tab_sources += [
-    "//brave/browser/new_tab/new_tab_shows_navigation_throttle.cc",
-    "//brave/browser/new_tab/new_tab_shows_navigation_throttle.h",
-    "//brave/browser/new_tab/new_tab_shows_options.cc",
-    "//brave/browser/new_tab/new_tab_shows_options.h",
+    "//luxxle/browser/new_tab/new_tab_shows_navigation_throttle.cc",
+    "//luxxle/browser/new_tab/new_tab_shows_navigation_throttle.h",
+    "//luxxle/browser/new_tab/new_tab_shows_options.cc",
+    "//luxxle/browser/new_tab/new_tab_shows_options.h",
   ]
 
   if (is_win) {
     brave_browser_new_tab_sources += [
-      "//brave/browser/new_tab/background_color_tab_helper.cc",
-      "//brave/browser/new_tab/background_color_tab_helper.h",
+      "//luxxle/browser/new_tab/background_color_tab_helper.cc",
+      "//luxxle/browser/new_tab/background_color_tab_helper.h",
     ]
   }
 
   brave_browser_new_tab_deps += [
     "//base",
-    "//brave/app:brave_generated_resources_grit",
-    "//brave/components/constants",
+    "//luxxle/app:brave_generated_resources_grit",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
     "//chrome/common",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//content/public/browser",
     "//ui/base",
     "//url",

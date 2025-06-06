@@ -13,28 +13,28 @@ cargo_crate("lib") {
   epoch = "0.8"
   crate_type = "rlib"
   crate_root =
-      "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/lib.rs"
+      "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/decode/bytes.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/decode/dec.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/decode/ext.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/decode/mod.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/decode/sint.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/decode/str.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/decode/uint.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/bin.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/buffer.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/dec.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/ext.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/map.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/mod.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/sint.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/str.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/uint.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/vec.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/errors.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/lib.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/marker.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/decode/bytes.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/decode/dec.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/decode/ext.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/decode/mod.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/decode/sint.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/decode/str.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/decode/uint.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/bin.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/buffer.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/dec.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/ext.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/map.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/mod.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/sint.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/str.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/uint.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/encode/vec.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/errors.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/rmp-v0_8/src/marker.rs",
   ]
   inputs = []
 
@@ -52,9 +52,9 @@ cargo_crate("lib") {
   proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
   proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
   deps = [
-    "//brave/third_party/rust/byteorder/v1:lib",
-    "//brave/third_party/rust/num_traits/v0_2:lib",
-    "//brave/third_party/rust/paste/v1:lib",
+    "//luxxle/third_party/rust/byteorder/v1:lib",
+    "//luxxle/third_party/rust/num_traits/v0_2:lib",
+    "//luxxle/third_party/rust/paste/v1:lib",
   ]
   features = [
     "default",

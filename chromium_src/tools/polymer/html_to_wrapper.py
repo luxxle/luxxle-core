@@ -5,8 +5,8 @@
 
 import override_utils
 
-POLYMER_OVERRIDING_TOKEN = '//resources/brave/polymer_overriding.js'
-LIT_OVERRIDING_TOKEN = '//resources/brave/lit_overriding.js'
+POLYMER_OVERRIDING_TOKEN = '//resources/luxxle/polymer_overriding.js'
+LIT_OVERRIDING_TOKEN = '//resources/luxxle/lit_overriding.js'
 
 
 @override_utils.override_function(globals())

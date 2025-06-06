@@ -5,80 +5,91 @@
 
 source_set("misc_metrics") {
   sources = [
-    "//brave/browser/misc_metrics/process_misc_metrics.h",
-    "//brave/browser/misc_metrics/profile_misc_metrics_service.h",
-    "//brave/browser/misc_metrics/profile_misc_metrics_service_factory.h",
+    "//luxxle/browser/misc_metrics/process_misc_metrics.h",
+    "//luxxle/browser/misc_metrics/profile_misc_metrics_service.h",
+    "//luxxle/browser/misc_metrics/profile_misc_metrics_service_factory.h",
   ]
 
   deps = [
-    "//components/keyed_service/content",
-    "//components/keyed_service/core",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//content/public/browser",
   ]
 }
 
 static_library("misc_metrics_impl") {
   visibility = [
-    "//brave/browser/misc_metrics/*",
+    "//luxxle/browser/misc_metrics/*",
     "//chrome/browser",
   ]
 
   sources = [
-    "//brave/browser/misc_metrics/doh_metrics.cc",
-    "//brave/browser/misc_metrics/doh_metrics.h",
-    "//brave/browser/misc_metrics/page_metrics_tab_helper.cc",
-    "//brave/browser/misc_metrics/page_metrics_tab_helper.h",
-    "//brave/browser/misc_metrics/process_misc_metrics.cc",
-    "//brave/browser/misc_metrics/uptime_monitor_impl.h",
+    "//luxxle/browser/misc_metrics/doh_metrics.cc",
+    "//luxxle/browser/misc_metrics/doh_metrics.h",
+    "//luxxle/browser/misc_metrics/page_metrics_tab_helper.cc",
+    "//luxxle/browser/misc_metrics/page_metrics_tab_helper.h",
+    "//luxxle/browser/misc_metrics/process_misc_metrics.cc",
+    "//luxxle/browser/misc_metrics/uptime_monitor_impl.h",
   ]
 
   deps = [
-    "//brave/browser:browser_process",
-    "//brave/browser/misc_metrics",
-    "//brave/browser/profiles:util",
-    "//brave/components/ai_chat/core/browser",
-    "//brave/components/misc_metrics",
-    "//brave/components/p3a_utils",
-    "//brave/components/time_period_storage",
+    "//luxxle/browser:browser_process",
+    "//luxxle/browser/misc_metrics",
+    "//luxxle/browser/profiles:util",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/misc_metrics",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/p3a_utils",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/time_period_storage",
     "//chrome/browser:browser_process",
     "//chrome/browser/autofill",
     "//chrome/browser/profiles:profiles",
     "//chrome/browser/search_engines",
     "//chrome/browser/ui",
     "//chrome/common:constants",
-    "//components/keyed_service/content",
-    "//components/keyed_service/core",
-    "//components/prefs",
-    "//components/user_prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/user_prefs",
     "//content/public/browser",
   ]
 
   if (!is_android) {
     sources += [
-      "//brave/browser/misc_metrics/extension_metrics.cc",
-      "//brave/browser/misc_metrics/extension_metrics.h",
-      "//brave/browser/misc_metrics/theme_metrics.cc",
-      "//brave/browser/misc_metrics/theme_metrics.h",
-      "//brave/browser/misc_metrics/vertical_tab_metrics.cc",
-      "//brave/browser/misc_metrics/vertical_tab_metrics.h",
+      "//luxxle/browser/misc_metrics/extension_metrics.cc",
+      "//luxxle/browser/misc_metrics/extension_metrics.h",
+      "//luxxle/browser/misc_metrics/theme_metrics.cc",
+      "//luxxle/browser/misc_metrics/theme_metrics.h",
+      "//luxxle/browser/misc_metrics/vertical_tab_metrics.cc",
+      "//luxxle/browser/misc_metrics/vertical_tab_metrics.h",
     ]
     deps += [
-      "//brave/browser/themes",
+      "//luxxle/browser/themes",
       "//chrome/browser/themes",
       "//chrome/browser/ui/tabs:tab_strip",
       "//extensions/browser",
     ]
   } else {
-    sources += [ "//brave/browser/misc_metrics/misc_android_metrics.h" ]
+    sources += [ "//luxxle/browser/misc_metrics/misc_android_metrics.h" ]
   }
 }
 
 if (!is_android) {
   source_set("usage_clock") {
     sources = [
-      "//brave/browser/misc_metrics/usage_clock.cc",
-      "//brave/browser/misc_metrics/usage_clock.h",
+      "//luxxle/browser/misc_metrics/usage_clock.cc",
+      "//luxxle/browser/misc_metrics/usage_clock.h",
     ]
 
     deps = [
@@ -100,18 +111,22 @@ source_set("unit_tests") {
   deps = [
     "//base",
     "//base/test:test_support",
-    "//brave/browser",
-    "//brave/browser/misc_metrics",
-    "//brave/browser/misc_metrics:misc_metrics_impl",
-    "//brave/components/brave_rewards/core",
-    "//brave/components/misc_metrics",
+    "//luxxle/browser",
+    "//luxxle/browser/misc_metrics",
+    "//luxxle/browser/misc_metrics:misc_metrics_impl",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/misc_metrics",
     "//chrome/browser",
     "//chrome/browser/content_settings:content_settings_factory",
     "//chrome/browser/search_engines",
     "//chrome/common",
     "//chrome/test:test_support",
-    "//components/bookmarks/browser",
-    "//components/prefs:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/bookmarks/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs:test_support",
     "//testing/gtest",
   ]
 
@@ -125,7 +140,7 @@ source_set("unit_tests") {
 
     deps += [
       ":usage_clock",
-      "//brave/browser/themes",
+      "//luxxle/browser/themes",
       "//chrome/browser/metrics/desktop_session_duration:desktop_session_duration",
       "//chrome/browser/themes",
     ]
@@ -144,10 +159,11 @@ source_set("browser_tests") {
   deps = [
     "//base",
     "//base/test:test_support",
-    "//brave/browser/misc_metrics:misc_metrics_impl",
+    "//luxxle/browser/misc_metrics:misc_metrics_impl",
     "//chrome/browser/profiles:profile",
     "//chrome/test:test_support",
-    "//components/prefs:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs:test_support",
     "//testing/gtest",
   ]
 

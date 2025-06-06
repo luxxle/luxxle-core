@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-import { NewTabPageAdEventType } from 'gen/brave/components/brave_ads/core/mojom/brave_ads.mojom.m.js'
+import { NewTabPageAdEventType } from 'gen/luxxle/components/brave_ads/core/mojom/brave_ads.mojom.m.js'
 
 import {
   BraveBackground,
   SponsoredImageBackground,
   SelectedBackground,
-  SelectedBackgroundType } from 'gen/brave/browser/ui/webui/brave_new_tab_page_refresh/brave_new_tab_page.mojom.m.js'
+  SelectedBackgroundType } from 'gen/luxxle/browser/ui/webui/brave_new_tab_page_refresh/brave_new_tab_page.mojom.m.js'
 
 export {
   BraveBackground,
@@ -19,7 +19,7 @@ export {
 }
 
 export type Background =
-  { type: 'brave' } & BraveBackground |
+  { type: 'luxxle' } & BraveBackground |
   { type: 'color', cssValue: string } |
   { type: 'custom', imageUrl: string } |
   { type: 'sponsored-image' | 'sponsored-rich-media' }
@@ -130,11 +130,11 @@ export function getCurrentBackground(
 
   switch (type) {
     case SelectedBackgroundType.kBrave: {
-      if (currentBackground?.type === 'brave') {
+      if (currentBackground?.type === 'luxxle') {
         return currentBackground
       }
       const braveBackground = chooseRandom(braveBackgrounds)
-      return braveBackground ? { type: 'brave', ...braveBackground } : null
+      return braveBackground ? { type: 'luxxle', ...braveBackground } : null
     }
     case SelectedBackgroundType.kCustom: {
       const imageUrl = value || chooseRandom(customBackgrounds)

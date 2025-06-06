@@ -9,7 +9,7 @@ import { create } from '@storybook/theming'
 const braveTheme = create({
   base: 'dark',
   brandTitle: 'Brave Browser UI',
-  brandUrl: 'https://github.com/brave/brave-core'
+  brandUrl: 'https://github.com/luxxle/brave-core'
 })
 
 addons.setConfig({

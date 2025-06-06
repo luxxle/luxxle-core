@@ -60,7 +60,7 @@ bool UninstallBraveVPNWireguardService(const CallbackWorkItem&) {
 // to install the services post-purchase (if possible) when the user has
 // purchased Brave VPN and has credentials or when VPN is used.
 //
-// See https://github.com/brave/brave-browser/issues/33726 for more info
+// See https://github.com/luxxle/brave-browser/issues/33726 for more info
 void AddUninstallVpnServiceWorkItems() {
   DCHECK(::IsUserAnAdmin());
   // delete `BraveVpnService` from services
@@ -78,7 +78,7 @@ void AddUninstallVpnServiceWorkItems() {
 // to install the services post-purchase (if possible) when the user has
 // purchased Brave VPN and has credentials or when VPN is used.
 //
-// See https://github.com/brave/brave-browser/issues/33726 for more info
+// See https://github.com/luxxle/brave-browser/issues/33726 for more info
 void AddUninstallWireguardServiceWorkItems(WorkItemList* list) {
   DCHECK(::IsUserAnAdmin());
   list->AddCallbackWorkItem(base::BindOnce(&UninstallBraveVPNWireguardService),
@@ -93,7 +93,7 @@ namespace installer {
 // future once enough time has gone by and we're confident folks have ran this
 // cleanup. This same service cleanup happens on uninstall.
 //
-// For more info see https://github.com/brave/brave-browser/issues/33726
+// For more info see https://github.com/luxxle/brave-browser/issues/33726
 bool OneTimeVpnServiceCleanup(const base::FilePath& target_path,
                               const base::Version& new_version,
                               WorkItemList* install_list,

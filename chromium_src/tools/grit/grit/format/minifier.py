@@ -8,6 +8,6 @@ import override_utils
 
 @override_utils.override_function(globals())
 def Minify(original_function, source, filename):
-    if 'gen/brave/web-ui-opaque_ke/' in filename:
+    if 'gen/luxxle/web-ui-opaque_ke/' in filename:
         return source
     return original_function(source, filename)

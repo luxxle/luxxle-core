@@ -11,7 +11,7 @@
 namespace brave_stats {
 namespace features {
 
-// See https://github.com/brave/brave-browser/issues/42111 for more info.
+// See https://github.com/luxxle/brave-browser/issues/42111 for more info.
 BASE_DECLARE_FEATURE(kHeadlessRefcode);
 
 bool IsHeadlessClientRefcodeEnabled();

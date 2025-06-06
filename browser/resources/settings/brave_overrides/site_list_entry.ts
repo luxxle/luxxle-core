@@ -11,7 +11,7 @@ import {
   RegisterPolymerComponentReplacement,
   RegisterPolymerTemplateModifications,
   RegisterStyleOverride
-} from 'chrome://resources/brave/polymer_overriding.js'
+} from 'chrome://resources/luxxle/polymer_overriding.js'
 
 RegisterStyleOverride(
   'site-list-entry',

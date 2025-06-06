@@ -7,7 +7,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-// TODO(https://github.com/brave/brave-browser/issues/5541): Uncomment below
+// TODO(https://github.com/luxxle/brave-browser/issues/5541): Uncomment below
 // code when notification_platform_bridge_mac.mm has been updated to use
 // UNUserNotificationCenter
 // #import <UserNotifications/UserNotifications.h>
@@ -22,7 +22,7 @@ namespace brave_ads {
 namespace {
 
 bool IsAuthorized() {
-  // TODO(https://github.com/brave/brave-browser/issues/5541): Uncomment below
+  // TODO(https://github.com/luxxle/brave-browser/issues/5541): Uncomment below
   // code when notification_platform_bridge_mac.mm has been updated to use
   // UNUserNotificationCenter
   return true;
@@ -75,7 +75,7 @@ bool IsAuthorized() {
 }
 
 bool IsEnabled() {
-  // TODO(https://github.com/brave/brave-browser/issues/5541): Uncomment below
+  // TODO(https://github.com/luxxle/brave-browser/issues/5541): Uncomment below
   // code when notification_platform_bridge_mac.mm has been updated to use
   // UNUserNotificationCenter
   return true;

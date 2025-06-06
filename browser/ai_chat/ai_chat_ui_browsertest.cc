@@ -301,7 +301,7 @@ IN_PROC_BROWSER_TEST_F(AIChatUIBrowserTest, ExtractionPrintDialog) {
 }
 
 // Disable flaky test on ASAN windows 64-bit
-// https://github.com/brave/brave-browser/issues/37969
+// https://github.com/luxxle/brave-browser/issues/37969
 #if BUILDFLAG(IS_WIN) && defined(ADDRESS_SANITIZER) && defined(ARCH_CPU_64_BITS)
 #define MAYBE_PrintPreviewFallback DISABLED_PrintPreviewFallback
 #else

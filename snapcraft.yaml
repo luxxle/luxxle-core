@@ -14,7 +14,7 @@ compression: lzo
 base: core22
 apps:
   brave:
-    command: opt/brave.com/brave/brave-browser
+    command: opt/brave.com/luxxle/brave-browser
     desktop: usr/share/applications/brave.desktop
     extensions:
       - gnome
@@ -64,13 +64,13 @@ slots:
 parts:
   brave:
     plugin: dump
-    source: https://github.com/brave/brave-browser/releases/download/v$SNAPCRAFT_PROJECT_VERSION/brave-browser_$SNAPCRAFT_PROJECT_VERSION_$SNAPCRAFT_TARGET_ARCH.deb
+    source: https://github.com/luxxle/brave-browser/releases/download/v$SNAPCRAFT_PROJECT_VERSION/brave-browser_$SNAPCRAFT_PROJECT_VERSION_$SNAPCRAFT_TARGET_ARCH.deb
     override-pull: |
       set -eu
       craftctl default
-      chmod 4555 ./opt/brave.com/brave/chrome-sandbox
+      chmod 4555 ./opt/brave.com/luxxle/chrome-sandbox
       rm -rf etc/cron.daily/ usr/bin/brave-browser usr/bin/brave-browser-stable
-      sed -i 's|Icon=brave-browser|Icon=/opt/brave.com/brave/product_logo_128\.png|g' usr/share/applications/brave-browser.desktop
+      sed -i 's|Icon=brave-browser|Icon=/opt/brave.com/luxxle/product_logo_128\.png|g' usr/share/applications/brave-browser.desktop
       mv usr/share/applications/brave-browser.desktop usr/share/applications/brave.desktop
     prime:
       - -etc/gss

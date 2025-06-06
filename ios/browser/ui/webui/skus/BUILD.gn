@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/build/config.gni")
+import("//luxxle/build/config.gni")
 import("//build/config/features.gni")
 import("//mojo/public/tools/bindings/mojom.gni")
 
@@ -14,15 +14,23 @@ source_set("skus") {
   ]
 
   deps = [
-    "//brave/components/constants",
-    "//brave/components/resources:static_resources",
-    "//brave/components/skus/browser",
-    "//brave/components/skus/browser/resources:generated_resources",
-    "//brave/components/skus/common",
-    "//brave/components/skus/common:mojom",
-    "//brave/ios/browser/skus",
-    "//components/prefs",
-    "//components/resources",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/resources:static_resources",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/skus/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/skus/browser/resources:generated_resources",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/skus/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/skus/common:mojom",
+    "//luxxle/ios/browser/skus",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/resources",
     "//ios/chrome/browser/shared/model/application_context",
     "//ios/chrome/browser/shared/model/profile",
     "//ios/chrome/browser/shared/ui/util:util",

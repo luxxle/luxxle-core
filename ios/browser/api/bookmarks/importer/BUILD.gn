@@ -22,13 +22,20 @@ source_set("importer") {
 
   deps = [
     "//base",
-    "//components/bookmarks/browser:browser",
-    "//components/bookmarks/common:common",
-    "//components/favicon_base",
-    "//components/prefs:prefs",
-    "//components/search_engines:search_engines",
-    "//components/strings:components_strings_grit",
-    "//components/user_prefs:user_prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/bookmarks/browser:browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/bookmarks/common:common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/favicon_base",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs:prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/search_engines:search_engines",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/strings:components_strings_grit",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/user_prefs:user_prefs",
     "//ios/chrome/browser/bookmarks/model",
     "//ios/chrome/browser/shared/model/application_context",
     "//ios/chrome/browser/shared/model/profile",

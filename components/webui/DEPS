@@ -1,4 +1,0 @@
-include_rules = [
-  "+ui/base",
-  "+third_party/re2",
-]

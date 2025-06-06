@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import '//resources/brave/leo.bundle.js';
+import '//resources/luxxle/leo.bundle.js';
 
 import { getHtml } from './cr_button.html.js';
 import { CrLitElement, css, type PropertyValues } from '//resources/lit/v3_0/lit.rollup.js';
@@ -92,7 +92,7 @@ leo-button {
     if (changedProperties.has('disabled')) {
       // TODO(petemill): This should be a $= binding but the leo-button
       // has a bug with treating it as a boolean attribute
-      // https://github.com/brave/leo/issues/690.
+      // https://github.com/luxxle/leo/issues/690.
       if (this.disabled) {
         this.$.button.setAttribute('isDisabled', '_')
       } else {

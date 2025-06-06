@@ -69,13 +69,13 @@
   "options": {
     "cwd": "${workspaceFolder}/brave",
     "env": {
-      "PATH": "${workspaceFolder}/brave/vendor/depot_tools:${env:PATH}"
+      "PATH": "${workspaceFolder}/luxxle/vendor/depot_tools:${env:PATH}"
     }
   },
   "windows": {
     "options": {
       "env": {
-        "PATH": "${workspaceFolder}/brave/vendor/depot_tools;${env:PATH}"
+        "PATH": "${workspaceFolder}/luxxle/vendor/depot_tools;${env:PATH}"
       }
     }
   },

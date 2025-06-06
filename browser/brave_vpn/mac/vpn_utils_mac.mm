@@ -14,7 +14,7 @@ std::unique_ptr<ConnectionAPIImpl> CreateConnectionAPIImplMac(
     BraveVPNConnectionManager* manager,
     scoped_refptr<network::SharedURLLoaderFactory> url_loader_factory) {
   // NOTE: WIREGUARD is not supported on macOS yet.
-  // See https://github.com/brave/brave-browser/issues/32612
+  // See https://github.com/luxxle/brave-browser/issues/32612
   return std::make_unique<IKEv2ConnectionAPIImplMac>(manager,
                                                      url_loader_factory);
 }

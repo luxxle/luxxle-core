@@ -20,7 +20,7 @@ namespace brave {
 namespace {
 
 bool RewriteBugReportingURL(const GURL& request_url, GURL* new_url) {
-  GURL url("https://github.com/brave/brave-browser/issues/new");
+  GURL url("https://github.com/luxxle/brave-browser/issues/new");
   std::string query = "title=Crash%20Report&labels=crash";
   // We are expecting 3 query keys: comment, template, and labels
   base::StringPairs pairs;

@@ -494,7 +494,7 @@ void RewardsPageHandler::GetAdsHistory(GetAdsHistoryCallback callback) {
 
   brave_rewards::p3a::RecordAdsHistoryView();
 
-  // TODO(https://github.com/brave/brave-browser/issues/24595): Transition
+  // TODO(https://github.com/luxxle/brave-browser/issues/24595): Transition
   // GetAdHistory from base::Value to a mojom data structure.
   ads_service_->GetAdHistory(from_time.LocalMidnight(), now,
                              base::BindOnce(on_history, std::move(callback)));
@@ -550,7 +550,7 @@ void RewardsPageHandler::ToggleAdLike(const std::string& history_item,
     return;
   }
 
-  // TODO(https://github.com/brave/brave-browser/issues/40852): Refactor UI
+  // TODO(https://github.com/luxxle/brave-browser/issues/40852): Refactor UI
   // reactions to use `mojom::ReactionInfo` instead of `AdHistoryItemInfo`.
   const brave_ads::AdHistoryItemInfo ad_history_item =
       brave_ads::AdHistoryItemFromValue(*dict);
@@ -567,7 +567,7 @@ void RewardsPageHandler::ToggleAdDislike(const std::string& history_item,
     return;
   }
 
-  // TODO(https://github.com/brave/brave-browser/issues/40852): Refactor UI
+  // TODO(https://github.com/luxxle/brave-browser/issues/40852): Refactor UI
   // reactions to use `mojom::ReactionInfo` instead of `AdHistoryItemInfo`.
   const brave_ads::AdHistoryItemInfo ad_history_item =
       brave_ads::AdHistoryItemFromValue(*dict);
@@ -585,7 +585,7 @@ void RewardsPageHandler::ToggleAdInappropriate(
     return;
   }
 
-  // TODO(https://github.com/brave/brave-browser/issues/40852): Refactor UI
+  // TODO(https://github.com/luxxle/brave-browser/issues/40852): Refactor UI
   // reactions to use `mojom::ReactionInfo` instead of `AdHistoryItemInfo`.
   const brave_ads::AdHistoryItemInfo ad_history_item =
       brave_ads::AdHistoryItemFromValue(*dict);

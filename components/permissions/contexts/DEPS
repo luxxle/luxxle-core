@@ -1,5 +1,0 @@
-include_rules = [
-  "+services/network/public/mojom/permissions_policy",
-  "+third_party/blink/public/common",
-  "+third_party/blink/public/mojom",
-]

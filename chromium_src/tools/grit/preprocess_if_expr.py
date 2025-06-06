@@ -49,9 +49,9 @@ def run_mangler(out_folder, mangler_file, preprocess_file):
     import brave_node
 
     tsx = brave_node.PathInNodeModules('tsx', 'dist', 'cli.mjs')
-    ts_config = wspath("//brave/tsconfig-mangle.json")
+    ts_config = wspath("//luxxle/tsconfig-mangle.json")
     lit_mangler = wspath(
-        "//brave/tools/chromium_src/lit_mangler/lit_mangler_cli.ts")
+        "//luxxle/tools/chromium_src/lit_mangler/lit_mangler_cli.ts")
 
     # Note: We read from and write to the preprocess file - this way any
     # preprocessing that upstream does will be mangled.

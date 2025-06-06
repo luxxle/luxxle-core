@@ -11,26 +11,42 @@ source_set("features") {
 
   deps = [
     "//base",
-    "//brave/components/ai_chat/core/common:common",
-    "//brave/components/brave_component_updater/browser:browser",
-    "//brave/components/brave_news/common:common",
-    "//brave/components/brave_rewards/core:features",
-    "//brave/components/brave_search/common",
-    "//brave/components/brave_search_conversion:brave_search_conversion",
-    "//brave/components/brave_shields/core/common:common",
-    "//brave/components/brave_sync:features",
-    "//brave/components/brave_user_agent/common",
-    "//brave/components/brave_wallet/common:buildflags",
-    "//brave/components/brave_wallet/common:common",
-    "//brave/components/de_amp/common",
-    "//brave/components/debounce/core/common",
-    "//brave/components/ntp_background_images/browser:browser",
-    "//brave/components/p3a:p3a",
-    "//brave/components/skus/common:common",
-    "//brave/ios/browser/api/translate:features",
-    "//brave/ios/browser/playlist",
-    "//brave/ios/browser/ui/browser_menu:features",
-    "//brave/ios/browser/ui/web_view:features",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/common:common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_component_updater/browser:browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_news/common:common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core:features",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_search/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_search_conversion:brave_search_conversion",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_shields/core/common:common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_sync:features",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_user_agent/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_wallet/common:buildflags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_wallet/common:common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/de_amp/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/debounce/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ntp_background_images/browser:browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/p3a:p3a",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/skus/common:common",
+    "//luxxle/ios/browser/api/translate:features",
+    "//luxxle/ios/browser/playlist",
+    "//luxxle/ios/browser/ui/browser_menu:features",
+    "//luxxle/ios/browser/ui/web_view:features",
     "//build:blink_buildflags",
     "//net",
   ]

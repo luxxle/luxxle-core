@@ -6,7 +6,7 @@ index 3256304fe1bfb80af0312f9046b1a78a2469956e..324a959f97b355aa58771c8de70a3660
    if (is_chromeos) {
      deps += [ "//ash/constants:constants" ]
    }
-+  import("//brave/content/browser/sources.gni") sources += brave_content_browser_sources deps += brave_content_browser_deps
++  import("//luxxle/content/browser/sources.gni") sources += brave_content_browser_sources deps += brave_content_browser_deps
  }
  
  if (is_android) {

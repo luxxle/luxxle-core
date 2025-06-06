@@ -4,22 +4,24 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 brave_browser_ephemeral_storage_sources = [
-  "//brave/browser/ephemeral_storage/brave_ephemeral_storage_service_delegate.cc",
-  "//brave/browser/ephemeral_storage/brave_ephemeral_storage_service_delegate.h",
-  "//brave/browser/ephemeral_storage/ephemeral_storage_service_factory.cc",
-  "//brave/browser/ephemeral_storage/ephemeral_storage_service_factory.h",
-  "//brave/browser/ephemeral_storage/ephemeral_storage_tab_helper.cc",
-  "//brave/browser/ephemeral_storage/ephemeral_storage_tab_helper.h",
-  "//brave/browser/ephemeral_storage/tld_ephemeral_lifetime.cc",
-  "//brave/browser/ephemeral_storage/tld_ephemeral_lifetime.h",
+  "//luxxle/browser/ephemeral_storage/brave_ephemeral_storage_service_delegate.cc",
+  "//luxxle/browser/ephemeral_storage/brave_ephemeral_storage_service_delegate.h",
+  "//luxxle/browser/ephemeral_storage/ephemeral_storage_service_factory.cc",
+  "//luxxle/browser/ephemeral_storage/ephemeral_storage_service_factory.h",
+  "//luxxle/browser/ephemeral_storage/ephemeral_storage_tab_helper.cc",
+  "//luxxle/browser/ephemeral_storage/ephemeral_storage_tab_helper.h",
+  "//luxxle/browser/ephemeral_storage/tld_ephemeral_lifetime.cc",
+  "//luxxle/browser/ephemeral_storage/tld_ephemeral_lifetime.h",
 ]
 
 brave_browser_ephemeral_storage_deps = [
   "//base",
-  "//brave/components/ephemeral_storage",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/ephemeral_storage",
   "//chrome/browser/profiles",
   "//chrome/browser/ui",
-  "//components/content_settings/core/browser",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//components/content_settings/core/browser",
   "//content/public/browser",
   "//net",
   "//third_party/blink/public/common",

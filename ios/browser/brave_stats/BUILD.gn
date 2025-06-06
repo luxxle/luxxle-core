@@ -10,7 +10,9 @@ source_set("brave_stats") {
   ]
   deps = [
     "//base",
-    "//brave/components/brave_wallet/browser:pref_names",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_wallet/browser:pref_names",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
   ]
 }

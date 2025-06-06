@@ -16,7 +16,7 @@ GURL BraveGetSyncServiceURL(const base::CommandLine& command_line,
                             PrefService* prefs) {
   // Allow group policy to override sync service URL.
   // This has a higher priority than the --sync-url command-line param.
-  // https://github.com/brave/brave-browser/issues/20431
+  // https://github.com/luxxle/brave-browser/issues/20431
   if (prefs && prefs->IsManagedPreference(brave_sync::kCustomSyncServiceUrl)) {
     std::string value(prefs->GetString(brave_sync::kCustomSyncServiceUrl));
     if (!value.empty()) {

@@ -4,7 +4,7 @@
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
 import { EmailAliasesServiceInterface }
-  from "gen/brave/components/email_aliases/email_aliases.mojom.m"
+  from "gen/luxxle/components/email_aliases/email_aliases.mojom.m"
 import { font, spacing } from "@brave/leo/tokens/css/variables"
 import { getLocale } from '$web-common/locale'
 import * as React from 'react'

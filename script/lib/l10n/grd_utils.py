@@ -128,7 +128,7 @@ def braveify_grd_in_place(source_string_path):
 
 
 def get_override_file_path(source_string_path):
-    """Obtain src/brave source string override path for local grd strings with
+    """Obtain src/luxxle source string override path for local grd strings with
        replacements"""
     filename = os.path.basename(source_string_path)
     (basename, ext) = filename.split('.')

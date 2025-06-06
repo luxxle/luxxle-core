@@ -3,8 +3,10 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/components/brave_webtorrent/browser/buildflags/buildflags.gni")
-import("//brave/components/tor/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/brave_webtorrent/browser/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/tor/buildflags/buildflags.gni")
 import("//build/config/locales.gni")
 import("//chrome/common/features.gni")
 import("//extensions/buildflags/buildflags.gni")
@@ -31,10 +33,9 @@ template("brave_repack_percent") {
                            ])
 
     # All sources should also have deps for completeness.
-    sources =
-        [ "$root_gen_dir/brave/brave_theme_resources_${percent}_percent.pak" ]
+sources = [ "$root_gen_dir/luxxle/brave_theme_resources_${percent}_percent.pak" ]
 
-    deps = [ "//brave/app/theme:brave_theme_resources" ]
+    deps = [ "//luxxle/app/theme:brave_theme_resources" ]
 
     if (defined(invoker.deps)) {
       deps += invoker.deps
@@ -54,53 +55,62 @@ template("brave_extra_paks") {
                            ])
     output = "${invoker.output_dir}/brave_resources.pak"
     sources = [
-      "$root_gen_dir/brave/components/brave_rewards/resources/brave_rewards_resources.pak",
-      "$root_gen_dir/components/brave_components_resources.pak",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "$root_gen_dir/luxxle/components/brave_rewards/resources/brave_rewards_resources.pak",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "$root_gen_dir/components/brave_components_resources.pak",
     ]
 
     if (!is_android) {
       sources += [
-        "$root_gen_dir/brave/brave_education_resources.pak",
-        "$root_gen_dir/brave/brave_generated_resources.pak",
-        "$root_gen_dir/brave/brave_unscaled_resources.pak",
-        "$root_gen_dir/brave/browser/resources/settings/brave_settings_resources.pak",
+        "$root_gen_dir/luxxle/brave_generated_resources.pak",
+        "$root_gen_dir/luxxle/brave_unscaled_resources.pak",
+        "$root_gen_dir/luxxle/browser/resources/settings/brave_settings_resources.pak",
       ]
     }
 
     deps = [
-      "//brave/components/brave_rewards/resources",
-      "//brave/components/resources",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/brave_rewards/resources",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/resources",
     ]
 
     if (!is_android) {
       deps += [
-        "//brave/app:brave_generated_resources_grit",
-        "//brave/app/theme:brave_unscaled_resources",
-        "//brave/browser/resources/brave_education:resources_grit",
-        "//brave/browser/resources/settings:resources",
-        "//brave/components/resources:strings",
+        "//luxxle/app:brave_generated_resources_grit",
+        "//luxxle/app/theme:brave_unscaled_resources",
+        "//luxxle/browser/resources/settings:resources",
+        # Commented out: removed components dependency - using Chromium defaults instead
+        # "//luxxle/components/resources:strings",
       ]
     }
 
     if (enable_tor) {
       sources +=
-          [ "$root_gen_dir/brave/components/tor/resources/tor_resources.pak" ]
+          # Commented out: removed components dependency - using Chromium defaults instead
+          # [ "$root_gen_dir/luxxle/components/tor/resources/tor_resources.pak" ]
 
-      deps += [ "//brave/components/tor/resources" ]
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # deps += [ "//luxxle/components/tor/resources" ]
     }
 
     if (enable_brave_webtorrent) {
-      sources += [ "$root_gen_dir/brave/components/brave_webtorrent/brave_webtorrent_resources.pak" ]
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # sources += [ "$root_gen_dir/luxxle/components/brave_webtorrent/brave_webtorrent_resources.pak" ]
 
-      deps += [ "//brave/components/brave_webtorrent:resources" ]
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # deps += [ "//luxxle/components/brave_webtorrent:resources" ]
     }
 
     if (enable_extensions) {
-      sources += [ "$root_gen_dir/brave/components/brave_extension/brave_extension_resources.pak" ]
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # sources += [ "$root_gen_dir/luxxle/components/brave_extension/brave_extension_resources.pak" ]
 
       deps += [
-        "//brave/common/extensions/api",
-        "//brave/components/brave_extension:resources",
+        "//luxxle/common/extensions/api",
+        # Commented out: removed components dependency - using Chromium defaults instead
+        # "//luxxle/components/brave_extension:resources",
       ]
     }
 

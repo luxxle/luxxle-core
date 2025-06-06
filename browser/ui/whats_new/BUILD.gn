@@ -12,13 +12,15 @@ source_set("browser_test") {
   sources = [ "whats_new_browsertest.cc" ]
 
   deps = [
-    "//brave/components/l10n/common:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/l10n/common:test_support",
     "//chrome/browser",
     "//chrome/browser:browser_process",
     "//chrome/browser/profiles:profile",
     "//chrome/browser/ui",
     "//chrome/test:test_support_ui",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
   ]
 }
 
@@ -29,12 +31,15 @@ source_set("unit_test") {
 
   deps = [
     "//base",
-    "//brave/components/l10n/common:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/l10n/common:test_support",
     "//chrome/browser",
     "//chrome/browser/ui",
     "//chrome/test:test_support",
-    "//components/prefs",
-    "//components/prefs:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs:test_support",
     "//content/test:test_support",
     "//testing/gtest",
   ]

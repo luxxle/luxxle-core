@@ -100,7 +100,7 @@ class BraveWebAudioFarblingBrowserTest : public InProcessBrowserTest {
 };
 
 // Tests for crash in copyFromChannel as reported in
-// https://github.com/brave/brave-browser/issues/9552
+// https://github.com/luxxle/brave-browser/issues/9552
 // No crash indicates a successful test.
 IN_PROC_BROWSER_TEST_F(BraveWebAudioFarblingBrowserTest,
                        CopyFromChannelNoCrash) {

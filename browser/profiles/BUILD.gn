@@ -11,27 +11,36 @@ source_set("util") {
 
   deps = [
     "//base",
-    "//brave/common",
-    "//brave/components/brave_shields/content/browser",
-    "//brave/components/brave_shields/core/common",
-    "//brave/components/brave_webtorrent/browser/buildflags",
-    "//brave/components/ntp_background_images/browser",
-    "//brave/components/ntp_background_images/common",
-    "//brave/components/tor/buildflags",
+    "//luxxle/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_shields/content/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_shields/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_webtorrent/browser/buildflags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ntp_background_images/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ntp_background_images/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/tor/buildflags",
     "//chrome/browser/profiles",
-    "//components/content_settings/core/browser:cookie_settings",
-    "//components/prefs",
-    "//components/search_engines",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/browser:cookie_settings",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/search_engines",
     "//content/public/browser",
   ]
 }
 
 source_set("unit_tests") {
   testonly = true
-  sources = [ "//brave/browser/profiles/profile_attributes_entry_unittest.cc" ]
+  sources = [ "//luxxle/browser/profiles/profile_attributes_entry_unittest.cc" ]
   deps = [
     "//base",
-    "//brave/app:brave_generated_resources_grit_grit",
+    "//luxxle/app:brave_generated_resources_grit_grit",
     "//chrome/browser/profiles",
     "//chrome/test:test_support",
     "//testing/gtest",

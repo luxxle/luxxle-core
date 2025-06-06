@@ -6,7 +6,7 @@ index 93096ad92c1a36ca4bd964e87365c01f62a523a3..db8998b43d0ea6595af67425f54e6ac5
  
      "//chrome/browser/task_manager:impl",
    ]
-+  import("//brave/browser/sources.gni") public_deps += [ "//brave/browser/ui" ] deps += brave_chrome_browser_ui_allow_circular_includes_from allow_circular_includes_from += brave_chrome_browser_ui_allow_circular_includes_from
++  import("//luxxle/browser/sources.gni") public_deps += [ "//luxxle/browser/ui" ] deps += brave_chrome_browser_ui_allow_circular_includes_from allow_circular_includes_from += brave_chrome_browser_ui_allow_circular_includes_from
  
    if (enable_vr && is_win) {
      deps += [ "//chrome/browser/vr:vr_base" ]
@@ -16,7 +16,7 @@ index 93096ad92c1a36ca4bd964e87365c01f62a523a3..db8998b43d0ea6595af67425f54e6ac5
      } else {
 -      sources += [ "webui/help/version_updater_basic.cc" ]
 +      if (!is_official_build) {
-+        # In official build, //brave/browser/ui handles.
++        # In official build, //luxxle/browser/ui handles.
 +        sources += [ "webui/help/version_updater_basic.cc" ]
 +      }
      }
@@ -26,7 +26,7 @@ index 93096ad92c1a36ca4bd964e87365c01f62a523a3..db8998b43d0ea6595af67425f54e6ac5
    if (enable_extensions_core) {
      public_deps += [ "//extensions/browser" ]
    }
-+  public_deps += [ "//brave/browser/ui:ui_public_dependencies" ]
++  public_deps += [ "//luxxle/browser/ui:ui_public_dependencies" ]
    if (!is_android) {
      public_deps += [
        "//build:branding_buildflags",

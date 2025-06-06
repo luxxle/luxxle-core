@@ -139,7 +139,7 @@ override still applies. If it does, then it is safe to update the snapshot.
 
 Polymer templates are just HTML Template elements, so you can easily modify them
 with a `chromium_src` override (for the JS file) or more easily via the
-`polymer_overriding` utils in `//brave/ui/webui/resources/polymer_overriding.ts`
+`polymer_overriding` utils in `//luxxle/ui/webui/resources/polymer_overriding.ts`
 
 ## Adding New Files
 
@@ -149,5 +149,5 @@ new elements to the page to get things looking right.
 In this scenario, its best to add a new build target to Brave and patch it into
 the upstream build for that WebUI.
 
-See `//brave/browser/resources/settings/BUILD.gn` and
-`//brave/browser/resources/settings/settings.gni` for how to get this setup.
+See `//luxxle/browser/resources/settings/BUILD.gn` and
+`//luxxle/browser/resources/settings/settings.gni` for how to get this setup.

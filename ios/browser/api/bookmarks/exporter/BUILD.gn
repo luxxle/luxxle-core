@@ -18,13 +18,19 @@ source_set("exporter") {
 
   deps = [
     "//base",
-    "//brave/ios/browser/api/bookmarks",
-    "//components/bookmarks/browser",
-    "//components/favicon/core",
-    "//components/favicon_base",
-    "//components/keyed_service/core",
-    "//components/strings:components_strings_grit",
-    "//components/sync",
+    "//luxxle/ios/browser/api/bookmarks",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/bookmarks/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/favicon/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/favicon_base",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/strings:components_strings_grit",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync",
     "//ios/chrome/browser/bookmarks/model",
     "//ios/chrome/browser/favicon/model",
     "//ios/chrome/browser/shared/model/application_context",

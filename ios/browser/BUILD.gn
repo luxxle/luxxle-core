@@ -44,13 +44,14 @@ group("browser") {
     "api/web_image",
     "api/web_view",
     "brave_wallet",
-    "//brave/browser/sync",
-    "//brave/components/constants",
-    "//brave/ios/browser/application_context",
-    "//brave/ios/browser/brave_wallet",
-    "//brave/ios/browser/profile/model",
-    "//brave/ios/browser/ui/webui",
-    "//brave/ios/browser/web",
+    "//luxxle/browser/sync",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
+    "//luxxle/ios/browser/application_context",
+    "//luxxle/ios/browser/brave_wallet",
+    "//luxxle/ios/browser/profile/model",
+    "//luxxle/ios/browser/ui/webui",
+    "//luxxle/ios/browser/web",
     "//ios/chrome/browser/shared/model/prefs",
   ]
 }

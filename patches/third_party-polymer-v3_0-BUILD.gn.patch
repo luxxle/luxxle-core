@@ -28,5 +28,5 @@ index a1af4adfcdb963f5384572ba1e53a6da1d3fcf4b..0e2e81afc5a74d6d418d261d79979ac2
        "components-chromium/paper-tooltip/paper-tooltip.d.ts",
      ]
    }
-+  import("//brave/third_party/polymer/v3_0/sources.gni") visibility += brave_polymer_library_visibility
++  import("//luxxle/third_party/polymer/v3_0/sources.gni") visibility += brave_polymer_library_visibility
  }

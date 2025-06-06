@@ -12,7 +12,7 @@ from terminal import terminal
 
 # The path to the brave/ directory.
 BRAVE_CORE_PATH = next(brave for brave in PurePath(__file__).parents
-                       if brave.name == 'brave')
+                       if brave.name == 'luxxle')
 
 # The path to chromium's src/ directory.
 CHROMIUM_SRC_PATH = BRAVE_CORE_PATH.parent

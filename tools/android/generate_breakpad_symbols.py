@@ -60,7 +60,7 @@ def GetRequiredLibsPaths(args, extension):
     # None of them contains the libs included into bundle.
     # Since PR brave-core/pull/20849 we supply only one ABI per package,
     # So it looks like additional_abi_dirs can be skipped.
-    # TODO(alexeybarabash): https://github.com/brave/brave-browser/issues/40305
+    # TODO(alexeybarabash): https://github.com/luxxle/brave-browser/issues/40305
 
     libs_only_names = set() #lib_names
     for lib in libs_in_package:

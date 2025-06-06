@@ -16,7 +16,7 @@ import org.chromium.base.Log;
 /*
  * Provides a custom LayoutManager to use on recyclerView to prevent an Android bug from crashing.
  * Check that issue and related PR for more information
- * https://github.com/brave/brave-browser/issues/29634
+ * https://github.com/luxxle/brave-browser/issues/29634
  */
 public class LinearLayoutManagerWrapper extends LinearLayoutManager {
     private static final String TAG = "LLManagerWrapper";

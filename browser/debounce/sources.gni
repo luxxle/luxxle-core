@@ -4,15 +4,18 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 brave_browser_debounce_sources = [
-  "//brave/browser/debounce/debounce_service_factory.cc",
-  "//brave/browser/debounce/debounce_service_factory.h",
+  "//luxxle/browser/debounce/debounce_service_factory.cc",
+  "//luxxle/browser/debounce/debounce_service_factory.h",
 ]
 
 brave_browser_debounce_deps = [
   "//base",
-  "//brave/components/debounce/core/browser",
-  "//brave/components/debounce/core/common",
-  "//brave/extensions:common",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/debounce/core/browser",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/debounce/core/common",
+  "//luxxle/extensions:common",
   "//chrome/common",
-  "//components/keyed_service/content",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//components/keyed_service/content",
 ]

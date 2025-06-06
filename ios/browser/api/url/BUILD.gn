@@ -20,12 +20,17 @@ source_set("url") {
 
   deps = [
     "//base",
-    "//brave/extensions:common",
-    "//components/lookalikes/core:core",
-    "//components/lookalikes/core:safety_tips",
-    "//components/url_formatter",
-    "//components/url_formatter/spoof_checks/top_domains:common",
-    "//components/url_formatter/spoof_checks/top_domains:generate_top_domains_trie",
+    "//luxxle/extensions:common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/lookalikes/core:core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/lookalikes/core:safety_tips",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/url_formatter",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/url_formatter/spoof_checks/top_domains:common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/url_formatter/spoof_checks/top_domains:generate_top_domains_trie",
     "//ios/web/util",
     "//net",
     "//url",

@@ -20,7 +20,7 @@ public class BraveAutocompleteEditText extends AutocompleteEditText {
             super.sendAccessibilityEventUnchecked(event);
         } catch (IllegalStateException ignored) {
             // Ignore the exception as it means Accessibility is off
-            // Details could be found here https://github.com/brave/brave-browser/issues/38189
+            // Details could be found here https://github.com/luxxle/brave-browser/issues/38189
         }
     }
 }

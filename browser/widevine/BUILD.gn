@@ -6,30 +6,39 @@
 import("//third_party/widevine/cdm/widevine.gni")
 
 if (is_win) {
-  import("//brave/build/win/sign.gni")
+  import("//luxxle/build/win/sign.gni")
 }
 
 assert(enable_widevine)
 
 # This has circular dependencies on //chrome/browser.
-# https://github.com/brave/brave-browser/issues/10644
+# https://github.com/luxxle/brave-browser/issues/10644
 source_set("widevine") {
   deps = [
     "//base",
-    "//brave/app:brave_generated_resources_grit",
-    "//brave/components/brave_component_updater/browser",
-    "//brave/components/constants",
-    "//brave/components/widevine:constants",
+    "//luxxle/app:brave_generated_resources_grit",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_component_updater/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/widevine:constants",
     "//chrome/browser:browser_process",
     "//chrome/browser:browser_public_dependencies",
     "//chrome/browser/profiles:profile",
     "//chrome/common",
-    "//components/component_updater/",
-    "//components/content_settings/core/common",
-    "//components/pref_registry",
-    "//components/prefs",
-    "//components/subresource_filter/content/browser",
-    "//components/vector_icons",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/component_updater/",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/pref_registry",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/subresource_filter/content/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/vector_icons",
     "//content/public/browser",
     "//content/public/common",
     "//third_party/widevine/cdm:buildflags",
@@ -38,7 +47,8 @@ source_set("widevine") {
   ]
 
   public_deps = [
-    "//components/permissions",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/permissions",
     "//url",
   ]
 
@@ -56,12 +66,15 @@ source_set("widevine_cdm_component_installer_unittest") {
   sources = [ "widevine_cdm_component_installer_unittest.cc" ]
   deps = [
     "//base",
-    "//brave/common",
+    "//luxxle/common",
     "//chrome/browser/profiles:profile",
     "//chrome/common",
-    "//components/permissions",
-    "//components/pref_registry",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/permissions",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/pref_registry",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//content/public/browser",
     "//testing/gmock",
     "//testing/gtest",
@@ -76,13 +89,16 @@ source_set("widevine_permission_android_unittest") {
   deps = [
     ":widevine",
     "//base",
-    "//brave/common",
+    "//luxxle/common",
     "//chrome/browser:browser",
     "//chrome/browser/profiles:profile",
     "//chrome/test:test_support",
-    "//components/permissions",
-    "//components/pref_registry",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/permissions",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/pref_registry",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//content/public/browser",
     "//content/test:test_support",
     "//testing/gmock",
@@ -115,17 +131,22 @@ source_set("browser_tests") {
   if (toolkit_views) {
     sources += [ "widevine_permission_request_browsertest.cc" ]
     deps += [
-      "//brave/browser/widevine",
-      "//brave/components/widevine:constants",
+      "//luxxle/browser/widevine",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/widevine:constants",
       "//chrome/browser",
       "//chrome/browser/profiles:profile",
       "//chrome/browser/ui",
       "//chrome/common:constants",
       "//chrome/test:test_support_ui",
-      "//components/component_updater",
-      "//components/permissions",
-      "//components/prefs",
-      "//components/update_client",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//components/component_updater",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//components/permissions",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//components/prefs",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//components/update_client",
       "//ui/views",
       "//url",
     ]

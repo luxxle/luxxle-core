@@ -52,8 +52,8 @@ README.*   text eol=lf
 VERSION   text eol=lf
 
 # These files should have CRLF
-win_build_output/midl/brave/**/*.c   text eol=crlf
-win_build_output/midl/brave/**/*.h   text eol=crlf
+win_build_output/midl/luxxle/**/*.c   text eol=crlf
+win_build_output/midl/luxxle/**/*.h   text eol=crlf
 win_build_output/midl/chrome/**/*.c   text eol=crlf
 win_build_output/midl/chrome/**/*.h   text eol=crlf
 

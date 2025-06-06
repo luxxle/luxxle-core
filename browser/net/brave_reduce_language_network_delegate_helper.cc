@@ -37,11 +37,11 @@ static constexpr auto kFarbleAcceptLanguageExceptions =
     base::MakeFixedFlatSet<std::string_view>(
         base::sorted_unique,
         {
-            // https://github.com/brave/brave-browser/issues/26325
+            // https://github.com/luxxle/brave-browser/issues/26325
             "aeroplan.rewardops.com",
-            // https://github.com/brave/brave-browser/issues/31196
+            // https://github.com/luxxle/brave-browser/issues/31196
             "login.live.com",
-            // https://github.com/brave/brave-browser/issues/25309
+            // https://github.com/luxxle/brave-browser/issues/25309
             "ulta.com",
             "www.ulta.com",
         });
@@ -109,7 +109,7 @@ int OnBeforeStartTransaction_ReduceLanguageWork(
     // to leave it alone, because there are a lot of servers out there that do
     // not like the Accept-Language being anything other than what their
     // client-side code set.
-    // https://github.com/brave/brave-browser/issues/28945
+    // https://github.com/luxxle/brave-browser/issues/28945
     return net::OK;
   }
 

@@ -6,7 +6,7 @@ index e2979ac86e7c9fd69ec0a671cd5adaf2eeade2c7..405bd85835236cbba7da1eb9fb7b9300
      "//mojo/public/cpp/bindings",
      "//printing/buildflags",
    ]
-+  import("//brave/services/printing/sources.gni") sources += brave_services_printing_sources deps += brave_services_printing_deps
++  import("//luxxle/services/printing/sources.gni") sources += brave_services_printing_sources deps += brave_services_printing_deps
  
    if (is_chromeos) {
      sources += [

@@ -3,17 +3,18 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/build/ios/mojom/mojom_wrappers.gni")
+import("//luxxle/build/ios/mojom/mojom_wrappers.gni")
 import("//build/config/ios/rules.gni")
 import("//ios/build/config.gni")
 
 config("mojom_header_config") {
   visibility = [
     ":*",
-    "//brave/ios/app",
+    "//luxxle/ios/app",
   ]
   include_dirs =
-      [ "$root_gen_dir/brave/components/webcompat_reporter/common/ios" ]
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # [ "$root_gen_dir/luxxle/components/webcompat_reporter/common/ios" ]
 }
 
 source_set("webcompat_reporter") {
@@ -31,13 +32,18 @@ source_set("webcompat_reporter") {
 
   deps = [
     "//base",
-    "//brave/base/mac",
-    "//brave/components/webcompat_reporter/browser:browser",
-    "//brave/components/webcompat_reporter/common",
-    "//brave/ios/browser/keyed_service",
-    "//components/component_updater:component_updater",
-    "//components/keyed_service/core",
-    "//components/pref_registry:pref_registry",
+    "//luxxle/base/mac",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/webcompat_reporter/browser:browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/webcompat_reporter/common",
+    "//luxxle/ios/browser/keyed_service",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/component_updater:component_updater",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/pref_registry:pref_registry",
     "//ios/chrome/browser/shared/model/application_context",
     "//ios/chrome/browser/shared/model/profile",
     "//ios/chrome/browser/shared/model/profile:profile_keyed_service_factory",
@@ -48,9 +54,12 @@ source_set("webcompat_reporter") {
 }
 
 ios_objc_mojom_wrappers("webcompat_reporter_mojom_wrappers") {
-  mojom_target = "//brave/components/webcompat_reporter/common:mojom"
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # mojom_target = "//luxxle/components/webcompat_reporter/common:mojom"
   sources = [
-    "//brave/components/webcompat_reporter/common/webcompat_reporter.mojom",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/webcompat_reporter/common/webcompat_reporter.mojom",
   ]
-  output_dir = "$root_gen_dir/brave/components/webcompat_reporter/common/ios"
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # output_dir = "$root_gen_dir/luxxle/components/webcompat_reporter/common/ios"
 }

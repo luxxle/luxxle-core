@@ -15,13 +15,19 @@ source_set("favicon") {
 
   deps = [
     "//base",
-    "//brave/ios/browser/api/web_image",
-    "//components/favicon/core",
-    "//components/favicon/ios",
-    "//components/favicon_base:favicon_base",
-    "//components/image_fetcher/ios",
-    "//components/keyed_service/core",
-    "//components/keyed_service/ios",
+    "//luxxle/ios/browser/api/web_image",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/favicon/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/favicon/ios",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/favicon_base:favicon_base",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/image_fetcher/ios",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/ios",
     "//ios/chrome/browser/favicon/model",
     "//ios/chrome/browser/shared/model/profile",
     "//ios/chrome/browser/shared/model/profile:profile_keyed_service_factory",

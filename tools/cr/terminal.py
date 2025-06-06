@@ -200,7 +200,7 @@ class Terminal:
         if self.infra_mode and len(cmd) == 3 and cmd[-1] == 'init':
             # Special flag to avoid running into issues in jenkins when running
             # `gclient sync` with `--revision`. For more details see:
-            # https://github.com/brave/brave-browser/issues/44921
+            # https://github.com/luxxle/brave-browser/issues/44921
             cmd += ['--', '--with_issue_44921']
         return self.run(cmd)
 

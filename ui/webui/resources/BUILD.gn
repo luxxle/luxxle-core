@@ -3,9 +3,12 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/components/brave_vpn/common/buildflags/buildflags.gni")
-import("//brave/components/common/typescript.gni")
-import("//brave/components/speedreader/common/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/common/typescript.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/speedreader/common/buildflags/buildflags.gni")
 import("//tools/grit/preprocess_if_expr.gni")
 import("//tools/polymer/css_to_wrapper.gni")
 import("//tools/polymer/html_to_wrapper.gni")
@@ -39,7 +42,7 @@ group("grdp") {
 
 if (include_polymer) {
   build_webui("build") {
-    grd_prefix = "brave"
+    grd_prefix = "luxxle"
 
     # Ensure all the files are relative to this dir (with a brave/ prefix),
     # and not //ui/webui/resources which is the default for build_cr_component.
@@ -49,7 +52,7 @@ if (include_polymer) {
       "js/brave_browser_command/brave_browser_command_proxy.ts",
     ]
 
-    mojo_files = [ "$root_gen_dir/brave/ui/webui/resources/js/brave_browser_command/brave_browser_command.mojom-webui.ts" ]
+    mojo_files = [ "$root_gen_dir/luxxle/ui/webui/resources/js/brave_browser_command/brave_browser_command.mojom-webui.ts" ]
     mojo_files_deps = [ "js/brave_browser_command:mojo_bindings_ts__generator" ]
 
     css_files = [
@@ -60,8 +63,8 @@ if (include_polymer) {
 
     ts_composite = true
     generate_grdp = true
-    grd_resource_path_prefix = "brave"
-    ts_out_dir = "$root_gen_dir/brave/ui/webui/resources/tsc"
+    grd_resource_path_prefix = "luxxle"
+    ts_out_dir = "$root_gen_dir/luxxle/ui/webui/resources/tsc"
     ts_deps = [
       "//third_party/lit/v3_0:build_ts",
       "//third_party/polymer/v3_0:library",
@@ -92,7 +95,7 @@ if (include_polymer) {
 
 transpile_web_ui("leo_web_components") {
   generate_grdp = true
-  resource_path_prefix = "brave"
+  resource_path_prefix = "luxxle"
 
   entry_points = [ [
         "leo",
@@ -105,7 +108,7 @@ transpile_web_ui("leo_web_components") {
 transpile_web_ui("opaque_ke") {
   resource_name = "opaque_ke"
   generate_grdp = true
-  resource_path_prefix = "brave"
+  resource_path_prefix = "luxxle"
 
   entry_points = [ [
         "opaque_ke",
@@ -121,13 +124,13 @@ transpile_web_ui("opaque_ke") {
 
   no_iife = true
   output_module = true
-  public_asset_path = "chrome://resources/brave/"
+  public_asset_path = "chrome://resources/luxxle/"
 }
 
 # Create a grdp that //ui/webui/resources can include in its main resources GRD
 generate_grd("static_grdp") {
   grd_prefix = "brave_webui"
-  resource_path_prefix = "brave"
+  resource_path_prefix = "luxxle"
   out_grd = "$brave_resources_extra_grdps_path/brave_static_resources.grdp"
   input_files = static_files + rebase_path(leo_static_files, ".", "leo")
   input_files_base_dir =
@@ -141,7 +144,7 @@ generate_grd("static_grdp") {
 # Create a grdp that //ui/webui/resources can include in its main resources GRD
 generate_grd("fonts_grdp") {
   grd_prefix = "brave_webui"
-  resource_path_prefix = "brave"
+  resource_path_prefix = "luxxle"
   out_grd = "$brave_resources_extra_grdps_path/brave_fonts_resources.grdp"
   input_files = brave_font_files
   input_files_base_dir =

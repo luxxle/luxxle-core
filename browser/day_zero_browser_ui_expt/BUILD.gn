@@ -12,10 +12,12 @@ source_set("unit_tests") {
 
   deps = [
     "//base",
-    "//brave/components/p3a",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/p3a",
     "//chrome/browser/ui",
     "//chrome/test:test_support",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//content/test:test_support",
     "//testing/gmock",
     "//testing/gtest",

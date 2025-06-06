@@ -3,7 +3,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import("//brave/components/brave_vpn/common/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
 
 assert(!is_android)
 
@@ -16,24 +17,29 @@ source_set("brave_app_menu_unit_test") {
   ]
 
   deps = [
-    "//brave/app:brave_generated_resources_grit_grit",
-    "//brave/app:generate_command_metadata",
+    "//luxxle/app:brave_generated_resources_grit_grit",
+    "//luxxle/app:generate_command_metadata",
     "//chrome/app:command_ids",
     "//chrome/browser:browser_process",
     "//chrome/browser/sync",
     "//chrome/test:test_support",
-    "//components/constrained_window:constrained_window",
-    "//components/sync_preferences:sync_preferences",
-    "//components/sync_sessions:sync_sessions",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/constrained_window:constrained_window",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync_preferences:sync_preferences",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync_sessions:sync_sessions",
     "//ui/views:test_support",
   ]
-  if (enable_brave_vpn) {
-    sources = [ "//brave/browser/ui/toolbar/brave_vpn_menu_model_unittest.cc" ]
-    deps += [
-      "//base",
-      "//brave/components/brave_vpn/common",
-    ]
-  }
+  # Commented out: VPN support removed
+  # if (enable_brave_vpn) {
+  #   sources = [ "//luxxle/browser/ui/toolbar/brave_vpn_menu_model_unittest.cc" ]
+  #   deps += [
+  #     "//base",
+  #     # Commented out: removed components dependency - using Chromium defaults instead
+  #     # "//luxxle/components/brave_vpn/common",
+  #   ]
+  # }
 }
 
 source_set("brave_app_menu_browser_tests") {
@@ -58,10 +64,14 @@ source_set("brave_app_menu_browser_tests") {
     "//chrome/browser/ui/browser_window",
     "//chrome/test:test_support",
     "//chrome/test:test_support_ui",
-    "//components/constrained_window",
-    "//components/sessions:test_support",
-    "//components/sync:test_support",
-    "//components/variations:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/constrained_window",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sessions:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/variations:test_support",
     "//content/test:test_support",
     "//net:test_support",
     "//testing/gmock",

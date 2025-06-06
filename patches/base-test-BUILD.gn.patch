@@ -6,7 +6,7 @@ index e7f8b523e899ab6152788f369d70729b70647140..f23f9a2af808c7133aa8c5ec12dbe768
        "trace_to_file.h",
      ]
    }
-+  import("//brave/base/sources.gni") sources += brave_base_test_support_sources
++  import("//luxxle/base/sources.gni") sources += brave_base_test_support_sources
  }
  
  component("proto_test_support") {

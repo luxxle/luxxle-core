@@ -121,7 +121,7 @@ void RewardsTabHelper::OnCreatorDetected(
     // When a creator has been detected for the current tab, we must send the
     // creator data to the utility process so that the "publisher_info" database
     // table can be populated.
-    // TODO(https://github.com/brave/brave-browser/issues/41832): Rename and
+    // TODO(https://github.com/luxxle/brave-browser/issues/41832): Rename and
     // possibly refactor this API.
     rewards_service_->GetPublisherActivityFromVisitData(visit->Clone());
   }

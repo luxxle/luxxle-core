@@ -15,7 +15,7 @@ import {
   EmailAliasesServiceRemote,
   EmailAliasesServiceObserverRemote,
   EmailAliasesServiceObserverInterface
-} from "gen/brave/components/email_aliases/email_aliases.mojom.m"
+} from "gen/luxxle/components/email_aliases/email_aliases.mojom.m"
 
 export const ManagePageConnected = ({ emailAliasesService, bindObserver }: {
     emailAliasesService: EmailAliasesServiceInterface,

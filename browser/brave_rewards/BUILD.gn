@@ -15,11 +15,15 @@ source_set("brave_rewards") {
 
   deps = [
     "//base",
-    "//brave/components/brave_rewards/content",
-    "//brave/components/script_injector/common/mojom",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/script_injector/common/mojom",
     "//chrome/browser/profiles",
-    "//components/keyed_service/content",
-    "//components/sessions",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sessions",
     "//content/public/browser",
   ]
 }
@@ -38,19 +42,26 @@ source_set("brave_rewards_impl") {
   deps = [
     ":util",
     "//base",
-    "//brave/browser/brave_wallet",
-    "//brave/browser/ui:brave_rewards_source",
-    "//brave/components/brave_rewards/content",
-    "//brave/components/brave_rewards/core",
-    "//brave/components/brave_rewards/core:features",
-    "//brave/components/brave_rewards/resources/creator_detection:creator_detection_generated_grit",
+    "//luxxle/browser/brave_wallet",
+    "//luxxle/browser/ui:brave_rewards_source",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core:features",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/resources/creator_detection:creator_detection_generated_grit",
     "//chrome/browser/bitmap_fetcher",
     "//chrome/browser/favicon",
     "//chrome/browser/profiles",
     "//chrome/browser/ui",
-    "//components/keyed_service/content",
-    "//components/prefs",
-    "//components/sessions",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sessions",
     "//extensions/buildflags",
   ]
 
@@ -73,8 +84,10 @@ source_set("util") {
   ]
 
   deps = [
-    "//brave/components/brave_rewards/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core",
     "//chrome/browser/profiles:profile",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
   ]
 }

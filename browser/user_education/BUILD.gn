@@ -20,7 +20,7 @@ source_set("unit_tests") {
 
     deps = [
       "//base",
-      "//brave/browser/user_education:features",
+      "//luxxle/browser/user_education:features",
       "//chrome/browser",
       "//chrome/test:test_support",
       "//content/test:test_support",

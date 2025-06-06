@@ -6,7 +6,7 @@ index 3119b6bd0607dea7bf52ecf27432fb245038fcf1..3528a619d4e3eb395b28f188bef52492
    if (is_android) {
      outputs += android_components_strings_java_resources
    }
-+  deps = [ "//brave/components/resources:strings" ]
++  deps = [ "//luxxle/components/resources:strings" ]
  }
  
  if (is_android) {

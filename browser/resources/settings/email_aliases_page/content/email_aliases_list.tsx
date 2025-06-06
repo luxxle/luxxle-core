@@ -15,7 +15,7 @@ import Dialog from '@brave/leo/react/dialog'
 import Row from './styles/Row'
 import styled from 'styled-components'
 import { Alias, EmailAliasesServiceInterface, MAX_ALIASES }
-  from "gen/brave/components/email_aliases/email_aliases.mojom.m"
+  from "gen/luxxle/components/email_aliases/email_aliases.mojom.m"
 
 const AliasListIntro = styled(Row)`
   justify-content: space-between;

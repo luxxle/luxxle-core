@@ -55,7 +55,7 @@ def CheckLeoVariables(input_api, output_api):
 def CheckPatchFormatted(input_api, output_api):
     cmd = [
         brave_chromium_utils.wspath(
-            '//brave/build/commands/scripts/format.js'), '--presubmit'
+            '//luxxle/build/commands/scripts/format.js'), '--presubmit'
     ]
     if not input_api.PRESUBMIT_FIX:
         cmd.append('--dry-run')
@@ -448,8 +448,8 @@ def CheckJavaStyle(_original_check, input_api, output_api):
     if not java_files:
         return []
 
-    local_path = os.path.join(input_api.PresubmitLocalPath(), 'brave')
-    style_file = os.path.join(input_api.PresubmitLocalPath(), 'brave', 'tools',
+    local_path = os.path.join(input_api.PresubmitLocalPath(), 'luxxle')
+    style_file = os.path.join(input_api.PresubmitLocalPath(), 'luxxle', 'tools',
                               'android', 'checkstyle', 'brave-style-5.0.xml')
     violations = checkstyle.run_checkstyle(local_path, style_file, java_files)
     warnings = ['  ' + str(v) for v in violations if v.is_warning()]
@@ -486,7 +486,7 @@ def CheckTodoBugReferences(_original_check, input_api, output_api):
     for f in input_api.AffectedSourceFiles(_FilterFile):
         for line_number, line in f.ChangedContents():
             match = pattern.match(line)
-            if match and 'https://github.com/brave/brave-browser/issues' not in match.group(
+            if match and 'https://github.com/luxxle/brave-browser/issues' not in match.group(
                     0):
                 problems.append(f"{f.LocalPath()}: {line_number}\n    {line}")
 
@@ -494,7 +494,7 @@ def CheckTodoBugReferences(_original_check, input_api, output_api):
         return [
             output_api.PresubmitPromptWarning(
                 'TODO comments must be accompanied with a valid brave-browser '
-                'issue. https://github.com/brave/brave-browser/issues',
+                'issue. https://github.com/luxxle/brave-browser/issues',
                 problems)
         ]
     return []

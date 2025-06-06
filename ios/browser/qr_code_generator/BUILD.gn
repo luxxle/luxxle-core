@@ -11,7 +11,8 @@ source_set("qr_code_generator") {
 
   deps = [
     "//base",
-    "//components/qr_code_generator:bitmap_generator",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/qr_code_generator:bitmap_generator",
     "//ui/gfx",
   ]
 }

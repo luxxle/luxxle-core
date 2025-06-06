@@ -7,18 +7,20 @@ source_set("browser_tests") {
   testonly = true
   defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]
 
-  sources = [ "//brave/browser/ui/views/location_bar/brave_location_bar_view_browsertest.cc" ]
+  sources = [ "//luxxle/browser/ui/views/location_bar/brave_location_bar_view_browsertest.cc" ]
 
   deps = [
     "//base",
-    "//brave/components/brave_search_conversion",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_search_conversion",
     "//chrome/browser",
     "//chrome/browser/search_engines",
     "//chrome/browser/ui",
     "//chrome/common",
     "//chrome/test",
     "//chrome/test:test_support",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//ui/base:test_support",
   ]
 }

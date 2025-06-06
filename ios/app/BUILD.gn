@@ -10,10 +10,10 @@ import("//ios/public/provider/chrome/browser/build_config.gni")
 
 source_set("app") {
   configs += [
-    "//brave/ios/browser/api/ai_chat:mojom_header_config",
-    "//brave/ios/browser/api/webcompat_reporter:mojom_header_config",
-    "//brave/ios/browser/api/brave_wallet:mojom_header_config",
-    "//brave/ios/browser/api/skus:mojom_header_config",
+    "//luxxle/ios/browser/api/ai_chat:mojom_header_config",
+    "//luxxle/ios/browser/api/webcompat_reporter:mojom_header_config",
+    "//luxxle/ios/browser/api/brave_wallet:mojom_header_config",
+    "//luxxle/ios/browser/api/skus:mojom_header_config",
   ]
 
   sources = [
@@ -30,63 +30,86 @@ source_set("app") {
 
   deps = [
     "//base",
-    "//brave/components/ai_chat/core/browser",
-    "//brave/components/brave_component_updater/browser",
-    "//brave/components/brave_sync:constants",
-    "//brave/components/brave_user_agent/browser",
-    "//brave/components/constants",
-    "//brave/components/ntp_background_images/browser",
-    "//brave/components/ntp_background_images/common",
-    "//brave/components/p3a",
-    "//brave/components/p3a:buildflags",
-    "//brave/components/skus/browser",
-    "//brave/components/update_client:buildflags",
-    "//brave/components/variations",
-    "//brave/ios/app/resources",
-    "//brave/ios/browser",
-    "//brave/ios/browser/api/ads",
-    "//brave/ios/browser/api/ai_chat",
-    "//brave/ios/browser/api/ai_chat:ai_chat_mojom_wrappers",
-    "//brave/ios/browser/api/bookmarks",
-    "//brave/ios/browser/api/brave_rewards",
-    "//brave/ios/browser/api/brave_shields",
-    "//brave/ios/browser/api/brave_stats",
-    "//brave/ios/browser/api/brave_user_agent",
-    "//brave/ios/browser/api/brave_wallet",
-    "//brave/ios/browser/api/brave_wallet:wallet_mojom_wrappers",
-    "//brave/ios/browser/api/content_settings",
-    "//brave/ios/browser/api/de_amp",
-    "//brave/ios/browser/api/history",
-    "//brave/ios/browser/api/https_upgrade_exceptions",
-    "//brave/ios/browser/api/ipfs",
-    "//brave/ios/browser/api/ntp_background_images",
-    "//brave/ios/browser/api/opentabs",
-    "//brave/ios/browser/api/p3a",
-    "//brave/ios/browser/api/password",
-    "//brave/ios/browser/api/qr_code",
-    "//brave/ios/browser/api/query_filter",
-    "//brave/ios/browser/api/skus:skus_mojom_wrappers",
-    "//brave/ios/browser/api/sync/driver",
-    "//brave/ios/browser/api/web_image",
-    "//brave/ios/browser/api/webcompat_reporter",
-    "//brave/ios/browser/api/webcompat_reporter:webcompat_reporter_mojom_wrappers",
-    "//brave/ios/browser/application_context",
-    "//brave/ios/browser/brave_ads",
-    "//brave/ios/browser/skus",
-    "//brave/ios/browser/ui/webui",
-    "//brave/ios/browser/web",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_component_updater/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_sync:constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_user_agent/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ntp_background_images/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ntp_background_images/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/p3a",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/p3a:buildflags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/skus/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/update_client:buildflags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/variations",
+    "//luxxle/ios/app/resources",
+    "//luxxle/ios/browser",
+    "//luxxle/ios/browser/api/ads",
+    "//luxxle/ios/browser/api/ai_chat",
+    "//luxxle/ios/browser/api/ai_chat:ai_chat_mojom_wrappers",
+    "//luxxle/ios/browser/api/bookmarks",
+    "//luxxle/ios/browser/api/brave_rewards",
+    "//luxxle/ios/browser/api/brave_shields",
+    "//luxxle/ios/browser/api/brave_stats",
+    "//luxxle/ios/browser/api/brave_user_agent",
+    "//luxxle/ios/browser/api/brave_wallet",
+    "//luxxle/ios/browser/api/brave_wallet:wallet_mojom_wrappers",
+    "//luxxle/ios/browser/api/content_settings",
+    "//luxxle/ios/browser/api/de_amp",
+    "//luxxle/ios/browser/api/history",
+    "//luxxle/ios/browser/api/https_upgrade_exceptions",
+    "//luxxle/ios/browser/api/ipfs",
+    "//luxxle/ios/browser/api/ntp_background_images",
+    "//luxxle/ios/browser/api/opentabs",
+    "//luxxle/ios/browser/api/p3a",
+    "//luxxle/ios/browser/api/password",
+    "//luxxle/ios/browser/api/qr_code",
+    "//luxxle/ios/browser/api/query_filter",
+    "//luxxle/ios/browser/api/skus:skus_mojom_wrappers",
+    "//luxxle/ios/browser/api/sync/driver",
+    "//luxxle/ios/browser/api/web_image",
+    "//luxxle/ios/browser/api/webcompat_reporter",
+    "//luxxle/ios/browser/api/webcompat_reporter:webcompat_reporter_mojom_wrappers",
+    "//luxxle/ios/browser/application_context",
+    "//luxxle/ios/browser/brave_ads",
+    "//luxxle/ios/browser/skus",
+    "//luxxle/ios/browser/ui/webui",
+    "//luxxle/ios/browser/web",
     "//build:blink_buildflags",
-    "//components/browser_sync",
-    "//components/component_updater",
-    "//components/content_settings/core/browser",
-    "//components/history/core/browser",
-    "//components/keyed_service/core",
-    "//components/password_manager/core/browser",
-    "//components/safe_browsing/core/common:safe_browsing_prefs",
-    "//components/send_tab_to_self",
-    "//components/sync/base",
-    "//components/sync/service",
-    "//components/variations",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/browser_sync",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/component_updater",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/history/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/password_manager/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/safe_browsing/core/common:safe_browsing_prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/send_tab_to_self",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync/base",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync/service",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/variations",
     "//ios/chrome/app:app_internal",
     "//ios/chrome/app:tests_fake_hook",
     "//ios/chrome/app/startup:startup",

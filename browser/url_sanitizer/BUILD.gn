@@ -9,7 +9,8 @@ source_set("browser_tests") {
 
   sources = [ "url_sanitizer_browsertest.cc" ]
   deps = [
-    "//brave/components/url_sanitizer/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/url_sanitizer/browser",
     "//chrome/browser",
     "//chrome/browser/profiles:profile",
     "//chrome/browser/ui",

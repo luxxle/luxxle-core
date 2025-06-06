@@ -16,8 +16,10 @@ source_set("importer") {
 
   deps = [
     "//base",
-    "//components/history/core/browser",
-    "//components/keyed_service/core:core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/history/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/core:core",
     "//ios/chrome/browser/history/model",
     "//ios/chrome/browser/shared/model/application_context",
     "//ios/chrome/browser/shared/model/profile",

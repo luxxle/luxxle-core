@@ -75,9 +75,9 @@ std::string NonWriteableScriptMethod(const std::string& provider,
 }
 }  // namespace
 
-// TODO(darkdh): Move this browser test to //brave/browser/brave_wallet/ because
+// TODO(darkdh): Move this browser test to //luxxle/browser/brave_wallet/ because
 // it has layer violation (//chrome/browser,
-// //brave/components/brave_wallet/browser and //brave/browser)
+// //luxxle/components/brave_wallet/browser and //luxxle/browser)
 class JSEthereumProviderBrowserTest : public InProcessBrowserTest {
  public:
   JSEthereumProviderBrowserTest()

@@ -11,8 +11,10 @@ source_set("de_amp") {
   ]
   deps = [
     "//base",
-    "//brave/components/de_amp/common",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/de_amp/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//ios/chrome/browser/shared/model/application_context",
   ]
   frameworks = [ "Foundation.framework" ]

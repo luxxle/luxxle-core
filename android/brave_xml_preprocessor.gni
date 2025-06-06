@@ -15,7 +15,7 @@ template("brave_xml_preprocessor") {
   _xml_output_zip = "${target_out_dir}/${target_name}.resources.zip"
 
   action_with_pydeps(_preprocess_target_name) {
-    script = "//brave/android/xml_processor.py"
+    script = "//luxxle/android/xml_processor.py"
 
     # Input files
     sources = invoker.sources
@@ -34,8 +34,7 @@ template("brave_xml_preprocessor") {
 
     # Rebase file paths for python
     _rebased_xml_sources_path = rebase_path(_xml_sources_path, root_build_dir)
-    _rebased_module_sources_path =
-        rebase_path(_module_sources_path, root_build_dir)
+_rebased_module_sources_path = "rebase_path(_module_sources_path, root_build_dir)"
 
     args = [
       "--outputs-zip",

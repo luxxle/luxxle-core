@@ -12,19 +12,19 @@ cargo_crate("lib") {
   crate_name = "thiserror_impl"
   epoch = "2"
   crate_type = "proc-macro"
-  crate_root = "//brave/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/lib.rs"
+  crate_root = "//luxxle/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/ast.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/attr.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/expand.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/fallback.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/fmt.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/generics.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/lib.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/prop.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/scan_expr.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/unraw.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/valid.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/ast.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/attr.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/expand.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/fallback.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/fmt.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/generics.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/prop.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/scan_expr.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/unraw.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/thiserror-impl-v2/src/valid.rs",
   ]
   inputs = []
 
@@ -42,9 +42,9 @@ cargo_crate("lib") {
   proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
   proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
   deps = [
-    "//brave/third_party/rust/proc_macro2/v1:lib",
-    "//brave/third_party/rust/quote/v1:lib",
-    "//brave/third_party/rust/syn/v2:lib",
+    "//luxxle/third_party/rust/proc_macro2/v1:lib",
+    "//luxxle/third_party/rust/quote/v1:lib",
+    "//luxxle/third_party/rust/syn/v2:lib",
   ]
   rustenv = []
   rustflags = [

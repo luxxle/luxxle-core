@@ -8,9 +8,11 @@ source_set("browser_tests") {
   defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]
 
   deps = [
-    "//brave/browser/ai_chat",
-    "//brave/components/ai_chat/core/browser",
-    "//brave/components/ai_chat/core/common/mojom",
+    "//luxxle/browser/ai_chat",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/common/mojom",
     "//chrome/browser/ui",
     "//chrome/test",
     "//chrome/test:test_support",

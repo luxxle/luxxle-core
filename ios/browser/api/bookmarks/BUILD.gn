@@ -18,11 +18,16 @@ source_set("bookmarks") {
 
   deps = [
     "//base",
-    "//components/bookmarks/browser",
-    "//components/prefs",
-    "//components/query_parser",
-    "//components/undo",
-    "//components/user_prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/bookmarks/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/query_parser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/undo",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/user_prefs",
     "//ios/chrome/browser/bookmarks/model",
     "//ios/chrome/browser/bookmarks/ui_bundled:core",
     "//ios/chrome/browser/bookmarks/ui_bundled:utils",

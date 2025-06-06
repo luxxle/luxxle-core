@@ -10,16 +10,16 @@ import("//tools/grit/grit_rule.gni")
 
 android_library("java") {
   sources = [
-    "java/src/org/chromium/brave/browser/quick_search_engines/ItemTouchHelperCallback.java",
-    "java/src/org/chromium/brave/browser/quick_search_engines/settings/QuickSearchEnginesAdapter.java",
-    "java/src/org/chromium/brave/browser/quick_search_engines/settings/QuickSearchEnginesCallback.java",
-    "java/src/org/chromium/brave/browser/quick_search_engines/settings/QuickSearchEnginesFragment.java",
-    "java/src/org/chromium/brave/browser/quick_search_engines/settings/QuickSearchEnginesModel.java",
-    "java/src/org/chromium/brave/browser/quick_search_engines/settings/QuickSearchEnginesSettingsViewHolder.java",
-    "java/src/org/chromium/brave/browser/quick_search_engines/utils/QuickSearchEnginesUtil.java",
-    "java/src/org/chromium/brave/browser/quick_search_engines/utils/SharedPreferencesHelper.java",
-    "java/src/org/chromium/brave/browser/quick_search_engines/views/QuickSearchEnginesViewAdapter.java",
-    "java/src/org/chromium/brave/browser/quick_search_engines/views/QuickSearchEnginesViewHolder.java",
+    "java/src/org/chromium/luxxle/browser/quick_search_engines/ItemTouchHelperCallback.java",
+    "java/src/org/chromium/luxxle/browser/quick_search_engines/settings/QuickSearchEnginesAdapter.java",
+    "java/src/org/chromium/luxxle/browser/quick_search_engines/settings/QuickSearchEnginesCallback.java",
+    "java/src/org/chromium/luxxle/browser/quick_search_engines/settings/QuickSearchEnginesFragment.java",
+    "java/src/org/chromium/luxxle/browser/quick_search_engines/settings/QuickSearchEnginesModel.java",
+    "java/src/org/chromium/luxxle/browser/quick_search_engines/settings/QuickSearchEnginesSettingsViewHolder.java",
+    "java/src/org/chromium/luxxle/browser/quick_search_engines/utils/QuickSearchEnginesUtil.java",
+    "java/src/org/chromium/luxxle/browser/quick_search_engines/utils/SharedPreferencesHelper.java",
+    "java/src/org/chromium/luxxle/browser/quick_search_engines/views/QuickSearchEnginesViewAdapter.java",
+    "java/src/org/chromium/luxxle/browser/quick_search_engines/views/QuickSearchEnginesViewHolder.java",
   ]
 
   deps = [
@@ -28,17 +28,20 @@ android_library("java") {
     "//base:base_shared_preferences_java",
     "//base:supplier_java",
     "//base:tasks_java",
-    "//brave/android/java/org/chromium/chrome/browser/search_engines:java",
-    "//brave/third_party/android_deps:com_google_code_gson_gson_java",
+    "//luxxle/android/java/org/chromium/chrome/browser/search_engines:java",
+    "//luxxle/third_party/android_deps:com_google_code_gson_gson_java",
     "//chrome/browser/preferences:java",
     "//chrome/browser/profiles/android:java",
     "//chrome/browser/regional_capabilities/android:java",
     "//chrome/browser/search_engines/android:java",
     "//chrome/browser/settings:java",
     "//chrome/browser/ui/android/favicon:java",
-    "//components/favicon/android:java",
-    "//components/regional_capabilities/android:java",
-    "//components/search_engines/android:java",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/favicon/android:java",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/regional_capabilities/android:java",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/search_engines/android:java",
     "//content/public/android:content_full_java",
     "//net/android:net_java",
     "//third_party/android_deps:material_design_java",

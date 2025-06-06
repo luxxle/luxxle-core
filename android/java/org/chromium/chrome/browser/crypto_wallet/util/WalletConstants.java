@@ -32,7 +32,7 @@ public final class WalletConstants {
 
     // NFT Auto Discovery
     public static final String NFT_DISCOVERY_LEARN_MORE_LINK =
-            "https://github.com/brave/brave-browser/wiki/NFT-Discovery";
+            "https://github.com/luxxle/brave-browser/wiki/NFT-Discovery";
 
     public static final String WALLET_HELP_CENTER =
             "https://support.brave.com/hc/en-us/categories/360001059151-Brave-Wallet";

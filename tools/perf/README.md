@@ -39,7 +39,7 @@ Use `npm run perf_tests -- --mode record-wpr` instead of chromium `update_wpr` o
 * Prepare a config (use configs/record-wpr.json5 as a base). One benchmark or storySet = one .wpr.
 * Run `npm run perf_tests -- <config>.json5 --mode record-wpr --working-directory=.. --variations-repo-dir=..`;
 * Run the matching benchmark locally to tests the created .wpr;
-* Upload wpr files to the cloud storage: `ls ./brave/tools/perf/page_sets/data/*.wprgo | xargs <upload_cmd>`;
+* Upload wpr files to the cloud storage: `ls ./luxxle/tools/perf/page_sets/data/*.wprgo | xargs <upload_cmd>`;
 * Commit the changes, including a new `.sha1` files, to brave-core.
 
 ## Updating profiles

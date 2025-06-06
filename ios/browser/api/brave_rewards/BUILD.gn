@@ -3,8 +3,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/build/ios/coredata_model.gni")
-import("//brave/build/ios/mojom/mojom_wrappers.gni")
+import("//luxxle/build/ios/coredata_model.gni")
+import("//luxxle/build/ios/mojom/mojom_wrappers.gni")
 import("//build/config/ios/rules.gni")
 
 config("external_config") {
@@ -30,11 +30,15 @@ source_set("brave_rewards") {
   deps = [
     ":rewards_mojom_wrappers",
     "//base",
-    "//brave/components/brave_rewards/core",
-    "//brave/components/brave_rewards/core/engine",
-    "//brave/ios/browser/api/common",
-    "//components/os_crypt/sync",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core/engine",
+    "//luxxle/ios/browser/api/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/os_crypt/sync",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//ios/chrome/browser/shared/model/application_context",
     "//ios/chrome/browser/shared/model/profile",
     "//net:net",
@@ -49,6 +53,8 @@ source_set("brave_rewards") {
 }
 
 ios_objc_mojom_wrappers("rewards_mojom_wrappers") {
-  mojom_target = "//brave/components/brave_rewards/core/mojom:mojom"
-  sources = [ "//brave/components/brave_rewards/core/mojom/rewards.mojom" ]
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # mojom_target = "//luxxle/components/brave_rewards/core/mojom:mojom"
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # sources = [ "//luxxle/components/brave_rewards/core/mojom/rewards.mojom" ]
 }

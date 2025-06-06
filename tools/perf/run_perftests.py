@@ -53,7 +53,7 @@ def load_config(config: str, options: CommonOptions) -> dict:
     if options.machine_id is None:
       raise RuntimeError('Set --machine-id to use config=auto')
 
-    prefix = 'chromium' if options.chromium else 'brave'
+    prefix = 'chromium' if options.chromium else 'luxxle'
     config = (f'{prefix}-{options.target_os}-' +
               f'{options.target_arch}-{options.machine_id}.json5')
     logging.info('Using %s as config=auto', config)
@@ -81,7 +81,7 @@ npm run perf_tests -- compare/compare_with_on_off_feature.json5
 
 On CI:
 npm run perf_tests -- smoke-brave.json5 v1.58.45
-     --working-directory=e:\work\brave\src\out\100
+     --working-directory=e:\work\luxxle\src\out\100
      --ci-mode
 ''')
   CommonOptions.add_parser_args(parser)

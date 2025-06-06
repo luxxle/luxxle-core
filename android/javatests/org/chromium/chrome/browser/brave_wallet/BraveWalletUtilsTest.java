@@ -170,8 +170,8 @@ public class BraveWalletUtilsTest {
     @Test
     @SmallTest
     public void isJSONValidTest() {
-        assertTrue(Utils.isJSONValid("{'name': 'brave'}"));
-        assertFalse(Utils.isJSONValid("'name': 'brave'"));
+        assertTrue(Utils.isJSONValid("{'name': 'luxxle'}"));
+        assertFalse(Utils.isJSONValid("'name': 'luxxle'"));
     }
 
     private static String getStackTrace(Exception ex) {
@@ -231,7 +231,7 @@ public class BraveWalletUtilsTest {
         } catch (Exception exc) {
             String message = "Check that a variable with a type in the exception below is\n"
                     + "initialized everywhere in Java files, where BlockchainToken object is\n"
-                    + "created('git grep \"new BlockchainToken\"' inside src/brave).\n"
+                    + "created('git grep \"new BlockchainToken\"' inside src/luxxle).\n"
                     + "Initialisation of it could be safely added to the test to pass it,\n"
                     + "but only after all places where it's created are fixed.\n";
             fail(message + "\n" + getStackTrace(exc));
@@ -301,7 +301,7 @@ public class BraveWalletUtilsTest {
             String message =
                     "Check that a variable with a type in the exception below is\n"
                         + "initialized everywhere in Java files, where SwapQuoteParams object is\n"
-                        + "created('git grep \"new SwapQuoteParams\"' inside src/brave).\n"
+                        + "created('git grep \"new SwapQuoteParams\"' inside src/luxxle).\n"
                         + "Initialisation of it could be safely added to the test to pass it,\n"
                         + "but only after all places where it's created are fixed.\n";
             fail(message + "\n" + getStackTrace(exc));
@@ -355,7 +355,7 @@ public class BraveWalletUtilsTest {
         } catch (Exception exc) {
             String message = "Check that a variable with a type in the exception below is\n"
                     + "initialized everywhere in Java files, where TxData object is\n"
-                    + "created('git grep \"new TxData\"' inside src/brave).\n"
+                    + "created('git grep \"new TxData\"' inside src/luxxle).\n"
                     + "Initialisation of it could be safely added to the test to pass it,\n"
                     + "but only after all places where it's created are fixed.\n";
             fail(message + "\n" + getStackTrace(exc));
@@ -413,7 +413,7 @@ public class BraveWalletUtilsTest {
         } catch (Exception exc) {
             String message = "Check that a variable with a type in the exception below is\n"
                     + "initialized everywhere in Java files, where GasEstimation1559 object is\n"
-                    + "created('git grep \"new GasEstimation1559\"' inside src/brave).\n"
+                    + "created('git grep \"new GasEstimation1559\"' inside src/luxxle).\n"
                     + "Initialisation of it could be safely added to the test to pass it,\n"
                     + "but only after all places where it's created are fixed.\n";
             fail(message + "\n" + getStackTrace(exc));
@@ -477,7 +477,7 @@ public class BraveWalletUtilsTest {
         } catch (Exception exc) {
             String message = "Check that a variable with a type in the exception below is\n"
                     + "initialized everywhere in Java files, where TxData1559 object is\n"
-                    + "created('git grep \"new TxData1559\"' inside src/brave).\n"
+                    + "created('git grep \"new TxData1559\"' inside src/luxxle).\n"
                     + "Initialisation of it could be safely added to the test to pass it,\n"
                     + "but only after all places where it's created are fixed.\n";
             fail(message + "\n" + getStackTrace(exc));
@@ -539,7 +539,7 @@ public class BraveWalletUtilsTest {
         } catch (Exception exc) {
             String message = "Check that a variable with a type in the exception below is\n"
                     + "initialized everywhere in Java files, where NetworkInfo object is\n"
-                    + "created('git grep \"new NetworkInfo\"' inside src/brave).\n"
+                    + "created('git grep \"new NetworkInfo\"' inside src/luxxle).\n"
                     + "Initialisation of it could be safely added to the test to pass it,\n"
                     + "but only after all places where it's created are fixed.\n";
             fail(message + "\n" + getStackTrace(exc));

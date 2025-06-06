@@ -6,7 +6,7 @@ index 0a77a8c846880741e7f82055a75f44d814444f94..a7715120ace376c62be82725ed6d6cd5
        "$root_gen_dir/ui/webui/resources/cr_components/page_image_service/resources.grdp",
      ]
    }
-+  import("//brave/ui/webui/resources/sources.gni") grdp_files += brave_resources_extra_grdps public_deps += brave_resources_extra_grdps_deps
++  import("//luxxle/ui/webui/resources/sources.gni") grdp_files += brave_resources_extra_grdps public_deps += brave_resources_extra_grdps_deps
  }
  
  if (is_chromeos) {

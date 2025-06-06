@@ -5,5 +5,4 @@
 
 # Brave VPN Wireguard service allowlist file contains resource ids from
 # brave_vpn_wireguard_service.exe.
-wireguard_resource_allowlist_file =
-    "$root_gen_dir/wireguard_resources_allowlist.txt"
+wireguard_resource_allowlist_file = "$root_gen_dir/wireguard_resources_allowlist.txt"

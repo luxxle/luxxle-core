@@ -13,13 +13,16 @@ source_set("browser_tests") {
 
   deps = [
     "//base",
-    "//brave/components/commander/browser",
-    "//brave/components/resources:strings_grit",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/commander/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/resources:strings_grit",
     "//chrome/browser/profiles",
     "//chrome/browser/profiles:profile",
     "//chrome/browser/ui",
     "//chrome/test:test_support_ui",
-    "//components/omnibox/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/omnibox/browser",
     "//content/test:test_support",
     "//testing/gmock",
     "//testing/gtest",
@@ -38,11 +41,14 @@ source_set("unit_tests") {
   deps = [
     ":fuzzy_finder",
     "//base",
-    "//brave/components/commander/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/commander/browser",
     "//chrome/browser/ui",
     "//chrome/test:test_support",
-    "//components/prefs:test_support",
-    "//components/sync_preferences:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync_preferences:test_support",
     "//testing/gtest",
   ]
 }

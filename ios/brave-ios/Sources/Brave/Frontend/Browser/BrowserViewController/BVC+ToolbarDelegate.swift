@@ -284,7 +284,7 @@ extension BrowserViewController: TopToolbarDelegate {
     isUserDefinedURLNavigation: Bool
   ) async -> Bool {
 
-    if let url = URL(string: text), url.scheme == "brave" || url.scheme == "chrome" {
+    if let url = URL(string: text), url.scheme == "luxxle" || url.scheme == "chrome" {
       topToolbar.leaveOverlayMode()
       if FeatureList.kUseChromiumWebViews.enabled {
         finishEditingAndSubmit(url, isUserDefinedURLNavigation: isUserDefinedURLNavigation)
@@ -580,7 +580,7 @@ extension BrowserViewController: TopToolbarDelegate {
   }
 
   // TODO: This logic should be fully abstracted away and share logic from current MenuViewController
-  // See: https://github.com/brave/brave-ios/issues/1452
+  // See: https://github.com/luxxle/brave-ios/issues/1452
   func topToolbarDidTapShortcutButton(_ topToolbar: TopToolbarView) {
     guard
       let shortcut = Preferences.General.toolbarShortcutButton.value.flatMap(WidgetShortcut.init)

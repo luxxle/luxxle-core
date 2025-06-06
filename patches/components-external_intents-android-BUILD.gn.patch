@@ -6,7 +6,7 @@ index 49e7c2d2a22209f378cecc2b9b0537469428c8d6..bae9fc877ff10c44a2be8a07d775971e
      "//components/navigation_interception",
      "//content/public/browser",
    ]
-+  deps += [ "//brave/components/external_intents/android" ]
++  deps += [ "//luxxle/components/external_intents/android" ]
  }
  
  android_library("unit_device_javatests") {

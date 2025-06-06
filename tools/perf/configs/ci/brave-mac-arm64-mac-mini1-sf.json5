@@ -1,13 +1,13 @@
 {
   "configurations": [{
     "dashboard-bot-name": "mac-mini-m1-typical",
-    "browser-type": "brave",
+    "browser-type": "luxxle",
     "profile": "brave-typical-mac",
     "extra-browser-args": [
       "--disable-component-update",
       "--disable-backgrounding-occluded-windows",
 
-      // For https://github.com/brave/brave-browser/issues/43711 debugging:
+      // For https://github.com/luxxle/brave-browser/issues/43711 debugging:
       "--vmodule=\"*/brave_ads/*\"=6,\"*/bat_ads/*\"=6,\"*/variations/*\"=6"
     ],
     "extra-benchmark-args": [],

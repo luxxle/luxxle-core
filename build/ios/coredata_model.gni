@@ -17,8 +17,7 @@ template("coredata_model") {
          "model_file must be defined for $target_name")
 
   _compile_model_target = "${target_name}_compile_model"
-  _compile_model_output =
-      "$target_gen_dir/" + get_path_info(invoker.model_file, "name") + ".momd"
+_compile_model_output = "$target_gen_dir/" + get_path_info(invoker.model_file, "name") + ".momd"
 
   action(_compile_model_target) {
     script = "//build/apple/xcrun.py"

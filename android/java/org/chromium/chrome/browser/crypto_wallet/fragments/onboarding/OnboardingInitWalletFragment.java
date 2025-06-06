@@ -123,7 +123,7 @@ public class OnboardingInitWalletFragment extends BaseOnboardingWalletFragment {
     }
 
     // We need to remove that check and restart once
-    // https://github.com/brave/brave-browser/issues/27887
+    // https://github.com/luxxle/brave-browser/issues/27887
     // is done.
     private void checkOnBraveActivity(boolean setupAction, boolean restoreAction) {
         try {

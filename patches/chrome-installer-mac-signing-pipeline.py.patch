@@ -17,4 +17,4 @@ index e542bc200debb94bd8c70a950703bdd1d059184a..bcfaf0a789d33ab809117fb4fde4d09d
          for path in staple_paths:
              notarize.staple(path)
 +
-+from brave_chromium_utils import inline_file; inline_file("//brave/chromium_src/chrome/installer/mac/signing/pipeline.py", globals(), locals())
++from brave_chromium_utils import inline_file; inline_file("//luxxle/chromium_src/chrome/installer/mac/signing/pipeline.py", globals(), locals())

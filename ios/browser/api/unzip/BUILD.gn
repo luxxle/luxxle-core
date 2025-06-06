@@ -11,8 +11,10 @@ source_set("unzip") {
 
   deps = [
     "//base",
-    "//components/services/unzip:in_process",
-    "//components/services/unzip/public/cpp",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/services/unzip:in_process",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/services/unzip/public/cpp",
     "//net",
     "//url",
   ]

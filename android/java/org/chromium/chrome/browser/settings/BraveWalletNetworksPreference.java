@@ -83,7 +83,7 @@ public class BraveWalletNetworksPreference extends Preference
             mJsonRpcService = null;
         }
         if (mPreferenceFragment != null) {
-            // TODO: remove when https://github.com/brave/brave-browser/issues/27887
+            // TODO: remove when https://github.com/luxxle/brave-browser/issues/27887
             // will be resolved.
             mPreferenceFragment.requireActivity().recreate();
         }

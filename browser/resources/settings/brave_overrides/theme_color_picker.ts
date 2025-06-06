@@ -6,7 +6,7 @@
 import { ThemeColorPickerElement } from '//resources/cr_components/theme_color_picker/theme_color_picker.js'
 
 import { css } from '//resources/lit/v3_0/lit.rollup.js'
-import { injectStyle } from '//resources/brave/lit_overriding.js'
+import { injectStyle } from '//resources/luxxle/lit_overriding.js'
 
 injectStyle(ThemeColorPickerElement, css`
     #defaultColor { display: none; }

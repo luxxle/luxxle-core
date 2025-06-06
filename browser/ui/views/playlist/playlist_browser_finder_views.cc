@@ -37,7 +37,7 @@ Browser* FindBrowserForPlaylistWebUI(content::WebContents* web_contents) {
 
   // If |BrowserView| is not found from Sidebar's |WebContents|, try to find it
   // from tab's |WebContents|.
-  // https://github.com/brave/brave-browser/issues/37528
+  // https://github.com/luxxle/brave-browser/issues/37528
   return chrome::FindBrowserWithTab(web_contents);
 }
 

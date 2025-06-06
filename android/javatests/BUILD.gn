@@ -18,7 +18,8 @@ android_library("brave_test_java_org.chromium.chrome.browser.download") {
     "//chrome/browser/flags:java",
     "//chrome/browser/settings:test_support_java",
     "//chrome/test/android:chrome_java_test_support_common",
-    "//components/browser_ui/settings/android:java",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/browser_ui/settings/android:java",
     "//third_party/androidx:androidx_fragment_fragment_java",
     "//third_party/androidx:androidx_preference_preference_java",
     "//third_party/androidx:androidx_test_runner_java__classes",

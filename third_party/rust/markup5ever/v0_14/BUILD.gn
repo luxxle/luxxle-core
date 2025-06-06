@@ -12,21 +12,21 @@ cargo_crate("lib") {
   crate_name = "markup5ever"
   epoch = "0.14"
   crate_type = "rlib"
-  crate_root = "//brave/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/lib.rs"
+  crate_root = "//luxxle/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/build.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/data/mod.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/entities.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/interface/mod.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/interface/tree_builder.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/lib.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/serialize.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/util/buffer_queue.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/util/smallcharset.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/build.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/data/mod.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/entities.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/interface/mod.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/interface/tree_builder.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/serialize.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/util/buffer_queue.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/util/smallcharset.rs",
   ]
   inputs = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/.cargo-checksum.json",
-    "//brave/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/.cargo_vcs_info.json",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/.cargo-checksum.json",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/.cargo_vcs_info.json",
   ]
 
   build_native_rust_unit_tests = false
@@ -43,18 +43,18 @@ cargo_crate("lib") {
   proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
   proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
   deps = [
-    "//brave/third_party/rust/log/v0_4:lib",
-    "//brave/third_party/rust/phf/v0_11:lib",
-    "//brave/third_party/rust/string_cache/v0_8:lib",
-    "//brave/third_party/rust/tendril/v0_4:lib",
+    "//luxxle/third_party/rust/log/v0_4:lib",
+    "//luxxle/third_party/rust/phf/v0_11:lib",
+    "//luxxle/third_party/rust/string_cache/v0_8:lib",
+    "//luxxle/third_party/rust/tendril/v0_4:lib",
   ]
   build_deps = [
-    "//brave/third_party/rust/phf_codegen/v0_11:buildrs_support",
-    "//brave/third_party/rust/string_cache_codegen/v0_5:buildrs_support",
+    "//luxxle/third_party/rust/phf_codegen/v0_11:buildrs_support",
+    "//luxxle/third_party/rust/string_cache_codegen/v0_5:buildrs_support",
   ]
-  build_root = "//brave/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/build.rs"
-  build_sources = [ "//brave/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/build.rs" ]
-  build_script_inputs = [ "//brave/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/entities.rs" ]
+  build_root = "//luxxle/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/build.rs"
+  build_sources = [ "//luxxle/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/build.rs" ]
+  build_script_inputs = [ "//luxxle/third_party/rust/chromium_crates_io/vendor/markup5ever-v0_14/entities.rs" ]
   build_script_outputs = [
     "generated.rs",
     "named_entities.rs",

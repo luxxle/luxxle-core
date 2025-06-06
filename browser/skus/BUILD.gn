@@ -5,20 +5,26 @@
 
 static_library("skus") {
   sources = [
-    "//brave/browser/skus/skus_service_factory.cc",
-    "//brave/browser/skus/skus_service_factory.h",
+    "//luxxle/browser/skus/skus_service_factory.cc",
+    "//luxxle/browser/skus/skus_service_factory.h",
   ]
 
   deps = [
     "//base",
-    "//brave/components/skus/browser",
-    "//brave/components/skus/common",
-    "//brave/components/skus/common:mojom",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/skus/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/skus/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/skus/common:mojom",
     "//chrome/browser:browser_process",
     "//chrome/browser/profiles:profile",
-    "//components/keyed_service/content",
-    "//components/pref_registry",
-    "//components/user_prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/pref_registry",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/user_prefs",
     "//content/public/browser",
   ]
 }

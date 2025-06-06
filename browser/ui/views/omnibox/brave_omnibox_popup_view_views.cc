@@ -20,7 +20,7 @@ gfx::Rect BraveOmniboxPopupViewViews::GetTargetBounds() const {
     // Remove top shadow inset so that omnibox popup stays inside browser
     // widget. Especially on Mac, Widgets can't be out of screen so we need to
     // adjust popup position.
-    // https://github.com/brave/brave-browser/issues/26573
+    // https://github.com/luxxle/brave-browser/issues/26573
     bounds.Inset(gfx::Insets().set_top(
         RoundedOmniboxResultsFrame::GetShadowInsets().top()));
   }

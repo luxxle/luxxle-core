@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/build/config.gni")
+import("//luxxle/build/config.gni")
 import("//build/config/features.gni")
 import("//mojo/public/tools/bindings/mojom.gni")
 
@@ -14,12 +14,17 @@ source_set("ads") {
   ]
 
   deps = [
-    "//brave/components/brave_ads/browser/resources:generated_resources",
-    "//brave/components/constants",
-    "//brave/components/resources:static_resources",
-    "//brave/ios/browser/brave_ads",
-    "//components/prefs",
-    "//components/resources",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/browser/resources:generated_resources",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/resources:static_resources",
+    "//luxxle/ios/browser/brave_ads",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/resources",
     "//ios/chrome/browser/shared/model/profile",
     "//ios/web/public/webui",
     "//ui/base",
@@ -27,8 +32,10 @@ source_set("ads") {
 
   public_deps = [
     "//base",
-    "//brave/components/brave_ads/core",
-    "//brave/components/services/bat_ads/public/interfaces",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/services/bat_ads/public/interfaces",
     "//ios/web/public",
     "//mojo/public/cpp/bindings",
     "//url",

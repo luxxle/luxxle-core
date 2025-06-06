@@ -6,7 +6,7 @@ index 9f8d59cdf04620ea6df5965b03a176043937d9d6..72374b8a4e77f9bc838e9d4c1dc2f5c7
        ]
      }
  
-+    import("//brave/tools/typescript/sources.gni") foreach(mapping, brave_path_mappings) { path_mappings += [ mapping[0] + rebase_path(mapping[1], target_gen_dir) ] }
++    import("//luxxle/tools/typescript/sources.gni") foreach(mapping, brave_path_mappings) { path_mappings += [ mapping[0] + rebase_path(mapping[1], target_gen_dir) ] }
      args += [ "--path_mappings" ] + path_mappings
      if (defined(invoker.path_mappings)) {
        args += invoker.path_mappings

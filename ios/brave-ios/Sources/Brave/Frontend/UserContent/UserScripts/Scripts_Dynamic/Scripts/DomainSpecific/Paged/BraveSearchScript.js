@@ -10,7 +10,7 @@ window.__firefox__.includeOnce("BraveSearchScript", function($) {
     return $.postNativeMessage('$<message_handler>', { 'securityToken': SECURITY_TOKEN, 'method_id': method_id});
   });
 
-  Object.defineProperty(window, 'brave', {
+  Object.defineProperty(window, 'luxxle', {
     enumerable: false,
     configurable: false,
     writable: false,

@@ -13,11 +13,11 @@ cargo_crate("lib") {
   epoch = "0.12"
   crate_type = "rlib"
   crate_root =
-      "//brave/third_party/rust/chromium_crates_io/vendor/hmac-v0_12/src/lib.rs"
+      "//luxxle/third_party/rust/chromium_crates_io/vendor/hmac-v0_12/src/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/hmac-v0_12/src/lib.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/hmac-v0_12/src/optim.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/hmac-v0_12/src/simple.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/hmac-v0_12/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/hmac-v0_12/src/optim.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/hmac-v0_12/src/simple.rs",
   ]
   inputs = []
 
@@ -35,7 +35,7 @@ cargo_crate("lib") {
   executable_configs += [ "//build/config/compiler:no_chromium_code" ]
   proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
   proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
-  deps = [ "//brave/third_party/rust/digest/v0_10:lib" ]
+  deps = [ "//luxxle/third_party/rust/digest/v0_10:lib" ]
   rustenv = []
   rustflags = [
     "--cap-lints=allow",  # Suppress all warnings in crates.io crates

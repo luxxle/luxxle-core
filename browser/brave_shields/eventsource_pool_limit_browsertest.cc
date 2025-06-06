@@ -290,7 +290,7 @@ IN_PROC_BROWSER_TEST_F(EventSourcePoolLimitBrowserTest,
 
 // Ensures that sub-frame opaque origins are treated properly when used from
 // different top-frame opaque origins.
-// TODO(https://github.com/brave/brave-browser/issues/28393): Test flaky on
+// TODO(https://github.com/luxxle/brave-browser/issues/28393): Test flaky on
 // master for the windows asan build.
 #if BUILDFLAG(IS_WIN) && defined(ADDRESS_SANITIZER)
 #define MAYBE_SandboxedFramesAreLimited DISABLED_SandboxedFramesAreLimited

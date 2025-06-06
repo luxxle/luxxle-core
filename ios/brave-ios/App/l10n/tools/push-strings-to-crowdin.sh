@@ -61,7 +61,7 @@ if [ $? != 0 ] ; then
   report_error 4 "ERROR: Failed to cleanup strings, please see output.log"
 fi
 
-sed -i '' 's/Shared\/Supporting Files/brave/' en.xliff >>output.log 2>&1
+sed -i '' 's/Shared\/Supporting Files/luxxle/' en.xliff >>output.log 2>&1
 if [ $? != 0 ] ; then
   report_error 4 "ERROR: Failed to cleanup strings, please see output.log"
 fi

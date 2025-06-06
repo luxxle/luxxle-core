@@ -11,7 +11,7 @@ import * as React from 'react'
 import Col from './styles/Col'
 import styled from 'styled-components'
 import { Alias, AuthState, AuthenticationStatus, EmailAliasesServiceInterface }
-  from 'gen/brave/components/email_aliases/email_aliases.mojom.m'
+  from 'gen/luxxle/components/email_aliases/email_aliases.mojom.m'
 
 const PageCol = styled(Col)`
   font: ${font.default.regular};

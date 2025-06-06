@@ -6,7 +6,7 @@ index d28056ba63641513b631df9990784870ae71cd13..b1cd9f314bad81b924c99d4e91bd75f8
        }
      }
    </style>
-+  <link rel="stylesheet" href="chrome://resources/brave/page_specific/bookmarks/bookmarks_loading_shim.css">
++  <link rel="stylesheet" href="chrome://resources/luxxle/page_specific/bookmarks/bookmarks_loading_shim.css">
  </head>
  <body>
    <bookmarks-app></bookmarks-app>

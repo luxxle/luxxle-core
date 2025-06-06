@@ -12,5 +12,4 @@ brave_br_elements_css_files = [ "br_toolbar/br_toolbar_search_field.css" ]
 
 brave_br_elements_ts_definitions = []
 
-brave_br_elements_preprocess_extra_deps =
-    [ "//brave/ui/webui/resources/br_elements:preprocess" ]
+brave_br_elements_preprocess_extra_deps = [ "//luxxle/ui/webui/resources/br_elements:preprocess" ]

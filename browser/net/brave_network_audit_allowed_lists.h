@@ -18,7 +18,7 @@ inline constexpr auto kAllowedUrlProtocols =
     base::MakeFixedFlatSet<std::string_view>({
         "chrome-extension",
         "chrome",
-        "brave",
+        "luxxle",
         "file",
         "data",
         "blob",

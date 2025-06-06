@@ -20,7 +20,7 @@ from components.version import BraveVersion
 
 
 def _GetBraveDownloadUrl(tag: str, filename: str) -> str:
-  return ('https://github.com/brave/brave-browser/releases/download/' +
+  return ('https://github.com/luxxle/brave-browser/releases/download/' +
           f'{tag}/{filename}')
 
 
@@ -147,7 +147,7 @@ class BrowserType:
 class BraveBrowserTypeImpl(BrowserType):
 
   def __init__(self, channel: str):
-    super().__init__('brave', 'Brave Browser', channel, [], [], False)
+    super().__init__('luxxle', 'Brave Browser', channel, [], [], False)
 
   @property
   def is_brave(self) -> bool:
@@ -279,7 +279,7 @@ def ParseBrowserType(browser: str) -> BrowserType:
   if browser == 'chrome':
     return ChromeTestingBrowserTypeImpl('for Testing')
 
-  if browser == 'brave':
+  if browser == 'luxxle':
     return BraveBrowserTypeImpl('Nightly')
   if browser.startswith('custom'):
     return BrowserType(browser, browser, '', [], [], False)

@@ -17,6 +17,8 @@ if (current_toolchain == host_toolchain) {
 
     deps = [ "//base" ]
 
+    defines = [ "REDIRECT_CC_AS_REWRAPPER" ]
+
     output_name = "redirect_cc"
 
     # Always optimize for speed

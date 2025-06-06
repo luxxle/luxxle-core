@@ -30,13 +30,19 @@ source_set("unit_tests") {
 
   deps = [
     "//base/test:test_support",
-    "//brave/components/ai_chat/content/browser",
-    "//brave/components/ai_chat/core/browser",
-    "//brave/components/ai_chat/core/common",
-    "//brave/components/ai_chat/core/common/mojom",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/content/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/common/mojom",
     "//chrome/test:test_support",
-    "//components/favicon/content",
-    "//components/favicon/core/test:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/favicon/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/favicon/core/test:test_support",
     "//content/test:test_support",
     "//testing/gtest:gtest",
   ]

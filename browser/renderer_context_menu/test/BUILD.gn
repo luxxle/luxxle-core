@@ -9,14 +9,18 @@ source_set("unit_tests") {
   sources = [ "render_view_context_menu_unittest.cc" ]
   deps = [
     "//base",
-    "//brave/app:command_ids",
-    "//brave/components/ai_chat/core/common",
+    "//luxxle/app:command_ids",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/common",
     "//chrome/browser",
     "//chrome/browser/search_engines",
     "//chrome/test:test_support",
-    "//components/custom_handlers",
-    "//components/custom_handlers:test_support",
-    "//components/search_engines",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/custom_handlers",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/custom_handlers:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/search_engines",
     "//content/test:test_support",
     "//testing/gmock",
     "//testing/gtest",

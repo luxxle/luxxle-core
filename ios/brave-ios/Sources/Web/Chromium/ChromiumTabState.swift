@@ -275,7 +275,7 @@ class ChromiumTabState: TabState, TabStateImpl {
     guard let lastCommittedURL = lastCommittedURL else { return .unknown }
 
     let isAppSpecificURL =
-      lastCommittedURL.scheme == "brave" || lastCommittedURL.scheme == "chrome"
+      lastCommittedURL.scheme == "luxxle" || lastCommittedURL.scheme == "chrome"
       || InternalURL.isValid(url: lastCommittedURL)
     if isAppSpecificURL {
       if let internalURL = InternalURL(lastCommittedURL), internalURL.isAboutHomeURL {

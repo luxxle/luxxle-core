@@ -30,7 +30,7 @@ class PrefService;
 // }
 //
 //  Types:
-//   'brave': mapped to Type::kBrave. Default backgrounds provided by us.
+//   'luxxle': mapped to Type::kBrave. Default backgrounds provided by us.
 //            |selected_value| is empty.
 //
 //   'custom_image': mapped to |Type::kCustomImage.| custom image uploaded by

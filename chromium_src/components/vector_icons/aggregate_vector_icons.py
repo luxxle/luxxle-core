@@ -17,8 +17,8 @@ VERBOSE = False  # Set to True to print verbose messages.
 # Loads the leo overrides from leo_overrides.json.
 def LoadLeoOverrides():
     leo_overrides_config_path = brave_chromium_utils.wspath(
-        '//brave/components/vector_icons/leo_overrides.json')
-    leo_override_format = '//brave/node_modules/@brave/leo/icons-skia/{}.icon'
+        '//luxxle/components/vector_icons/leo_overrides.json')
+    leo_override_format = '//luxxle/node_modules/@brave/leo/icons-skia/{}.icon'
 
     with open(leo_overrides_config_path, 'r') as f:
         leo_overrides_config = json.load(f)
@@ -51,7 +51,7 @@ def RewriteFileListWithOverrides(file_list):
             icon_path)
 
         # Leo override may have a different name than the original icon.
-        # Copy the override to gen/brave/vector_icons_overrides with the
+        # Copy the override to gen/luxxle/vector_icons_overrides with the
         # original name.
         leo_override = leo_overrides.get(icon_ws_path)
         if leo_override:
@@ -60,7 +60,7 @@ def RewriteFileListWithOverrides(file_list):
                     f'leo override and chromium_src override both exist for '
                     f'{icon_path}')
 
-            gen_file = f'gen/brave/vector_icons_overrides/{icon_ws_path[2:]}'
+            gen_file = f'gen/luxxle/vector_icons_overrides/{icon_ws_path[2:]}'
             os.makedirs(os.path.dirname(gen_file), exist_ok=True)
             shutil.copyfile(leo_override, gen_file)
             rewritten_icon_list.append(gen_file)

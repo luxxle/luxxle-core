@@ -12,7 +12,8 @@ source_set("browser_tests") {
   sources = [ "brave_geolocation_browsertest.cc" ]
   deps = [
     "//base",
-    "//brave/components/constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
     "//chrome/browser",
     "//chrome/browser/ui",
     "//chrome/common:constants",

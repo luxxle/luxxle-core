@@ -6,7 +6,7 @@ index bcd29bff12183f9a136bc5e9f3141a73a63d988d..7d5dcb638e9dd76ed0efd867ec75bd27
    if (is_android) {
      outputs += android_generated_java_resources
    }
-+  deps = [ "//brave/app:brave_generated_resources_grit" ]
++  deps = [ "//luxxle/app:brave_generated_resources_grit" ]
  }
  
  if (is_android) {

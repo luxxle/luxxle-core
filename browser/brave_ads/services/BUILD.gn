@@ -12,10 +12,13 @@ source_set("services") {
 
   deps = [
     "//base",
-    "//brave/app:brave_generated_resources_grit",
-    "//brave/components/brave_ads/browser",
-    "//brave/components/brave_ads/core",
-    "//brave/components/services/bat_ads:lib",
+    "//luxxle/app:brave_generated_resources_grit",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/services/bat_ads:lib",
     "//content/public/browser",
     "//mojo/public/cpp/bindings",
     "//mojo/public/cpp/system",

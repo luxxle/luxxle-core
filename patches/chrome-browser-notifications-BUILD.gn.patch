@@ -6,7 +6,7 @@ index b9f2f99bf905ff3452ca36364850a578ac636d8d..e6d1624d765d9f535cdab18d629bdb90
        "//third_party/jni_zero:jni_zero_java",
        "//ui/android:ui_no_recycler_view_java",
      ]
-+    deps += [ "//brave/browser/notifications/android:brave_java", ]
++    deps += [ "//luxxle/browser/notifications/android:brave_java", ]
  
      srcjar_deps = [
        ":jni_headers",

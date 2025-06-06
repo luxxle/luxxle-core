@@ -43,7 +43,7 @@ class TorPrefObserver : public BooleanPrefMember {
 
     // The incognito profile will be deleted before app termination. So we
     // should original profile in order to avoid crash.
-    // https://github.com/brave/brave-core/pull/21892#issuecomment-1928944343
+    // https://github.com/luxxle/brave-core/pull/21892#issuecomment-1928944343
     profile = profile->GetOriginalProfile();
 
     incognito_pref_observer_.Init(

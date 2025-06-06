@@ -5,11 +5,14 @@
 
 # based on //chrome/browser/ui/webui/whats_new/BUILD.gn
 
-import("//brave/components/brave_education/buildflags.gni")
-import("//brave/components/brave_vpn/common/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/brave_education/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
 import("//mojo/public/tools/bindings/mojom.gni")
 
-assert(enable_brave_education)
+# Commented out: Education functionality disabled for Luxxle
+# assert(enable_brave_education)
 
 mojom("mojo_bindings") {
   sources = [ "brave_education.mojom" ]
@@ -34,26 +37,31 @@ source_set("brave_education") {
   ]
 
   deps = [
-    "//brave/browser/resources/brave_education:resources",
-    "//brave/browser/ui/webui/brave_browser_command",
-    "//brave/components/brave_vpn/common/buildflags",
+    # Commented out: Education resources disabled for Luxxle
+    # "//luxxle/browser/resources/brave_education:resources",
+    "//luxxle/browser/ui/webui/brave_browser_command",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_vpn/common/buildflags",
     "//chrome/browser:browser_public_dependencies",
     "//chrome/browser/profiles:profile",
     "//chrome/browser/ui/browser_window",
     "//chrome/browser/ui/views/side_panel",
     "//chrome/browser/ui/webui:webui_util",
-    "//components/language/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/language/core/browser",
     "//ui/webui",
   ]
 
-  if (enable_brave_vpn) {
-    deps += [ "//brave/browser/ui/brave_vpn" ]
-  }
+  # Commented out: VPN functionality disabled for Luxxle
+  # if (enable_brave_vpn) {
+  #   deps += [ "//luxxle/browser/ui/brave_vpn" ]
+  # }
 
   public_deps = [
-    "//brave/browser/ui/webui/brave_education:mojo_bindings",
-    "//brave/components/brave_education",
-    "//brave/ui/webui/resources/js/brave_browser_command:mojo_bindings",
+    "//luxxle/browser/ui/webui/brave_education:mojo_bindings",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_education",
+    "//luxxle/ui/webui/resources/js/brave_browser_command:mojo_bindings",
   ]
 }
 
@@ -65,9 +73,12 @@ source_set("browser_tests") {
   deps = [
     ":brave_education",
     "//base/test:test_support",
-    "//brave/components/brave_education",
-    "//brave/components/brave_vpn/common/buildflags",
-    "//brave/components/constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_education",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_vpn/common/buildflags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
     "//chrome/browser/ui",
     "//chrome/test:test_support",
     "//chrome/test:test_support_ui",
@@ -89,12 +100,15 @@ source_set("unit_tests") {
   deps = [
     ":brave_education",
     "//base/test:test_support",
-    "//brave/browser/ui/webui/brave_browser_command",
-    "//brave/components/brave_education",
-    "//brave/components/brave_vpn/common/buildflags",
+    "//luxxle/browser/ui/webui/brave_browser_command",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_education",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_vpn/common/buildflags",
     "//chrome/browser/ui",
     "//chrome/test:test_support",
-    "//components/language/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/language/core/browser",
     "//testing/gtest",
   ]
 }

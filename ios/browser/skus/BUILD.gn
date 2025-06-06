@@ -11,13 +11,18 @@ source_set("skus") {
     "skus_service_factory.mm",
   ]
   deps = [
-    "//brave/components/skus/browser",
-    "//brave/components/skus/common",
-    "//brave/components/skus/common:mojom",
-    "//brave/ios/browser/api/skus:skus_mojom_wrappers",
-    "//brave/ios/browser/keyed_service",
-    "//components/keyed_service/core",
-    "//components/pref_registry",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/skus/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/skus/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/skus/common:mojom",
+    "//luxxle/ios/browser/api/skus:skus_mojom_wrappers",
+    "//luxxle/ios/browser/keyed_service",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/pref_registry",
     "//ios/chrome/browser/shared/model/application_context",
     "//ios/chrome/browser/shared/model/profile",
     "//ios/chrome/browser/shared/model/profile:profile_keyed_service_factory",

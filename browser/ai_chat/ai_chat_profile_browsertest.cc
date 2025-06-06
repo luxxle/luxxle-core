@@ -127,7 +127,7 @@ IN_PROC_BROWSER_TEST_P(AIChatProfileTest, ContextMenu) {
   content::ContextMenuParams params;
   params.is_editable = false;
   params.page_url = GURL("http://test.page/");
-  params.selection_text = u"brave";
+  params.selection_text = u"luxxle";
   TestRenderViewContextMenu menu(*web_contents()->GetPrimaryMainFrame(),
                                  params);
   menu.Init();

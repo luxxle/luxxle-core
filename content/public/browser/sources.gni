@@ -4,5 +4,5 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 brave_content_public_browser_sources = [
-  "//brave/content/public/browser/devtools/adblock_devtools_instumentation.h",
+  "//luxxle/content/public/browser/devtools/adblock_devtools_instumentation.h",
 ]

@@ -21,7 +21,8 @@ if (is_android || is_ios) {
 
     deps = [
       "//base",
-      "//components/url_pattern_index",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//components/url_pattern_index",
       "//device/vr/buildflags",
       "//extensions/buildflags",
       "//net:net",

@@ -45,6 +45,76 @@ declare_args() {
   # overrides with empty ones to make //base buildable for redirect_cc.
   is_redirect_cc_build = false
   android_aab_to_apk = false
+  
+  # ============================================================================
+  # LUXXLE FEATURE FLAGS - Centralized configuration for all Brave features
+  # Most features disabled for Luxxle minimal browser build
+  # ============================================================================
+  
+  # Core Features
+  enable_commander = false
+  enable_brave_education = false
+  enable_custom_background = true  # User specifically requested this
+  
+  # Wayback Machine and Archive Features
+  enable_brave_wayback_machine = false
+  
+  # Torrent and P2P Features
+  enable_brave_webtorrent = false
+  enable_web_discovery = false
+  enable_web_discovery_native = false
+  
+  # Background Images and Visual Features
+  enable_ntp_background_images = false
+  
+  # Media and Playlist Features
+  enable_playlist = false
+  enable_playlist_webui = false
+  
+  # Privacy and Security Features
+  enable_request_otr = false
+  enable_tor = false
+  
+  # Metrics and Analytics - declared in metrics/buildflags/buildflags.gni
+  
+  # VPN and Network Features
+  enable_brave_vpn = false
+  
+  # Wallet and Crypto Features
+  enable_brave_wallet = false
+  enable_ethereum_remote_client = false
+  
+  # Rewards and Ads Features
+  enable_brave_rewards = false
+  enable_brave_ads = false
+  enable_gemini_wallet = false
+  enable_ipfs = false
+  enable_ipfs_local_node = false
+  
+  # Sync and Cloud Features
+  enable_brave_sync = false
+  
+  # News and Content Features
+  enable_brave_news = false
+  enable_speedreader = false
+  
+  # Search and Omnibox Features
+  enable_brave_search = false
+  
+  # Social and Communication Features
+  enable_brave_talk = false
+  
+  # Developer and Advanced Features
+  enable_brave_federated = false
+  enable_brave_translate = false
+  enable_brave_shields = true  # Keep core ad blocking
+  
+  # AI and ML Features
+  enable_ai_chat = false
+  enable_brave_leo = false
+  
+  # Enterprise and Policy Features
+  enable_brave_enterprise = false
 }
 
 if (target_os == "win") {
@@ -60,8 +130,7 @@ declare_args() {
   # Generate symbols for Release builds.
   # MacOS requires dSYMs and non-component build, otherwise upstream dump syms
   # target is a no-op.
-  should_generate_symbols =
-      is_official_build && (!is_mac || (enable_dsyms && !is_component_build))
+should_generate_symbols = is_official_build && (!is_mac || (enable_dsyms && !is_component_build))
 }
 
 if (should_generate_symbols && is_mac) {
@@ -78,8 +147,7 @@ if (brave_exe == "") {
 brave_dist_dir = "$root_out_dir/dist"
 if (is_win) {
   brave_exe = "$brave_exe.exe"
-  brave_underline_full_version =
-      "_$chrome_version_major" + "_$brave_version_major" +
+brave_underline_full_version = "_$chrome_version_major" + "_$brave_version_major" +
       "_$brave_version_minor" + "_$brave_version_build"
   _channel = ""
   brave_app_guid = "{AFE6A462-C574-4B8A-AF43-4CC60DF4563B}"
@@ -109,13 +177,10 @@ if (is_win) {
     _arch = "32"
   }
   brave_installer_exe = "brave_installer.exe"
-  brave_stub_installer_exe =
-      "BraveBrowser$_channel" + "Setup$_arch$brave_underline_full_version.exe"
-  brave_untagged_stub_installer_exe =
-      "BraveBrowserUntagged$_channel" +
+brave_stub_installer_exe = "BraveBrowser$_channel" + "Setup$_arch$brave_underline_full_version.exe"
+brave_untagged_stub_installer_exe = "BraveBrowserUntagged$_channel" +
       "Setup$_arch$brave_underline_full_version.exe"
-  brave_standalone_installer_exe =
-      "BraveBrowserStandalone$_channel" +
+brave_standalone_installer_exe = "BraveBrowserStandalone$_channel" +
       "Setup$_arch$brave_underline_full_version.exe"
   brave_silent_installer_exe = "BraveBrowserStandaloneSilent$_channel" +
                                "Setup$_arch$brave_underline_full_version.exe"
@@ -142,12 +207,10 @@ if (is_win) {
   } else {
     brave_product_dir_name_suffix = "-Development"
   }
-  brave_product_dir_name =
-      "BraveSoftware/Brave-Browser$brave_product_dir_name_suffix"
+brave_product_dir_name = "BraveSoftware/Brave-Browser$brave_product_dir_name_suffix"
 
   if (base_sparkle_update_url == "") {
-    base_sparkle_update_url =
-        "https://updates.bravesoftware.com/sparkle/Brave-Browser"
+base_sparkle_update_url = "https://updates.bravesoftware.com/sparkle/Brave-Browser"
   }
 }
 

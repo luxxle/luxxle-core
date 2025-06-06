@@ -61,7 +61,7 @@ var package = Package(
     .package(url: "https://github.com/SDWebImage/SDWebImageSwiftUI", from: "2.2.0"),
     .package(url: "https://github.com/nmdias/FeedKit", from: "9.1.2"),
     .package(
-      url: "https://github.com/brave/PanModal",
+      url: "https://github.com/luxxle/PanModal",
       revision: "e67e9eff53c05f19b41bbb2ca7d27ff5859a586c"
     ),
     .package(url: "https://github.com/apple/swift-collections", from: "1.0.0"),
@@ -680,7 +680,7 @@ if isStripAbsolutePathsFromDebugSymbolsEnabled {
     settings.append(
       .unsafeFlags(
         [
-          "-debug-prefix-map", "\(iosRootDirectory)=../../brave/ios/brave-ios",
+          "-debug-prefix-map", "\(iosRootDirectory)=../../luxxle/ios/brave-ios",
         ],
         .when(configuration: .debug)
       )

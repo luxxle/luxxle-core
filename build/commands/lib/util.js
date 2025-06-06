@@ -1174,7 +1174,7 @@ const util = {
 
     Log.progressStart('build redirect_cc')
     const buildArgs = {
-      'import("//brave/tools/redirect_cc/args.gni")': null,
+      'import("//luxxle/tools/redirect_cc/args.gni")': null,
       use_remoteexec: config.useRemoteExec,
       use_reclient: config.useRemoteExec,
       use_siso: false,
@@ -1184,10 +1184,10 @@ const util = {
     }
 
     util.runGnGen(config.nativeRedirectCCDir, buildArgs, [
-      '--root-target=//brave/tools/redirect_cc',
+      '--root-target=//luxxle/tools/redirect_cc',
     ])
     await util.buildTargets(
-      ['brave/tools/redirect_cc'],
+      ['luxxle/tools/redirect_cc'],
       util.mergeWithDefault({ outputDir: config.nativeRedirectCCDir }),
     )
     Log.progressFinish('build redirect_cc')

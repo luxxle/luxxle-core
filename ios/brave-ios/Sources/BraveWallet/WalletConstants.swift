@@ -34,7 +34,7 @@ public struct WalletConstants {
   // TODO: update wiki link
   /// Brave Wiki page for Solana Name Service (SNS)
   public static let snsBraveWikiURL: URL = URL(
-    string: "https://github.com/brave/brave-browser/wiki/Resolve-Methods-for-Solana-Name-Service"
+    string: "https://github.com/luxxle/brave-browser/wiki/Resolve-Methods-for-Solana-Name-Service"
   )!
 
   /// Terms of Use for Ethereum Name Service (ENS)
@@ -45,12 +45,12 @@ public struct WalletConstants {
 
   /// The url to learn more about ENS off-chain lookups
   public static let braveWalletENSOffchainURL = URL(
-    string: "https://github.com/brave/brave-browser/wiki/ENS-offchain-lookup"
+    string: "https://github.com/luxxle/brave-browser/wiki/ENS-offchain-lookup"
   )!
 
   /// The url to learn more about Unstoppable Domains resolve methods.
   public static let braveWalletUnstoppableDomainsURL = URL(
-    string: "https://github.com/brave/brave-browser/wiki/Resolve-Methods-for-Unstoppable-Domains"
+    string: "https://github.com/luxxle/brave-browser/wiki/Resolve-Methods-for-Unstoppable-Domains"
   )!
 
   /// The url to the privacy policy for 0x swaps
@@ -61,7 +61,7 @@ public struct WalletConstants {
 
   /// The url to learn more about NFT Discovery
   public static let nftDiscoveryURL = URL(
-    string: "https://github.com/brave/brave-browser/wiki/NFT-Discovery"
+    string: "https://github.com/luxxle/brave-browser/wiki/NFT-Discovery"
   )!
 
   public static let braveWalletTermsOfUse = URL(string: "https://brave.com/terms-of-use/")!

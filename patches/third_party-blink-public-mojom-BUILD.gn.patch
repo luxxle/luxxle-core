@@ -6,7 +6,7 @@ index 58981f7c611edca0425d4eec3f849b33e8f5bfaf..32ccd921695176a2d35b50f9b14e8a7d
    ]
    cpp_typemaps += shared_cpp_typemaps
    blink_cpp_typemaps += shared_cpp_typemaps
-+  import("//brave/third_party/blink/public/mojom/sources.gni") public_deps += brave_third_party_blink_public_mojom_platform_public_deps
++  import("//luxxle/third_party/blink/public/mojom/sources.gni") public_deps += brave_third_party_blink_public_mojom_platform_public_deps
  
    export_class_attribute = "BLINK_COMMON_EXPORT"
    export_define = "BLINK_COMMON_IMPLEMENTATION=1"

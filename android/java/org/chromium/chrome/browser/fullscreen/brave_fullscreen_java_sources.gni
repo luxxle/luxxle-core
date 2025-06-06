@@ -4,7 +4,7 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 brave_fullscreen_java_sources = [
-  "../../brave/android/java/org/chromium/chrome/browser/fullscreen/BraveFullscreenHtmlApiHandlerBase.java",
-  "../../brave/android/java/org/chromium/chrome/browser/fullscreen/BraveFullscreenHtmlApiHandlerCompat.java",
-  "../../brave/android/java/org/chromium/chrome/browser/fullscreen/BraveFullscreenHtmlApiHandlerLegacy.java",
+  "../../luxxle/android/java/org/chromium/chrome/browser/fullscreen/BraveFullscreenHtmlApiHandlerBase.java",
+  "../../luxxle/android/java/org/chromium/chrome/browser/fullscreen/BraveFullscreenHtmlApiHandlerCompat.java",
+  "../../luxxle/android/java/org/chromium/chrome/browser/fullscreen/BraveFullscreenHtmlApiHandlerLegacy.java",
 ]

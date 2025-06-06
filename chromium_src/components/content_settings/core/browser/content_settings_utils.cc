@@ -17,7 +17,7 @@
 // initial default value according to CanTrackLastVisit and
 // ParseContentSettingValue: Note that |CONTENT_SETTING_DEFAULT| is encoded as a
 // NULL value, so it is not allowed as an integer value. Also, see
-// https://github.com/brave/brave-browser/issues/25733
+// https://github.com/luxxle/brave-browser/issues/25733
 #define BRAVE_CAN_TRACK_LAST_VISIT                             \
   if (type == ContentSettingsType::BRAVE_COOKIES ||            \
       type == ContentSettingsType::BRAVE_COSMETIC_FILTERING || \

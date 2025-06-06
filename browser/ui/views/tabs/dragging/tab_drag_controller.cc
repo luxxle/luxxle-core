@@ -43,7 +43,7 @@ int GetXCoordinateAdjustmentForMultiSelectedTabs(
   // tabs(See TabStrip::GetSizeNeededForViews() and its call sites). But we
   // don't want this behavior. With this adjustment selecting multiple tabs
   // without dragging make tabs or the window jump around by the amount of the
-  // width of other tabs. https://github.com/brave/brave-browser/issues/29465
+  // width of other tabs. https://github.com/luxxle/brave-browser/issues/29465
   return TabStrip::GetSizeNeededForViews(std::vector(
       dragged_views.begin(), dragged_views.begin() + source_view_index));
 }

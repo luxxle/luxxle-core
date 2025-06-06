@@ -8,7 +8,7 @@ import("//build/config/features.gni")
 source_set("brave_wallet") {
   visibility = [
     "//brave:child_dependencies",
-    "//brave/renderer/*",
+    "//luxxle/renderer/*",
     "//chrome/renderer/*",
   ]
 
@@ -21,11 +21,14 @@ source_set("brave_wallet") {
 
   deps = [
     "//base",
-    "//brave/common:common",
-    "//brave/common:mojo_bindings",
-    "//brave/components/brave_wallet/common:common",
-    "//brave/components/brave_wallet/common:mojom",
-    "//brave/components/brave_wallet/renderer",
+    "//luxxle/common:common",
+    "//luxxle/common:mojo_bindings",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_wallet/common:common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_wallet/common:mojom",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_wallet/renderer",
     "//content/public/common",
     "//content/public/renderer",
     "//gin",

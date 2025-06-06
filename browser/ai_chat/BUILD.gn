@@ -24,25 +24,35 @@ static_library("ai_chat") {
   ]
 
   deps = [
-    "//brave/brave_domains",
-    "//brave/browser:browser_process",
-    "//brave/browser/misc_metrics",
-    "//brave/browser/skus",
-    "//brave/components/ai_chat/content/browser",
-    "//brave/components/ai_chat/core/browser",
-    "//brave/components/ai_chat/core/common",
-    "//brave/components/ai_chat/core/common/mojom",
-    "//brave/components/constants",
-    "//brave/components/resources:strings_grit",
-    "//brave/net/base:utils",
+    "//luxxle/brave_domains",
+    "//luxxle/browser:browser_process",
+    "//luxxle/browser/misc_metrics",
+    "//luxxle/browser/skus",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/content/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/common/mojom",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/resources:strings_grit",
+    "//luxxle/net/base:utils",
     "//chrome/browser:browser_process",
     "//chrome/browser/profiles:profile",
     "//chrome/browser/ui/tabs:tabs_public",
     "//chrome/common:channel_info",
-    "//components/browsing_data/core",
-    "//components/keyed_service/content",
-    "//components/prefs",
-    "//components/user_prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/browsing_data/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/user_prefs",
     "//content/public/browser",
     "//services/data_decoder/public/cpp",
     "//ui/base",
@@ -50,7 +60,7 @@ static_library("ai_chat") {
   ]
 
   if (is_android) {
-    deps += [ "//brave/build/android:jni_headers" ]
+    deps += [ "//luxxle/build/android:jni_headers" ]
   }
 }
 
@@ -66,15 +76,21 @@ source_set("unit_tests") {
   deps = [
     "//base",
     "//base/test:test_support",
-    "//brave/browser/ai_chat",
-    "//brave/components/ai_chat/content/browser",
-    "//brave/components/ai_chat/core/common",
-    "//brave/components/ai_chat/core/common/mojom",
-    "//brave/components/constants",
+    "//luxxle/browser/ai_chat",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/content/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/common/mojom",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
     "//chrome/common",
     "//chrome/test:test_support",
-    "//components/paint_preview/common/mojom",
-    "//components/services/paint_preview_compositor/public/mojom",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/paint_preview/common/mojom",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/services/paint_preview_compositor/public/mojom",
     "//content/public/browser",
     "//content/test:test_support",
     "//testing/gtest",
@@ -99,19 +115,28 @@ source_set("browser_tests") {
       "page_content_fetcher_browsertest.cc",
     ]
     deps = [
-      "//brave/app:generate_command_metadata",
-      "//brave/browser/ai_chat",
-      "//brave/browser/misc_metrics",
-      "//brave/browser/ui/sidebar",
-      "//brave/components/ai_chat/content/browser",
-      "//brave/components/ai_chat/core/browser",
-      "//brave/components/ai_chat/core/browser:test_support",
-      "//brave/components/ai_chat/core/common",
-      "//brave/components/ai_chat/core/common/mojom",
-      "//brave/components/constants",
-      "//brave/components/l10n/common:test_support",
-      "//brave/components/sidebar/browser",
-      "//brave/components/text_recognition/common/buildflags",
+      "//luxxle/app:generate_command_metadata",
+      "//luxxle/browser/ai_chat",
+      "//luxxle/browser/misc_metrics",
+      "//luxxle/browser/ui/sidebar",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/ai_chat/content/browser",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/ai_chat/core/browser",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/ai_chat/core/browser:test_support",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/ai_chat/core/common",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/ai_chat/core/common/mojom",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/constants",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/l10n/common:test_support",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/sidebar/browser",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/text_recognition/common/buildflags",
       "//chrome/browser",
       "//chrome/browser/pdf:pdf_extension_test_utils",
       "//chrome/browser/screen_ai:screen_ai_install_state",

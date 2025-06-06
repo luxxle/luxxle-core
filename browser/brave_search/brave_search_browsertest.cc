@@ -261,7 +261,7 @@ IN_PROC_BROWSER_TEST_F(BraveSearchTest, CheckForAnUndefinedFunction) {
   EXPECT_EQ(base::Value(false), result_first.value);
 }
 
-// TODO(https://github.com/brave/brave-browser/issues/29631): Test flaky on
+// TODO(https://github.com/luxxle/brave-browser/issues/29631): Test flaky on
 // master for the mac and linux build.
 #if BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX)
 #define MAYBE_DefaultAPIVisibleKnownHost DISABLED_DefaultAPIVisibleKnownHost

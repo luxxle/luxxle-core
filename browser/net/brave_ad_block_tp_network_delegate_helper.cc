@@ -411,7 +411,7 @@ int OnBeforeURLRequest_AdBlockTPPreWork(const ResponseCallback& next_callback,
   // which can display a custom interstitial with an option to proceed if a
   // block is made. We don't need to check these twice.
   // However, we still need to check for websocket schemes (see
-  // https://github.com/brave/brave-browser/issues/26302).
+  // https://github.com/luxxle/brave-browser/issues/26302).
   if (ctx->resource_type == blink::mojom::ResourceType::kMainFrame &&
       !ctx->request_url.SchemeIsWSOrWSS()) {
     return net::OK;

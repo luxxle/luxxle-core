@@ -6,7 +6,7 @@ index ad39862fdd9a5a4f827f36e6a9778223a638d831..2144901f26a6c85d554cac8d958297b5
    } else {
      sources += [ "net/net_error_diagnostics_dialog_stub.cc" ]
    }
-+  import("//brave/browser/sources.gni") sources += brave_chrome_browser_sources deps += brave_chrome_browser_deps public_deps += brave_chrome_browser_public_deps allow_circular_includes_from += brave_chrome_browser_allow_circular_includes_from
++  import("//luxxle/browser/sources.gni") sources += brave_chrome_browser_sources deps += brave_chrome_browser_deps public_deps += brave_chrome_browser_public_deps allow_circular_includes_from += brave_chrome_browser_allow_circular_includes_from
  
    if (is_android) {
      sources += [
@@ -14,7 +14,7 @@ index ad39862fdd9a5a4f827f36e6a9778223a638d831..2144901f26a6c85d554cac8d958297b5
        "//rlz:rlz_lib",
      ]
    }
-+  import("//brave/browser/sources.gni") public_deps += brave_chrome_browser_public_deps
++  import("//luxxle/browser/sources.gni") public_deps += brave_chrome_browser_public_deps
  }
  
  # All generated files in //chrome/browser/ depended on by

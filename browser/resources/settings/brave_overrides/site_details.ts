@@ -5,10 +5,10 @@
 
 import type { SiteDetailsPermissionElement } from '../site_settings/site_details_permission.js'
 
-import { RegisterPolymerTemplateModifications, html } from 'chrome://resources/brave/polymer_overriding.js'
+import { RegisterPolymerTemplateModifications, html } from 'chrome://resources/luxxle/polymer_overriding.js'
 import { loadTimeData } from '../i18n_setup.js'
 
-import 'chrome://resources/brave/leo.bundle.js'
+import 'chrome://resources/luxxle/leo.bundle.js'
 
 const insertBefore = (element: Element, newElement: Element | Node) => {
   if (!element.parentNode) {

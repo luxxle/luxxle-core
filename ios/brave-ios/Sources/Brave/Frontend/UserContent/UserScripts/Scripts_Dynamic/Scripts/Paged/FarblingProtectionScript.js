@@ -63,7 +63,7 @@ window.__firefox__.execute(function($) {
         const channelData = Reflect.apply(getChannelData, this, arguments)
         // TODO: @JS Add more optimized audio farbling.
         // Will be done as a future PR of #5482 here:
-        // https://github.com/brave/brave-ios/pull/5485
+        // https://github.com/luxxle/brave-ios/pull/5485
         return channelData
       }
 

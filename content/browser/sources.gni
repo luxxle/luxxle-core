@@ -3,11 +3,13 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-brave_content_browser_sources =
-    [ "//brave/content/browser/devtools/adblock_devtools_instrumentation.cc" ]
+brave_content_browser_sources = [ "//luxxle/content/browser/devtools/adblock_devtools_instrumentation.cc" ]
 
 brave_content_browser_deps = [
-  "//brave/components/brave_service_keys",
-  "//brave/components/brave_shields/core/common:mojom",
-  "//brave/components/speech_to_text",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/brave_service_keys",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/brave_shields/core/common:mojom",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/speech_to_text",
 ]

@@ -17,7 +17,7 @@ import {
   AuthState,
   Alias,
   EmailAliasesServiceInterface
-} from "gen/brave/components/email_aliases/email_aliases.mojom.m"
+} from "gen/luxxle/components/email_aliases/email_aliases.mojom.m"
 
 const SpacedRow = styled(Row)`
   gap: ${spacing.m};

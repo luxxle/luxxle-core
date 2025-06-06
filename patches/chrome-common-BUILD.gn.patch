@@ -6,7 +6,7 @@ index 2ad76b4d5241ed0057c6e3164706f1573ab47020..ed71b6a215f019809b2cd0da7bc396e3
    } else if (is_posix) {
      sources += [ "channel_info_posix.cc" ]
    }
-+  public_deps += [ "//brave/common:channel_info" ]
++  public_deps += [ "//luxxle/common:channel_info" ]
  }
  
  source_set("ini_parser") {
@@ -14,7 +14,7 @@ index 2ad76b4d5241ed0057c6e3164706f1573ab47020..ed71b6a215f019809b2cd0da7bc396e3
    if (enable_ppapi) {
      public_deps += [ "//ppapi/shared_impl" ]
    }
-+  import("//brave/common/sources.gni") sources += brave_chrome_common_sources deps += brave_chrome_common_deps public_deps += brave_chrome_common_public_deps
++  import("//luxxle/common/sources.gni") sources += brave_chrome_common_sources deps += brave_chrome_common_deps public_deps += brave_chrome_common_public_deps
  
    if (enable_extensions_core) {
      public_deps += [
@@ -22,7 +22,7 @@ index 2ad76b4d5241ed0057c6e3164706f1573ab47020..ed71b6a215f019809b2cd0da7bc396e3
    if (is_win) {
      sources += [ "chrome_icon_resources_win.h" ]
    }
-+  configs += [ "//brave/common:constants_configs" ]
++  configs += [ "//luxxle/common:constants_configs" ]
  }
  
  component("chrome_features") {

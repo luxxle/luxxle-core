@@ -33,7 +33,7 @@ _CACHE_DIRECTORIES = [
     'GraphiteDawnCache', 'ShaderCache', 'component_crx_cache'
 ]
 
-_PR_SEE_DETAILS_LINK = ('https://github.com/brave/brave-core/blob/master/' +
+_PR_SEE_DETAILS_LINK = ('https://github.com/luxxle/brave-core/blob/master/' +
                         'tools/perf/updating_test_profiles.md')
 _PR_BODY = f"""Automated perf profile update via CI
 Pre-approval checklist:

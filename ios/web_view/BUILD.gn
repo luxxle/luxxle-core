@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/ios/web_view/headers.gni")
+import("//luxxle/ios/web_view/headers.gni")
 
 config("config") {
   # TODO(crbug.com/40120082): This will only guarantee ios/web_view source files
@@ -35,7 +35,8 @@ source_set("web_view") {
   ]
   deps = [
     "//base",
-    "//components/ssl_errors",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/ssl_errors",
     "//ios/web/js_messaging",
     "//ios/web/js_messaging:java_script_feature_manager_header",
     "//ios/web/js_messaging:web_view_js_utils",

@@ -48,7 +48,7 @@ const getEnvConfig = (key, defaultValue = undefined) => {
   if (!envConfig) {
     envConfig = {}
 
-    // Parse src/brave/.env with all included env files.
+    // Parse src/luxxle/.env with all included env files.
     let envConfigPath = path.join(braveCoreDir, '.env')
     if (fs.existsSync(envConfigPath)) {
       dotenvPopulateWithIncludes(envConfig, envConfigPath)
@@ -56,7 +56,7 @@ const getEnvConfig = (key, defaultValue = undefined) => {
       // The .env file is used by `gn gen`. Create it if it doesn't exist.
       const defaultEnvConfigContent =
         '# This is a placeholder .env config file for the build system.\n'
-        + '# See for details: https://github.com/brave/brave-browser/wiki/Build-configuration\n'
+        + '# See for details: https://github.com/luxxle/luxxle-browser/wiki/Build-configuration\n'
       fs.writeFileSync(envConfigPath, defaultEnvConfigContent)
     }
 
@@ -135,7 +135,7 @@ const Config = function () {
   this.defaultBuildConfig =
     getEnvConfig(['default_build_config']) || 'Component'
   this.buildConfig = this.defaultBuildConfig
-  this.buildTargets = ['brave']
+  this.buildTargets = ['luxxle']
   this.rootDir = rootDir
   this.isUniversalBinary = false
   this.isChromium = false
@@ -248,7 +248,7 @@ const Config = function () {
   this.updaterDevEndpoint = getEnvConfig(['updater_dev_endpoint']) || ''
   this.webcompatReportApiEndpoint =
     getEnvConfig(['webcompat_report_api_endpoint'])
-    || 'https://webcompat.brave.com/1/webcompat'
+    || 'https://webcompat.luxxle.com/1/webcompat'
   this.rewardsGrantDevEndpoint =
     getEnvConfig(['rewards_grant_dev_endpoint']) || ''
   this.rewardsGrantStagingEndpoint =
@@ -320,7 +320,7 @@ const Config = function () {
   this.offline = getEnvConfig(['offline']) || false
   this.use_libfuzzer = false
   this.androidAabToApk = false
-  this.useBraveHermeticToolchain = this.rbeService.includes('.brave.com:')
+  this.useBraveHermeticToolchain = this.rbeService.includes('.luxxle.com:')
   this.brave_services_key_id = getEnvConfig(['brave_services_key_id']) || ''
   this.service_key_aichat = getEnvConfig(['service_key_aichat']) || ''
   this.braveIOSDeveloperOptionsCode =
@@ -409,8 +409,8 @@ Config.prototype.buildArgs = function () {
     v8_enable_verify_heap: this.isAsan(),
     disable_fieldtrial_testing_config: true,
     safe_browsing_mode: 1,
-    root_extra_deps: ['//brave'],
-    clang_unsafe_buffers_paths: '//brave/build/config/unsafe_buffers_paths.txt',
+    root_extra_deps: ['//luxxle'],
+    clang_unsafe_buffers_paths: '//luxxle/build/config/unsafe_buffers_paths.txt',
     // TODO: Re-enable when chromium_src overrides work for files in relative
     // paths like widevine_cmdm_compoennt_installer.cc
     // use_jumbo_build: !this.officialBuild,

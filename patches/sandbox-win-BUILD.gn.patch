@@ -6,7 +6,7 @@ index de68fc7024d6e2a634bda17546b502f4fb1af5d0..3b459471d4cfd37a1246abcad967a3fc
      "ntdll.lib",
      "userenv.lib",
    ]
-+  import("//brave/sandbox/win/sources.gni") sources += brave_sandbox_win_sandbox_sources
++  import("//luxxle/sandbox/win/sources.gni") sources += brave_sandbox_win_sandbox_sources
  }
  
  test("sbox_integration_tests") {

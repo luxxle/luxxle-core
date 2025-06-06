@@ -6,7 +6,7 @@ index b1f13fa6e555a874d1f96eacefcd5a8401739c75..aa0a9cd343d9ba3134e3673f295a2c73
      ":generate_version_info",
      "//base",
    ]
-+  configs += [ "//brave/build:version" ] deps += [ "//brave/components/version_info" ]
++  configs += [ "//luxxle/build:version" ] deps += [ "//luxxle/components/version_info" ]
  }
  
  static_library("version_string") {

@@ -9,16 +9,25 @@ source_set("unit_tests") {
 
   deps = [
     "//base",
-    "//brave/components/privacy_sandbox",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/privacy_sandbox",
     "//chrome/test:test_support",
-    "//components/content_settings/core/browser",
-    "//components/content_settings/core/common",
-    "//components/content_settings/core/test:test_support",
-    "//components/privacy_sandbox:privacy_sandbox",
-    "//components/privacy_sandbox:privacy_sandbox_prefs",
-    "//components/privacy_sandbox:test_support",
-    "//components/privacy_sandbox:tracking_protection_settings",
-    "//components/sync_preferences:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/test:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/privacy_sandbox:privacy_sandbox",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/privacy_sandbox:privacy_sandbox_prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/privacy_sandbox:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/privacy_sandbox:tracking_protection_settings",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync_preferences:test_support",
     "//content/public/common",
     "//content/test:test_support",
     "//testing/gtest:gtest",

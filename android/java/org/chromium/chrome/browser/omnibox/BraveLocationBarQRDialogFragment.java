@@ -54,7 +54,7 @@ public class BraveLocationBarQRDialogFragment
 
     // The Android Fragment framework requires a zero-argument constructor to
     // instantiate fragments. It usually happens on a fragment re-creation
-    // https://github.com/brave/brave-browser/issues/41454
+    // https://github.com/luxxle/brave-browser/issues/41454
     public BraveLocationBarQRDialogFragment() {
         super();
     }

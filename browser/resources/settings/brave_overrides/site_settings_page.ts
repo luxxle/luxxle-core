@@ -5,7 +5,7 @@
 
 import './config.js'
 
-import {RegisterPolymerComponentReplacement, RegisterPolymerTemplateModifications} from 'chrome://resources/brave/polymer_overriding.js'
+import {RegisterPolymerComponentReplacement, RegisterPolymerTemplateModifications} from 'chrome://resources/luxxle/polymer_overriding.js'
 import {getTrustedHTML} from 'chrome://resources/js/static_types.js'
 
 import {loadTimeData} from '../i18n_setup.js'

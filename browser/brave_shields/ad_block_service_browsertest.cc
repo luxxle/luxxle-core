@@ -694,7 +694,7 @@ IN_PROC_BROWSER_TEST_F(AdBlockServiceTest, ServiceWorkerRequest) {
   ASSERT_EQ(true, EvalJs(contents,
                          "setExpectations(0, 0, 0, 1);"
                          "installBlockingServiceWorker()"));
-  // https://github.com/brave/brave-browser/issues/14087
+  // https://github.com/luxxle/brave-browser/issues/14087
   // EXPECT_EQ(profile()->GetPrefs()->GetUint64(kAdsBlocked), 1ULL);
 }
 
@@ -776,7 +776,7 @@ IN_PROC_BROWSER_TEST_F(AdBlockServiceTest,
 }
 
 // These tests fail intermittently on macOS; see
-// https://github.com/brave/brave-browser/issues/15912
+// https://github.com/luxxle/brave-browser/issues/15912
 #if BUILDFLAG(IS_MAC)
 #define MAYBE_CnameCloakedRequestsGetBlocked \
   DISABLED_CnameCloakedRequestsGetBlocked
@@ -825,7 +825,7 @@ class TestAdBlockSubscriptionServiceManagerObserver
 // Make sure a list added as a custom subscription works correctly
 // The download in this test fails intermittently with a network error code,
 // although it doesn't seem to occur in real usage.
-// TODO(https://github.com/brave/brave-browser/issues/33506)
+// TODO(https://github.com/luxxle/brave-browser/issues/33506)
 IN_PROC_BROWSER_TEST_F(AdBlockServiceTest,
                        DISABLED_SubscribeToCustomSubscription) {
   GURL subscription_url =

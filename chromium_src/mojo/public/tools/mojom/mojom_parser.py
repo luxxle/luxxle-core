@@ -163,7 +163,7 @@ def _PatchInBraveMojomAst(mojom_abspath, parsed_ast, enabled_features):
         raise RuntimeError("Could not get original chromium src dir")
 
     # Build brave/chromium_src path.
-    chromium_src_abspath = os.path.join(chromium_original_dir, 'brave',
+    chromium_src_abspath = os.path.join(chromium_original_dir, 'luxxle',
                                         'chromium_src')
     if not os.path.isdir(chromium_src_abspath):
         raise RuntimeError(

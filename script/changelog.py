@@ -16,12 +16,12 @@ def main():
 
     Example:
     python script/changelog.py -t refs/tags/v1.5.51 \
-        -u https://raw.githubusercontent.com/brave/brave-browser/master/CHANGELOG.md -o markdown
+        -u https://raw.githubusercontent.com/luxxle/brave-browser/master/CHANGELOG.md -o markdown
 
-    ## [1.5.51](https://github.com/brave/brave-browser/releases/tag/v1.5.51)
+    ## [1.5.51](https://github.com/luxxle/brave-browser/releases/tag/v1.5.51)
 
     - Added new setting that allows Brave Rewards icon in the URL to be hidden if Rewards \
-        is inactive. ([#2975](https://github.com/brave/brave-browser/issues/2975))
+        is inactive. ([#2975](https://github.com/luxxle/brave-browser/issues/2975))
 
     """
 

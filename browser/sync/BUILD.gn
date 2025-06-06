@@ -11,8 +11,11 @@ source_set("sync") {
 
   deps = [
     "//base",
-    "//components/history/core/browser",
-    "//components/sync/service",
-    "//components/sync_device_info",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/history/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync/service",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync_device_info",
   ]
 }

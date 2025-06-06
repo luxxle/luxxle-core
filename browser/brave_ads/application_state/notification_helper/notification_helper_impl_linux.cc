@@ -16,7 +16,7 @@ NotificationHelperImplLinux::NotificationHelperImplLinux() = default;
 NotificationHelperImplLinux::~NotificationHelperImplLinux() = default;
 
 bool NotificationHelperImplLinux::CanShowNotifications() {
-  // TODO(https://github.com/brave/brave-browser/issues/5542): Investigate how
+  // TODO(https://github.com/luxxle/brave-browser/issues/5542): Investigate how
   // to detect if notifications are enabled within the Linux operating system
 
   if (!base::FeatureList::IsEnabled(::features::kNativeNotifications)) {

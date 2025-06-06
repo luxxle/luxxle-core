@@ -73,7 +73,7 @@ public final class Domain: NSManagedObject, CRUD {
   }
 
   // TODO: @JS Replace this with the 1st party ad-block list
-  // https://github.com/brave/brave-ios/issues/7611
+  // https://github.com/luxxle/brave-ios/issues/7611
   /// A list of etld+1s that are always aggressive
   private let alwaysAggressiveETLDs: Set<String> = ["youtube.com"]
 

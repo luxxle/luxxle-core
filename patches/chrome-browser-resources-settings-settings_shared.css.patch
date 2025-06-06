@@ -7,7 +7,7 @@ index a1b05ff64049b32654077e906ac74d2f7b6f3915..22c3c84b1d0cb44e3e1789571ac0f35c
   * #import=//resources/cr_elements/search_highlight_style.css.js
   * #import=./settings_vars.css.js
 - * #include=cr-shared-style search-highlight-style
-+ * #import=//resources/brave/page_specific/settings/br_settings_shared.css.js
++ * #import=//resources/luxxle/page_specific/settings/br_settings_shared.css.js
 + * #include=cr-shared-style search-highlight-style br-settings-shared
   * #css_wrapper_metadata_end */
  

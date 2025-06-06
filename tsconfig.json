@@ -55,15 +55,15 @@
         "../out/Release_arm64/gen/ui/webui/resources/tsc/*",
         "../out/Debug_arm64/gen/ui/webui/resources/tsc/*"
       ],
-      "chrome://resources/brave/*": [
-        "../out/Component/gen/brave/ui/webui/resources/tsc/*",
-        "../out/Static/gen/brave/ui/webui/resources/tsc/*",
-        "../out/Release/gen/brave/ui/webui/resources/tsc/*",
-        "../out/Debug/gen/brave/ui/webui/resources/tsc/*",
-        "../out/Component_arm64/gen/brave/ui/webui/resources/tsc/*",
-        "../out/Static_arm64/gen/brave/ui/webui/resources/tsc/*",
-        "../out/Release_arm64/gen/brave/ui/webui/resources/tsc/*",
-        "../out/Debug_arm64/gen/brave/ui/webui/resources/tsc/*"
+      "chrome://resources/luxxle/*": [
+        "../out/Component/gen/luxxle/ui/webui/resources/tsc/*",
+        "../out/Static/gen/luxxle/ui/webui/resources/tsc/*",
+        "../out/Release/gen/luxxle/ui/webui/resources/tsc/*",
+        "../out/Debug/gen/luxxle/ui/webui/resources/tsc/*",
+        "../out/Component_arm64/gen/luxxle/ui/webui/resources/tsc/*",
+        "../out/Static_arm64/gen/luxxle/ui/webui/resources/tsc/*",
+        "../out/Release_arm64/gen/luxxle/ui/webui/resources/tsc/*",
+        "../out/Debug_arm64/gen/luxxle/ui/webui/resources/tsc/*"
       ],
       "$web-common/*": ["components/common/*"],
       "$web-components/*": ["components/web-components/*"]

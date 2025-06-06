@@ -4,11 +4,13 @@
 
 
 brave_locale_source_patterns = [
-  "${root_gen_dir}/components/brave_components_strings_",
-  "${root_gen_dir}/brave/brave_generated_resources_",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "${root_gen_dir}/components/brave_components_strings_",
+  "${root_gen_dir}/luxxle/brave_generated_resources_",
 ]
 
 brave_locale_deps = [
-  "//brave/app:brave_generated_resources_grit",
-  "//brave/components/resources:strings",
+  "//luxxle/app:brave_generated_resources_grit",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/resources:strings",
 ]

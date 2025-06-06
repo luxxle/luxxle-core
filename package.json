@@ -6,7 +6,7 @@
   "scripts": {
     "audit_deps": "node ./build/commands/scripts/audit.js -- --audit_dev_deps",
     "cibuild": "node ./build/commands/scripts/commands.js cibuild",
-    "init": "cd ../../ && npm run --prefix src/brave sync -- --init",
+    "init": "cd ../../ && npm run --prefix src/luxxle sync -- --init",
     "delete_string_translations": "node ./build/commands/scripts/commands.js delete_string_translations",
     "create_dist": "node ./build/commands/scripts/commands.js build --target=create_dist",
     "sync": "node ./build/commands/scripts/sync.js",
@@ -54,27 +54,27 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brave/brave-core.git"
+    "url": "git+https://github.com/luxxle/brave-core.git"
   },
   "author": {
     "name": "Brave Software <support@brave.com>"
   },
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/brave/brave-browser/issues"
+    "url": "https://github.com/luxxle/brave-browser/issues"
   },
   "engines": {
     "node": ">=20.0.0 <23.0.0",
     "npm": ">=10.0.0"
   },
-  "homepage": "https:/github.com/brave/brave-core#readme",
+  "homepage": "https:/github.com/luxxle/brave-core#readme",
   "config": {
     "projects": {
       "chrome": {
         "dir": "src",
         "tag": "137.0.7151.61",
         "repository": {
-          "url": "https://github.com/brave/chromium"
+          "url": "https://github.com/luxxle/chromium"
         }
       },
       "depot_tools": {

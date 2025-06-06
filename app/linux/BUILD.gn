@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/build/config.gni")
+import("//luxxle/build/config.gni")
 import("//build/linux/extract_symbols.gni")
 
 if (should_generate_symbols) {
@@ -17,7 +17,7 @@ if (should_generate_symbols) {
 
     start = [ brave_product_name ]
 
-    script = "//brave/tools/posix/generate_breakpad_symbols.py"
+    script = "//luxxle/tools/posix/generate_breakpad_symbols.py"
     args = [
       "--symbols-dir=" + rebase_path(symbols_dir),
       "--jobs=16",

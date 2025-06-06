@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/build/config.gni")
+import("//luxxle/build/config.gni")
 
 assert(is_android)
 
@@ -20,17 +20,24 @@ source_set("android_browser_process") {
 
   deps = [
     "//base",
-    "//brave/browser/android/preferences",
-    "//brave/browser/android/safe_browsing",
-    "//brave/browser/brave_ads/android:jni_headers",
-    "//brave/build/android:jni_headers",
-    "//brave/components/brave_ads/browser",
-    "//brave/components/brave_shields/content/browser",
-    "//brave/components/brave_sync",
-    "//brave/components/brave_sync:crypto",
-    "//brave/components/brave_sync:prefs",
-    "//brave/components/brave_sync:sync_service_impl_helper",
-    "//brave/components/brave_sync:time_limited_codes",
+    "//luxxle/browser/android/preferences",
+    "//luxxle/browser/android/safe_browsing",
+    "//luxxle/browser/brave_ads/android:jni_headers",
+    "//luxxle/build/android:jni_headers",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_shields/content/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_sync",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_sync:crypto",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_sync:prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_sync:sync_service_impl_helper",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_sync:time_limited_codes",
     "//chrome/android:jni_headers",
     "//chrome/browser:browser_process",
     "//chrome/browser:browser_public_dependencies",
@@ -38,13 +45,20 @@ source_set("android_browser_process") {
     "//chrome/browser/profiles:profile",
     "//chrome/browser/sync",
     "//chrome/common",
-    "//components/content_settings/core/browser",
-    "//components/content_settings/core/browser:cookie_settings",
-    "//components/ntp_tiles",
-    "//components/sync",
-    "//components/translate/core/browser",
-    "//components/unified_consent",
-    "//components/webui/flags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/browser:cookie_settings",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/ntp_tiles",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/translate/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/unified_consent",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/webui/flags",
     "//url",
   ]
 }
@@ -57,7 +71,7 @@ source_set("tab_features") {
 
   deps = [
     "//base",
-    "//brave/browser/ai_chat",
+    "//luxxle/browser/ai_chat",
     "//chrome/browser/android:tabs_public",
     "//chrome/browser/profiles:profile",
     "//content/public/browser",

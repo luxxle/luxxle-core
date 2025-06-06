@@ -56,7 +56,7 @@ if (window.isSecureContext) {
     },
     isMetaMask: {
       value: true,
-      writable: true, // https://github.com/brave/brave-browser/issues/22213
+      writable: true, // https://github.com/luxxle/brave-browser/issues/22213
     },
     request: {
       value: $(function (args) /* -> Promise<unknown> */  {
@@ -123,7 +123,7 @@ if (window.isSecureContext) {
           }
         }
       }),
-      writable: true, // https://github.com/brave/brave-browser/issues/25078
+      writable: true, // https://github.com/luxxle/brave-browser/issues/25078
     },
   });
 

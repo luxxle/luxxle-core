@@ -47,11 +47,11 @@ const base::FilePath::CharType kHelperProcessExecutableName[] =
     FPL(PRODUCT_STRING " Helper");
 #elif BUILDFLAG(IS_ANDROID)
 // NOTE: Keep it synced with the process names defined in AndroidManifest.xml.
-const base::FilePath::CharType kBrowserProcessExecutableName[] = FPL("brave");
+const base::FilePath::CharType kBrowserProcessExecutableName[] = FPL("luxxle");
 const base::FilePath::CharType kHelperProcessExecutableName[] =
     FPL("sandboxed_process");
 #elif BUILDFLAG(IS_POSIX)
-const base::FilePath::CharType kBrowserProcessExecutableName[] = FPL("brave");
+const base::FilePath::CharType kBrowserProcessExecutableName[] = FPL("luxxle");
 // Helper processes end up with a name of "exe" due to execing via
 // /proc/self/exe.  See bug 22703.
 const base::FilePath::CharType kHelperProcessExecutableName[] = FPL("exe");
@@ -68,11 +68,11 @@ const base::FilePath::CharType kBrowserProcessExecutablePath[] =
 const base::FilePath::CharType kHelperProcessExecutablePath[] =
     FPL(PRODUCT_STRING " Helper.app/Contents/MacOS/" PRODUCT_STRING " Helper");
 #elif BUILDFLAG(IS_ANDROID)
-const base::FilePath::CharType kBrowserProcessExecutablePath[] = FPL("brave");
-const base::FilePath::CharType kHelperProcessExecutablePath[] = FPL("brave");
+const base::FilePath::CharType kBrowserProcessExecutablePath[] = FPL("luxxle");
+const base::FilePath::CharType kHelperProcessExecutablePath[] = FPL("luxxle");
 #elif BUILDFLAG(IS_POSIX)
-const base::FilePath::CharType kBrowserProcessExecutablePath[] = FPL("brave");
-const base::FilePath::CharType kHelperProcessExecutablePath[] = FPL("brave");
+const base::FilePath::CharType kBrowserProcessExecutablePath[] = FPL("luxxle");
+const base::FilePath::CharType kHelperProcessExecutablePath[] = FPL("luxxle");
 #endif  // OS_*
 
 #if BUILDFLAG(IS_MAC)

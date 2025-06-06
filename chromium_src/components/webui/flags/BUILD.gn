@@ -10,11 +10,16 @@ source_set("unit_tests") {
   deps = [
     "//base",
     "//base/test:test_support",
-    "//components/prefs:test_support",
-    "//components/strings",
-    "//components/variations",
-    "//components/webui/flags",
-    "//components/webui/flags:switches",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/strings",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/variations",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/webui/flags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/webui/flags:switches",
     "//testing/gtest",
   ]
 }

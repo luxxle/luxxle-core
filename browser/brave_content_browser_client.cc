@@ -1273,7 +1273,7 @@ bool PreventDarkModeFingerprinting(WebContents* web_contents,
       brave_shields::GetBraveShieldsEnabled(host_content_settings_map, url);
   auto fingerprinting_type = brave_shields::GetFingerprintingControlType(
       host_content_settings_map, url);
-  // https://github.com/brave/brave-browser/issues/15265
+  // https://github.com/luxxle/brave-browser/issues/15265
   // Always use color scheme Light if fingerprinting mode strict
   if (base::FeatureList::IsEnabled(
           brave_shields::features::kBraveDarkModeBlock) &&

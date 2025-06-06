@@ -11,11 +11,13 @@ source_set("url_sanitizer") {
   ]
   deps = [
     "//base",
-    "//brave/components/url_sanitizer/browser",
-    "//brave/ios/browser/api/url_sanitizer",
-    "//brave/ios/browser/application_context",
-    "//brave/ios/browser/keyed_service",
-    "//components/keyed_service/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/url_sanitizer/browser",
+    "//luxxle/ios/browser/api/url_sanitizer",
+    "//luxxle/ios/browser/application_context",
+    "//luxxle/ios/browser/keyed_service",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/core",
     "//ios/chrome/browser/shared/model/application_context",
     "//ios/chrome/browser/shared/model/profile",
     "//ios/chrome/browser/shared/model/profile:profile_keyed_service_factory",

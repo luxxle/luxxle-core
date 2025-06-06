@@ -4,5 +4,9 @@
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
 declare_args() {
+  # Original crash dialog setting (keep enabled for network tests)
   enable_crash_dialog = !is_android && is_official_build
+  
+  # Enable Brave browser metrics (disabled for Luxxle)
+  enable_brave_browser_metrics = false
 }

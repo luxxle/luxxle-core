@@ -159,7 +159,7 @@
     "CheckStableMojomChanges": [
       "components/brave_rewards/core/mojom/.*\\.mojom",
     ],
-    // TODO(alexeybarabash): https://github.com/brave/brave-browser/issues/45245
+    // TODO(alexeybarabash): https://github.com/luxxle/brave-browser/issues/45245
     "_CheckAndroidNullAwayAnnotatedClasses": [
       "android/features/tab_ui/java/src/org/chromium/chrome/browser/tasks/tab_management/BraveIncognitoTabSwitcherPane.java",
       "android/features/tab_ui/java/src/org/chromium/chrome/browser/tasks/tab_management/BraveTabGroupUiCoordinator.java",

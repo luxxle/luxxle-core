@@ -19,8 +19,8 @@ source_set("browser_tests") {
 
   deps = [
     "//base",
-    "//brave/browser",
-    "//brave/common",
+    "//luxxle/browser",
+    "//luxxle/common",
     "//chrome/browser",
     "//chrome/browser/content_settings:content_settings_factory",
     "//chrome/browser/ui",
@@ -35,6 +35,7 @@ source_set("browser_tests") {
   if (is_mac) {
     sources += [ "os_crypt/keychain_password_mac_browsertest.mm" ]
 
-    deps += [ "//components/os_crypt/sync:test_support" ]
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # deps += [ "//components/os_crypt/sync:test_support" ]
   }
 }

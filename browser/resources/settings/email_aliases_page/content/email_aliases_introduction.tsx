@@ -25,7 +25,7 @@ export const Introduction = () =>
       </div>
       <div>
         {getLocale('emailAliasesDescription')}  {
-           /* TODO(https://github.com/brave/brave-browser/issues/45408):
+           /* TODO(https://github.com/luxxle/brave-browser/issues/45408):
            // Link to the email aliases support page */}
         <SecureLink href="https://support.brave.com" target='_blank'>
           {getLocale('emailAliasesLearnMore')}

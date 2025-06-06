@@ -6,7 +6,7 @@ index b44ff7f5a4787edbe032c8df55437d17579881b7..0f05818c7ec0c2c9f1e36fa991fbf7d4
    if (enable_video_effects) {
      public_deps += [ "//services/video_effects/public/mojom:mojom" ]
    }
-+  import("//brave/content/public/browser/sources.gni") sources += brave_content_public_browser_sources
++  import("//luxxle/content/public/browser/sources.gni") sources += brave_content_public_browser_sources
  }
  
  if (is_android) {

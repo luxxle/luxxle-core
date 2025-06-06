@@ -14,7 +14,7 @@ import {
   EmailAliasesServiceInterface,
   EmailAliasesServiceObserverInterface,
   EmailAliasesServiceObserverRemote
-} from 'gen/brave/components/email_aliases/email_aliases.mojom.m'
+} from 'gen/luxxle/components/email_aliases/email_aliases.mojom.m'
 import { provideStrings } from '../../../../../.storybook/locale'
 
 provideStrings({

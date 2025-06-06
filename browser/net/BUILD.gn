@@ -3,8 +3,10 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/components/brave_webtorrent/browser/buildflags/buildflags.gni")
-import("//brave/components/tor/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/brave_webtorrent/browser/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/tor/buildflags/buildflags.gni")
 import("//build/config/features.gni")
 
 source_set("browser_tests") {
@@ -20,21 +22,30 @@ source_set("browser_tests") {
     "global_privacy_control_network_delegate_helper_browsertest.cc",
   ]
   deps = [
-    "//brave/components/brave_shields/content/browser",
-    "//brave/components/brave_shields/core/common",
-    "//brave/components/geolocation",
-    "//brave/components/query_filter",
-    "//brave/components/static_redirect_helper",
-    "//brave/components/tor/buildflags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_shields/content/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_shields/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/geolocation",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/query_filter",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/static_redirect_helper",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/tor/buildflags",
     "//chrome/browser",
     "//chrome/browser:browser_process",
     "//chrome/browser/content_settings:content_settings_factory",
     "//chrome/browser/profiles:profile",
     "//chrome/browser/ui",
     "//chrome/browser/ui:browser_navigator_params_headers",
-    "//components/content_settings/core/browser",
-    "//components/content_settings/core/browser:cookie_settings",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/browser:cookie_settings",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//services/network/public/cpp",
   ]
   if (!is_android) {
@@ -47,12 +58,14 @@ source_set("browser_tests") {
       "//net/traffic_annotation:test_support",
     ]
   }
-  if (enable_tor) {
-    deps += [
-      "//brave/browser/tor",
-      "//brave/components/tor",
-    ]
-  }
+  # Commented out: tor support removed
+  # if (enable_tor) {
+  #   deps += [
+  #     "//luxxle/browser/tor",
+  #     # Commented out: removed components dependency - using Chromium defaults instead
+  #     # "//luxxle/components/tor",
+  #   ]
+  # }
   defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]
 }
 
@@ -71,16 +84,26 @@ source_set("unit_tests") {
   ]
 
   deps = [
-    "//brave/components/brave_ads/core",
-    "//brave/components/brave_ads/core/browser/service:test_support",
-    "//brave/components/brave_component_updater/browser",
-    "//brave/components/brave_rewards/core",
-    "//brave/components/brave_rewards/core:features",
-    "//brave/components/brave_shields/content/browser",
-    "//brave/components/brave_shields/content/test:test_support",
-    "//brave/components/geolocation",
-    "//brave/components/l10n/common:test_support",
-    "//brave/components/static_redirect_helper",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/core/browser/service:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_component_updater/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core:features",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_shields/content/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_shields/content/test:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/geolocation",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/l10n/common:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/static_redirect_helper",
     "//chrome/browser/prefs",
     "//chrome/test:test_support",
     "//content/test:test_support",
@@ -92,15 +115,17 @@ source_set("unit_tests") {
     "//third_party/abseil-cpp:absl",
   ]
 
-  if (enable_brave_webtorrent) {
-    sources += [
-      "//brave/browser/extensions/brave_webtorrent_navigation_throttle_unittest.cc",
-      "//brave/browser/net/brave_torrent_redirect_network_delegate_helper_unittest.cc",
-    ]
+  # Commented out: webtorrent support removed
+  # if (enable_brave_webtorrent) {
+  #   sources += [
+  #     "//luxxle/browser/extensions/brave_webtorrent_navigation_throttle_unittest.cc",
+  #     "//luxxle/browser/net/brave_torrent_redirect_network_delegate_helper_unittest.cc",
+  #   ]
 
-    deps += [
-      "//brave/browser/extensions",
-      "//brave/components/brave_referrals/browser",
-    ]
-  }
+  #   deps += [
+  #     "//luxxle/browser/extensions",
+  #     # Commented out: removed components dependency - using Chromium defaults instead
+  #     # "//luxxle/components/brave_referrals/browser",
+  #   ]
+  # }
 }

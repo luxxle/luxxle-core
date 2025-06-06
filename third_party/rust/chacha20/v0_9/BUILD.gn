@@ -12,16 +12,16 @@ cargo_crate("lib") {
   crate_name = "chacha20"
   epoch = "0.9"
   crate_type = "rlib"
-  crate_root = "//brave/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/lib.rs"
+  crate_root = "//luxxle/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/backends.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/backends/avx2.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/backends/neon.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/backends/soft.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/backends/sse2.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/legacy.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/lib.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/xchacha.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/backends.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/backends/avx2.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/backends/neon.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/backends/soft.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/backends/sse2.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/legacy.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/chacha20-v0_9/src/xchacha.rs",
   ]
   inputs = []
 
@@ -39,11 +39,11 @@ cargo_crate("lib") {
   proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
   proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
   deps = [
-    "//brave/third_party/rust/cfg_if/v1:lib",
-    "//brave/third_party/rust/cipher/v0_4:lib",
+    "//luxxle/third_party/rust/cfg_if/v1:lib",
+    "//luxxle/third_party/rust/cipher/v0_4:lib",
   ]
   if (current_cpu == "x64" || current_cpu == "x86") {
-    deps += [ "//brave/third_party/rust/cpufeatures/v0_2:lib" ]
+    deps += [ "//luxxle/third_party/rust/cpufeatures/v0_2:lib" ]
   }
   features = [ "zeroize" ]
   rustenv = []
@@ -51,6 +51,6 @@ cargo_crate("lib") {
     "--cap-lints=allow",  # Suppress all warnings in crates.io crates
   ]
   if (target_cpu == "x64" || target_cpu == "x86") {
-    deps += [ "//brave/third_party/rust/cpufeatures/v0_2:lib" ]
+    deps += [ "//luxxle/third_party/rust/cpufeatures/v0_2:lib" ]
   }
 }

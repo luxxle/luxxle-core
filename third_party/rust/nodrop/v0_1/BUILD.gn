@@ -12,9 +12,9 @@ cargo_crate("lib") {
   crate_name = "nodrop"
   epoch = "0.1"
   crate_type = "rlib"
-  crate_root = "//brave/third_party/rust/chromium_crates_io/vendor/nodrop-v0_1/src/lib.rs"
+  crate_root = "//luxxle/third_party/rust/chromium_crates_io/vendor/nodrop-v0_1/src/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/nodrop-v0_1/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/nodrop-v0_1/src/lib.rs",
   ]
   inputs = []
 

@@ -8,8 +8,10 @@ source_set("unit_tests") {
   sources = [ "chrome_autocomplete_provider_client_unittest.cc" ]
   deps = [
     "//base/test:test_support",
-    "//brave/components/ai_chat/core/common:common",
-    "//components/omnibox/browser:browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/common:common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/omnibox/browser:browser",
     "//testing/gtest:gtest",
   ]
 }

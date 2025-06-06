@@ -10,9 +10,12 @@ source_set("brave_news_internals") {
   ]
 
   deps = [
-    "//brave/components/brave_news/browser",
-    "//brave/components/brave_news/browser/resources:generated_resources",
-    "//brave/components/brave_news/common:mojom",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_news/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_news/browser/resources:generated_resources",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_news/common:mojom",
     "//chrome/browser:browser_public_dependencies",
   ]
 }

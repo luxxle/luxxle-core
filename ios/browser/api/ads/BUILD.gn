@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import("//brave/build/ios/mojom/mojom_wrappers.gni")
+import("//luxxle/build/ios/mojom/mojom_wrappers.gni")
 import("//build/config/ios/rules.gni")
 
 config("external_config") {
@@ -31,15 +31,22 @@ source_set("ads") {
   deps = [
     ":brave_ads_mojom_wrappers",
     "//base",
-    "//brave/components/brave_ads/core",
-    "//brave/components/brave_news/common",
-    "//brave/components/brave_rewards/core",
-    "//brave/components/l10n/common",
-    "//brave/components/ntp_background_images/browser",
-    "//brave/components/ntp_background_images/common",
-    "//brave/ios/browser/api/common",
-    "//brave/ios/browser/brave_ads",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_news/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/l10n/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ntp_background_images/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ntp_background_images/common",
+    "//luxxle/ios/browser/api/common",
+    "//luxxle/ios/browser/brave_ads",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//ios/chrome/browser/shared/model/application_context",
     "//ios/chrome/browser/shared/model/profile",
   ]
@@ -52,8 +59,10 @@ source_set("ads") {
 }
 
 ios_objc_mojom_wrappers("brave_ads_mojom_wrappers") {
-  mojom_target = "//brave/components/brave_ads/core/mojom"
-  sources = [ "//brave/components/brave_ads/core/mojom/brave_ads.mojom" ]
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # mojom_target = "//luxxle/components/brave_ads/core/mojom"
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # sources = [ "//luxxle/components/brave_ads/core/mojom/brave_ads.mojom" ]
   exclude_types = [
     "DBActionInfo",
     "DBBindColumnInfo",

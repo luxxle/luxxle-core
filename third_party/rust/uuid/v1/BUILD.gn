@@ -13,29 +13,29 @@ cargo_crate("lib") {
   epoch = "1"
   crate_type = "rlib"
   crate_root =
-      "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/lib.rs"
+      "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/builder.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/error.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/external.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/external/arbitrary_support.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/external/serde_support.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/external/slog_support.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/fmt.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/lib.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/macros.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/md5.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/parser.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/rng.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/sha1.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/timestamp.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/v1.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/v3.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/v4.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/v5.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/v6.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/v7.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/v8.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/builder.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/error.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/external.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/external/arbitrary_support.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/external/serde_support.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/external/slog_support.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/fmt.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/macros.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/md5.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/parser.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/rng.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/sha1.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/timestamp.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/v1.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/v3.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/v4.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/v5.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/v6.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/v7.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/uuid-v1/src/v8.rs",
   ]
   inputs = []
 
@@ -52,7 +52,7 @@ cargo_crate("lib") {
   executable_configs += [ "//build/config/compiler:no_chromium_code" ]
   proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
   proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
-  deps = [ "//brave/third_party/rust/getrandom/v0_2:lib" ]
+  deps = [ "//luxxle/third_party/rust/getrandom/v0_2:lib" ]
   features = [
     "default",
     "getrandom",

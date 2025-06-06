@@ -5,7 +5,7 @@
 
 'use strict'
 
-Object.defineProperty(navigator, 'brave', {
+Object.defineProperty(navigator, 'luxxle', {
   enumerable: false,
   configurable: true,
   writable: false,

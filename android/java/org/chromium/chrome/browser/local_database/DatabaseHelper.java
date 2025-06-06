@@ -121,7 +121,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     DisplayAdsTable.COLUMN_TAB_ID + " = " + tabId,
                     null);
         } catch (SQLiteException exc) {
-            // There is a possible crash https://github.com/brave/brave-browser/issues/42024
+            // There is a possible crash https://github.com/luxxle/brave-browser/issues/42024
             // when the database can't be open. I don't think we can do anything in that
             // case, so just ignore.
             Log.e(TAG, "deleteDisplayAdsFromTab " + exc);

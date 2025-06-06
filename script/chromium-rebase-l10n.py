@@ -173,7 +173,7 @@ def generate_overrides_and_replace_strings(source_string_path):
     modified_messages = modified_xml_tree.xpath('//message')
     modified_parts = modified_xml_tree.xpath('//part')
     if len(modified_messages) > 0 or len(modified_parts) > 0:
-        # Fix output filenames to generate "brave" files instead of "chromium".
+        # Fix output filenames to generate "luxxle" files instead of "chromium".
         if os.path.basename(source_string_path) == 'brave_strings.grd':
             for xtb_filename in modified_xml_tree.xpath(
                     "//file[re:test(@path, '.*\\.xtb')]",
@@ -304,7 +304,7 @@ def main():
         comment = etree.Comment(comment_text)
         grit_root.addprevious(comment)
 
-    # Fix output filenames to generate "brave" files instead of "chromium".
+    # Fix output filenames to generate "luxxle" files instead of "chromium".
     if basename in ('brave_strings', 'components_brave_strings'):
         for pak_filename in xml_tree.xpath(
                 "//output[re:test(@filename, '.*\\.(pak|xml)')]",

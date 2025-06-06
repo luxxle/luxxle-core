@@ -157,7 +157,7 @@ constexpr char get_block_response[] =
 constexpr char get_block_response_wrong[] =
     R"({"jsonrpc":"2.0","id":1,"result_wrong":""})";
 
-constexpr char kPasswordBrave[] = "brave";
+constexpr char kPasswordBrave[] = "luxxle";
 
 using AllowancesMap = std::map<std::string, mojom::AllowanceInfoPtr>;
 using AllowancesMapCallback = base::OnceCallback<void(const AllowancesMap&)>;

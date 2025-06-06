@@ -146,7 +146,7 @@ std::string NonWriteableScriptMethod(std::string_view provider,
                                      std::string_view method) {
   return absl::StrFormat(
       R"(new Promise(resolve => {
-          window.%s.%s = "brave"
+          window.%s.%s = "luxxle"
           if (typeof window.%s.%s === "function")
             resolve(true);
           else
@@ -160,8 +160,8 @@ std::string NonWriteableScriptProperty(std::string_view provider,
                                        std::string_view property) {
   return absl::StrFormat(
       R"(new Promise(resolve => {
-          window.%s.%s = "brave"
-          if (window.%s.%s === "brave")
+          window.%s.%s = "luxxle"
+          if (window.%s.%s === "luxxle")
             resolve(false)
           else
             resolve(true)

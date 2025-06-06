@@ -21,7 +21,8 @@ android_library("java") {
     "//chrome/android:chrome_base_module_resources",
     "//chrome/browser/notifications:java",
     "//chrome/browser/notifications:java_resources",
-    "//components/browser_ui/notifications/android:java",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/browser_ui/notifications/android:java",
     "//third_party/androidx:androidx_annotation_annotation_java",
     "//ui/android:ui_no_recycler_view_java",
   ]
@@ -32,13 +33,14 @@ android_library("java") {
 # TODO(samartnik): we are unable to avoid this patch since we directly patch
 # `ChromeChannelDefinitions.java`. There is no straightforward conversion of
 # those patches to bytecode patching so we need to find a way to
-# workaround those patches https://github.com/brave/brave-browser/issues/15867.
+# workaround those patches https://github.com/luxxle/brave-browser/issues/15867.
 android_library("brave_java") {
   sources = [ "java/src/org/chromium/chrome/browser/notifications/channels/BraveChannelDefinitions.java" ]
 
   deps = [
     ":java_resources",
-    "//components/browser_ui/notifications/android:java",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/browser_ui/notifications/android:java",
     "//third_party/androidx:androidx_annotation_annotation_java",
   ]
 
@@ -51,5 +53,5 @@ android_resources("java_resources") {
     "java/res/layout/web_notification_brave_ads.xml",
   ]
 
-  deps = [ "//brave/build/android:android_brave_strings_grd" ]
+  deps = [ "//luxxle/build/android:android_brave_strings_grd" ]
 }

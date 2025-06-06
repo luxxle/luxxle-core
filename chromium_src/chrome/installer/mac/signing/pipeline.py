@@ -25,7 +25,7 @@ def _create_pkgbuild_scripts(original_function, paths, dist_config):
 
     def new_packaging_dir(*args, **kwargs):
         orig = orig_packaging_dir(*args, **kwargs)
-        return os.path.join(orig, 'brave')
+        return os.path.join(orig, 'luxxle')
 
     paths.packaging_dir = new_packaging_dir
     try:

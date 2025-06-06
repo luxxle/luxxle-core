@@ -3,17 +3,18 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/build/ios/mojom/mojom_wrappers.gni")
+import("//luxxle/build/ios/mojom/mojom_wrappers.gni")
 import("//build/config/ios/rules.gni")
 import("//ios/build/config.gni")
 
 config("mojom_header_config") {
   visibility = [
     ":*",
-    "//brave/ios/app",
+    "//luxxle/ios/app",
   ]
   include_dirs =
-      [ "$root_gen_dir/brave/components/ai_chat/core/common/mojom/ios" ]
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # [ "$root_gen_dir/luxxle/components/ai_chat/core/common/mojom/ios" ]
 }
 
 source_set("ai_chat") {
@@ -37,17 +38,26 @@ source_set("ai_chat") {
   deps = [
     ":ai_chat_mojom_wrappers",
     "//base",
-    "//brave/base/mac",
-    "//brave/components/ai_chat/core/browser:browser",
-    "//brave/components/ai_chat/core/common",
-    "//brave/components/api_request_helper",
-    "//brave/components/brave_stats/browser",
-    "//brave/components/constants",
-    "//brave/components/resources:strings_grit",
-    "//brave/ios/browser/skus",
-    "//components/prefs",
-    "//components/user_prefs",
-    "//components/version_info",
+    "//luxxle/base/mac",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/browser:browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/api_request_helper",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_stats/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/resources:strings_grit",
+    "//luxxle/ios/browser/skus",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/user_prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/version_info",
     "//ios/chrome/browser/shared/model/application_context",
     "//ios/chrome/browser/shared/model/profile",
     "//ios/chrome/browser/shared/model/profile:profile_keyed_service_factory",
@@ -65,13 +75,18 @@ source_set("ai_chat") {
 }
 
 ios_objc_mojom_wrappers("ai_chat_mojom_wrappers") {
-  mojom_target = "//brave/components/ai_chat/core/common/mojom"
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # mojom_target = "//luxxle/components/ai_chat/core/common/mojom"
   sources = [
-    "//brave/components/ai_chat/core/common/mojom/ai_chat.mojom",
-    "//brave/components/ai_chat/core/common/mojom/tab_tracker.mojom",
-    "//brave/components/ai_chat/core/common/mojom/untrusted_frame.mojom",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/common/mojom/ai_chat.mojom",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/common/mojom/tab_tracker.mojom",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/common/mojom/untrusted_frame.mojom",
   ]
-  output_dir = "$root_gen_dir/brave/components/ai_chat/core/common/mojom/ios"
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # output_dir = "$root_gen_dir/luxxle/components/ai_chat/core/common/mojom/ios"
   generate_namespace = false
 
   # These types have pending_receiver arguments which aren't

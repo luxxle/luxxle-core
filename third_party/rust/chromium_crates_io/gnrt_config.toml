@@ -104,7 +104,7 @@ if (is_ios) {
       "lifeguard",
       "unsync-regex-caching",
     ]
-    deps += [ "//brave/third_party/rust/lifeguard/v0_6:lib" ]
+    deps += [ "//luxxle/third_party/rust/lifeguard/v0_6:lib" ]
   }
 '''}
 license_files = ['LICENSE']
@@ -128,7 +128,7 @@ license_files = ['LICENSE']
 [crate.chacha20]
 extra_kv = { raw_gn = '''
 if (target_cpu == "x64" || target_cpu == "x86") {
-      deps += [ "//brave/third_party/rust/cpufeatures/v0_2:lib" ]
+      deps += [ "//luxxle/third_party/rust/cpufeatures/v0_2:lib" ]
 }
 ''' }
 
@@ -145,7 +145,7 @@ license_files = ['LICENSE.txt']
 [crate.cpufeatures]
 extra_kv = { raw_gn = '''
 if (is_apple && target_cpu == "arm64") {
-      deps += [ "//brave/third_party/rust/libc/v0_2:lib" ]
+      deps += [ "//luxxle/third_party/rust/libc/v0_2:lib" ]
 }
 ''' }
 
@@ -156,7 +156,7 @@ build_script_outputs = [ "lib.rs" ]
 license_files = ['LICENSE']
 extra_kv = { raw_gn = '''
 if (epoch == "0.29") {
-    build_script_inputs = [ "//brave/third_party/rust/chromium_crates_io/vendor/cssparser-v0_29/build/match_byte.rs" ]
+    build_script_inputs = [ "//luxxle/third_party/rust/chromium_crates_io/vendor/cssparser-v0_29/build/match_byte.rs" ]
     build_script_outputs = [ "tokenizer.rs" ]
   }
 ''' }
@@ -169,8 +169,8 @@ extra_input_roots = [ "../docs", "../README.md" ]
 extra_kv = { raw_gn = '''
 if (target_cpu == "x64") {
     deps += [
-      "//brave/third_party/rust/cpufeatures/v0_2:lib",
-      "//brave/third_party/rust/curve25519_dalek_derive/v0_1:lib",
+      "//luxxle/third_party/rust/cpufeatures/v0_2:lib",
+      "//luxxle/third_party/rust/curve25519_dalek_derive/v0_1:lib",
     ]
   }
 ''' }
@@ -262,7 +262,7 @@ if (epoch == "0.11") {
 [crate.poly1305]
 extra_kv = { raw_gn = '''
 if (target_cpu == "x64" || target_cpu == "x86") {
-      deps += [ "//brave/third_party/rust/cpufeatures/v0_2:lib" ]
+      deps += [ "//luxxle/third_party/rust/cpufeatures/v0_2:lib" ]
 }
 ''' }
 
@@ -315,14 +315,14 @@ extra_input_roots = [ "../README.md" ]
 extra_kv = { raw_gn = '''
 if (target_name == "buildrs_support" && epoch == "1") {
   deps -= [
-    "//brave/third_party/rust/proc_macro2/v1:lib",
-    "//brave/third_party/rust/quote/v1:lib",
-    "//brave/third_party/rust/unicode_ident/v1:lib",
+    "//luxxle/third_party/rust/proc_macro2/v1:lib",
+    "//luxxle/third_party/rust/quote/v1:lib",
+    "//luxxle/third_party/rust/unicode_ident/v1:lib",
   ]
   deps += [
-    "//brave/third_party/rust/proc_macro2/v1:buildrs_support",
-    "//brave/third_party/rust/quote/v1:buildrs_support",
-    "//brave/third_party/rust/unicode_ident/v1:buildrs_support",
+    "//luxxle/third_party/rust/proc_macro2/v1:buildrs_support",
+    "//luxxle/third_party/rust/quote/v1:buildrs_support",
+    "//luxxle/third_party/rust/unicode_ident/v1:buildrs_support",
   ]
 }
 '''}

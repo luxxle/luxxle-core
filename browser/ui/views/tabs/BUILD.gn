@@ -10,8 +10,8 @@ source_set("browser_tests") {
   defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]
 
   sources = [
-    "//brave/browser/ui/views/tabs/brave_tab_hover_browsertest.cc",
-    "//brave/browser/ui/views/tabs/dragging/tab_drag_controller_browsertest.cc",
+    "//luxxle/browser/ui/views/tabs/brave_tab_hover_browsertest.cc",
+    "//luxxle/browser/ui/views/tabs/dragging/tab_drag_controller_browsertest.cc",
   ]
 
   deps = [
@@ -24,7 +24,8 @@ source_set("browser_tests") {
     "//chrome/common",
     "//chrome/test",
     "//chrome/test:test_support",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//ui/base:test_support",
   ]
 
@@ -47,7 +48,7 @@ source_set("unit_tests") {
 
   deps = [
     "//base",
-    "//brave/common",
+    "//luxxle/common",
     "//chrome/browser/ui",
     "//chrome/test:test_support",
     "//content/test:test_support",

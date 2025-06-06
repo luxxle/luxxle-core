@@ -3,24 +3,32 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/components/tor/buildflags/buildflags.gni")
-import("//brave/utility/importer/sources.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/tor/buildflags/buildflags.gni")
+import("//luxxle/utility/importer/sources.gni")
 
 brave_utility_sources = [
-  "//brave/utility/brave_content_utility_client.cc",
-  "//brave/utility/brave_content_utility_client.h",
+  "//luxxle/utility/brave_content_utility_client.cc",
+  "//luxxle/utility/brave_content_utility_client.h",
 ]
 
 brave_utility_sources += brave_utility_importer_sources
 
 brave_utility_deps = [
-  "//brave/components/services/bat_ads:lib",
-  "//brave/components/services/bat_ads/public/interfaces",
-  "//brave/components/services/bat_rewards:lib",
-  "//brave/components/services/bat_rewards/public/interfaces",
-  "//brave/components/services/brave_wallet:lib",
-  "//brave/components/services/brave_wallet/public/mojom",
-  "//brave/components/tor/buildflags",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/services/bat_ads:lib",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/services/bat_ads/public/interfaces",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/services/bat_rewards:lib",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/services/bat_rewards/public/interfaces",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/services/brave_wallet:lib",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/services/brave_wallet/public/mojom",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/tor/buildflags",
   "//mojo/public/cpp/bindings",
 ]
 
@@ -33,7 +41,8 @@ if (is_android) {
   brave_utility_deps += [
     "//chrome/common/importer",
     "//chrome/common/importer:interfaces",
-    "//components/favicon_base",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/favicon_base",
   ]
 }
 
@@ -41,8 +50,10 @@ brave_utility_deps += brave_utility_importer_deps
 
 if (enable_tor) {
   brave_utility_deps += [
-    "//brave/components/services/tor",
-    "//brave/components/services/tor/public/interfaces",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/services/tor",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/services/tor/public/interfaces",
   ]
 }
 

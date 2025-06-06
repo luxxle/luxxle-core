@@ -3,8 +3,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/common/extensions/api/api_sources.gni")
-import("//brave/resources/brave_grit.gni")
+import("//luxxle/common/extensions/api/api_sources.gni")
+import("//luxxle/resources/brave_grit.gni")
 import("//tools/json_schema_compiler/json_features.gni")
 import("//tools/json_schema_compiler/json_schema_api.gni")
 

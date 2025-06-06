@@ -19,7 +19,7 @@ export function BackgroundCaption() {
 
   function renderCaption() {
     switch (currentBackground?.type) {
-      case 'brave':
+      case 'luxxle':
         return <BraveBackgroundCredits background={currentBackground} />
       case 'sponsored-image':
         return <SponsoredBackgroundLogo background={currentBackground} />

@@ -5,24 +5,23 @@
 
 import("//build/config/ui.gni")
 
-brave_ui_allow_circular_includes_from =
-    [ "//brave/browser/ui/webui/ads_internals" ]
+brave_ui_allow_circular_includes_from = [ "//luxxle/browser/ui/webui/ads_internals" ]
 if (!is_android) {
   brave_ui_allow_circular_includes_from += [
-    "//brave/browser/ui/browser_window:impl",
-    "//brave/browser/ui/webui/brave_education",
-    "//brave/browser/ui/webui/brave_new_tab_page_refresh",
-    "//brave/browser/ui/webui/brave_news_internals",
+    "//luxxle/browser/ui/browser_window:impl",
+    "//luxxle/browser/ui/webui/brave_education",
+    "//luxxle/browser/ui/webui/brave_new_tab_page_refresh",
+    "//luxxle/browser/ui/webui/brave_news_internals",
   ]
 }
 if (is_android) {
   brave_ui_allow_circular_includes_from +=
-      [ "//brave/browser/ui/webui/new_tab_takeover/android:new_tab_takeover" ]
+      [ "//luxxle/browser/ui/webui/new_tab_takeover/android:new_tab_takeover" ]
 }
 if (toolkit_views) {
   brave_ui_allow_circular_includes_from += [
-    "//brave/browser/ui/views/frame/split_view",
-    "//brave/browser/ui/views/split_view",
-    "//brave/browser/ui/sidebar",
+    "//luxxle/browser/ui/views/frame/split_view",
+    "//luxxle/browser/ui/views/split_view",
+    "//luxxle/browser/ui/sidebar",
   ]
 }

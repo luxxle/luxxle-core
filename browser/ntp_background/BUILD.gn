@@ -3,7 +3,9 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/components/ntp_background_images/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/ntp_background_images/buildflags/buildflags.gni")
+import("//luxxle/build/config.gni")  # Need this for enable_custom_background flag
 import("//testing/test.gni")
 
 source_set("ntp_background") {
@@ -20,28 +22,43 @@ source_set("ntp_background") {
 
   deps = [
     "//base",
-    "//brave/app:brave_generated_resources_grit_grit",
-    "//brave/browser:browser_process",
-    "//brave/browser/brave_ads",
-    "//brave/components/brave_ads/browser",
-    "//brave/components/brave_ads/core/public:headers",
-    "//brave/components/brave_rewards/core",
-    "//brave/components/constants",
-    "//brave/components/ntp_background_images/browser",
-    "//brave/components/ntp_background_images/buildflags",
-    "//brave/components/ntp_background_images/common",
-    "//brave/components/p3a",
+    "//luxxle/app:brave_generated_resources_grit_grit",
+    "//luxxle/browser:browser_process",
+    "//luxxle/browser/brave_ads",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/core/public:headers",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ntp_background_images/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ntp_background_images/buildflags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ntp_background_images/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/p3a",
     "//chrome/browser:browser_process",
     "//chrome/browser:browser_public_dependencies",
     "//chrome/browser/content_settings:content_settings_factory",
     "//chrome/browser/profiles:profile",
-    "//components/infobars/content",
-    "//components/infobars/core",
-    "//components/keyed_service/content",
-    "//components/pref_registry",
-    "//components/prefs",
-    "//components/strings:components_strings_grit",
-    "//components/vector_icons",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/infobars/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/infobars/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/pref_registry",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/strings:components_strings_grit",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/vector_icons",
     "//content/public/browser",
     "//ui/base",
     "//url",
@@ -79,17 +96,26 @@ source_set("unit_tests") {
   deps = [
     ":ntp_background",
     "//base",
-    "//brave/browser:browser_process",
-    "//brave/components/brave_ads/core/public:headers",
-    "//brave/components/brave_referrals/browser",
-    "//brave/components/brave_rewards/core",
-    "//brave/components/ntp_background_images/browser",
-    "//brave/components/ntp_background_images/common",
-    "//brave/components/p3a",
+    "//luxxle/browser:browser_process",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/core/public:headers",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_referrals/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ntp_background_images/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ntp_background_images/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/p3a",
     "//chrome/test:test_support",
-    "//components/infobars/content",
-    "//components/prefs:test_support",
-    "//components/sync_preferences:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/infobars/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync_preferences:test_support",
     "//content/test:test_support",
     "//testing/gtest",
   ]
@@ -101,7 +127,8 @@ source_set("unit_tests") {
     ]
 
     deps += [
-      "//brave/components/constants",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/constants",
       "//chrome/test:test_support",
     ]
   }
@@ -123,9 +150,12 @@ if (enable_custom_background) {
       ":ntp_background",
       "//base",
       "//base/test:test_support",
-      "//brave/components/constants",
-      "//brave/components/ntp_background_images/browser",
-      "//brave/components/ntp_background_images/browser:test_support",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/constants",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/ntp_background_images/browser",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/ntp_background_images/browser:test_support",
       "//chrome/browser/profiles:profile",
       "//chrome/browser/ui",
       "//chrome/test:test_support",
@@ -133,6 +163,6 @@ if (enable_custom_background) {
       "//content/test:test_support",
     ]
 
-    data = [ "//brave/test/data/ntp_background/background.jpg" ]
+    data = [ "//luxxle/test/data/ntp_background/background.jpg" ]
   }
 }

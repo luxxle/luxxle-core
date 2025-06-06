@@ -12,35 +12,35 @@ cargo_crate("lib") {
   crate_name = "derive_more"
   epoch = "0.99"
   crate_type = "proc-macro"
-  crate_root = "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/lib.rs"
+  crate_root = "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/add_assign_like.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/add_helpers.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/add_like.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/as_mut.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/as_ref.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/constructor.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/deref.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/deref_mut.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/display.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/error.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/from.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/from_str.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/index.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/index_mut.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/into.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/into_iterator.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/is_variant.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/lib.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/mul_assign_like.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/mul_helpers.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/mul_like.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/not_like.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/parsing.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/sum_like.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/try_into.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/unwrap.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/utils.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/add_assign_like.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/add_helpers.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/add_like.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/as_mut.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/as_ref.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/constructor.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/deref.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/deref_mut.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/display.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/error.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/from.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/from_str.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/index.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/index_mut.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/into.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/into_iterator.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/is_variant.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/mul_assign_like.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/mul_helpers.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/mul_like.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/not_like.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/parsing.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/sum_like.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/try_into.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/unwrap.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/derive_more-v0_99/src/utils.rs",
   ]
   inputs = []
 
@@ -58,10 +58,10 @@ cargo_crate("lib") {
   proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
   proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
   deps = [
-    "//brave/third_party/rust/convert_case/v0_4:lib",
-    "//brave/third_party/rust/proc_macro2/v1:lib",
-    "//brave/third_party/rust/quote/v1:lib",
-    "//brave/third_party/rust/syn/v1:lib",
+    "//luxxle/third_party/rust/convert_case/v0_4:lib",
+    "//luxxle/third_party/rust/proc_macro2/v1:lib",
+    "//luxxle/third_party/rust/quote/v1:lib",
+    "//luxxle/third_party/rust/syn/v1:lib",
   ]
   features = [
     "add",

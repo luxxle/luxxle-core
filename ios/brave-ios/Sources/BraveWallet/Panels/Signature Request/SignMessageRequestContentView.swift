@@ -175,7 +175,7 @@ struct SignMessageRequestContentView: View {
         in: RoundedRectangle(cornerRadius: 10, style: .continuous)
       )
       .introspectTextView { textView in
-        // A flash to show users message is overflowing the text view (related to issue https://github.com/brave/brave-ios/issues/6277)
+        // A flash to show users message is overflowing the text view (related to issue https://github.com/luxxle/brave-ios/issues/6277)
         if showOrignalMessage[request.id] == true {
           let currentRequestHasConsecutiveNewLines =
             currentRequestDomain?.hasConsecutiveNewLines == true

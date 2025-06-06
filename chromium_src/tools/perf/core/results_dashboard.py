@@ -15,11 +15,11 @@ from core import path_util
 def BraveAuthTokenGeneratorCallback():
     """A substitution for LuciAuthTokenGeneratorCallback()"""
     vpython_name = 'vpython3.bat' if sys.platform == 'win32' else 'vpython3'
-    vpython_path = os.path.join(path_util.GetChromiumSrcDir(), 'brave',
+    vpython_path = os.path.join(path_util.GetChromiumSrcDir(), 'luxxle',
                                 'vendor', 'depot_tools', vpython_name)
     args = [
         vpython_path,
-        os.path.join(path_util.GetChromiumSrcDir(), 'brave', 'tools', 'perf',
+        os.path.join(path_util.GetChromiumSrcDir(), 'luxxle', 'tools', 'perf',
                      'dashboard_auth.py')
     ]
 

@@ -5,7 +5,7 @@
 
 import {
   RegisterPolymerTemplateModifications
-} from 'chrome://resources/brave/polymer_overriding.js'
+} from 'chrome://resources/luxxle/polymer_overriding.js'
 
 RegisterPolymerTemplateModifications({
   'settings-a11y-page': (templateContent) => {

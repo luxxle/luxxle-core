@@ -4,14 +4,16 @@
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
 brave_browser_download_sources = [
-  "//brave/browser/download/brave_download_item_model.cc",
-  "//brave/browser/download/brave_download_item_model.h",
+  "//luxxle/browser/download/brave_download_item_model.cc",
+  "//luxxle/browser/download/brave_download_item_model.h",
 ]
 
 brave_browser_download_deps = [
   "//base",
-  "//components/download/public/common:public",
-  "//components/strings:components_strings_grit",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//components/download/public/common:public",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//components/strings:components_strings_grit",
   "//services/network/public/cpp",
   "//ui/base",
   "//ui/gfx",

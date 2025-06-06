@@ -8,8 +8,8 @@ import { html, nothing } from '//resources/lit/v3_0/lit.rollup.js';
 
 export function getHtml(this: CrToolbarElement) {
   return html`
-<link rel="stylesheet" href="chrome://resources/brave/fonts/poppins.css">
-<link rel="stylesheet" href="chrome://resources/brave/fonts/inter.css">
+<link rel="stylesheet" href="chrome://resources/luxxle/fonts/poppins.css">
+<link rel="stylesheet" href="chrome://resources/luxxle/fonts/inter.css">
 
 <div class="br-toolbar ${this.fontsLoadedClassName}">
   ${this.showMenu ? html`

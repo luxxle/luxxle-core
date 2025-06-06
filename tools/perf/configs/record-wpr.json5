@@ -3,8 +3,8 @@
 // * the config should have only one benchmark enabled.
 {
   "configurations": [{
-    "browser-type": "brave",
-    "label": "brave",
+    "browser-type": "luxxle",
+    "label": "luxxle",
     "target": "v1.71.15",
     "profile": "brave-typical-win",
     "profile-rebase": "online",

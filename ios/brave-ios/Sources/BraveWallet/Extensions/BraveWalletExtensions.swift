@@ -149,7 +149,7 @@ extension BraveWallet.AccountId {
   /// Two `AccountIds` equal iff their `unique_key` fields equal. Use this to
   /// check AccountIds for equality or to store as string keys. Persist with
   /// caution as format may change.
-  /// https://github.com/brave/brave-core/pull/18767
+  /// https://github.com/luxxle/brave-core/pull/18767
   open override func isEqual(_ object: Any?) -> Bool {
     guard let object = object as? BraveWallet.AccountId else { return false }
     return self.uniqueKey == object.uniqueKey

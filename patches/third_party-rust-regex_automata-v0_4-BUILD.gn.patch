@@ -7,5 +7,5 @@ index 3d6b21301b7a9bbbd785d13715832d7800a2d214..5e8bf33b20a49231bd7ae44f4ad1afa9
    # it from first-party code.
    visibility = [ "//third_party/rust/*" ]
 +  features += [ "alloc", "dfa-onepass", "dfa-search", "hybrid", "meta", "nfa-backtrack", "nfa-pikevm", "nfa-thompson", "perf-inline", "perf-literal", "perf-literal-multisubstring", "perf-literal-substring", "std", "syntax", "unicode", "unicode-age", "unicode-bool", "unicode-case", "unicode-gencat", "unicode-perl", "unicode-script", "unicode-segment", "unicode-word-boundary" ]
-+  deps = [ "//brave/third_party/rust/aho_corasick/v1:lib", "//brave/third_party/rust/regex_syntax/v0_8:lib", "//third_party/rust/memchr/v2:lib" ]
++  deps = [ "//luxxle/third_party/rust/aho_corasick/v1:lib", "//luxxle/third_party/rust/regex_syntax/v0_8:lib", "//third_party/rust/memchr/v2:lib" ]
  }

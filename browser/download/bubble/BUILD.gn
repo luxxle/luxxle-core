@@ -13,9 +13,12 @@ source_set("unit_tests") {
     "//chrome/browser",
     "//chrome/browser/ui/download",
     "//chrome/test:test_support",
-    "//components/download/public/common:test_support",
-    "//components/offline_items_collection/core",
-    "//components/safe_browsing/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/download/public/common:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/offline_items_collection/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/safe_browsing/core/common",
     "//content/test:test_support",
     "//testing/gmock",
     "//testing/gtest",

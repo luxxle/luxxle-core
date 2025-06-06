@@ -3,7 +3,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import("//brave/components/playlist/common/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/playlist/common/buildflags/buildflags.gni")
 
 assert(enable_playlist)
 
@@ -25,18 +26,20 @@ source_set("browser_tests") {
       "playlist_browsertest.cc",
     ]
 
-    deps += [ "//brave/browser/ui/sidebar" ]
+    deps += [ "//luxxle/browser/ui/sidebar" ]
   }
 
   deps += [
     "//base",
-    "//brave/components/playlist/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/playlist/browser",
     "//chrome/app:command_ids",
     "//chrome/browser",
     "//chrome/browser/profiles:profile",
     "//chrome/browser/ui",
     "//chrome/test:test_support",
-    "//components/network_session_configurator/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/network_session_configurator/common",
     "//content/test:test_support",
     "//net",
     "//net:test_support",
@@ -73,10 +76,12 @@ source_set("unit_tests") {
 
   deps = [
     "//base",
-    "//brave/components/playlist/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/playlist/browser",
     "//chrome/browser/prefs",
     "//chrome/test:test_support",
-    "//components/pref_registry",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/pref_registry",
     "//content/test:test_support",
   ]
 

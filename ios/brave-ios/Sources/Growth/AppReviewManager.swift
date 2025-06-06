@@ -47,7 +47,7 @@ public class AppReviewManager: ObservableObject {
     // Checking various main criteria and sub criteria
     // Performing Rating Request as a result of some actions
     // This logic is reverted to legacy logic later
-    // Context: https://github.com/brave/brave-ios/pull/6210
+    // Context: https://github.com/luxxle/brave-ios/pull/6210
     case revised
     // Revised Review Logic which aligns with Android platform
     // Checking various main criteria and sub criteria

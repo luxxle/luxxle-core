@@ -15,7 +15,7 @@ PROGNAME=brave
 INSTALLDIR=/opt/brave.com/brave
 
 # Directory for device policy enrollments.
-ENROLLMENTDIR=/etc/brave/policies/enrollment
+ENROLLMENTDIR=/etc/luxxle/policies/enrollment
 
 # Display string for desktop menu/icon.
 MENUNAME="Brave Web Browser"

@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import {html, RegisterPolymerTemplateModifications, RegisterPolymerComponentReplacement} from 'chrome://resources/brave/polymer_overriding.js'
+import {html, RegisterPolymerTemplateModifications, RegisterPolymerComponentReplacement} from 'chrome://resources/luxxle/polymer_overriding.js'
 import {BraveSettingsAutofillPageElement} from '../brave_autofill_page/brave_autofill_page.js'
 import {loadTimeData} from '../i18n_setup.js'
 

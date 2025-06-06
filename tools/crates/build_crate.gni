@@ -7,7 +7,7 @@ template("build_crate") {
   crate = target_name
   assert(
       defined(invoker["${crate}_exe"]),
-      "Please add ${crate}_exe to //brave/tools/crates/config.gni (or to $crate itself)!")
+      "Please add ${crate}_exe to //luxxle/tools/crates/config.gni (or to $crate itself)!")
   crate_exe = invoker["${crate}_exe"]
 
   action("build_$crate") {

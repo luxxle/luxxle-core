@@ -25,7 +25,7 @@ const char* TypeToString(NTPBackgroundPrefs::Type type) {
   // See class description for details.
   switch (type) {
     case NTPBackgroundPrefs::Type::kBrave:
-      return "brave";
+      return "luxxle";
     case NTPBackgroundPrefs::Type::kCustomImage:
       return "custom_image";
     case NTPBackgroundPrefs::Type::kColor:
@@ -35,7 +35,7 @@ const char* TypeToString(NTPBackgroundPrefs::Type type) {
 
 NTPBackgroundPrefs::Type StringToType(const std::string& type_string) {
   // See class description for details.
-  if (type_string == "brave") {
+  if (type_string == "luxxle") {
     return NTPBackgroundPrefs::Type::kBrave;
   }
   if (type_string == "custom_image") {

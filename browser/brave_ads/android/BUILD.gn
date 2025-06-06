@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/build/config.gni")
+import("//luxxle/build/config.gni")
 import("//third_party/jni_zero/jni_zero.gni")
 
 assert(is_android)
@@ -17,12 +17,15 @@ source_set("android") {
   public_deps = [ "//base" ]
 
   deps = [
-    "//brave/browser/brave_ads",
-    "//brave/browser/brave_ads/android:jni_headers",
-    "//brave/components/brave_ads/browser",
-    "//brave/components/brave_ads/core/public:headers",
+    "//luxxle/browser/brave_ads",
+    "//luxxle/browser/brave_ads/android:jni_headers",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/core/public:headers",
     "//chrome/browser/profiles:profile",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
   ]
 }
 

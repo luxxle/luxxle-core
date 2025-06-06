@@ -12,17 +12,17 @@ cargo_crate("lib") {
   crate_name = "cipher"
   epoch = "0.4"
   crate_type = "rlib"
-  crate_root = "//brave/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/lib.rs"
+  crate_root = "//luxxle/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/block.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/dev.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/dev/block.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/dev/stream.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/errors.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/lib.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/stream.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/stream_core.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/stream_wrapper.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/block.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/dev.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/dev/block.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/dev/stream.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/errors.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/stream.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/stream_core.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/cipher-v0_4/src/stream_wrapper.rs",
   ]
   inputs = []
 
@@ -41,9 +41,9 @@ cargo_crate("lib") {
   proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
   proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
   deps = [
-    "//brave/third_party/rust/crypto_common/v0_1:lib",
-    "//brave/third_party/rust/inout/v0_1:lib",
-    "//brave/third_party/rust/zeroize/v1:lib",
+    "//luxxle/third_party/rust/crypto_common/v0_1:lib",
+    "//luxxle/third_party/rust/inout/v0_1:lib",
+    "//luxxle/third_party/rust/zeroize/v1:lib",
   ]
   features = [ "zeroize" ]
   rustenv = []

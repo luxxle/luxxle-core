@@ -17,9 +17,9 @@ import XCTest
   }
 
   func testPreferredSearchSuggestionText() {
-    XCTAssertEqual("brave", "   brave   ".preferredSearchSuggestionText)
+    XCTAssertEqual("luxxle", "   brave   ".preferredSearchSuggestionText)
     XCTAssertEqual("bravesearch123", "bravesearch123".preferredSearchSuggestionText)
-    XCTAssertEqual("brave", "    brave".preferredSearchSuggestionText)
+    XCTAssertEqual("luxxle", "    brave".preferredSearchSuggestionText)
     XCTAssertEqual(
       "brave search talk- engine",
       "brave search talk- engine ".preferredSearchSuggestionText

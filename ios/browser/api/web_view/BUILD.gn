@@ -7,7 +7,7 @@ config("config") {
   # For our own public headers to be able to import the official public headers
   include_dirs = [
     "//ios/web_view/public",
-    "//brave/ios/web_view/public",
+    "//luxxle/ios/web_view/public",
   ]
 }
 
@@ -19,7 +19,7 @@ source_set("web_view") {
   ]
   deps = [
     "//base",
-    "//brave/ios/web_view",
+    "//luxxle/ios/web_view",
     "//ios/chrome/browser/tabs/model",
     "//ios/web/common",
     "//ios/web/web_state",

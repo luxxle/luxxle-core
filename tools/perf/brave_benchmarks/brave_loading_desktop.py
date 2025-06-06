@@ -27,7 +27,7 @@ from telemetry import benchmark
 
 from telemetry.web_perf import timeline_based_measurement
 
-with SysPath(os.path.join(GetChromiumSrcDir(), 'brave', 'tools', 'perf')):
+with SysPath(os.path.join(GetChromiumSrcDir(), 'luxxle', 'tools', 'perf')):
   from brave_page_sets.brave_loading_desktop_pages import (
       BraveLoadingDesktopStorySet)
 
@@ -37,7 +37,7 @@ def CreateCoreTBMOptions(metric_list):
   loading_metrics_category.AugmentOptionsForLoadingMetrics(tbm_options)
   cat_filter = tbm_options.config.chrome_trace_config.category_filter
   if sys.platform != 'darwin':
-    # Disabled on MacOS: https://github.com/brave/brave-browser/issues/44800
+    # Disabled on MacOS: https://github.com/luxxle/brave-browser/issues/44800
     cat_filter.AddDisabledByDefault('disabled-by-default-histogram_samples')
   tbm_options.ExtendTimelineBasedMetric(metric_list)
   return tbm_options
@@ -57,7 +57,7 @@ class LoadingDesktopBrave(perf_benchmark.PerfBenchmark):
   def CreateCoreTimelineBasedMeasurementOptions(self):
     metrics = ['braveNavigationMetric']
     if sys.platform != 'darwin':
-      # Disabled on MacOS: https://github.com/brave/brave-browser/issues/44800
+      # Disabled on MacOS: https://github.com/luxxle/brave-browser/issues/44800
       metrics.append('braveGeneralUmaMetric')
     return CreateCoreTBMOptions(metrics)
 
@@ -84,7 +84,7 @@ class LoadingDesktopBraveStartup(perf_benchmark.PerfBenchmark):
   def CreateCoreTimelineBasedMeasurementOptions(self):
     metrics = []
     if sys.platform != 'darwin':
-      # Disabled on MacOS: https://github.com/brave/brave-browser/issues/44800
+      # Disabled on MacOS: https://github.com/luxxle/brave-browser/issues/44800
       metrics.extend(['braveGeneralUmaMetric', 'braveStartupUmaMetric'])
     return CreateCoreTBMOptions(metrics)
 

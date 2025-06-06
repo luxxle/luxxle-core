@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-// Temporary fix for https://github.com/brave/brave-browser/issues/35938
+// Temporary fix for https://github.com/luxxle/brave-browser/issues/35938
 #define BRAVE_ACCESSIBILITY_PARENT  \
   if (self == _accessibilityParent) \
     return [super accessibilityParent];

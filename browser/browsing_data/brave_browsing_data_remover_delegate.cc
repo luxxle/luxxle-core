@@ -28,7 +28,7 @@
 namespace {
 
 // TODO(boocmp): Remove this in
-// https://github.com/brave/brave-browser/issues/44327.
+// https://github.com/luxxle/brave-browser/issues/44327.
 class ContentSettingsDefaultsKeeper {
  public:
   explicit ContentSettingsDefaultsKeeper(Profile* profile) : profile_(profile) {
@@ -81,7 +81,7 @@ class ContentSettingsDefaultsKeeper {
       // value is not the default. Setting the default value also notifies Sync
       // to update the value and clear unwanted state.
       // This code should be removed in
-      // https://github.com/brave/brave-browser/issues/44327.
+      // https://github.com/luxxle/brave-browser/issues/44327.
       map->SetWebsiteSettingCustomScope(
           setting.primary_pattern, setting.secondary_pattern,
           ContentSettingsType::BRAVE_FINGERPRINTING_V2, base::Value(), {});

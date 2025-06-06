@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-import { html, RegisterPolymerTemplateModifications } from 'chrome://resources/brave/polymer_overriding.js'
+import { html, RegisterPolymerTemplateModifications } from 'chrome://resources/luxxle/polymer_overriding.js'
 
 RegisterPolymerTemplateModifications({
   'settings-safety-hub-page': (templateContent) => {

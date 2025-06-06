@@ -600,7 +600,7 @@ public class BraveNtpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
         // We have to use PostTask otherwise it's possible to get IllegalStateException
         // during a call to notifyItemChanged when scrolling is in progress, see details
-        // here https://github.com/brave/brave-browser/issues/29343
+        // here https://github.com/luxxle/brave-browser/issues/29343
         PostTask.postTask(TaskTraits.UI_DEFAULT, () -> {
             mImageCreditAlpha = alpha;
             try {

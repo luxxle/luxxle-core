@@ -10,19 +10,26 @@ source_set("ads_internals") {
   ]
 
   deps = [
-    "//brave/components/brave_ads/browser",
-    "//brave/components/brave_ads/browser/resources:generated_resources",
-    "//brave/components/brave_ads/core",
-    "//brave/components/brave_rewards/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/browser/resources:generated_resources",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core",
     "//chrome/browser:browser_public_dependencies",
     "//chrome/browser/profiles:profile",
   ]
 
   public_deps = [
     "//base",
-    "//brave/components/brave_ads/core/public:headers",
-    "//brave/components/services/bat_ads/public/interfaces",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/core/public:headers",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/services/bat_ads/public/interfaces",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//content/public/browser",
     "//mojo/public/cpp/bindings",
   ]

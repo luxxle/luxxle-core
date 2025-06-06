@@ -51,7 +51,7 @@ void AddBookmarkNode(Profile* profile) {
   // We need to pass a non-empty title when creating a bookmark so that an
   // accessible name is also available, otherwise we'll hit a CHECK() and
   // the test will crash (see accessibility_paint_checks.cc).
-  bookmarks::AddIfNotBookmarked(bookmark_model, url, u"brave");
+  bookmarks::AddIfNotBookmarked(bookmark_model, url, u"luxxle");
   nodes = bookmark_model->GetNodesByURL(url);
   EXPECT_EQ(1UL, nodes.size());
 }

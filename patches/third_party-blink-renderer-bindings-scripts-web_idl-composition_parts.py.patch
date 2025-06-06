@@ -6,7 +6,7 @@ index 6d965b89b03d09860c0063251cf021424d3fe9a7..11c8c1697190c6d8795274acd7efc338
          # Canonicalize the paths heuristically.
          if filepath is not None:
              index = filepath.find(self._blink_path_prefix)
-+            if filepath.find(posixpath.sep + posixpath.join('brave', 'third_party', 'blink', 'renderer', '')) >= 0: index = -1
++            if filepath.find(posixpath.sep + posixpath.join('luxxle', 'third_party', 'blink', 'renderer', '')) >= 0: index = -1
              if index >= 0:
                  filepath = filepath[index + 1:]
  

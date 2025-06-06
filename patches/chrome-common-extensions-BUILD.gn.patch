@@ -6,7 +6,7 @@ index f6db8be51b3bbf9c861091ccb5e135784735b9b9..285429162c4f7c53e369cb13a07de4ca
  
      sources += [ "api/file_system_provider_capabilities/file_system_provider_capabilities_handler.cc" ]
    }
-+  import("//brave/common/extensions/sources.gni") public += brave_chrome_common_extensions_public sources += brave_chrome_common_extensions_sources deps += brave_chrome_common_extensions_deps public_deps += brave_chrome_common_extensions_public_deps
++  import("//luxxle/common/extensions/sources.gni") public += brave_chrome_common_extensions_public sources += brave_chrome_common_extensions_sources deps += brave_chrome_common_extensions_deps public_deps += brave_chrome_common_extensions_public_deps
  }
  
  # TODO(zturner): Enable this on Windows. See

@@ -479,14 +479,14 @@ extension BrowserViewController: TabPolicyDecider {
       return .allow
     }
 
-    if requestURL.scheme?.contains("brave") == true || requestURL.scheme?.contains("chrome") == true
+    if requestURL.scheme?.contains("luxxle") == true || requestURL.scheme?.contains("chrome") == true
     {
       return .allow
     }
 
     // Standard schemes are handled in previous if-case.
     // This check handles custom app schemes to open external apps.
-    // Our own 'brave' scheme does not require the switch-app prompt.
+    // Our own 'luxxle' scheme does not require the switch-app prompt.
     // Do not allow opening external URLs from child tabs
     let shouldOpen = await handleExternalURL(
       requestURL,

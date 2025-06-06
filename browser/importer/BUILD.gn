@@ -24,11 +24,12 @@ if (!is_android) {
     deps = [
       "//base",
       "//base/test:test_support",
-      "//brave/common/importer",
+      "//luxxle/common/importer",
       "//chrome/browser",
       "//chrome/common",
       "//chrome/test:test_support",
-      "//components/value_store:test_support",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//components/value_store:test_support",
       "//extensions/browser",
       "//extensions/common:common_constants",
       "//testing/gtest",
@@ -43,13 +44,14 @@ if (!is_android) {
 
     deps = [
       "//base",
-      "//brave/common/importer:importer",
+      "//luxxle/common/importer:importer",
       "//chrome/browser/importer",
       "//chrome/browser/ui",
       "//chrome/common:constants",
       "//chrome/common/importer",
       "//chrome/test:test_support",
-      "//components/value_store:test_support",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//components/value_store:test_support",
       "//content/test:test_support",
       "//testing/gtest",
     ]

@@ -40,7 +40,7 @@
     {
       "identity" : "panmodal",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/brave/PanModal",
+      "location" : "https://github.com/luxxle/PanModal",
       "state" : {
         "revision" : "e67e9eff53c05f19b41bbb2ca7d27ff5859a586c"
       }

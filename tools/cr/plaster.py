@@ -40,7 +40,7 @@ class PlasterFile:
     source: Path = field(init=False)
 
     def __post_init__(self):
-        # TODO(https://github.com/brave/brave-browser/issues/45052): For now
+        # TODO(https://github.com/luxxle/brave-browser/issues/45052): For now
         # there's only support for `src`, but eventually there's going to be
         # the need to support other repositories as well.
         object.__setattr__(

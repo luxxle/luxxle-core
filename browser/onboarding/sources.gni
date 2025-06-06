@@ -4,18 +4,23 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 brave_browser_onboarding_sources = [
-  "//brave/browser/onboarding/onboarding_tab_helper.cc",
-  "//brave/browser/onboarding/onboarding_tab_helper.h",
-  "//brave/browser/onboarding/pref_names.h",
+  "//luxxle/browser/onboarding/onboarding_tab_helper.cc",
+  "//luxxle/browser/onboarding/onboarding_tab_helper.h",
+  "//luxxle/browser/onboarding/pref_names.h",
 ]
 
 brave_browser_onboarding_deps = [
   "//base",
-  "//brave/browser:browser_process",
-  "//components/content_settings/core/browser",
-  "//components/content_settings/core/common",
-  "//components/permissions",
-  "//components/pref_registry",
-  "//components/prefs",
+  "//luxxle/browser:browser_process",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//components/content_settings/core/browser",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//components/content_settings/core/common",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//components/permissions",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//components/pref_registry",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//components/prefs",
   "//content/public/browser",
 ]

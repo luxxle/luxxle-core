@@ -13,8 +13,7 @@ template("ios_create_xcframework") {
   _framework_name = get_path_info(invoker.framework_dir, "name")
   _root_dir = get_path_info(invoker.framework_dir, "dir")
   _ios_create_xcframework_input = invoker.framework_dir
-  _ios_create_xcframework_output =
-      "$_root_dir/" + _framework_name + ".xcframework"
+_ios_create_xcframework_output = "$_root_dir/" + _framework_name + ".xcframework"
   _extra_args = []
   if (defined(invoker.remove_asset_catalogs) && invoker.remove_asset_catalogs) {
     _extra_args += [ "--remove_asset_catalogs" ]

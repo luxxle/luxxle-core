@@ -4,16 +4,15 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 brave_app_billing_sources = [
-  "//brave/android/java/org/chromium/chrome/browser/billing/InAppPurchaseWrapper.java",
-  "//brave/android/java/org/chromium/chrome/browser/billing/LinkSubscriptionUtils.java",
-  "//brave/android/java/org/chromium/chrome/browser/billing/PurchaseModel.java",
+  "//luxxle/android/java/org/chromium/chrome/browser/billing/InAppPurchaseWrapper.java",
+  "//luxxle/android/java/org/chromium/chrome/browser/billing/LinkSubscriptionUtils.java",
+  "//luxxle/android/java/org/chromium/chrome/browser/billing/PurchaseModel.java",
 ]
 
-brave_app_billing_deps =
-    [ "//brave/third_party/android_deps:com_android_billingclient_java" ]
+brave_app_billing_deps = [ "//luxxle/third_party/android_deps:com_android_billingclient_java" ]
 
 brave_java_base_module_billing_deps = [
-  "//brave/third_party/android_deps:com_android_billingclient_java",
+  "//luxxle/third_party/android_deps:com_android_billingclient_java",
   "//third_party/android_deps:google_android_datatransport_transport_backend_cct_java",
   "//third_party/android_deps:google_android_datatransport_transport_runtime_java",
 ]

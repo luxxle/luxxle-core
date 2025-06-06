@@ -6,7 +6,7 @@ index 6d66e1e24118b7e938a84ea049c437151afdd8b2..230097b7d7716e01f076565365b08b6b
    schema_file = "prepopulated_engines_schema.json"
    namespace = "TemplateURLPrepopulateData"
    deps = [ "//base" ]
-+  import("//brave/components/search_engines/sources.gni") additional_sources = brave_components_search_engines_sources deps += brave_components_search_engines_deps
++  import("//luxxle/components/search_engines/sources.gni") additional_sources = brave_components_search_engines_sources deps += brave_components_search_engines_deps
  }
  
  json_to_struct("regional_settings") {

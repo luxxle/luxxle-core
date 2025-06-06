@@ -9,23 +9,27 @@ brave_browser_themes_deps = []
 
 if (!is_android) {
   brave_browser_themes_sources += [
-    "//brave/browser/themes/brave_dark_mode_utils.cc",
-    "//brave/browser/themes/brave_private_window_theme_supplier.cc",
-    "//brave/browser/themes/brave_private_window_theme_supplier.h",
-    "//brave/browser/themes/brave_theme_service.cc",
-    "//brave/browser/themes/brave_theme_service.h",
+    "//luxxle/browser/themes/brave_dark_mode_utils.cc",
+    "//luxxle/browser/themes/brave_private_window_theme_supplier.cc",
+    "//luxxle/browser/themes/brave_private_window_theme_supplier.h",
+    "//luxxle/browser/themes/brave_theme_service.cc",
+    "//luxxle/browser/themes/brave_theme_service.h",
   ]
 
   brave_browser_themes_deps += [
     "//base",
-    "//brave/app:brave_generated_resources_grit",
-    "//brave/components/brave_vpn/common/buildflags",
-    "//brave/components/constants",
+    "//luxxle/app:brave_generated_resources_grit",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_vpn/common/buildflags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
     "//chrome/browser/ui",
     "//chrome/browser/ui/color:color_headers",
     "//chrome/common",
-    "//components/pref_registry",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/pref_registry",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//ui/color",
     "//ui/gfx",
     "//ui/native_theme",

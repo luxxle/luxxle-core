@@ -6,7 +6,7 @@ index 1fe1ecf20ad9fad8b1a37267c2dfafee1b4fc211..143ba3b2d465c18c769eab126ba2c00d
    if (enable_pdf) {
      deps += [ "//chrome/browser/pdf" ]
    }
-+  import("//brave/browser/content_settings/sources.gni") deps += brave_browser_content_settings_deps
++  import("//luxxle/browser/content_settings/sources.gni") deps += brave_browser_content_settings_deps
  }
  
  # Fixes circular deps with different components. For example -

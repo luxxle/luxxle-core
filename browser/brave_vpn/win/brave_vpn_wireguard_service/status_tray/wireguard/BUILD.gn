@@ -10,6 +10,7 @@ source_set("wireguard") {
   ]
   deps = [
     "//base",
-    "//brave/components/brave_vpn/common/win",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_vpn/common/win",
   ]
 }

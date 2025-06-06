@@ -10,8 +10,10 @@ source_set("unittest") {
 
   deps = [
     "//chrome/browser/ui",
-    "//components/bookmarks/browser",
-    "//components/sync_preferences:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/bookmarks/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync_preferences:test_support",
     "//testing/gtest",
   ]
 }

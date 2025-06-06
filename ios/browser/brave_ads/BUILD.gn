@@ -15,9 +15,12 @@ source_set("brave_ads") {
 
   deps = [
     "//base/version_info",
-    "//components/pref_registry",
-    "//components/prefs",
-    "//components/search_engines",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/pref_registry",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/search_engines",
     "//ios/chrome/browser/search_engines/model",
     "//ios/chrome/browser/shared/model/profile",
     "//ios/chrome/browser/shared/model/profile:profile_keyed_service_factory",
@@ -28,8 +31,11 @@ source_set("brave_ads") {
 
   public_deps = [
     "//base",
-    "//brave/components/brave_ads/core",
-    "//brave/components/brave_ads/core/mojom",
-    "//components/keyed_service/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/core/mojom",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/core",
   ]
 }

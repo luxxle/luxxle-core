@@ -228,7 +228,7 @@ export function TopSites() {
   )
 }
 
-// TODO(https://github.com/brave/brave-browser/issues/45697): Use a pref to
+// TODO(https://github.com/luxxle/brave-browser/issues/45697): Use a pref to
 // persist the expanded state.
 const expandedStorageKey = 'ntp-top-sites-expanded'
 

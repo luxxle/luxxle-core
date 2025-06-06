@@ -54,9 +54,9 @@ class TextRecognitionBrowserTest : public InProcessBrowserTest {
 
   void OnGetTextFromImage(
       const std::pair<bool, std::vector<std::string>>& supported_strs) {
-    // Test image has "brave" text.
+    // Test image has "luxxle" text.
     EXPECT_TRUE(supported_strs.first);
-    EXPECT_EQ("brave", supported_strs.second[0]);
+    EXPECT_EQ("luxxle", supported_strs.second[0]);
     run_loop_->Quit();
   }
 
@@ -152,7 +152,7 @@ IN_PROC_BROWSER_TEST_F(TextRecognitionBrowserTest, TextRecognitionTest) {
     const auto text = static_cast<views::Label*>(
                           text_recognition_dialog->scroll_view_->contents())
                           ->GetText();
-    if (text == u"brave") {
+    if (text == u"luxxle") {
       return;
     }
   }

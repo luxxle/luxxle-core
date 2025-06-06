@@ -51,7 +51,7 @@ public class BraveEditUrlSuggestionProcessor extends EditUrlSuggestionProcessor 
     }
 
     /*
-     * Compared to upstream, we have different behaviour on clicking url bar https://github.com/brave/brave-browser/issues/10524
+     * Compared to upstream, we have different behaviour on clicking url bar https://github.com/luxxle/brave-browser/issues/10524
      * Instead of clearing it, we keep url showing. Default behavior on Chromium Desktop is to keep the url showing and we match that behavior for Brave Android.
      * This, however, changes showed suggestions on clicking url bar when we manually type url.
      * In this case the first suggestion shown has type `URL_WHAT_YOU_TYPED`,

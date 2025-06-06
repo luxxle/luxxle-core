@@ -118,11 +118,11 @@ constexpr NSString* kAdsResourceComponentMetadataVersion = @".v1";
   dispatch_queue_t monitorQueue;
 }
 
-// TODO(https://github.com/brave/brave-browser/issues/33730): Unify Brave Ads
+// TODO(https://github.com/luxxle/brave-browser/issues/33730): Unify Brave Ads
 // common operations.
 @property(nonatomic) BraveCommonOperations* commonOps;
 
-// TODO(https://github.com/brave/brave-browser/issues/33574): Unify Brave Ads
+// TODO(https://github.com/luxxle/brave-browser/issues/33574): Unify Brave Ads
 // component updater.
 @property(nonatomic) dispatch_group_t componentUpdaterPrefsWriteGroup;
 @property(nonatomic) dispatch_queue_t componentUpdaterPrefsWriteThread;
@@ -1304,7 +1304,7 @@ constexpr NSString* kAdsResourceComponentMetadataVersion = @".v1";
 - (void)getSiteHistory:(int)max_count
                forDays:(int)days_ago
               callback:(brave_ads::GetSiteHistoryCallback)callback {
-  // TODO(https://github.com/brave/brave-browser/issues/33681): Unify Brave Ads
+  // TODO(https://github.com/luxxle/brave-browser/issues/33681): Unify Brave Ads
   // site history.
   std::move(callback).Run({});
 }
@@ -1397,7 +1397,7 @@ constexpr NSString* kAdsResourceComponentMetadataVersion = @".v1";
 }
 
 - (void)recordP2AEvents:(const std::vector<std::string>&)events {
-  // TODO(https://github.com/brave/brave-browser/issues/33786): Unify Brave Ads
+  // TODO(https://github.com/luxxle/brave-browser/issues/33786): Unify Brave Ads
   // P3A analytics.
 }
 

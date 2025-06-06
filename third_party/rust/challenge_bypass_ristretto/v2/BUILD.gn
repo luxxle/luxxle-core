@@ -12,18 +12,18 @@ cargo_crate("lib") {
   crate_name = "challenge_bypass_ristretto"
   epoch = "2"
   crate_type = "rlib"
-  crate_root = "//brave/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/lib.rs"
+  crate_root = "//luxxle/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/dleq.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/errors.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/lib.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/macros.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/oprf.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/voprf.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/dleq.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/errors.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/macros.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/oprf.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/voprf.rs",
   ]
   inputs = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/../README.md",
-    "//brave/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/../docs/PROTOCOL.md",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/../README.md",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/challenge-bypass-ristretto-v2/src/../docs/PROTOCOL.md",
   ]
 
   build_native_rust_unit_tests = false
@@ -40,16 +40,16 @@ cargo_crate("lib") {
   proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
   proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
   deps = [
-    "//brave/third_party/rust/base64/v0_22:lib",
-    "//brave/third_party/rust/curve25519_dalek/v4:lib",
-    "//brave/third_party/rust/digest/v0_10:lib",
-    "//brave/third_party/rust/hmac/v0_12:lib",
-    "//brave/third_party/rust/rand/v0_8:lib",
-    "//brave/third_party/rust/rand_chacha/v0_3:lib",
-    "//brave/third_party/rust/rand_core/v0_6:lib",
-    "//brave/third_party/rust/serde/v1:lib",
-    "//brave/third_party/rust/subtle/v2:lib",
-    "//brave/third_party/rust/zeroize/v1:lib",
+    "//luxxle/third_party/rust/base64/v0_22:lib",
+    "//luxxle/third_party/rust/curve25519_dalek/v4:lib",
+    "//luxxle/third_party/rust/digest/v0_10:lib",
+    "//luxxle/third_party/rust/hmac/v0_12:lib",
+    "//luxxle/third_party/rust/rand/v0_8:lib",
+    "//luxxle/third_party/rust/rand_chacha/v0_3:lib",
+    "//luxxle/third_party/rust/rand_core/v0_6:lib",
+    "//luxxle/third_party/rust/serde/v1:lib",
+    "//luxxle/third_party/rust/subtle/v2:lib",
+    "//luxxle/third_party/rust/zeroize/v1:lib",
   ]
   features = [
     "alloc",

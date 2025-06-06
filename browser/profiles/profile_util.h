@@ -25,7 +25,7 @@ void SetDefaultThirdPartyCookieBlockValue(Profile* profile);
 #if BUILDFLAG(ENABLE_BRAVE_WEBTORRENT)
 // Used for capturing the current value of WebTorrent.
 // WebTorrent will be disabled for new users starting with
-// https://github.com/brave/brave-browser/issues/44303
+// https://github.com/luxxle/brave-browser/issues/44303
 // Once the feature is deprecated, this code can be removed and the preference
 // can be added under `RegisterProfilePrefsForMigration`.
 void SetWebTorrentEnabled(Profile* profile, bool is_new_profile);

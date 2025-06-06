@@ -15,8 +15,8 @@ using ImageType = ContentSettingImageModel::ImageType;
 void BraveGenerateContentSettingImageModels(
     std::vector<std::unique_ptr<ContentSettingImageModel>>* result) {
   // Remove the cookies and javascript content setting image model
-  // https://github.com/brave/brave-browser/issues/1197
-  // https://github.com/brave/brave-browser/issues/199
+  // https://github.com/luxxle/brave-browser/issues/1197
+  // https://github.com/luxxle/brave-browser/issues/199
   auto to_remove = std::ranges::remove_if(*result, [](const auto& m) {
     return m->image_type() == ImageType::COOKIES ||
            m->image_type() == ImageType::JAVASCRIPT;

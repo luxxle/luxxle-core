@@ -31,7 +31,7 @@ public class BraveSettingsIntentUtil {
          * thus not adjusted to be used within single Settings activity. For now we just open them
          * with a separate activity as it used to be.
          * Going forward we should adjust them to be used within the single Settings activity
-         * https://github.com/brave/brave-browser/issues/41977
+         * https://github.com/luxxle/brave-browser/issues/41977
          */
         if (ChromeFeatureList.sSettingsSingleActivity.isEnabled()
                 && fragmentName != null

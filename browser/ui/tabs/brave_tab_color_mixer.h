@@ -11,12 +11,12 @@
 namespace tabs {
 
 // Called from
-// //brave/chromium_src/chrome/browser/ui/color/tab_strip_color_mixer.cc
+// //luxxle/chromium_src/chrome/browser/ui/color/tab_strip_color_mixer.cc
 void AddBraveTabThemeColorMixer(ui::ColorProvider* provider,
                                 const ui::ColorProviderKey& key);
 
 // Called from
-// //brave/browser/themes/brave_private_window_theme_supplier.cc
+// //luxxle/browser/themes/brave_private_window_theme_supplier.cc
 void AddBraveTabPrivateThemeColorMixer(ui::ColorProvider* provider,
                                        const ui::ColorProviderKey& key);
 void AddBraveTabTorThemeColorMixer(ui::ColorProvider* provider,

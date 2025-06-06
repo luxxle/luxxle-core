@@ -7,7 +7,7 @@ index 1d57b584cdb303da4f344f9a99b926949e572305..fe8dc28c4a307ef575a3bd470f4f20b6
  
  
 -RESULTS_URL = 'https://chromeperf.appspot.com'
-+RESULTS_URL = 'https://brave-perf-dashboard.appspot.com'; sys.path.append(os.path.join(path_util.GetChromiumSrcDir(), 'brave', 'tools', 'perf', 'components')); import brave_logdog_helper as logdog_helper
++RESULTS_URL = 'https://brave-perf-dashboard.appspot.com'; sys.path.append(os.path.join(path_util.GetChromiumSrcDir(), 'luxxle', 'tools', 'perf', 'components')); import brave_logdog_helper as logdog_helper
  
  # Until we are migrated to LUCI, we will be utilizing a hard
  # coded master name based on what is passed in in the build properties.

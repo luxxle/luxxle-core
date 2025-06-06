@@ -6,7 +6,7 @@ index 54244bbdcb5a7599c6182e6092236f29b4b7a795..06feab4bb82d43237dbcbd170d0dabf8
      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
      <uses-permission-sdk-23 android:name="android.permission.ACCESS_WIFI_STATE" />
      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-+    {% include "//brave/android/java/AndroidManifest_user_permissions.xml" %}
++    {% include "//luxxle/android/java/AndroidManifest_user_permissions.xml" %}
  
      <!--
        Enable runtime permissions as uses-permission in tip of tree builds
@@ -70,7 +70,7 @@ index 54244bbdcb5a7599c6182e6092236f29b4b7a795..06feab4bb82d43237dbcbd170d0dabf8
              <intent-filter>
                  <action android:name="com.sec.android.airview.HOVER" />
              </intent-filter>
-+            {% include "//brave/android/java/AndroidManifest_intent_filters.xml" %}
++            {% include "//luxxle/android/java/AndroidManifest_intent_filters.xml" %}
              <meta-data android:name="android.app.searchable"
                  android:resource="@xml/searchable" />
          </activity-alias>
@@ -110,7 +110,7 @@ index 54244bbdcb5a7599c6182e6092236f29b4b7a795..06feab4bb82d43237dbcbd170d0dabf8
            </activity>
          {% endif %}
  
-+        {% include "//brave/android/java/AndroidManifest.xml" %}
++        {% include "//luxxle/android/java/AndroidManifest.xml" %}
          {% block extra_application_definitions %}
          {% endblock %}
        {% endmacro %}

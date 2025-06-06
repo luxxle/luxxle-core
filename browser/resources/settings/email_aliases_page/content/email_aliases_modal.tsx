@@ -17,7 +17,7 @@ import ProgressRing from "@brave/leo/react/progressRing"
 import Row from "./styles/Row"
 import styled from "styled-components"
 import { Alias, EmailAliasesServiceInterface, GenerateAliasResult, MAX_ALIASES }
-  from "gen/brave/components/email_aliases/email_aliases.mojom.m"
+  from "gen/luxxle/components/email_aliases/email_aliases.mojom.m"
 
 const ModalCol = styled(Col)`
   row-gap: ${spacing["2Xl"]};

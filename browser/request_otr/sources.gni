@@ -3,25 +3,29 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/components/request_otr/common/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/request_otr/common/buildflags/buildflags.gni")
 
 brave_browser_request_otr_sources = []
 brave_browser_request_otr_deps = []
 
 if (enable_request_otr) {
   brave_browser_request_otr_sources += [
-    "//brave/browser/request_otr/request_otr_service_factory.cc",
-    "//brave/browser/request_otr/request_otr_service_factory.h",
-    "//brave/browser/request_otr/request_otr_tab_helper.cc",
-    "//brave/browser/request_otr/request_otr_tab_helper.h",
+    "//luxxle/browser/request_otr/request_otr_service_factory.cc",
+    "//luxxle/browser/request_otr/request_otr_service_factory.h",
+    "//luxxle/browser/request_otr/request_otr_tab_helper.cc",
+    "//luxxle/browser/request_otr/request_otr_tab_helper.h",
   ]
 
   brave_browser_request_otr_deps += [
     "//base",
-    "//brave/components/request_otr/browser",
-    "//brave/components/request_otr/common",
-    "//brave/extensions:common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/request_otr/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/request_otr/common",
+    "//luxxle/extensions:common",
     "//chrome/common",
-    "//components/keyed_service/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/content",
   ]
 }

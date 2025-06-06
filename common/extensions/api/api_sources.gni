@@ -5,8 +5,7 @@
 
 brave_extensions_api_uncompiled_sources = []
 brave_extensions_api_root_namespace = "extensions::api::%(namespace)s"
-brave_extensions_api_schema_include_rules =
-    "//brave/common/extensions/api:extensions::api::%(namespace)s"
+brave_extensions_api_schema_include_rules = "//luxxle/common/extensions/api:extensions::api::%(namespace)s"
 
 schema_sources_ = [
   "brave_rewards.json",

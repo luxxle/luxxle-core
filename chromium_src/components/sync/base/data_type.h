@@ -20,7 +20,7 @@ constexpr DataTypeSet LowPriorityUserTypes() {
   // history delete directives are processed before retrieving history upon
   // initial sync, relevant entries will not be deleted.
   // This override must be reverted when
-  // https://github.com/brave/go-sync/issues/178 will be solved.
+  // https://github.com/luxxle/go-sync/issues/178 will be solved.
   low_priority_user_types.Remove(HISTORY);
   low_priority_user_types.Put(HISTORY_DELETE_DIRECTIVES);
 

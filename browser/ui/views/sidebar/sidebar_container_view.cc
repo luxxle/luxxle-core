@@ -842,7 +842,7 @@ void SidebarContainerView::OnTabStripModelChanged(
     // old contents registry. But since the registry is no longer associated
     // with the contents and is now associated with the tab instead we don't
     // need to do the swap here. However, we may need to take some action here
-    // to fix https://github.com/brave/brave-browser/issues/40681.
+    // to fix https://github.com/luxxle/brave-browser/issues/40681.
 
     // For AI Chat, if the contents got replaced then the AI Chat UI associated
     // with that contetnts will no longer work, so just close it.

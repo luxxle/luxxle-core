@@ -75,7 +75,7 @@ void BraveMainDelegate::BasicStartupComplete() {
   variations::AppendBraveCommandLineOptions(*command_line);
 
   if (!command_line->HasSwitch(switches::kVModule)) {
-    command_line->AppendSwitchASCII(switches::kVModule, "*/brave/*=0");
+    command_line->AppendSwitchASCII(switches::kVModule, "*/luxxle/*=0");
   }
 
   IOSChromeMainDelegate::BasicStartupComplete();

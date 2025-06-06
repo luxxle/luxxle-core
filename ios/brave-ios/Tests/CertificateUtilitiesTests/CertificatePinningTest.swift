@@ -10,7 +10,7 @@ import XCTest
 
 class CertificatePinningTest: XCTestCase {
   // Test whether pinning via Brave-Core works
-  // https://github.com/brave/brave-core/blob/master/chromium_src/net/tools/transport_security_state_generator/input_file_parsers.cc
+  // https://github.com/luxxle/brave-core/blob/master/chromium_src/net/tools/transport_security_state_generator/input_file_parsers.cc
   func testBraveCoreLivePinningSuccess() {
     let urls = ["https://brave.com"]
 
@@ -51,7 +51,7 @@ class CertificatePinningTest: XCTestCase {
   }
 
   // Test whether pinning via Brave-Core works
-  // https://github.com/brave/brave-core/blob/master/chromium_src/net/tools/transport_security_state_generator/input_file_parsers.cc
+  // https://github.com/luxxle/brave-core/blob/master/chromium_src/net/tools/transport_security_state_generator/input_file_parsers.cc
   func testBraveCoreLivePinningFailure() {
     let urls = ["https://ssl-pinning.someblog.org"]
 

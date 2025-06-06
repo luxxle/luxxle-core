@@ -4,7 +4,8 @@
 # you can obtain one at http://mozilla.org/MPL/2.0/.
 
 brave_extensions_resources = [
-  "//brave/browser/extensions/api:generated_api_registration",
-  "//brave/browser/extensions:resources",
-  "//brave/components/brave_webtorrent/browser/buildflags",
+  "//luxxle/browser/extensions/api:generated_api_registration",
+  "//luxxle/browser/extensions:resources",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/brave_webtorrent/browser/buildflags",
 ]

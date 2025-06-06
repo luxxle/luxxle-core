@@ -691,7 +691,7 @@ class GitHubIssue(Versioned):
             # Only uplift branches set milestones.
             results = json.loads(
                 terminal.run([
-                    'gh', 'api', 'repos/brave/brave-core/milestones', '--jq',
+                    'gh', 'api', 'repos/luxxle/brave-core/milestones', '--jq',
                     '[.[] | {number, title}]'
                 ]).stdout)
             if not results:
@@ -708,7 +708,7 @@ class GitHubIssue(Versioned):
             pr_number = pr_url.rsplit('/', 1)[-1]
             terminal.run([
                 'gh', 'api', '-X', 'PATCH',
-                f'repos/brave/brave-core/issues/{pr_number}', '-F',
+                f'repos/luxxle/brave-core/issues/{pr_number}', '-F',
                 f'milestone={milestone}'
             ])
 

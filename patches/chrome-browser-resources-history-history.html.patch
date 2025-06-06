@@ -6,7 +6,7 @@ index 942f67f870fecd144efc19308ff8148782b10e2e..195188c9b3bdd9720c76b058b6d075ac
        text-align: center;
      }
    </style>
-+  <link rel="stylesheet" href="chrome://resources/brave/page_specific/history/history_loading_shim.css">
++  <link rel="stylesheet" href="chrome://resources/luxxle/page_specific/history/history_loading_shim.css">
  </head>
  <body class="loading">
    <history-app id="history-app"></history-app>

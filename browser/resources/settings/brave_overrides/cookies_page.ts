@@ -7,7 +7,7 @@ import {
   html,
   RegisterPolymerComponentBehaviors,
   RegisterPolymerTemplateModifications
-} from 'chrome://resources/brave/polymer_overriding.js'
+} from 'chrome://resources/luxxle/polymer_overriding.js'
 
 import { loadTimeData } from '../i18n_setup.js'
 

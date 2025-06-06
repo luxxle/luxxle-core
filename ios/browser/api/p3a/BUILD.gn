@@ -11,10 +11,13 @@ source_set("p3a") {
   ]
   deps = [
     "//base",
-    "//brave/components/p3a",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/p3a",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//ios/chrome/browser/shared/model/url:constants",
-    "//ios/components/webui:url_constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//ios/components/webui:url_constants",
     "//ios/web/public",
     "//ios/web/public/webui",
     "//ios/web/web_state",

@@ -18,7 +18,7 @@ void RegisterBraveProfilePrefs(PrefRegistrySimple* registry) {
   registry->RegisterBooleanPref(kVerticalTabsExpandedStatePerWindow, false);
 #if BUILDFLAG(IS_WIN)
   // On Windows, we show window title by default
-  // https://github.com/brave/brave-browser/issues/30027
+  // https://github.com/luxxle/brave-browser/issues/30027
   registry->RegisterBooleanPref(kVerticalTabsShowTitleOnWindow, true);
 #else
   registry->RegisterBooleanPref(kVerticalTabsShowTitleOnWindow, false);

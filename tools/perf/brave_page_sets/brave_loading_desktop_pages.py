@@ -21,7 +21,7 @@ from telemetry import story
 
 from core.path_util import SysPath, GetChromiumSrcDir
 
-with SysPath(os.path.join(GetChromiumSrcDir(), 'brave', 'tools', 'perf')):
+with SysPath(os.path.join(GetChromiumSrcDir(), 'luxxle', 'tools', 'perf')):
   from components.path_util import GetPageSetsDataPath
 
 

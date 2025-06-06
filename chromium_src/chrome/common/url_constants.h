@@ -62,15 +62,15 @@ inline constexpr char kCastNoDestinationFoundURL[] =
 
 // The URL for the WebHID API help center article.
 inline constexpr char kChooserHidOverviewUrl[] =
-    "https://github.com/brave/brave-browser/wiki/Web-API-Permissions";
+    "https://github.com/luxxle/brave-browser/wiki/Web-API-Permissions";
 
 // The URL for the Web Serial API help center article.
 inline constexpr char kChooserSerialOverviewUrl[] =
-    "https://github.com/brave/brave-browser/wiki/Web-API-Permissions";
+    "https://github.com/luxxle/brave-browser/wiki/Web-API-Permissions";
 
 // The URL for the WebUsb help center article.
 inline constexpr char kChooserUsbOverviewURL[] =
-    "https://github.com/brave/brave-browser/wiki/Web-API-Permissions";
+    "https://github.com/luxxle/brave-browser/wiki/Web-API-Permissions";
 
 // Link to the forum for Chrome Beta.
 inline constexpr char kChromeBetaForumURL[] =
@@ -147,7 +147,7 @@ inline constexpr char kChromeUIUntrustedNewTabPageUrl[] =
 
 // The URL for the Chromium project used in the About dialog.
 inline constexpr char16_t kChromiumProjectURL[] =
-    u"https://github.com/brave/brave-browser/";
+    u"https://github.com/luxxle/brave-browser/";
 
 inline constexpr char16_t kContentSettingsExceptionsLearnMoreURL[] =
     u"https://support.brave.com/hc/en-us/articles/"

@@ -182,7 +182,7 @@ extension BrowserViewController: TabObserver {
 
     // Providers need re-initialized when changing origin to align with desktop in
     // `BraveContentBrowserClient::RegisterBrowserInterfaceBindersForFrame`
-    // https://github.com/brave/brave-core/blob/1.52.x/browser/brave_content_browser_client.cc#L608
+    // https://github.com/luxxle/brave-core/blob/1.52.x/browser/brave_content_browser_client.cc#L608
     if let browserData = tab.browserData {
       if let provider = profileController.braveWalletAPI.ethereumProvider(
         with: browserData,

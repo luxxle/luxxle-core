@@ -27,7 +27,7 @@ namespace {
 
 // AmazonRootCA1
 // From:
-// https://github.com/brave/brave-core/blob/master/chromium_src/net/tools/transport_security_state_generator/input_file_parsers.cc
+// https://github.com/luxxle/brave-core/blob/master/chromium_src/net/tools/transport_security_state_generator/input_file_parsers.cc
 static const char* brave_test_cert = R"(
     MIIDQTCCAimgAwIBAgITBmyfz5m/jAo54vB4ikPmljZbyjANBgkqhkiG9w0BAQsF
     ADA5MQswCQYDVQQGEwJVUzEPMA0GA1UEChMGQW1hem9uMRkwFwYDVQQDExBBbWF6

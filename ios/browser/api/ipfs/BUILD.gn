@@ -11,9 +11,11 @@ source_set("ipfs") {
   ]
   deps = [
     "//base",
-    "//brave/base/mac",
-    "//brave/components/ipfs",
-    "//components/user_prefs",
+    "//luxxle/base/mac",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ipfs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/user_prefs",
     "//ios/chrome/browser/shared/model/profile",
     "//net",
     "//url",

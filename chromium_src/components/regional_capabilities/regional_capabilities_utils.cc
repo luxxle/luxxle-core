@@ -38,7 +38,7 @@ constexpr TemplateURLPrepopulateData::BravePrepopulatedEngineID
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_BING,
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_STARTPAGE,
 };
-// LINT.ThenChange(//brave/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
+// LINT.ThenChange(//luxxle/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
 
 // Variations of the order / default options by country.
 // LINT.IfChange
@@ -52,7 +52,7 @@ constexpr TemplateURLPrepopulateData::BravePrepopulatedEngineID
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_STARTPAGE,
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_ECOSIA,
 };
-// LINT.ThenChange(//brave/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
+// LINT.ThenChange(//luxxle/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
 
 // LINT.IfChange
 constexpr TemplateURLPrepopulateData::BravePrepopulatedEngineID
@@ -65,7 +65,7 @@ constexpr TemplateURLPrepopulateData::BravePrepopulatedEngineID
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_BING,
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_STARTPAGE,
 };
-// LINT.ThenChange(//brave/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
+// LINT.ThenChange(//luxxle/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
 
 // LINT.IfChange
 constexpr TemplateURLPrepopulateData::BravePrepopulatedEngineID
@@ -78,7 +78,7 @@ constexpr TemplateURLPrepopulateData::BravePrepopulatedEngineID
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_STARTPAGE,
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_ECOSIA,
 };
-// LINT.ThenChange(//brave/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
+// LINT.ThenChange(//luxxle/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
 
 // LINT.IfChange
 constexpr TemplateURLPrepopulateData::BravePrepopulatedEngineID
@@ -91,7 +91,7 @@ constexpr TemplateURLPrepopulateData::BravePrepopulatedEngineID
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_STARTPAGE,
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_ECOSIA,
 };
-// LINT.ThenChange(//brave/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
+// LINT.ThenChange(//luxxle/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
 
 // LINT.IfChange
 constexpr TemplateURLPrepopulateData::BravePrepopulatedEngineID
@@ -104,7 +104,7 @@ constexpr TemplateURLPrepopulateData::BravePrepopulatedEngineID
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_STARTPAGE,
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_ECOSIA,
 };
-// LINT.ThenChange(//brave/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
+// LINT.ThenChange(//luxxle/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
 
 // LINT.IfChange
 constexpr TemplateURLPrepopulateData::BravePrepopulatedEngineID
@@ -117,7 +117,7 @@ constexpr TemplateURLPrepopulateData::BravePrepopulatedEngineID
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_BING,
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_STARTPAGE,
 };
-// LINT.ThenChange(//brave/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
+// LINT.ThenChange(//luxxle/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
 
 // LINT.IfChange
 constexpr TemplateURLPrepopulateData::BravePrepopulatedEngineID
@@ -127,7 +127,7 @@ constexpr TemplateURLPrepopulateData::BravePrepopulatedEngineID
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_DAUM,
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_GOOGLE,
 };
-// LINT.ThenChange(//brave/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
+// LINT.ThenChange(//luxxle/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
 
 // LINT.IfChange
 constexpr TemplateURLPrepopulateData::BravePrepopulatedEngineID
@@ -139,7 +139,7 @@ constexpr TemplateURLPrepopulateData::BravePrepopulatedEngineID
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_BING,
         TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_STARTPAGE,
 };
-// LINT.ThenChange(//brave/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
+// LINT.ThenChange(//luxxle/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
 
 // A map to keep track of a full list of default engines for countries
 // that don't use the default list.
@@ -181,7 +181,7 @@ constexpr auto kDefaultEnginesByCountryIdMap = base::MakeFixedFlatMap<
      {country_codes::CountryId("TM"), kBraveEnginesWithYandex},
      {country_codes::CountryId("US"), kBraveEnginesWithEcosia},
      {country_codes::CountryId("UZ"), kBraveEnginesWithYandex}});
-// LINT.ThenChange(//brave/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
+// LINT.ThenChange(//luxxle/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
 
 // Builds a vector of PrepulatedEngine objects from the given array of
 // |engine_ids|.
@@ -227,12 +227,12 @@ std::vector<const PrepopulatedEngine*> GetBravePrepopulatedEnginesForCountryID(
 // A versioned map tracking the singular default search engine per-country.
 //
 // When a profile is created, the current value for `kBraveCurrentDataVersion`
-// in `//brave/components/search_engines/brave_prepopulated_engines.h`
+// in `//luxxle/components/search_engines/brave_prepopulated_engines.h`
 // is stored as a profile preference.
 //
 // See:
-// - `SetDefaultSearchVersion` in `//brave/browser/profiles/profile_util.cc`
-// - `//brave/browser/profiles/brave_profile_manager.cc` where it is called
+// - `SetDefaultSearchVersion` in `//luxxle/browser/profiles/profile_util.cc`
+// - `//luxxle/browser/profiles/brave_profile_manager.cc` where it is called
 //
 // If that person resets the profile using brave://settings/reset, we need to
 // set the default search engine back to what it was when the profile was
@@ -692,7 +692,7 @@ TemplateURLPrepopulateData::BravePrepopulatedEngineID GetDefaultSearchEngine(
       {country_codes::CountryId("UZ"),
        TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_YANDEX},
   });
-  // LINT.ThenChange(//brave/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
+  // LINT.ThenChange(//luxxle/components/search_engines/brave_prepopulated_engines.h:kBraveCurrentDataVersion)
 
   if (version > 30) {
     const auto it = kContentV31.find(country_id);

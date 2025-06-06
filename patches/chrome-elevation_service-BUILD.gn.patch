@@ -6,7 +6,7 @@ index a0e3912b0f233deb201d146a448a317ae58643b1..8f93012c578eb93938b5b281ad0fd087
  
  midl("elevation_service_idl") {
    sources = [ "elevation_service_idl.idl" ]
-+  sources -= [ "elevation_service_idl.idl" ] sources += ["//brave/chromium_src/chrome/elevation_service/elevation_service_idl.idl" ]
++  sources -= [ "elevation_service_idl.idl" ] sources += ["//luxxle/chromium_src/chrome/elevation_service/elevation_service_idl.idl" ]
  
    writes_tlb = true
  }

@@ -90,7 +90,7 @@ def BraveModifyPartsForSigning(parts, config):
         # com.brave.Browser.<channel>.UpdaterPrivilegedHelper. This is because
         # our current branding logic treats each channel as a separate product.
         # We should instead use upstream's channel_customize mechanism.
-        # See https://github.com/brave/brave-browser/issues/39347.
+        # See https://github.com/luxxle/brave-browser/issues/39347.
         privileged_helper = parts['privileged-helper']
         channel_re = 'com.brave.Browser(.*).UpdaterPrivilegedHelper'
         replacement = 'com.brave.Browser.UpdaterPrivilegedHelper'

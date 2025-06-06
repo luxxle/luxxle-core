@@ -6,7 +6,7 @@ index 76dc0a5bab42f24d2fa1dc738d744b06a2852fc4..ee36b3c357a9c5a301d30af1e0e5a38a
          "$google_play_services_package:google_firebase_firebase_encoders_proto_java",
          "//third_party/androidx:androidx_annotation_annotation_java",
        ]
-+      import("//brave/third_party/android_deps/sources.gni") visibility += brave_third_party_android_deps_visibility
++      import("//luxxle/third_party/android_deps/sources.gni") visibility += brave_third_party_android_deps_visibility
      }
    }
  

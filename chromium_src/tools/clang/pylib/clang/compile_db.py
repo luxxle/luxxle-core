@@ -64,7 +64,7 @@ def _ProcessEntry(original_function, entry, filtered_args, target_os):
 
     entry_file = entry['file']
     brave_chromium_src_file = re.sub(r'^(\.\./\.\./|gen/)',
-                                     '../../brave/chromium_src/', entry_file)
+                                     '../../luxxle/chromium_src/', entry_file)
     if brave_chromium_src_file != entry_file:
         abs_brave_chromium_src_file = os.path.join(entry['directory'],
                                                    brave_chromium_src_file)

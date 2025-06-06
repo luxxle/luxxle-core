@@ -270,7 +270,7 @@ IN_PROC_BROWSER_TEST_F(WindowClosingConfirmBrowserTest,
 // Upstream issue.
 // Stack overflow on Win/ASan: http://crbug.com/367746304
 // TODO(simonhong): Enable when master has the fix.
-// https://github.com/brave/brave-browser/issues/41936
+// https://github.com/luxxle/brave-browser/issues/41936
 #define MAYBE_TestWithDownload DISABLED_TestWithDownload
 #else
 #define MAYBE_TestWithDownload TestWithDownload

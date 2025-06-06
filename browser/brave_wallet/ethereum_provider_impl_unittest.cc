@@ -279,7 +279,7 @@ class EthereumProviderImplUnitTest : public testing::Test {
   void Unlock() {
     base::RunLoop run_loop;
     keyring_service()->Unlock(
-        "brave", base::BindLambdaForTesting([&run_loop](bool success) {
+        "luxxle", base::BindLambdaForTesting([&run_loop](bool success) {
           EXPECT_TRUE(success);
           run_loop.Quit();
         }));

@@ -2,7 +2,8 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
-import("//brave/components/tor/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/tor/buildflags/buildflags.gni")
 
 source_set("unit_tests") {
   testonly = true
@@ -13,17 +14,18 @@ source_set("unit_tests") {
     "http/transport_security_state_unittest.cc",
   ]
 
-  if (enable_tor) {
-    sources += [
-      "proxy_resolution/configured_proxy_resolution_service_unittest.cc",
-      "proxy_resolution/proxy_config_service_tor_unittest.cc",
-    ]
-  }
+  # Commented out: tor support removed
+  # if (enable_tor) {
+  #   sources += [
+  #     "proxy_resolution/configured_proxy_resolution_service_unittest.cc",
+  #     "proxy_resolution/proxy_config_service_tor_unittest.cc",
+  #   ]
+  # }
 
   deps = [
     "//base",
     "//base/test:test_support",
-    "//brave/net/base:unit_tests",
+    "//luxxle/net/base:unit_tests",
     "//net",
     "//net:test_support",
     "//net/http:transport_security_state_unittest_data",

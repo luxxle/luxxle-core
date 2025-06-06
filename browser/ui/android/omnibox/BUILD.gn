@@ -31,8 +31,8 @@ android_library("java") {
     ":java_resources",
     "//base:base_java",
     "//base:base_shared_preferences_java",
-    "//brave/android/java/org/chromium/chrome/browser/search_engines:java",
-    "//brave/build/android:android_brave_strings_grd",
+    "//luxxle/android/java/org/chromium/chrome/browser/search_engines:java",
+    "//luxxle/build/android:android_brave_strings_grd",
     "//chrome/browser/commerce/merchant_viewer/android:java",
     "//chrome/browser/flags:java",
     "//chrome/browser/preferences:java",
@@ -42,13 +42,20 @@ android_library("java") {
     "//chrome/browser/tabmodel:java",
     "//chrome/browser/ui/android/omnibox:java",
     "//chrome/browser/ui/android/omnibox:java_resources",
-    "//components/favicon/android:java",
-    "//components/omnibox/browser:browser_java",
-    "//components/omnibox/common:features_java",
-    "//components/permissions/android:java",
-    "//components/prefs/android:java",
-    "//components/search_engines/android:java",
-    "//components/user_prefs/android:java",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/favicon/android:java",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/omnibox/browser:browser_java",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/omnibox/common:features_java",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/permissions/android:java",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs/android:java",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/search_engines/android:java",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/user_prefs/android:java",
     "//content/public/android:content_full_java",
     "//third_party/androidx:androidx_annotation_annotation_java",
     "//third_party/androidx:androidx_recyclerview_recyclerview_java",

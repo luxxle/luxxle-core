@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-# TODO(sszaloki): https://github.com/brave/brave-browser/issues/46286
+# TODO(sszaloki): https://github.com/luxxle/brave-browser/issues/46286
 # Try to componentize zxcvbn_data_component_installer.{h,cc}, and upstream the change.
 source_set("zxcvbn_data_component_installer") {
   sources = [
@@ -13,9 +13,12 @@ source_set("zxcvbn_data_component_installer") {
 
   deps = [
     "//base",
-    "//components/component_updater",
-    "//components/password_manager/core/common:features",
-    "//components/update_client",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/component_updater",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/password_manager/core/common:features",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/update_client",
     "//third_party/zxcvbn-cpp",
   ]
 }

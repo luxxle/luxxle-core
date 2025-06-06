@@ -7,7 +7,7 @@ index 29e75bd680f3528533271d1e8a0efbf8974da8d3..e841a3fb097eea29614892057ae201ad
  
  const char kMprisAPICurrentTrackPathFormatString[] =
 -    "/org/chromium/MediaPlayer2/TrackList/Track%s";
-+    "/com/brave/MediaPlayer2/TrackList/Track%s";
++    "/com/luxxle/MediaPlayer2/TrackList/Track%s";
  
  // Writes `bitmap` to a new temporary PNG file and returns a a pair of the file
  // path and a managed base::ScopedTempFile bound to this sequence.  This should

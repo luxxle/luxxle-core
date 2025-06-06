@@ -39,7 +39,7 @@ class RepositoryTest(unittest.TestCase):
     def test_to_brave(self):
         self.assertEqual(
             Repository(self.fake_chromium_src.chromium).to_brave(),
-            PurePath('brave'))
+            PurePath('luxxle'))
         self.assertEqual(
             Repository(self.fake_chromium_src.brave).to_brave(),
             PurePath('../brave'))

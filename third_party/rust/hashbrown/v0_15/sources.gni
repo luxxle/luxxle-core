@@ -4,9 +4,9 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 brave_third_party_rust_hashbrown_v0_15_deps = [
-  "//brave/third_party/rust/allocator_api2/v0_2:lib",
-  "//brave/third_party/rust/equivalent/v1:lib",
-  "//brave/third_party/rust/foldhash/v0_1:lib",
+  "//luxxle/third_party/rust/allocator_api2/v0_2:lib",
+  "//luxxle/third_party/rust/equivalent/v1:lib",
+  "//luxxle/third_party/rust/foldhash/v0_1:lib",
 ]
 
 brave_third_party_rust_hashbrown_v0_15_features = [

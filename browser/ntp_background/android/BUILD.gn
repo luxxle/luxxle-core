@@ -13,14 +13,18 @@ source_set("android") {
 
   deps = [
     "//base",
-    "//brave/browser:browser_process",
-    "//brave/browser/ntp_background",
-    "//brave/build/android:jni_headers",
-    "//brave/components/brave_referrals/browser",
-    "//brave/components/brave_stats/browser",
-    "//brave/components/ntp_background_images/browser",
+    "//luxxle/browser:browser_process",
+    "//luxxle/browser/ntp_background",
+    "//luxxle/build/android:jni_headers",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_referrals/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_stats/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ntp_background_images/browser",
     "//chrome/browser/profiles:profile",
-    "//components/keyed_service/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/content",
     "//content/public/browser",
   ]
 }

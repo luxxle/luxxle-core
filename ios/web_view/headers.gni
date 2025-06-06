@@ -4,12 +4,12 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 # This file exposes the //ios/web_view embedder as a regular source_set as well
-# as any additions found in //brave/ios/web_view/public
+# as any additions found in //luxxle/ios/web_view/public
 
 ios_web_view_public_headers = [
-  "//brave/ios/web_view/public/cwv_ssl_status_extras.h",
-  "//brave/ios/web_view/public/cwv_x509_certificate_extras.h",
-  "//brave/ios/web_view/public/cwv_web_view_extras.h",
+  "//luxxle/ios/web_view/public/cwv_ssl_status_extras.h",
+  "//luxxle/ios/web_view/public/cwv_x509_certificate_extras.h",
+  "//luxxle/ios/web_view/public/cwv_web_view_extras.h",
 
   "//ios/web_view/public/cwv_autofill_controller.h",
   "//ios/web_view/public/cwv_autofill_controller_delegate.h",

@@ -11,12 +11,15 @@ source_set("impl") {
   deps = [
     ":brave_adaptive_captcha",
     "//base",
-    "//brave/browser/brave_rewards",
-    "//brave/components/brave_adaptive_captcha",
+    "//luxxle/browser/brave_rewards",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_adaptive_captcha",
     "//chrome/browser/profiles:profile",
     "//chrome/browser/ui",
-    "//components/keyed_service/content",
-    "//components/user_prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/user_prefs",
   ]
 }
 
@@ -24,7 +27,8 @@ source_set("brave_adaptive_captcha") {
   sources = [ "brave_adaptive_captcha_service_factory.h" ]
 
   public_deps = [
-    "//components/keyed_service/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/content",
     "//content/public/browser",
   ]
 }

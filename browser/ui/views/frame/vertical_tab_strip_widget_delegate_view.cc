@@ -148,7 +148,7 @@ void VerticalTabStripWidgetDelegateView::OnWidgetVisibilityChanged(
         visible) {
       // This happens when restoring browser window. The upstream implementation
       // make child widgets visible regardless of their previous visibility.
-      // https://github.com/brave/brave-browser/issues/29917
+      // https://github.com/luxxle/brave-browser/issues/29917
       widget->Hide();
     }
   }

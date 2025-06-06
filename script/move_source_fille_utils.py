@@ -7,7 +7,7 @@
 
 import os
 
-BRAVE_DIR_NAME = 'brave'
+BRAVE_DIR_NAME = 'luxxle'
 
 def _is_in_brave_dir():
   return BRAVE_DIR_NAME == os.path.basename(os.getcwd())

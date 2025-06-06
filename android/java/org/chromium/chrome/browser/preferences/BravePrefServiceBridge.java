@@ -14,10 +14,10 @@ import org.chromium.chrome.browser.profiles.Profile;
 /**
  * Please don't add anything in that file. We are going to refactor it soon.
  * Check this PRs on how to handle preferences correctly:
- * https://github.com/brave/brave-core/pull/16356
- * https://github.com/brave/brave-core/pull/15905
+ * https://github.com/luxxle/brave-core/pull/16356
+ * https://github.com/luxxle/brave-core/pull/15905
  * For the local_state based prefs please look on the PR:
- * https://github.com/brave/brave-core/pull/16486
+ * https://github.com/luxxle/brave-core/pull/16486
  * Contact code owners if you have additional questions.
  */
 

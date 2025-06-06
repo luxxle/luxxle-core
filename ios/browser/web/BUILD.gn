@@ -12,16 +12,23 @@ source_set("web") {
   ]
   deps = [
     "//base",
-    "//brave/components/ai_chat/core/browser",
-    "//brave/components/brave_component_updater/browser",
-    "//brave/components/brave_user_agent/browser",
-    "//brave/components/brave_wallet/browser",
-    "//brave/components/constants",
-    "//brave/ios/browser/api/web_view",
-    "//brave/ios/browser/application_context",
-    "//brave/ios/browser/component_updater:zxcvbn_data_component_installer",
-    "//components/component_updater/installer_policies",
-    "//components/translate/ios/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_component_updater/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_user_agent/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_wallet/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
+    "//luxxle/ios/browser/api/web_view",
+    "//luxxle/ios/browser/application_context",
+    "//luxxle/ios/browser/component_updater:zxcvbn_data_component_installer",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/component_updater/installer_policies",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/translate/ios/browser",
     "//ios/chrome/browser/application_context/model",
     "//ios/chrome/browser/providers/raccoon:chromium_raccoon",
     "//ios/chrome/browser/shared/model/application_context",
@@ -29,10 +36,14 @@ source_set("web") {
     "//ios/chrome/browser/shared/model/url",
     "//ios/chrome/browser/shared/model/url:constants",
     "//ios/chrome/browser/web/model:web_internal",
-    "//ios/components/security_interstitials",
-    "//ios/components/security_interstitials/lookalikes",
-    "//ios/components/security_interstitials/safe_browsing",
-    "//ios/components/webui:url_constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//ios/components/security_interstitials",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//ios/components/security_interstitials/lookalikes",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//ios/components/security_interstitials/safe_browsing",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//ios/components/webui:url_constants",
     "//ios/public/provider/chrome/browser/url_rewriters:url_rewriters_api",
     "//ios/web_view:web_view_sources",
   ]

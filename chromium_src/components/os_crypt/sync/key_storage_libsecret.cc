@@ -28,7 +28,7 @@ const char* GetApplicationName() {
              command_line->HasSwitch("import-brave")) {
     return "chromium";
   } else {
-    return "brave";
+    return "luxxle";
   }
 }
 

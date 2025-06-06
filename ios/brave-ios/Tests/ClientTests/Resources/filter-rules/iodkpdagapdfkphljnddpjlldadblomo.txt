@@ -12849,7 +12849,7 @@ arabseed.*##+js(aeld, , _0x)
 arabseed.*##.ads-aa
 
 ! https://github.com/uBlockOrigin/uAssets/issues/6640
-! https://github.com/brave/brave-browser/issues/8453
+! https://github.com/luxxle/brave-browser/issues/8453
 lapresse.ca##+js(set, noBlocker, true)
 lapresse.ca##+js(aopw, _sp_)
 
@@ -41175,17 +41175,17 @@ $removeparam=s_cid
 $removeparam=vero_conv
 $removeparam=vero_id
 ! Olytics
-! https://github.com/brave/brave-browser/issues/17451
-! https://github.com/brave/brave-browser/issues/13644
+! https://github.com/luxxle/brave-browser/issues/17451
+! https://github.com/luxxle/brave-browser/issues/13644
 ! https://www.reddit.com/r/uBlockOrigin/comments/16c6rq0/why_does_ublockorigin_break_this_websites_login/
 $removeparam=rb_clickid
 $removeparam=oly_anon_id
-! https://github.com/brave/brave-browser/issues/11579
+! https://github.com/luxxle/brave-browser/issues/11579
 $removeparam=_openstat
-! https://github.com/brave/brave-browser/issues/17507
+! https://github.com/luxxle/brave-browser/issues/17507
 $removeparam=ml_subscriber
 $removeparam=ml_subscriber_hash
-! https://github.com/brave/brave-browser/issues/22082
+! https://github.com/luxxle/brave-browser/issues/22082
 $removeparam=oft_id
 $removeparam=oft_k
 $removeparam=oft_lk
@@ -41202,7 +41202,7 @@ $removeparam=bsft_mid
 $removeparam=bsft_uid
 $removeparam=bsft_aaid
 $removeparam=bsft_ek
-! https://github.com/brave/brave-browser/issues/25691
+! https://github.com/luxxle/brave-browser/issues/25691
 $removeparam=guce_referrer
 $removeparam=guce_referrer_sig
 ! Matomo/Piwik
@@ -41218,7 +41218,7 @@ $removeparam=pk_campaign
 $removeparam=pk_medium
 $removeparam=pk_source
 ! ActiveCampaign
-! https://github.com/brave/brave-browser/issues/26295
+! https://github.com/luxxle/brave-browser/issues/26295
 $removeparam=vgo_ee
 ! Cxense clickthrough tracking
 $removeparam=cx_click
@@ -41237,7 +41237,7 @@ $removeparam=ir_campaignid
 $removeparam=ir_adid
 $removeparam=irclickid
 $removeparam=ir_partnerid
-! https://github.com/brave/brave-browser/issues/34578
+! https://github.com/luxxle/brave-browser/issues/34578
 $removeparam=_kx
 ! https://github.com/DandelionSprout/adfilt/discussions/163#discussioncomment-5867802
 $removeparam=asc_campaign,domain=aboutamazon.com|amazon.*|amzn.to
@@ -41254,7 +41254,7 @@ $removeparam=ref_url,domain=twitter.com|x.com
 ! Twitter
 $removeparam=cxt,domain=twitter.com|x.com
 $removeparam=s,domain=twitter.com|x.com
-! https://github.com/brave/adblock-lists/pull/1455
+! https://github.com/luxxle/adblock-lists/pull/1455
 ! eBay tracking parameters
 ||www.ebay.$removeparam=ssspo
 ||www.ebay.$removeparam=sssrc
@@ -163126,7 +163126,7 @@ grubhub.com,dashboard.razorpay.com,joinhoney.com#@##credential_picker_container
 @@||taboola.com/libtrc/linkvertise-link-to/loader.js$domain=linkvertise.com
 @@||taboola.map.fastly.net^$domain=linkvertise.com
 ! CNAME: https://api.atlassian.com/metal/ingest
-! https://github.com/brave/adblock-lists/issues/752
+! https://github.com/luxxle/adblock-lists/issues/752
 @@||api.atlassian.com^$first-party
 ! CNAME: https://yab.yomiuri.co.jp/adv/presage/3.html
 @@||yab.yomiuri.co.jp/adv/$first-party
@@ -163153,12 +163153,12 @@ youtube.com##ytd-rich-item-renderer:has(ytd-display-ad-renderer)
 9gag.com##article:has(.promoted)
 ! https://www.reddit.com/r/uBlockOrigin/comments/17tm9rp/comment/k9i62zu/
 www.youtube.com##+js(nano-stb, resolve(1), 5000, 0.001)
-! Fix browser lockup on skepticalscience.com (https://github.com/brave/brave-browser/issues/5406)
+! Fix browser lockup on skepticalscience.com (https://github.com/luxxle/brave-browser/issues/5406)
 ||skepticalscience.net/widgets/heat_widget/js/heat_content.js$script,domain=skepticalscience.com
 ! adops.com unusable without this
 @@||adops.com^$~third-party
 @@||www.scrumpoker.online^$~third-party
-! https://github.com/brave/brave-browser/issues/31954
+! https://github.com/luxxle/brave-browser/issues/31954
 crunchyroll.com##+js(set-local-storage-item, /_evidon_consent_ls_\d+/, $remove$)
 ! fixes for several requests bypassing default blocklists
 ||aolcdn.com/*/adsWrapper.js$script
@@ -163286,7 +163286,7 @@ jcrew.com##+js(cookie-remover.js, dns_cookie)
 @@?offer_id=*&aff_id=
 ! ca.yahoo.com (ios)
 /av/ads/*$domain=yahoo.com
-! https://www.nintendo.co.jp/ring/index.html (https://github.com/brave/brave-browser/issues/11448)
+! https://www.nintendo.co.jp/ring/index.html (https://github.com/luxxle/brave-browser/issues/11448)
 @@||nintendo.co.jp/ring/assets_top/img/adv/$~third-party
 ! suumo.jp (ios)
 @@||suumo.jp/sp/js/beacon.js$script,domain=suumo.jp
@@ -163300,7 +163300,7 @@ startpage.com###gcsa-top
 @@||neustar.biz^$domain=home.neustar
 ! Blockfi Notifcations
 @@||braze.com^$third-party,domain=blockfi.com
-! https://canyoublockit.com/extreme-test/ (https://github.com/brave/brave-browser/issues/12929)
+! https://canyoublockit.com/extreme-test/ (https://github.com/luxxle/brave-browser/issues/12929)
 canyoublockit.com##+js(aopr, atob)
 canyoublockit.com##+js(acis, atob, decodeURIComponent)
 ! Fix livemint.com (anti-adblock)
@@ -163312,7 +163312,7 @@ uptostream.com,tirexo.lol##+js(acis, window.a)
 @@||tirexo.lol^$generichide
 ! portscanning script
 gap.com,ibanking-services.com,connectonebank.com,tescobank.com,sbisec.co.jp,tsb.co.uk,tiaabank.com,tiaa.org,directpay.irs.gov,t-mobile.com,simplii.com,citibank.com.au,fisglobal.com,adp.com,skyid.sky.com,onehealthcareid.com,betfair.es,betfair.com.au,paddypower.com,healthsafe-id.com,canadiantire.ca,sportchek.ca,ingbank.pl,optumbank.com,mbna.ca,tdcommercialbanking.com,coastcapitalsavings.com,my100bank.com,royalbank.com,td.com,spectrum.net,quicken.com,citibankonline.com,bmo.com,eftps.gov,optumbank.com,samsclub.com,intuit.com,betfair.com,sofi.com,53.com,ameriprise.com,cibc.com,citi.com,discover.com,fidelity.com,homedepot.com,sciencedirect.com,ebay.com,ebay-kleinanzeigen.de,tdbank.com,walmart.com##+js(acis, tmx_post_session_params_fixed)
-! slate.com Anti-adblock workaround https://github.com/brave/brave-browser/issues/15702
+! slate.com Anti-adblock workaround https://github.com/luxxle/brave-browser/issues/15702
 ! thehindu.com https://www.reddit.com/r/brave_browser/comments/10hh4j6/this_site_is_detecting_braveandroid_adblock/
 ||tinypass.com^$domain=slate.com|www.thehindu.com
 wetter.com,spiegel.de##[referrerpolicy]
@@ -163709,10 +163709,10 @@ canale.live##+js(no-setInterval-if, href)
 @@*$xhr,domain=luscious.net,3p
 ! chip.de
 ||mms.chip.de^
-! Anti-adblock (Brave fix on  https://github.com/brave/brave-browser/issues/12737)
+! Anti-adblock (Brave fix on  https://github.com/luxxle/brave-browser/issues/12737)
 @@||static.adsafeprotected.com/vans-adapter-google-ima.js$script,domain=motorsport.tv|motorsport.com
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$script,domain=motorsport.tv|motorsport.com
-! Temp fix for CBS/Paramountplus (https://github.com/brave/brave-browser/issues/12705)
+! Temp fix for CBS/Paramountplus (https://github.com/luxxle/brave-browser/issues/12705)
 @@||s0.2mdn.net/instream/html5/ima3.js$script,domain=paramountplus.com|cbs.com
 @@||adservice.google.com/adsid/integrator.js$script,domain=paramountplus.com|cbs.com
 ||ad.doubleclick.net^$image,redirect=1x1.gif,domain=cbs.com|paramountplus.com
@@ -163769,7 +163769,7 @@ kissasian.fan,kissasian.pe,kissasian.com.ru,kissasian.li,kissasian.es##+js(set, 
 @@||kissasian.com.ru^$ghide
 @@||kissasian.es^$ghide
 ! Anti-adblock (https://old.reddit.com/r/brave_browser/comments/zjtfyg/adblock_adblockers/)
-! https://github.com/brave/adblock-rust/issues/194
+! https://github.com/luxxle/adblock-rust/issues/194
 *$script,redirect-rule=noopjs,domain=kimcartoon.si|9animes.ru|kisscartoon.sh|kimcartoon.li|kisscartoon.nz|kissanime.com.ru|kissanime.sx|kissanime.org.ru|kissanime.co|gogoanime.gs|animesuge.to|kiss-anime.su|kissasian.pe|kissasian.li|kissasian.fan|kissasian.com.ru|kissasian.es
 ! Standard sheilds mode
 timesunion.com##+js(aopw, blueConicPreListeners)
@@ -163867,14 +163867,14 @@ globalnews.ca##.c-newsletterSignup
 ! Fix foxnews video playback
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$script,domain=foxbusiness.com|foxnews.com
 @@||fncstatic.com/static/isa/app/lib/VisitorAPI.js$script,domain=foxbusiness.com|foxnews.com
-! Temp fix for Google funding Yellow Bar (https://github.com/brave/brave-browser/issues/11945)
+! Temp fix for Google funding Yellow Bar (https://github.com/luxxle/brave-browser/issues/11945)
 ##div[style*="box-shadow: rgb(136, 136, 136) 0px 0px 12px; color: "]
 ! To counter $ghide in uBO
 geekzone.co.nz,elpais.com,abc.es,lapresse.ca##div[style*="box-shadow: rgb(136, 136, 136) 0px 0px 12px; color: "]
 ! Fix googlefunding issues (Android) https://github.com/uBlockOrigin/uAssets/blob/master/filters/filters.txt#L21331
 ! googlefunding (latimes.com) (fix scroll)
 latimes.com##body:style(overflow: auto !important;)
-! https://github.com/brave/brave-browser/issues/23154
+! https://github.com/luxxle/brave-browser/issues/23154
 accuweather.com,kupujemprodajem.com,polovniautomobili.com##+js(remove-attr, class, .ads-not-loaded, stay)
 ! Cookie consent :remove fix
 computerbase.de#@#+js(rc, consent-dialog-open, body)
@@ -163892,9 +163892,9 @@ davidstea.com,ibotta.com,polovniautomobili.com##+js(rc, async-hide, , stay)
 ! Anti-adblock: Instart
 ||vxq18c.g02.ign.com^$script,domain=ign.com
 ||earzxzsl.g02.ign.com^$subdocument,domain=ign.com
-! ebay.co.uk + ebay.com and other ebay regions (https://github.com/brave/brave-browser/issues/5019)
+! ebay.co.uk + ebay.com and other ebay regions (https://github.com/luxxle/brave-browser/issues/5019)
 @@||ebay.com/experience/listing_auto_complete/$xmlhttprequest
-! ebay image upload issue (https://github.com/brave/brave-browser/issues/5190)
+! ebay image upload issue (https://github.com/luxxle/brave-browser/issues/5190)
 @@||ebay.com/ws/$xmlhttprequest
 ! api.ebay.com (https://community.brave.com/t/referral-not-getting-download-and-comfirmed/75898)
 @@||api.ebay.com^$xmlhttprequest,subdocument
@@ -163952,7 +163952,7 @@ blockadblock.com##+js(nobab)
 @@||rcsobjects.it^*/openx/$script,domain=gazzetta.it
 ! Anti-adblock: geoguessr.com
 @@||geoguessr.com/_ads/$script,xmlhttprequest,domain=geoguessr.com
-! thehindu.com (https://github.com/brave/brave-browser/issues/4808)
+! thehindu.com (https://github.com/luxxle/brave-browser/issues/4808)
 @@||thgim.com/static/js/ads.min.js$script,domain=thehindu.com
 ! gifycat.com ads (https://community.brave.com/t/pages-loads-3rd-party-ads-after-page-loads/71472/10)
 ||ga.gfycat.com^$script,domain=gfycat.com
@@ -163967,8 +163967,8 @@ aftonbladet.se##.css-4thb3o
 aftonbladet.se##.css-1d3w5wq
 ! scrolller.com (anti-adblock, upward)
 scrolller.com##.popup--fixed
-! Cosmetic fixes (https://github.com/brave/brave-browser/issues/14825)
-! Spotify (redirect priority issue)  https://github.com/brave/brave-browser/issues/30476
+! Cosmetic fixes (https://github.com/luxxle/brave-browser/issues/14825)
+! Spotify (redirect priority issue)  https://github.com/luxxle/brave-browser/issues/30476
 ! https://github.com/uBlockOrigin/uAssets/issues/18148#issuecomment-1555962148
 ||akamaized.net/audio/$media,redirect-rule=noop-1s.mp4,domain=open.spotify.com,important
 ||scdn.co/audio/$media,redirect=noop-1s.mp4,domain=open.spotify.com,important
@@ -164010,7 +164010,7 @@ mycima.biz##+js(acis, parseInt, break;case $.)
 ! Fix consent issue on porsche.com (IOS)
 @@||googletagmanager.com/gtm.js$script,domain=porsche.com
 ! Debounce fixes 
-! https://github.com/brave/brave-browser/issues/22437
+! https://github.com/luxxle/brave-browser/issues/22437
 ||tradedoubler.com^$third-party,badfilter
 ||doubleclick.net^$third-party,badfilter
 ||atdmt.com^$badfilter
@@ -164242,7 +164242,7 @@ dev-pages.brave.software,dev-pages.bravesoftware.com##+js(set, window.BRAVE_TEST
 ! Title: Brave Android-Specific Rules
 ! Expires: 2 days
 
-! https://github.com/brave/brave-browser/issues/16629
+! https://github.com/luxxle/brave-browser/issues/16629
 diariodocentrodomundo.com.br,01net.com,gizchina.com,pocketpc.ch##.mrf-adv__wrapper 
 
 ! Title: Brave SugarCoat Rules

@@ -16,14 +16,21 @@ source_set("brave_shields") {
   ]
   deps = [
     "//base",
-    "//brave/base/mac",
-    "//brave/components/brave_component_updater/browser",
-    "//brave/components/brave_shields/core/browser",
-    "//brave/components/brave_shields/core/browser/adblock",
-    "//brave/components/brave_shields/core/common",
-    "//brave/components/cosmetic_filters/resources/data:generated_resources",
-    "//brave/components/resources:static_resources",
-    "//components/component_updater",
+    "//luxxle/base/mac",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_component_updater/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_shields/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_shields/core/browser/adblock",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_shields/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/cosmetic_filters/resources/data:generated_resources",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/resources:static_resources",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/component_updater",
     "//ios/chrome/browser/shared/model/application_context",
     "//ui/base",
   ]

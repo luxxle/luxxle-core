@@ -40,13 +40,16 @@ static_library("brave_ads") {
 
   deps = [
     "//base",
-    "//brave/app:brave_generated_resources_grit",
-    "//brave/app/vector_icons",
-    "//brave/browser/ui/brave_ads",
-    "//brave/components/brave_ads/browser",
-    "//brave/components/brave_ads/core",
+    "//luxxle/app:brave_generated_resources_grit",
+    "//luxxle/app/vector_icons",
+    "//luxxle/browser/ui/brave_ads",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/core",
     "//chrome/browser/profiles:profile",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//skia",
     "//ui/accessibility",
     "//ui/base",
@@ -80,10 +83,11 @@ source_set("browser_tests") {
 
   deps = [
     ":brave_ads",
-    "//brave/browser/themes",
-    "//brave/browser/ui/brave_ads",
-    "//brave/components/brave_ads/browser",
-    "//brave/test/views/snapshot",
+    "//luxxle/browser/themes",
+    "//luxxle/browser/ui/brave_ads",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/browser",
+    "//luxxle/test/views/snapshot",
     "//chrome/browser",
     "//chrome/browser:browser_process",
     "//chrome/browser/ui",

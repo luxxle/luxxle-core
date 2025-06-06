@@ -6,7 +6,7 @@ index bfcaf563de750a03c8dffc2e9ae29923de80561c..23148445c013d7b11359e0a40de6b173
  
  /* #css_wrapper_metadata_start
   * #type=vars-lit
-+<if expr="not is_android and not is_ios">* #import=//resources/brave/br_elements/br_shared_vars.css.js</if>
++<if expr="not is_android and not is_ios">* #import=//resources/luxxle/br_elements/br_shared_vars.css.js</if>
   * #scheme=relative
   * #css_wrapper_metadata_end */
  

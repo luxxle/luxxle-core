@@ -22,16 +22,20 @@ source_set("browser_tests") {
 
   deps = [
     "//base/test:test_support",
-    "//brave/browser/brave_wallet",
-    "//brave/common",
-    "//brave/components/brave_wallet/browser",
-    "//brave/components/brave_wallet/browser:utils",
+    "//luxxle/browser/brave_wallet",
+    "//luxxle/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_wallet/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_wallet/browser:utils",
     "//chrome/browser/profiles:profile",
     "//chrome/browser/ui",
     "//chrome/common",
     "//chrome/test:test_support_ui",
-    "//components/embedder_support",
-    "//components/web_package",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/embedder_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/web_package",
     "//content/test:test_support",
     "//net:test_support",
   ]

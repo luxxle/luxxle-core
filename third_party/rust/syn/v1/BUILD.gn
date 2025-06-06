@@ -13,60 +13,60 @@ cargo_crate("lib") {
   epoch = "1"
   crate_type = "rlib"
   crate_root =
-      "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lib.rs"
+      "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/attr.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/await.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/bigint.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/buffer.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/custom_keyword.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/custom_punctuation.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/data.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/derive.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/discouraged.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/drops.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/error.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/export.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/expr.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/ext.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/file.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/clone.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/debug.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/eq.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/fold.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/hash.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/visit.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/visit_mut.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen_helper.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/generics.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/group.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/ident.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/item.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lib.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lifetime.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lit.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lookahead.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/mac.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/macros.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/op.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/parse.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/parse_macro_input.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/parse_quote.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/pat.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/path.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/print.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/punctuated.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/reserved.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/sealed.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/span.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/spanned.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/stmt.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/thread.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/token.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/tt.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/ty.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/verbatim.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/whitespace.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/attr.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/await.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/bigint.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/buffer.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/custom_keyword.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/custom_punctuation.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/data.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/derive.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/discouraged.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/drops.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/error.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/export.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/expr.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/ext.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/file.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/clone.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/debug.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/eq.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/fold.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/hash.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/visit.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/visit_mut.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen_helper.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/generics.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/group.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/ident.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/item.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lifetime.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lit.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lookahead.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/mac.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/macros.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/op.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/parse.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/parse_macro_input.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/parse_quote.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/pat.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/path.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/print.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/punctuated.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/reserved.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/sealed.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/span.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/spanned.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/stmt.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/thread.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/token.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/tt.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/ty.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/verbatim.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/whitespace.rs",
   ]
   inputs = []
 
@@ -84,9 +84,9 @@ cargo_crate("lib") {
   proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
   proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
   deps = [
-    "//brave/third_party/rust/proc_macro2/v1:lib",
-    "//brave/third_party/rust/quote/v1:lib",
-    "//brave/third_party/rust/unicode_ident/v1:lib",
+    "//luxxle/third_party/rust/proc_macro2/v1:lib",
+    "//luxxle/third_party/rust/quote/v1:lib",
+    "//luxxle/third_party/rust/unicode_ident/v1:lib",
   ]
   features = [
     "clone-impls",
@@ -103,23 +103,23 @@ cargo_crate("lib") {
     "visit-mut",
   ]
   build_root =
-      "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/build.rs"
+      "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/build.rs"
   build_sources =
-      [ "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/build.rs" ]
+      [ "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/build.rs" ]
   rustenv = []
   rustflags = [
     "--cap-lints=allow",  # Suppress all warnings in crates.io crates
   ]
   if (target_name == "buildrs_support" && epoch == "1") {
     deps -= [
-      "//brave/third_party/rust/proc_macro2/v1:lib",
-      "//brave/third_party/rust/quote/v1:lib",
-      "//brave/third_party/rust/unicode_ident/v1:lib",
+      "//luxxle/third_party/rust/proc_macro2/v1:lib",
+      "//luxxle/third_party/rust/quote/v1:lib",
+      "//luxxle/third_party/rust/unicode_ident/v1:lib",
     ]
     deps += [
-      "//brave/third_party/rust/proc_macro2/v1:buildrs_support",
-      "//brave/third_party/rust/quote/v1:buildrs_support",
-      "//brave/third_party/rust/unicode_ident/v1:buildrs_support",
+      "//luxxle/third_party/rust/proc_macro2/v1:buildrs_support",
+      "//luxxle/third_party/rust/quote/v1:buildrs_support",
+      "//luxxle/third_party/rust/unicode_ident/v1:buildrs_support",
     ]
   }
 }
@@ -128,60 +128,60 @@ cargo_crate("buildrs_support") {
   epoch = "1"
   crate_type = "rlib"
   crate_root =
-      "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lib.rs"
+      "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/attr.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/await.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/bigint.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/buffer.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/custom_keyword.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/custom_punctuation.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/data.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/derive.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/discouraged.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/drops.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/error.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/export.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/expr.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/ext.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/file.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/clone.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/debug.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/eq.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/fold.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/hash.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/visit.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/visit_mut.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen_helper.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/generics.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/group.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/ident.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/item.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lib.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lifetime.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lit.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lookahead.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/mac.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/macros.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/op.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/parse.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/parse_macro_input.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/parse_quote.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/pat.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/path.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/print.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/punctuated.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/reserved.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/sealed.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/span.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/spanned.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/stmt.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/thread.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/token.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/tt.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/ty.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/verbatim.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/src/whitespace.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/attr.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/await.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/bigint.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/buffer.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/custom_keyword.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/custom_punctuation.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/data.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/derive.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/discouraged.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/drops.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/error.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/export.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/expr.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/ext.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/file.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/clone.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/debug.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/eq.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/fold.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/hash.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/visit.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen/visit_mut.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/gen_helper.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/generics.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/group.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/ident.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/item.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lifetime.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lit.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/lookahead.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/mac.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/macros.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/op.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/parse.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/parse_macro_input.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/parse_quote.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/pat.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/path.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/print.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/punctuated.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/reserved.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/sealed.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/span.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/spanned.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/stmt.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/thread.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/token.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/tt.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/ty.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/verbatim.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/src/whitespace.rs",
   ]
   inputs = []
 
@@ -199,9 +199,9 @@ cargo_crate("buildrs_support") {
   proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
   proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
   deps = [
-    "//brave/third_party/rust/proc_macro2/v1:lib",
-    "//brave/third_party/rust/quote/v1:lib",
-    "//brave/third_party/rust/unicode_ident/v1:lib",
+    "//luxxle/third_party/rust/proc_macro2/v1:lib",
+    "//luxxle/third_party/rust/quote/v1:lib",
+    "//luxxle/third_party/rust/unicode_ident/v1:lib",
   ]
   features = [
     "clone-impls",
@@ -218,23 +218,23 @@ cargo_crate("buildrs_support") {
     "visit-mut",
   ]
   build_root =
-      "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/build.rs"
+      "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/build.rs"
   build_sources =
-      [ "//brave/third_party/rust/chromium_crates_io/vendor/syn-v1/build.rs" ]
+      [ "//luxxle/third_party/rust/chromium_crates_io/vendor/syn-v1/build.rs" ]
   rustenv = []
   rustflags = [
     "--cap-lints=allow",  # Suppress all warnings in crates.io crates
   ]
   if (target_name == "buildrs_support" && epoch == "1") {
     deps -= [
-      "//brave/third_party/rust/proc_macro2/v1:lib",
-      "//brave/third_party/rust/quote/v1:lib",
-      "//brave/third_party/rust/unicode_ident/v1:lib",
+      "//luxxle/third_party/rust/proc_macro2/v1:lib",
+      "//luxxle/third_party/rust/quote/v1:lib",
+      "//luxxle/third_party/rust/unicode_ident/v1:lib",
     ]
     deps += [
-      "//brave/third_party/rust/proc_macro2/v1:buildrs_support",
-      "//brave/third_party/rust/quote/v1:buildrs_support",
-      "//brave/third_party/rust/unicode_ident/v1:buildrs_support",
+      "//luxxle/third_party/rust/proc_macro2/v1:buildrs_support",
+      "//luxxle/third_party/rust/quote/v1:buildrs_support",
+      "//luxxle/third_party/rust/unicode_ident/v1:buildrs_support",
     ]
   }
 }

@@ -61,7 +61,7 @@ private struct TranslationOptionsView: View {
 
   // TODO: Take from Brave-Core's list
   // TODO: Take from Apple's list
-  // https://github.com/brave/brave-browser/issues/42280
+  // https://github.com/luxxle/brave-browser/issues/42280
   private var languages: [String] {
     return [
       "af",  // Afrikaans

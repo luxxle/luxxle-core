@@ -1,2 +1,1 @@
-browser_api_qr_code_public_headers =
-    [ "//brave/ios/browser/api/qr_code/qr_code_generator.h" ]
+browser_api_qr_code_public_headers = [ "//luxxle/ios/browser/api/qr_code/qr_code_generator.h" ]

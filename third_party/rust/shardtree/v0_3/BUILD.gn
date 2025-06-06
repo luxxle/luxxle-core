@@ -12,18 +12,18 @@ cargo_crate("lib") {
   crate_name = "shardtree"
   epoch = "0.3"
   crate_type = "rlib"
-  crate_root = "//brave/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/lib.rs"
+  crate_root = "//luxxle/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/batch.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/error.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/legacy.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/lib.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/prunable.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/store.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/store/caching.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/store/memory.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/testing.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/tree.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/batch.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/error.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/legacy.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/prunable.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/store.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/store/caching.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/store/memory.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/testing.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/shardtree-v0_3/src/tree.rs",
   ]
   inputs = []
 
@@ -41,10 +41,10 @@ cargo_crate("lib") {
   proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
   proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
   deps = [
-    "//brave/third_party/rust/bitflags/v2:lib",
-    "//brave/third_party/rust/either/v1:lib",
-    "//brave/third_party/rust/incrementalmerkletree/v0_5:lib",
-    "//brave/third_party/rust/tracing/v0_1:lib",
+    "//luxxle/third_party/rust/bitflags/v2:lib",
+    "//luxxle/third_party/rust/either/v1:lib",
+    "//luxxle/third_party/rust/incrementalmerkletree/v0_5:lib",
+    "//luxxle/third_party/rust/tracing/v0_1:lib",
   ]
   features = [ "legacy-api" ]
   rustenv = []

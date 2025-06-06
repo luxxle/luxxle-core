@@ -4,5 +4,6 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 source_set("webui") {
-  deps = [ "//ios/components/webui:web_ui_url_constants" ]
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # deps = [ "//ios/components/webui:web_ui_url_constants" ]
 }

@@ -10,9 +10,12 @@ source_set("unit_tests") {
   deps = [
     "//base/test:test_support",
     "//chrome/browser/password_manager/android:utils",
-    "//components/password_manager/core/browser",
-    "//components/password_manager/core/browser/features:password_features",
-    "//components/prefs:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/password_manager/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/password_manager/core/browser/features:password_features",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs:test_support",
     "//testing/gmock",
     "//testing/gtest",
   ]

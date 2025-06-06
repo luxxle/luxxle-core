@@ -351,7 +351,7 @@ struct BraveCoreDebugSwitchesView: View {
             BasicStringInputView(
               coreSwitch: .vModule,
               hint:
-                "Should match the format:\n\n{folder-expression}={level}\n\nDefaults to */brave/*=5"
+                "Should match the format:\n\n{folder-expression}={level}\n\nDefaults to */luxxle/*=5"
             )
           } label: {
             SwitchContainer(.vModule)

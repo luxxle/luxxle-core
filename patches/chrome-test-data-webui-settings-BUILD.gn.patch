@@ -6,7 +6,7 @@ index e9e94d22a233f12c54fca8597c1597c6460911a0..810027e100cf8a4a812ef55717523e4c
      ts_definitions +=
          [ "//tools/typescript/definitions/quick_unlock_private.d.ts" ]
    }
-+  import("//brave/browser/resources/settings/sources.gni") ts_definitions += brave_settings_ts_definitions
++  import("//luxxle/browser/resources/settings/sources.gni") ts_definitions += brave_settings_ts_definitions
  
    ts_deps = [
      "//chrome/browser/resources/settings:build_ts",

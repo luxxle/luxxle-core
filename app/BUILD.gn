@@ -3,18 +3,23 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/browser/shell_integrations/buildflags/buildflags.gni")
-import("//brave/components/brave_vpn/common/buildflags/buildflags.gni")
-import("//brave/components/playlist/common/buildflags/buildflags.gni")
-import("//brave/components/request_otr/common/buildflags/buildflags.gni")
-import("//brave/components/speedreader/common/buildflags/buildflags.gni")
-import("//brave/components/text_recognition/common/buildflags/buildflags.gni")
-import("//brave/resources/brave_grit.gni")
+import("//luxxle/browser/shell_integrations/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/playlist/common/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/request_otr/common/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/speedreader/common/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/text_recognition/common/buildflags/buildflags.gni")
+import("//luxxle/resources/brave_grit.gni")
 import("//build/config/features.gni")
 import("//build/config/locales.gni")
 
 action("generate_command_metadata") {
-  command_files = [ "//brave/app/brave_command_ids.h" ]
+  command_files = [ "//luxxle/app/brave_command_ids.h" ]
   cc_template = "command_utils.cc.template"
 
   sources = command_files + [ cc_template ]
@@ -37,10 +42,12 @@ source_set("command_ids") {
 
   deps = [
     "//base",
-    "//brave/components/resources:strings",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/resources:strings",
     "//chrome/app:command_ids",
     "//chrome/app:generated_resources",
-    "//components/strings:components_strings",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/strings:components_strings",
     "//services/screen_ai/buildflags",
     "//third_party/re2",
     "//ui/strings:ui_strings",
@@ -55,12 +62,13 @@ source_set("command_ids") {
 
 brave_grit("brave_generated_resources_grit") {
   defines = [
-    "enable_brave_vpn=$enable_brave_vpn",
-    "enable_pin_shortcut=$enable_pin_shortcut",
-    "enable_playlist_webui=$enable_playlist_webui",
-    "enable_request_otr=$enable_request_otr",
-    "enable_speedreader=$enable_speedreader",
-    "enable_text_recognition=$enable_text_recognition",
+    # Commented out: removed feature flags that require components
+    # "enable_brave_vpn=$enable_brave_vpn",
+    # "enable_pin_shortcut=$enable_pin_shortcut",
+    # "enable_playlist_webui=$enable_playlist_webui", 
+    # "enable_request_otr=$enable_request_otr",
+    # "enable_speedreader=$enable_speedreader",
+    # "enable_text_recognition=$enable_text_recognition",
   ]
   source = "brave_generated_resources.grd"
   output_dir = "$root_gen_dir/brave"
@@ -90,7 +98,8 @@ source_set("browser_tests") {
     deps = [
       ":command_ids",
       "//base",
-      "//brave/components/commands/common",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/commands/common",
       "//chrome/app:command_ids",
       "//chrome/browser",
       "//chrome/browser/promos:utils",
@@ -99,8 +108,10 @@ source_set("browser_tests") {
       "//chrome/test",
       "//chrome/test:test_support",
       "//chrome/test:test_support_ui",
-      "//components/component_updater",
-      "//components/embedder_support",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//components/component_updater",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//components/embedder_support",
       "//testing/gtest",
     ]
   }
@@ -118,48 +129,84 @@ source_set("unit_tests") {
   deps = [
     "//base",
     "//base/test:test_support",
-    "//brave/components/variations:buildflags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/variations:buildflags",
     "//chrome/browser",
     "//chrome/browser/devtools",
     "//chrome/browser/enterprise/connectors/analysis:features",
     "//chrome/browser/ui",
     "//chrome/browser/ui:ui_features",
     "//chrome/common/privacy_budget",
-    "//components/aggregation_service",
-    "//components/attribution_reporting",
-    "//components/autofill/core/common",
-    "//components/commerce/core:feature_list",
-    "//components/compose/core/browser:features",
-    "//components/content_settings/core/common:features",
-    "//components/device_signals/core/common:features",
-    "//components/embedder_support",
-    "//components/feature_engagement/public:feature_constants",
-    "//components/heap_profiling/in_process",
-    "//components/history_clusters/core",
-    "//components/history_embeddings",
-    "//components/language/core/common",
-    "//components/lens",
-    "//components/manta",
-    "//components/metrics/structured:structured_metrics_features",
-    "//components/network_time",
-    "//components/omnibox/browser",
-    "//components/optimization_guide/core",
-    "//components/page_image_service",
-    "//components/page_info/core",
-    "//components/performance_manager",
-    "//components/permissions",
-    "//components/plus_addresses:features",
-    "//components/privacy_sandbox",
-    "//components/safe_browsing/core/common",
-    "//components/search",
-    "//components/segmentation_platform/public",
-    "//components/shared_highlighting/core/common",
-    "//components/signin/public/base:signin_buildflags",
-    "//components/subresource_filter/core/common",
-    "//components/sync/base:features",
-    "//components/user_education/common",
-    "//components/webapps/browser",
-    "//components/webui/chrome_urls",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/aggregation_service",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/attribution_reporting",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/autofill/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/commerce/core:feature_list",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/compose/core/browser:features",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/common:features",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/device_signals/core/common:features",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/embedder_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/feature_engagement/public:feature_constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/heap_profiling/in_process",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/history_clusters/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/history_embeddings",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/language/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/lens",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/manta",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/metrics/structured:structured_metrics_features",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/network_time",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/omnibox/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/optimization_guide/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/page_image_service",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/page_info/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/performance_manager",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/permissions",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/plus_addresses:features",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/privacy_sandbox",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/safe_browsing/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/search",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/segmentation_platform/public",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/shared_highlighting/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/signin/public/base:signin_buildflags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/subresource_filter/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync/base:features",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/user_education/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/webapps/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/webui/chrome_urls",
     "//gpu/config",
     "//services/device/public/cpp:device_features",
     "//services/network/public/cpp",
@@ -169,15 +216,18 @@ source_set("unit_tests") {
   if (is_android) {
     deps += [
       "//android_webview/common",
-      "//components/password_manager/core/common:features",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//components/password_manager/core/common:features",
     ]
   } else {
     deps += [
       ":command_ids",
-      "//brave/components/commands/common",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/commands/common",
       "//chrome/app:command_ids",
       "//chrome/common:chrome_features",
-      "//components/translate/core/common",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//components/translate/core/common",
       "//extensions/common",
       "//ui/accessibility:ax_base",
     ]

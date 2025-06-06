@@ -6,7 +6,7 @@ index f74846025f398445f7c8a1c5432ad1d0ba59db02..903b5e8d63a052a9705aabda68d02887
    if (enable_glic) {
      deps += [ "//chrome/browser/glic" ]
    }
-+  import("//brave/browser/ui/webui/sources.gni") deps += brave_browser_ui_webui_configs_deps
++  import("//luxxle/browser/ui/webui/sources.gni") deps += brave_browser_ui_webui_configs_deps
  }
  
  source_set("webui") {

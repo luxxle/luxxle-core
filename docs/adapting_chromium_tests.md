@@ -31,7 +31,7 @@ void SomeFunction() {
 ### 2. Customizing active features in a test by pattern
 
 The `BraveChromeTestSetupHelper` class in
-`//brave/chromium_src/chrome/test/base/chrome_test_suite.cc` allows you to
+`//luxxle/chromium_src/chrome/test/base/chrome_test_suite.cc` allows you to
 customize test behavior by enabling or disabling features based on test
 patterns.
 

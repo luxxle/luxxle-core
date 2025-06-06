@@ -5,7 +5,7 @@
 
 import '../brave_privacy_page/brave_personalization_options.js'
 
-import {RegisterPolymerTemplateModifications} from 'chrome://resources/brave/polymer_overriding.js'
+import {RegisterPolymerTemplateModifications} from 'chrome://resources/luxxle/polymer_overriding.js'
 
 RegisterPolymerTemplateModifications({
   'settings-personalization-options': (templateContent) => {

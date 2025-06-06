@@ -210,7 +210,7 @@ import java.util.function.Function;
 
 /**
  * Tests to check whether classes, methods and fields exist for bytecode manipulation. See classes
- * from 'brave/build/android/bytecode/java/org/brave/bytecode' folder. Classes, methods and fields
+ * from 'brave/build/android/bytecode/java/org/luxxle/bytecode' folder. Classes, methods and fields
  * should be whitelisted in 'brave/android/java/apk_for_test.flags'.
  */
 @Batch(Batch.PER_CLASS)

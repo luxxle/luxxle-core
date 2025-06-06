@@ -5,11 +5,11 @@
 
 brave_path_mappings = [
   [
-    "chrome://resources/brave/*|",
-    "$root_gen_dir/brave/ui/webui/resources/tsc/*",
+    "chrome://resources/luxxle/*|",
+    "$root_gen_dir/luxxle/ui/webui/resources/tsc/*",
   ],
   [
-    "//resources/brave/*|",
-    "$root_gen_dir/brave/ui/webui/resources/tsc/*",
+    "//resources/luxxle/*|",
+    "$root_gen_dir/luxxle/ui/webui/resources/tsc/*",
   ],
 ]

@@ -24,7 +24,7 @@ import org.chromium.components.embedder_support.util.UrlConstants;
 import org.chromium.components.embedder_support.util.UrlUtilities;
 
 public class RetentionNotificationPublisher extends BroadcastReceiver {
-    private static final String NOTIFICATION_CHANNEL_NAME = "brave";
+    private static final String NOTIFICATION_CHANNEL_NAME = "luxxle";
     public static final String RETENTION_NOTIFICATION_ACTION = "retention_notification_action";
 
     @Override

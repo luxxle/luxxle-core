@@ -25,8 +25,10 @@ source_set("sidebar") {
 
   deps = [
     "//base",
-    "//brave/components/sidebar/browser",
-    "//brave/components/sidebar/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/sidebar/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/sidebar/common",
     "//chrome/browser:browser_process",
     "//chrome/browser/favicon",
     "//chrome/browser/image_fetcher",
@@ -37,10 +39,14 @@ source_set("sidebar") {
     "//chrome/browser/ui/browser_window",
     "//chrome/browser/ui/tabs:tab_strip",
     "//chrome/browser/ui/views/side_panel",
-    "//components/image_fetcher/core",
-    "//components/pref_registry",
-    "//components/prefs",
-    "//components/user_prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/image_fetcher/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/pref_registry",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/user_prefs",
     "//ui/base",
   ]
 }
@@ -50,19 +56,23 @@ source_set("browser_tests") {
   defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]
 
   sources = [
-    "//brave/browser/ui/sidebar/sidebar_browsertest.cc",
-    "//brave/browser/ui/views/sidebar/sidebar_container_view_browsertest.cc",
+    "//luxxle/browser/ui/sidebar/sidebar_browsertest.cc",
+    "//luxxle/browser/ui/views/sidebar/sidebar_container_view_browsertest.cc",
   ]
 
   deps = [
     ":sidebar",
     "//base",
-    "//brave/app:command_ids",
-    "//brave/browser/ui/tabs:split_view",
-    "//brave/components/ai_chat/core/common",
-    "//brave/components/playlist/common",
-    "//brave/components/sidebar/browser",
-    "//brave/components/sidebar/common",
+    "//luxxle/app:command_ids",
+    "//luxxle/browser/ui/tabs:split_view",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/playlist/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/sidebar/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/sidebar/common",
     "//chrome/browser",
     "//chrome/browser/profiles:profile",
     "//chrome/browser/search_engines",
@@ -71,7 +81,8 @@ source_set("browser_tests") {
     "//chrome/common:constants",
     "//chrome/test:test_support",
     "//chrome/test:test_support_ui",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//content/test:test_support",
     "//ui/events",
     "//ui/gfx",
@@ -86,13 +97,17 @@ source_set("unit_tests") {
   deps = [
     ":sidebar",
     "//base",
-    "//brave/common",
-    "//brave/components/playlist/common",
-    "//brave/components/sidebar/browser",
+    "//luxxle/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/playlist/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/sidebar/browser",
     "//chrome/browser/ui",
     "//chrome/test:test_support",
-    "//components/prefs",
-    "//components/sync_preferences:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync_preferences:test_support",
     "//content/test:test_support",
     "//testing/gmock",
     "//testing/gtest",

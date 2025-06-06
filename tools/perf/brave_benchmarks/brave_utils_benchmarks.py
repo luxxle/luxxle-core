@@ -17,7 +17,7 @@ from core import perf_benchmark
 
 from core.path_util import SysPath, GetChromiumSrcDir
 
-with SysPath(os.path.join(GetChromiumSrcDir(), 'brave', 'tools', 'perf')):
+with SysPath(os.path.join(GetChromiumSrcDir(), 'luxxle', 'tools', 'perf')):
   from brave_page_sets.brave_perf_utils_pages import BravePerfUtilsStorySet
 
 

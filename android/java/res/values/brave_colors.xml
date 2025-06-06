@@ -91,7 +91,7 @@
     <color name="ad_free_card_bg_color">@android:color/white</color>
     <color name="ad_free_check_color">#737ADE</color>
 
-    <!-- From src/brave/node_modules/@brave/leo/tokens/android/values/colors.xml -->
+    <!-- From src/luxxle/node_modules/@brave/leo/tokens/android/values/colors.xml -->
     <color name="systemfeedback_error_background">#ffe8e7</color>
     <color name="systemfeedback_error_text">#b3002a</color>
     <color name="systemfeedback_error_icon">#b3002a</color>

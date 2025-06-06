@@ -15,21 +15,20 @@
 #include "base/process/launch.h"
 #include "base/strings/strcat.h"
 #include "base/strings/string_split.h"
-#include "base/strings/string_util.h"
 #include "base/strings/utf_string_conversions.h"
 #include "build/build_config.h"
 
 #if defined(REDIRECT_CC_AS_REWRAPPER)
 #include "base/base_paths.h"
 #include "base/path_service.h"
-#include "brave/tools/redirect_cc/rewrapper_buildflags.h"  // nogncheck
+#include "luxxle/tools/redirect_cc/rewrapper_buildflags.h"  // nogncheck
 #else  // defined(REDIRECT_CC_AS_REWRAPPER)
 #include "base/environment.h"
 #endif  // defined(REDIRECT_CC_AS_REWRAPPER)
 
 const base::FilePath::StringViewType kIncludeFlag = FILE_PATH_LITERAL("-I");
 const base::FilePath::StringViewType kBraveChromiumSrc =
-    FILE_PATH_LITERAL("brave/chromium_src");
+    FILE_PATH_LITERAL("luxxle/chromium_src");
 const base::FilePath::StringViewType kGen = FILE_PATH_LITERAL("gen");
 const base::FilePath::StringViewType kCompileFileFlags[] = {
     FILE_PATH_LITERAL("-c"),
@@ -85,7 +84,7 @@ class RedirectCC {
     launch_argv.reserve(args_.size());
     launch_argv.push_back(compiler_executable);
 
-    // Path to `src/brave/chromium_src`.
+    // Path to `src/luxxle/chromium_src`.
     base::FilePath::StringType brave_chromium_src_dir;
     // Path to `src/`.
     base::FilePath::StringType chromium_src_dir_with_slash;
@@ -131,7 +130,7 @@ class RedirectCC {
         }
 
         // Trim a file path to look for a similar file in
-        // brave/chromium_src.
+        // luxxle/chromium_src.
         base::FilePath::StringViewType path_cc = args_[arg_idx + 1];
         if (!path_cc.empty() && path_cc[0] == arg_piece[0]) {
           // That's not a file path, but another compiler parameter. This syntax

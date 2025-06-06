@@ -3,8 +3,11 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/components/brave_vpn/common/buildflags/buildflags.gni")
-import("//brave/components/ntp_background_images/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/ntp_background_images/buildflags/buildflags.gni")
+import("//luxxle/build/config.gni")
 import("//mojo/public/tools/bindings/mojom.gni")
 
 assert(!is_android)
@@ -12,7 +15,8 @@ assert(enable_custom_background)
 
 mojom("mojom") {
   sources = [ "brave_new_tab_page.mojom" ]
-  deps = [ "//brave/components/brave_vpn/common/mojom" ]
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # deps = [ "//luxxle/components/brave_vpn/common/mojom" ]
 }
 
 source_set("brave_new_tab_page_refresh") {
@@ -37,24 +41,36 @@ source_set("brave_new_tab_page_refresh") {
 
   deps = [
     ":mojom",
-    "//brave/browser:browser_process",
-    "//brave/browser/brave_ads",
-    "//brave/browser/brave_rewards",
-    "//brave/browser/brave_rewards:util",
-    "//brave/browser/misc_metrics",
-    "//brave/browser/ntp_background",
-    "//brave/browser/resources/brave_new_tab_page_refresh:generated_resources",
-    "//brave/components/brave_news/browser",
-    "//brave/components/brave_news/common:mojom",
-    "//brave/components/brave_perf_predictor/common",
-    "//brave/components/brave_rewards/core/mojom:webui",
-    "//brave/components/brave_search_conversion",
-    "//brave/components/brave_vpn/common/buildflags",
-    "//brave/components/misc_metrics",
-    "//brave/components/ntp_background_images/browser",
-    "//brave/components/ntp_background_images/common",
-    "//brave/components/resources:static_resources",
-    "//brave/components/resources:strings",
+    "//luxxle/browser:browser_process",
+    "//luxxle/browser/brave_ads",
+    "//luxxle/browser/brave_rewards",
+    "//luxxle/browser/brave_rewards:util",
+    "//luxxle/browser/misc_metrics",
+    "//luxxle/browser/ntp_background",
+    # Commented out: generated_resources target removed for minimal build
+    # "//luxxle/browser/resources/brave_new_tab_page_refresh:generated_resources",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_news/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_news/common:mojom",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_perf_predictor/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core/mojom:webui",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_search_conversion",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_vpn/common/buildflags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/misc_metrics",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ntp_background_images/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ntp_background_images/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/resources:static_resources",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/resources:strings",
     "//chrome/app:generated_resources",
     "//chrome/browser:browser_process",
     "//chrome/browser:browser_public_dependencies",
@@ -64,8 +80,10 @@ source_set("brave_new_tab_page_refresh") {
     "//chrome/browser/ui/browser_window",
     "//chrome/browser/ui/webui:webui_util",
     "//chrome/browser/ui/webui/searchbox",
-    "//components/prefs",
-    "//components/strings:components_strings",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/strings:components_strings",
     "//ui/base",
     "//ui/shell_dialogs",
     "//ui/webui",
@@ -73,9 +91,11 @@ source_set("brave_new_tab_page_refresh") {
 
   if (enable_brave_vpn) {
     deps += [
-      "//brave/browser/ui/brave_vpn",
-      "//brave/components/brave_vpn/browser",
-      "//brave/components/brave_vpn/common",
+      "//luxxle/browser/ui/brave_vpn",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/brave_vpn/browser",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/brave_vpn/common",
     ]
   }
 }

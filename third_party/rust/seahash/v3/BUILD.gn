@@ -13,13 +13,13 @@ cargo_crate("lib") {
   epoch = "3"
   crate_type = "rlib"
   crate_root =
-      "//brave/third_party/rust/chromium_crates_io/vendor/seahash-v3/src/lib.rs"
+      "//luxxle/third_party/rust/chromium_crates_io/vendor/seahash-v3/src/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/seahash-v3/src/buffer.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/seahash-v3/src/helper.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/seahash-v3/src/lib.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/seahash-v3/src/reference.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/seahash-v3/src/stream.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/seahash-v3/src/buffer.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/seahash-v3/src/helper.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/seahash-v3/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/seahash-v3/src/reference.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/seahash-v3/src/stream.rs",
   ]
   inputs = []
 

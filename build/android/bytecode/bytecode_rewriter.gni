@@ -15,10 +15,14 @@ brave_bytecode_jars = [
   "obj/brave/browser/ui/android/logo/java.javac.jar",
   "obj/brave/browser/ui/android/omnibox/java.javac.jar",
   "obj/brave/browser/ui/android/theme/java.javac.jar",
-  "obj/brave/components/browser_ui/notifications/android/java.javac.jar",
-  "obj/brave/components/browser_ui/media/android/java.javac.jar",
-  "obj/brave/components/browser_ui/site_settings/android/java.javac.jar",
-  "obj/brave/components/variations/android/java.javac.jar",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "obj/brave/components/browser_ui/notifications/android/java.javac.jar",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "obj/brave/components/browser_ui/media/android/java.javac.jar",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "obj/brave/components/browser_ui/site_settings/android/java.javac.jar",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "obj/brave/components/variations/android/java.javac.jar",
   "obj/chrome/android/base_module_java.javac.jar",
   "obj/chrome/android/chrome_java.javac.jar",
   "obj/chrome/android/features/tab_ui/java.javac.jar",
@@ -48,14 +52,22 @@ brave_bytecode_jars = [
   "obj/chrome/browser/ui/android/searchactivityutils/java.javac.jar",
   "obj/chrome/browser/ui/android/theme/java.javac.jar",
   "obj/chrome/browser/ui/android/toolbar/java.javac.jar",
-  "obj/components/browser_ui/notifications/android/java.javac.jar",
-  "obj/components/browser_ui/media/android/java.javac.jar",
-  "obj/components/browser_ui/site_settings/android/java.javac.jar",
-  "obj/components/embedder_support/android/content_view_java.javac.jar",
-  "obj/components/external_intents/android/java.javac.jar",
-  "obj/components/permissions/android/java.javac.jar",
-  "obj/components/sync/android/sync_java.javac.jar",
-  "obj/components/variations/android/variations_java.javac.jar",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "obj/components/browser_ui/notifications/android/java.javac.jar",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "obj/components/browser_ui/media/android/java.javac.jar",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "obj/components/browser_ui/site_settings/android/java.javac.jar",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "obj/components/embedder_support/android/content_view_java.javac.jar",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "obj/components/external_intents/android/java.javac.jar",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "obj/components/permissions/android/java.javac.jar",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "obj/components/sync/android/sync_java.javac.jar",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "obj/components/variations/android/variations_java.javac.jar",
   "obj/chrome/browser/language/android/base_module_java.javac.jar",
 ]
 
@@ -65,8 +77,7 @@ template("brave_bytecode_rewriter") {
 
   action_with_pydeps(target_name) {
     script = "//brave/build/android/gyp/bytecode_processor.py"
-    _bytecode_rewriter_script =
-        "$root_build_dir/bin/helper/java_bytecode_rewriter"
+_bytecode_rewriter_script = "$root_build_dir/bin/helper/java_bytecode_rewriter"
     deps = invoker._unprocessed_jar_deps + [ "//brave/build/android/bytecode:java_bytecode_rewriter($default_toolchain)" ]
     if (defined(invoker.deps)) {
       deps += invoker.deps

@@ -12,7 +12,8 @@ android_library("java") {
     "//base:base_java",
     "//chrome/browser/download/internal/android:java",
     "//chrome/browser/preferences:java",
-    "//components/offline_items_collection/core:core_java",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/offline_items_collection/core:core_java",
   ]
 
   resources_package = "org.chromium.chrome.browser.download.internal"

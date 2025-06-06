@@ -11,12 +11,18 @@ source_set("brave_stats") {
   ]
   deps = [
     "//base",
-    "//brave/components/brave_ads/core",
-    "//brave/components/brave_stats/browser",
-    "//brave/components/brave_stats/browser:buildflags",
-    "//brave/components/brave_wallet/browser:pref_names",
-    "//brave/components/webcompat_reporter/buildflags",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_ads/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_stats/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_stats/browser:buildflags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_wallet/browser:pref_names",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/webcompat_reporter/buildflags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//ios/chrome/browser/shared/model/application_context",
     "//ios/chrome/browser/shared/model/profile",
   ]

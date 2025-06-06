@@ -19,10 +19,10 @@ Currently, the elevation service is only used to install the `Brave VPN` service
 The service executable is inside the versioned folder of Brave. It's possible to debug the service interactively by using the following procedure:
 
 1. Open `regedit.exe`
-2. Navigate to `[HKEY_CLASSES_ROOT\AppID\{5693E62D-00D6-4421-AFE8-58F3C947436A}]` (or if building another channel, [check here to find the right AppID](https://github.com/brave/brave-core/blob/master/chromium_src/chrome/install_static/chromium_install_modes.cc)).
+2. Navigate to `[HKEY_CLASSES_ROOT\AppID\{5693E62D-00D6-4421-AFE8-58F3C947436A}]` (or if building another channel, [check here to find the right AppID](https://github.com/luxxle/brave-core/blob/master/chromium_src/chrome/install_static/chromium_install_modes.cc)).
 3. Delete the `LocalService` value (should be set to something like `BraveDevelopmentElevationService`) and create a new String value called `RunAs` with the data value set to `Interactive User`.
 4. Open an admin `cmd.exe` instance.
-5. Navigate to the path where you built the elevation service executable (ex: `C:\brave\src\out\Component`).
+5. Navigate to the path where you built the elevation service executable (ex: `C:\luxxle\src\out\Component`).
 6. Launch the exe via `elevation_service.exe --console`.
 7. After debugging, don't forget to undo step 3.
 

@@ -12,15 +12,15 @@ cargo_crate("lib") {
   crate_name = "poly1305"
   epoch = "0.8"
   crate_type = "rlib"
-  crate_root = "//brave/third_party/rust/chromium_crates_io/vendor/poly1305-v0_8/src/lib.rs"
+  crate_root = "//luxxle/third_party/rust/chromium_crates_io/vendor/poly1305-v0_8/src/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/poly1305-v0_8/src/backend.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/poly1305-v0_8/src/backend/autodetect.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/poly1305-v0_8/src/backend/avx2.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/poly1305-v0_8/src/backend/avx2/helpers.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/poly1305-v0_8/src/backend/soft.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/poly1305-v0_8/src/fuzz.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/poly1305-v0_8/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/poly1305-v0_8/src/backend.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/poly1305-v0_8/src/backend/autodetect.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/poly1305-v0_8/src/backend/avx2.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/poly1305-v0_8/src/backend/avx2/helpers.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/poly1305-v0_8/src/backend/soft.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/poly1305-v0_8/src/fuzz.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/poly1305-v0_8/src/lib.rs",
   ]
   inputs = []
 
@@ -39,17 +39,17 @@ cargo_crate("lib") {
   proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
   proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
   deps = [
-    "//brave/third_party/rust/opaque_debug/v0_3:lib",
-    "//brave/third_party/rust/universal_hash/v0_5:lib",
+    "//luxxle/third_party/rust/opaque_debug/v0_3:lib",
+    "//luxxle/third_party/rust/universal_hash/v0_5:lib",
   ]
   if (current_cpu == "x64" || current_cpu == "x86") {
-    deps += [ "//brave/third_party/rust/cpufeatures/v0_2:lib" ]
+    deps += [ "//luxxle/third_party/rust/cpufeatures/v0_2:lib" ]
   }
   rustenv = []
   rustflags = [
     "--cap-lints=allow",  # Suppress all warnings in crates.io crates
   ]
   if (target_cpu == "x64" || target_cpu == "x86") {
-    deps += [ "//brave/third_party/rust/cpufeatures/v0_2:lib" ]
+    deps += [ "//luxxle/third_party/rust/cpufeatures/v0_2:lib" ]
   }
 }

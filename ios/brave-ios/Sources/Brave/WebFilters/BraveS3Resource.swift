@@ -10,7 +10,7 @@ import Shared
 enum BraveS3Resource: Hashable, DownloadResourceInterface {
   /// The rules processed by slim-list which are filtered out for iOS usage
   ///
-  /// Based on the following rules: https://github.com/brave/adblock-resources/blob/master/filter_lists/default.json
+  /// Based on the following rules: https://github.com/luxxle/adblock-resources/blob/master/filter_lists/default.json
   case slimList
 
   /// The name of the header value that contains the service key

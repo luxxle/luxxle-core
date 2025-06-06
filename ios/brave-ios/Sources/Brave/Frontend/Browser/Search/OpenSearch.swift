@@ -21,7 +21,7 @@ class OpenSearchEngine: NSObject, NSSecureCoding {
     static let yahooJP = "Yahoo! JAPAN"
   }
 
-  static let defaultSearchClientName = "brave"
+  static let defaultSearchClientName = "luxxle"
 
   let shortName: String
   let referenceURL: String?

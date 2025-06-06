@@ -10,9 +10,12 @@ source_set("version_info") {
   ]
   deps = [
     "//base",
-    "//brave/components/version_info",
-    "//components/version_info:version_info",
-    "//components/version_info:version_string",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/version_info",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/version_info:version_info",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/version_info:version_string",
     "//ios/chrome/common:common",
   ]
 }

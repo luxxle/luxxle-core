@@ -8,7 +8,7 @@ import {html} from 'chrome://resources/polymer/v3_0/polymer/polymer_bundled.min.
 import {
   RegisterPolymerTemplateModifications,
   RegisterStyleOverride
-} from 'chrome://resources/brave/polymer_overriding.js'
+} from 'chrome://resources/luxxle/polymer_overriding.js'
 
 import {getSectionElement} from './basic_page.js'
 

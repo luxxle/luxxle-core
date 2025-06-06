@@ -6,7 +6,7 @@ index 544a35127374b54700255f5902e881fc5fb89d7d..404a2df5c69987461df2d18bd8383016
            "resources/js/load_time_data.js",
            "resources/ash/common/load_time_data.m.js",
            "resources/mwc/lit/index.js",
-+          "resources/brave/leo.bundle.js", "resources/brave/opaque_ke.bundle.js",
++          "resources/luxxle/leo.bundle.js", "resources/luxxle/opaque_ke.bundle.js",
          ]) {
    # Exclude both the chrome://resources form and the scheme-relative form.
    BUNDLE_JS_EXCLUDES += [

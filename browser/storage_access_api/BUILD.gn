@@ -13,8 +13,10 @@ source_set("browser_tests") {
     "//base",
     "//chrome/browser",
     "//chrome/test:test_support",
-    "//components/content_settings/core/browser",
-    "//components/permissions:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/permissions:test_support",
     "//net:test_support",
   ]
 

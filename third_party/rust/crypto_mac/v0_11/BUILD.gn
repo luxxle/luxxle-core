@@ -12,11 +12,11 @@ cargo_crate("lib") {
   crate_name = "crypto_mac"
   epoch = "0.11"
   crate_type = "rlib"
-  crate_root = "//brave/third_party/rust/chromium_crates_io/vendor/crypto-mac-v0_11/src/lib.rs"
+  crate_root = "//luxxle/third_party/rust/chromium_crates_io/vendor/crypto-mac-v0_11/src/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/crypto-mac-v0_11/src/dev.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/crypto-mac-v0_11/src/errors.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/crypto-mac-v0_11/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/crypto-mac-v0_11/src/dev.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/crypto-mac-v0_11/src/errors.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/crypto-mac-v0_11/src/lib.rs",
   ]
   inputs = []
 
@@ -35,8 +35,8 @@ cargo_crate("lib") {
   proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
   proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
   deps = [
-    "//brave/third_party/rust/generic_array/v0_14:lib",
-    "//brave/third_party/rust/subtle/v2:lib",
+    "//luxxle/third_party/rust/generic_array/v0_14:lib",
+    "//luxxle/third_party/rust/subtle/v2:lib",
   ]
   rustenv = []
   rustflags = [

@@ -6,7 +6,7 @@ index ff1e356ff696d3830d02644969c36a71fdf32ff6..fa5f4f45644327db02c4b49a573ba6e7
    } else if (is_posix || is_fuchsia) {
      sources += [ "os_crypt_posix.cc" ]
    }
-+  import("//brave/components/os_crypt/sources.gni") deps += brave_components_os_crypt_deps
++  import("//luxxle/components/os_crypt/sources.gni") deps += brave_components_os_crypt_deps
  }
  
  static_library("test_support") {

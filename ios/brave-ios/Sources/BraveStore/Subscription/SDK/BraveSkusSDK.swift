@@ -8,7 +8,7 @@ import Foundation
 import Shared
 import os.log
 
-// https://github.com/brave/brave-core/blob/master/components/skus/browser/rs/lib/src/models.rs#L137
+// https://github.com/luxxle/brave-core/blob/master/components/skus/browser/rs/lib/src/models.rs#L137
 
 /// A structure representing the customer's credentials
 /// Returned by credentialsSummary

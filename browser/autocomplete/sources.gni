@@ -6,13 +6,14 @@
 import("//extensions/buildflags/buildflags.gni")
 
 brave_browser_autocomplete_sources = [
-  "//brave/browser/autocomplete/brave_autocomplete_scheme_classifier.cc",
-  "//brave/browser/autocomplete/brave_autocomplete_scheme_classifier.h",
+  "//luxxle/browser/autocomplete/brave_autocomplete_scheme_classifier.cc",
+  "//luxxle/browser/autocomplete/brave_autocomplete_scheme_classifier.h",
 ]
 
 brave_browser_autocomplete_deps = [
   "//base",
-  "//brave/common",
-  "//brave/components/omnibox/buildflags",
+  "//luxxle/common",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/omnibox/buildflags",
   "//chrome/browser/profiles:profile",
 ]

@@ -17,7 +17,7 @@ import urllib.request
 
 
 def get_remote_audit_config(
-    url="https://raw.githubusercontent.com/brave/audit-config/main/config.json"
+    url="https://raw.githubusercontent.com/luxxle/audit-config/main/config.json"
 ):
     return json.loads(urllib.request.urlopen(url).read().decode("utf-8"))
 
@@ -171,7 +171,7 @@ def parse_args():
     parser.add_argument('input_dir', nargs='?', help='Directory to check')
     parser.add_argument('--source_root',
                         required=True,
-                        help='Full path of the src/brave directory')
+                        help='Full path of the src/luxxle directory')
     parser.add_argument('--cargo_audit_exe', required=True)
     parser.add_argument('--audit_dev_deps',
                         action='store_true',

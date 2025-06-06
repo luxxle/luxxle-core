@@ -13,12 +13,15 @@ source_set("split_view") {
 
   deps = [
     "//base",
-    "//brave/browser/ui:brave_tab_features",
-    "//brave/components/vector_icons",
+    "//luxxle/browser/ui:brave_tab_features",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/vector_icons",
     "//cc",
     "//chrome/browser/ui/color:mixers",
-    "//components/omnibox/browser",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/omnibox/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//content/public/browser",
     "//ui/base",
     "//ui/gfx",
@@ -37,9 +40,9 @@ source_set("browser_tests") {
 
   deps = [
     "//base",
-    "//brave/browser/ui/tabs:split_view",
-    "//brave/browser/ui/views/frame/split_view",
-    "//brave/browser/ui/views/split_view",
+    "//luxxle/browser/ui/tabs:split_view",
+    "//luxxle/browser/ui/views/frame/split_view",
+    "//luxxle/browser/ui/views/split_view",
     "//chrome/browser/ui",
     "//chrome/browser/ui:ui_features",
     "//chrome/browser/ui/browser_window",
@@ -61,7 +64,7 @@ source_set("unit_tests") {
 
   deps = [
     "//base/test:test_support",
-    "//brave/browser/ui/views/split_view",
+    "//luxxle/browser/ui/views/split_view",
     "//chrome/browser/ui",
     "//chrome/test:test_support",
     "//content/test:test_support",

@@ -3,7 +3,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/components/tor/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/tor/buildflags/buildflags.gni")
 
 assert(enable_tor)
 
@@ -15,9 +16,11 @@ source_set("tor") {
 
   public_deps = [
     "//base",
-    "//brave/components/tor:common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/tor:common",
     "//chrome/browser/profiles:profile",
-    "//components/keyed_service/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/content",
     "//url",
   ]
 }
@@ -32,20 +35,30 @@ source_set("impl") {
     ":tor",
     ":util",
     "//base",
-    "//brave/browser:browser_process",
-    "//brave/components/brave_webtorrent/browser/buildflags",
-    "//brave/components/constants",
-    "//brave/components/tor",
-    "//brave/components/tor:common",
-    "//brave/components/tor:pref_names",
+    "//luxxle/browser:browser_process",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_webtorrent/browser/buildflags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/tor",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/tor:common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/tor:pref_names",
     "//chrome/browser:browser_process",
     "//chrome/browser/profiles:profile",
     "//chrome/browser/ui",
-    "//components/keyed_service/content",
-    "//components/policy/core/common:common_constants",
-    "//components/prefs",
-    "//components/safe_browsing/core/common:safe_browsing_prefs",
-    "//components/user_prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/policy/core/common:common_constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/safe_browsing/core/common:safe_browsing_prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/user_prefs",
     "//content/public/browser",
     "//url",
   ]
@@ -53,7 +66,7 @@ source_set("impl") {
 
 # This is split out from tor/impl because it has circular dependencies on
 # //chrome/browser.
-# https://github.com/brave/brave-browser/issues/41464
+# https://github.com/luxxle/brave-browser/issues/41464
 source_set("util") {
   sources = [
     "util.cc",
@@ -63,8 +76,10 @@ source_set("util") {
   deps = [
     "//chrome/browser:browser_public_dependencies",
     "//chrome/browser/prefs",
-    "//components/policy/core/common",
-    "//components/user_prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/policy/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/user_prefs",
     "//content/public/browser",
   ]
 }

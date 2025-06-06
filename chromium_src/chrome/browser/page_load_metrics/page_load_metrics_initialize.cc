@@ -46,7 +46,7 @@ void BravePageLoadMetricsEmbedder::RegisterObservers(
 
 void InitializePageLoadMetricsForWebContents(
     content::WebContents* web_contents) {
-  // TODO(bug https://github.com/brave/brave-browser/issues/7784)
+  // TODO(bug https://github.com/luxxle/brave-browser/issues/7784)
   // change
   // android_webview/browser/page_load_metrics/page_load_metrics_initialize.cc
   // as well to register Page Load Metrics Observers

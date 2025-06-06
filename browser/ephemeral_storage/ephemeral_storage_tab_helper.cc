@@ -27,7 +27,7 @@ namespace ephemeral_storage {
 // EphemeralStorageTabHelper helps to manage the lifetime of ephemeral storage.
 // For more information about the design of ephemeral storage please see the
 // design document at:
-// https://github.com/brave/brave-browser/wiki/Ephemeral-Storage-Design
+// https://github.com/luxxle/brave-browser/wiki/Ephemeral-Storage-Design
 EphemeralStorageTabHelper::EphemeralStorageTabHelper(WebContents* web_contents)
     : WebContentsObserver(web_contents),
       content::WebContentsUserData<EphemeralStorageTabHelper>(*web_contents),

@@ -232,7 +232,7 @@ void BraveVideoOverlayWindowViews::OnUpdateControlsBounds() {
   VideoOverlayWindowViews::OnUpdateControlsBounds();
 
   // Copies size in order to avoid ASAN failure
-  // https://github.com/brave/internal/issues/1108
+  // https://github.com/luxxle/internal/issues/1108
   const auto window_size = GetBounds().size();
 
   // Lay out controls on top of window

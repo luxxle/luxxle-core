@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/build/config.gni")
+import("//luxxle/build/config.gni")
 
 assert(is_win)
 
@@ -17,15 +17,19 @@ source_set("service") {
     "wireguard_tunnel_service.h",
   ]
 
-  public_deps = [ "//brave/components/brave_vpn/common/wireguard/win:brave_wireguard_manager_idl" ]
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # public_deps = [ "//luxxle/components/brave_vpn/common/wireguard/win:brave_wireguard_manager_idl" ]
   deps = [
     "//base",
-    "//brave/browser/brave_vpn/win:wireguard_utils",
-    "//brave/components/brave_vpn/common/win",
-    "//brave/components/brave_vpn/common/wireguard",
+    "//luxxle/browser/brave_vpn/win:wireguard_utils",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_vpn/common/win",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_vpn/common/wireguard",
     "//chrome/common:channel_info",
     "//chrome/installer/util:with_no_strings",
-    "//components/version_info:channel",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/version_info:channel",
   ]
   libs = [ "runtimeobject.lib" ]
 }

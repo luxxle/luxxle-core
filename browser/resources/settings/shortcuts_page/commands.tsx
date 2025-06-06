@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import * as CommandsMojo from 'gen/brave/components/commands/common/commands.mojom.m.js'
+import * as CommandsMojo from 'gen/luxxle/components/commands/common/commands.mojom.m.js'
 import * as React from 'react'
 import { render } from 'react-dom'
 import styled, { StyleSheetManager } from 'styled-components'

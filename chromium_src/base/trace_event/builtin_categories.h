@@ -8,7 +8,7 @@
 
 // Please add all brave categories here. Take a look at the original
 // builtin_categories.h for more details. Please:
-// * For small features use the existing 'brave' category.
+// * For small features use the existing 'luxxle' category.
 // * For new big subsystems with a lot of traces create a separate category
 // named 'brave.<feature_name>'.
 // * Keep the list sorted.
@@ -16,7 +16,7 @@
 // Note: There is no #undef for this macros because it is used in exported
 // macros of the chromium builtin_categories.h.
 #define BRAVE_INTERNAL_TRACE_LIST_BUILTIN_CATEGORIES                \
-  perfetto::Category("brave"), perfetto::Category("brave.adblock"), \
+  perfetto::Category("luxxle"), perfetto::Category("brave.adblock"), \
       perfetto::Category("brave.ads"),
 
 #include "src/base/trace_event/builtin_categories.h"  // IWYU pragma: export

@@ -13,8 +13,9 @@ source_set("browsertests") {
   sources = [ "identity_apitest.cc" ]
   deps = [
     "//base",
-    "//brave/browser/extensions",
-    "//brave/components/constants",
+    "//luxxle/browser/extensions",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
     "//chrome/test:test_support",
     "//content/test:test_support",
     "//extensions:test_support",

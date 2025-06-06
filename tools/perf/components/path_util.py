@@ -15,11 +15,11 @@ def GetSrcDir() -> str:
 
 
 def GetBraveDir() -> str:
-  return os.path.join(GetSrcDir(), 'brave')
+  return os.path.join(GetSrcDir(), 'luxxle')
 
 
 def GetBravePerfDir() -> str:
-  return os.path.join(GetSrcDir(), 'brave', 'tools', 'perf')
+  return os.path.join(GetSrcDir(), 'luxxle', 'tools', 'perf')
 
 
 def GetChromiumPerfDir() -> str:

@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/build/config.gni")
+import("//luxxle/build/config.gni")
 import("//build/config/features.gni")
 import("//mojo/public/tools/bindings/mojom.gni")
 
@@ -20,18 +20,24 @@ source_set("webui") {
   ]
 
   deps = [
-    "//brave/components/constants",
-    "//brave/components/webui",
-    "//brave/ios/browser/ui/webui/ads",
-    "//brave/ios/browser/ui/webui/skus",
-    "//components/prefs",
-    "//components/profile_metrics",
-    "//components/resources",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/webui",
+    "//luxxle/ios/browser/ui/webui/ads",
+    "//luxxle/ios/browser/ui/webui/skus",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/profile_metrics",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/resources",
     "//ios/chrome/browser/shared/model/profile",
     "//ios/chrome/browser/shared/model/url:constants",
     "//ios/chrome/browser/webui/ui_bundled:coordinator",
     "//ios/chrome/browser/webui/ui_bundled:webui_internal",
-    "//ios/components/webui:url_constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//ios/components/webui:url_constants",
     "//ios/web/public",
     "//ios/web/public/webui",
     "//ios/web/webui:webui",

@@ -22,7 +22,7 @@ export function Background() {
     }
 
     switch (currentBackground.type) {
-      case 'brave':
+      case 'luxxle':
       case 'custom':
         return <ImageBackground url={currentBackground.imageUrl} />
       case 'sponsored-image':

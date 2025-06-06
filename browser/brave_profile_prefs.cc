@@ -149,7 +149,7 @@ void RegisterProfilePrefsForMigration(
   registry->RegisterIntegerPref(kBraveSearchVisitCount, 0);
 #endif
 
-  // Added 24/11/2022: https://github.com/brave/brave-core/pull/16027
+  // Added 24/11/2022: https://github.com/luxxle/brave-core/pull/16027
 #if !BUILDFLAG(IS_IOS) && !BUILDFLAG(IS_ANDROID)
   registry->RegisterStringPref(kFTXAccessToken, "");
   registry->RegisterStringPref(kFTXOauthHost, "");
@@ -162,7 +162,7 @@ void RegisterProfilePrefsForMigration(
   registry->RegisterBooleanPref(kNewTabPageShowGemini, false);
 #endif
 
-  // Added 24/11/2022: https://github.com/brave/brave-core/pull/16027
+  // Added 24/11/2022: https://github.com/luxxle/brave-core/pull/16027
 #if !BUILDFLAG(IS_IOS)
   registry->RegisterStringPref(kBinanceAccessToken, "");
   registry->RegisterStringPref(kBinanceRefreshToken, "");
@@ -235,7 +235,7 @@ void RegisterProfilePrefs(user_prefs::PrefRegistrySyncable* registry) {
   // TODO(shong): Migrate this to local state also and guard in ENABLE_WIDEVINE.
   // We don't need to display "don't ask widevine prompt option" in settings
   // if widevine is disabled.
-  // F/u issue: https://github.com/brave/brave-browser/issues/7000
+  // F/u issue: https://github.com/luxxle/brave-browser/issues/7000
   registry->RegisterBooleanPref(kAskEnableWidvine, true);
 
   // Default Brave shields
@@ -445,7 +445,7 @@ void RegisterProfilePrefs(user_prefs::PrefRegistrySyncable* registry) {
   brave_search_conversion::RegisterPrefs(registry);
 
   // Enabled by default after fixing
-  // https://github.com/brave/brave-browser/issues/18017
+  // https://github.com/luxxle/brave-browser/issues/18017
   // kEnableMediaRouterOnRestart is used to remember the user's choice.
   registry->SetDefaultPrefValue(prefs::kEnableMediaRouter, base::Value(true));
   registry->RegisterBooleanPref(kEnableMediaRouterOnRestart, true);

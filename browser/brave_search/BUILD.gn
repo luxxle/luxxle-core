@@ -14,13 +14,17 @@ source_set("brave_search") {
   ]
 
   deps = [
-    "//brave/components/brave_search/browser",
-    "//brave/components/brave_search/common",
-    "//brave/components/brave_shields/content/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_search/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_search/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_shields/content/browser",
     "//chrome/browser/content_extraction",
     "//chrome/browser/content_settings:content_settings_factory",
     "//chrome/browser/profiles",
-    "//components/keyed_service/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/core",
     "//content/public/browser",
     "//services/network/public/cpp",
   ]
@@ -38,10 +42,14 @@ if (!is_android) {
     deps = [
       ":brave_search",
       "//base/test:test_support",
-      "//brave/components/brave_ads/core/public:headers",
-      "//brave/components/brave_rewards/core",
-      "//brave/components/brave_search/browser",
-      "//brave/components/brave_search/common",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/brave_ads/core/public:headers",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/brave_rewards/core",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/brave_search/browser",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/brave_search/common",
       "//chrome/browser/profiles:profile",
       "//chrome/browser/search_engines",
       "//chrome/browser/ui",

@@ -10,8 +10,8 @@
  * anything to take precedence.
  */
 
-@import url(//resources/brave/fonts/poppins.css);
-@import url(//resources/brave/fonts/inter.css);
+@import url(//resources/luxxle/fonts/poppins.css);
+@import url(//resources/luxxle/fonts/inter.css);
 
 html {
   /* TODO(dbeam): remove this soon. Prefer dir= in HTML. */

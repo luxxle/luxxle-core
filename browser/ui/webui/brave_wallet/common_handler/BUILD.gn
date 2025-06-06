@@ -9,12 +9,17 @@ source_set("common_handler") {
     "wallet_handler.h",
   ]
   deps = [
-    "//brave/browser/brave_wallet",
-    "//brave/components/brave_wallet/browser",
-    "//brave/components/brave_wallet/browser:constants",
-    "//brave/components/brave_wallet/browser:hd_keyring",
-    "//brave/components/brave_wallet/browser:utils",
-    "//brave/components/brave_wallet/common:mojom",
+    "//luxxle/browser/brave_wallet",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_wallet/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_wallet/browser:constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_wallet/browser:hd_keyring",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_wallet/browser:utils",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_wallet/common:mojom",
     "//chrome/browser/profiles:profile",
     "//content/public/browser",
     "//mojo/public/cpp/bindings",

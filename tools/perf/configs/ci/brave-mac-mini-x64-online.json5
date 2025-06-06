@@ -2,7 +2,7 @@
   // A configuration with the recent components (updated just before the run).
   "configurations": [{
     "dashboard-bot-name": "mac-mini-x64-online",
-    "browser-type": "brave",
+    "browser-type": "luxxle",
     "profile": "brave-typical-mac",
 
     "extra-browser-args": [

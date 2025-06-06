@@ -7,23 +7,27 @@ brave_browser_brave_news_sources = []
 brave_browser_brave_news_deps = []
 
 if (is_android) {
-  brave_browser_brave_news_sources += [ "//brave/browser/brave_news/android/brave_news_controller_factory_android.cc" ]
+  brave_browser_brave_news_sources += [ "//luxxle/browser/brave_news/android/brave_news_controller_factory_android.cc" ]
 }
 brave_browser_brave_news_sources += [
-  "//brave/browser/brave_news/brave_news_controller_factory.cc",
-  "//brave/browser/brave_news/brave_news_controller_factory.h",
-  "//brave/browser/brave_news/brave_news_tab_helper.cc",
-  "//brave/browser/brave_news/brave_news_tab_helper.h",
-  "//brave/browser/brave_news/direct_feed_fetcher_delegate_impl.cc",
-  "//brave/browser/brave_news/direct_feed_fetcher_delegate_impl.h",
+  "//luxxle/browser/brave_news/brave_news_controller_factory.cc",
+  "//luxxle/browser/brave_news/brave_news_controller_factory.h",
+  "//luxxle/browser/brave_news/brave_news_tab_helper.cc",
+  "//luxxle/browser/brave_news/brave_news_tab_helper.h",
+  "//luxxle/browser/brave_news/direct_feed_fetcher_delegate_impl.cc",
+  "//luxxle/browser/brave_news/direct_feed_fetcher_delegate_impl.h",
 ]
 
 brave_browser_brave_news_deps += [
   "//base",
-  "//brave/components/brave_news/browser",
-  "//brave/components/brave_news/common",
-  "//brave/components/brave_shields/content/browser",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/brave_news/browser",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/brave_news/common",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/brave_shields/content/browser",
   "//chrome/browser/profiles:profile",
-  "//components/keyed_service/content",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//components/keyed_service/content",
   "//content/public/browser",
 ]

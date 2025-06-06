@@ -18,9 +18,11 @@ source_set("password") {
 
   deps = [
     "//base",
-    "//brave/ios/browser/api/password/importer",
-    "//components/keyed_service/ios:ios",
-    "//components/password_manager/core/browser/",
+    "//luxxle/ios/browser/api/password/importer",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/ios:ios",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/password_manager/core/browser/",
     "//ios/chrome/browser/passwords/model",
     "//ios/web/public/thread",
     "//net",

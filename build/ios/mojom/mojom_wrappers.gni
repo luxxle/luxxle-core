@@ -22,8 +22,7 @@ template("ios_objc_mojom_wrappers") {
   mojom_target = invoker.mojom_target
   mojom_target_path = get_label_info(mojom_target, "dir")
   mojom_target_name = get_label_info(mojom_target, "name")
-  mojom_target_parser =
-      get_path_info("${mojom_target_path}:${mojom_target_name}__parser",
+mojom_target_parser = "get_path_info("${mojom_target_path}:${mojom_target_name}__parser","
                     "abspath")
   mojom_output_dir = target_gen_dir
   dep_target_gen = get_label_info(mojom_target, "target_gen_dir")

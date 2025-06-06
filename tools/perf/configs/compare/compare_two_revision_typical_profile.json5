@@ -5,7 +5,7 @@
     {
       "target" : "v1.37.5",
       "label": "good_1.37.5",
-      "browser-type": "brave",
+      "browser-type": "luxxle",
       "profile": "brave-typical-win",
       "extra-browser-args": [
         "--disable-component-update",
@@ -16,7 +16,7 @@
     {
       "target" : "v1.37.6",
       "label": "bad_1.37.6",
-      "browser-type": "brave",
+      "browser-type": "luxxle",
       "profile": "brave-typical-win",
       "extra-browser-args": [
         "--disable-component-update",

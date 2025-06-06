@@ -175,7 +175,7 @@ const BraveCoreLogSeverity BraveCoreLogSeverityVerbose =
 
     // TODO(darkdh): move _adblockService and _backgroundImageService to
     // BraveWebMainParts::PreMainMessageLoopRun
-    // https://github.com/brave/brave-browser/issues/40567
+    // https://github.com/luxxle/brave-browser/issues/40567
     component_updater::ComponentUpdateService* cus =
         GetApplicationContext()->GetComponentUpdateService();
 

@@ -53,7 +53,7 @@ NSString* GetUserAgentForRequest(web::WebState* webState,
           // In prior versions of iOS,
           // `WKWebpagePreferences.allowsContentJavaScript` does not work
           // correctly in all cases:
-          // https://github.com/brave/brave-ios/issues/8585
+          // https://github.com/luxxle/brave-ios/issues/8585
           webView.configuration.preferences.javaScriptEnabled =
               preferences.allowsContentJavaScript;
 #pragma clang diagnostic pop

@@ -15,9 +15,12 @@ source_set("driver") {
 
   deps = [
     "//base",
-    "//components/sync/base",
-    "//components/sync/service",
-    "//components/sync_device_info",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync/base",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync/service",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync_device_info",
     "//ios/web/public/thread",
   ]
 

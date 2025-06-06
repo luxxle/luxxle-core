@@ -50,7 +50,7 @@ void BraveRoundedOmniboxResultsFrame::UpdateShadowBorder() {
     // Remove top shadow inset so that omnibox popup stays inside browser
     // widget. Especially on Mac, Widgets can't be out of screen so we need to
     // adjust popup position.
-    // https://github.com/brave/brave-browser/issues/26573
+    // https://github.com/luxxle/brave-browser/issues/26573
     border->set_insets(
         RoundedOmniboxResultsFrame::GetShadowInsets().set_top(0));
   }

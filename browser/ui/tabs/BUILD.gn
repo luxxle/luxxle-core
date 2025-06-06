@@ -21,8 +21,8 @@ if (!is_android) {
 
     deps = [
       ":tabs_public",
-      "//brave/browser/ai_chat",
-      "//brave/browser/ui/side_panel",
+      "//luxxle/browser/ai_chat",
+      "//luxxle/browser/ui/side_panel",
       "//chrome/browser/profiles",
       "//chrome/browser/ui/tabs:impl",
     ]
@@ -40,10 +40,11 @@ source_set("split_view") {
 
   deps = [
     "//base",
-    "//brave/browser:browser_process",
-    "//brave/browser/misc_metrics",
-    "//brave/browser/ui:brave_tab_features",
-    "//brave/components/misc_metrics",
+    "//luxxle/browser:browser_process",
+    "//luxxle/browser/misc_metrics",
+    "//luxxle/browser/ui:brave_tab_features",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/misc_metrics",
     "//chrome/browser/ui/browser_window",
     "//chrome/browser/ui/tabs:tab_model",
     "//chrome/browser/ui/tabs:tab_strip",

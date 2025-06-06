@@ -11,16 +11,25 @@ source_set("component_updater") {
 
   deps = [
     "//base",
-    "//brave/components/constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
     "//chrome/common",
-    "//components/component_updater",
-    "//components/prefs",
-    "//components/services/patch/content",
-    "//components/services/unzip/content",
-    "//components/update_client",
-    "//components/update_client:network_impl",
-    "//components/update_client:patch_impl",
-    "//components/update_client:unzip_impl",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/component_updater",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/services/patch/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/services/unzip/content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/update_client",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/update_client:network_impl",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/update_client:patch_impl",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/update_client:unzip_impl",
     "//content/public/browser",
     "//services/network/public/cpp",
   ]

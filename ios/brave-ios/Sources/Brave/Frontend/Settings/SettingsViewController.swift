@@ -1279,7 +1279,7 @@ class SettingsViewController: TableViewController {
             }
             Task.detached {
               let url = URL(
-                string: "https://raw.githubusercontent.com/brave/qa-resources/master/testlinks.json"
+                string: "https://raw.githubusercontent.com/luxxle/qa-resources/master/testlinks.json"
               )!
               let data = try Data(contentsOf: url)
               let links = try JSONDecoder().decode(Links.self, from: data)

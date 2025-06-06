@@ -42,8 +42,8 @@ index 9e2e7d6ef96..4cdf7cc8ac8 100644
 +    std::cout << "This is the way" << std::endl;
 +    return 0;
 +})";
-constexpr char kGithubUrlPath[] = "/brave/din_djarin/pull/1";
-constexpr char kGithubUrlPathPatch[] = "/brave/din_djarin/pull/1.patch";
+constexpr char kGithubUrlPath[] = "/luxxle/din_djarin/pull/1";
+constexpr char kGithubUrlPathPatch[] = "/luxxle/din_djarin/pull/1.patch";
 }  // namespace
 
 class PageContentFetcherBrowserTest : public InProcessBrowserTest {

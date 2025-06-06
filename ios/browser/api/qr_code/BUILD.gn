@@ -11,9 +11,11 @@ source_set("qr_code") {
 
   deps = [
     "//base",
-    "//brave/ios/browser/qr_code_generator",
-    "//components/qr_code_generator",
-    "//components/qr_code_generator:bitmap_generator",
+    "//luxxle/ios/browser/qr_code_generator",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/qr_code_generator",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/qr_code_generator:bitmap_generator",
     "//ui/gfx",
   ]
 

@@ -4,8 +4,9 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 webcompat_reporter_public_headers = [
-  "//brave/ios/browser/api/webcompat_reporter/webcompat_reporter_service_factory_wrapper.h",
-  "$root_gen_dir/brave/components/webcompat_reporter/common/ios/webcompat_reporter.mojom.objc.h",
+  "//luxxle/ios/browser/api/webcompat_reporter/webcompat_reporter_service_factory_wrapper.h",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "$root_gen_dir/luxxle/components/webcompat_reporter/common/ios/webcompat_reporter.mojom.objc.h",
 ]
 
-webcompat_reporter_public_deps = [ "//brave/ios/browser/api/webcompat_reporter:webcompat_reporter_mojom_wrappers" ]
+webcompat_reporter_public_deps = [ "//luxxle/ios/browser/api/webcompat_reporter:webcompat_reporter_mojom_wrappers" ]

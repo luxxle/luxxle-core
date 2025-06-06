@@ -14,11 +14,16 @@ source_set("unit_tests") {
   deps = [
     "//base",
     "//chrome/test:test_support",
-    "//components/content_settings/core/browser",
-    "//components/content_settings/core/common",
-    "//components/pref_registry",
-    "//components/prefs",
-    "//components/prefs:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/pref_registry",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs:test_support",
     "//content/test:test_support",
     "//testing/gmock",
     "//testing/gtest",

@@ -10,11 +10,13 @@ source_set("unit_tests") {
 
   deps = [
     "//base",
-    "//brave/components/commands/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/commands/browser",
     "//chrome/app:command_ids",
     "//chrome/browser/ui",
     "//chrome/test:test_support",
-    "//components/sync_preferences:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync_preferences:test_support",
     "//content/test:test_support",
     "//testing/gtest",
   ]

@@ -245,14 +245,14 @@ action("make_symbols_asset_catalog") {
     "--output",
     rebase_path("$target_gen_dir/NalaSymbols.xcassets"),
     "--leo_sf_symbols_directory",
-    rebase_path("//brave/node_modules/@brave/leo-sf-symbols"),
+    rebase_path("//luxxle/node_modules/@brave/leo-sf-symbols"),
     "--icons",
     string_join(",", nala_icons),
   ]
   outputs = [ "$target_gen_dir/NalaSymbols.xcassets" ]
   inputs = rebase_path(nala_icons,
                        ".",
-                       "//brave/node_modules/@brave/leo-sf-symbols/symbols")
+                       "//luxxle/node_modules/@brave/leo-sf-symbols/symbols")
 }
 
 nala_assets_public_headers = [ "public/nala_bundle.h" ]
@@ -290,7 +290,7 @@ ios_framework_bundle("nala_assets_framework") {
 bundle_data("nala_assets") {
   sources = get_target_outputs(":make_symbols_asset_catalog")
   sources += [ rebase_path(
-          "//brave/node_modules/@brave/leo/tokens/ios-swift/Colors.xcassets") ]
+          "//luxxle/node_modules/@brave/leo/tokens/ios-swift/Colors.xcassets") ]
   outputs = [ "{{bundle_contents_dir}}/{{source_file_part}}" ]
   public_deps = [ ":make_symbols_asset_catalog" ]
 }

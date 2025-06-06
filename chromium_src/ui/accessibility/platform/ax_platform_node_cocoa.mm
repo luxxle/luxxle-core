@@ -7,9 +7,9 @@
 #include "base/debug/dump_without_crashing.h"
 
 // Assumed to be a temporary fix for
-// https://github.com/brave/brave-browser/issues/13778
+// https://github.com/luxxle/brave-browser/issues/13778
 // and
-// https://github.com/brave/brave-browser/issues/13837
+// https://github.com/luxxle/brave-browser/issues/13837
 #define BRAVE_ACCESSIBILITY_ATTRIBUTED_STRING_FOR_RANGE             \
   id value = [self AXValue];                                        \
   if (![value isKindOfClass:[NSString class]]) {                    \

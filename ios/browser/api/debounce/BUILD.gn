@@ -11,7 +11,8 @@ source_set("debounce") {
   ]
   deps = [
     "//base",
-    "//brave/components/debounce/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/debounce/core/browser",
     "//net",
     "//url",
   ]

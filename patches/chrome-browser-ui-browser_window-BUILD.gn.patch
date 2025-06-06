@@ -6,7 +6,7 @@ index 26a78c63194c0513ca61227472dbac15b403eec0..98732bd559b6b5c1bf8ef4d099966b84
      "//content/public/browser",
      "//ui/base:types",
    ]
-+  deps = [ "//brave/browser/ui/browser_window" ]
++  deps = [ "//luxxle/browser/ui/browser_window" ]
  }
  
  source_set("impl") {
@@ -14,5 +14,5 @@ index 26a78c63194c0513ca61227472dbac15b403eec0..98732bd559b6b5c1bf8ef4d099966b84
    if (enable_glic) {
      deps += [ "//chrome/browser/glic" ]
    }
-+  deps += [ "//brave/browser/ui/browser_window:impl" ]
++  deps += [ "//luxxle/browser/ui/browser_window:impl" ]
  }

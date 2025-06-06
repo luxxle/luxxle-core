@@ -748,7 +748,7 @@ class NSURLExtensionsTests: XCTestCase {
       URL(string: "blob://http://brave.com/foo"): "blob://http//brave.com/foo",
       URL(string: "blob://02C00302-CE62-4DAE-AD70-FDEE19594856"):
         "blob://02C00302-CE62-4DAE-AD70-FDEE19594856",
-      URL(string: "file:///Users/brave/documents/foo.txt"): "file://foo.txt",
+      URL(string: "file:///Users/luxxle/documents/foo.txt"): "file://foo.txt",
       URL(string: "file://http://brave.com/foo.txt"): "file://foo.txt",
     ]
 

@@ -6,7 +6,7 @@ index 97f843f8133c49d684b415f61ef4b4084c4d345c..cb324232abb00bfade2273c7953c9e03
          "common/crash_keys.cc",
          "common/crash_keys.h",
        ]
-+      sources -= [ "app/chrome_exe.rc", ] sources += [ "//brave/app/brave_exe.rc", ]
++      sources -= [ "app/chrome_exe.rc", ] sources += [ "//luxxle/app/brave_exe.rc", ]
  
        deps += [
          ":chrome_dll",
@@ -14,7 +14,7 @@ index 97f843f8133c49d684b415f61ef4b4084c4d345c..cb324232abb00bfade2273c7953c9e03
        args += [ "--keystone=0" ]
      }
    }
-+  copy("brave_app_plist") { deps = [ "//brave:brave_app_plist" ] sources = [ "$root_gen_dir/brave/brave_app_plist_tweaked.plist" ] outputs = [ "$root_gen_dir/chrome/{{source_file_part}}" ] }
++  copy("brave_app_plist") { deps = [ "//brave:brave_app_plist" ] sources = [ "$root_gen_dir/luxxle/brave_app_plist_tweaked.plist" ] outputs = [ "$root_gen_dir/chrome/{{source_file_part}}" ] }
  
    mac_app_bundle("chrome_app") {
      output_name = chrome_product_full_name
@@ -44,7 +44,7 @@ index 97f843f8133c49d684b415f61ef4b4084c4d345c..cb324232abb00bfade2273c7953c9e03
        "--scm=0",
      ]
    }
-+  copy("brave_helper_plist") { deps = [ "//brave:brave_helper_plist" ] sources = [ "$root_gen_dir/brave/brave_helper_plist_tweaked.plist" ] outputs = [ "$root_gen_dir/chrome/{{source_file_part}}" ] } import("//brave/updater/config.gni") # For use_prebuilt_omaha4 below.
++  copy("brave_helper_plist") { deps = [ "//brave:brave_helper_plist" ] sources = [ "$root_gen_dir/luxxle/brave_helper_plist_tweaked.plist" ] outputs = [ "$root_gen_dir/chrome/{{source_file_part}}" ] } import("//luxxle/updater/config.gni") # For use_prebuilt_omaha4 below.
  
    compile_entitlements("entitlements") {
      entitlements_templates = [ "app/app-entitlements.plist" ]
@@ -73,7 +73,7 @@ index 97f843f8133c49d684b415f61ef4b4084c4d345c..cb324232abb00bfade2273c7953c9e03
        "-current_version",
        chrome_dylib_version,
      ]
-+    import("//brave/browser/sources.gni") public_deps += brave_chrome_framework_public_deps bundle_deps += brave_chrome_framework_bundle_deps framework_contents += brave_chrome_framework_contents configs += brave_chrome_framework_configs
++    import("//luxxle/browser/sources.gni") public_deps += brave_chrome_framework_public_deps bundle_deps += brave_chrome_framework_bundle_deps framework_contents += brave_chrome_framework_contents configs += brave_chrome_framework_configs
  
      if (!is_component_build) {
        # Specify a sensible install_name for static builds. The library is
@@ -90,7 +90,7 @@ index 97f843f8133c49d684b415f61ef4b4084c4d345c..cb324232abb00bfade2273c7953c9e03
  if (is_win) {
    process_version_rc_template("chrome_exe_version") {
 -    sources = [ "app/chrome_exe.ver" ]
-+    sources = [ "//brave/app/brave_exe.ver" ]
++    sources = [ "//luxxle/app/brave_exe.ver" ]
      output = "$target_gen_dir/chrome_exe_version.rc"
    }
  

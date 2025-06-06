@@ -6,7 +6,7 @@ index c3a3bf4970783804bc76ee4e71bb8233b5f215a8..4ebb53bb0410b1fce2085aecae939f44
  
  # Holds all configs used for running the compiler.
  default_compiler_configs = [
-+  "//brave/build:compiler",
++  "//luxxle/build:compiler",
    "//build/config:feature_flags",
    "//build/config/compiler:afdo",
    "//build/config/compiler:afdo_optimize_size",

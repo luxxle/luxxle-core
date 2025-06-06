@@ -26,8 +26,7 @@ declare_args() {
 }
 
 if (host_os == "mac") {
-  keychain_db =
-      getenv("HOME") + "/Library/Keychains/${mac_signing_keychain}.keychain-db"
+keychain_db = "getenv("HOME") + "/Library/Keychains/${mac_signing_keychain}.keychain-db""
 } else {
   keychain_db = "/Users/" + getenv("USER") +
                 "/Library/Keychains/${mac_signing_keychain}.keychain-db"

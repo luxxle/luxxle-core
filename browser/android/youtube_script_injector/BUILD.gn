@@ -16,10 +16,13 @@ source_set("youtube_script_injector") {
   deps = [
     ":features",
     "//base",
-    "//brave/components/brave_shields/content/browser",
-    "//brave/components/constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_shields/content/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
     "//chrome/browser/profiles:profile",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//net",
     "//url",
   ]
@@ -43,7 +46,8 @@ source_set("browser_tests") {
     ":features",
     ":youtube_script_injector",
     "//base",
-    "//brave/components/constants",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
     "//chrome/test:test_support",
     "//net:test_support",
     "//testing/gmock",

@@ -19,10 +19,12 @@ source_set("tooltips") {
 
     deps += [
       "//base",
-      "//brave/browser/profiles:util",
-      "//brave/browser/ui/brave_tooltips",
-      "//brave/components/brave_ads/browser:browser",
-      "//brave/components/resources:strings_grit",
+      "//luxxle/browser/profiles:util",
+      "//luxxle/browser/ui/brave_tooltips",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/brave_ads/browser:browser",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/resources:strings_grit",
       "//chrome/browser/profiles:profile",
       "//ui/base",
     ]

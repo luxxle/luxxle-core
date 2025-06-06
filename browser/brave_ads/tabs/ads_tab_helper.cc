@@ -467,7 +467,7 @@ void AdsTabHelper::WebContentsDestroyed() {
 }
 
 #if !BUILDFLAG(IS_ANDROID)
-// TODO(https://github.com/brave/brave-browser/issues/24970): Decouple
+// TODO(https://github.com/luxxle/brave-browser/issues/24970): Decouple
 // BrowserListObserver.
 
 void AdsTabHelper::OnBrowserSetLastActive(Browser* /*browser*/) {

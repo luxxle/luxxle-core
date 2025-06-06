@@ -3,24 +3,32 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/components/speedreader/common/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/speedreader/common/buildflags/buildflags.gni")
 
 brave_browser_perf_sources = [
-  "//brave/browser/perf/brave_perf_features_processor.cc",
-  "//brave/browser/perf/brave_perf_features_processor.h",
-  "//brave/browser/perf/brave_perf_switches.h",
+  "//luxxle/browser/perf/brave_perf_features_processor.cc",
+  "//luxxle/browser/perf/brave_perf_features_processor.h",
+  "//luxxle/browser/perf/brave_perf_switches.h",
 ]
 
 brave_browser_perf_deps = [
   "//base",
-  "//brave/components/brave_ads/core",
-  "//brave/components/brave_rewards/content",
-  "//brave/components/brave_shields/content/browser",
-  "//brave/components/brave_shields/core/browser",
-  "//brave/components/brave_shields/core/common/",
-  "//components/prefs",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/brave_ads/core",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/brave_rewards/content",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/brave_shields/content/browser",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/brave_shields/core/browser",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/brave_shields/core/common/",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//components/prefs",
 ]
 
 if (enable_speedreader) {
-  brave_browser_perf_deps += [ "//brave/components/speedreader" ]
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # brave_browser_perf_deps += [ "//luxxle/components/speedreader" ]
 }

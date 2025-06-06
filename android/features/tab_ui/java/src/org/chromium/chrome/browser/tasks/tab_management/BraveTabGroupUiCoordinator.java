@@ -144,7 +144,7 @@ public class BraveTabGroupUiCoordinator extends TabGroupUiCoordinator {
             super.destroy();
         } catch (NullPointerException ignore) {
             // mTabStripCoordinator could be null in a base class.
-            // https://github.com/brave/brave-browser/issues/40673
+            // https://github.com/luxxle/brave-browser/issues/40673
         }
     }
 }

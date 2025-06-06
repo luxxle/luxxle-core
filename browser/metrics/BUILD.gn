@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import("//brave/build/config.gni")
+import("//luxxle/build/config.gni")
 import("//testing/test.gni")
 
 source_set("browser_tests") {
@@ -16,9 +16,12 @@ source_set("browser_tests") {
     "//base",
     "//chrome/browser",
     "//chrome/test:test_support",
-    "//components/variations",
-    "//components/variations:test_support",
-    "//components/variations/service",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/variations",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/variations:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/variations/service",
     "//content/test:test_support",
     "//testing/gtest",
   ]
@@ -33,8 +36,8 @@ source_set("brave_metrics_unit_tests") {
   ]
   deps = [
     "//base/test:test_support",
-    "//brave/browser",
-    "//brave/browser/metrics/buildflags",
+    "//luxxle/browser",
+    "//luxxle/browser/metrics/buildflags",
     "//chrome/browser",
     "//chrome/test:test_support",
     "//content/test:test_support",
@@ -42,11 +45,12 @@ source_set("brave_metrics_unit_tests") {
 
   if (is_linux) {
     sources += [ "metrics_reporting_util_unittest_linux.cc" ]
-    configs += [ "//brave/build/linux:linux_channel_names" ]
+    configs += [ "//luxxle/build/linux:linux_channel_names" ]
 
     deps += [
       "//chrome/common:channel_info",
-      "//components/version_info:channel",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//components/version_info:channel",
     ]
   }
 }

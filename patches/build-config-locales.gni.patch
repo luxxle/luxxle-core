@@ -6,7 +6,7 @@ index e1f23cb53d9d41b28fcdd1562e2a7898433932b6..b5936d50d8a93a5025c3895075e7ec07
    "zh-HK",
    "zu",
  ]
-+import("//brave/build/config/locales.gni") extended_locales -= brave_extended_locales_exclusions
++import("//luxxle/build/config/locales.gni") extended_locales -= brave_extended_locales_exclusions
  
  # Chrome locales not on Android.
  # These locales have not yet been tested yet. Specifically, AOSP has not been

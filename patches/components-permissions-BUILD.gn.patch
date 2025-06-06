@@ -15,7 +15,7 @@ index 02d04168f48a6240c5666425448104fbf15de30c..1342acaebcbcbfbfd2ddd74022f570bc
    if (enable_guest_view) {
      deps += [ "//components/guest_view/browser" ]
    }
-+  import("//brave/components/permissions/sources.gni") sources += brave_components_permissions_sources deps += brave_components_permissions_deps
++  import("//luxxle/components/permissions/sources.gni") sources += brave_components_permissions_sources deps += brave_components_permissions_deps
    if (is_android) {
      sources += [
        "android/android_permission_util.cc",

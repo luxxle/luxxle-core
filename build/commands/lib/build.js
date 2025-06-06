@@ -37,7 +37,8 @@ const build = async (buildConfig = config.defaultBuildConfig, options = {}) => {
   checkVersionsMatch()
 
   util.touchOverriddenFiles()
-  util.updateBranding()
+  // LUXXLE: Disable branding update to eliminate warnings about missing brave files
+  // util.updateBranding()
   await util.buildNativeRedirectCC()
 
   if (options.prepare_only) {

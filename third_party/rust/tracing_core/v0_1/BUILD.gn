@@ -12,22 +12,22 @@ cargo_crate("lib") {
   crate_name = "tracing_core"
   epoch = "0.1"
   crate_type = "rlib"
-  crate_root = "//brave/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/lib.rs"
+  crate_root = "//luxxle/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/lib.rs"
   sources = [
-    "//brave/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/callsite.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/dispatcher.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/event.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/field.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/lazy.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/lib.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/metadata.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/parent.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/span.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/spin/mod.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/spin/mutex.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/spin/once.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/stdlib.rs",
-    "//brave/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/subscriber.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/callsite.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/dispatcher.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/event.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/field.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/lazy.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/metadata.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/parent.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/span.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/spin/mod.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/spin/mutex.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/spin/once.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/stdlib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/tracing-core-v0_1/src/subscriber.rs",
   ]
   inputs = []
 
@@ -44,7 +44,7 @@ cargo_crate("lib") {
   executable_configs += [ "//build/config/compiler:no_chromium_code" ]
   proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
   proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
-  deps = [ "//brave/third_party/rust/once_cell/v1:lib" ]
+  deps = [ "//luxxle/third_party/rust/once_cell/v1:lib" ]
   features = [
     "default",
     "once_cell",

@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/build/config.gni")
+import("//luxxle/build/config.gni")
 
 source_set("browser_tests") {
   testonly = true
@@ -19,7 +19,8 @@ source_set("browser_tests") {
     "//chrome/browser/ui:browser_navigator_params_headers",
     "//chrome/test",
     "//chrome/test:test_support",
-    "//components/omnibox/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/omnibox/browser",
     "//testing/gtest",
     "//ui/base",
   ]
@@ -48,6 +49,6 @@ source_set("unit_tests") {
 
   if (enable_sparkle) {
     sources += [ "help/brave_version_updater_mac_unittest.mm" ]
-    deps += [ "//brave/browser:mac_features" ]
+    deps += [ "//luxxle/browser:mac_features" ]
   }
 }

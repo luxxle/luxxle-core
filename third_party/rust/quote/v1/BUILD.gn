@@ -41,7 +41,7 @@ cargo_crate("buildrs_support") {
   executable_configs += [ "//build/config/compiler:no_chromium_code" ]
   proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
   proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
-  deps = [ "//brave/third_party/rust/proc_macro2/v1:buildrs_support" ]
+  deps = [ "//luxxle/third_party/rust/proc_macro2/v1:buildrs_support" ]
   features = [ "proc-macro" ]
   rustflags = [
     "--cap-lints=allow",  # Suppress all warnings in crates.io crates

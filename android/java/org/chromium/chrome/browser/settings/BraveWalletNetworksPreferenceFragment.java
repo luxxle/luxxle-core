@@ -46,7 +46,7 @@ public class BraveWalletNetworksPreferenceFragment extends BravePreferenceFragme
         mPageTitle.set(getString(R.string.brave_wallet_networks_title));
 
         // Pass {@code ActivityResultRegistry} reference explicitly to avoid crash
-        // https://github.com/brave/brave-browser/issues/31882
+        // https://github.com/luxxle/brave-browser/issues/31882
         mAddNetworkActivityResultLauncher =
                 registerForActivityResult(
                         new ActivityResultContracts.StartActivityForResult(),

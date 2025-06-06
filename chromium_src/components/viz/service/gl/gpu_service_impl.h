@@ -8,7 +8,7 @@
 
 #include "base/compiler_specific.h"
 
-// https://github.com/brave/brave-core/pull/17671
+// https://github.com/luxxle/brave-core/pull/17671
 // To check that 'ModuleFilenamePatch' feature works, we provide a result of
 // call to the interested WINAPI functions.
 #if BUILDFLAG(IS_ANDROID)

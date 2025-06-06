@@ -11,7 +11,7 @@
 #include "base/memory/weak_ptr.h"
 #include "base/time/time.h"
 
-// TOOD(https://github.com/brave/brave-browser/issues/45582): Plaster issue.
+// TOOD(https://github.com/luxxle/brave-browser/issues/45582): Plaster issue.
 // This header has to be pre-emptively included as it eventually causes the
 // inclusion of components/permissions/permission_prompt.h, where
 // `PermissionRequest` is used as a forward declaration, but was getting

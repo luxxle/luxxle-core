@@ -3,8 +3,10 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import("//brave/components/playlist/common/buildflags/buildflags.gni")
-import("//components/vector_icons/vector_icons.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/playlist/common/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//components/vector_icons/vector_icons.gni")
 
 aggregate_vector_icons("brave_components_vector_icons") {
   icon_directory = "."
@@ -122,7 +124,7 @@ aggregate_vector_icons("brave_components_vector_icons") {
   }
 
   sources +=
-      rebase_path(leo_icons, ".", "//brave/node_modules/@brave/leo/icons-skia")
+      rebase_path(leo_icons, ".", "//luxxle/node_modules/@brave/leo/icons-skia")
 }
 
 static_library("vector_icons") {

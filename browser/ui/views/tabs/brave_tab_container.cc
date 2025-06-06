@@ -445,7 +445,7 @@ void BraveTabContainer::SetTabSlotVisibility() {
   // During multiple tab closing including group, this method could be called
   // but group_views_ could be empty already. We should clear group info in tabs
   // in that case.
-  // https://github.com/brave/brave-browser/issues/39298
+  // https://github.com/luxxle/brave-browser/issues/39298
   for (Tab* tab : layout_helper_->GetTabs()) {
     if (std::optional<tab_groups::TabGroupId> group = tab->group();
         group && !group_views_.contains(*group)) {

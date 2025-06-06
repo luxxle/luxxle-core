@@ -24,12 +24,17 @@ source_set("browser_tests") {
     ]
 
     deps += [
-      "//brave/browser",
-      "//brave/components/brave_component_updater/browser",
-      "//brave/components/brave_shields/content/browser",
-      "//brave/components/brave_shields/content/test:test_support",
-      "//brave/components/brave_shields/core/common",
-      "//brave/components/ephemeral_storage",
+      "//luxxle/browser",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/brave_component_updater/browser",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/brave_shields/content/browser",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/brave_shields/content/test:test_support",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/brave_shields/core/common",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/ephemeral_storage",
       "//chrome/browser",
       "//chrome/browser/content_settings:content_settings_factory",
       "//chrome/browser/ui",
@@ -47,14 +52,19 @@ source_set("unit_tests") {
 
   deps = [
     "//base/test:test_support",
-    "//brave/components/ephemeral_storage",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ephemeral_storage",
     "//chrome/browser",
     "//chrome/browser/content_settings:content_settings_factory",
     "//chrome/test:test_support",
-    "//components/content_settings/core/browser",
-    "//components/keyed_service/core",
-    "//components/prefs",
-    "//components/user_prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/user_prefs",
     "//content/public/browser",
     "//content/test:test_support",
     "//net",

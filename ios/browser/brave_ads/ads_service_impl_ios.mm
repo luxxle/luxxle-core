@@ -230,7 +230,7 @@ void AdsServiceImplIOS::ParseAndSaveNewTabPageAds(
     base::Value::Dict dict,
     ParseAndSaveNewTabPageAdsCallback callback) {
   if (task_queue_.should_queue()) {
-    // TODO(https://github.com/brave/brave-browser/issues/44925): Transition
+    // TODO(https://github.com/luxxle/brave-browser/issues/44925): Transition
     // task queue to ads service layer. API calls are fired before the ads
     // service is initialized, we will follow up with a cross platform solution.
     return task_queue_.Add(base::BindOnce(
@@ -396,7 +396,7 @@ void AdsServiceImplIOS::NotifyTabTextContentDidChange(
     int32_t /*tab_id*/,
     const std::vector<GURL>& /*redirect_chain*/,
     const std::string& /*text*/) {
-  // TODO(https://github.com/brave/brave-browser/issues/42373): Utilize
+  // TODO(https://github.com/luxxle/brave-browser/issues/42373): Utilize
   // AdsClientNotifier in AdsServiceImplIOS
   NOTIMPLEMENTED() << "Not used on iOS.";
 }
@@ -405,19 +405,19 @@ void AdsServiceImplIOS::NotifyTabHtmlContentDidChange(
     int32_t /*tab_id*/,
     const std::vector<GURL>& /*redirect_chain*/,
     const std::string& /*html*/) {
-  // TODO(https://github.com/brave/brave-browser/issues/42373): Utilize
+  // TODO(https://github.com/luxxle/brave-browser/issues/42373): Utilize
   // AdsClientNotifier in AdsServiceImplIOS
   NOTIMPLEMENTED() << "Not used on iOS.";
 }
 
 void AdsServiceImplIOS::NotifyTabDidStartPlayingMedia(int32_t /*tab_id*/) {
-  // TODO(https://github.com/brave/brave-browser/issues/42373): Utilize
+  // TODO(https://github.com/luxxle/brave-browser/issues/42373): Utilize
   // AdsClientNotifier in AdsServiceImplIOS
   NOTIMPLEMENTED() << "Not used on iOS.";
 }
 
 void AdsServiceImplIOS::NotifyTabDidStopPlayingMedia(int32_t /*tab_id*/) {
-  // TODO(https://github.com/brave/brave-browser/issues/42373): Utilize
+  // TODO(https://github.com/luxxle/brave-browser/issues/42373): Utilize
   // AdsClientNotifier in AdsServiceImplIOS
   NOTIMPLEMENTED() << "Not used on iOS.";
 }
@@ -428,45 +428,45 @@ void AdsServiceImplIOS::NotifyTabDidChange(
     bool /*is_new_navigation*/,
     bool /*is_restoring*/,
     bool /*is_visible*/) {
-  // TODO(https://github.com/brave/brave-browser/issues/42373): Utilize
+  // TODO(https://github.com/luxxle/brave-browser/issues/42373): Utilize
   // AdsClientNotifier in AdsServiceImplIOS
   NOTIMPLEMENTED() << "Not used on iOS.";
 }
 
 void AdsServiceImplIOS::NotifyTabDidLoad(int32_t /*tab_id*/,
                                          int /*http_status_code*/) {
-  // TODO(https://github.com/brave/brave-browser/issues/42373): Utilize
+  // TODO(https://github.com/luxxle/brave-browser/issues/42373): Utilize
   // AdsClientNotifier in AdsServiceImplIOS
   NOTIMPLEMENTED() << "Not used on iOS.";
 }
 
 void AdsServiceImplIOS::NotifyDidCloseTab(int32_t /*tab_id*/) {
-  // TODO(https://github.com/brave/brave-browser/issues/42373): Utilize
+  // TODO(https://github.com/luxxle/brave-browser/issues/42373): Utilize
   // AdsClientNotifier in AdsServiceImplIOS
   NOTIMPLEMENTED() << "Not used on iOS.";
 }
 
 void AdsServiceImplIOS::NotifyUserGestureEventTriggered(
     int32_t /*page_transition_type*/) {
-  // TODO(https://github.com/brave/brave-browser/issues/42373): Utilize
+  // TODO(https://github.com/luxxle/brave-browser/issues/42373): Utilize
   // AdsClientNotifier in AdsServiceImplIOS
   NOTIMPLEMENTED() << "Not used on iOS.";
 }
 
 void AdsServiceImplIOS::NotifyBrowserDidBecomeActive() {
-  // TODO(https://github.com/brave/brave-browser/issues/42373): Utilize
+  // TODO(https://github.com/luxxle/brave-browser/issues/42373): Utilize
   // AdsClientNotifier in AdsServiceImplIOS
   NOTIMPLEMENTED() << "Not used on iOS.";
 }
 
 void AdsServiceImplIOS::NotifyBrowserDidResignActive() {
-  // TODO(https://github.com/brave/brave-browser/issues/42373): Utilize
+  // TODO(https://github.com/luxxle/brave-browser/issues/42373): Utilize
   // AdsClientNotifier in AdsServiceImplIOS
   NOTIMPLEMENTED() << "Not used on iOS.";
 }
 
 void AdsServiceImplIOS::NotifyDidSolveAdaptiveCaptcha() {
-  // TODO(https://github.com/brave/brave-browser/issues/42373): Utilize
+  // TODO(https://github.com/luxxle/brave-browser/issues/42373): Utilize
   // AdsClientNotifier in AdsServiceImplIOS
   NOTIMPLEMENTED() << "Not used on iOS.";
 }

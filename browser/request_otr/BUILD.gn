@@ -3,7 +3,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/components/request_otr/common/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/request_otr/common/buildflags/buildflags.gni")
 
 assert(enable_request_otr)
 
@@ -11,26 +12,35 @@ source_set("browser_tests") {
   testonly = true
   defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]
 
-  sources = [ "//brave/browser/request_otr/request_otr_browsertest.cc" ]
+  sources = [ "//luxxle/browser/request_otr/request_otr_browsertest.cc" ]
   deps = [
     "//base",
-    "//brave/browser",
-    "//brave/browser/extensions:test_support",
-    "//brave/common:common",
-    "//brave/components/brave_component_updater/browser:browser",
-    "//brave/components/brave_shields/content/browser",
-    "//brave/components/brave_shields/core/common",
-    "//brave/components/request_otr/browser",
-    "//brave/components/request_otr/common",
+    "//luxxle/browser",
+    "//luxxle/browser/extensions:test_support",
+    "//luxxle/common:common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_component_updater/browser:browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_shields/content/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_shields/core/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/request_otr/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/request_otr/common",
     "//chrome/browser",
     "//chrome/browser/ui",
     "//chrome/common",
     "//chrome/test:test_support",
     "//chrome/test:test_support_ui",
-    "//components/infobars/content:content",
-    "//components/permissions:permissions",
-    "//components/prefs",
-    "//components/security_interstitials/content:security_interstitial_page",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/infobars/content:content",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/permissions:permissions",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/security_interstitials/content:security_interstitial_page",
     "//content/public/browser",
     "//content/test:test_support",
     "//third_party/abseil-cpp:absl",

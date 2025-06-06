@@ -10,7 +10,7 @@ import("//mojo/public/tools/bindings/mojom.gni")
 mojom("mojo_bindings") {
   sources = [ "brave_browser_command.mojom" ]
 
-  # The generated mojo bindings are part of the ui/webui/resources/brave/
-  # build_webui() target, so are served from chrome://resources/brave/
-  webui_module_path = "chrome://resources/brave/"
+  # The generated mojo bindings are part of the ui/webui/resources/luxxle/
+  # build_webui() target, so are served from chrome://resources/luxxle/
+  webui_module_path = "chrome://resources/luxxle/"
 }

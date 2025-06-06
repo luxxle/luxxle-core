@@ -59,7 +59,7 @@ void BraveTab::ActiveStateChanged() {
 
   // This should be called whenever the active state changes
   // see comment on UpdateEnabledForMuteToggle();
-  // https://github.com/brave/brave-browser/issues/23476/
+  // https://github.com/luxxle/brave-browser/issues/23476/
   alert_indicator_button_->UpdateEnabledForMuteToggle();
 }
 
@@ -119,7 +119,7 @@ gfx::Insets BraveTab::GetInsets() const {
   // As close button has more padding, it seems favicon is too close to the left
   // edge of the tab left border comppared with close button. Give additional
   // left padding to make both visible with same space from tab border.
-  // See https://www.github.com/brave/brave-browser/issues/30469.
+  // See https://www.github.com/luxxle/brave-browser/issues/30469.
   auto insets = Tab::GetInsets();
   insets.set_left(insets.left() + kExtraLeftPadding);
   return insets;

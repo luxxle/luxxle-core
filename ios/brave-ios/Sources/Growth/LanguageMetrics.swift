@@ -9,7 +9,7 @@ import OrderedCollections
 
 public class LanguageMetrics {
 
-  // This list is copied from //brave/components/misc_metrics/language_metrics.cc
+  // This list is copied from //luxxle/components/misc_metrics/language_metrics.cc
   static let acceptedLanguages: OrderedSet<String> = [
     "aa",  // Afar
     "ab",  // Abkhazian

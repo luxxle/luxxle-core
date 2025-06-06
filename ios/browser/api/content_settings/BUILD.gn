@@ -11,6 +11,7 @@ source_set("content_settings") {
   ]
   deps = [
     "//base",
-    "//components/content_settings/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/browser",
   ]
 }

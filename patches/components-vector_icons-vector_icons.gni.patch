@@ -6,7 +6,7 @@ index 05d308e5abfcb18eb5810b8bdb2aced240954554..f44ac7c7a8a3dcfbb076689d8a9f6e7e
      inputs =
          rebase_path(templates + invoker.sources, ".", invoker.icon_directory) +
          [ "//components/vector_icons/aggregate_vector_icons.py" ]
-+    inputs += ["//brave/components/vector_icons/leo_overrides.json"]
++    inputs += ["//luxxle/components/vector_icons/leo_overrides.json"]
  
      outputs = [
        output_cc,

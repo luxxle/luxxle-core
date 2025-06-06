@@ -6,7 +6,7 @@ index 7d9a7d263c19e400e90df9024e6334b246ab00be..3516160cc7855deadffe0303cef88855
      ]
      frameworks = [ "AppKit.framework" ]
    }
-+  import("//brave/ui/color/sources.gni") sources += brave_ui_color_sources public_deps += brave_ui_color_public_deps
++  import("//luxxle/ui/color/sources.gni") sources += brave_ui_color_sources public_deps += brave_ui_color_public_deps
  }
  
  source_set("test_support") {
@@ -14,7 +14,7 @@ index 7d9a7d263c19e400e90df9024e6334b246ab00be..3516160cc7855deadffe0303cef88855
      ]
      deps += [ ":accent_color_observer" ]
    }
-+  import("//brave/ui/color/sources.gni") sources += brave_ui_color_mixer_sources public_deps += brave_ui_color_mixer_public_deps
++  import("//luxxle/ui/color/sources.gni") sources += brave_ui_color_mixer_sources public_deps += brave_ui_color_mixer_public_deps
  }
  
  mojom("mojom") {

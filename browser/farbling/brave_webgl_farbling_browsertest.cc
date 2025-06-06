@@ -243,7 +243,7 @@ IN_PROC_BROWSER_TEST_F(BraveWebGLFarblingBrowserTest, GetAttachedShaders) {
   SetFingerprintingDefault(domain);
   ASSERT_TRUE(ui_test_utils::NavigateToURL(browser(), url));
   //... getAttachedShaders() should not be null:
-  // https://github.com/brave/brave-browser/issues/37044
+  // https://github.com/luxxle/brave-browser/issues/37044
   EXPECT_EQ(EvalJs(contents(), kTitleScript).ExtractString(),
             "[object WebGLShader]");
 }

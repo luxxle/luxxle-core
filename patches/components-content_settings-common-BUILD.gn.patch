@@ -6,5 +6,5 @@ index 04c77e73d6817ad6f1d77cc3f89630d273535574..9ad65d0e080caabe40becf9385052363
      "//url/mojom:url_mojom_gurl",
      "//url/mojom:url_mojom_origin",
    ]
-+  import("//brave/components/content_settings/sources.gni") deps += brave_components_content_settings_common_mojom_deps
++  import("//luxxle/components/content_settings/sources.gni") deps += brave_components_content_settings_common_mojom_deps
  }

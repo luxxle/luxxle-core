@@ -10,22 +10,22 @@ inline_file("//chrome/installer/util/prebuild/create_installer_string_rc.py",
 
 MODE_SPECIFIC_STRINGS = {
     'IDS_APP_SHORTCUTS_SUBDIR_NAME': {
-        'brave': [
+        'luxxle': [
             'IDS_APP_SHORTCUTS_SUBDIR_NAME',
         ],
     },
     'IDS_INBOUND_MDNS_RULE_DESCRIPTION': {
-        'brave': [
+        'luxxle': [
             'IDS_INBOUND_MDNS_RULE_DESCRIPTION',
         ],
     },
     'IDS_INBOUND_MDNS_RULE_NAME': {
-        'brave': [
+        'luxxle': [
             'IDS_INBOUND_MDNS_RULE_NAME',
         ],
     },
     'IDS_PRODUCT_NAME': {
-        'brave': [
+        'luxxle': [
             'IDS_PRODUCT_NAME',
         ],
     },

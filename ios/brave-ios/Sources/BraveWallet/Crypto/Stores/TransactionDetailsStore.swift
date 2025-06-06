@@ -120,7 +120,7 @@ class TransactionDetailsStore: ObservableObject, WalletObserverStore {
       let allNetworks = await rpcService.allNetworks()
       guard let network = allNetworks.first(where: { $0.chainId == transaction.chainId }) else {
         // Transactions should be removed if their network is removed
-        // https://github.com/brave/brave-browser/issues/30234
+        // https://github.com/luxxle/brave-browser/issues/30234
         assertionFailure(
           "The NetworkInfo for the transaction's chainId (\(transaction.chainId)) is unavailable"
         )

@@ -11,8 +11,10 @@ source_set("omnibox") {
 
   deps = [
     "//base",
-    "//components/omnibox/browser",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/omnibox/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//ios/chrome/browser/autocomplete/model",
     "//ios/chrome/browser/shared/model/application_context",
     "//ios/chrome/browser/shared/model/prefs:pref_names",

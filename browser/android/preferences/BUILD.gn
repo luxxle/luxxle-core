@@ -10,23 +10,34 @@ source_set("preferences") {
 
   deps = [
     "//base",
-    "//brave/build/android:jni_headers",
-    "//brave/components/brave_adaptive_captcha",
-    "//brave/components/brave_news/common",
-    "//brave/components/brave_perf_predictor/common",
-    "//brave/components/brave_referrals/common",
-    "//brave/components/brave_rewards/core",
-    "//brave/components/brave_shields/content/browser",
-    "//brave/components/brave_sync:prefs",
-    "//brave/components/constants",
+    "//luxxle/build/android:jni_headers",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_adaptive_captcha",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_news/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_perf_predictor/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_referrals/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_shields/content/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_sync:prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
     "//chrome/browser:browser_process",
     "//chrome/browser:browser_public_dependencies",
     "//chrome/browser/content_settings:content_settings_factory",
     "//chrome/browser/profiles:profile",
     "//chrome/common",
-    "//components/content_settings/core/browser",
-    "//components/content_settings/core/browser:cookie_settings",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/content_settings/core/browser:cookie_settings",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//third_party/blink/public/common",
     "//url",
   ]
@@ -34,26 +45,44 @@ source_set("preferences") {
 
 java_cpp_strings("java_pref_names_srcjar") {
   sources = [
-    "//brave/components/ai_chat/core/common/pref_names.h",
-    "//brave/components/brave_adaptive_captcha/pref_names.h",
-    "//brave/components/brave_rewards/core/pref_names.h",
-    "//brave/components/brave_shields/core/common/pref_names.h",
-    "//brave/components/brave_vpn/common/pref_names.h",
-    "//brave/components/constants/pref_names.h",
-    "//brave/components/de_amp/common/pref_names.cc",
-    "//brave/components/de_amp/common/pref_names.h",
-    "//brave/components/debounce/core/common/pref_names.h",
-    "//brave/components/decentralized_dns/core/pref_names.h",
-    "//brave/components/ntp_background_images/common/pref_names.h",
-    "//brave/components/omnibox/browser/brave_omnibox_prefs.cc",
-    "//brave/components/omnibox/browser/brave_omnibox_prefs.h",
-    "//brave/components/p3a/pref_names.h",
-    "//brave/components/request_otr/common/pref_names.h",
-    "//brave/components/search_engines/brave_search_engines_pref_names.h",
-    "//brave/components/speedreader/speedreader_pref_names.h",
-    "//components/translate/core/browser/translate_pref_names.h",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ai_chat/core/common/pref_names.h",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_adaptive_captcha/pref_names.h",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core/pref_names.h",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_shields/core/common/pref_names.h",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_vpn/common/pref_names.h",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants/pref_names.h",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/de_amp/common/pref_names.cc",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/de_amp/common/pref_names.h",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/debounce/core/common/pref_names.h",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/decentralized_dns/core/pref_names.h",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/ntp_background_images/common/pref_names.h",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/omnibox/browser/brave_omnibox_prefs.cc",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/omnibox/browser/brave_omnibox_prefs.h",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/p3a/pref_names.h",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/request_otr/common/pref_names.h",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/search_engines/brave_search_engines_pref_names.h",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/speedreader/speedreader_pref_names.h",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/translate/core/browser/translate_pref_names.h",
   ]
 
   template =
-      "//brave/browser/preferences/android/java_templates/BravePref.java.tmpl"
+      "//luxxle/browser/preferences/android/java_templates/BravePref.java.tmpl"
 }

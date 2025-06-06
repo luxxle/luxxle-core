@@ -10,7 +10,7 @@ import '../brave_search_engines_page/private_search_engine_list_dialog.js'
 import {
   RegisterPolymerComponentReplacement,
   RegisterPolymerTemplateModifications
-} from 'chrome://resources/brave/polymer_overriding.js'
+} from 'chrome://resources/luxxle/polymer_overriding.js'
 
 import {SettingsSearchPageElement} from '../search_page/search_page.js'
 import {routes} from '../route.js'

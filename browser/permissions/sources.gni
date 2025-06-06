@@ -4,15 +4,18 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 brave_browser_permissions_sources = [
-  "//brave/browser/permissions/permission_lifetime_manager_factory.cc",
-  "//brave/browser/permissions/permission_lifetime_manager_factory.h",
-  "//brave/browser/permissions/permission_origin_lifetime_monitor_impl.cc",
-  "//brave/browser/permissions/permission_origin_lifetime_monitor_impl.h",
+  "//luxxle/browser/permissions/permission_lifetime_manager_factory.cc",
+  "//luxxle/browser/permissions/permission_lifetime_manager_factory.h",
+  "//luxxle/browser/permissions/permission_origin_lifetime_monitor_impl.cc",
+  "//luxxle/browser/permissions/permission_origin_lifetime_monitor_impl.h",
 ]
 
 brave_browser_permissions_deps = [
   "//base",
-  "//brave/components/brave_wallet/browser:permission_utils",
-  "//components/keyed_service/content",
-  "//components/permissions",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/brave_wallet/browser:permission_utils",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//components/keyed_service/content",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//components/permissions",
 ]

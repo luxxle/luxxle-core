@@ -41,7 +41,7 @@ constexpr char kOpenAIChatButtonInvalidPath[] =
 }  // namespace
 
 // TODO(jocelyn): This should be changed to PlatformBrowserTest when we support
-// Android. https://github.com/brave/brave-browser/issues/41905
+// Android. https://github.com/luxxle/brave-browser/issues/41905
 class AIChatBraveSearchThrottleBrowserTest : public InProcessBrowserTest {
  public:
   AIChatBraveSearchThrottleBrowserTest()

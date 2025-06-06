@@ -1,0 +1,16 @@
+# Copyright (c) 2024 The Luxxle Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at https://mozilla.org/MPL/2.0/.
+
+# Import base Chromium configuration
+import("//build/config/BUILDCONFIG.gn")
+
+# Add Luxxle-specific compiler flags
+if (!is_redirect_cc_build) {
+  _luxxle_include = rebase_path("//luxxle/chromium_src", root_build_dir)
+  compiler_defaults = {
+    forward_variables_from(default_compiler_configs, "*")
+    common_compiler_flags = [ "-I" + _luxxle_include ]
+  }
+} 

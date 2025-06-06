@@ -5,8 +5,10 @@
 
 group("app") {
   deps = [
-    "//brave/components/update_client:buildflags",
-    "//components/dom_distiller/content/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/update_client:buildflags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/dom_distiller/content/browser",
     "//google_apis",
     "//media",
   ]

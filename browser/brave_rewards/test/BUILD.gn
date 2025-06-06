@@ -12,14 +12,17 @@ source_set("browser_tests") {
 
   deps = [
     "//base/test:test_support",
-    "//brave/browser/brave_rewards",
-    "//brave/components/brave_rewards/core",
-    "//brave/components/brave_rewards/core:features",
+    "//luxxle/browser/brave_rewards",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core:features",
     "//chrome/browser/profiles:profile",
     "//chrome/browser/ui",
     "//chrome/test:test_support",
     "//chrome/test:test_support_ui",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//content/test:test_support",
   ]
 
@@ -50,20 +53,30 @@ source_set("browser_tests") {
     ]
 
     deps += [
-      "//brave/app:command_ids",
-      "//brave/browser",
-      "//brave/browser/brave_ads",
-      "//brave/browser/brave_rewards:util",
-      "//brave/components/brave_rewards/content",
-      "//brave/components/brave_rewards/core/buildflags",
-      "//brave/components/brave_rewards/core/engine",
-      "//brave/components/brave_rewards/core/engine:publishers_proto",
-      "//brave/components/brave_rewards/core/mojom:engine",
-      "//brave/components/l10n/common:test_support",
-      "//brave/components/ntp_background_images/common",
-      "//components/policy/core/browser",
-      "//components/policy/core/common:test_support",
-      "//components/user_prefs",
+      "//luxxle/app:command_ids",
+      "//luxxle/browser",
+      "//luxxle/browser/brave_ads",
+      "//luxxle/browser/brave_rewards:util",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/brave_rewards/content",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/brave_rewards/core/buildflags",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/brave_rewards/core/engine",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/brave_rewards/core/engine:publishers_proto",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/brave_rewards/core/mojom:engine",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/l10n/common:test_support",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/ntp_background_images/common",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//components/policy/core/browser",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//components/policy/core/common:test_support",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//components/user_prefs",
     ]
   }
 }

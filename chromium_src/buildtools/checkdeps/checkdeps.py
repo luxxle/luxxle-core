@@ -17,10 +17,10 @@ class BraveDepsChecker(DepsChecker):
                                                       dir_path_local_abs)
 
         dir_path_norm = NormalizePath(dir_path_local_abs)
-        if '/brave/chromium_src' in dir_path_norm:
+        if '/luxxle/chromium_src' in dir_path_norm:
             # Append rules from the original `src/...` dir.
             root_src_dir_path_norm = dir_path_norm.replace(
-                '/brave/chromium_src', '', 1)
+                '/luxxle/chromium_src', '', 1)
             directory_rules, _ = super(DepsChecker, self)._ApplyDirectoryRules(
                 directory_rules, root_src_dir_path_norm)
 

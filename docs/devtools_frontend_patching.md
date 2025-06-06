@@ -2,10 +2,10 @@
 
 ## Adding a New File
 
-1. Add your file in `//brave/third_party/devtools-frontend/src/front_end/{path to your file}`
-2. Create (if it doesn't exist) `sources.gni` with `//brave/third_party/devtools-frontend/src/front_end/{path to your file}`
+1. Add your file in `//luxxle/third_party/devtools-frontend/src/front_end/{path to your file}`
+2. Create (if it doesn't exist) `sources.gni` with `//luxxle/third_party/devtools-frontend/src/front_end/{path to your file}`
 3. Create a patch in the corresponding `BUILD.gn` in `//third_party/devtools-frontend/src`
-4. Add a reference to the compiled file in `//brave/third_party/devtools-frontend/src/config/gni/sources.gni`
+4. Add a reference to the compiled file in `//luxxle/third_party/devtools-frontend/src/config/gni/sources.gni`
 
 ### How It Works
 
@@ -13,7 +13,7 @@ When `chromium_src/third_party/devtools-frontend/src/scripts/build/typescript/ts
 
 ## Patching an Existing File
 
-1. Create a patch file in `//brave/chromium_src/third_party/devtools-frontend/src/front_end/{path to the file you want to patch}.ts`
+1. Create a patch file in `//luxxle/chromium_src/third_party/devtools-frontend/src/front_end/{path to the file you want to patch}.ts`
 2. Apply the patch after `SomeClass` declaration in the original file:
    ```javascript
    import { PatchSomeClass } from './SomeFile.patch.js'; (SomeClass as any) = PatchSomeClass(SomeClass);

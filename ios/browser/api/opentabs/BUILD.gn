@@ -27,11 +27,15 @@ source_set("opentabs") {
 
   deps = [
     "//base",
-    "//brave/ios/browser/api/web/web_state",
-    "//components/keyed_service/ios:ios",
-    "//components/send_tab_to_self",
-    "//components/sync/service",
-    "//components/sync_sessions",
+    "//luxxle/ios/browser/api/web/web_state",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/keyed_service/ios:ios",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/send_tab_to_self",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync/service",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/sync_sessions",
     "//ios/chrome/browser/sessions/model",
     "//ios/chrome/browser/shared/model/browser",
     "//ios/chrome/browser/shared/model/web_state_list",

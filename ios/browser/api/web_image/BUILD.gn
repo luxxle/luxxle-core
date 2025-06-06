@@ -14,8 +14,9 @@ source_set("web_image") {
 
   deps = [
     "//base",
-    "//brave/ios/browser/svg",
-    "//components/image_fetcher/ios",
+    "//luxxle/ios/browser/svg",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/image_fetcher/ios",
     "//ios/chrome/browser/shared/model/profile",
     "//ios/chrome/browser/shared/ui/util",
     "//net",

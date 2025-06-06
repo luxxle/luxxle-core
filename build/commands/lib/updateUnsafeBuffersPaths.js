@@ -21,7 +21,7 @@ async function updateUnsafeBuffersPaths() {
   )
   const braveGenConfigPath = path.join(
     config.srcDir,
-    ...['brave', ...relativeBuffersPath],
+    ...['luxxle', ...relativeBuffersPath],
   )
 
   const repoContent = await fs.readFile(chromiumRepoConfigPath, {
@@ -35,12 +35,12 @@ async function updateUnsafeBuffersPaths() {
     '#',
     ...repoContent.split('\n'),
     '# Appended path correction for redirect_cc by update_patches.',
-    '# File patched by brave/build/commands/lib/updateUnsafeBuffersPaths.js.',
-    '-brave/third_party/bip39wally-core-native/',
-    '-brave/third_party/argon2/',
-    '-brave/third_party/ethash/',
-    '-brave/third_party/bitcoin-core/',
-    '-brave/vendor/bat-native-tweetnacl/',
+    '# File patched by luxxle/build/commands/lib/updateUnsafeBuffersPaths.js.',
+    '-luxxle/third_party/bip39wally-core-native/',
+    '-luxxle/third_party/argon2/',
+    '-luxxle/third_party/ethash/',
+    '-luxxle/third_party/bitcoin-core/',
+    '-luxxle/vendor/bat-native-tweetnacl/',
   ]
 
   updatedPathLines = bufferPathLines.filter(

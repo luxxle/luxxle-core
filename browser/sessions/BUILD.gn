@@ -14,7 +14,8 @@ source_set("browser_tests") {
       "//chrome/browser",
       "//chrome/browser/profiles:profile",
       "//chrome/test:test_support_ui",
-      "//components/sessions",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//components/sessions",
     ]
   }
 }

@@ -3,15 +3,15 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # you can obtain one at http://mozilla.org/MPL/2.0/.
 
-import("//brave/browser/shell_integrations/buildflags/buildflags.gni")
-import("//brave/components/brave_vpn/common/buildflags/buildflags.gni")
+import("//luxxle/browser/shell_integrations/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
 
 # Provide our file list to chromium's settings page build
 # Since our components start in a different path, we'll do the first step (move them to
 # the generated preprocessed path via preprocess_if_expr, but let chromium handle the rest of the
 # webui build pipeline.
-brave_settings_preprocess_deps =
-    [ "//brave/browser/resources/settings:preprocess" ]
+brave_settings_preprocess_deps = [ "//luxxle/browser/resources/settings:preprocess" ]
 
 brave_settings_web_component_files = [
   "brave_appearance_page/bookmark_bar.ts",
@@ -50,10 +50,14 @@ brave_settings_web_component_files = [
   "brave_wallet_page/wallet_networks_subpage.ts",
   "brave_web3_domains_page/brave_web3_domains_page.ts",
   "default_brave_shields_page/brave_adblock_subpage.ts",
-  "default_brave_shields_page/components/brave_adblock_editor.ts",
-  "default_brave_shields_page/components/brave_adblock_scriptlet_editor.ts",
-  "default_brave_shields_page/components/brave_adblock_scriptlet_list.ts",
-  "default_brave_shields_page/components/brave_adblock_subscribe_dropdown.ts",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "default_brave_shields_page/components/brave_adblock_editor.ts",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "default_brave_shields_page/components/brave_adblock_scriptlet_editor.ts",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "default_brave_shields_page/components/brave_adblock_scriptlet_list.ts",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "default_brave_shields_page/components/brave_adblock_subscribe_dropdown.ts",
   "default_brave_shields_page/default_brave_shields_page.ts",
   "getting_started_page/getting_started.ts",
   "social_blocking_page/social_blocking_page.ts",
@@ -149,11 +153,12 @@ brave_settings_local_css_files = [
   "getting_started_page/brave_account_sign_in_dialog.css",
 ]
 
-if (enable_brave_vpn_wireguard) {
-  brave_settings_web_component_files +=
-      [ "brave_system_page/brave_vpn_page.ts" ]
-  brave_settings_ts_files += [ "brave_system_page/brave_vpn_browser_proxy.ts" ]
-}
+# Commented out: VPN functionality disabled for Luxxle
+# if (enable_brave_vpn_wireguard) {
+#   brave_settings_web_component_files +=
+#       [ "brave_system_page/brave_vpn_page.ts" ]
+#   brave_settings_ts_files += [ "brave_system_page/brave_vpn_browser_proxy.ts" ]
+# }
 
 if (enable_pin_shortcut) {
   brave_settings_web_component_files +=
@@ -163,8 +168,10 @@ if (enable_pin_shortcut) {
 }
 
 brave_settings_ts_definitions = [
-  "//brave/components/definitions/chrome_brave_theme.d.ts",
-  "//brave/components/definitions/chrome_brave_wallet.d.ts",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/definitions/chrome_brave_theme.d.ts",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/definitions/chrome_brave_wallet.d.ts",
 ]
 
 # Generate the list for inclusion via preprocess and exclusion for chromium's preprocess
@@ -177,22 +184,28 @@ foreach(component_file, brave_settings_web_component_files) {
       [ string_replace(component_file, ".ts", ".html") ]
 }
 
-brave_settings_ts_extra_deps =
-    [ "//brave/browser/resources/settings:preprocess" ]
+brave_settings_ts_extra_deps = [ "//luxxle/browser/resources/settings:preprocess" ]
 
 brave_settings_mojo_files = [
-  "$root_gen_dir/brave/components/ai_chat/core/common/mojom/settings_helper.mojom-webui.ts",
-  "$root_gen_dir/brave/components/ai_chat/core/common/mojom/ai_chat.mojom-webui.ts",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "$root_gen_dir/luxxle/components/ai_chat/core/common/mojom/settings_helper.mojom-webui.ts",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "$root_gen_dir/luxxle/components/ai_chat/core/common/mojom/ai_chat.mojom-webui.ts",
 
   # ai_chat.mojom depends on tab_tracker.mojom even though it isn't used on settings
-  "$root_gen_dir/brave/components/ai_chat/core/common/mojom/tab_tracker.mojom-webui.ts",
-  "$root_gen_dir/brave/components/ai_chat/core/common/mojom/untrusted_frame.mojom-webui.ts",
-  "$root_gen_dir/brave/components/brave_account/core/mojom/brave_account.mojom-webui.ts",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "$root_gen_dir/luxxle/components/ai_chat/core/common/mojom/tab_tracker.mojom-webui.ts",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "$root_gen_dir/luxxle/components/ai_chat/core/common/mojom/untrusted_frame.mojom-webui.ts",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "$root_gen_dir/luxxle/components/brave_account/core/mojom/brave_account.mojom-webui.ts",
 ]
 
 brave_settings_mojo_files_deps = [
-  "//brave/components/ai_chat/core/common/mojom:mojom_ts__generator",
-  "//brave/components/brave_account/core/mojom:mojom_ts__generator",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/ai_chat/core/common/mojom:mojom_ts__generator",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/brave_account/core/mojom:mojom_ts__generator",
 ]
 
 brave_settings_ts_deps = [

@@ -28,7 +28,7 @@ def get_src_dir() -> str:
         current_dir = os.getcwd()
     while True:
         if os.path.basename(current_dir) == 'src' and os.path.isdir(
-                os.path.join(current_dir, 'brave')):
+                os.path.join(current_dir, 'luxxle')):
             return current_dir
         parent_dir = os.path.dirname(current_dir)
         if parent_dir == current_dir:
@@ -53,7 +53,7 @@ def wspath(path: str) -> str:
 
 
 def get_chromium_src_override(path: str) -> str:
-    """Convert path into `//brave/chromium_src` override path."""
+    """Convert path into `//luxxle/chromium_src` override path."""
     assert path, path
     if not os.path.isabs(path):
         path = os.path.abspath(path)
@@ -61,7 +61,7 @@ def get_chromium_src_override(path: str) -> str:
     src_dir = get_src_dir()
     assert path.startswith(src_dir), (path, src_dir)
     src_path = path[len(src_dir) + 1:]
-    override_path = wspath(f'//brave/chromium_src/{src_path}')
+    override_path = wspath(f'//luxxle/chromium_src/{src_path}')
     if not os.path.exists(override_path):
         for override_extension in get_additional_extensions():
             alt_path = override_path + override_extension
@@ -100,11 +100,11 @@ def inline_file(path: str, _globals: Dict[str, Any],
 
 def inline_chromium_src_override(_globals: Dict[str, Any],
                                  _locals: Dict[str, Any]) -> None:
-    """Inline `__file__` override from `//brave/chromium_src`."""
+    """Inline `__file__` override from `//luxxle/chromium_src`."""
     orig_file = _globals.get('__file__')
     if not orig_file:
         raise RuntimeError(
-            '__file__ is not set to inline from //brave/chromium_src. '
+            '__file__ is not set to inline from //luxxle/chromium_src. '
             'Use inline_file() with full path instead.')
     chromium_src_override = get_chromium_src_override(orig_file)
     inline_file(chromium_src_override, _globals, _locals)

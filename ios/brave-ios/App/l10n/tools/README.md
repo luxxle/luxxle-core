@@ -57,7 +57,7 @@ The API token can be created from Crowdin Dev Portal
 We generally pull in all languages files at the time we cut a release. That allows us to keep everything up to date in a scalable way.
 For reference, here are a few pull requests where we've pulled in new language files
 
-- https://github.com/brave/brave-ios/pull/???
+- https://github.com/luxxle/brave-ios/pull/???
 
 **IMPORTANT:** Before importing the latest translations, please take a moment to look at [How does translated text get back into the GitHub repository?](#how-does-translated-text-get-back-into-the-github-repository?)
 

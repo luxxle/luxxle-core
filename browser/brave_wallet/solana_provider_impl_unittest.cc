@@ -237,7 +237,7 @@ class SolanaProviderImplUnitTest : public testing::Test {
   void UnlockWallet() {
     base::RunLoop run_loop;
     keyring_service_->Unlock(
-        "brave", base::BindLambdaForTesting([&run_loop](bool success) {
+        "luxxle", base::BindLambdaForTesting([&run_loop](bool success) {
           ASSERT_TRUE(success);
           run_loop.Quit();
         }));

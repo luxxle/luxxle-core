@@ -72,7 +72,7 @@ public class FullScreenCustomTabActivity extends CustomTabActivity {
     public void performPostInflationStartup() {
 
         // Updating the value of mIsEnterAnimationCompleted to true to avoid
-        // https://github.com/brave/brave-browser/issues/45005
+        // https://github.com/luxxle/brave-browser/issues/45005
         mIsEnterAnimationCompleted = true;
 
         super.performPostInflationStartup();

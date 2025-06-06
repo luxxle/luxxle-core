@@ -11,12 +11,15 @@ source_set("browser_tests") {
 
   deps = [
     "//base/test:test_support",
-    "//brave/browser",
-    "//brave/components/skus/browser",
-    "//brave/components/skus/common",
+    "//luxxle/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/skus/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/skus/common",
     "//chrome/browser:browser_process",
     "//chrome/test:test_support",
-    "//components/prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
     "//content/public/common",
     "//content/test:test_support",
     "//net:test_support",

@@ -3,8 +3,10 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # you can obtain one at http://mozilla.org/MPL/2.0/.
 
-import("//brave/components/brave_vpn/common/buildflags/buildflags.gni")
-import("//brave/components/speedreader/common/buildflags/buildflags.gni")
+# Commented out: removed Brave component buildflags imports
+# These were causing duplicate declaration errors since components have been removed
+# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
+# import("//luxxle/components/speedreader/common/buildflags/buildflags.gni")
 
 group("storybook") {
   # Depend on any generated JS output that will
@@ -15,18 +17,19 @@ group("storybook") {
   # they will be generated before storybook is compiled.
   deps = [
     # Commented out: removed Brave components - using Chromium defaults instead
-    # "//brave/components/ai_chat/core/common/mojom:mojom_js",
-    # "//brave/components/brave_new_tab_ui:mojom_js",
-    # "//brave/components/brave_news/common:mojom_js",
-    # "//brave/components/brave_rewards/core/mojom:mojom_js",
-    # "//brave/components/brave_shields/core/common:mojom_js",
-    # "//brave/components/brave_vpn/common/mojom:mojom_js",
-    # "//brave/components/brave_wallet/common:mojom_js",
+    # "//luxxle/components/ai_chat/core/common/mojom:mojom_js",
+    # "//luxxle/components/brave_new_tab_ui:mojom_js",
+    # "//luxxle/components/brave_news/common:mojom_js",
+    # "//luxxle/components/brave_rewards/core/mojom:mojom_js",
+    # "//luxxle/components/brave_shields/core/common:mojom_js",
+    # "//luxxle/components/brave_vpn/common/mojom:mojom_js",
+    # "//luxxle/components/brave_wallet/common:mojom_js",
     "//mojo/public/js:bindings",
     "//mojo/public/js:resources",
   ]
 
-  if (enable_speedreader) {
-    deps += [ "//brave/components/speedreader/common:mojom_js" ]
-  }
+  # Commented out: speedreader component removed
+  # if (enable_speedreader) {
+  #   deps += [ "//luxxle/components/speedreader/common:mojom_js" ]
+  # }
 }

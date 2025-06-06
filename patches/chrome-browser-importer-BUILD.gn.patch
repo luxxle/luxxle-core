@@ -6,7 +6,7 @@ index 55239e167ca30397e477734947424f19f464a91c..96fd6ea44b43d324e26e70b749dc28a5
      "//ui/gfx",
      "//url",
    ]
-+  import("//brave/browser/importer/sources.gni") sources += brave_browser_importer_sources public_deps += brave_browser_importer_public_deps
++  import("//luxxle/browser/importer/sources.gni") sources += brave_browser_importer_sources public_deps += brave_browser_importer_public_deps
  }
  
  source_set("impl") {
@@ -14,7 +14,7 @@ index 55239e167ca30397e477734947424f19f464a91c..96fd6ea44b43d324e26e70b749dc28a5
      "//components/password_manager/core/browser:password_form",
      "//components/password_manager/core/browser/password_store:password_store_interface",
    ]
-+  import("//brave/browser/importer/sources.gni") sources += brave_browser_importer_impl_sources deps += brave_browser_importer_impl_deps
++  import("//luxxle/browser/importer/sources.gni") sources += brave_browser_importer_impl_sources deps += brave_browser_importer_impl_deps
  
    if (is_win) {
      sources += [ "firefox_profile_lock_win.cc" ]

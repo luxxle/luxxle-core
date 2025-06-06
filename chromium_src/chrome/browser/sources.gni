@@ -3,18 +3,25 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import("//brave/components/brave_vpn/common/buildflags/buildflags.gni")
-import("//brave/components/text_recognition/common/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/text_recognition/common/buildflags/buildflags.gni")
 import("//build/config/ui.gni")
 
 brave_chromium_src_chrome_browser_deps = [
   "//base",
-  "//brave/components/brave_vpn/common/buildflags",
-  "//brave/components/commander/common/buildflags",
-  "//brave/components/playlist/common/buildflags",
-  "//brave/components/text_recognition/common/buildflags",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/brave_vpn/common/buildflags",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/commander/common/buildflags",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/playlist/common/buildflags",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/text_recognition/common/buildflags",
   "//chrome/common:channel_info",
-  "//components/version_info",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//components/version_info",
 ]
 
 if (!is_android) {
@@ -23,10 +30,12 @@ if (!is_android) {
 
 if (enable_brave_vpn) {
   brave_chromium_src_chrome_browser_deps +=
-      [ "//brave/components/brave_vpn/browser" ]
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # [ "//luxxle/components/brave_vpn/browser" ]
 }
 
 if (toolkit_views) {
   brave_chromium_src_chrome_browser_deps +=
-      [ "//brave/components/sidebar/browser" ]
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # [ "//luxxle/components/sidebar/browser" ]
 }

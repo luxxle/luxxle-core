@@ -31,7 +31,7 @@ namespace elevation_service {
 HRESULT Elevator::InstallVPNServices() {
   // Perform a trusted source check.
   // This ensures the caller is an executable in `%PROGRAMFILES%`.
-  // For more info, see https://github.com/brave/brave-core/pull/24900
+  // For more info, see https://github.com/luxxle/brave-core/pull/24900
   HRESULT hr = ::CoImpersonateClient();
   if (FAILED(hr)) {
     return hr;

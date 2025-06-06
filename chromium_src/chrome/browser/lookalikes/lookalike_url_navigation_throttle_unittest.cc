@@ -13,7 +13,7 @@ class LookalikeThrottleTest : public ChromeRenderViewHostTestHarness {};
 
 // Tests that MaybeCreateNavigationThrottle will always return nullptr as we
 // don't want to use this feature. See
-// https://github.com/brave/brave-browser/issues/4304
+// https://github.com/luxxle/brave-browser/issues/4304
 TEST_F(LookalikeThrottleTest, ThrottleDisabled) {
   GURL url("http://docs.googlé.com");
   content::MockNavigationHandle handle(url, main_rfh());

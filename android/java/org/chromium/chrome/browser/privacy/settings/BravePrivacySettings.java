@@ -57,7 +57,7 @@ import org.chromium.webcompat_reporter.mojom.WebcompatReporterHandler;
 @NullMarked
 public class BravePrivacySettings extends PrivacySettings {
     private static final String BLOCK_ALL_COOKIES_LEARN_MORE_LINK =
-            "https://github.com/brave/brave-browser/wiki/Block-all-cookies-global-Shields-setting";
+            "https://github.com/luxxle/brave-browser/wiki/Block-all-cookies-global-Shields-setting";
 
     // Chromium Prefs
     private static final String PREF_CAN_MAKE_PAYMENT = "can_make_payment";

@@ -1748,7 +1748,7 @@ public class BrowserViewController: UIViewController {
         return
       }
 
-      // Another Fix for: https://github.com/brave/brave-ios/pull/2296
+      // Another Fix for: https://github.com/luxxle/brave-ios/pull/2296
       // Disable any sort of privileged execution contexts
       // IE: The user must explicitly tap a bookmark they have saved.
       // Block all other contexts such as redirects, downloads, embed, linked, etc..

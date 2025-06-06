@@ -35,13 +35,13 @@ describe('TeamcityReporter', () => {
       const test = {
         context: {
           config: {
-            cwd: '/brave/tools/jest_teamcity_reporter'
+            cwd: '/luxxle/tools/jest_teamcity_reporter'
           }
         }
       }
 
       const testFileResult = {
-        testFilePath: '/brave/tools/jest_teamcity_reporter/example.test.js',
+        testFilePath: '/luxxle/tools/jest_teamcity_reporter/example.test.js',
         testResults: [
           {
             ancestorTitles: ['Group 1:'],
@@ -103,13 +103,13 @@ describe('TeamcityReporter', () => {
       const test = {
         context: {
           config: {
-            cwd: '/brave/tools/jest_teamcity_reporter'
+            cwd: '/luxxle/tools/jest_teamcity_reporter'
           }
         }
       }
 
       const testFileResult = {
-        testFilePath: '/brave/tools/jest_teamcity_reporter/example.test.js',
+        testFilePath: '/luxxle/tools/jest_teamcity_reporter/example.test.js',
         testResults: [],
         testExecError: new Error('Test execution error'),
         failureMessage: 'Test failed',
@@ -139,13 +139,13 @@ describe('TeamcityReporter', () => {
       const test = {
         context: {
           config: {
-            cwd: '/brave/tools/jest_teamcity_reporter'
+            cwd: '/luxxle/tools/jest_teamcity_reporter'
           }
         }
       }
 
       const testFileResult = {
-        testFilePath: '/brave/tools/jest_teamcity_reporter/example.test.js',
+        testFilePath: '/luxxle/tools/jest_teamcity_reporter/example.test.js',
         testResults: [],
         // Let's pretend Jest added another way of failing a test file which we
         // don't handle. This member is not part of the Jest test result schema.
@@ -161,13 +161,13 @@ describe('TeamcityReporter', () => {
       const test = {
         context: {
           config: {
-            cwd: '/brave/tools/jest_teamcity_reporter'
+            cwd: '/luxxle/tools/jest_teamcity_reporter'
           }
         }
       }
 
       const testFileResult = {
-        testFilePath: '/brave/tools/jest_teamcity_reporter/example.test.js',
+        testFilePath: '/luxxle/tools/jest_teamcity_reporter/example.test.js',
         testResults: [
           {
             ancestorTitles: ['Group.1'],

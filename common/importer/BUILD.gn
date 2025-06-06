@@ -26,7 +26,8 @@ mojom("interfaces") {
 
   deps = [
     "//chrome/common/importer:interfaces",
-    "//components/autofill/core/common/mojom:mojo_types",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/autofill/core/common/mojom:mojo_types",
     "//mojo/public/mojom/base",
     "//url/mojom:url_mojom_gurl",
   ]
@@ -44,7 +45,8 @@ source_set("importer") {
 
   deps = [
     "//chrome/common/importer",
-    "//components/webdata/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/webdata/common",
     "//extensions/buildflags",
     "//sql",
   ]

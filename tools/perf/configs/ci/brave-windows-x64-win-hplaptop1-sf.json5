@@ -1,7 +1,7 @@
 {
   "configurations": [{
     "dashboard-bot-name": "win11-hp-laptop-typical",
-    "browser-type": "brave",
+    "browser-type": "luxxle",
     "profile": "brave-typical-win",
     "extra-browser-args": [
       "--disable-component-update",
