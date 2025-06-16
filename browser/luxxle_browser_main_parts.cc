@@ -50,23 +50,20 @@ ChromeBrowserMainParts::ChromeBrowserMainParts(bool is_integration_test,
 ChromeBrowserMainParts::~ChromeBrowserMainParts() = default;
 
 int ChromeBrowserMainParts::PreMainMessageLoopRun() {
-  brave_component_updater::BraveOnDemandUpdater::GetInstance()
-      ->RegisterOnDemandUpdater(
-          &g_browser_process->component_updater()->GetOnDemandUpdater());
+  // Removed Brave component updater - using Chromium defaults
+  // brave_component_updater::BraveOnDemandUpdater::GetInstance()
+  //     ->RegisterOnDemandUpdater(
+  //         &g_browser_process->component_updater()->GetOnDemandUpdater());
 
   return ChromeBrowserMainParts_ChromiumImpl::PreMainMessageLoopRun();
 }
 
 void ChromeBrowserMainParts::PreBrowserStart() {
-#if BUILDFLAG(ENABLE_SPEEDREADER)
-  // Register() must be called after the SerializedNavigationDriver is
-  // initialized, but before any calls to
-  // ContentSerializedNavigationBuilder::ToNavigationEntries()
-  //
-  // TODO(keur): Can we DCHECK the latter condition?
-  DCHECK(sessions::ContentSerializedNavigationDriver::GetInstance());
-  speedreader::SpeedreaderExtendedInfoHandler::Register();
-#endif
+  // Removed Brave speedreader - using Chromium defaults
+  // #if BUILDFLAG(ENABLE_SPEEDREADER)
+  //   DCHECK(sessions::ContentSerializedNavigationDriver::GetInstance());
+  //   speedreader::SpeedreaderExtendedInfoHandler::Register();
+  // #endif
 
   ChromeBrowserMainParts_ChromiumImpl::PreBrowserStart();
 }
@@ -74,93 +71,30 @@ void ChromeBrowserMainParts::PreBrowserStart() {
 void ChromeBrowserMainParts::PostBrowserStart() {
   ChromeBrowserMainParts_ChromiumImpl::PostBrowserStart();
 
-#if BUILDFLAG(ENABLE_TOR)
-  ProfileManager* profile_manager = g_browser_process->profile_manager();
-  base::FilePath tor_legacy_path =
-      profile_manager->user_data_dir().Append(tor::kTorProfileDir);
-
-  // Delete Tor legacy profile if exists.
-  if (base::PathExists(tor_legacy_path)) {
-    // Add tor legacy path into profile attributes storage first if nonexist
-    // because we will hit DCHECK(!GetProfileAttributesWithPath(...))  in
-    // ProfileInfoCache::DeleteProfileFromCache when we trying to delete it
-    // without this being added into the storage first.
-    ProfileAttributesStorage& storage =
-        profile_manager->GetProfileAttributesStorage();
-    ProfileAttributesEntry* entry =
-        storage.GetProfileAttributesWithPath(tor_legacy_path);
-    if (!entry) {
-      ProfileAttributesInitParams params;
-      params.profile_path = tor_legacy_path;
-      storage.AddProfile(std::move(params));
-    }
-
-    profile_manager->GetDeleteProfileHelper().MaybeScheduleProfileForDeletion(
-        tor_legacy_path, base::DoNothing(),
-        ProfileMetrics::DELETE_PROFILE_SETTINGS);
-  }
-  for (Profile* profile : profile_manager->GetLoadedProfiles()) {
-    const base::FilePath tor_legacy_session_path =
-        profile->GetPath()
-            .Append(brave::kSessionProfileDir)
-            .Append(tor::kTorProfileDir);
-    if (base::PathExists(tor_legacy_session_path)) {
-      profile_manager->GetDeleteProfileHelper().MaybeScheduleProfileForDeletion(
-          tor_legacy_session_path, base::DoNothing(),
-          ProfileMetrics::DELETE_PROFILE_SETTINGS);
-    }
-  }
-#endif
-
-#if !BUILDFLAG(IS_ANDROID)
-  Browser* browser = chrome::FindLastActive();
-  content::WebContents* active_web_contents = nullptr;
-
-  if (browser) {
-    active_web_contents = browser->tab_strip_model()->GetActiveWebContents();
-
-    if (active_web_contents) {
-      Profile* profile =
-          Profile::FromBrowserContext(active_web_contents->GetBrowserContext());
-      infobars::ContentInfoBarManager* infobar_manager =
-          infobars::ContentInfoBarManager::FromWebContents(active_web_contents);
-      if (profile && infobar_manager) {
-        BraveConfirmP3AInfoBarDelegate::Create(
-            infobar_manager, g_browser_process->local_state());
-        SyncCannotRunInfoBarDelegate::Create(infobar_manager, profile, browser);
-
-        BraveSyncAccountDeletedInfoBarDelegate::Create(active_web_contents,
-                                                       profile, browser);
-      }
-    }
-  }
-#endif  // !BUILDFLAG(IS_ANDROID)
-
-#if BUILDFLAG(DEPRECATE_IPFS)
-  ipfs::CleanupIpfsComponent(
-      base::PathService::CheckedGet(chrome::DIR_USER_DATA));
-#endif  // BUILDFLAG(DEPRECATE_IPFS)
+  // Removed Brave-specific startup code - using Chromium defaults
+  // - Tor profile cleanup
+  // - Brave infobars (P3A, sync, etc.)
+  // - IPFS component cleanup
 }
 
 void ChromeBrowserMainParts::PreShutdown() {
-  content::BraveClearBrowsingData::ClearOnExit();
+  // Removed Brave clear browsing data - using Chromium defaults
+  // content::BraveClearBrowsingData::ClearOnExit();
   ChromeBrowserMainParts_ChromiumImpl::PreShutdown();
 }
 
 void ChromeBrowserMainParts::PreProfileInit() {
   ChromeBrowserMainParts_ChromiumImpl::PreProfileInit();
-#if !BUILDFLAG(IS_ANDROID)
-  auto* command_line = base::CommandLine::ForCurrentProcess();
-  if (!base::FeatureList::IsEnabled(brave_sync::features::kBraveSync)) {
-    // Disable sync temporarily
-    if (!command_line->HasSwitch(syncer::kDisableSync))
-      command_line->AppendSwitch(syncer::kDisableSync);
-  } else {
-    // Relaunch after flag changes will still have the switch
-    // when switching from disabled to enabled
-    command_line->RemoveSwitch(syncer::kDisableSync);
-  }
-#endif
+  // Removed Brave sync feature check - using Chromium defaults
+  // #if !BUILDFLAG(IS_ANDROID)
+  //   auto* command_line = base::CommandLine::ForCurrentProcess();
+  //   if (!base::FeatureList::IsEnabled(brave_sync::features::kBraveSync)) {
+  //     if (!command_line->HasSwitch(syncer::kDisableSync))
+  //       command_line->AppendSwitch(syncer::kDisableSync);
+  //   } else {
+  //     command_line->RemoveSwitch(syncer::kDisableSync);
+  //   }
+  // #endif
 }
 
 void ChromeBrowserMainParts::PostProfileInit(Profile* profile,
@@ -168,12 +102,13 @@ void ChromeBrowserMainParts::PostProfileInit(Profile* profile,
   ChromeBrowserMainParts_ChromiumImpl::PostProfileInit(profile,
                                                        is_initial_profile);
 
-#if BUILDFLAG(IS_ANDROID)
-  if (base::FeatureList::IsEnabled(
-          preferences::features::kBraveBackgroundVideoPlayback) &&
-      profile->GetPrefs()->GetBoolean(kBackgroundVideoPlaybackEnabled)) {
-    auto* command_line = base::CommandLine::ForCurrentProcess();
-    command_line->AppendSwitch(switches::kDisableBackgroundMediaSuspend);
-  }
-#endif
+  // Removed Brave background video playback - using Chromium defaults
+  // #if BUILDFLAG(IS_ANDROID)
+  //   if (base::FeatureList::IsEnabled(
+  //           preferences::features::kBraveBackgroundVideoPlayback) &&
+  //       profile->GetPrefs()->GetBoolean(kBackgroundVideoPlaybackEnabled)) {
+  //     auto* command_line = base::CommandLine::ForCurrentProcess();
+  //     command_line->AppendSwitch(switches::kDisableBackgroundMediaSuspend);
+  //   }
+  // #endif
 }

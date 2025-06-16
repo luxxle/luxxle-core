@@ -150,7 +150,8 @@ generate_grd("fonts_grdp") {
   deps = [ ":fonts_copy" ]
 }
 
-leo_icons_base_path = "../../../node_modules/@brave/leo/icons"
+# Removed @brave/leo dependency - using local icons instead
+# leo_icons_base_path = "../../../node_modules/@brave/leo/icons"
 
 # These are icons included in Leo. Add them on an as-needed basis, because there
 # are a **LOT** of icons in Leo. You can check if there's an icon  which suits
@@ -551,12 +552,13 @@ copy("static_copy") {
   outputs = [ "$luxxle_resources_extra_grdps_path/{{source_target_relative}}" ]
 }
 
-copy("leo_static_copy") {
-  sources = rebase_path(leo_static_files,
-                        ".",
-                        "../../../node_modules/@brave/leo/tokens")
-  outputs = [ "$luxxle_resources_extra_grdps_path/leo/css/{{source_file_part}}" ]
-}
+# Disabled @brave/leo static copy
+# copy("leo_static_copy") {
+#   sources = rebase_path(leo_static_files,
+#                         ".",
+#                         "../../../node_modules/@brave/leo/tokens")
+#   outputs = [ "$luxxle_resources_extra_grdps_path/leo/css/{{source_file_part}}" ]
+# }
 
 # Static files should be put relative to //ui/webui/resources main resources GRD
 copy("fonts_copy") {
@@ -564,7 +566,8 @@ copy("fonts_copy") {
   outputs = [ "$luxxle_resources_extra_grdps_path/{{source_target_relative}}" ]
 }
 
-copy("icons_copy") {
-  sources = rebase_path(leo_icons, ".", leo_icons_base_path)
-  outputs = [ "$luxxle_resources_extra_grdps_path/icons/{{source_file_part}}" ]
-}
+# Disabled leo icons copy - using local icons instead
+# copy("icons_copy") {
+#   sources = rebase_path(leo_icons, ".", leo_icons_base_path)
+#   outputs = [ "$luxxle_resources_extra_grdps_path/icons/{{source_file_part}}" ]
+# }

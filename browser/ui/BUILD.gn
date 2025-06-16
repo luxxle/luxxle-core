@@ -41,7 +41,7 @@ group("ui_public_dependencies") {
     "//chrome/browser/ui:ui_public_dependencies",
   ]
   public_deps = [
-    ":brave_rewards_source",
+    # Removed brave_rewards_source dependency
     ":brave_tab_features",
     ":brave_tab_prefs",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -93,16 +93,7 @@ source_set("ui") {
     "webui/brave_adblock_internals_ui.h",
     "webui/brave_adblock_ui.cc",
     "webui/brave_adblock_ui.h",
-    "webui/brave_rewards/rewards_page_data_source.cc",
-    "webui/brave_rewards/rewards_page_data_source.h",
-    "webui/brave_rewards/rewards_page_handler.cc",
-    "webui/brave_rewards/rewards_page_handler.h",
-    "webui/brave_rewards/rewards_page_ui.cc",
-    "webui/brave_rewards/rewards_page_ui.h",
-    "webui/brave_rewards/rewards_web_ui_utils.cc",
-    "webui/brave_rewards/rewards_web_ui_utils.h",
-    "webui/brave_rewards_internals_ui.cc",
-    "webui/brave_rewards_internals_ui.h",
+    # Removed brave_rewards WebUI sources - no longer needed after brave_rewards cleanup
     "webui/brave_web_ui_controller_factory.cc",
     "webui/brave_web_ui_controller_factory.h",
     "webui/brave_webui_source.cc",
@@ -153,8 +144,7 @@ source_set("ui") {
     sources += [
       "android/ai_chat/brave_leo_settings_launcher_helper.cc",
       "android/ai_chat/brave_leo_settings_launcher_helper.h",
-      "android/brave_rewards/rewards_page_helper.cc",
-      "android/brave_rewards/rewards_page_helper.h",
+      # Removed brave_rewards Android sources - no longer needed after brave_rewards cleanup
     ]
 
     deps += [
@@ -262,8 +252,7 @@ source_set("ui") {
       "toolbar/brave_bookmark_sub_menu_model.cc",
       "toolbar/brave_bookmark_sub_menu_model.h",
       "toolbar/brave_recent_tabs_sub_menu_model.h",
-      "webui/brave_rewards/rewards_page_top_ui.cc",
-      "webui/brave_rewards/rewards_page_top_ui.h",
+      # Removed brave_rewards top UI sources - no longer needed after brave_rewards cleanup
       "webui/brave_settings_ui.cc",
       "webui/brave_settings_ui.h",
       "webui/navigation_bar_data_provider.cc",
@@ -763,11 +752,11 @@ source_set("ui") {
     "//luxxle/app/vector_icons:vector_icons",
     "//luxxle/browser:browser_process",
     "//luxxle/browser:sparkle_buildflags",
-    "//luxxle/browser/brave_rewards:util",
+    # Removed brave_rewards util dependency - no longer needed after brave_rewards cleanup
     "//luxxle/browser/misc_metrics",
     "//luxxle/browser/shell_integrations/buildflags",
     "//luxxle/browser/themes",
-    "//luxxle/browser/ui/brave_ads",
+    # Removed brave_ads dependency - using Chromium defaults instead
     "//luxxle/browser/ui/brave_tooltips",
 
     # //chrome/browser/ui depends on //luxxle/browser/ui, add this target here
@@ -1018,7 +1007,7 @@ source_set("ui") {
     ]
 
     deps += [
-      "//luxxle/browser/ui/views/brave_ads",
+      # Removed brave_ads views dependency - using Chromium defaults instead
       "//luxxle/browser/ui/views/brave_tooltips",
       "//ui/views/controls/webview",
     ]
@@ -1196,8 +1185,7 @@ source_set("ui") {
       "toolbar/brave_location_bar_model_delegate.h",
       "views/brave_actions/brave_actions_container.cc",
       "views/brave_actions/brave_actions_container.h",
-      "views/brave_actions/brave_rewards_action_view.cc",
-      "views/brave_actions/brave_rewards_action_view.h",
+      # Removed brave_rewards action view sources - no longer needed after brave_rewards cleanup
       "views/brave_help_bubble/brave_help_bubble_delegate_view.cc",
       "views/brave_help_bubble/brave_help_bubble_delegate_view.h",
       "views/brave_help_bubble/brave_help_bubble_host_view.cc",
@@ -1324,8 +1312,7 @@ source_set("ui") {
 
   if (!is_android) {
     sources += [
-      "brave_rewards/rewards_panel_coordinator.cc",
-      "brave_rewards/rewards_panel_coordinator.h",
+      # Removed brave_rewards panel coordinator sources - no longer needed after brave_rewards cleanup
       "commands/accelerator_service.cc",
       "commands/accelerator_service.h",
       "commands/accelerator_service_factory.cc",
@@ -1423,22 +1410,7 @@ source_set("brave_tab_features") {
   ]
 }
 
-source_set("brave_rewards_source") {
-  sources = [
-    "webui/brave_rewards_source.cc",
-    "webui/brave_rewards_source.h",
-  ]
-
-  deps = [
-    "//base",
-    "//chrome/browser/bitmap_fetcher",
-    "//chrome/browser/profiles",
-    "//content/public/browser",
-    "//skia",
-    "//ui/gfx/codec",
-    "//url",
-  ]
-}
+# Removed brave_rewards_source target - no longer needed after brave_rewards cleanup
 
 source_set("unit_tests") {
   if (!is_android) {

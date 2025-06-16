@@ -185,10 +185,6 @@
     "webpack-cli": "5.1.4"
   },
   "dependencies": {
-    "@brave/brave-ui": "0.40.6",
-    "@brave/leo": "github:brave/leo#b843725e5e33880accfa0562e65ad55bedb7d699",
-    "@brave/leo-sf-symbols": "github:brave/leo-sf-symbols#8685eec0851afa96d23dd424cd152854476e585d",
-    "@brave/wallet-standard-brave": "0.0.16",
     "@dnd-kit/core": "6.0.5",
     "@dnd-kit/sortable": "7.0.1",
     "@glif/filecoin-wallet-provider": "3.0.15",
@@ -230,7 +226,6 @@
     "webtorrent": "1.9.7"
   },
   "overrides": {
-    "@jest/transform": "npm:@brave/jest-transform@28.1.3",
     "@zondax/ledger-filecoin": "2.0.4",
     "axios": "1.8.2",
     "elliptic": "6.6.1",

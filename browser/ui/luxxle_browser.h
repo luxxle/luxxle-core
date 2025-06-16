@@ -3,25 +3,25 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_BRAVE_BROWSER_H_
-#define BRAVE_BROWSER_UI_BRAVE_BROWSER_H_
+#ifndef LUXXLE_BROWSER_UI_LUXXLE_BROWSER_H_
+#define LUXXLE_BROWSER_UI_LUXXLE_BROWSER_H_
 
 #include "base/memory/weak_ptr.h"
 #include "chrome/browser/ui/browser.h"
 
-class BraveBrowserWindow;
+class LuxxleBrowserWindow;
 
 namespace content {
 class WebContents;
 }  // namespace content
 
-class BraveBrowser : public Browser {
+class LuxxleBrowser : public Browser {
  public:
-  explicit BraveBrowser(const CreateParams& params);
-  ~BraveBrowser() override;
+  explicit LuxxleBrowser(const CreateParams& params);
+  ~LuxxleBrowser() override;
 
-  BraveBrowser(const BraveBrowser&) = delete;
-  BraveBrowser& operator=(const BraveBrowser&) = delete;
+  LuxxleBrowser(const LuxxleBrowser&) = delete;
+  LuxxleBrowser& operator=(const LuxxleBrowser&) = delete;
 
   static bool ShouldUseBraveWebViewRoundedCorners(Browser* browser);
 
@@ -54,7 +54,7 @@ class BraveBrowser : public Browser {
   // any warning/onbeforeunload handlers.
   bool ShouldAskForBrowserClosingBeforeHandlers();
 
-  BraveBrowserWindow* brave_window();
+  LuxxleBrowserWindow* luxxle_window();
 
   void set_confirmed_to_close(bool close) { confirmed_to_close_ = close; }
 
@@ -81,7 +81,7 @@ class BraveBrowser : public Browser {
   // new tab, like when user tries to "Bring all tabs" to other window.
   bool ignore_enable_closing_last_tab_pref_ = false;
 
-  base::WeakPtrFactory<BraveBrowser> weak_ptr_factory_{this};
+  base::WeakPtrFactory<LuxxleBrowser> weak_ptr_factory_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_BRAVE_BROWSER_H_
+#endif  // LUXXLE_BROWSER_UI_LUXXLE_BROWSER_H_

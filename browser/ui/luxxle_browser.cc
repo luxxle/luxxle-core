@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/brave_browser.h"
+#include "luxxle/browser/ui/luxxle_browser.h"
 
 #include <memory>
 #include <optional>
@@ -44,17 +44,17 @@ bool g_suppress_dialog_for_testing = false;
 }  // namespace
 
 // static
-void BraveBrowser::SuppressBrowserWindowClosingDialogForTesting(bool suppress) {
+void LuxxleBrowser::SuppressBrowserWindowClosingDialogForTesting(bool suppress) {
   g_suppress_dialog_for_testing = suppress;
 }
 
 // static
-bool BraveBrowser::ShouldUseBraveWebViewRoundedCorners(Browser* browser) {
+bool LuxxleBrowser::ShouldUseBraveWebViewRoundedCorners(Browser* browser) {
   return base::FeatureList::IsEnabled(features::kBraveWebViewRoundedCorners) &&
          browser->is_type_normal();
 }
 
-BraveBrowser::BraveBrowser(const CreateParams& params) : Browser(params) {
+LuxxleBrowser::LuxxleBrowser(const CreateParams& params) : Browser(params) {
   if (auto* sidebar_controller = GetFeatures().sidebar_controller()) {
     // TODO(https://github.com/luxxle/brave-browser/issues/45633): Cleanup this.
     // Below call order is important.
@@ -63,19 +63,19 @@ BraveBrowser::BraveBrowser(const CreateParams& params) : Browser(params) {
     // ready yet. BraveBrowserView is instantiated by the ctor of Browser.
     // So, initializing sidebar controller/model here and then ask to initialize
     // sidebar UI. After that, UI will be updated for model's change.
-    sidebar_controller->SetSidebar(brave_window()->InitSidebar());
+    sidebar_controller->SetSidebar(luxxle_window()->InitSidebar());
   }
 
   // As browser window(BrowserView) is initialized before fullscreen controller
   // is ready, it's difficult to know when browsr window can listen.
   // Notify exact timing to do it.
   CHECK(exclusive_access_manager());
-  brave_window()->ReadyToListenFullscreenChanges();
+  luxxle_window()->ReadyToListenFullscreenChanges();
 }
 
-BraveBrowser::~BraveBrowser() = default;
+LuxxleBrowser::~LuxxleBrowser() = default;
 
-void BraveBrowser::ScheduleUIUpdate(content::WebContents* source,
+void LuxxleBrowser::ScheduleUIUpdate(content::WebContents* source,
                                     unsigned changed_flags) {
   Browser::ScheduleUIUpdate(source, changed_flags);
 
@@ -99,7 +99,7 @@ void BraveBrowser::ScheduleUIUpdate(content::WebContents* source,
   }
 }
 
-void BraveBrowser::OnTabClosing(content::WebContents* contents) {
+void LuxxleBrowser::OnTabClosing(content::WebContents* contents) {
   Browser::OnTabClosing(contents);
 
   if (!AreAllTabsSharedPinnedTabs()) {
@@ -109,7 +109,7 @@ void BraveBrowser::OnTabClosing(content::WebContents* contents) {
   if (chrome::FindAllTabbedBrowsersWithProfile(profile()).size() > 1) {
     base::SequencedTaskRunner::GetCurrentDefault()->PostTask(
         FROM_HERE, base::BindOnce(
-                       [](base::WeakPtr<BraveBrowser> browser) {
+                       [](base::WeakPtr<LuxxleBrowser> browser) {
                          if (browser) {
                            // We don't want close confirm dialog to show up. In
                            // this case, Shared pinned tabs will be moved to
@@ -311,6 +311,6 @@ bool BraveBrowser::AreAllTabsSharedPinnedTabs() {
              tab_strip_model()->IndexOfFirstNonPinnedTab();
 }
 
-BraveBrowserWindow* BraveBrowser::brave_window() {
-  return static_cast<BraveBrowserWindow*>(window_);
+LuxxleBrowserWindow* LuxxleBrowser::luxxle_window() {
+  return static_cast<LuxxleBrowserWindow*>(window_);
 }

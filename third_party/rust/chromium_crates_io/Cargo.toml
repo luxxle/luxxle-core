@@ -20,12 +20,11 @@ speedreader-ffi = "0.1"
 skus-cxx = "0.1"
 json-cxx = "1"
 filecoin-cxx = "1"
-brave-news-cxx = "1"
-brave_wallet = "1"
+# Removed brave-news-cxx and brave_wallet dependencies - not needed in Luxxle
 adblock-cxx = { version = "1" }
 constellation-cxx = "0.1"
 challenge-bypass-ristretto-cxx = "1"
-zcash = "1"
+# Removed zcash dependency - was tied to brave_wallet functionality
 anonymous-credentials = "0.1"
 document-extractor = "0.1"
 flatbuffers = { version = "25.2.10" }
@@ -66,13 +65,7 @@ package = "json-cxx"
 path = "../../../components/filecoin/rs"
 package = "filecoin-cxx"
 
-[patch.crates-io.brave-news-cxx_v1]
-path = "../../../components/brave_news/browser"
-package = "brave-news-cxx"
-
-[patch.crates-io.brave_wallet_v1]
-path = "../../../components/brave_wallet/common"
-package = "brave_wallet"
+# Removed brave-news-cxx and brave_wallet patches - not needed in Luxxle
 
 [patch.crates-io.adblock-cxx_v1]
 path = "../../../components/brave_shields/core/browser/adblock/rs"
@@ -306,22 +299,4 @@ package = "windows-sys"
 path = "../../../../third_party/rust/chromium_crates_io/vendor/windows-targets-v0_52"
 package = "windows-targets"
 
-[patch.crates-io.zcash_v1]
-path = "../../../components/brave_wallet/browser/zcash/rust"
-package = "zcash"
-
-[patch.crates-io.zcash_protocol_v0_1]
-path = "../../../components/brave_wallet/browser/zcash/rust/librustzcash/src/components/zcash_protocol"
-package = "zcash_protocol"
-
-[patch.crates-io.zcash_encoding_v0_2]
-path = "../../../components/brave_wallet/browser/zcash/rust/librustzcash/src/components/zcash_encoding"
-package = "zcash_encoding"
-
-[patch.crates-io.zcash_primitives_v0_15]
-path = "../../../components/brave_wallet/browser/zcash/rust/librustzcash/src/zcash_primitives"
-package = "zcash_primitives"
-
-[patch.crates-io.zcash_client_backend_v0_12]
-path = "../../../components/brave_wallet/browser/zcash/rust/librustzcash/src/zcash_client_backend"
-package = "zcash_client_backend"
+# Removed all zcash patches - were tied to brave_wallet functionality
