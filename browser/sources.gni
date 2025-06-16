@@ -414,10 +414,10 @@ if (enable_commander) {
 
 if (is_mac) {
   brave_chrome_browser_sources += [
-    "//luxxle/browser/brave_app_controller_mac.h",
-    "//luxxle/browser/brave_app_controller_mac.mm",
-    "//luxxle/browser/brave_browser_main_parts_mac.h",
-    "//luxxle/browser/brave_browser_main_parts_mac.mm",
+    "//luxxle/browser/luxxle_app_controller_mac.h",
+    "//luxxle/browser/luxxle_app_controller_mac.mm",
+    "//luxxle/browser/luxxle_browser_main_parts_mac.h",
+    "//luxxle/browser/luxxle_browser_main_parts_mac.mm",
     "//luxxle/browser/brave_shell_integration_mac.h",
     "//luxxle/browser/brave_shell_integration_mac.mm",
     "//luxxle/browser/mac/keystone_glue.h",

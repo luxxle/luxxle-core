@@ -3,21 +3,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/brave_shields/cookie_list_opt_in_bubble_host.h"
+#include "luxxle/browser/ui/views/brave_shields/cookie_list_opt_in_bubble_host.h"
 
 #include <memory>
 #include <optional>
 
 #include "base/feature_list.h"
 #include "base/metrics/histogram_functions.h"
-#include "brave/browser/brave_browser_process.h"
-#include "brave/browser/ui/webui/brave_shields/cookie_list_opt_in_ui.h"
-#include "brave/components/brave_shields/content/browser/ad_block_service.h"
-#include "brave/components/brave_shields/core/browser/ad_block_component_service_manager.h"
-#include "brave/components/brave_shields/core/common/brave_shield_constants.h"
-#include "brave/components/brave_shields/core/common/features.h"
-#include "brave/components/brave_shields/core/common/pref_names.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/ui/webui/brave_shields/cookie_list_opt_in_ui.h"
+#include "luxxle/components/brave_shields/content/browser/ad_block_service.h"
+#include "luxxle/components/brave_shields/core/browser/ad_block_component_service_manager.h"
+#include "luxxle/components/brave_shields/core/common/brave_shield_constants.h"
+#include "luxxle/components/brave_shields/core/common/features.h"
+#include "luxxle/components/brave_shields/core/common/pref_names.h"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/first_run/first_run.h"
 #include "chrome/browser/profiles/profile.h"

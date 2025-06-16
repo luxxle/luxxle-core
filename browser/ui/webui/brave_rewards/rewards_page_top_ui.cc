@@ -3,18 +3,18 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/brave_rewards/rewards_page_top_ui.h"
+#include "luxxle/browser/ui/webui/brave_rewards/rewards_page_top_ui.h"
 
 #include <utility>
 
-#include "brave/browser/brave_adaptive_captcha/brave_adaptive_captcha_service_factory.h"
-#include "brave/browser/brave_ads/ads_service_factory.h"
-#include "brave/browser/brave_rewards/rewards_service_factory.h"
-#include "brave/browser/brave_rewards/rewards_tab_helper.h"
-#include "brave/browser/ui/webui/brave_rewards/rewards_page_data_source.h"
-#include "brave/browser/ui/webui/brave_rewards/rewards_page_handler.h"
-#include "brave/browser/ui/webui/brave_rewards/rewards_web_ui_utils.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/browser/brave_adaptive_captcha/brave_adaptive_captcha_service_factory.h"
+// REMOVED: #include "luxxle/browser/brave_ads/.*"
+// REMOVED: #include "luxxle/browser/brave_rewards/.*"
+// REMOVED: #include "luxxle/browser/brave_rewards/.*"
+#include "luxxle/browser/ui/webui/brave_rewards/rewards_page_data_source.h"
+#include "luxxle/browser/ui/webui/brave_rewards/rewards_page_handler.h"
+#include "luxxle/browser/ui/webui/brave_rewards/rewards_web_ui_utils.h"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_finder.h"

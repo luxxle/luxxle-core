@@ -3,16 +3,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/brave_shields/cookie_list_opt_in_ui.h"
+#include "luxxle/browser/ui/webui/brave_shields/cookie_list_opt_in_ui.h"
 
 #include <memory>
 #include <utility>
 
 #include "base/feature_list.h"
-#include "brave/browser/ui/webui/brave_shields/cookie_list_opt_in_page_handler.h"
-#include "brave/components/brave_shields/core/common/features.h"
-#include "brave/components/brave_shields/resources/cookie_list_opt_in/grit/cookie_list_opt_in_generated_map.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/browser/ui/webui/brave_shields/cookie_list_opt_in_page_handler.h"
+#include "luxxle/components/brave_shields/core/common/features.h"
+#include "luxxle/components/brave_shields/resources/cookie_list_opt_in/grit/cookie_list_opt_in_generated_map.h"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/webui/favicon_source.h"
 #include "components/favicon_base/favicon_url_parser.h"

@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/toolbar/brave_vpn_menu_model.h"
+#include "luxxle/browser/ui/toolbar/brave_vpn_menu_model.h"
 
 #include "base/feature_list.h"
-#include "brave/app/brave_command_ids.h"
-#include "brave/components/brave_vpn/common/brave_vpn_utils.h"
-#include "brave/components/brave_vpn/common/features.h"
-#include "brave/components/brave_vpn/common/pref_names.h"
+#include "luxxle/app/brave_command_ids.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/ui/browser.h"
@@ -17,7 +17,7 @@
 #include "components/prefs/pref_service.h"
 
 #if BUILDFLAG(IS_WIN)
-#include "brave/browser/brave_vpn/win/storage_utils.h"
+// REMOVED: #include "luxxle/browser/brave_vpn/.*"
 #endif
 
 BraveVPNMenuModel::BraveVPNMenuModel(Browser* browser,

@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_BRAVE_WALLET_WALLET_PAGE_UI_H_
-#define BRAVE_BROWSER_UI_WEBUI_BRAVE_WALLET_WALLET_PAGE_UI_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_BRAVE_WALLET_WALLET_PAGE_UI_H_
+#define LUXXLE_BROWSER_UI_WEBUI_BRAVE_WALLET_WALLET_PAGE_UI_H_
 
 #include <memory>
 
-#include "brave/browser/ui/webui/brave_wallet/common_handler/wallet_handler.h"
-#include "brave/browser/ui/webui/brave_wallet/page_handler/wallet_page_handler.h"
-#include "brave/components/brave_wallet/common/brave_wallet.mojom.h"
+#include "luxxle/browser/ui/webui/brave_wallet/common_handler/wallet_handler.h"
+#include "luxxle/browser/ui/webui/brave_wallet/page_handler/wallet_page_handler.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
 #include "content/public/browser/web_ui_controller.h"
 #include "content/public/browser/web_ui_message_handler.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
@@ -78,4 +78,4 @@ class WalletPageUI : public ui::MojoWebUIController,
   WEB_UI_CONTROLLER_TYPE_DECL();
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_BRAVE_WALLET_WALLET_PAGE_UI_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_BRAVE_WALLET_WALLET_PAGE_UI_H_

@@ -3,13 +3,13 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_BRAVE_NEWS_INTERNALS_BRAVE_NEWS_INTERNALS_UI_H_
-#define BRAVE_BROWSER_UI_WEBUI_BRAVE_NEWS_INTERNALS_BRAVE_NEWS_INTERNALS_UI_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_BRAVE_NEWS_INTERNALS_BRAVE_NEWS_INTERNALS_UI_H_
+#define LUXXLE_BROWSER_UI_WEBUI_BRAVE_NEWS_INTERNALS_BRAVE_NEWS_INTERNALS_UI_H_
 
 #include <string>
 
 #include "base/memory/raw_ptr.h"
-#include "brave/components/brave_news/common/brave_news.mojom-forward.h"
+#include "luxxle/components/brave_news/common/brave_news.mojom-forward.h"
 #include "content/public/browser/web_ui_controller.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
 
@@ -36,4 +36,4 @@ class BraveNewsInternalsUI : public content::WebUIController {
   WEB_UI_CONTROLLER_TYPE_DECL();
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_BRAVE_NEWS_INTERNALS_BRAVE_NEWS_INTERNALS_UI_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_BRAVE_NEWS_INTERNALS_BRAVE_NEWS_INTERNALS_UI_H_

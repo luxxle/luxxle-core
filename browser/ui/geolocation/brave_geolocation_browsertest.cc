@@ -6,8 +6,8 @@
 #include <string>
 
 #include "base/path_service.h"
-#include "brave/browser/ui/geolocation/brave_geolocation_permission_tab_helper.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/browser/ui/geolocation/brave_geolocation_permission_tab_helper.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "chrome/browser/ssl/cert_verifier_browser_test.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_commands.h"
@@ -31,7 +31,7 @@ class GeolocationPermissionRequestBrowserTest : public CertVerifierBrowserTest {
     CertVerifierBrowserTest::SetUpOnMainThread();
     host_resolver()->AddRule("*", "127.0.0.1");
     base::FilePath test_data_dir =
-        base::PathService::CheckedGet(brave::DIR_TEST_DATA);
+        base::PathService::CheckedGet(luxxle::DIR_TEST_DATA);
     https_server_.ServeFilesFromDirectory(test_data_dir);
     mock_cert_verifier()->set_default_result(net::OK);
 

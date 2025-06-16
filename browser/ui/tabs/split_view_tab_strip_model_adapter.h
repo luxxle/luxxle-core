@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_TABS_SPLIT_VIEW_TAB_STRIP_MODEL_ADAPTER_H_
-#define BRAVE_BROWSER_UI_TABS_SPLIT_VIEW_TAB_STRIP_MODEL_ADAPTER_H_
+#ifndef LUXXLE_BROWSER_UI_TABS_SPLIT_VIEW_TAB_STRIP_MODEL_ADAPTER_H_
+#define LUXXLE_BROWSER_UI_TABS_SPLIT_VIEW_TAB_STRIP_MODEL_ADAPTER_H_
 
 #include <utility>
 #include <vector>
@@ -72,4 +72,4 @@ class SplitViewTabStripModelAdapter : public TabStripModelObserver {
   base::WeakPtrFactory<SplitViewTabStripModelAdapter> weak_ptr_factory_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_TABS_SPLIT_VIEW_TAB_STRIP_MODEL_ADAPTER_H_
+#endif  // LUXXLE_BROWSER_UI_TABS_SPLIT_VIEW_TAB_STRIP_MODEL_ADAPTER_H_

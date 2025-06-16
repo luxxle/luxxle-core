@@ -3,24 +3,24 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_BRAVE_BROWSER_COMMAND_CONTROLLER_H_
-#define BRAVE_BROWSER_UI_BRAVE_BROWSER_COMMAND_CONTROLLER_H_
+#ifndef LUXXLE_BROWSER_UI_BRAVE_BROWSER_COMMAND_CONTROLLER_H_
+#define LUXXLE_BROWSER_UI_BRAVE_BROWSER_COMMAND_CONTROLLER_H_
 
 #include <optional>
 #include <string>
 
 #include "base/memory/raw_ref.h"
 #include "base/scoped_observation.h"
-#include "brave/browser/ui/tabs/split_view_browser_data.h"
-#include "brave/browser/ui/tabs/split_view_browser_data_observer.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
-#include "brave/components/tor/buildflags/buildflags.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data_observer.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#include "luxxle/components/tor/buildflags/buildflags.h"
 #include "chrome/browser/ui/browser_command_controller.h"
 #include "chrome/browser/ui/tabs/tab_strip_model_observer.h"
 #include "components/prefs/pref_change_registrar.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/components/brave_vpn/browser/brave_vpn_service_observer.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #endif
 
 class BraveAppMenuBrowserTest;
@@ -125,4 +125,4 @@ class BraveBrowserCommandController : public chrome::BrowserCommandController,
 
 }  // namespace chrome
 
-#endif  // BRAVE_BROWSER_UI_BRAVE_BROWSER_COMMAND_CONTROLLER_H_
+#endif  // LUXXLE_BROWSER_UI_BRAVE_BROWSER_COMMAND_CONTROLLER_H_

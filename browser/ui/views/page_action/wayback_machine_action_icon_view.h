@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_PAGE_ACTION_WAYBACK_MACHINE_ACTION_ICON_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_PAGE_ACTION_WAYBACK_MACHINE_ACTION_ICON_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_PAGE_ACTION_WAYBACK_MACHINE_ACTION_ICON_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_PAGE_ACTION_WAYBACK_MACHINE_ACTION_ICON_VIEW_H_
 
 #include "base/memory/raw_ref.h"
-#include "brave/browser/ui/views/page_action/wayback_machine_state_manager.h"
+#include "luxxle/browser/ui/views/page_action/wayback_machine_state_manager.h"
 #include "chrome/browser/ui/views/page_action/page_action_icon_view.h"
 
 class Browser;
@@ -42,4 +42,4 @@ class WaybackMachineActionIconView : public PageActionIconView {
   raw_ref<Browser> browser_;
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_PAGE_ACTION_WAYBACK_MACHINE_ACTION_ICON_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_PAGE_ACTION_WAYBACK_MACHINE_ACTION_ICON_VIEW_H_

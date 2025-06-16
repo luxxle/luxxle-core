@@ -3,9 +3,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/bookmark/brave_bookmark_tab_helper.h"
+#include "luxxle/browser/ui/bookmark/brave_bookmark_tab_helper.h"
 
-#include "brave/components/constants/pref_names.h"
+#include "luxxle/components/constants/pref_names.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/search/search.h"
 #include "chrome/browser/ui/webui/new_tab_page/new_tab_page_ui.h"

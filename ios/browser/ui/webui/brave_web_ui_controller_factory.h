@@ -3,8 +3,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_IOS_BROWSER_UI_WEBUI_BRAVE_WEB_UI_CONTROLLER_FACTORY_H_
-#define BRAVE_IOS_BROWSER_UI_WEBUI_BRAVE_WEB_UI_CONTROLLER_FACTORY_H_
+#ifndef LUXXLE_IOS_BROWSER_UI_WEBUI_BRAVE_WEB_UI_CONTROLLER_FACTORY_H_
+#define LUXXLE_IOS_BROWSER_UI_WEBUI_BRAVE_WEB_UI_CONTROLLER_FACTORY_H_
 
 #include <memory>
 
@@ -41,4 +41,4 @@ class BraveWebUIControllerFactory : public ChromeWebUIIOSControllerFactory {
   friend class base::NoDestructor<BraveWebUIControllerFactory>;
 };
 
-#endif  // BRAVE_IOS_BROWSER_UI_WEBUI_BRAVE_WEB_UI_CONTROLLER_FACTORY_H_
+#endif  // LUXXLE_IOS_BROWSER_UI_WEBUI_BRAVE_WEB_UI_CONTROLLER_FACTORY_H_

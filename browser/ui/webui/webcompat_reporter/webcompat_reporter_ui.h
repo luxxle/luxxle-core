@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_WEBCOMPAT_REPORTER_WEBCOMPAT_REPORTER_UI_H_
-#define BRAVE_BROWSER_UI_WEBUI_WEBCOMPAT_REPORTER_WEBCOMPAT_REPORTER_UI_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_WEBCOMPAT_REPORTER_WEBCOMPAT_REPORTER_UI_H_
+#define LUXXLE_BROWSER_UI_WEBUI_WEBCOMPAT_REPORTER_WEBCOMPAT_REPORTER_UI_H_
 
 #include <optional>
 #include <vector>
@@ -13,8 +13,8 @@
 #include "base/memory/weak_ptr.h"
 #include "base/scoped_multi_source_observation.h"
 #include "base/task/sequenced_task_runner.h"
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/components/webcompat_reporter/common/webcompat_reporter.mojom-forward.h"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/components/webcompat_reporter/common/webcompat_reporter.mojom-forward.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/webui/constrained_web_dialog_ui.h"
 #include "content/public/browser/web_ui_message_handler.h"
@@ -99,4 +99,4 @@ class WebcompatReporterUI : public ConstrainedWebDialogUI,
 
 }  // namespace webcompat_reporter
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_WEBCOMPAT_REPORTER_WEBCOMPAT_REPORTER_UI_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_WEBCOMPAT_REPORTER_WEBCOMPAT_REPORTER_UI_H_

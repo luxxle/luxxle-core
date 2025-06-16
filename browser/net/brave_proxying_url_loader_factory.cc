@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/net/brave_proxying_url_loader_factory.h"
+#include "luxxle/browser/net/brave_proxying_url_loader_factory.h"
 
 #include <optional>
 #include <string_view>
@@ -13,9 +13,9 @@
 #include "base/functional/bind.h"
 #include "base/metrics/histogram_macros.h"
 #include "base/strings/stringprintf.h"
-#include "brave/browser/net/brave_request_handler.h"
-#include "brave/components/brave_shields/content/browser/adblock_stub_response.h"
-#include "brave/components/brave_shields/core/common/features.h"
+#include "luxxle/browser/net/brave_request_handler.h"
+#include "luxxle/components/brave_shields/content/browser/adblock_stub_response.h"
+#include "luxxle/components/brave_shields/core/common/features.h"
 #include "content/public/browser/browser_context.h"
 #include "content/public/browser/browser_task_traits.h"
 #include "content/public/browser/browser_thread.h"
@@ -146,7 +146,7 @@ void BraveProxyingURLLoaderFactory::InProgressRequest::RestartInternal() {
       base::BindRepeating(&InProgressRequest::ContinueToBeforeSendHeaders,
                           weak_factory_.GetWeakPtr());
   redirect_url_ = GURL();
-  ctx_ = brave::BraveRequestInfo::MakeCTX(request_, frame_tree_node_id_,
+  ctx_ = luxxle::BraveRequestInfo::MakeCTX(request_, frame_tree_node_id_,
                                           request_id_, browser_context_, ctx_);
   int result = factory_->request_handler_->OnBeforeURLRequest(
       ctx_, continuation, &redirect_url_);
@@ -334,7 +334,7 @@ void BraveProxyingURLLoaderFactory::InProgressRequest::
     proxied_client_receiver_.Resume();
 
   // TODO(iefremov): Shorten
-  if (ctx_->blocked_by != brave::kNotBlocked) {
+  if (ctx_->blocked_by != luxxle::kNotBlocked) {
     if (!ctx_->ShouldMockRequest()) {
       OnRequestError(
           network::URLLoaderCompletionStatus(net::ERR_BLOCKED_BY_CLIENT));
@@ -379,7 +379,7 @@ void BraveProxyingURLLoaderFactory::InProgressRequest::
     auto continuation = base::BindRepeating(
         &InProgressRequest::ContinueToSendHeaders, weak_factory_.GetWeakPtr());
 
-    ctx_ = brave::BraveRequestInfo::MakeCTX(
+    ctx_ = luxxle::BraveRequestInfo::MakeCTX(
         request_, frame_tree_node_id_, request_id_, browser_context_, ctx_);
     int result = factory_->request_handler_->OnBeforeStartTransaction(
         ctx_, continuation, &request_.headers);
@@ -565,7 +565,7 @@ void BraveProxyingURLLoaderFactory::InProgressRequest::
 
   auto split_once_callback = base::SplitOnceCallback(std::move(continuation));
   if (request_.url.SchemeIsHTTPOrHTTPS()) {
-    ctx_ = brave::BraveRequestInfo::MakeCTX(
+    ctx_ = luxxle::BraveRequestInfo::MakeCTX(
         request_, frame_tree_node_id_, request_id_, browser_context_, ctx_);
     int result = factory_->request_handler_->OnHeadersReceived(
         ctx_, std::move(split_once_callback.first),
@@ -602,7 +602,7 @@ void BraveProxyingURLLoaderFactory::InProgressRequest::OnRequestError(
 
     if (base::FeatureList::IsEnabled(
             ::brave_shields::features::kBraveAdblockCollapseBlockedElements) &&
-        ctx_->blocked_by == brave::kAdBlocked) {
+        ctx_->blocked_by == luxxle::kAdBlocked) {
       collapse_status.should_collapse_initiator = true;
     }
 

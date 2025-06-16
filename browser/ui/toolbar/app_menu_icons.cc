@@ -3,13 +3,13 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/toolbar/app_menu_icons.h"
+#include "luxxle/browser/ui/toolbar/app_menu_icons.h"
 
 #include <map>
 
 #include "base/no_destructor.h"
-#include "brave/app/brave_command_ids.h"
-#include "brave/components/vector_icons/vector_icons.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/components/vector_icons/vector_icons.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "ui/base/models/image_model.h"
 #include "ui/color/color_id.h"

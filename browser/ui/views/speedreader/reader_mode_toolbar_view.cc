@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/speedreader/reader_mode_toolbar_view.h"
+#include "luxxle/browser/ui/views/speedreader/reader_mode_toolbar_view.h"
 
 #include <memory>
 
 #include "base/memory/raw_ptr.h"
-#include "brave/browser/ui/brave_browser.h"
-#include "brave/browser/ui/views/frame/brave_contents_view_util.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/browser/ui/brave_browser.h"
+#include "luxxle/browser/ui/views/frame/brave_contents_view_util.h"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/browser/ui/color/chrome_color_id.h"
 #include "content/public/browser/browser_context.h"
 #include "content/public/browser/navigation_controller.h"

@@ -18,7 +18,7 @@
 #include "base/task/bind_post_task.h"
 #include "base/task/sequenced_task_runner.h"
 #include "base/test/scoped_feature_list.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "chrome/test/base/in_process_browser_test.h"
 #include "chrome/test/base/ui_test_utils.h"
 #include "content/public/test/browser_test.h"
@@ -77,7 +77,7 @@ class ClientHintsBrowserTest : public InProcessBrowserTest,
 
   void SetUpOnMainThread() override {
     base::FilePath test_data_dir;
-    base::PathService::Get(brave::DIR_TEST_DATA, &test_data_dir);
+    base::PathService::Get(luxxle::DIR_TEST_DATA, &test_data_dir);
 
     https_server_.ServeFilesFromDirectory(test_data_dir);
     https_server_.RegisterRequestMonitor(base::BindPostTaskToCurrentDefault(

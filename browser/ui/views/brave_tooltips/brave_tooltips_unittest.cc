@@ -5,9 +5,9 @@
 
 #include <string>
 
-#include "brave/browser/ui/brave_tooltips/brave_tooltip.h"
-#include "brave/browser/ui/brave_tooltips/brave_tooltip_attributes.h"
-#include "brave/browser/ui/views/brave_tooltips/brave_tooltip_popup.h"
+#include "luxxle/browser/ui/brave_tooltips/brave_tooltip.h"
+#include "luxxle/browser/ui/brave_tooltips/brave_tooltip_attributes.h"
+#include "luxxle/browser/ui/views/brave_tooltips/brave_tooltip_popup.h"
 #include "chrome/test/views/chrome_views_test_base.h"
 #include "testing/gmock/include/gmock/gmock.h"
 #include "ui/events/base_event_utils.h"

@@ -3,15 +3,15 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/brave_wallet/common_handler/wallet_handler.h"
+#include "luxxle/browser/ui/webui/brave_wallet/common_handler/wallet_handler.h"
 
 #include <utility>
 
-#include "brave/browser/brave_wallet/brave_wallet_service_factory.h"
-#include "brave/components/brave_wallet/browser/brave_wallet_service.h"
-#include "brave/components/brave_wallet/browser/keyring_service.h"
-#include "brave/components/brave_wallet/common/brave_wallet.mojom.h"
-#include "brave/components/brave_wallet/common/common_utils.h"
+// REMOVED: #include "luxxle/browser/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
 #include "chrome/browser/profiles/profile.h"
 
 namespace brave_wallet {

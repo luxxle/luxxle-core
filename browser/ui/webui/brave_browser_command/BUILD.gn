@@ -17,7 +17,7 @@ source_set("brave_browser_command") {
   deps = [
     "//base:base",
     "//luxxle/browser/ai_chat",
-    "//luxxle/browser/brave_rewards",
+    # REMOVED: "//luxxle/browser/brave_rewards",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_education",
     # Commented out: removed components dependency - using Chromium defaults instead

@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/split_view/split_view_location_bar.h"
+#include "luxxle/browser/ui/views/split_view/split_view_location_bar.h"
 
 #include <algorithm>
 #include <memory>
@@ -12,10 +12,10 @@
 
 #include "base/check_is_test.h"
 #include "base/functional/bind.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/browser/ui/views/split_view/split_view.h"
-#include "brave/browser/ui/views/split_view/split_view_location_bar_model_delegate.h"
-#include "brave/components/vector_icons/vector_icons.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/views/split_view/split_view.h"
+#include "luxxle/browser/ui/views/split_view/split_view_location_bar_model_delegate.h"
+#include "luxxle/components/vector_icons/vector_icons.h"
 #include "cc/paint/paint_flags.h"
 #include "components/omnibox/browser/location_bar_model_impl.h"
 #include "components/omnibox/browser/omnibox_prefs.h"

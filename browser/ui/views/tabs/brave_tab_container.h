@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_CONTAINER_H_
-#define BRAVE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_CONTAINER_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_CONTAINER_H_
+#define LUXXLE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_CONTAINER_H_
 
 #include <memory>
 #include <optional>
 
-#include "brave/browser/ui/tabs/split_view_browser_data.h"
-#include "brave/browser/ui/tabs/split_view_browser_data_observer.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data_observer.h"
 #include "chrome/browser/ui/tabs/tab_style.h"
 #include "chrome/browser/ui/views/tabs/dragging/tab_drag_context.h"
 #include "chrome/browser/ui/views/tabs/tab_container_impl.h"
@@ -144,4 +144,4 @@ class BraveTabContainer : public TabContainerImpl,
       split_view_data_observation_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_CONTAINER_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_CONTAINER_H_

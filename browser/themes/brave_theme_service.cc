@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/themes/brave_theme_service.h"
+#include "luxxle/browser/themes/brave_theme_service.h"
 
 #include <memory>
 
-#include "brave/browser/extensions/brave_theme_event_router.h"
+#include "luxxle/browser/extensions/brave_theme_event_router.h"
 
 BraveThemeService::BraveThemeService(Profile* profile,
                                      const ThemeHelper& theme_helper)

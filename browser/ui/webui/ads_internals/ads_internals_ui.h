@@ -3,13 +3,13 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_ADS_INTERNALS_ADS_INTERNALS_UI_H_
-#define BRAVE_BROWSER_UI_WEBUI_ADS_INTERNALS_ADS_INTERNALS_UI_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_ADS_INTERNALS_ADS_INTERNALS_UI_H_
+#define LUXXLE_BROWSER_UI_WEBUI_ADS_INTERNALS_ADS_INTERNALS_UI_H_
 
 #include <string>
 
-#include "brave/components/brave_ads/core/browser/internals/ads_internals_handler.h"
-#include "brave/components/services/bat_ads/public/interfaces/bat_ads.mojom.h"
+// REMOVED: #include "luxxle/components/brave_ads/.*"
+#include "luxxle/components/services/bat_ads/public/interfaces/bat_ads.mojom.h"
 #include "components/prefs/pref_change_registrar.h"
 #include "content/public/browser/web_ui_controller.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
@@ -41,4 +41,4 @@ class AdsInternalsUI : public content::WebUIController {
   WEB_UI_CONTROLLER_TYPE_DECL();
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_ADS_INTERNALS_ADS_INTERNALS_UI_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_ADS_INTERNALS_ADS_INTERNALS_UI_H_

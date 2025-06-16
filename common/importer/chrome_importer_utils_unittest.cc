@@ -3,15 +3,15 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/common/importer/chrome_importer_utils.h"
+#include "luxxle/common/importer/chrome_importer_utils.h"
 
 #include "base/files/file_path.h"
 #include "base/files/file_util.h"
 #include "base/files/scoped_temp_dir.h"
 #include "base/path_service.h"
 #include "base/test/values_test_util.h"
-#include "brave/common/importer/importer_constants.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/common/importer/importer_constants.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "chrome/common/importer/importer_data_types.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
@@ -30,7 +30,7 @@ class BraveChromeImporterUtilsTest : public testing::Test {
   void CopyTestFileToProfile(const std::string& source,
                              const std::string& target) {
     base::FilePath test_data_dir;
-    base::PathService::Get(brave::DIR_TEST_DATA, &test_data_dir);
+    base::PathService::Get(luxxle::DIR_TEST_DATA, &test_data_dir);
     base::CopyFile(test_data_dir.AppendASCII("import")
                        .AppendASCII("chrome")
                        .AppendASCII("default")

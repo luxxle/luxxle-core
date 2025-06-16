@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_PERMISSIONS_MOCK_PERMISSION_LIFETIME_PROMPT_H_
-#define BRAVE_BROWSER_PERMISSIONS_MOCK_PERMISSION_LIFETIME_PROMPT_H_
+#ifndef LUXXLE_BROWSER_PERMISSIONS_MOCK_PERMISSION_LIFETIME_PROMPT_H_
+#define LUXXLE_BROWSER_PERMISSIONS_MOCK_PERMISSION_LIFETIME_PROMPT_H_
 
 #include <optional>
 #include <vector>
@@ -43,4 +43,4 @@ class MockPermissionLifetimePrompt : public PermissionPrompt {
 
 }  // namespace permissions
 
-#endif  // BRAVE_BROWSER_PERMISSIONS_MOCK_PERMISSION_LIFETIME_PROMPT_H_
+#endif  // LUXXLE_BROWSER_PERMISSIONS_MOCK_PERMISSION_LIFETIME_PROMPT_H_

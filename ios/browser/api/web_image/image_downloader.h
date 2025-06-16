@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_IOS_BROWSER_API_WEB_IMAGE_IMAGE_DOWNLOADER_H_
-#define BRAVE_IOS_BROWSER_API_WEB_IMAGE_IMAGE_DOWNLOADER_H_
+#ifndef LUXXLE_IOS_BROWSER_API_WEB_IMAGE_IMAGE_DOWNLOADER_H_
+#define LUXXLE_IOS_BROWSER_API_WEB_IMAGE_IMAGE_DOWNLOADER_H_
 
 #include <vector>
 #import "components/image_fetcher/ios/ios_image_data_fetcher_wrapper.h"
@@ -16,7 +16,7 @@ class SharedURLLoaderFactory;
 class SkBitmap;
 class GURL;
 
-namespace brave {
+namespace luxxle {
 class ImageDownloader {
  public:
   using ImageDownloadCallback = base::OnceCallback<void(
@@ -40,4 +40,4 @@ class ImageDownloader {
 };
 }  // namespace brave
 
-#endif  // BRAVE_IOS_BROWSER_API_WEB_IMAGE_IMAGE_DOWNLOADER_H_
+#endif  // LUXXLE_IOS_BROWSER_API_WEB_IMAGE_IMAGE_DOWNLOADER_H_

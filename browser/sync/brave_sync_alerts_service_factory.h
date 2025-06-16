@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_SYNC_BRAVE_SYNC_ALERTS_SERVICE_FACTORY_H_
-#define BRAVE_BROWSER_SYNC_BRAVE_SYNC_ALERTS_SERVICE_FACTORY_H_
+#ifndef LUXXLE_BROWSER_SYNC_BRAVE_SYNC_ALERTS_SERVICE_FACTORY_H_
+#define LUXXLE_BROWSER_SYNC_BRAVE_SYNC_ALERTS_SERVICE_FACTORY_H_
 
 #include <memory>
 
@@ -43,4 +43,4 @@ class BraveSyncAlertsServiceFactory : public BrowserContextKeyedServiceFactory {
   bool ServiceIsNULLWhileTesting() const override;
 };
 
-#endif  // BRAVE_BROWSER_SYNC_BRAVE_SYNC_ALERTS_SERVICE_FACTORY_H_
+#endif  // LUXXLE_BROWSER_SYNC_BRAVE_SYNC_ALERTS_SERVICE_FACTORY_H_

@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/components/ai_chat/content/browser/ai_chat_tab_helper.h"
+#include "luxxle/components/ai_chat/content/browser/ai_chat_tab_helper.h"
 
 #include <memory>
 #include <string>
@@ -11,8 +11,8 @@
 #include "base/strings/stringprintf.h"
 #include "base/test/gmock_callback_support.h"
 #include "base/test/mock_callback.h"
-#include "brave/components/ai_chat/core/browser/constants.h"
-#include "brave/components/ai_chat/core/browser/conversation_handler.h"
+#include "luxxle/components/ai_chat/core/browser/constants.h"
+#include "luxxle/components/ai_chat/core/browser/conversation_handler.h"
 #include "chrome/test/base/chrome_render_view_host_test_harness.h"
 #include "chrome/test/base/testing_profile.h"
 #include "components/favicon/content/content_favicon_driver.h"

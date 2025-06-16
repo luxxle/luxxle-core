@@ -3,18 +3,18 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/location_bar/brave_location_bar_view.h"
+#include "luxxle/browser/ui/views/location_bar/brave_location_bar_view.h"
 
 #include <memory>
 
 #include "base/run_loop.h"
 #include "base/test/bind.h"
 #include "base/test/scoped_feature_list.h"
-#include "brave/browser/ui/views/location_bar/brave_search_conversion/promotion_button_controller.h"
-#include "brave/browser/ui/views/location_bar/brave_search_conversion/promotion_button_view.h"
-#include "brave/components/brave_search_conversion/features.h"
-#include "brave/components/brave_search_conversion/pref_names.h"
-#include "brave/components/search_engines/brave_prepopulated_engines.h"
+#include "luxxle/browser/ui/views/location_bar/brave_search_conversion/promotion_button_controller.h"
+#include "luxxle/browser/ui/views/location_bar/brave_search_conversion/promotion_button_view.h"
+#include "luxxle/components/brave_search_conversion/features.h"
+#include "luxxle/components/brave_search_conversion/pref_names.h"
+#include "luxxle/components/search_engines/brave_prepopulated_engines.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/search_engines/template_url_service_factory.h"
 #include "chrome/browser/ui/browser.h"

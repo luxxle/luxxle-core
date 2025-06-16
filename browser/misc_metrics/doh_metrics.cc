@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/misc_metrics/doh_metrics.h"
+#include "luxxle/browser/misc_metrics/doh_metrics.h"
 
 #include <algorithm>
 #include <string>
 #include <vector>
 
 #include "base/metrics/histogram_macros.h"
-#include "brave/components/misc_metrics/pref_names.h"
-#include "brave/components/p3a_utils/bucket.h"
+#include "luxxle/components/misc_metrics/pref_names.h"
+#include "luxxle/components/p3a_utils/bucket.h"
 #include "chrome/common/pref_names.h"
 #include "components/prefs/pref_registry_simple.h"
 #include "components/prefs/pref_service.h"

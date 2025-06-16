@@ -8,10 +8,10 @@
 #include "base/path_service.h"
 #include "base/strings/string_util.h"
 #include "base/test/scoped_feature_list.h"
-#include "brave/browser/brave_browser_features.h"
-#include "brave/browser/url_sanitizer/url_sanitizer_service_factory.h"
-#include "brave/components/constants/brave_paths.h"
-#include "brave/components/url_sanitizer/browser/url_sanitizer_service.h"
+#include "luxxle/browser/brave_browser_features.h"
+#include "luxxle/browser/url_sanitizer/url_sanitizer_service_factory.h"
+#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/url_sanitizer/browser/url_sanitizer_service.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/test/base/in_process_browser_test.h"
@@ -67,7 +67,7 @@ class URLSanitizerTestBase : public InProcessBrowserTest {
 
   void SetUpOnMainThread() override {
     https_server_.ServeFilesFromDirectory(
-        base::PathService::CheckedGet(brave::DIR_TEST_DATA));
+        base::PathService::CheckedGet(luxxle::DIR_TEST_DATA));
     https_server_.StartAcceptingConnections();
     host_resolver()->AddRule("*", "127.0.0.1");
     mock_cert_verifier_.mock_cert_verifier()->set_default_result(net::OK);
@@ -96,8 +96,8 @@ class URLSanitizerTestBase : public InProcessBrowserTest {
     InProcessBrowserTest::TearDownInProcessBrowserTestFixture();
   }
 
-  brave::URLSanitizerService* GetSanitizer() {
-    return brave::URLSanitizerServiceFactory::GetForBrowserContext(
+  luxxle::URLSanitizerService* GetSanitizer() {
+    return luxxle::URLSanitizerServiceFactory::GetForBrowserContext(
         browser()->profile());
   }
 
@@ -106,11 +106,11 @@ class URLSanitizerTestBase : public InProcessBrowserTest {
     base::RunLoop loop;
 
     GetSanitizer()->SetInitializationCallbackForTesting(loop.QuitClosure());
-    brave::URLSanitizerComponentInstaller::RawConfig config;
+    luxxle::URLSanitizerComponentInstaller::RawConfig config;
     config.matchers = matchers;
     config.permissions = permissions;
     auto* component_intaller =
-        static_cast<brave::URLSanitizerComponentInstaller::Observer*>(
+        static_cast<luxxle::URLSanitizerComponentInstaller::Observer*>(
             GetSanitizer());
     component_intaller->OnConfigReady(config);
 

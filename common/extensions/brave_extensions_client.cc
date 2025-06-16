@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "brave/common/extensions/brave_extensions_client.h"
+#include "luxxle/common/extensions/brave_extensions_client.h"
 
 #include <string>
 #include <vector>
@@ -11,7 +11,7 @@
 #include "base/command_line.h"
 #include "base/strings/string_split.h"
 #include "base/strings/string_util.h"
-#include "brave/components/skus/common/skus_utils.h"
+#include "luxxle/components/skus/common/skus_utils.h"
 #include "components/component_updater/component_updater_switches.h"
 
 namespace extensions {

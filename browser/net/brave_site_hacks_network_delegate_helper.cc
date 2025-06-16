@@ -3,23 +3,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/net/brave_site_hacks_network_delegate_helper.h"
+#include "luxxle/browser/net/brave_site_hacks_network_delegate_helper.h"
 
 #include <memory>
 #include <string>
 #include <vector>
 
 #include "base/metrics/histogram_macros.h"
-#include "brave/components/brave_shields/content/browser/brave_shields_util.h"
-#include "brave/components/constants/url_constants.h"
-#include "brave/components/query_filter/utils.h"
+#include "luxxle/components/brave_shields/content/browser/brave_shields_util.h"
+#include "luxxle/components/constants/url_constants.h"
+#include "luxxle/components/query_filter/utils.h"
 #include "content/public/common/referrer.h"
 #include "net/base/registry_controlled_domains/registry_controlled_domain.h"
 #include "net/url_request/url_request.h"
 #include "third_party/blink/public/common/loader/network_utils.h"
 #include "third_party/blink/public/common/loader/referrer_utils.h"
 
-namespace brave {
+namespace luxxle {
 
 namespace {
 

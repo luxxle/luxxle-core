@@ -26,7 +26,7 @@
 
 // MARK: - Implementation
 
-namespace brave {
+namespace luxxle {
 namespace storekit_receipt {
 bssl::UniquePtr<PKCS7> pkcs7_from_data(NSData* data) {
   const std::uint8_t* der_bytes =
@@ -237,48 +237,48 @@ bool pkcs7_get_signed_content(
 
       switch (attribute_type) {
         case 1701: {
-          _quantity = brave::storekit_receipt::decode_asn1_integer(value);
+          _quantity = luxxle::storekit_receipt::decode_asn1_integer(value);
         } break;
 
         case 1702: {
-          _productId = brave::storekit_receipt::decode_asn1_string(value);
+          _productId = luxxle::storekit_receipt::decode_asn1_string(value);
         } break;
 
         case 1703: {
-          _transactionId = brave::storekit_receipt::decode_asn1_string(value);
+          _transactionId = luxxle::storekit_receipt::decode_asn1_string(value);
         } break;
 
         case 1704: {
-          _purchaseDate = brave::storekit_receipt::decode_asn1_date(value);
+          _purchaseDate = luxxle::storekit_receipt::decode_asn1_date(value);
         } break;
 
         case 1705: {
           _originalTransactionId =
-              brave::storekit_receipt::decode_asn1_string(value);
+              luxxle::storekit_receipt::decode_asn1_string(value);
         } break;
 
         case 1706: {
           _originalPurchaseDate =
-              brave::storekit_receipt::decode_asn1_date(value);
+              luxxle::storekit_receipt::decode_asn1_date(value);
         } break;
 
         case 1708: {
           _subscriptionExpirationDate =
-              brave::storekit_receipt::decode_asn1_date(value);
+              luxxle::storekit_receipt::decode_asn1_date(value);
         } break;
 
         case 1711: {
           _webOrderLineItemId =
-              brave::storekit_receipt::decode_asn1_integer(value);
+              luxxle::storekit_receipt::decode_asn1_integer(value);
         } break;
 
         case 1712: {
-          _cancellationDate = brave::storekit_receipt::decode_asn1_date(value);
+          _cancellationDate = luxxle::storekit_receipt::decode_asn1_date(value);
         } break;
 
         case 1719: {
           _isInIntroOfferPeriod =
-              brave::storekit_receipt::decode_asn1_boolean(value);
+              luxxle::storekit_receipt::decode_asn1_boolean(value);
         } break;
 
         default:
@@ -303,7 +303,7 @@ bool pkcs7_get_signed_content(
     _receiptExpirationDate = nil;
 
     bssl::UniquePtr<PKCS7> pkcs =
-        brave::storekit_receipt::pkcs7_from_data(data);
+        luxxle::storekit_receipt::pkcs7_from_data(data);
 
     if (!pkcs) {
       VLOG(1) << "Cannot parse receipt pkcs7 container";
@@ -316,7 +316,7 @@ bool pkcs7_get_signed_content(
     }
 
     std::vector<bssl::UniquePtr<ASN1_STRING>> result;
-    if (!brave::storekit_receipt::pkcs7_get_signed_content(data, result)) {
+    if (!luxxle::storekit_receipt::pkcs7_get_signed_content(data, result)) {
       return nullptr;
     }
 
@@ -363,11 +363,11 @@ bool pkcs7_get_signed_content(
 
         switch (attribute_type) {
           case 2: {
-            _bundleId = brave::storekit_receipt::decode_asn1_string(value);
+            _bundleId = luxxle::storekit_receipt::decode_asn1_string(value);
           } break;
 
           case 3: {
-            _appVersion = brave::storekit_receipt::decode_asn1_string(value);
+            _appVersion = luxxle::storekit_receipt::decode_asn1_string(value);
           } break;
 
           case 4: {
@@ -383,7 +383,7 @@ bool pkcs7_get_signed_content(
 
           case 12: {
             _receiptCreationDate =
-                brave::storekit_receipt::decode_asn1_date(value);
+                luxxle::storekit_receipt::decode_asn1_date(value);
           } break;
 
           case 17: {
@@ -398,12 +398,12 @@ bool pkcs7_get_signed_content(
 
           case 19: {
             _originalApplicationVersion =
-                brave::storekit_receipt::decode_asn1_string(value);
+                luxxle::storekit_receipt::decode_asn1_string(value);
           } break;
 
           case 21: {
             _receiptExpirationDate =
-                brave::storekit_receipt::decode_asn1_date(value);
+                luxxle::storekit_receipt::decode_asn1_date(value);
           } break;
 
           default:

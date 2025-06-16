@@ -7,7 +7,7 @@
 
 #include "base/memory/raw_ptr.h"
 #import "brave/base/mac/conversions.h"
-#include "brave/components/ipfs/ipfs_utils.h"
+#include "luxxle/components/ipfs/ipfs_utils.h"
 #include "brave/ios/browser/api/ipfs/ipfs_api+private.h"
 #include "components/user_prefs/user_prefs.h"
 #include "ios/chrome/browser/shared/model/profile/profile_ios.h"
@@ -51,7 +51,7 @@
 }
 
 - (nullable NSURL*)contentHashToCIDv1URLFor:(NSArray<NSNumber*>*)contentHash {
-  auto content_hash = brave::ns_to_vector<std::uint8_t>(contentHash);
+  auto content_hash = luxxle::ns_to_vector<std::uint8_t>(contentHash);
   GURL gurl = ipfs::ContentHashToCIDv1URL(content_hash);
   return net::NSURLWithGURL(gurl);
 }

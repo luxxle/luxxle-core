@@ -5,7 +5,7 @@
 
 #include <vector>
 
-#include "brave/app/brave_command_ids.h"
+#include "luxxle/app/brave_command_ids.h"
 #include "chrome/browser/ui/views/accelerator_table.h"
 #include "testing/gtest/include/gtest/gtest.h"
 

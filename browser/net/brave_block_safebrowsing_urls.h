@@ -3,16 +3,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_NET_BRAVE_BLOCK_SAFEBROWSING_URLS_H_
-#define BRAVE_BROWSER_NET_BRAVE_BLOCK_SAFEBROWSING_URLS_H_
+#ifndef LUXXLE_BROWSER_NET_BRAVE_BLOCK_SAFEBROWSING_URLS_H_
+#define LUXXLE_BROWSER_NET_BRAVE_BLOCK_SAFEBROWSING_URLS_H_
 
 class GURL;
 
-namespace brave {
+namespace luxxle {
 
 int OnBeforeURLRequest_BlockSafeBrowsingReportingURLs(const GURL& url,
                                                       GURL* new_url);
 
 }  // namespace brave
 
-#endif  // BRAVE_BROWSER_NET_BRAVE_BLOCK_SAFEBROWSING_URLS_H_
+#endif  // LUXXLE_BROWSER_NET_BRAVE_BLOCK_SAFEBROWSING_URLS_H_

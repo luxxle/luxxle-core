@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/ai_chat/print_preview_extractor.h"
+#include "luxxle/browser/ui/ai_chat/print_preview_extractor.h"
 
 #include <memory>
 #include <optional>
@@ -16,11 +16,11 @@
 #include "base/memory/weak_ptr.h"
 #include "base/strings/strcat.h"
 #include "base/types/expected.h"
-#include "brave/components/ai_chat/content/browser/ai_chat_tab_helper.h"
-#include "brave/components/ai_chat/content/browser/pdf_utils.h"
-#include "brave/components/ai_chat/core/browser/constants.h"
-#include "brave/components/ai_chat/core/browser/utils.h"
-#include "brave/components/text_recognition/common/buildflags/buildflags.h"
+#include "luxxle/components/ai_chat/content/browser/ai_chat_tab_helper.h"
+#include "luxxle/components/ai_chat/content/browser/pdf_utils.h"
+#include "luxxle/components/ai_chat/core/browser/constants.h"
+#include "luxxle/components/ai_chat/core/browser/utils.h"
+#include "luxxle/components/text_recognition/common/buildflags/buildflags.h"
 #include "brave/services/printing/public/mojom/pdf_to_bitmap_converter.mojom.h"
 #include "chrome/browser/pdf/pdf_pref_names.h"
 #include "chrome/browser/printing/print_compositor_util.h"

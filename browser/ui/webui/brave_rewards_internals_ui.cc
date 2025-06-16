@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/brave_rewards_internals_ui.h"
+#include "luxxle/browser/ui/webui/brave_rewards_internals_ui.h"
 
 #include <memory>
 #include <optional>
@@ -14,16 +14,16 @@
 #include "base/json/json_reader.h"
 #include "base/memory/raw_ptr.h"
 #include "base/memory/weak_ptr.h"
-#include "brave/browser/brave_ads/ads_service_factory.h"
-#include "brave/browser/brave_rewards/rewards_service_factory.h"
-#include "brave/browser/ui/webui/brave_webui_source.h"
-#include "brave/components/brave_ads/core/browser/service/ads_service.h"
-#include "brave/components/brave_ads/core/public/prefs/pref_names.h"
-#include "brave/components/brave_rewards/content/rewards_service.h"
-#include "brave/components/brave_rewards/core/mojom/rewards.mojom.h"
-#include "brave/components/brave_rewards/core/pref_names.h"
-#include "brave/components/brave_rewards/resources/grit/brave_rewards_resources.h"
-#include "brave/components/brave_rewards/resources/grit/rewards_internals_generated_map.h"
+// REMOVED: #include "luxxle/browser/brave_ads/.*"
+// REMOVED: #include "luxxle/browser/brave_rewards/.*"
+#include "luxxle/browser/ui/webui/brave_webui_source.h"
+// REMOVED: #include "luxxle/components/brave_ads/.*"
+// REMOVED: #include "luxxle/components/brave_ads/.*"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
 #include "chrome/browser/profiles/profile.h"
 #include "components/prefs/pref_service.h"
 #include "content/public/browser/web_ui.h"
@@ -473,7 +473,7 @@ BraveRewardsInternalsUI::BraveRewardsInternalsUI(content::WebUI* web_ui,
                                                  const std::string& name)
     : WebUIController(web_ui) {
   CreateAndAddWebUIDataSource(web_ui, name, kRewardsInternalsGenerated,
-                              IDR_BRAVE_REWARDS_INTERNALS_HTML);
+                              /* REMOVED: IDR_BRAVE_REWARDS_INTERNALS_HTML */ 0);
 
   auto handler_owner = std::make_unique<RewardsInternalsDOMHandler>();
   RewardsInternalsDOMHandler* handler = handler_owner.get();

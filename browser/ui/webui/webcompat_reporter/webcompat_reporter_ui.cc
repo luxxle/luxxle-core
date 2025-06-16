@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/webcompat_reporter/webcompat_reporter_ui.h"
+#include "luxxle/browser/ui/webui/webcompat_reporter/webcompat_reporter_ui.h"
 
 #include <memory>
 #include <optional>
@@ -19,21 +19,21 @@
 #include "base/task/sequenced_task_runner.h"
 #include "base/task/thread_pool.h"
 #include "base/values.h"
-#include "brave/browser/brave_browser_process.h"
-#include "brave/browser/ui/brave_browser_window.h"
-#include "brave/browser/ui/webui/brave_webui_source.h"
-#include "brave/browser/ui/webui/webcompat_reporter/webcompat_reporter_dialog.h"
-#include "brave/browser/webcompat_reporter/webcompat_reporter_service_factory.h"
-#include "brave/common/brave_channel_info.h"
-#include "brave/components/brave_shields/content/browser/ad_block_service.h"
-#include "brave/components/brave_shields/core/browser/ad_block_component_service_manager.h"
-#include "brave/components/brave_shields/core/browser/filter_list_catalog_entry.h"
-#include "brave/components/brave_shields/core/common/pref_names.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
-#include "brave/components/webcompat_reporter/browser/fields.h"
-#include "brave/components/webcompat_reporter/browser/webcompat_reporter_service.h"
-#include "brave/components/webcompat_reporter/browser/webcompat_reporter_utils.h"
-#include "brave/components/webcompat_reporter/resources/grit/webcompat_reporter_generated_map.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/ui/brave_browser_window.h"
+#include "luxxle/browser/ui/webui/brave_webui_source.h"
+#include "luxxle/browser/ui/webui/webcompat_reporter/webcompat_reporter_dialog.h"
+#include "luxxle/browser/webcompat_reporter/webcompat_reporter_service_factory.h"
+#include "luxxle/common/brave_channel_info.h"
+#include "luxxle/components/brave_shields/content/browser/ad_block_service.h"
+#include "luxxle/components/brave_shields/core/browser/ad_block_component_service_manager.h"
+#include "luxxle/components/brave_shields/core/browser/filter_list_catalog_entry.h"
+#include "luxxle/components/brave_shields/core/common/pref_names.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#include "luxxle/components/webcompat_reporter/browser/fields.h"
+#include "luxxle/components/webcompat_reporter/browser/webcompat_reporter_service.h"
+#include "luxxle/components/webcompat_reporter/browser/webcompat_reporter_utils.h"
+#include "luxxle/components/webcompat_reporter/resources/grit/webcompat_reporter_generated_map.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_finder.h"
 #include "chrome/browser/ui/browser_list.h"
@@ -52,8 +52,8 @@
 #include "ui/gfx/geometry/size.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/browser/brave_vpn/brave_vpn_service_factory.h"
-#include "brave/components/brave_vpn/browser/brave_vpn_service.h"
+// REMOVED: #include "luxxle/browser/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #endif
 
 namespace webcompat_reporter {
@@ -173,7 +173,7 @@ void WebcompatReporterDOMHandler::InitAdditionalParameters(Profile* profile) {
       profile_prefs->GetString(language::prefs::kAcceptLanguages);
   pending_report_->language_farbling = BoolToString(
       profile_prefs->GetBoolean(brave_shields::prefs::kReduceLanguageEnabled));
-  pending_report_->channel = brave::GetChannelName();
+  pending_report_->channel = luxxle::GetChannelName();
 }
 
 WebcompatReporterDOMHandler::~WebcompatReporterDOMHandler() = default;

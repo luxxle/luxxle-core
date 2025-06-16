@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_BUBBLE_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_BUBBLE_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_BUBBLE_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_BUBBLE_VIEW_H_
 
 #include "base/memory/weak_ptr.h"
-#include "brave/browser/ui/views/playlist/playlist_bubbles_controller.h"
+#include "luxxle/browser/ui/views/playlist/playlist_bubbles_controller.h"
 #include "ui/base/metadata/metadata_header_macros.h"
 #include "ui/views/bubble/bubble_dialog_delegate_view.h"
 
@@ -40,4 +40,4 @@ class PlaylistBubbleView : public views::BubbleDialogDelegateView {
 };
 }  // namespace playlist
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_BUBBLE_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_BUBBLE_VIEW_H_

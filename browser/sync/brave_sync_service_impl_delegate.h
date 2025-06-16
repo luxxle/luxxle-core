@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_SYNC_BRAVE_SYNC_SERVICE_IMPL_DELEGATE_H_
-#define BRAVE_BROWSER_SYNC_BRAVE_SYNC_SERVICE_IMPL_DELEGATE_H_
+#ifndef LUXXLE_BROWSER_SYNC_BRAVE_SYNC_SERVICE_IMPL_DELEGATE_H_
+#define LUXXLE_BROWSER_SYNC_BRAVE_SYNC_SERVICE_IMPL_DELEGATE_H_
 
 #include <utility>
 
 #include "base/memory/raw_ptr.h"
 #include "base/memory/weak_ptr.h"
 #include "base/scoped_observation.h"
-#include "brave/components/sync/service/sync_service_impl_delegate.h"
+#include "luxxle/components/sync/service/sync_service_impl_delegate.h"
 #include "components/sync_device_info/device_info_tracker.h"
 
 namespace history {
@@ -76,4 +76,4 @@ class BraveSyncServiceImplDelegate
 
 }  // namespace syncer
 
-#endif  // BRAVE_BROWSER_SYNC_BRAVE_SYNC_SERVICE_IMPL_DELEGATE_H_
+#endif  // LUXXLE_BROWSER_SYNC_BRAVE_SYNC_SERVICE_IMPL_DELEGATE_H_

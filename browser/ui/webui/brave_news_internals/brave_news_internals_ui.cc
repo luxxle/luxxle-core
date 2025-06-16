@@ -3,15 +3,15 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/brave_news_internals/brave_news_internals_ui.h"
+#include "luxxle/browser/ui/webui/brave_news_internals/brave_news_internals_ui.h"
 
 #include <string>
 #include <utility>
 
-#include "brave/browser/ui/webui/brave_webui_source.h"
-#include "brave/components/brave_news/browser/brave_news_controller.h"
-#include "brave/components/brave_news/browser/resources/grit/brave_news_internals_generated_map.h"
-#include "brave/components/brave_news/common/brave_news.mojom.h"
+#include "luxxle/browser/ui/webui/brave_webui_source.h"
+#include "luxxle/components/brave_news/browser/brave_news_controller.h"
+#include "luxxle/components/brave_news/browser/resources/grit/brave_news_internals_generated_map.h"
+#include "luxxle/components/brave_news/common/brave_news.mojom.h"
 #include "components/grit/brave_components_resources.h"
 
 BraveNewsInternalsUI::BraveNewsInternalsUI(
@@ -21,7 +21,7 @@ BraveNewsInternalsUI::BraveNewsInternalsUI(
     : content::WebUIController(web_ui), controller_(controller) {
   auto* source =
       CreateAndAddWebUIDataSource(web_ui, host, kBraveNewsInternalsGenerated,
-                                  IDR_BRAVE_NEWS_INTERNALS_HTML);
+                                  /* REMOVED: IDR_BRAVE_NEWS_INTERNALS_HTML */ 0);
   DCHECK(source);
 }
 

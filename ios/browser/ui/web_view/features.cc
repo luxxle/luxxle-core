@@ -5,7 +5,7 @@
 
 #include "brave/ios/browser/ui/web_view/features.h"
 
-namespace brave::features {
+namespace luxxle::features {
 
 BASE_FEATURE(kUseChromiumWebViews,
              "UseChromiumWebViews",

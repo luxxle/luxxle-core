@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_SEARCH_ENGINES_NORMAL_WINDOW_SEARCH_ENGINE_PROVIDER_SERVICE_ANDROID_H_
-#define BRAVE_BROWSER_SEARCH_ENGINES_NORMAL_WINDOW_SEARCH_ENGINE_PROVIDER_SERVICE_ANDROID_H_
+#ifndef LUXXLE_BROWSER_SEARCH_ENGINES_NORMAL_WINDOW_SEARCH_ENGINE_PROVIDER_SERVICE_ANDROID_H_
+#define LUXXLE_BROWSER_SEARCH_ENGINES_NORMAL_WINDOW_SEARCH_ENGINE_PROVIDER_SERVICE_ANDROID_H_
 
 #include "base/callback_list.h"
 #include "base/memory/raw_ptr.h"
@@ -37,4 +37,4 @@ class NormalWindowSearchEngineProviderServiceAndroid : public KeyedService {
   base::CallbackListSubscription template_url_service_subscription_;
 };
 
-#endif  // BRAVE_BROWSER_SEARCH_ENGINES_NORMAL_WINDOW_SEARCH_ENGINE_PROVIDER_SERVICE_ANDROID_H_
+#endif  // LUXXLE_BROWSER_SEARCH_ENGINES_NORMAL_WINDOW_SEARCH_ENGINE_PROVIDER_SERVICE_ANDROID_H_

@@ -7,7 +7,7 @@
 
 #include "base/files/file_path.h"
 #include "base/strings/sys_string_conversions.h"
-#include "brave/components/ntp_background_images/browser/ntp_background_images_data.h"
+#include "luxxle/components/ntp_background_images/browser/ntp_background_images_data.h"
 
 #if !defined(__has_feature) || !__has_feature(objc_arc)
 #error "This file requires ARC support."

@@ -3,31 +3,31 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/brave_browser_command_controller.h"
+#include "luxxle/browser/ui/brave_browser_command_controller.h"
 
 #include <optional>
 
 #include "base/containers/fixed_flat_set.h"
 #include "base/feature_list.h"
 #include "base/types/to_address.h"
-#include "brave/app/brave_command_ids.h"
-#include "brave/browser/ai_chat/ai_chat_utils.h"
-#include "brave/browser/profiles/profile_util.h"
-#include "brave/browser/ui/brave_pages.h"
-#include "brave/browser/ui/browser_commands.h"
-#include "brave/browser/ui/sidebar/sidebar_utils.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/components/ai_chat/core/browser/utils.h"
-#include "brave/components/ai_chat/core/common/features.h"
-#include "brave/components/ai_chat/core/common/pref_names.h"
-#include "brave/components/brave_rewards/core/rewards_util.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
-#include "brave/components/brave_wallet/common/common_utils.h"
-#include "brave/components/brave_wayback_machine/buildflags/buildflags.h"
-#include "brave/components/commander/common/buildflags/buildflags.h"
-#include "brave/components/commands/common/features.h"
-#include "brave/components/playlist/common/buildflags/buildflags.h"
-#include "brave/components/speedreader/common/buildflags/buildflags.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/browser/ai_chat/ai_chat_utils.h"
+#include "luxxle/browser/profiles/profile_util.h"
+#include "luxxle/browser/ui/brave_pages.h"
+#include "luxxle/browser/ui/browser_commands.h"
+#include "luxxle/browser/ui/sidebar/sidebar_utils.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/components/ai_chat/core/browser/utils.h"
+#include "luxxle/components/ai_chat/core/common/features.h"
+#include "luxxle/components/ai_chat/core/common/pref_names.h"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/brave_wayback_machine/buildflags/buildflags.h"
+#include "luxxle/components/commander/common/buildflags/buildflags.h"
+#include "luxxle/components/commands/common/features.h"
+#include "luxxle/components/playlist/common/buildflags/buildflags.h"
+#include "luxxle/components/speedreader/common/buildflags/buildflags.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/profile.h"
@@ -45,27 +45,27 @@
 #include "content/public/browser/web_contents.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/browser/brave_vpn/brave_vpn_service_factory.h"
-#include "brave/browser/brave_vpn/vpn_utils.h"
-#include "brave/components/brave_vpn/browser/brave_vpn_service.h"
-#include "brave/components/brave_vpn/common/pref_names.h"
+// REMOVED: #include "luxxle/browser/brave_vpn/.*"
+// REMOVED: #include "luxxle/browser/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #endif
 
 #if BUILDFLAG(ENABLE_SPEEDREADER)
-#include "brave/components/speedreader/common/features.h"
+#include "luxxle/components/speedreader/common/features.h"
 #endif
 
 #if BUILDFLAG(ENABLE_PLAYLIST_WEBUI)
-#include "brave/browser/playlist/playlist_service_factory.h"
-#include "brave/components/playlist/common/features.h"
+#include "luxxle/browser/playlist/playlist_service_factory.h"
+#include "luxxle/components/playlist/common/features.h"
 #endif
 
 #if BUILDFLAG(ENABLE_COMMANDER)
-#include "brave/browser/ui/commander/commander_service.h"
+#include "luxxle/browser/ui/commander/commander_service.h"
 #endif
 
 #if BUILDFLAG(ENABLE_TOR)
-#include "brave/browser/tor/tor_profile_service_factory.h"
+#include "luxxle/browser/tor/tor_profile_service_factory.h"
 #endif
 
 namespace {
@@ -105,7 +105,7 @@ void BraveBrowserCommandController::TabChangedAt(content::WebContents* contents,
                                                  int index,
                                                  TabChangeType type) {
   UpdateCommandEnabled(IDC_CLOSE_DUPLICATE_TABS,
-                       brave::HasDuplicateTabs(&*browser_));
+                       luxxle::HasDuplicateTabs(&*browser_));
   UpdateCommandsForTabs();
   UpdateCommandsForSend();
 }
@@ -125,9 +125,9 @@ void BraveBrowserCommandController::OnTabStripModelChanged(
                                                    selection);
 
   UpdateCommandEnabled(IDC_WINDOW_CLOSE_TABS_TO_LEFT,
-                       brave::CanCloseTabsToLeft(&*browser_));
+                       luxxle::CanCloseTabsToLeft(&*browser_));
   UpdateCommandEnabled(IDC_CLOSE_DUPLICATE_TABS,
-                       brave::HasDuplicateTabs(&*browser_));
+                       luxxle::HasDuplicateTabs(&*browser_));
   UpdateCommandsForTabs();
   UpdateCommandsForSend();
   UpdateCommandsForPin();
@@ -295,7 +295,7 @@ void BraveBrowserCommandController::InitBraveCommandState() {
   UpdateCommandEnabled(IDC_TOGGLE_JAVASCRIPT, true);
 
   UpdateCommandEnabled(IDC_CLOSE_DUPLICATE_TABS,
-                       brave::HasDuplicateTabs(&*browser_));
+                       luxxle::HasDuplicateTabs(&*browser_));
   UpdateCommandEnabled(IDC_WINDOW_ADD_ALL_TABS_TO_NEW_GROUP, true);
 
   UpdateCommandEnabled(IDC_SCROLL_TAB_TO_TOP, true);
@@ -409,31 +409,31 @@ void BraveBrowserCommandController::UpdateCommandForWaybackMachine() {
 
 void BraveBrowserCommandController::UpdateCommandsForTabs() {
   UpdateCommandEnabled(IDC_WINDOW_MUTE_ALL_TABS,
-                       brave::CanMuteAllTabs(&*browser_, false));
+                       luxxle::CanMuteAllTabs(&*browser_, false));
   UpdateCommandEnabled(IDC_WINDOW_MUTE_OTHER_TABS,
-                       brave::CanMuteAllTabs(&*browser_, true));
+                       luxxle::CanMuteAllTabs(&*browser_, true));
   UpdateCommandEnabled(IDC_WINDOW_UNMUTE_ALL_TABS,
-                       brave::CanUnmuteAllTabs(&*browser_));
+                       luxxle::CanUnmuteAllTabs(&*browser_));
 
   UpdateCommandEnabled(IDC_GROUP_TABS_ON_CURRENT_ORIGIN, true);
   UpdateCommandEnabled(IDC_MOVE_GROUP_TO_NEW_WINDOW, true);
 
-  bool is_in_group = brave::IsInGroup(&*browser_);
-  bool has_ungrouped_tabs = brave::HasUngroupedTabs(&*browser_);
+  bool is_in_group = luxxle::IsInGroup(&*browser_);
+  bool has_ungrouped_tabs = luxxle::HasUngroupedTabs(&*browser_);
   UpdateCommandEnabled(IDC_WINDOW_GROUP_UNGROUPED_TABS, has_ungrouped_tabs);
   UpdateCommandEnabled(IDC_WINDOW_UNGROUP_GROUP, is_in_group);
   UpdateCommandEnabled(IDC_WINDOW_REMOVE_TAB_FROM_GROUP, is_in_group);
   UpdateCommandEnabled(IDC_WINDOW_NAME_GROUP, is_in_group);
   UpdateCommandEnabled(IDC_WINDOW_NEW_TAB_IN_GROUP, is_in_group);
   UpdateCommandEnabled(IDC_WINDOW_UNGROUP_ALL_TABS,
-                       brave::CanUngroupAllTabs(&*browser_));
+                       luxxle::CanUngroupAllTabs(&*browser_));
   UpdateCommandEnabled(IDC_WINDOW_TOGGLE_GROUP_EXPANDED, is_in_group);
   UpdateCommandEnabled(IDC_WINDOW_CLOSE_UNGROUPED_TABS, has_ungrouped_tabs);
   UpdateCommandEnabled(IDC_WINDOW_CLOSE_TABS_NOT_IN_CURRENT_GROUP, is_in_group);
   UpdateCommandEnabled(IDC_WINDOW_CLOSE_GROUP, is_in_group);
 
   UpdateCommandEnabled(IDC_WINDOW_BRING_ALL_TABS,
-                       brave::CanBringAllTabs(&*browser_));
+                       luxxle::CanBringAllTabs(&*browser_));
 }
 
 void BraveBrowserCommandController::UpdateCommandsForSend() {
@@ -445,7 +445,7 @@ void BraveBrowserCommandController::UpdateCommandsForSend() {
 
 void BraveBrowserCommandController::UpdateCommandsForPin() {
   UpdateCommandEnabled(IDC_WINDOW_CLOSE_UNPINNED_TABS,
-                       brave::CanCloseUnpinnedTabs(&*browser_));
+                       luxxle::CanCloseUnpinnedTabs(&*browser_));
 }
 
 void BraveBrowserCommandController::UpdateCommandForSplitView() {
@@ -454,12 +454,12 @@ void BraveBrowserCommandController::UpdateCommandForSplitView() {
         browser_->GetFeatures().split_view_browser_data());
   }
 
-  UpdateCommandEnabled(IDC_NEW_SPLIT_VIEW, brave::CanOpenNewSplitViewForTab(
+  UpdateCommandEnabled(IDC_NEW_SPLIT_VIEW, luxxle::CanOpenNewSplitViewForTab(
                                                base::to_address(browser_)));
   UpdateCommandEnabled(IDC_TILE_TABS,
-                       brave::CanTileTabs(base::to_address(browser_)));
+                       luxxle::CanTileTabs(base::to_address(browser_)));
 
-  const auto is_tab_tiled = brave::IsTabsTiled(base::to_address(browser_));
+  const auto is_tab_tiled = luxxle::IsTabsTiled(base::to_address(browser_));
   for (auto command_enabled_when_tab_is_tiled :
        {IDC_BREAK_TILE, IDC_SWAP_SPLIT_VIEW}) {
     UpdateCommandEnabled(command_enabled_when_tab_is_tiled, is_tab_tiled);
@@ -508,196 +508,196 @@ bool BraveBrowserCommandController::ExecuteBraveCommandWithDisposition(
       NewIncognitoWindow(browser_->profile()->GetOriginalProfile());
       break;
     case IDC_SHOW_BRAVE_REWARDS:
-      brave::ShowBraveRewards(&*browser_);
+      luxxle::ShowBraveRewards(&*browser_);
       break;
     case IDC_SHOW_BRAVE_WEBCOMPAT_REPORTER:
-      brave::ShowWebcompatReporter(&*browser_);
+      luxxle::ShowWebcompatReporter(&*browser_);
       break;
     case IDC_NEW_OFFTHERECORD_WINDOW_TOR:
-      brave::NewOffTheRecordWindowTor(&*browser_);
+      luxxle::NewOffTheRecordWindowTor(&*browser_);
       break;
     case IDC_NEW_TOR_CONNECTION_FOR_SITE:
-      brave::NewTorConnectionForSite(&*browser_);
+      luxxle::NewTorConnectionForSite(&*browser_);
       break;
     case IDC_SHOW_BRAVE_SYNC:
-      brave::ShowSync(&*browser_);
+      luxxle::ShowSync(&*browser_);
       break;
     case IDC_SHOW_BRAVE_WALLET:
-      brave::ShowBraveWallet(&*browser_);
+      luxxle::ShowBraveWallet(&*browser_);
       break;
     case IDC_TOGGLE_AI_CHAT:
-      brave::ToggleAIChat(&*browser_);
+      luxxle::ToggleAIChat(&*browser_);
       break;
     case IDC_OPEN_FULL_PAGE_CHAT:
-      brave::ShowFullpageChat(&*browser_);
+      luxxle::ShowFullpageChat(&*browser_);
       break;
     case IDC_SPEEDREADER_ICON_ONCLICK:
-      brave::MaybeDistillAndShowSpeedreaderBubble(&*browser_);
+      luxxle::MaybeDistillAndShowSpeedreaderBubble(&*browser_);
       break;
     case IDC_SHOW_BRAVE_WALLET_PANEL:
-      brave::ShowWalletBubble(&*browser_);
+      luxxle::ShowWalletBubble(&*browser_);
       break;
     case IDC_CLOSE_BRAVE_WALLET_PANEL:
-      brave::CloseWalletBubble(&*browser_);
+      luxxle::CloseWalletBubble(&*browser_);
       break;
     case IDC_SHOW_BRAVE_VPN_PANEL:
-      brave::ShowBraveVPNBubble(&*browser_);
+      luxxle::ShowBraveVPNBubble(&*browser_);
       break;
     case IDC_TOGGLE_BRAVE_VPN_TRAY_ICON:
-      brave::ToggleBraveVPNTrayIcon();
+      luxxle::ToggleBraveVPNTrayIcon();
       break;
     case IDC_TOGGLE_BRAVE_VPN_TOOLBAR_BUTTON:
-      brave::ToggleBraveVPNButton(&*browser_);
+      luxxle::ToggleBraveVPNButton(&*browser_);
       break;
     case IDC_SEND_BRAVE_VPN_FEEDBACK:
     case IDC_ABOUT_BRAVE_VPN:
     case IDC_MANAGE_BRAVE_VPN_PLAN:
-      brave::OpenBraveVPNUrls(&*browser_, id);
+      luxxle::OpenBraveVPNUrls(&*browser_, id);
       break;
     case IDC_SIDEBAR_TOGGLE_POSITION:
-      brave::ToggleSidebarPosition(&*browser_);
+      luxxle::ToggleSidebarPosition(&*browser_);
       break;
     case IDC_TOGGLE_SIDEBAR:
-      brave::ToggleSidebar(&*browser_);
+      luxxle::ToggleSidebar(&*browser_);
       break;
     case IDC_COPY_CLEAN_LINK:
-      brave::CopySanitizedURL(
+      luxxle::CopySanitizedURL(
           &*browser_,
           browser_->tab_strip_model()->GetActiveWebContents()->GetVisibleURL());
       break;
     case IDC_TOGGLE_TAB_MUTE:
-      brave::ToggleActiveTabAudioMute(&*browser_);
+      luxxle::ToggleActiveTabAudioMute(&*browser_);
       break;
     case IDC_TOGGLE_VERTICAL_TABS:
-      brave::ToggleVerticalTabStrip(&*browser_);
+      luxxle::ToggleVerticalTabStrip(&*browser_);
       break;
     case IDC_TOGGLE_VERTICAL_TABS_WINDOW_TITLE:
-      brave::ToggleWindowTitleVisibilityForVerticalTabs(&*browser_);
+      luxxle::ToggleWindowTitleVisibilityForVerticalTabs(&*browser_);
       break;
     case IDC_TOGGLE_VERTICAL_TABS_EXPANDED:
-      brave::ToggleVerticalTabStripExpanded(&*browser_);
+      luxxle::ToggleVerticalTabStripExpanded(&*browser_);
       break;
     case IDC_CONFIGURE_BRAVE_NEWS:
-      brave::ShowBraveNewsConfigure(&*browser_);
+      luxxle::ShowBraveNewsConfigure(&*browser_);
       break;
     case IDC_CONFIGURE_SHORTCUTS:
-      brave::ShowShortcutsPage(&*browser_);
+      luxxle::ShowShortcutsPage(&*browser_);
       break;
     case IDC_SHOW_BRAVE_TALK:
-      brave::ShowBraveTalk(&*browser_);
+      luxxle::ShowBraveTalk(&*browser_);
       break;
     case IDC_TOGGLE_SHIELDS:
-      brave::ToggleShieldsEnabled(&*browser_);
+      luxxle::ToggleShieldsEnabled(&*browser_);
       break;
     case IDC_TOGGLE_JAVASCRIPT:
-      brave::ToggleJavascriptEnabled(&*browser_);
+      luxxle::ToggleJavascriptEnabled(&*browser_);
       break;
     case IDC_SHOW_PLAYLIST_BUBBLE:
 #if BUILDFLAG(ENABLE_PLAYLIST_WEBUI)
-      brave::ShowPlaylistBubble(&*browser_);
+      luxxle::ShowPlaylistBubble(&*browser_);
 #else
       NOTREACHED() << " This command shouldn't be enabled";
 #endif
       break;
     case IDC_SHOW_WAYBACK_MACHINE_BUBBLE:
 #if BUILDFLAG(ENABLE_BRAVE_WAYBACK_MACHINE)
-      brave::ShowWaybackMachineBubble(&*browser_);
+      luxxle::ShowWaybackMachineBubble(&*browser_);
 #endif
       break;
     case IDC_GROUP_TABS_ON_CURRENT_ORIGIN:
-      brave::GroupTabsOnCurrentOrigin(&*browser_);
+      luxxle::GroupTabsOnCurrentOrigin(&*browser_);
       break;
     case IDC_MOVE_GROUP_TO_NEW_WINDOW:
-      brave::MoveGroupToNewWindow(&*browser_);
+      luxxle::MoveGroupToNewWindow(&*browser_);
       break;
     case IDC_CLOSE_DUPLICATE_TABS:
-      brave::CloseDuplicateTabs(&*browser_);
+      luxxle::CloseDuplicateTabs(&*browser_);
       break;
     case IDC_WINDOW_CLOSE_TABS_TO_LEFT:
-      brave::CloseTabsToLeft(&*browser_);
+      luxxle::CloseTabsToLeft(&*browser_);
       break;
     case IDC_WINDOW_CLOSE_UNPINNED_TABS:
-      brave::CloseUnpinnedTabs(&*browser_);
+      luxxle::CloseUnpinnedTabs(&*browser_);
       break;
     case IDC_WINDOW_ADD_ALL_TABS_TO_NEW_GROUP:
-      brave::AddAllTabsToNewGroup(&*browser_);
+      luxxle::AddAllTabsToNewGroup(&*browser_);
       break;
     case IDC_WINDOW_MUTE_ALL_TABS:
-      brave::MuteAllTabs(&*browser_, false);
+      luxxle::MuteAllTabs(&*browser_, false);
       break;
     case IDC_WINDOW_MUTE_OTHER_TABS:
-      brave::MuteAllTabs(&*browser_, true);
+      luxxle::MuteAllTabs(&*browser_, true);
       break;
     case IDC_WINDOW_UNMUTE_ALL_TABS:
-      brave::UnmuteAllTabs(&*browser_);
+      luxxle::UnmuteAllTabs(&*browser_);
       break;
     case IDC_SCROLL_TAB_TO_TOP:
-      brave::ScrollTabToTop(&*browser_);
+      luxxle::ScrollTabToTop(&*browser_);
       break;
     case IDC_SCROLL_TAB_TO_BOTTOM:
-      brave::ScrollTabToBottom(&*browser_);
+      luxxle::ScrollTabToBottom(&*browser_);
       break;
     case IDC_BRAVE_SEND_TAB_TO_SELF:
       chrome::SendTabToSelf(&*browser_);
       break;
     case IDC_TOGGLE_ALL_BOOKMARKS_BUTTON_VISIBILITY:
-      brave::ToggleAllBookmarksButtonVisibility(base::to_address(browser_));
+      luxxle::ToggleAllBookmarksButtonVisibility(base::to_address(browser_));
       break;
     case IDC_EXPORT_ALL_BOOKMARKS:
-      brave::ExportAllBookmarks(&*browser_);
+      luxxle::ExportAllBookmarks(&*browser_);
       break;
     case IDC_COMMANDER:
 #if BUILDFLAG(ENABLE_COMMANDER)
-      brave::ToggleCommander(base::to_address(browser_));
+      luxxle::ToggleCommander(base::to_address(browser_));
 #endif
       break;
     case IDC_SHOW_APPS_PAGE:
-      brave::ShowAppsPage(&*browser_);
+      luxxle::ShowAppsPage(&*browser_);
       break;
     case IDC_WINDOW_GROUP_UNGROUPED_TABS:
-      brave::GroupUngroupedTabs(&*browser_);
+      luxxle::GroupUngroupedTabs(&*browser_);
       break;
     case IDC_WINDOW_UNGROUP_GROUP:
-      brave::UngroupCurrentGroup(&*browser_);
+      luxxle::UngroupCurrentGroup(&*browser_);
       break;
     case IDC_WINDOW_REMOVE_TAB_FROM_GROUP:
-      brave::RemoveTabFromGroup(&*browser_);
+      luxxle::RemoveTabFromGroup(&*browser_);
       break;
     case IDC_WINDOW_UNGROUP_ALL_TABS:
-      brave::UngroupAllTabs(&*browser_);
+      luxxle::UngroupAllTabs(&*browser_);
       break;
     case IDC_WINDOW_NAME_GROUP:
-      brave::NameGroup(&*browser_);
+      luxxle::NameGroup(&*browser_);
       break;
     case IDC_WINDOW_NEW_TAB_IN_GROUP:
-      brave::NewTabInGroup(&*browser_);
+      luxxle::NewTabInGroup(&*browser_);
       break;
     case IDC_WINDOW_TOGGLE_GROUP_EXPANDED:
-      brave::ToggleGroupExpanded(&*browser_);
+      luxxle::ToggleGroupExpanded(&*browser_);
       break;
     case IDC_WINDOW_CLOSE_UNGROUPED_TABS:
-      brave::CloseUngroupedTabs(&*browser_);
+      luxxle::CloseUngroupedTabs(&*browser_);
       break;
     case IDC_WINDOW_CLOSE_TABS_NOT_IN_CURRENT_GROUP:
-      brave::CloseTabsNotInCurrentGroup(&*browser_);
+      luxxle::CloseTabsNotInCurrentGroup(&*browser_);
       break;
     case IDC_WINDOW_CLOSE_GROUP:
-      brave::CloseGroup(&*browser_);
+      luxxle::CloseGroup(&*browser_);
       break;
     case IDC_WINDOW_BRING_ALL_TABS:
-      brave::BringAllTabs(&*browser_);
+      luxxle::BringAllTabs(&*browser_);
       break;
     case IDC_NEW_SPLIT_VIEW:
-      brave::NewSplitViewForTab(&*browser_);
+      luxxle::NewSplitViewForTab(&*browser_);
       break;
     case IDC_TILE_TABS:
-      brave::TileTabs(&*browser_);
+      luxxle::TileTabs(&*browser_);
       break;
     case IDC_BREAK_TILE:
-      brave::BreakTiles(&*browser_);
+      luxxle::BreakTiles(&*browser_);
       break;
     case IDC_SWAP_SPLIT_VIEW:
-      brave::SwapTabsInTile(&*browser_);
+      luxxle::SwapTabsInTile(&*browser_);
       break;
     default:
       LOG(WARNING) << "Received Unimplemented Command: " << id;

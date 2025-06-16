@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_STRIP_H_
-#define BRAVE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_STRIP_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_STRIP_H_
+#define LUXXLE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_STRIP_H_
 
 #include <memory>
 #include <optional>
 
 #include "base/gtest_prod_util.h"
 #include "base/memory/weak_ptr.h"
-#include "brave/browser/ui/tabs/split_view_browser_data.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data.h"
 #include "chrome/browser/ui/views/tabs/tab_strip.h"
 
 class Tab;
@@ -58,4 +58,4 @@ class BraveTabStrip : public TabStrip {
   base::WeakPtrFactory<BraveTabStrip> weak_factory_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_STRIP_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_STRIP_H_

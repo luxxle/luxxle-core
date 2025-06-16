@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_RENDERER_CONTEXT_MENU_BRAVE_RENDER_VIEW_CONTEXT_MENU_VIEWS_H_
-#define BRAVE_BROWSER_UI_VIEWS_RENDERER_CONTEXT_MENU_BRAVE_RENDER_VIEW_CONTEXT_MENU_VIEWS_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_RENDERER_CONTEXT_MENU_BRAVE_RENDER_VIEW_CONTEXT_MENU_VIEWS_H_
+#define LUXXLE_BROWSER_UI_VIEWS_RENDERER_CONTEXT_MENU_BRAVE_RENDER_VIEW_CONTEXT_MENU_VIEWS_H_
 
 #include "chrome/browser/ui/views/renderer_context_menu/render_view_context_menu_views.h"
 
@@ -32,4 +32,4 @@ class BraveRenderViewContextMenuViews : public RenderViewContextMenuViews {
                                   const content::ContextMenuParams& params);
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_RENDERER_CONTEXT_MENU_BRAVE_RENDER_VIEW_CONTEXT_MENU_VIEWS_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_RENDERER_CONTEXT_MENU_BRAVE_RENDER_VIEW_CONTEXT_MENU_VIEWS_H_

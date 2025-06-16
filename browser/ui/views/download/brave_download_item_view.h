@@ -3,10 +3,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_DOWNLOAD_BRAVE_DOWNLOAD_ITEM_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_DOWNLOAD_BRAVE_DOWNLOAD_ITEM_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_DOWNLOAD_BRAVE_DOWNLOAD_ITEM_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_DOWNLOAD_BRAVE_DOWNLOAD_ITEM_VIEW_H_
 
-#include "brave/browser/download/brave_download_item_model.h"
+#include "luxxle/browser/download/brave_download_item_model.h"
 #include "chrome/browser/ui/download/download_item_mode.h"
 #include "chrome/browser/ui/views/download/download_item_view.h"
 #include "ui/base/metadata/metadata_header_macros.h"
@@ -77,4 +77,4 @@ class BraveDownloadItemView : public DownloadItemView {
   bool is_origin_url_visible_;
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_DOWNLOAD_BRAVE_DOWNLOAD_ITEM_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_DOWNLOAD_BRAVE_DOWNLOAD_ITEM_VIEW_H_

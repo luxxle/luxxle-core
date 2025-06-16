@@ -8,8 +8,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef BRAVE_BROWSER_UI_COMMANDER_FUZZY_FINDER_H_
-#define BRAVE_BROWSER_UI_COMMANDER_FUZZY_FINDER_H_
+#ifndef LUXXLE_BROWSER_UI_COMMANDER_FUZZY_FINDER_H_
+#define LUXXLE_BROWSER_UI_COMMANDER_FUZZY_FINDER_H_
 
 #include <string>
 #include <vector>
@@ -56,4 +56,4 @@ class FuzzyFinder {
 
 }  // namespace commander
 
-#endif  // BRAVE_BROWSER_UI_COMMANDER_FUZZY_FINDER_H_
+#endif  // LUXXLE_BROWSER_UI_COMMANDER_FUZZY_FINDER_H_

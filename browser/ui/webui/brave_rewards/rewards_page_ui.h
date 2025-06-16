@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_BRAVE_REWARDS_REWARDS_PAGE_UI_H_
-#define BRAVE_BROWSER_UI_WEBUI_BRAVE_REWARDS_REWARDS_PAGE_UI_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_BRAVE_REWARDS_REWARDS_PAGE_UI_H_
+#define LUXXLE_BROWSER_UI_WEBUI_BRAVE_REWARDS_REWARDS_PAGE_UI_H_
 
 #include <memory>
 #include <string>
 
-#include "brave/components/brave_rewards/core/mojom/rewards_page.mojom.h"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
 #include "content/public/browser/web_ui_controller.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
 
@@ -31,4 +31,4 @@ class RewardsPageUI : public content::WebUIController {
 
 }  // namespace brave_rewards
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_BRAVE_REWARDS_REWARDS_PAGE_UI_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_BRAVE_REWARDS_REWARDS_PAGE_UI_H_

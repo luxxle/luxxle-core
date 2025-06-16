@@ -3,28 +3,28 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/prefs/brave_pref_service_incognito_allowlist.h"
+#include "luxxle/browser/prefs/brave_pref_service_incognito_allowlist.h"
 
 #include <array>
 
 #include "base/containers/span.h"
 #include "base/strings/cstring_view.h"
-#include "brave/browser/ui/bookmark/brave_bookmark_prefs.h"
-#include "brave/components/ai_chat/core/common/pref_names.h"
-#include "brave/components/brave_wallet/browser/pref_names.h"
-#include "brave/components/constants/pref_names.h"
+#include "luxxle/browser/ui/bookmark/brave_bookmark_prefs.h"
+#include "luxxle/components/ai_chat/core/common/pref_names.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/constants/pref_names.h"
 #include "build/build_config.h"
 #include "chrome/common/pref_names.h"
 
 #if !BUILDFLAG(IS_ANDROID)
-#include "brave/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
 #endif
 
 #if defined(TOOLKIT_VIEWS)
-#include "brave/components/sidebar/browser/pref_names.h"
+#include "luxxle/components/sidebar/browser/pref_names.h"
 #endif
 
-namespace brave {
+namespace luxxle {
 
 base::span<const base::cstring_view> GetBravePersistentPrefNames() {
   static constexpr auto kAllowlist = std::to_array<base::cstring_view>({
@@ -47,7 +47,7 @@ base::span<const base::cstring_view> GetBravePersistentPrefNames() {
 #endif
       ai_chat::prefs::kLastAcceptedDisclaimer,
       ai_chat::prefs::kBraveChatAutocompleteProviderEnabled,
-      brave::bookmarks::prefs::kShowAllBookmarksButton,
+      luxxle::bookmarks::prefs::kShowAllBookmarksButton,
   });
 
   return kAllowlist;

@@ -3,8 +3,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_IOS_BROWSER_DEBOUNCE_DEBOUNCE_SERVICE_FACTORY_PRIVATE_H_
-#define BRAVE_IOS_BROWSER_DEBOUNCE_DEBOUNCE_SERVICE_FACTORY_PRIVATE_H_
+#ifndef LUXXLE_IOS_BROWSER_DEBOUNCE_DEBOUNCE_SERVICE_FACTORY_PRIVATE_H_
+#define LUXXLE_IOS_BROWSER_DEBOUNCE_DEBOUNCE_SERVICE_FACTORY_PRIVATE_H_
 
 #include <memory>
 
@@ -45,4 +45,4 @@ class DebounceServiceFactory : public ProfileKeyedServiceFactoryIOS {
 
 }  // namespace debounce
 
-#endif  // BRAVE_IOS_BROWSER_DEBOUNCE_DEBOUNCE_SERVICE_FACTORY_PRIVATE_H_
+#endif  // LUXXLE_IOS_BROWSER_DEBOUNCE_DEBOUNCE_SERVICE_FACTORY_PRIVATE_H_

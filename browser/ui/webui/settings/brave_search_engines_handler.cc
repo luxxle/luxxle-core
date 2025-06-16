@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/settings/brave_search_engines_handler.h"
+#include "luxxle/browser/ui/webui/settings/brave_search_engines_handler.h"
 
 #include <string>
 #include <utility>
@@ -11,8 +11,8 @@
 #include "base/functional/bind.h"
 #include "base/strings/utf_string_conversions.h"
 #include "base/values.h"
-#include "brave/browser/search_engines/search_engine_provider_util.h"
-#include "brave/components/search_engines/brave_prepopulated_engines.h"
+#include "luxxle/browser/search_engines/search_engine_provider_util.h"
+#include "luxxle/components/search_engines/brave_prepopulated_engines.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/search_engines/template_url_table_model.h"
@@ -89,7 +89,7 @@ void BraveSearchEnginesHandler::RegisterMessages() {
 void BraveSearchEnginesHandler::OnModelChanged() {
   SearchEnginesHandler::OnModelChanged();
 
-  brave::UpdateDefaultPrivateSearchProviderData(*profile_);
+  luxxle::UpdateDefaultPrivateSearchProviderData(*profile_);
 
   // Sync normal profile's search provider list with private profile
   // for using same list on both.

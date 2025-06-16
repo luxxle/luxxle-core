@@ -3,16 +3,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_PERMISSIONS_BRAVE_WALLET_PERMISSION_PROMPT_ANDROID_H_
-#define BRAVE_BROWSER_PERMISSIONS_BRAVE_WALLET_PERMISSION_PROMPT_ANDROID_H_
+#ifndef LUXXLE_BROWSER_PERMISSIONS_BRAVE_WALLET_PERMISSION_PROMPT_ANDROID_H_
+#define LUXXLE_BROWSER_PERMISSIONS_BRAVE_WALLET_PERMISSION_PROMPT_ANDROID_H_
 
 #include <memory>
 #include <string>
 #include <vector>
 
 #include "base/memory/raw_ptr.h"
-#include "brave/browser/permissions/brave_dapp_permission_prompt_dialog_controller_android.h"
-#include "brave/components/brave_wallet/common/brave_wallet.mojom.h"
+#include "luxxle/browser/permissions/brave_dapp_permission_prompt_dialog_controller_android.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
 #include "components/permissions/permissions_client.h"
 
 namespace content {
@@ -59,4 +59,4 @@ class BraveWalletPermissionPrompt
   bool has_interacted_with_dialog_ = false;
 };
 
-#endif  // BRAVE_BROWSER_PERMISSIONS_BRAVE_WALLET_PERMISSION_PROMPT_ANDROID_H_
+#endif  // LUXXLE_BROWSER_PERMISSIONS_BRAVE_WALLET_PERMISSION_PROMPT_ANDROID_H_

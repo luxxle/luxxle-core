@@ -3,14 +3,14 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_TOOLBAR_WALLET_BUTTON_H_
-#define BRAVE_BROWSER_UI_VIEWS_TOOLBAR_WALLET_BUTTON_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_TOOLBAR_WALLET_BUTTON_H_
+#define LUXXLE_BROWSER_UI_VIEWS_TOOLBAR_WALLET_BUTTON_H_
 
 #include <memory>
 #include <string>
 
 #include "base/memory/raw_ptr.h"
-#include "brave/browser/ui/views/toolbar/wallet_button_notification_source.h"
+#include "luxxle/browser/ui/views/toolbar/wallet_button_notification_source.h"
 #include "chrome/browser/ui/views/toolbar/toolbar_button.h"
 #include "ui/base/metadata/metadata_header_macros.h"
 #include "ui/views/controls/button/menu_button_controller.h"
@@ -60,4 +60,4 @@ class WalletButton : public ToolbarButton {
   base::WeakPtrFactory<WalletButton> weak_ptr_factory_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_TOOLBAR_WALLET_BUTTON_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_TOOLBAR_WALLET_BUTTON_H_

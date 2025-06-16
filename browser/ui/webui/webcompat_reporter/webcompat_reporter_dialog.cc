@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/webcompat_reporter/webcompat_reporter_dialog.h"
+#include "luxxle/browser/ui/webui/webcompat_reporter/webcompat_reporter_dialog.h"
 
 #include <memory>
 #include <optional>
@@ -14,12 +14,12 @@
 
 #include "base/json/json_writer.h"
 #include "base/values.h"
-#include "brave/browser/brave_shields/brave_shields_tab_helper.h"
-#include "brave/browser/webcompat_reporter/webcompat_reporter_service_factory.h"
-#include "brave/components/brave_shields/core/common/brave_shields_panel.mojom-shared.h"
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/components/webcompat_reporter/browser/fields.h"
-#include "brave/components/webcompat_reporter/browser/webcompat_reporter_service.h"
+#include "luxxle/browser/brave_shields/brave_shields_tab_helper.h"
+#include "luxxle/browser/webcompat_reporter/webcompat_reporter_service_factory.h"
+#include "luxxle/components/brave_shields/core/common/brave_shields_panel.mojom-shared.h"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/components/webcompat_reporter/browser/fields.h"
+#include "luxxle/components/webcompat_reporter/browser/webcompat_reporter_service.h"
 #include "chrome/browser/ui/webui/constrained_web_dialog_ui.h"
 #include "content/public/browser/render_frame_host.h"
 #include "content/public/browser/web_contents.h"

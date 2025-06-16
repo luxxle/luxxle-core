@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/profiles/profile_util.h"
+#include "luxxle/browser/profiles/profile_util.h"
 
 #include "base/files/file_path.h"
 #include "base/files/scoped_temp_dir.h"
-#include "brave/components/constants/pref_names.h"
-#include "brave/components/search_engines/brave_prepopulated_engines.h"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/search_engines/brave_prepopulated_engines.h"
 #include "chrome/browser/profiles/profile_manager.h"
 #include "chrome/test/base/testing_browser_process.h"
 #include "chrome/test/base/testing_profile.h"
@@ -47,7 +47,7 @@ TEST_F(BraveProfileUtilTest, SetDefaultSearchVersionExistingProfileNoEntryYet) {
   const PrefService::Preference* pref =
       GetPrefs()->FindPreference(prefs::kBraveDefaultSearchVersion);
   EXPECT_TRUE(pref->IsDefaultValue());
-  brave::SetDefaultSearchVersion(GetProfile(), false);
+  luxxle::SetDefaultSearchVersion(GetProfile(), false);
   ASSERT_EQ(GetPrefs()->GetInteger(prefs::kBraveDefaultSearchVersion),
             TemplateURLPrepopulateData::kBraveFirstTrackedDataVersion);
 }
@@ -56,7 +56,7 @@ TEST_F(BraveProfileUtilTest, SetDefaultSearchVersionNewProfileNoEntryYet) {
   const PrefService::Preference* pref =
       GetPrefs()->FindPreference(prefs::kBraveDefaultSearchVersion);
   EXPECT_TRUE(pref->IsDefaultValue());
-  brave::SetDefaultSearchVersion(GetProfile(), true);
+  luxxle::SetDefaultSearchVersion(GetProfile(), true);
   ASSERT_EQ(GetPrefs()->GetInteger(prefs::kBraveDefaultSearchVersion),
             TemplateURLPrepopulateData::kBraveCurrentDataVersion);
 }
@@ -68,7 +68,7 @@ TEST_F(BraveProfileUtilTest,
   const PrefService::Preference* pref =
       GetPrefs()->FindPreference(prefs::kBraveDefaultSearchVersion);
   EXPECT_FALSE(pref->IsDefaultValue());
-  brave::SetDefaultSearchVersion(GetProfile(), false);
+  luxxle::SetDefaultSearchVersion(GetProfile(), false);
   ASSERT_EQ(GetPrefs()->GetInteger(prefs::kBraveDefaultSearchVersion), 1);
 }
 
@@ -79,7 +79,7 @@ TEST_F(BraveProfileUtilTest,
   const PrefService::Preference* pref =
       GetPrefs()->FindPreference(prefs::kBraveDefaultSearchVersion);
   EXPECT_FALSE(pref->IsDefaultValue());
-  brave::SetDefaultSearchVersion(GetProfile(), true);
+  luxxle::SetDefaultSearchVersion(GetProfile(), true);
   ASSERT_EQ(GetPrefs()->GetInteger(prefs::kBraveDefaultSearchVersion), 1);
 }
 
@@ -91,7 +91,7 @@ TEST_F(BraveProfileUtilTest, SetWebTorrentEnabledExistingProfileNoEntryYet) {
   const PrefService::Preference* pref =
       GetPrefs()->FindPreference(kWebTorrentEnabled);
   EXPECT_FALSE(pref->HasUserSetting());
-  brave::SetWebTorrentEnabled(GetProfile(), false);
+  luxxle::SetWebTorrentEnabled(GetProfile(), false);
   EXPECT_TRUE(GetPrefs()->GetBoolean(kWebTorrentEnabled));
 }
 
@@ -99,7 +99,7 @@ TEST_F(BraveProfileUtilTest, SetWebTorrentEnabledNewProfileNoEntryYet) {
   const PrefService::Preference* pref =
       GetPrefs()->FindPreference(kWebTorrentEnabled);
   EXPECT_FALSE(pref->HasUserSetting());
-  brave::SetWebTorrentEnabled(GetProfile(), true);
+  luxxle::SetWebTorrentEnabled(GetProfile(), true);
   EXPECT_FALSE(GetPrefs()->GetBoolean(kWebTorrentEnabled));
 }
 
@@ -110,7 +110,7 @@ TEST_F(BraveProfileUtilTest,
   const PrefService::Preference* pref =
       GetPrefs()->FindPreference(kWebTorrentEnabled);
   EXPECT_TRUE(pref->HasUserSetting());
-  brave::SetWebTorrentEnabled(GetProfile(), false);
+  luxxle::SetWebTorrentEnabled(GetProfile(), false);
   EXPECT_TRUE(GetPrefs()->GetBoolean(kWebTorrentEnabled));
 }
 
@@ -120,7 +120,7 @@ TEST_F(BraveProfileUtilTest, SetWebTorrentEnabledNewProfileHasEntryKeepsValue) {
   const PrefService::Preference* pref =
       GetPrefs()->FindPreference(kWebTorrentEnabled);
   EXPECT_TRUE(pref->HasUserSetting());
-  brave::SetWebTorrentEnabled(GetProfile(), true);
+  luxxle::SetWebTorrentEnabled(GetProfile(), true);
   EXPECT_TRUE(GetPrefs()->GetBoolean(kWebTorrentEnabled));
 }
 #endif  // ENABLE_BRAVE_WEBTORRENT

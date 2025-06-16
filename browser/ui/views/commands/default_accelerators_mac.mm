@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/views/commands/default_accelerators_mac.h"
+#include "luxxle/browser/ui/views/commands/default_accelerators_mac.h"
 
 #import <Cocoa/Cocoa.h>
 #include <optional>
@@ -13,7 +13,7 @@
 #include "base/containers/flat_map.h"
 #include "base/logging.h"
 #include "base/strings/sys_string_conversions.h"
-#include "brave/app/command_utils.h"
+#include "luxxle/app/command_utils.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/global_keyboard_shortcuts_mac.h"
 #include "chrome/browser/ui/cocoa/accelerators_cocoa.h"

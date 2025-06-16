@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/misc_metrics/profile_new_tab_metrics.h"
+#include "luxxle/browser/misc_metrics/profile_new_tab_metrics.h"
 
 #include "base/test/metrics/histogram_tester.h"
-#include "brave/browser/new_tab/new_tab_shows_options.h"
-#include "brave/components/constants/pref_names.h"
+#include "luxxle/browser/new_tab/new_tab_shows_options.h"
+#include "luxxle/components/constants/pref_names.h"
 #include "chrome/common/pref_names.h"
 #include "components/prefs/pref_registry_simple.h"
 #include "components/prefs/testing_pref_service.h"
@@ -22,7 +22,7 @@ class ProfileNewTabMetricsTest : public testing::Test {
   void SetUp() override {
     pref_service_.registry()->RegisterIntegerPref(
         kNewTabPageShowsOptions,
-        static_cast<int>(brave::NewTabPageShowsOptions::kDashboard));
+        static_cast<int>(luxxle::NewTabPageShowsOptions::kDashboard));
     pref_service_.registry()->RegisterStringPref(prefs::kHomePage, "");
     pref_service_.registry()->RegisterBooleanPref(prefs::kHomePageIsNewTabPage,
                                                   false);
@@ -36,7 +36,7 @@ class ProfileNewTabMetricsTest : public testing::Test {
 TEST_F(ProfileNewTabMetricsTest, TestDashboardOption) {
   pref_service_.SetInteger(
       kNewTabPageShowsOptions,
-      static_cast<int>(brave::NewTabPageShowsOptions::kDashboard));
+      static_cast<int>(luxxle::NewTabPageShowsOptions::kDashboard));
 
   ProfileNewTabMetrics metrics(&pref_service_);
 
@@ -46,7 +46,7 @@ TEST_F(ProfileNewTabMetricsTest, TestDashboardOption) {
 TEST_F(ProfileNewTabMetricsTest, TestBlankOption) {
   pref_service_.SetInteger(
       kNewTabPageShowsOptions,
-      static_cast<int>(brave::NewTabPageShowsOptions::kBlankpage));
+      static_cast<int>(luxxle::NewTabPageShowsOptions::kBlankpage));
 
   ProfileNewTabMetrics metrics(&pref_service_);
 
@@ -56,7 +56,7 @@ TEST_F(ProfileNewTabMetricsTest, TestBlankOption) {
 TEST_F(ProfileNewTabMetricsTest, TestHomepageOptions) {
   pref_service_.SetInteger(
       kNewTabPageShowsOptions,
-      static_cast<int>(brave::NewTabPageShowsOptions::kHomepage));
+      static_cast<int>(luxxle::NewTabPageShowsOptions::kHomepage));
 
   pref_service_.SetBoolean(prefs::kHomePageIsNewTabPage, true);
 

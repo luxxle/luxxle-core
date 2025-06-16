@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_NON_CLIENT_FRAME_VIEW_MAC_H_
-#define BRAVE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_NON_CLIENT_FRAME_VIEW_MAC_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_NON_CLIENT_FRAME_VIEW_MAC_H_
+#define LUXXLE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_NON_CLIENT_FRAME_VIEW_MAC_H_
 
 #include <memory>
 
@@ -42,4 +42,4 @@ class BraveBrowserNonClientFrameViewMac : public BrowserNonClientFrameViewMac {
   BooleanPrefMember show_title_bar_on_vertical_tabs_;
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_NON_CLIENT_FRAME_VIEW_MAC_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_NON_CLIENT_FRAME_VIEW_MAC_H_

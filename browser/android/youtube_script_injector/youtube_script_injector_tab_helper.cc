@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/android/youtube_script_injector/youtube_script_injector_tab_helper.h"
+#include "luxxle/browser/android/youtube_script_injector/youtube_script_injector_tab_helper.h"
 
 #include "base/strings/utf_string_conversions.h"
-#include "brave/browser/android/youtube_script_injector/features.h"
-#include "brave/components/brave_shields/content/browser/brave_shields_util.h"
-#include "brave/components/constants/pref_names.h"
+#include "luxxle/browser/android/youtube_script_injector/features.h"
+#include "luxxle/components/brave_shields/content/browser/brave_shields_util.h"
+#include "luxxle/components/constants/pref_names.h"
 #include "chrome/browser/profiles/profile.h"
 #include "components/prefs/pref_service.h"
 #include "content/public/browser/navigation_controller.h"

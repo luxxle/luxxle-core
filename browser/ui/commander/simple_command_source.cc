@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/commander/simple_command_source.h"
+#include "luxxle/browser/ui/commander/simple_command_source.h"
 
 #include <memory>
 #include <string>
@@ -12,13 +12,13 @@
 
 #include "base/functional/bind.h"
 #include "base/strings/utf_string_conversions.h"
-#include "brave/app/brave_command_ids.h"
-#include "brave/app/command_utils.h"
-#include "brave/browser/misc_metrics/profile_misc_metrics_service.h"
-#include "brave/browser/misc_metrics/profile_misc_metrics_service_factory.h"
-#include "brave/browser/ui/commander/command_source.h"
-#include "brave/browser/ui/commander/fuzzy_finder.h"
-#include "brave/components/ai_chat/core/browser/ai_chat_metrics.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/app/command_utils.h"
+#include "luxxle/browser/misc_metrics/profile_misc_metrics_service.h"
+#include "luxxle/browser/misc_metrics/profile_misc_metrics_service_factory.h"
+#include "luxxle/browser/ui/commander/command_source.h"
+#include "luxxle/browser/ui/commander/fuzzy_finder.h"
+#include "luxxle/components/ai_chat/core/browser/ai_chat_metrics.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/accelerator_utils.h"
 #include "chrome/browser/ui/browser.h"

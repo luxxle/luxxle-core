@@ -8,15 +8,15 @@
 // keep the profile clean. Clients of this class must handle the NULL return
 // value, however.
 
-#ifndef BRAVE_TEST_BASE_TESTING_BRAVE_BROWSER_PROCESS_H_
-#define BRAVE_TEST_BASE_TESTING_BRAVE_BROWSER_PROCESS_H_
+#ifndef LUXXLE_TEST_BASE_TESTING_BRAVE_BROWSER_PROCESS_H_
+#define LUXXLE_TEST_BASE_TESTING_BRAVE_BROWSER_PROCESS_H_
 
 #include <stdint.h>
 
 #include <memory>
 #include <string>
 
-#include "brave/browser/brave_browser_process.h"
+#include "luxxle/browser/brave_browser_process.h"
 
 namespace brave_shields {
 class AdBlockService;
@@ -55,7 +55,7 @@ class TestingBraveBrowserProcess : public BraveBrowserProcess {
   request_otr::RequestOTRComponentInstallerPolicy*
   request_otr_component_installer() override;
 #endif
-  brave::URLSanitizerComponentInstaller* URLSanitizerComponentInstaller()
+  luxxle::URLSanitizerComponentInstaller* URLSanitizerComponentInstaller()
       override;
   https_upgrade_exceptions::HttpsUpgradeExceptionsService*
   https_upgrade_exceptions_service() override;
@@ -69,7 +69,7 @@ class TestingBraveBrowserProcess : public BraveBrowserProcess {
       override;
 #endif
   p3a::P3AService* p3a_service() override;
-  brave::BraveReferralsService* brave_referrals_service() override;
+  luxxle::BraveReferralsService* brave_referrals_service() override;
   brave_stats::BraveStatsUpdater* brave_stats_updater() override;
   brave_ads::BraveStatsHelper* ads_brave_stats_helper() override;
   ntp_background_images::NTPBackgroundImagesService*
@@ -116,4 +116,4 @@ class TestingBraveBrowserProcessInitializer {
   ~TestingBraveBrowserProcessInitializer();
 };
 
-#endif  // BRAVE_TEST_BASE_TESTING_BRAVE_BROWSER_PROCESS_H_
+#endif  // LUXXLE_TEST_BASE_TESTING_BRAVE_BROWSER_PROCESS_H_

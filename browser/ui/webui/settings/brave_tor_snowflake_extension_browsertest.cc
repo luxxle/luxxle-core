@@ -4,7 +4,7 @@
 // you can obtain one at https://mozilla.org/MPL/2.0/.
 
 #include "base/path_service.h"
-#include "brave/browser/ui/webui/brave_settings_ui.h"
+#include "luxxle/browser/ui/webui/brave_settings_ui.h"
 #include "chrome/browser/extensions/extension_service.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/test/base/in_process_browser_test.h"

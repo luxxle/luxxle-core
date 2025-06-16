@@ -7,23 +7,23 @@
 
 #include "base/memory/raw_ptr.h"
 #include "base/strings/sys_string_conversions.h"
-#include "brave/components/ai_chat/core/common/features.h"
-#include "brave/components/brave_component_updater/browser/features.h"
-#include "brave/components/brave_news/common/features.h"
-#include "brave/components/brave_rewards/core/features.h"
-#include "brave/components/brave_search/common/features.h"
-#include "brave/components/brave_search_conversion/features.h"
-#include "brave/components/brave_shields/core/common/features.h"
-#include "brave/components/brave_sync/features.h"
-#include "brave/components/brave_user_agent/common/features.h"
-#include "brave/components/brave_wallet/common/buildflags.h"
-#include "brave/components/brave_wallet/common/features.h"
-#include "brave/components/de_amp/common/features.h"
-#include "brave/components/debounce/core/common/features.h"
-#include "brave/components/ntp_background_images/browser/features.h"
-#include "brave/components/p3a/features.h"
-#include "brave/components/playlist/common/features.h"
-#include "brave/components/skus/common/features.h"
+#include "luxxle/components/ai_chat/core/common/features.h"
+#include "luxxle/components/brave_component_updater/browser/features.h"
+#include "luxxle/components/brave_news/common/features.h"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+#include "luxxle/components/brave_search/common/features.h"
+#include "luxxle/components/brave_search_conversion/features.h"
+#include "luxxle/components/brave_shields/core/common/features.h"
+#include "luxxle/components/brave_sync/features.h"
+#include "luxxle/components/brave_user_agent/common/features.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/de_amp/common/features.h"
+#include "luxxle/components/debounce/core/common/features.h"
+#include "luxxle/components/ntp_background_images/browser/features.h"
+#include "luxxle/components/p3a/features.h"
+#include "luxxle/components/playlist/common/features.h"
+#include "luxxle/components/skus/common/features.h"
 #include "brave/ios/browser/api/translate/features.h"
 #include "brave/ios/browser/playlist/features.h"
 #include "brave/ios/browser/ui/browser_menu/features.h"
@@ -328,17 +328,17 @@
 
 + (Feature*)kModernBrowserMenuEnabled {
   return [[Feature alloc]
-      initWithFeature:&brave::features::kModernBrowserMenuEnabled];
+      initWithFeature:&luxxle::features::kModernBrowserMenuEnabled];
 }
 
 + (Feature*)kBraveTranslateEnabled {
   return [[Feature alloc]
-      initWithFeature:&brave::features::kBraveTranslateEnabled];
+      initWithFeature:&luxxle::features::kBraveTranslateEnabled];
 }
 
 + (Feature*)kBraveAppleTranslateEnabled {
   return [[Feature alloc]
-      initWithFeature:&brave::features::kBraveAppleTranslateEnabled];
+      initWithFeature:&luxxle::features::kBraveAppleTranslateEnabled];
 }
 
 + (Feature*)kUseBraveUserAgent {
@@ -348,7 +348,7 @@
 
 + (Feature*)kUseChromiumWebViews {
   return
-      [[Feature alloc] initWithFeature:&brave::features::kUseChromiumWebViews];
+      [[Feature alloc] initWithFeature:&luxxle::features::kUseChromiumWebViews];
 }
 
 @end

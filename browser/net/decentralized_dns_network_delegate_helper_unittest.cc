@@ -3,26 +3,26 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/net/decentralized_dns_network_delegate_helper.h"
+#include "luxxle/browser/net/decentralized_dns_network_delegate_helper.h"
 
 #include <memory>
 
 #include "base/functional/callback_helpers.h"
 #include "base/run_loop.h"
 #include "base/test/scoped_feature_list.h"
-#include "brave/browser/brave_wallet/brave_wallet_service_factory.h"
-#include "brave/browser/net/url_context.h"
-#include "brave/components/brave_wallet/browser/brave_wallet_service.h"
-#include "brave/components/brave_wallet/browser/brave_wallet_utils.h"
-#include "brave/components/brave_wallet/browser/json_rpc_service.h"
-#include "brave/components/brave_wallet/browser/json_rpc_service_test_utils.h"
-#include "brave/components/brave_wallet/browser/network_manager.h"
-#include "brave/components/brave_wallet/common/brave_wallet.mojom.h"
-#include "brave/components/brave_wallet/common/eth_abi_utils.h"
-#include "brave/components/brave_wallet/common/hex_utils.h"
-#include "brave/components/decentralized_dns/core/constants.h"
-#include "brave/components/decentralized_dns/core/pref_names.h"
-#include "brave/components/decentralized_dns/core/utils.h"
+// REMOVED: #include "luxxle/browser/brave_wallet/.*"
+#include "luxxle/browser/net/url_context.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/decentralized_dns/core/constants.h"
+#include "luxxle/components/decentralized_dns/core/pref_names.h"
+#include "luxxle/components/decentralized_dns/core/utils.h"
 #include "chrome/test/base/scoped_testing_local_state.h"
 #include "chrome/test/base/testing_browser_process.h"
 #include "chrome/test/base/testing_profile.h"
@@ -35,7 +35,7 @@
 #include "testing/gtest/include/gtest/gtest.h"
 #include "url/gurl.h"
 
-using brave::ResponseCallback;
+using luxxle::ResponseCallback;
 
 namespace decentralized_dns {
 
@@ -88,7 +88,7 @@ class DecentralizedDnsNetworkDelegateHelperTest : public testing::Test {
 TEST_F(DecentralizedDnsNetworkDelegateHelperTest,
        DecentralizedDnsPreRedirectWork) {
   GURL url("http://brave.crypto");
-  auto brave_request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto brave_request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   brave_request_info->browser_context = profile();
 
   // No redirect if resolve method is not set to Ethereum.
@@ -232,7 +232,7 @@ TEST_F(DecentralizedDnsNetworkDelegateHelperTest,
 
   for (const auto& test_case : test_cases) {
     auto brave_request_info =
-        std::make_shared<brave::BraveRequestInfo>(GURL(test_case.url));
+        std::make_shared<luxxle::BraveRequestInfo>(GURL(test_case.url));
     brave_request_info->browser_context = profile();
     EXPECT_EQ(test_case.is_valid ? net::ERR_IO_PENDING : net::OK,
               OnBeforeURLRequest_DecentralizedDnsPreRedirectWork(
@@ -246,7 +246,7 @@ TEST_F(DecentralizedDnsNetworkDelegateHelperTest,
                             static_cast<int>(ResolveMethodTypes::ENABLED));
 
   GURL url("http://brave.crypto");
-  auto brave_request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto brave_request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   brave_request_info->browser_context = profile();
 
   auto polygon_spec = brave_wallet::NetworkManager::GetUnstoppableDomainsRpcUrl(
@@ -352,7 +352,7 @@ TEST_F(DecentralizedDnsNetworkDelegateHelperTest,
 
 TEST_F(DecentralizedDnsNetworkDelegateHelperTest, EnsRedirectWork) {
   GURL url("http://brantly.eth");
-  auto brave_request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto brave_request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
 
   // No redirect for failed requests.
   OnBeforeURLRequest_EnsRedirectWork(
@@ -401,7 +401,7 @@ TEST_F(DecentralizedDnsNetworkDelegateHelperTest, EnsRedirectWork) {
 TEST_F(DecentralizedDnsNetworkDelegateHelperTest,
        EnsRedirect_OffchainLookupRequired) {
   GURL url("http://brantly.eth");
-  auto brave_request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto brave_request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
 
   // Offchain lookup required.
   OnBeforeURLRequest_EnsRedirectWork(
@@ -414,7 +414,7 @@ TEST_F(DecentralizedDnsNetworkDelegateHelperTest,
 
 TEST_F(DecentralizedDnsNetworkDelegateHelperTest, SnsRedirectWork) {
   GURL url("http://test.sol");
-  auto brave_request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto brave_request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
 
   // No redirect for failed requests.
   OnBeforeURLRequest_SnsRedirectWork(

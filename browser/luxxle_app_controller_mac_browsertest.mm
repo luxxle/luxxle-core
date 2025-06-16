@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/brave_app_controller_mac.h"
+#include "luxxle/browser/luxxle_app_controller_mac.h"
 
 #include <AppKit/AppKit.h>
 #import <Cocoa/Cocoa.h>
@@ -16,11 +16,11 @@
 #include "base/apple/foundation_util.h"
 #include "base/apple/scoped_objc_class_swizzler.h"
 #include "base/test/scoped_feature_list.h"
-#include "brave/app/brave_command_ids.h"
-#include "brave/browser/brave_browser_features.h"
-#include "brave/browser/brave_browser_process.h"
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
-#include "brave/components/tor/buildflags/buildflags.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/browser/brave_browser_features.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/components/tor/buildflags/buildflags.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/bookmarks/bookmark_model_factory.h"
 #include "chrome/browser/browser_process.h"
@@ -40,8 +40,8 @@
 #include "content/public/test/browser_test.h"
 
 #if BUILDFLAG(ENABLE_TOR)
-#include "brave/browser/tor/tor_profile_service_factory.h"
-#include "brave/components/tor/pref_names.h"
+#include "luxxle/browser/tor/tor_profile_service_factory.h"
+#include "luxxle/components/tor/pref_names.h"
 #endif  // BUILDFLAG(ENABLE_TOR)
 
 using bookmarks::BookmarkModel;

@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/split_view/split_view_layout_manager.h"
+#include "luxxle/browser/ui/views/split_view/split_view_layout_manager.h"
 
 #include "base/feature_list.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/browser/ui/views/split_view/split_view_separator.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/views/split_view/split_view_separator.h"
 #include "ui/views/view.h"
 
 namespace {

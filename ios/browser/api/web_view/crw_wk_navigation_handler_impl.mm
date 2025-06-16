@@ -12,7 +12,7 @@
 #include "ios/web/public/web_state.h"
 #import "ios/web_view/internal/cwv_web_view_internal.h"
 
-namespace brave {
+namespace luxxle {
 
 bool ShouldBlockJavaScript(web::WebState* webState, NSURLRequest* request) {
   if (!web::UrlHasWebScheme(request.URL)) {

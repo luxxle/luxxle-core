@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/profiles/brave_incognito_menu_view.h"
+#include "luxxle/browser/ui/views/profiles/brave_incognito_menu_view.h"
 
 #include <memory>
 #include <optional>
 #include <utility>
 
-#include "brave/components/tor/buildflags/buildflags.h"
+#include "luxxle/components/tor/buildflags/buildflags.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/app/vector_icons/vector_icons.h"
 #include "chrome/browser/profiles/profile.h"
@@ -24,8 +24,8 @@
 #include "ui/base/models/image_model.h"
 
 #if BUILDFLAG(ENABLE_TOR)
-#include "brave/browser/tor/tor_profile_manager.h"
-#include "brave/browser/tor/tor_profile_service_factory.h"
+#include "luxxle/browser/tor/tor_profile_manager.h"
+#include "luxxle/browser/tor/tor_profile_service_factory.h"
 #endif
 
 namespace {

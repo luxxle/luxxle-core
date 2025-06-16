@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/content_settings/brave_autoplay_blocked_image_model.h"
+#include "luxxle/browser/ui/content_settings/brave_autoplay_blocked_image_model.h"
 
 #include <memory>
 
-#include "brave/browser/ui/content_settings/brave_autoplay_content_setting_bubble_model.h"
+#include "luxxle/browser/ui/content_settings/brave_autoplay_content_setting_bubble_model.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "components/content_settings/browser/page_specific_content_settings.h"
 #include "components/content_settings/core/common/content_settings_types.h"

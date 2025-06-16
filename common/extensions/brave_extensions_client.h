@@ -3,8 +3,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_COMMON_EXTENSIONS_BRAVE_EXTENSIONS_CLIENT_H_
-#define BRAVE_COMMON_EXTENSIONS_BRAVE_EXTENSIONS_CLIENT_H_
+#ifndef LUXXLE_COMMON_EXTENSIONS_BRAVE_EXTENSIONS_CLIENT_H_
+#define LUXXLE_COMMON_EXTENSIONS_BRAVE_EXTENSIONS_CLIENT_H_
 
 #include <string>
 
@@ -28,4 +28,4 @@ class BraveExtensionsClient : public ChromeExtensionsClient {
 
 }  // namespace extensions
 
-#endif  // BRAVE_COMMON_EXTENSIONS_BRAVE_EXTENSIONS_CLIENT_H_
+#endif  // LUXXLE_COMMON_EXTENSIONS_BRAVE_EXTENSIONS_CLIENT_H_

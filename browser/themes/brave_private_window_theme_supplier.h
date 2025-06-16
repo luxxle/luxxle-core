@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_THEMES_BRAVE_PRIVATE_WINDOW_THEME_SUPPLIER_H_
-#define BRAVE_BROWSER_THEMES_BRAVE_PRIVATE_WINDOW_THEME_SUPPLIER_H_
+#ifndef LUXXLE_BROWSER_THEMES_BRAVE_PRIVATE_WINDOW_THEME_SUPPLIER_H_
+#define LUXXLE_BROWSER_THEMES_BRAVE_PRIVATE_WINDOW_THEME_SUPPLIER_H_
 
 #include "chrome/browser/themes/custom_theme_supplier.h"
 
@@ -28,4 +28,4 @@ class BravePrivateWindowThemeSupplier : public CustomThemeSupplier {
   bool for_private_window_ = true;
 };
 
-#endif  // BRAVE_BROWSER_THEMES_BRAVE_PRIVATE_WINDOW_THEME_SUPPLIER_H_
+#endif  // LUXXLE_BROWSER_THEMES_BRAVE_PRIVATE_WINDOW_THEME_SUPPLIER_H_

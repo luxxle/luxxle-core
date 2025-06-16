@@ -3,21 +3,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/net/brave_ad_block_csp_network_delegate_helper.h"
+#include "luxxle/browser/net/brave_ad_block_csp_network_delegate_helper.h"
 
 #include <optional>
 #include <string>
 
-#include "brave/browser/brave_browser_process.h"
-#include "brave/browser/net/url_context.h"
-#include "brave/components/brave_shields/content/browser/ad_block_service.h"
-#include "brave/components/brave_shields/core/browser/ad_block_service_helper.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/net/url_context.h"
+#include "luxxle/components/brave_shields/content/browser/ad_block_service.h"
+#include "luxxle/components/brave_shields/core/browser/ad_block_service_helper.h"
 #include "content/public/browser/browser_thread.h"
 #include "net/base/net_errors.h"
 #include "net/http/http_response_headers.h"
 #include "url/gurl.h"
 
-namespace brave {
+namespace luxxle {
 
 std::optional<std::string> GetCspDirectivesOnTaskRunner(
     std::shared_ptr<BraveRequestInfo> ctx,
@@ -61,8 +61,8 @@ int OnHeadersReceived_AdBlockCspWork(
     const net::HttpResponseHeaders* response_headers,
     scoped_refptr<net::HttpResponseHeaders>* override_response_headers,
     GURL* allowed_unsafe_redirect_url,
-    const brave::ResponseCallback& next_callback,
-    std::shared_ptr<brave::BraveRequestInfo> ctx) {
+    const luxxle::ResponseCallback& next_callback,
+    std::shared_ptr<luxxle::BraveRequestInfo> ctx) {
   DCHECK_CURRENTLY_ON(content::BrowserThread::UI);
 
   if (!response_headers || !ctx->allow_brave_shields || ctx->allow_ads) {

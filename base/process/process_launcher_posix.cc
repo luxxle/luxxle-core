@@ -13,7 +13,7 @@
 #include "base/files/file_util.h"
 #include "base/process/launch.h"
 
-namespace brave {
+namespace luxxle {
 
 ProcessLauncher::ProcessLauncher() = default;
 ProcessLauncher::~ProcessLauncher() = default;

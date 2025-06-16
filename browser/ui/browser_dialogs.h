@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_BROWSER_DIALOGS_H_
-#define BRAVE_BROWSER_UI_BROWSER_DIALOGS_H_
+#ifndef LUXXLE_BROWSER_UI_BROWSER_DIALOGS_H_
+#define LUXXLE_BROWSER_UI_BROWSER_DIALOGS_H_
 
 #include "base/functional/callback_forward.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
-#include "brave/components/text_recognition/common/buildflags/buildflags.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#include "luxxle/components/text_recognition/common/buildflags/buildflags.h"
 
 class Browser;
 class SkBitmap;
@@ -17,7 +17,7 @@ namespace content {
 class WebContents;
 }  // namespace content
 
-namespace brave {
+namespace luxxle {
 
 // Tab restore dialog will be launched after ask dialog is closed.
 void ShowCrashReportPermissionAskDialog(Browser* browser);
@@ -36,4 +36,4 @@ void ShowBraveVpnIKEv2FallbackDialog();
 #endif
 }  // namespace brave
 
-#endif  // BRAVE_BROWSER_UI_BROWSER_DIALOGS_H_
+#endif  // LUXXLE_BROWSER_UI_BROWSER_DIALOGS_H_

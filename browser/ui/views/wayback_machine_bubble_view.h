@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_WAYBACK_MACHINE_BUBBLE_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_WAYBACK_MACHINE_BUBBLE_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_WAYBACK_MACHINE_BUBBLE_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_WAYBACK_MACHINE_BUBBLE_VIEW_H_
 
 #include "base/memory/weak_ptr.h"
 #include "ui/base/metadata/metadata_header_macros.h"
@@ -35,4 +35,4 @@ class WaybackMachineBubbleView : public views::BubbleDialogDelegateView {
   base::WeakPtr<content::WebContents> web_contents_;
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_WAYBACK_MACHINE_BUBBLE_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_WAYBACK_MACHINE_BUBBLE_VIEW_H_

@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/extensions/api/rewards_notifications_api.h"
+#include "luxxle/browser/extensions/api/rewards_notifications_api.h"
 
 #include <memory>
 #include <optional>
 
-#include "brave/browser/brave_rewards/rewards_service_factory.h"
-#include "brave/common/extensions/api/rewards_notifications.h"
-#include "brave/components/brave_rewards/content/rewards_notification_service.h"
-#include "brave/components/brave_rewards/content/rewards_service.h"
+// REMOVED: #include "luxxle/browser/brave_rewards/.*"
+#include "luxxle/common/extensions/api/rewards_notifications.h"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
 #include "chrome/browser/profiles/profile.h"
 
 using brave_rewards::RewardsNotificationService;

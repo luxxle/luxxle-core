@@ -3,10 +3,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_EXTENSIONS_BRAVE_BASE_LOCAL_DATA_FILES_BROWSERTEST_H_
-#define BRAVE_BROWSER_EXTENSIONS_BRAVE_BASE_LOCAL_DATA_FILES_BROWSERTEST_H_
+#ifndef LUXXLE_BROWSER_EXTENSIONS_BRAVE_BASE_LOCAL_DATA_FILES_BROWSERTEST_H_
+#define LUXXLE_BROWSER_EXTENSIONS_BRAVE_BASE_LOCAL_DATA_FILES_BROWSERTEST_H_
 
-#include "brave/components/brave_component_updater/browser/local_data_files_observer.h"
+#include "luxxle/components/brave_component_updater/browser/local_data_files_observer.h"
 #include "chrome/browser/extensions/extension_browsertest.h"
 #include "chrome/browser/extensions/install_verifier.h"
 
@@ -40,4 +40,4 @@ class BaseLocalDataFilesBrowserTest : public ExtensionBrowserTest {
   extensions::ScopedInstallVerifierBypassForTest install_verifier_bypass_;
 };
 
-#endif  // BRAVE_BROWSER_EXTENSIONS_BRAVE_BASE_LOCAL_DATA_FILES_BROWSERTEST_H_
+#endif  // LUXXLE_BROWSER_EXTENSIONS_BRAVE_BASE_LOCAL_DATA_FILES_BROWSERTEST_H_

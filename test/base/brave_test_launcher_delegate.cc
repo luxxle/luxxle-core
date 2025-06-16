@@ -8,8 +8,8 @@
 #include "build/build_config.h"
 
 #if !BUILDFLAG(IS_ANDROID)
-#include "brave/app/brave_main_delegate.h"
-#include "brave/browser/ui/brave_browser.h"
+#include "luxxle/app/brave_main_delegate.h"
+#include "luxxle/browser/ui/brave_browser.h"
 #endif
 
 #if BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX)

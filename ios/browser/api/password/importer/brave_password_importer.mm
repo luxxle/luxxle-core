@@ -13,7 +13,7 @@
 #include "base/strings/sys_string_conversions.h"
 #include "base/task/task_traits.h"
 #include "base/task/thread_pool.h"
-#include "brave/components/password_manager/core/browser/import/safari_password_importer.h"
+#include "luxxle/components/password_manager/core/browser/import/safari_password_importer.h"
 #include "components/keyed_service/core/service_access_type.h"
 #include "components/password_manager/core/browser/password_store/password_store_interface.h"
 #include "components/password_manager/core/browser/ui/saved_passwords_presenter.h"

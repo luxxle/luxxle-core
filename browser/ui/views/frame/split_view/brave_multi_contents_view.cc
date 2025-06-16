@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/frame/split_view/brave_multi_contents_view.h"
+#include "luxxle/browser/ui/views/frame/split_view/brave_multi_contents_view.h"
 
-#include "brave/browser/ui/brave_browser.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/browser/ui/views/frame/brave_contents_view_util.h"
-#include "brave/browser/ui/views/split_view/split_view_location_bar.h"
-#include "brave/browser/ui/views/split_view/split_view_separator.h"
+#include "luxxle/browser/ui/brave_browser.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/views/frame/brave_contents_view_util.h"
+#include "luxxle/browser/ui/views/split_view/split_view_location_bar.h"
+#include "luxxle/browser/ui/views/split_view/split_view_separator.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/views/frame/browser_view.h"
 #include "chrome/browser/ui/views/frame/contents_web_view.h"

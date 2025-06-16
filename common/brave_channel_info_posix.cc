@@ -2,12 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/common/brave_channel_info_posix.h"
+#include "luxxle/common/brave_channel_info_posix.h"
 
 #include "base/strings/string_util.h"
 #include "build/build_config.h"
 
-namespace brave {
+namespace luxxle {
 
 version_info::Channel GetChannelImpl(std::string* modifier_out,
                                      std::string* data_dir_suffix_out) {

@@ -3,9 +3,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/split_view/split_view_location_bar_model_delegate.h"
+#include "luxxle/browser/ui/views/split_view/split_view_location_bar_model_delegate.h"
 
-#include "brave/browser/ui/views/split_view/split_view_location_bar.h"
+#include "luxxle/browser/ui/views/split_view/split_view_location_bar.h"
 #include "chrome/common/url_constants.h"
 #include "content/public/browser/navigation_entry.h"
 #include "content/public/common/url_constants.h"

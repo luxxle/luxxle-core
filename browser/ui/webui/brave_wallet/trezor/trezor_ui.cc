@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/brave_wallet/trezor/trezor_ui.h"
+#include "luxxle/browser/ui/webui/brave_wallet/trezor/trezor_ui.h"
 
 #include <string>
 
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/components/trezor_bridge/resources/grit/trezor_bridge_generated_map.h"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/components/trezor_bridge/resources/grit/trezor_bridge_generated_map.h"
 #include "components/grit/brave_components_resources.h"
 #include "content/public/browser/web_contents.h"
 #include "content/public/browser/web_ui_data_source.h"
@@ -24,7 +24,7 @@ UntrustedTrezorUI::UntrustedTrezorUI(content::WebUI* web_ui)
     : ui::UntrustedWebUIController(web_ui) {
   auto* untrusted_source = content::WebUIDataSource::CreateAndAdd(
       web_ui->GetWebContents()->GetBrowserContext(), kUntrustedTrezorURL);
-  untrusted_source->SetDefaultResource(IDR_BRAVE_WALLET_TREZOR_BRIDGE_HTML);
+  untrusted_source->SetDefaultResource(/* REMOVED: IDR_BRAVE_WALLET_TREZOR_BRIDGE_HTML */ 0);
   untrusted_source->AddResourcePaths(kTrezorBridgeGenerated);
   untrusted_source->AddFrameAncestor(GURL(kBraveUIWalletPageURL));
   untrusted_source->AddFrameAncestor(GURL(kBraveUIWalletPanelURL));

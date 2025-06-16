@@ -6,7 +6,7 @@
 #include "base/path_service.h"
 #include "base/strings/string_util.h"
 #include "base/test/scoped_feature_list.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/tabs/tab_strip_model.h"
 #include "chrome/test/base/in_process_browser_test.h"
@@ -42,7 +42,7 @@ class FileSystemAccessBrowserTest : public InProcessBrowserTest,
     InProcessBrowserTest::SetUpOnMainThread();
 
     base::FilePath test_data_dir;
-    base::PathService::Get(brave::DIR_TEST_DATA, &test_data_dir);
+    base::PathService::Get(luxxle::DIR_TEST_DATA, &test_data_dir);
     https_server_.SetSSLConfig(net::EmbeddedTestServer::CERT_OK);
     https_server_.ServeFilesFromDirectory(test_data_dir);
     EXPECT_TRUE(https_server_.Start());

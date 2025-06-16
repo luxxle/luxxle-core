@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_LOCATION_BAR_BRAVE_SEARCH_CONVERSION_PROMOTION_BUTTON_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_LOCATION_BAR_BRAVE_SEARCH_CONVERSION_PROMOTION_BUTTON_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_LOCATION_BAR_BRAVE_SEARCH_CONVERSION_PROMOTION_BUTTON_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_LOCATION_BAR_BRAVE_SEARCH_CONVERSION_PROMOTION_BUTTON_VIEW_H_
 
 #include <memory>
 
 #include "base/functional/callback_forward.h"
 #include "base/memory/raw_ptr.h"
-#include "brave/browser/ui/views/view_shadow.h"
+#include "luxxle/browser/ui/views/view_shadow.h"
 #include "ui/base/metadata/metadata_header_macros.h"
 #include "ui/views/controls/button/button.h"
 
@@ -68,4 +68,4 @@ class PromotionButtonView : public views::Button {
   base::OnceClosure make_default_callback_;
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_LOCATION_BAR_BRAVE_SEARCH_CONVERSION_PROMOTION_BUTTON_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_LOCATION_BAR_BRAVE_SEARCH_CONVERSION_PROMOTION_BUTTON_VIEW_H_

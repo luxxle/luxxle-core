@@ -3,13 +3,13 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_IOS_BROWSER_API_WEBCOMPAT_REPORTER_WEBCOMPAT_REPORTER_SERVICE_DELEGATE_H_
-#define BRAVE_IOS_BROWSER_API_WEBCOMPAT_REPORTER_WEBCOMPAT_REPORTER_SERVICE_DELEGATE_H_
+#ifndef LUXXLE_IOS_BROWSER_API_WEBCOMPAT_REPORTER_WEBCOMPAT_REPORTER_SERVICE_DELEGATE_H_
+#define LUXXLE_IOS_BROWSER_API_WEBCOMPAT_REPORTER_WEBCOMPAT_REPORTER_SERVICE_DELEGATE_H_
 
 #include <string>
 #include <vector>
 
-#include "brave/components/webcompat_reporter/browser/webcompat_reporter_service_delegate_base.h"
+#include "luxxle/components/webcompat_reporter/browser/webcompat_reporter_service_delegate_base.h"
 
 namespace webcompat_reporter {
 
@@ -35,4 +35,4 @@ class WebcompatReporterServiceDelegateImpl
 
 }  // namespace webcompat_reporter
 
-#endif  // BRAVE_IOS_BROWSER_API_WEBCOMPAT_REPORTER_WEBCOMPAT_REPORTER_SERVICE_DELEGATE_H_
+#endif  // LUXXLE_IOS_BROWSER_API_WEBCOMPAT_REPORTER_WEBCOMPAT_REPORTER_SERVICE_DELEGATE_H_

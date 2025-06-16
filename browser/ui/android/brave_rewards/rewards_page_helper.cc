@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/android/brave_rewards/rewards_page_helper.h"
+#include "luxxle/browser/ui/android/brave_rewards/rewards_page_helper.h"
 
 #include "base/android/jni_android.h"
 #include "base/android/jni_string.h"

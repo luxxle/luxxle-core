@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/startup/brave_obsolete_system_infobar_delegate.h"
+#include "luxxle/browser/ui/startup/brave_obsolete_system_infobar_delegate.h"
 
 #include <memory>
 
 #include "base/functional/bind.h"
-#include "brave/browser/infobars/brave_confirm_infobar_creator.h"
-#include "brave/browser/ui/browser_dialogs.h"
+#include "luxxle/browser/infobars/brave_confirm_infobar_creator.h"
+#include "luxxle/browser/ui/browser_dialogs.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/infobars/confirm_infobar_creator.h"
@@ -52,7 +52,7 @@ bool BraveObsoleteSystemInfoBarDelegate::InterceptClosing() {
     return false;
 
   // This infobar will be destroyed after confirmation dialog closed.
-  brave::ShowObsoleteSystemConfirmDialog(base::BindOnce(
+  luxxle::ShowObsoleteSystemConfirmDialog(base::BindOnce(
       &BraveObsoleteSystemInfoBarDelegate::OnConfirmDialogClosing,
       weak_factory_.GetWeakPtr()));
   return true;

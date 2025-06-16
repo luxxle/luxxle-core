@@ -14,7 +14,7 @@
 #include "components/send_tab_to_self/target_device_info.h"
 #include "net/base/apple/url_conversions.h"
 
-namespace brave {
+namespace luxxle {
 namespace ios {
 TargetDeviceType DeviceTypeFromSyncDeviceType(
     syncer::DeviceInfo::FormFactor deviceType) {
@@ -130,7 +130,7 @@ TargetDeviceType DeviceTypeFromSyncDeviceType(
                shortName:base::SysUTF8ToNSString(device.short_name)
               deviceName:base::SysUTF8ToNSString(device.device_name)
                  cacheId:base::SysUTF8ToNSString(device.cache_guid)
-              deviceType:brave::ios::DeviceTypeFromSyncDeviceType(
+              deviceType:luxxle::ios::DeviceTypeFromSyncDeviceType(
                              device.form_factor)
          lastUpdatedTime:device.last_updated_timestamp.ToNSDate()];
 

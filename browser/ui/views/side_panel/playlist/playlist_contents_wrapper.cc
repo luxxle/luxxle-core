@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/side_panel/playlist/playlist_contents_wrapper.h"
+#include "luxxle/browser/ui/views/side_panel/playlist/playlist_contents_wrapper.h"
 
 #include <utility>
 
-#include "brave/browser/ui/views/side_panel/playlist/playlist_side_panel_coordinator.h"
+#include "luxxle/browser/ui/views/side_panel/playlist/playlist_side_panel_coordinator.h"
 #include "chrome/browser/picture_in_picture/picture_in_picture_window_manager.h"
 #include "chrome/browser/ui/exclusive_access/exclusive_access_manager.h"
 #include "chrome/browser/ui/exclusive_access/fullscreen_controller.h"

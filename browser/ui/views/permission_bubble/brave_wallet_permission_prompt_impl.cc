@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/permission_bubble/brave_wallet_permission_prompt_impl.h"
+#include "luxxle/browser/ui/views/permission_bubble/brave_wallet_permission_prompt_impl.h"
 
 #include <optional>
 
-#include "brave/browser/brave_wallet/brave_wallet_tab_helper.h"
+// REMOVED: #include "luxxle/browser/brave_wallet/.*"
 #include "components/permissions/permission_uma_util.h"
 
 BraveWalletPermissionPromptImpl::BraveWalletPermissionPromptImpl(

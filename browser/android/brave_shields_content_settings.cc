@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/android/brave_shields_content_settings.h"
+#include "luxxle/browser/android/brave_shields_content_settings.h"
 
 #include <string>
 
 #include "base/android/jni_android.h"
 #include "base/android/jni_string.h"
-#include "brave/browser/brave_browser_process.h"
-#include "brave/components/brave_shields/content/browser/ad_block_service.h"
-#include "brave/components/brave_shields/content/browser/brave_shields_util.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/components/brave_shields/content/browser/ad_block_service.h"
+#include "luxxle/components/brave_shields/content/browser/brave_shields_util.h"
 #include "chrome/android/chrome_jni_headers/BraveShieldsContentSettings_jni.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/content_settings/cookie_settings_factory.h"

@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_BRAVE_SETTINGS_UI_H_
-#define BRAVE_BROWSER_UI_WEBUI_BRAVE_SETTINGS_UI_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_BRAVE_SETTINGS_UI_H_
+#define LUXXLE_BROWSER_UI_WEBUI_BRAVE_SETTINGS_UI_H_
 
 #include <memory>
 
-#include "brave/components/ai_chat/core/common/mojom/settings_helper.mojom.h"
-#include "brave/components/brave_account/core/mojom/brave_account.mojom.h"
-#include "brave/components/commands/common/commands.mojom.h"
+#include "luxxle/components/ai_chat/core/common/mojom/settings_helper.mojom.h"
+#include "luxxle/components/brave_account/core/mojom/brave_account.mojom.h"
+#include "luxxle/components/commands/common/commands.mojom.h"
 #include "chrome/browser/ui/webui/settings/settings_ui.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
 
@@ -57,4 +57,4 @@ class BraveSettingsUI : public settings::SettingsUI {
   std::unique_ptr<brave_account::BraveAccountHandler> brave_account_handler_;
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_BRAVE_SETTINGS_UI_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_BRAVE_SETTINGS_UI_H_

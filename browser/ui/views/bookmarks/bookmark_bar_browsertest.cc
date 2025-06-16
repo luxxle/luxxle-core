@@ -5,9 +5,9 @@
 
 #include "base/run_loop.h"
 #include "base/scoped_observation.h"
-#include "brave/browser/ui/brave_view_ids.h"
-#include "brave/browser/ui/browser_commands.h"
-#include "brave/browser/ui/views/bookmarks/bookmark_bar_instructions_view.h"
+#include "luxxle/browser/ui/brave_view_ids.h"
+#include "luxxle/browser/ui/browser_commands.h"
+#include "luxxle/browser/ui/views/bookmarks/bookmark_bar_instructions_view.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/bookmarks/bookmark_model_factory.h"
 #include "chrome/browser/profiles/profile.h"
@@ -123,10 +123,10 @@ IN_PROC_BROWSER_TEST_F(BookmarkBarTest, AllBookmarksButtonVisibility) {
   EXPECT_TRUE(is_all_bookmarks_button_visible());
 
   // Toggling the visibility preference should be applied
-  brave::ToggleAllBookmarksButtonVisibility(browser());
+  luxxle::ToggleAllBookmarksButtonVisibility(browser());
   EXPECT_FALSE(is_all_bookmarks_button_visible());
 
-  brave::ToggleAllBookmarksButtonVisibility(browser());
+  luxxle::ToggleAllBookmarksButtonVisibility(browser());
   EXPECT_TRUE(is_all_bookmarks_button_visible());
 
   // When all node is removed, all bookmarks button should be hidden
@@ -135,6 +135,6 @@ IN_PROC_BROWSER_TEST_F(BookmarkBarTest, AllBookmarksButtonVisibility) {
 
   // Turning on the visibility pref doesn't show "All bookmarks button" when
   // there's no node in the "other" node
-  brave::ToggleAllBookmarksButtonVisibility(browser());
+  luxxle::ToggleAllBookmarksButtonVisibility(browser());
   EXPECT_FALSE(is_all_bookmarks_button_visible());
 }

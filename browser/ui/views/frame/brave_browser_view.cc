@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
 
 #include <algorithm>
 #include <iterator>
@@ -17,40 +17,40 @@
 #include "base/feature_list.h"
 #include "base/functional/bind.h"
 #include "base/task/sequenced_task_runner.h"
-#include "brave/browser/brave_rewards/rewards_service_factory.h"
-#include "brave/browser/sparkle_buildflags.h"
-#include "brave/browser/translate/brave_translate_utils.h"
-#include "brave/browser/ui/brave_browser.h"
-#include "brave/browser/ui/brave_rewards/rewards_panel_coordinator.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/browser/ui/commands/accelerator_service.h"
-#include "brave/browser/ui/commands/accelerator_service_factory.h"
-#include "brave/browser/ui/page_action/brave_page_action_icon_type.h"
-#include "brave/browser/ui/sidebar/sidebar_utils.h"
-#include "brave/browser/ui/tabs/brave_tab_prefs.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/browser/ui/tabs/split_view_browser_data.h"
-#include "brave/browser/ui/views/brave_actions/brave_actions_container.h"
-#include "brave/browser/ui/views/brave_actions/brave_shields_action_view.h"
-#include "brave/browser/ui/views/brave_help_bubble/brave_help_bubble_host_view.h"
-#include "brave/browser/ui/views/brave_shields/cookie_list_opt_in_bubble_host.h"
-#include "brave/browser/ui/views/frame/brave_contents_layout_manager.h"
-#include "brave/browser/ui/views/frame/brave_contents_view_util.h"
-#include "brave/browser/ui/views/frame/vertical_tab_strip_region_view.h"
-#include "brave/browser/ui/views/frame/vertical_tab_strip_widget_delegate_view.h"
-#include "brave/browser/ui/views/location_bar/brave_location_bar_view.h"
-#include "brave/browser/ui/views/omnibox/brave_omnibox_view_views.h"
-#include "brave/browser/ui/views/sidebar/sidebar_container_view.h"
-#include "brave/browser/ui/views/split_view/split_view.h"
-#include "brave/browser/ui/views/tabs/vertical_tab_utils.h"
-#include "brave/browser/ui/views/toolbar/bookmark_button.h"
-#include "brave/browser/ui/views/toolbar/brave_toolbar_view.h"
-#include "brave/browser/ui/views/toolbar/wallet_button.h"
-#include "brave/browser/ui/views/window_closing_confirm_dialog_view.h"
-#include "brave/components/commands/common/features.h"
-#include "brave/components/constants/pref_names.h"
-#include "brave/components/speedreader/common/buildflags/buildflags.h"
-#include "brave/ui/color/nala/nala_color_id.h"
+// REMOVED: #include "luxxle/browser/brave_rewards/.*"
+#include "luxxle/browser/sparkle_buildflags.h"
+#include "luxxle/browser/translate/brave_translate_utils.h"
+#include "luxxle/browser/ui/brave_browser.h"
+#include "luxxle/browser/ui/brave_rewards/rewards_panel_coordinator.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/commands/accelerator_service.h"
+#include "luxxle/browser/ui/commands/accelerator_service_factory.h"
+#include "luxxle/browser/ui/page_action/brave_page_action_icon_type.h"
+#include "luxxle/browser/ui/sidebar/sidebar_utils.h"
+#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data.h"
+#include "luxxle/browser/ui/views/brave_actions/brave_actions_container.h"
+#include "luxxle/browser/ui/views/brave_actions/brave_shields_action_view.h"
+#include "luxxle/browser/ui/views/brave_help_bubble/brave_help_bubble_host_view.h"
+#include "luxxle/browser/ui/views/brave_shields/cookie_list_opt_in_bubble_host.h"
+#include "luxxle/browser/ui/views/frame/brave_contents_layout_manager.h"
+#include "luxxle/browser/ui/views/frame/brave_contents_view_util.h"
+#include "luxxle/browser/ui/views/frame/vertical_tab_strip_region_view.h"
+#include "luxxle/browser/ui/views/frame/vertical_tab_strip_widget_delegate_view.h"
+#include "luxxle/browser/ui/views/location_bar/brave_location_bar_view.h"
+#include "luxxle/browser/ui/views/omnibox/brave_omnibox_view_views.h"
+#include "luxxle/browser/ui/views/sidebar/sidebar_container_view.h"
+#include "luxxle/browser/ui/views/split_view/split_view.h"
+#include "luxxle/browser/ui/views/tabs/vertical_tab_utils.h"
+#include "luxxle/browser/ui/views/toolbar/bookmark_button.h"
+#include "luxxle/browser/ui/views/toolbar/brave_toolbar_view.h"
+#include "luxxle/browser/ui/views/toolbar/wallet_button.h"
+#include "luxxle/browser/ui/views/window_closing_confirm_dialog_view.h"
+#include "luxxle/components/commands/common/features.h"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/speedreader/common/buildflags/buildflags.h"
+#include "luxxle/ui/color/nala/nala_color_id.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/app_mode/app_mode_utils.h"
 #include "chrome/browser/devtools/devtools_window.h"
@@ -91,22 +91,22 @@
 #include "ui/views/layout/fill_layout.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/browser/ui/views/toolbar/brave_vpn_button.h"
-#include "brave/components/brave_vpn/common/pref_names.h"
+#include "luxxle/browser/ui/views/toolbar/brave_vpn_button.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #endif
 
 #if BUILDFLAG(ENABLE_SPARKLE)
-#include "brave/browser/ui/views/update_recommended_message_box_mac.h"
+#include "luxxle/browser/ui/views/update_recommended_message_box_mac.h"
 #endif
 
 #if BUILDFLAG(ENABLE_SPEEDREADER)
-#include "brave/browser/speedreader/speedreader_tab_helper.h"
-#include "brave/browser/ui/views/speedreader/reader_mode_bubble.h"
-#include "brave/browser/ui/views/speedreader/reader_mode_toolbar_view.h"
+#include "luxxle/browser/speedreader/speedreader_tab_helper.h"
+#include "luxxle/browser/ui/views/speedreader/reader_mode_bubble.h"
+#include "luxxle/browser/ui/views/speedreader/reader_mode_toolbar_view.h"
 #endif
 
 #if BUILDFLAG(ENABLE_BRAVE_WAYBACK_MACHINE)
-#include "brave/browser/ui/views/wayback_machine_bubble_view.h"
+#include "luxxle/browser/ui/views/wayback_machine_bubble_view.h"
 #endif
 
 namespace {
@@ -544,7 +544,7 @@ void BraveBrowserView::ShowPlaylistBubble() {
 #if BUILDFLAG(ENABLE_BRAVE_WAYBACK_MACHINE)
 void BraveBrowserView::ShowWaybackMachineBubble() {
   if (auto* anchor = toolbar_button_provider_->GetPageActionIconView(
-          brave::kWaybackMachineActionIconType)) {
+          luxxle::kWaybackMachineActionIconType)) {
     DCHECK(anchor->GetVisible());
     // Launch bubble with this anchor.
     WaybackMachineBubbleView::Show(browser(), anchor);

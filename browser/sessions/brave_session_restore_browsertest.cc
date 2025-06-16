@@ -7,7 +7,7 @@
 #include "base/strings/stringprintf.h"
 #include "base/test/bind.h"
 #include "base/test/scoped_feature_list.h"
-#include "brave/browser/brave_browser_features.h"
+#include "luxxle/browser/brave_browser_features.h"
 #include "chrome/browser/sessions/session_service.h"
 #include "chrome/browser/sessions/session_service_factory.h"
 #include "chrome/test/base/in_process_browser_test.h"

@@ -19,15 +19,15 @@
 #include "base/test/bind.h"
 #include "base/test/gmock_callback_support.h"
 #include "base/test/mock_callback.h"
-#include "brave/browser/ai_chat/ai_chat_service_factory.h"
-#include "brave/browser/ai_chat/tab_tracker_service_factory.h"
-#include "brave/components/ai_chat/core/browser/ai_chat_service.h"
-#include "brave/components/ai_chat/core/browser/constants.h"
-#include "brave/components/ai_chat/core/browser/engine/mock_engine_consumer.h"
-#include "brave/components/ai_chat/core/browser/tab_tracker_service.h"
-#include "brave/components/ai_chat/core/browser/types.h"
-#include "brave/components/ai_chat/core/common/mojom/tab_tracker.mojom.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/browser/ai_chat/ai_chat_service_factory.h"
+#include "luxxle/browser/ai_chat/tab_tracker_service_factory.h"
+#include "luxxle/components/ai_chat/core/browser/ai_chat_service.h"
+#include "luxxle/components/ai_chat/core/browser/constants.h"
+#include "luxxle/components/ai_chat/core/browser/engine/mock_engine_consumer.h"
+#include "luxxle/components/ai_chat/core/browser/tab_tracker_service.h"
+#include "luxxle/components/ai_chat/core/browser/types.h"
+#include "luxxle/components/ai_chat/core/common/mojom/tab_tracker.mojom.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_commands.h"
@@ -119,7 +119,7 @@ class TabSearchPageHandlerBrowserTest : public InProcessBrowserTest {
     InProcessBrowserTest::SetUpOnMainThread();
 
     base::FilePath test_data_dir =
-        base::PathService::CheckedGet(brave::DIR_TEST_DATA);
+        base::PathService::CheckedGet(luxxle::DIR_TEST_DATA);
     mock_cert_verifier_.mock_cert_verifier()->set_default_result(net::OK);
     https_server_.ServeFilesFromDirectory(test_data_dir);
     host_resolver()->AddRule("*", "127.0.0.1");

@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_PLAYLIST_ACTIVE_TAB_TRACKER_H_
-#define BRAVE_BROWSER_UI_WEBUI_PLAYLIST_ACTIVE_TAB_TRACKER_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_PLAYLIST_ACTIVE_TAB_TRACKER_H_
+#define LUXXLE_BROWSER_UI_WEBUI_PLAYLIST_ACTIVE_TAB_TRACKER_H_
 
 #include "base/scoped_observation.h"
-#include "brave/components/playlist/browser/playlist_tab_helper_observer.h"
+#include "luxxle/components/playlist/browser/playlist_tab_helper_observer.h"
 #include "chrome/browser/ui/tabs/tab_strip_model_observer.h"
 
 namespace content {
@@ -59,4 +59,4 @@ class PlaylistActiveTabTracker : public TabStripModelObserver,
 
 }  // namespace playlist
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_PLAYLIST_ACTIVE_TAB_TRACKER_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_PLAYLIST_ACTIVE_TAB_TRACKER_H_

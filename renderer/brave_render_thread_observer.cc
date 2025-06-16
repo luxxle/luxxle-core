@@ -13,8 +13,8 @@
 
 namespace {
 
-brave::mojom::DynamicParams* GetDynamicConfigParams() {
-  static base::NoDestructor<brave::mojom::DynamicParams> dynamic_params;
+luxxle::mojom::DynamicParams* GetDynamicConfigParams() {
+  static base::NoDestructor<luxxle::mojom::DynamicParams> dynamic_params;
   return dynamic_params.get();
 }
 
@@ -25,14 +25,14 @@ BraveRenderThreadObserver::BraveRenderThreadObserver() = default;
 BraveRenderThreadObserver::~BraveRenderThreadObserver() = default;
 
 // static
-const brave::mojom::DynamicParams&
+const luxxle::mojom::DynamicParams&
 BraveRenderThreadObserver::GetDynamicParams() {
   return *GetDynamicConfigParams();
 }
 
 void BraveRenderThreadObserver::RegisterMojoInterfaces(
     blink::AssociatedInterfaceRegistry* associated_interfaces) {
-  associated_interfaces->AddInterface<brave::mojom::BraveRendererConfiguration>(
+  associated_interfaces->AddInterface<luxxle::mojom::BraveRendererConfiguration>(
       base::BindRepeating(
           &BraveRenderThreadObserver::OnRendererConfigurationAssociatedRequest,
           base::Unretained(this)));
@@ -41,11 +41,11 @@ void BraveRenderThreadObserver::RegisterMojoInterfaces(
 void BraveRenderThreadObserver::UnregisterMojoInterfaces(
     blink::AssociatedInterfaceRegistry* associated_interfaces) {
   associated_interfaces->RemoveInterface(
-      brave::mojom::BraveRendererConfiguration::Name_);
+      luxxle::mojom::BraveRendererConfiguration::Name_);
 }
 
 void BraveRenderThreadObserver::OnRendererConfigurationAssociatedRequest(
-    mojo::PendingAssociatedReceiver<brave::mojom::BraveRendererConfiguration>
+    mojo::PendingAssociatedReceiver<luxxle::mojom::BraveRendererConfiguration>
         receiver) {
   renderer_configuration_receivers_.Add(this, std::move(receiver));
 }
@@ -55,7 +55,7 @@ void BraveRenderThreadObserver::SetInitialConfiguration(bool is_tor_process) {
 }
 
 void BraveRenderThreadObserver::SetConfiguration(
-    brave::mojom::DynamicParamsPtr params) {
+    luxxle::mojom::DynamicParamsPtr params) {
   *GetDynamicConfigParams() = std::move(*params);
 }
 

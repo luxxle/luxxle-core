@@ -3,16 +3,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_NET_BRAVE_COMMON_STATIC_REDIRECT_NETWORK_DELEGATE_HELPER_H_
-#define BRAVE_BROWSER_NET_BRAVE_COMMON_STATIC_REDIRECT_NETWORK_DELEGATE_HELPER_H_
+#ifndef LUXXLE_BROWSER_NET_BRAVE_COMMON_STATIC_REDIRECT_NETWORK_DELEGATE_HELPER_H_
+#define LUXXLE_BROWSER_NET_BRAVE_COMMON_STATIC_REDIRECT_NETWORK_DELEGATE_HELPER_H_
 
 #include <memory>
 
-#include "brave/browser/net/url_context.h"
+#include "luxxle/browser/net/url_context.h"
 
 class GURL;
 
-namespace brave {
+namespace luxxle {
 
 int OnBeforeURLRequest_CommonStaticRedirectWork(
     const ResponseCallback& next_callback,
@@ -24,4 +24,4 @@ int OnBeforeURLRequest_CommonStaticRedirectWorkForGURL(
 
 }  // namespace brave
 
-#endif  // BRAVE_BROWSER_NET_BRAVE_COMMON_STATIC_REDIRECT_NETWORK_DELEGATE_HELPER_H_
+#endif  // LUXXLE_BROWSER_NET_BRAVE_COMMON_STATIC_REDIRECT_NETWORK_DELEGATE_HELPER_H_

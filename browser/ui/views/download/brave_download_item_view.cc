@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/download/brave_download_item_view.h"
+#include "luxxle/browser/ui/views/download/brave_download_item_view.h"
 
 #include <algorithm>
 #include <utility>
 
 #include "base/auto_reset.h"
-#include "brave/app/vector_icons/vector_icons.h"
+#include "luxxle/app/vector_icons/vector_icons.h"
 #include "chrome/browser/themes/theme_properties.h"
 #include "chrome/browser/ui/download/download_item_mode.h"
 #include "chrome/browser/ui/views/download/download_shelf_view.h"

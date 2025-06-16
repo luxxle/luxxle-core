@@ -6,9 +6,9 @@
 #include <memory>
 
 #include "base/run_loop.h"
-#include "brave/browser/extensions/brave_extension_functional_test.h"
-#include "brave/browser/ui/browser_commands.h"
-#include "brave/components/search_engines/brave_prepopulated_engines.h"
+#include "luxxle/browser/extensions/brave_extension_functional_test.h"
+#include "luxxle/browser/ui/browser_commands.h"
+#include "luxxle/components/search_engines/brave_prepopulated_engines.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/tabs/tab_strip_model.h"
@@ -88,7 +88,7 @@ IN_PROC_BROWSER_TEST_F(BravePrivateNewTabPageBrowserTest,
                        BraveSearchForTorBrowser) {
   ui_test_utils::BrowserChangeObserver tor_browser_creation_observer(
       nullptr, ui_test_utils::BrowserChangeObserver::ChangeType::kAdded);
-  brave::NewOffTheRecordWindowTor(browser());
+  luxxle::NewOffTheRecordWindowTor(browser());
   Browser* tor_browser = tor_browser_creation_observer.Wait();
   DCHECK(tor_browser);
   EXPECT_TRUE(tor_browser->profile()->IsTor());

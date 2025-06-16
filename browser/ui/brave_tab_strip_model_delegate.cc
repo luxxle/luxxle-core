@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/brave_tab_strip_model_delegate.h"
+#include "luxxle/browser/ui/brave_tab_strip_model_delegate.h"
 
 #include <algorithm>
 
-#include "brave/browser/ui/tabs/brave_tab_prefs.h"
-#include "brave/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/features.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "components/prefs/pref_service.h"

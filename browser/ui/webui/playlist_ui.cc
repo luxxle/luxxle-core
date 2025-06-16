@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/playlist_ui.h"
+#include "luxxle/browser/ui/webui/playlist_ui.h"
 
 #include <memory>
 #include <utility>
@@ -11,16 +11,16 @@
 #include "base/feature_list.h"
 #include "base/functional/bind.h"
 #include "base/strings/strcat.h"
-#include "brave/browser/playlist/playlist_service_factory.h"
-#include "brave/browser/ui/browser_commands.h"
-#include "brave/browser/ui/playlist/playlist_dialogs.h"
-#include "brave/browser/ui/webui/brave_webui_source.h"
-#include "brave/browser/ui/webui/playlist_active_tab_tracker.h"
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/components/playlist/browser/playlist_service.h"
-#include "brave/components/playlist/browser/pref_names.h"
-#include "brave/components/playlist/browser/resources/grit/playlist_generated_map.h"
-#include "brave/components/playlist/common/features.h"
+#include "luxxle/browser/playlist/playlist_service_factory.h"
+#include "luxxle/browser/ui/browser_commands.h"
+#include "luxxle/browser/ui/playlist/playlist_dialogs.h"
+#include "luxxle/browser/ui/webui/brave_webui_source.h"
+#include "luxxle/browser/ui/webui/playlist_active_tab_tracker.h"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/components/playlist/browser/playlist_service.h"
+#include "luxxle/components/playlist/browser/pref_names.h"
+#include "luxxle/components/playlist/browser/resources/grit/playlist_generated_map.h"
+#include "luxxle/components/playlist/common/features.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_finder.h"

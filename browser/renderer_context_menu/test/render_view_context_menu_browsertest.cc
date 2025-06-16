@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/app/brave_command_ids.h"
-#include "brave/browser/ui/browser_commands.h"
-#include "brave/browser/ui/tabs/brave_tab_strip_model.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/browser/ui/tabs/split_view_browser_data.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/browser/ui/browser_commands.h"
+#include "luxxle/browser/ui/tabs/brave_tab_strip_model.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data.h"
 #include "chrome/browser/renderer_context_menu/render_view_context_menu_browsertest_util.h"
 #include "chrome/browser/renderer_context_menu/render_view_context_menu_test_util.h"
 #include "chrome/browser/ui/browser.h"
@@ -86,10 +86,10 @@ IN_PROC_BROWSER_TEST_F(BraveContextMenuBrowserTest, OpenLinkInSplitView) {
   auto indices = model->GetTabIndicesForCommandAt(
       browser()->tab_strip_model()->active_index());
 
-  EXPECT_TRUE(brave::IsTabsTiled(browser(), indices));
+  EXPECT_TRUE(luxxle::IsTabsTiled(browser(), indices));
   EXPECT_EQ(2, browser()->tab_strip_model()->count());
-  EXPECT_TRUE(brave::IsTabsTiled(browser(), {0}));
-  EXPECT_TRUE(brave::IsTabsTiled(browser(), {1}));
+  EXPECT_TRUE(luxxle::IsTabsTiled(browser(), {0}));
+  EXPECT_TRUE(luxxle::IsTabsTiled(browser(), {1}));
 
   // Check if "Open link in split view" is now got disabled.
   EXPECT_FALSE(

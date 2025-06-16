@@ -5,7 +5,7 @@
 
 #include "brave/ios/browser/ui/browser_menu/features.h"
 
-namespace brave::features {
+namespace luxxle::features {
 
 BASE_FEATURE(kModernBrowserMenuEnabled,
              "ModernBrowserMenuEnabled",

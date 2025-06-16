@@ -3,18 +3,18 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/infobars/web_discovery_infobar_content_view.h"
+#include "luxxle/browser/ui/views/infobars/web_discovery_infobar_content_view.h"
 
 #include <array>
 #include <limits>
 #include <utility>
 #include <vector>
 
-#include "brave/app/vector_icons/vector_icons.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/browser/ui/views/infobars/custom_styled_label.h"
-#include "brave/browser/web_discovery/web_discovery_infobar_delegate.h"
-#include "brave/components/constants/url_constants.h"
+#include "luxxle/app/vector_icons/vector_icons.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/views/infobars/custom_styled_label.h"
+#include "luxxle/browser/web_discovery/web_discovery_infobar_delegate.h"
+#include "luxxle/components/constants/url_constants.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "brave/grit/brave_theme_resources.h"
 #include "chrome/browser/ui/browser_list.h"
@@ -176,8 +176,8 @@ class WebDiscoveryInfoBarContentViewBackground : public views::Background {
         gfx::ImageSkiaOperations::CreateResizedImage(
             *rb.GetImageSkiaNamed(
                 ui::NativeTheme::GetInstanceForNativeUi()->ShouldUseDarkColors()
-                    ? IDR_BRAVE_WEB_DISCOVERY_INFOBAR_BG_GRAPHIC_DARK
-                    : IDR_BRAVE_WEB_DISCOVERY_INFOBAR_BG_GRAPHIC),
+                    ? /* REMOVED: IDR_BRAVE_WEB_DISCOVERY_INFOBAR_BG_GRAPHIC_DARK */ 0
+                    : /* REMOVED: IDR_BRAVE_WEB_DISCOVERY_INFOBAR_BG_GRAPHIC */ 0),
             skia::ImageOperations::RESIZE_BEST, view->size()),
         0, 0);
   }
@@ -428,7 +428,7 @@ std::unique_ptr<views::View> WebDiscoveryInfoBarContentView::GetIcon(
     int order) {
   ui::ResourceBundle& rb = ui::ResourceBundle::GetSharedInstance();
   auto icon = std::make_unique<views::ImageView>(ui::ImageModel::FromImageSkia(
-      *rb.GetImageSkiaNamed(IDR_BRAVE_WEB_DISCOVERY_INFOBAR_ICON)));
+      *rb.GetImageSkiaNamed(/* REMOVED: IDR_BRAVE_WEB_DISCOVERY_INFOBAR_ICON */ 0)));
   icon->SetProperty(
       views::kFlexBehaviorKey,
       views::FlexSpecification(views::MinimumFlexSizeRule::kPreferred,

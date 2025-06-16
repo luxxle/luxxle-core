@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/net/brave_torrent_redirect_network_delegate_helper.h"
+#include "luxxle/browser/net/brave_torrent_redirect_network_delegate_helper.h"
 
 #include <memory>
 #include <string>
 
 #include "base/strings/strcat.h"
 #include "base/strings/string_util.h"
-#include "brave/components/brave_webtorrent/browser/webtorrent_util.h"
-#include "brave/components/constants/network_constants.h"
+#include "luxxle/components/brave_webtorrent/browser/webtorrent_util.h"
+#include "luxxle/components/constants/network_constants.h"
 #include "content/public/browser/navigation_controller.h"
 #include "content/public/browser/site_instance.h"
 #include "content/public/browser/web_contents.h"
@@ -32,7 +32,7 @@ bool IsViewerURL(const GURL& url) {
                           "ix=", base::CompareCase::INSENSITIVE_ASCII);
 }
 
-bool IsWebtorrentInitiated(std::shared_ptr<brave::BraveRequestInfo> ctx) {
+bool IsWebtorrentInitiated(std::shared_ptr<luxxle::BraveRequestInfo> ctx) {
   return ctx->initiator_url.scheme() == extensions::kExtensionScheme &&
          ctx->initiator_url.host() == brave_webtorrent_extension_id;
 }
@@ -40,7 +40,7 @@ bool IsWebtorrentInitiated(std::shared_ptr<brave::BraveRequestInfo> ctx) {
 // Returns true if the resource type is a frame (i.e. a top level page) or a
 // subframe (i.e. a frame or iframe). For all other resource types (stylesheet,
 // script, XHR request, etc.), returns false.
-bool IsMainFrameResource(std::shared_ptr<brave::BraveRequestInfo> ctx) {
+bool IsMainFrameResource(std::shared_ptr<luxxle::BraveRequestInfo> ctx) {
   return ctx->resource_type == blink::mojom::ResourceType::kMainFrame;
 }
 
@@ -50,7 +50,7 @@ namespace webtorrent {
 
 bool ShouldRedirectRequest(
     const net::HttpResponseHeaders* original_response_headers,
-    std::shared_ptr<brave::BraveRequestInfo> ctx) {
+    std::shared_ptr<luxxle::BraveRequestInfo> ctx) {
   return !(!original_response_headers || !IsMainFrameResource(ctx) ||
            ctx->is_webtorrent_disabled ||
            // download .torrent, do not redirect
@@ -62,8 +62,8 @@ int OnHeadersReceived_TorrentRedirectWork(
     const net::HttpResponseHeaders* original_response_headers,
     scoped_refptr<net::HttpResponseHeaders>* override_response_headers,
     GURL* allowed_unsafe_redirect_url,
-    const brave::ResponseCallback& next_callback,
-    std::shared_ptr<brave::BraveRequestInfo> ctx) {
+    const luxxle::ResponseCallback& next_callback,
+    std::shared_ptr<luxxle::BraveRequestInfo> ctx) {
   if (!ShouldRedirectRequest(original_response_headers, ctx)) {
     return net::OK;
   }

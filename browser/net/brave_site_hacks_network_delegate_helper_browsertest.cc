@@ -10,9 +10,9 @@
 #include "base/strings/stringprintf.h"
 #include "base/test/bind.h"
 #include "base/types/zip.h"
-#include "brave/components/brave_shields/content/browser/brave_shields_util.h"
-#include "brave/components/constants/brave_paths.h"
-#include "brave/components/tor/buildflags/buildflags.h"
+#include "luxxle/components/brave_shields/content/browser/brave_shields_util.h"
+#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/tor/buildflags/buildflags.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
@@ -28,9 +28,9 @@
 #include "url/origin.h"
 
 #if BUILDFLAG(ENABLE_TOR)
-#include "brave/browser/tor/tor_profile_manager.h"
-#include "brave/components/tor/tor_navigation_throttle.h"
-#include "brave/net/proxy_resolution/proxy_config_service_tor.h"
+#include "luxxle/browser/tor/tor_profile_manager.h"
+#include "luxxle/components/tor/tor_navigation_throttle.h"
+#include "luxxle/net/proxy_resolution/proxy_config_service_tor.h"
 #endif
 
 class BraveSiteHacksNetworkDelegateBrowserTest : public InProcessBrowserTest {
@@ -43,7 +43,7 @@ class BraveSiteHacksNetworkDelegateBrowserTest : public InProcessBrowserTest {
     mock_cert_verifier_.mock_cert_verifier()->set_default_result(net::OK);
     host_resolver()->AddRule("*", "127.0.0.1");
 
-    base::PathService::Get(brave::DIR_TEST_DATA, &test_data_dir_);
+    base::PathService::Get(luxxle::DIR_TEST_DATA, &test_data_dir_);
     https_server_.ServeFilesFromDirectory(test_data_dir_);
     https_server_.AddDefaultHandlers(GetChromeTestDataDir());
     content::SetupCrossSiteRedirector(&https_server_);

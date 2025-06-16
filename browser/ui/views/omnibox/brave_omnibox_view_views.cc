@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/omnibox/brave_omnibox_view_views.h"
+#include "luxxle/browser/ui/views/omnibox/brave_omnibox_view_views.h"
 
 #include <optional>
 #include <utility>
 
-#include "brave/app/brave_command_ids.h"
-#include "brave/browser/brave_browser_features.h"
-#include "brave/browser/ui/browser_commands.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/browser/brave_browser_features.h"
+#include "luxxle/browser/ui/browser_commands.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_finder.h"
@@ -76,7 +76,7 @@ void BraveOmniboxViewViews::CleanAndCopySelectedURL() {
 
 void BraveOmniboxViewViews::CopySanitizedURL(const GURL& url) {
   OnBeforePossibleChange();
-  brave::CopySanitizedURL(chrome::FindLastActive(), url);
+  luxxle::CopySanitizedURL(chrome::FindLastActive(), url);
   OnAfterPossibleChange(true);
 }
 

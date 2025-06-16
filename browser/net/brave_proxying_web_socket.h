@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_NET_BRAVE_PROXYING_WEB_SOCKET_H_
-#define BRAVE_BROWSER_NET_BRAVE_PROXYING_WEB_SOCKET_H_
+#ifndef LUXXLE_BROWSER_NET_BRAVE_PROXYING_WEB_SOCKET_H_
+#define LUXXLE_BROWSER_NET_BRAVE_PROXYING_WEB_SOCKET_H_
 
 #include <memory>
 #include <optional>
@@ -15,8 +15,8 @@
 #include "base/memory/raw_ptr.h"
 #include "base/memory/raw_ref.h"
 #include "base/memory/weak_ptr.h"
-#include "brave/browser/net/resource_context_data.h"
-#include "brave/browser/net/url_context.h"
+#include "luxxle/browser/net/resource_context_data.h"
+#include "luxxle/browser/net/url_context.h"
 #include "content/public/browser/content_browser_client.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
 #include "mojo/public/cpp/bindings/receiver.h"
@@ -128,7 +128,7 @@ class BraveProxyingWebSocket
   const raw_ref<BraveRequestHandler> request_handler_;
   // TODO(iefremov): Get rid of shared_ptr, we should clearly own the pointer.
   // TODO(iefremov): Init this only once.
-  std::shared_ptr<brave::BraveRequestInfo> ctx_;
+  std::shared_ptr<luxxle::BraveRequestInfo> ctx_;
 
   const content::FrameTreeNodeId frame_tree_node_id_;
   content::ContentBrowserClient::WebSocketFactory factory_;
@@ -166,4 +166,4 @@ class BraveProxyingWebSocket
   base::WeakPtrFactory<BraveProxyingWebSocket> weak_factory_{this};
 };
 
-#endif  // BRAVE_BROWSER_NET_BRAVE_PROXYING_WEB_SOCKET_H_
+#endif  // LUXXLE_BROWSER_NET_BRAVE_PROXYING_WEB_SOCKET_H_

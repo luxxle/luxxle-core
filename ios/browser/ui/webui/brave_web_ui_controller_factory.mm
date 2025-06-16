@@ -10,9 +10,9 @@
 #include "base/feature_list.h"
 #include "base/memory/ptr_util.h"
 #include "base/no_destructor.h"
-#include "brave/components/constants/pref_names.h"
-#include "brave/components/constants/url_constants.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/constants/url_constants.h"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "brave/ios/browser/ui/webui/ads/ads_internals_ui.h"
 #include "brave/ios/browser/ui/webui/skus/skus_internals_ui.h"
 #include "build/build_config.h"
@@ -24,7 +24,7 @@
 using web::WebUIIOS;
 using web::WebUIIOSController;
 
-namespace brave {
+namespace luxxle {
 
 // A function for creating a new WebUIIOS.
 using WebUIIOSFactoryFunction =
@@ -78,7 +78,7 @@ NSInteger BraveWebUIControllerFactory::GetErrorCodeForWebUIURL(
     return NSURLErrorNotConnectedToInternet;
   }
 
-  if (brave::GetWebUIIOSFactoryFunction(url)) {
+  if (luxxle::GetWebUIIOSFactoryFunction(url)) {
     return 0;
   }
 
@@ -89,8 +89,8 @@ std::unique_ptr<WebUIIOSController>
 BraveWebUIControllerFactory::CreateWebUIIOSControllerForURL(
     WebUIIOS* web_ui,
     const GURL& url) const {
-  brave::WebUIIOSFactoryFunction function =
-      brave::GetWebUIIOSFactoryFunction(url);
+  luxxle::WebUIIOSFactoryFunction function =
+      luxxle::GetWebUIIOSFactoryFunction(url);
   if (!function) {
     return ChromeWebUIIOSControllerFactory::CreateWebUIIOSControllerForURL(
         web_ui, url);

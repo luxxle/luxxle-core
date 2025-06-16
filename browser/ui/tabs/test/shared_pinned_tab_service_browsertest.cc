@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/tabs/shared_pinned_tab_service.h"
+#include "luxxle/browser/ui/tabs/shared_pinned_tab_service.h"
 
 #include <algorithm>
 #include <memory>
@@ -11,10 +11,10 @@
 #include "base/functional/bind.h"
 #include "base/run_loop.h"
 #include "base/test/bind.h"
-#include "brave/browser/ui/browser_commands.h"
-#include "brave/browser/ui/tabs/brave_tab_prefs.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/browser/ui/tabs/test/shared_pinned_tab_service_browsertest.h"
+#include "luxxle/browser/ui/browser_commands.h"
+#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/tabs/test/shared_pinned_tab_service_browsertest.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser_commands.h"
 #include "chrome/browser/ui/browser_list.h"
@@ -382,7 +382,7 @@ IN_PROC_BROWSER_TEST_F(SharedPinnedTabServiceBrowserTest, BringAllTabs) {
       tab_strip_model_1->GetWebContentsAt(0)));
 
   // When running "Bring all tabs to this window".
-  brave::BringAllTabs(browser_1);
+  luxxle::BringAllTabs(browser_1);
 
   // Then only the target browser should be left with shared contents.
   auto* browser_list = BrowserList::GetInstance();

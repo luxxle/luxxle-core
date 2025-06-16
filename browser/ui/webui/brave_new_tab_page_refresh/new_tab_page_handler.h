@@ -3,8 +3,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_NEW_TAB_PAGE_HANDLER_H_
-#define BRAVE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_NEW_TAB_PAGE_HANDLER_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_NEW_TAB_PAGE_HANDLER_H_
+#define LUXXLE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_NEW_TAB_PAGE_HANDLER_H_
 
 #include <memory>
 #include <string>
@@ -13,8 +13,8 @@
 #include "base/memory/raw_ptr.h"
 #include "base/memory/raw_ref.h"
 #include "base/memory/weak_ptr.h"
-#include "brave/browser/ui/webui/brave_new_tab_page_refresh/brave_new_tab_page.mojom.h"
-#include "brave/browser/ui/webui/brave_new_tab_page_refresh/update_observer.h"
+#include "luxxle/browser/ui/webui/brave_new_tab_page_refresh/brave_new_tab_page.mojom.h"
+#include "luxxle/browser/ui/webui/brave_new_tab_page_refresh/update_observer.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
 #include "mojo/public/cpp/bindings/pending_remote.h"
 #include "mojo/public/cpp/bindings/receiver.h"
@@ -192,4 +192,4 @@ class NewTabPageHandler : public mojom::NewTabPageHandler {
 
 }  // namespace brave_new_tab_page_refresh
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_NEW_TAB_PAGE_HANDLER_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_NEW_TAB_PAGE_HANDLER_H_

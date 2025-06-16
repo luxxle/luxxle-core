@@ -3,22 +3,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/sidebar/sidebar_items_scroll_view.h"
+#include "luxxle/browser/ui/views/sidebar/sidebar_items_scroll_view.h"
 
 #include <optional>
 #include <string>
 
 #include "base/functional/bind.h"
 #include "base/time/time.h"
-#include "brave/app/vector_icons/vector_icons.h"
-#include "brave/browser/ui/brave_browser.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/browser/ui/sidebar/sidebar_controller.h"
-#include "brave/browser/ui/sidebar/sidebar_service_factory.h"
-#include "brave/browser/ui/views/sidebar/sidebar_item_drag_context.h"
-#include "brave/browser/ui/views/sidebar/sidebar_item_view.h"
-#include "brave/browser/ui/views/sidebar/sidebar_items_contents_view.h"
-#include "brave/components/sidebar/browser/sidebar_service.h"
+#include "luxxle/app/vector_icons/vector_icons.h"
+#include "luxxle/browser/ui/brave_browser.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/sidebar/sidebar_controller.h"
+#include "luxxle/browser/ui/sidebar/sidebar_service_factory.h"
+#include "luxxle/browser/ui/views/sidebar/sidebar_item_drag_context.h"
+#include "luxxle/browser/ui/views/sidebar/sidebar_item_view.h"
+#include "luxxle/browser/ui/views/sidebar/sidebar_items_contents_view.h"
+#include "luxxle/components/sidebar/browser/sidebar_service.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "cc/paint/paint_flags.h"
 #include "chrome/browser/ui/browser_list.h"

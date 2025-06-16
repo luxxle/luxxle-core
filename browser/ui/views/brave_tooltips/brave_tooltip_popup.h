@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_BRAVE_TOOLTIPS_BRAVE_TOOLTIP_POPUP_H_
-#define BRAVE_BROWSER_UI_VIEWS_BRAVE_TOOLTIPS_BRAVE_TOOLTIP_POPUP_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_BRAVE_TOOLTIPS_BRAVE_TOOLTIP_POPUP_H_
+#define LUXXLE_BROWSER_UI_VIEWS_BRAVE_TOOLTIPS_BRAVE_TOOLTIP_POPUP_H_
 
 #include <cstdint>
 #include <memory>
@@ -12,8 +12,8 @@
 
 #include "base/memory/raw_ptr.h"
 #include "base/scoped_observation.h"
-#include "brave/browser/ui/brave_tooltips/brave_tooltip.h"
-#include "brave/browser/ui/views/brave_tooltips/brave_tooltip_view.h"
+#include "luxxle/browser/ui/brave_tooltips/brave_tooltip.h"
+#include "luxxle/browser/ui/views/brave_tooltips/brave_tooltip_view.h"
 #include "ui/base/metadata/metadata_impl_macros.h"
 #include "ui/display/display_observer.h"
 #include "ui/gfx/shadow_util.h"
@@ -143,4 +143,4 @@ class BraveTooltipPopup : public views::WidgetDelegateView,
 
 }  // namespace brave_tooltips
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_BRAVE_TOOLTIPS_BRAVE_TOOLTIP_POPUP_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_BRAVE_TOOLTIPS_BRAVE_TOOLTIP_POPUP_H_

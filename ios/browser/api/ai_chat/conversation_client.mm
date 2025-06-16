@@ -8,10 +8,10 @@
 #include "ai_chat.mojom.objc+private.h"
 #include "base/strings/sys_string_conversions.h"
 #include "brave/base/mac/conversions.h"
-#include "brave/components/ai_chat/core/browser/ai_chat_service.h"
-#include "brave/components/ai_chat/core/browser/conversation_handler.h"
-#include "brave/components/ai_chat/core/common/mojom/ai_chat.mojom-shared.h"
-#include "brave/components/ai_chat/core/common/mojom/ai_chat.mojom.h"
+#include "luxxle/components/ai_chat/core/browser/ai_chat_service.h"
+#include "luxxle/components/ai_chat/core/browser/conversation_handler.h"
+#include "luxxle/components/ai_chat/core/common/mojom/ai_chat.mojom-shared.h"
+#include "luxxle/components/ai_chat/core/common/mojom/ai_chat.mojom.h"
 #include "brave/ios/browser/api/ai_chat/ai_chat_delegate.h"
 #include "ios/chrome/common/channel_info.h"
 
@@ -65,7 +65,7 @@ void ConversationClient::OnSuggestedQuestionsChanged(
     const std::vector<std::string>& questions,
     mojom::SuggestionGenerationStatus status) {
   [bridge_
-      onSuggestedQuestionsChanged:brave::vector_to_ns(questions)
+      onSuggestedQuestionsChanged:luxxle::vector_to_ns(questions)
                            status:(AiChatSuggestionGenerationStatus)status];
 }
 

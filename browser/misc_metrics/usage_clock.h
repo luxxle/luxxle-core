@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_MISC_METRICS_USAGE_CLOCK_H_
-#define BRAVE_BROWSER_MISC_METRICS_USAGE_CLOCK_H_
+#ifndef LUXXLE_BROWSER_MISC_METRICS_USAGE_CLOCK_H_
+#define LUXXLE_BROWSER_MISC_METRICS_USAGE_CLOCK_H_
 
 #include "base/time/time.h"
 #include "chrome/browser/metrics/desktop_session_duration/desktop_session_duration_tracker.h"
@@ -53,4 +53,4 @@ class UsageClock : public metrics::DesktopSessionDurationTracker::Observer {
 
 }  // namespace misc_metrics
 
-#endif  // BRAVE_BROWSER_MISC_METRICS_USAGE_CLOCK_H_
+#endif  // LUXXLE_BROWSER_MISC_METRICS_USAGE_CLOCK_H_

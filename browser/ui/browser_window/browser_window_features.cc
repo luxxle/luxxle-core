@@ -7,17 +7,17 @@
 
 #include "base/memory/ptr_util.h"
 #include "base/notreached.h"
-#include "brave/browser/ui/brave_browser_window.h"
-#include "brave/browser/ui/sidebar/sidebar_controller.h"
-#include "brave/browser/ui/sidebar/sidebar_utils.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/browser/ui/tabs/split_view_browser_data.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
+#include "luxxle/browser/ui/brave_browser_window.h"
+#include "luxxle/browser/ui/sidebar/sidebar_controller.h"
+#include "luxxle/browser/ui/sidebar/sidebar_utils.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_window/public/browser_window_interface.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/browser/ui/brave_vpn/brave_vpn_controller.h"
+#include "luxxle/browser/ui/brave_vpn/brave_vpn_controller.h"
 #endif
 
 #if !BUILDFLAG(ENABLE_BRAVE_VPN)

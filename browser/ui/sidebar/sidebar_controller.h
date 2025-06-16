@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_SIDEBAR_SIDEBAR_CONTROLLER_H_
-#define BRAVE_BROWSER_UI_SIDEBAR_SIDEBAR_CONTROLLER_H_
+#ifndef LUXXLE_BROWSER_UI_SIDEBAR_SIDEBAR_CONTROLLER_H_
+#define LUXXLE_BROWSER_UI_SIDEBAR_SIDEBAR_CONTROLLER_H_
 
 #include <memory>
 #include <optional>
@@ -12,8 +12,8 @@
 
 #include "base/memory/raw_ptr.h"
 #include "base/scoped_observation.h"
-#include "brave/components/sidebar/browser/sidebar_item.h"
-#include "brave/components/sidebar/browser/sidebar_service.h"
+#include "luxxle/components/sidebar/browser/sidebar_item.h"
+#include "luxxle/components/sidebar/browser/sidebar_service.h"
 #include "ui/base/window_open_disposition.h"
 
 class Browser;
@@ -102,4 +102,4 @@ class SidebarController : public SidebarService::Observer {
 
 }  // namespace sidebar
 
-#endif  // BRAVE_BROWSER_UI_SIDEBAR_SIDEBAR_CONTROLLER_H_
+#endif  // LUXXLE_BROWSER_UI_SIDEBAR_SIDEBAR_CONTROLLER_H_

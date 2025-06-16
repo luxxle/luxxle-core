@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/net/url_context.h"
+#include "luxxle/browser/net/url_context.h"
 
 #include <memory>
 #include <string>
 
-#include "brave/browser/brave_shields/brave_shields_web_contents_observer.h"
-#include "brave/components/brave_shields/content/browser/brave_shields_util.h"
-#include "brave/components/brave_webtorrent/browser/buildflags/buildflags.h"
+#include "luxxle/browser/brave_shields/brave_shields_web_contents_observer.h"
+#include "luxxle/components/brave_shields/content/browser/brave_shields_util.h"
+#include "luxxle/components/brave_webtorrent/browser/buildflags/buildflags.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/browser/profiles/profile.h"
 #include "content/public/browser/browser_thread.h"
@@ -19,7 +19,7 @@
 #include "services/network/public/cpp/resource_request.h"
 #include "url/origin.h"
 
-namespace brave {
+namespace luxxle {
 
 namespace {
 
@@ -48,15 +48,15 @@ BraveRequestInfo::BraveRequestInfo(const GURL& url) : request_url(url) {}
 BraveRequestInfo::~BraveRequestInfo() = default;
 
 // static
-std::shared_ptr<brave::BraveRequestInfo> BraveRequestInfo::MakeCTX(
+std::shared_ptr<luxxle::BraveRequestInfo> BraveRequestInfo::MakeCTX(
     const network::ResourceRequest& request,
     content::FrameTreeNodeId frame_tree_node_id,
     uint64_t request_identifier,
     content::BrowserContext* browser_context,
-    std::shared_ptr<brave::BraveRequestInfo> old_ctx) {
+    std::shared_ptr<luxxle::BraveRequestInfo> old_ctx) {
   DCHECK_CURRENTLY_ON(content::BrowserThread::UI);
 
-  auto ctx = std::make_shared<brave::BraveRequestInfo>();
+  auto ctx = std::make_shared<luxxle::BraveRequestInfo>();
   ctx->request_identifier = request_identifier;
   ctx->method = request.method;
   ctx->request_url = request.url;

@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/onboarding/onboarding_tab_helper.h"
+#include "luxxle/browser/onboarding/onboarding_tab_helper.h"
 
 #include <string>
 #include <utility>
@@ -13,9 +13,9 @@
 #include "base/functional/bind.h"
 #include "base/functional/callback.h"
 #include "base/task/thread_pool.h"
-#include "brave/browser/brave_shields/brave_shields_tab_helper.h"
-#include "brave/browser/onboarding/pref_names.h"
-#include "brave/browser/ui/brave_browser_window.h"
+#include "luxxle/browser/brave_shields/brave_shields_tab_helper.h"
+#include "luxxle/browser/onboarding/pref_names.h"
+#include "luxxle/browser/ui/brave_browser_window.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/first_run/first_run.h"
 #include "chrome/browser/ui/browser_finder.h"

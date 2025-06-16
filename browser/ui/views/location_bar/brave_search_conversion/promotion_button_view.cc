@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/location_bar/brave_search_conversion/promotion_button_view.h"
+#include "luxxle/browser/ui/views/location_bar/brave_search_conversion/promotion_button_view.h"
 
 #include <utility>
 
 #include "base/functional/bind.h"
 #include "base/functional/callback.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/components/vector_icons/vector_icons.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/components/vector_icons/vector_icons.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "brave/grit/brave_theme_resources.h"
 #include "chrome/browser/ui/layout_constants.h"
@@ -179,7 +179,7 @@ void PromotionButtonView::AddChildViews() {
       kLeoCaratLastIcon, kColorSearchConversionButtonCaratRight, 14)));
   AddChildView(std::make_unique<CustomImageView>(
       ui::ImageModel::FromImageSkia(*rb.GetImageSkiaNamed(
-          IDR_BRAVE_SEARCH_CONVERSION_BUTTON_BRAVE_SEARCH_ICON))));
+          /* REMOVED: IDR_BRAVE_SEARCH_CONVERSION_BUTTON_BRAVE_SEARCH_ICON */ 0))));
 
   auto title_font_list =
       views::Label::GetDefaultFontList()

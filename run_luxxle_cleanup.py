@@ -8,6 +8,7 @@ import os
 import sys
 import subprocess
 import argparse
+import shutil
 from pathlib import Path
 
 def run_script(script_name, args=None):
@@ -68,10 +69,10 @@ def create_backup():
             dest = backup_dir / file_path
             dest.parent.mkdir(parents=True, exist_ok=True)
             try:
-                subprocess.run(['cp', str(source), str(dest)], check=True)
+                shutil.copy2(str(source), str(dest))
                 print(f"  ✓ Backed up {file_path}")
-            except subprocess.CalledProcessError:
-                print(f"  ⚠️  Failed to backup {file_path}")
+            except (OSError, shutil.Error) as e:
+                print(f"  ⚠️  Failed to backup {file_path}: {e}")
     
     print(f"📁 Backup created in {backup_dir}")
     return True

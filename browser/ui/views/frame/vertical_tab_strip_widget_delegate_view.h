@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_FRAME_VERTICAL_TAB_STRIP_WIDGET_DELEGATE_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_FRAME_VERTICAL_TAB_STRIP_WIDGET_DELEGATE_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_FRAME_VERTICAL_TAB_STRIP_WIDGET_DELEGATE_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_FRAME_VERTICAL_TAB_STRIP_WIDGET_DELEGATE_VIEW_H_
 
 #include <memory>
 
@@ -82,4 +82,4 @@ class VerticalTabStripWidgetDelegateView : public views::WidgetDelegateView,
       widget_observation_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_FRAME_VERTICAL_TAB_STRIP_WIDGET_DELEGATE_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_FRAME_VERTICAL_TAB_STRIP_WIDGET_DELEGATE_VIEW_H_

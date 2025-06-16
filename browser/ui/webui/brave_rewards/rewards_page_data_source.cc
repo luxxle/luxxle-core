@@ -3,17 +3,17 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/brave_rewards/rewards_page_data_source.h"
+#include "luxxle/browser/ui/webui/brave_rewards/rewards_page_data_source.h"
 
 #include <memory>
 
 #include "base/feature_list.h"
-#include "brave/browser/brave_rewards/rewards_util.h"
-#include "brave/components/brave_adaptive_captcha/server_util.h"
-#include "brave/components/brave_rewards/core/features.h"
-#include "brave/components/brave_rewards/resources/grit/brave_rewards_resources.h"
-#include "brave/components/brave_rewards/resources/grit/rewards_page_generated_map.h"
-#include "brave/components/constants/webui_url_constants.h"
+// REMOVED: #include "luxxle/browser/brave_rewards/.*"
+#include "luxxle/components/brave_adaptive_captcha/server_util.h"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/webui/favicon_source.h"
 #include "components/favicon_base/favicon_url_parser.h"
@@ -30,7 +30,7 @@ namespace brave_rewards {
 namespace {
 
 static constexpr webui::ResourcePath kResources[] = {
-    {"favicon.ico", IDR_BRAVE_REWARDS_FAVICON}};
+    {"favicon.ico", /* REMOVED: IDR_BRAVE_REWARDS_FAVICON */ 0}};
 
 static constexpr webui::LocalizedString kStrings[] = {
     {"adsBrowserUpgradeRequiredText",

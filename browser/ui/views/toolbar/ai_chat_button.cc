@@ -3,16 +3,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/toolbar/ai_chat_button.h"
+#include "luxxle/browser/ui/views/toolbar/ai_chat_button.h"
 
 #include <memory>
 
-#include "brave/browser/misc_metrics/profile_misc_metrics_service.h"
-#include "brave/browser/misc_metrics/profile_misc_metrics_service_factory.h"
-#include "brave/browser/ui/brave_pages.h"
-#include "brave/components/ai_chat/core/browser/ai_chat_metrics.h"
-#include "brave/components/ai_chat/core/common/pref_names.h"
-#include "brave/components/vector_icons/vector_icons.h"
+#include "luxxle/browser/misc_metrics/profile_misc_metrics_service.h"
+#include "luxxle/browser/misc_metrics/profile_misc_metrics_service_factory.h"
+#include "luxxle/browser/ui/brave_pages.h"
+#include "luxxle/components/ai_chat/core/browser/ai_chat_metrics.h"
+#include "luxxle/components/ai_chat/core/common/pref_names.h"
+#include "luxxle/components/vector_icons/vector_icons.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
@@ -76,7 +76,7 @@ AIChatButton::~AIChatButton() = default;
 
 void AIChatButton::ButtonPressed() {
   // We could use settings for opening full page or panel.
-  brave::ShowFullpageChat(base::to_address(browser_));
+  luxxle::ShowFullpageChat(base::to_address(browser_));
 
   auto* profile_metrics =
       misc_metrics::ProfileMiscMetricsServiceFactory::GetServiceForContext(

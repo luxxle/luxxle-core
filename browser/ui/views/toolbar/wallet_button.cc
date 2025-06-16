@@ -3,19 +3,19 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/views/toolbar/wallet_button.h"
+#include "luxxle/browser/ui/views/toolbar/wallet_button.h"
 
 #include <algorithm>
 #include <utility>
 
 #include "base/strings/string_number_conversions.h"
-#include "brave/browser/brave_wallet/brave_wallet_tab_helper.h"
-#include "brave/browser/ui/brave_icon_with_badge_image_source.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/components/brave_wallet/browser/pref_names.h"
-#include "brave/components/brave_wallet/common/common_utils.h"
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/components/vector_icons/vector_icons.h"
+// REMOVED: #include "luxxle/browser/brave_wallet/.*"
+#include "luxxle/browser/ui/brave_icon_with_badge_image_source.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/components/vector_icons/vector_icons.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_finder.h"
@@ -219,11 +219,11 @@ void WalletButton::UpdateImageAndText(bool activated) {
                                     color_provider->GetColor(color_id));
 
   size_t icon_size = std::max(icon.width(), icon.height());
-  auto badge_size = brave::BraveIconWithBadgeImageSource::GetMaxBadgeSize();
+  auto badge_size = luxxle::BraveIconWithBadgeImageSource::GetMaxBadgeSize();
   gfx::Size preferred_size(icon_size + badge_size.width(),
                            icon_size + badge_size.height() / 2);
 
-  auto image_source = std::make_unique<brave::BraveIconWithBadgeImageSource>(
+  auto image_source = std::make_unique<luxxle::BraveIconWithBadgeImageSource>(
       preferred_size,
       base::BindRepeating(&GetColorProviderForView,
                           weak_ptr_factory_.GetWeakPtr()),
@@ -233,7 +233,7 @@ void WalletButton::UpdateImageAndText(bool activated) {
 
   auto text = GetBadgeText();
   image_source->SetBadge(std::make_unique<IconWithBadgeImageSource::Badge>(
-      text, brave::kBadgeTextColor, brave::kBadgeNotificationBG));
+      text, luxxle::kBadgeTextColor, luxxle::kBadgeNotificationBG));
   SetImageModel(views::Button::STATE_NORMAL,
                 ui::ImageModel::FromImageSkia(
                     gfx::ImageSkia(std::move(image_source), preferred_size)));

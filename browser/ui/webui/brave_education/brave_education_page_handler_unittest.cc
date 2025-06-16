@@ -9,9 +9,9 @@
 
 #include "base/test/bind.h"
 #include "base/test/test_future.h"
-#include "brave/browser/ui/webui/brave_browser_command/brave_browser_command_handler.h"
-#include "brave/components/brave_education/education_urls.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
+#include "luxxle/browser/ui/webui/brave_browser_command/brave_browser_command_handler.h"
+#include "luxxle/components/brave_education/education_urls.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #include "chrome/test/base/scoped_testing_local_state.h"
 #include "chrome/test/base/testing_browser_process.h"
 #include "chrome/test/base/testing_profile.h"

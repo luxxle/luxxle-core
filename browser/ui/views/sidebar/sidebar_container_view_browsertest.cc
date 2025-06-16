@@ -3,17 +3,17 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/views/sidebar/sidebar_container_view.h"
+#include "luxxle/browser/ui/views/sidebar/sidebar_container_view.h"
 
-#include "brave/browser/ui/sidebar/sidebar_controller.h"
-#include "brave/browser/ui/sidebar/sidebar_service_factory.h"
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
-#include "brave/browser/ui/views/sidebar/sidebar_button_view.h"
-#include "brave/browser/ui/views/toolbar/brave_toolbar_view.h"
-#include "brave/browser/ui/views/toolbar/side_panel_button.h"
-#include "brave/components/constants/pref_names.h"
-#include "brave/components/sidebar/browser/sidebar_item.h"
-#include "brave/components/sidebar/browser/sidebar_service.h"
+#include "luxxle/browser/ui/sidebar/sidebar_controller.h"
+#include "luxxle/browser/ui/sidebar/sidebar_service_factory.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/sidebar/sidebar_button_view.h"
+#include "luxxle/browser/ui/views/toolbar/brave_toolbar_view.h"
+#include "luxxle/browser/ui/views/toolbar/side_panel_button.h"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/sidebar/browser/sidebar_item.h"
+#include "luxxle/components/sidebar/browser/sidebar_service.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser_window/public/browser_window_features.h"
 #include "chrome/browser/ui/views/frame/toolbar_button_provider.h"

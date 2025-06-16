@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/obsolete_system_confirm_dialog_view.h"
+#include "luxxle/browser/ui/views/obsolete_system_confirm_dialog_view.h"
 
 #include <memory>
 #include <utility>
@@ -20,7 +20,7 @@
 #include "ui/base/metadata/metadata_impl_macros.h"
 #include "ui/views/controls/label.h"
 
-namespace brave {
+namespace luxxle {
 
 void ShowObsoleteSystemConfirmDialog(base::OnceCallback<void(bool)> callback) {
   if (auto* browser = chrome::FindLastActive()) {

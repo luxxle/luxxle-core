@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_BRAVE_ADS_TEXT_NOTIFICATION_AD_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_BRAVE_ADS_TEXT_NOTIFICATION_AD_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_BRAVE_ADS_TEXT_NOTIFICATION_AD_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_BRAVE_ADS_TEXT_NOTIFICATION_AD_VIEW_H_
 
 #include <memory>
 
 #include "base/memory/raw_ptr.h"
-#include "brave/browser/ui/views/brave_ads/notification_ad_view.h"
+#include "luxxle/browser/ui/views/brave_ads/notification_ad_view.h"
 
 namespace views {
 class Label;
@@ -54,4 +54,4 @@ class TextNotificationAdView final : public NotificationAdView {
 
 }  // namespace brave_ads
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_BRAVE_ADS_TEXT_NOTIFICATION_AD_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_BRAVE_ADS_TEXT_NOTIFICATION_AD_VIEW_H_

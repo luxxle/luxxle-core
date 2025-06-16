@@ -3,22 +3,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_BROWSER_COMMANDS_H_
-#define BRAVE_BROWSER_UI_BROWSER_COMMANDS_H_
+#ifndef LUXXLE_BROWSER_UI_BROWSER_COMMANDS_H_
+#define LUXXLE_BROWSER_UI_BROWSER_COMMANDS_H_
 
 #include <optional>
 #include <vector>
 
-#include "brave/components/brave_wayback_machine/buildflags/buildflags.h"
-#include "brave/components/commander/common/buildflags/buildflags.h"
-#include "brave/components/playlist/common/buildflags/buildflags.h"
+#include "luxxle/components/brave_wayback_machine/buildflags/buildflags.h"
+#include "luxxle/components/commander/common/buildflags/buildflags.h"
+#include "luxxle/components/playlist/common/buildflags/buildflags.h"
 #include "chrome/browser/ui/tabs/tab_model.h"
 
 class Browser;
 class GURL;
 class Profile;
 
-namespace brave {
+namespace luxxle {
 
 bool HasSelectedURL(Browser* browser);
 void CleanAndCopySelectedURL(Browser* browser);
@@ -131,4 +131,4 @@ void SwapTabsInTile(Browser* browser);
 
 }  // namespace brave
 
-#endif  // BRAVE_BROWSER_UI_BROWSER_COMMANDS_H_
+#endif  // LUXXLE_BROWSER_UI_BROWSER_COMMANDS_H_

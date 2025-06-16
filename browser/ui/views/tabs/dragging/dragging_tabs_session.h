@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_TABS_DRAGGING_DRAGGING_TABS_SESSION_H_
-#define BRAVE_BROWSER_UI_VIEWS_TABS_DRAGGING_DRAGGING_TABS_SESSION_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_TABS_DRAGGING_DRAGGING_TABS_SESSION_H_
+#define LUXXLE_BROWSER_UI_VIEWS_TABS_DRAGGING_DRAGGING_TABS_SESSION_H_
 
 #include "chrome/browser/ui/views/tabs/dragging/dragging_tabs_session.h"
 
@@ -31,4 +31,4 @@ class DraggingTabsSession : public DraggingTabsSessionChromium {
   bool is_showing_vertical_tabs_ = false;
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_TABS_DRAGGING_DRAGGING_TABS_SESSION_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_TABS_DRAGGING_DRAGGING_TABS_SESSION_H_

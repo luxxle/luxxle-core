@@ -3,11 +3,11 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/brave_wallet/android/android_wallet_page_handler.h"
+#include "luxxle/browser/ui/webui/brave_wallet/android/android_wallet_page_handler.h"
 
 #include <utility>
 
-#include "brave/browser/brave_wallet/brave_wallet_provider_delegate_impl_helper.h"
+// REMOVED: #include "luxxle/browser/brave_wallet/.*"
 
 AndroidWalletPageHandler::AndroidWalletPageHandler(
     mojo::PendingReceiver<brave_wallet::mojom::PageHandler> receiver,

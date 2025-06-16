@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_RENDERER_BRAVE_WALLET_BRAVE_WALLET_RENDER_FRAME_OBSERVER_P3A_UTIL_H_
-#define BRAVE_RENDERER_BRAVE_WALLET_BRAVE_WALLET_RENDER_FRAME_OBSERVER_P3A_UTIL_H_
+#ifndef LUXXLE_RENDERER_BRAVE_WALLET_BRAVE_WALLET_RENDER_FRAME_OBSERVER_P3A_UTIL_H_
+#define LUXXLE_RENDERER_BRAVE_WALLET_BRAVE_WALLET_RENDER_FRAME_OBSERVER_P3A_UTIL_H_
 
-#include "brave/common/brave_renderer_configuration.mojom.h"
-#include "brave/components/brave_wallet/common/brave_wallet.mojom.h"
+#include "luxxle/common/brave_renderer_configuration.mojom.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
 #include "content/public/renderer/render_frame.h"
 #include "mojo/public/cpp/bindings/remote.h"
 
@@ -26,7 +26,7 @@ class BraveWalletRenderFrameObserverP3AUtil {
   ~BraveWalletRenderFrameObserverP3AUtil();
 
   void ReportJSProviders(content::RenderFrame* render_frame,
-                         const brave::mojom::DynamicParams& dynamic_params);
+                         const luxxle::mojom::DynamicParams& dynamic_params);
 
  private:
   bool EnsureConnected(content::RenderFrame* render_frame);
@@ -42,4 +42,4 @@ class BraveWalletRenderFrameObserverP3AUtil {
 
 }  // namespace brave_wallet
 
-#endif  // BRAVE_RENDERER_BRAVE_WALLET_BRAVE_WALLET_RENDER_FRAME_OBSERVER_P3A_UTIL_H_
+#endif  // LUXXLE_RENDERER_BRAVE_WALLET_BRAVE_WALLET_RENDER_FRAME_OBSERVER_P3A_UTIL_H_

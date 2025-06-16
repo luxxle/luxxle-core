@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_PROFILES_BRAVE_RENDERER_UPDATER_FACTORY_H_
-#define BRAVE_BROWSER_PROFILES_BRAVE_RENDERER_UPDATER_FACTORY_H_
+#ifndef LUXXLE_BROWSER_PROFILES_BRAVE_RENDERER_UPDATER_FACTORY_H_
+#define LUXXLE_BROWSER_PROFILES_BRAVE_RENDERER_UPDATER_FACTORY_H_
 
 #include <memory>
 
@@ -45,4 +45,4 @@ class BraveRendererUpdaterFactory : public ProfileKeyedServiceFactory {
   ~BraveRendererUpdaterFactory() override;
 };
 
-#endif  // BRAVE_BROWSER_PROFILES_BRAVE_RENDERER_UPDATER_FACTORY_H_
+#endif  // LUXXLE_BROWSER_PROFILES_BRAVE_RENDERER_UPDATER_FACTORY_H_

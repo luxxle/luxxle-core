@@ -3,14 +3,14 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_SPEEDREADER_SPEEDREADER_TOOLBAR_DATA_HANDLER_IMPL_H_
-#define BRAVE_BROWSER_UI_WEBUI_SPEEDREADER_SPEEDREADER_TOOLBAR_DATA_HANDLER_IMPL_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_SPEEDREADER_SPEEDREADER_TOOLBAR_DATA_HANDLER_IMPL_H_
+#define LUXXLE_BROWSER_UI_WEBUI_SPEEDREADER_SPEEDREADER_TOOLBAR_DATA_HANDLER_IMPL_H_
 
 #include "base/scoped_observation.h"
-#include "brave/browser/speedreader/speedreader_tab_helper.h"
-#include "brave/components/speedreader/common/speedreader_toolbar.mojom.h"
-#include "brave/components/speedreader/speedreader_service.h"
-#include "brave/components/speedreader/tts_player.h"
+#include "luxxle/browser/speedreader/speedreader_tab_helper.h"
+#include "luxxle/components/speedreader/common/speedreader_toolbar.mojom.h"
+#include "luxxle/components/speedreader/speedreader_service.h"
+#include "luxxle/components/speedreader/tts_player.h"
 #include "chrome/browser/themes/theme_service.h"
 #include "chrome/browser/themes/theme_service_observer.h"
 #include "chrome/browser/ui/browser_tab_strip_tracker.h"
@@ -135,4 +135,4 @@ class SpeedreaderToolbarDataHandlerImpl
   base::WeakPtrFactory<SpeedreaderToolbarDataHandlerImpl> weak_factory_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_SPEEDREADER_SPEEDREADER_TOOLBAR_DATA_HANDLER_IMPL_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_SPEEDREADER_SPEEDREADER_TOOLBAR_DATA_HANDLER_IMPL_H_

@@ -3,12 +3,12 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_IOS_BROWSER_UI_WEBUI_ADS_ADS_INTERNALS_UI_H_
-#define BRAVE_IOS_BROWSER_UI_WEBUI_ADS_ADS_INTERNALS_UI_H_
+#ifndef LUXXLE_IOS_BROWSER_UI_WEBUI_ADS_ADS_INTERNALS_UI_H_
+#define LUXXLE_IOS_BROWSER_UI_WEBUI_ADS_ADS_INTERNALS_UI_H_
 
 #include "base/memory/weak_ptr.h"
-#include "brave/components/brave_ads/core/browser/internals/ads_internals_handler.h"
-#include "brave/components/services/bat_ads/public/interfaces/bat_ads.mojom.h"
+// REMOVED: #include "luxxle/components/brave_ads/.*"
+#include "luxxle/components/services/bat_ads/public/interfaces/bat_ads.mojom.h"
 #include "ios/web/public/webui/web_ui_ios_controller.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
 #include "url/gurl.h"
@@ -37,4 +37,4 @@ class AdsInternalsUI : public web::WebUIIOSController {
   base::WeakPtrFactory<AdsInternalsUI> weak_ptr_factory_{this};
 };
 
-#endif  // BRAVE_IOS_BROWSER_UI_WEBUI_ADS_ADS_INTERNALS_UI_H_
+#endif  // LUXXLE_IOS_BROWSER_UI_WEBUI_ADS_ADS_INTERNALS_UI_H_

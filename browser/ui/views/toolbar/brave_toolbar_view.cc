@@ -3,27 +3,27 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/toolbar/brave_toolbar_view.h"
+#include "luxxle/browser/ui/views/toolbar/brave_toolbar_view.h"
 
 #include <algorithm>
 #include <memory>
 #include <utility>
 
 #include "base/functional/bind.h"
-#include "brave/app/brave_command_ids.h"
-#include "brave/browser/ai_chat/ai_chat_utils.h"
-#include "brave/browser/brave_wallet/brave_wallet_context_utils.h"
-#include "brave/browser/ui/tabs/brave_tab_prefs.h"
-#include "brave/browser/ui/views/tabs/vertical_tab_utils.h"
-#include "brave/browser/ui/views/toolbar/ai_chat_button.h"
-#include "brave/browser/ui/views/toolbar/bookmark_button.h"
-#include "brave/browser/ui/views/toolbar/side_panel_button.h"
-#include "brave/browser/ui/views/toolbar/wallet_button.h"
-#include "brave/components/ai_chat/core/common/pref_names.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
-#include "brave/components/brave_wallet/browser/pref_names.h"
-#include "brave/components/brave_wallet/common/common_utils.h"
-#include "brave/components/constants/pref_names.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/browser/ai_chat/ai_chat_utils.h"
+// REMOVED: #include "luxxle/browser/brave_wallet/.*"
+#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/views/tabs/vertical_tab_utils.h"
+#include "luxxle/browser/ui/views/toolbar/ai_chat_button.h"
+#include "luxxle/browser/ui/views/toolbar/bookmark_button.h"
+#include "luxxle/browser/ui/views/toolbar/side_panel_button.h"
+#include "luxxle/browser/ui/views/toolbar/wallet_button.h"
+#include "luxxle/components/ai_chat/core/common/pref_names.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/constants/pref_names.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/defaults.h"
@@ -43,9 +43,9 @@
 #include "ui/views/window/hit_test_utils.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/browser/brave_vpn/brave_vpn_service_factory.h"
-#include "brave/browser/ui/views/toolbar/brave_vpn_button.h"
-#include "brave/components/brave_vpn/common/pref_names.h"
+// REMOVED: #include "luxxle/browser/brave_vpn/.*"
+#include "luxxle/browser/ui/views/toolbar/brave_vpn_button.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #endif
 
 #if BUILDFLAG(IS_LINUX)

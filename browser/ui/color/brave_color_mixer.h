@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_COLOR_BRAVE_COLOR_MIXER_H_
-#define BRAVE_BROWSER_UI_COLOR_BRAVE_COLOR_MIXER_H_
+#ifndef LUXXLE_BROWSER_UI_COLOR_BRAVE_COLOR_MIXER_H_
+#define LUXXLE_BROWSER_UI_COLOR_BRAVE_COLOR_MIXER_H_
 
 #include "third_party/skia/include/core/SkColor.h"
 #include "ui/color/color_provider_key.h"
@@ -28,4 +28,4 @@ void AddBraveOmniboxPrivateThemeColorMixer(ui::ColorProvider* provider,
                                            const ui::ColorProviderKey& key);
 void AddBravifiedTabStripColorMixer(ui::ColorProvider* provider,
                                     const ui::ColorProviderKey& key);
-#endif  // BRAVE_BROWSER_UI_COLOR_BRAVE_COLOR_MIXER_H_
+#endif  // LUXXLE_BROWSER_UI_COLOR_BRAVE_COLOR_MIXER_H_

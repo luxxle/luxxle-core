@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_ACTION_DIALOGS_H_
-#define BRAVE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_ACTION_DIALOGS_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_ACTION_DIALOGS_H_
+#define LUXXLE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_ACTION_DIALOGS_H_
 
 #include <memory>
 #include <string>
@@ -12,9 +12,9 @@
 #include <variant>
 #include <vector>
 
-#include "brave/browser/ui/views/playlist/selectable_list_view.h"
-#include "brave/components/playlist/browser/playlist_tab_helper_observer.h"
-#include "brave/components/playlist/common/mojom/playlist.mojom.h"
+#include "luxxle/browser/ui/views/playlist/selectable_list_view.h"
+#include "luxxle/components/playlist/browser/playlist_tab_helper_observer.h"
+#include "luxxle/components/playlist/common/mojom/playlist.mojom.h"
 #include "chrome/browser/ui/views/frame/browser_view.h"
 #include "components/constrained_window/constrained_window_views.h"
 #include "ui/base/metadata/metadata_header_macros.h"
@@ -181,4 +181,4 @@ class PlaylistRemovePlaylistConfirmDialog : public PlaylistActionDialog {
   const std::string playlist_id_;
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_ACTION_DIALOGS_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_ACTION_DIALOGS_H_

@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/brave_vpn/brave_vpn_localized_string_provider.h"
+#include "luxxle/browser/ui/webui/brave_vpn/brave_vpn_localized_string_provider.h"
 
 #include "base/no_destructor.h"
 #include "components/grit/brave_components_strings.h"

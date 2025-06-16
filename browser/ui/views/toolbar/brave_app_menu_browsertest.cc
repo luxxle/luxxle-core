@@ -6,12 +6,12 @@
 #include <optional>
 
 #include "base/test/scoped_feature_list.h"
-#include "brave/app/brave_command_ids.h"
-#include "brave/browser/themes/brave_dark_mode_utils.h"
-#include "brave/browser/ui/brave_browser_command_controller.h"
-#include "brave/browser/ui/views/toolbar/brave_browser_app_menu_button.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
-#include "brave/components/skus/common/features.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/browser/themes/brave_dark_mode_utils.h"
+#include "luxxle/browser/ui/brave_browser_command_controller.h"
+#include "luxxle/browser/ui/views/toolbar/brave_browser_app_menu_button.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#include "luxxle/components/skus/common/features.h"
 #include "chrome/browser/ui/toolbar/app_menu_icon_controller.h"
 #include "chrome/browser/ui/views/frame/browser_view.h"
 #include "chrome/browser/ui/views/toolbar/app_menu.h"
@@ -28,9 +28,9 @@
 #include "ui/views/view_utils.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/browser/brave_vpn/brave_vpn_service_factory.h"
-#include "brave/components/brave_vpn/browser/brave_vpn_service.h"
-#include "brave/components/brave_vpn/common/features.h"
+// REMOVED: #include "luxxle/browser/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #endif
 
 class BraveAppMenuBrowserTest : public InProcessBrowserTest {

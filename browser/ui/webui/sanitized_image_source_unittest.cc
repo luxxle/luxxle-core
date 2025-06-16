@@ -13,7 +13,7 @@
 #include "base/memory/ref_counted_memory.h"
 #include "base/path_service.h"
 #include "base/test/bind.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/test/base/chrome_test_utils.h"
 #include "chrome/test/base/testing_profile.h"
@@ -31,7 +31,7 @@ constexpr char kPaddedImage[] = "padded.png.pad";
 constexpr char kInvalidImage[] = "normal.js";
 
 std::string LoadTestFile(const std::string& name) {
-  base::FilePath path = base::PathService::CheckedGet(brave::DIR_TEST_DATA);
+  base::FilePath path = base::PathService::CheckedGet(luxxle::DIR_TEST_DATA);
   path = path.AppendASCII(name);
 
   base::ScopedAllowBlockingForTesting allow_blocking;

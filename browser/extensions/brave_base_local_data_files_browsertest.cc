@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/extensions/brave_base_local_data_files_browsertest.h"
+#include "luxxle/browser/extensions/brave_base_local_data_files_browsertest.h"
 
 #include "base/path_service.h"
 #include "base/run_loop.h"
 #include "base/task/thread_pool.h"
 #include "base/test/thread_test_helper.h"
-#include "brave/browser/brave_browser_process.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "chrome/browser/extensions/extension_browsertest.h"
 #include "content/public/browser/browser_task_traits.h"
 #include "content/public/browser/browser_thread.h"
@@ -35,7 +35,7 @@ void BaseLocalDataFilesBrowserTest::PreRunTestOnMainThread() {
 void BaseLocalDataFilesBrowserTest::GetTestDataDir(
     base::FilePath* test_data_dir) {
   base::ScopedAllowBlockingForTesting allow_blocking;
-  base::PathService::Get(brave::DIR_TEST_DATA, test_data_dir);
+  base::PathService::Get(luxxle::DIR_TEST_DATA, test_data_dir);
 }
 
 void BaseLocalDataFilesBrowserTest::MaybeInitEmbeddedTestServer() {

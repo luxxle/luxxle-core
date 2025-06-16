@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_VPN_BRAVE_VPN_HANDLER_H_
-#define BRAVE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_VPN_BRAVE_VPN_HANDLER_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_VPN_BRAVE_VPN_HANDLER_H_
+#define LUXXLE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_VPN_BRAVE_VPN_HANDLER_H_
 
 #include <string>
 
 #include "base/memory/raw_ptr.h"
 #include "base/memory/weak_ptr.h"
-#include "brave/components/brave_vpn/browser/brave_vpn_service_observer.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/webui/settings/settings_page_ui_handler.h"
 #include "components/prefs/pref_change_registrar.h"
@@ -44,4 +44,4 @@ class BraveVpnHandler : public settings::SettingsPageUIHandler,
   base::WeakPtrFactory<BraveVpnHandler> weak_factory_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_VPN_BRAVE_VPN_HANDLER_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_VPN_BRAVE_VPN_HANDLER_H_

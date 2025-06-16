@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_NET_BRAVE_REDUCE_LANGUAGE_NETWORK_DELEGATE_HELPER_H_
-#define BRAVE_BROWSER_NET_BRAVE_REDUCE_LANGUAGE_NETWORK_DELEGATE_HELPER_H_
+#ifndef LUXXLE_BROWSER_NET_BRAVE_REDUCE_LANGUAGE_NETWORK_DELEGATE_HELPER_H_
+#define LUXXLE_BROWSER_NET_BRAVE_REDUCE_LANGUAGE_NETWORK_DELEGATE_HELPER_H_
 
 #include <memory>
 #include <string>
 
-#include "brave/browser/net/url_context.h"
+#include "luxxle/browser/net/url_context.h"
 #include "url/gurl.h"
 
 class HostContentSettingsMap;
@@ -22,7 +22,7 @@ class HttpRequestHeaders;
 class URLRequest;
 }  // namespace net
 
-namespace brave {
+namespace luxxle {
 
 std::string FarbleAcceptLanguageHeader(
     const GURL& tab_origin,
@@ -36,4 +36,4 @@ int OnBeforeStartTransaction_ReduceLanguageWork(
 
 }  // namespace brave
 
-#endif  // BRAVE_BROWSER_NET_BRAVE_REDUCE_LANGUAGE_NETWORK_DELEGATE_HELPER_H_
+#endif  // LUXXLE_BROWSER_NET_BRAVE_REDUCE_LANGUAGE_NETWORK_DELEGATE_HELPER_H_

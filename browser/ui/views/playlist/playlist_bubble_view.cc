@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/playlist/playlist_bubble_view.h"
+#include "luxxle/browser/ui/views/playlist/playlist_bubble_view.h"
 
 #include <utility>
 
-#include "brave/browser/ui/views/playlist/playlist_action_icon_view.h"
-#include "brave/components/playlist/browser/playlist_tab_helper.h"
+#include "luxxle/browser/ui/views/playlist/playlist_action_icon_view.h"
+#include "luxxle/components/playlist/browser/playlist_tab_helper.h"
 #include "ui/base/metadata/metadata_impl_macros.h"
 #include "ui/views/bubble/bubble_border.h"
 #include "ui/views/view_utils.h"

@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_NET_BRAVE_AD_BLOCK_CSP_NETWORK_DELEGATE_HELPER_H_
-#define BRAVE_BROWSER_NET_BRAVE_AD_BLOCK_CSP_NETWORK_DELEGATE_HELPER_H_
+#ifndef LUXXLE_BROWSER_NET_BRAVE_AD_BLOCK_CSP_NETWORK_DELEGATE_HELPER_H_
+#define LUXXLE_BROWSER_NET_BRAVE_AD_BLOCK_CSP_NETWORK_DELEGATE_HELPER_H_
 
 #include <memory>
 
 #include "base/memory/scoped_refptr.h"
-#include "brave/browser/net/url_context.h"
+#include "luxxle/browser/net/url_context.h"
 
 namespace net {
 class HttpResponseHeaders;
@@ -17,15 +17,15 @@ class HttpResponseHeaders;
 
 class GURL;
 
-namespace brave {
+namespace luxxle {
 
 int OnHeadersReceived_AdBlockCspWork(
     const net::HttpResponseHeaders* original_response_headers,
     scoped_refptr<net::HttpResponseHeaders>* override_response_headers,
     GURL* allowed_unsafe_redirect_url,
-    const brave::ResponseCallback& next_callback,
-    std::shared_ptr<brave::BraveRequestInfo> ctx);
+    const luxxle::ResponseCallback& next_callback,
+    std::shared_ptr<luxxle::BraveRequestInfo> ctx);
 
 }  // namespace brave
 
-#endif  // BRAVE_BROWSER_NET_BRAVE_AD_BLOCK_CSP_NETWORK_DELEGATE_HELPER_H_
+#endif  // LUXXLE_BROWSER_NET_BRAVE_AD_BLOCK_CSP_NETWORK_DELEGATE_HELPER_H_

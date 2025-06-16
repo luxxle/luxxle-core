@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BASE_TEST_LAUNCHER_TEAMCITY_SERVICE_MESSAGES_H_
-#define BRAVE_BASE_TEST_LAUNCHER_TEAMCITY_SERVICE_MESSAGES_H_
+#ifndef LUXXLE_BASE_TEST_LAUNCHER_TEAMCITY_SERVICE_MESSAGES_H_
+#define LUXXLE_BASE_TEST_LAUNCHER_TEAMCITY_SERVICE_MESSAGES_H_
 
 #include <ostream>
 #include <sstream>
@@ -57,4 +57,4 @@ class TeamcityServiceMessages {
 
 }  // namespace base
 
-#endif  // BRAVE_BASE_TEST_LAUNCHER_TEAMCITY_SERVICE_MESSAGES_H_
+#endif  // LUXXLE_BASE_TEST_LAUNCHER_TEAMCITY_SERVICE_MESSAGES_H_

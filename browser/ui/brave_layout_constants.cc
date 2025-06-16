@@ -3,10 +3,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/brave_layout_constants.h"
+#include "luxxle/browser/ui/brave_layout_constants.h"
 
-#include "brave/browser/ui/tabs/brave_tab_layout_constants.h"
-#include "brave/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/tabs/brave_tab_layout_constants.h"
+#include "luxxle/browser/ui/tabs/features.h"
 #include "chrome/browser/ui/layout_constants.h"
 #include "ui/base/pointer/touch_ui_controller.h"
 

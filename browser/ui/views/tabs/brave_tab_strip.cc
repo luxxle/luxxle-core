@@ -3,28 +3,28 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/tabs/brave_tab_strip.h"
+#include "luxxle/browser/ui/views/tabs/brave_tab_strip.h"
 
 #include <memory>
 #include <optional>
 #include <utility>
 #include <vector>
 
-#include "brave/browser/themes/brave_dark_mode_utils.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/browser/ui/tabs/brave_tab_prefs.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/browser/ui/tabs/shared_pinned_tab_service.h"
-#include "brave/browser/ui/tabs/shared_pinned_tab_service_factory.h"
-#include "brave/browser/ui/tabs/split_view_browser_data.h"
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
-#include "brave/browser/ui/views/frame/vertical_tab_strip_region_view.h"
-#include "brave/browser/ui/views/frame/vertical_tab_strip_widget_delegate_view.h"
-#include "brave/browser/ui/views/tabs/brave_compound_tab_container.h"
-#include "brave/browser/ui/views/tabs/brave_tab.h"
-#include "brave/browser/ui/views/tabs/brave_tab_container.h"
-#include "brave/browser/ui/views/tabs/brave_tab_hover_card_controller.h"
-#include "brave/browser/ui/views/tabs/vertical_tab_utils.h"
+#include "luxxle/browser/themes/brave_dark_mode_utils.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/tabs/shared_pinned_tab_service.h"
+#include "luxxle/browser/ui/tabs/shared_pinned_tab_service_factory.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/frame/vertical_tab_strip_region_view.h"
+#include "luxxle/browser/ui/views/frame/vertical_tab_strip_widget_delegate_view.h"
+#include "luxxle/browser/ui/views/tabs/brave_compound_tab_container.h"
+#include "luxxle/browser/ui/views/tabs/brave_tab.h"
+#include "luxxle/browser/ui/views/tabs/brave_tab_container.h"
+#include "luxxle/browser/ui/views/tabs/brave_tab_hover_card_controller.h"
+#include "luxxle/browser/ui/views/tabs/vertical_tab_utils.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/themes/theme_service.h"
 #include "chrome/browser/themes/theme_service_factory.h"

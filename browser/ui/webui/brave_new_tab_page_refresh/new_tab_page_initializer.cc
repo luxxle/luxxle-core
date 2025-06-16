@@ -3,22 +3,22 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/brave_new_tab_page_refresh/new_tab_page_initializer.h"
+#include "luxxle/browser/ui/webui/brave_new_tab_page_refresh/new_tab_page_initializer.h"
 
 #include <memory>
 #include <utility>
 
 #include "base/feature_list.h"
 #include "base/strings/strcat.h"
-#include "brave/browser/brave_rewards/rewards_util.h"
-#include "brave/browser/new_tab/new_tab_shows_options.h"
-#include "brave/browser/ntp_background/brave_ntp_custom_background_service_factory.h"
-#include "brave/browser/resources/brave_new_tab_page_refresh/grit/brave_new_tab_page_refresh_generated_map.h"
-#include "brave/browser/ui/brave_ui_features.h"
-#include "brave/browser/ui/webui/brave_webui_source.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/components/ntp_background_images/browser/ntp_custom_images_source.h"
+// REMOVED: #include "luxxle/browser/brave_rewards/.*"
+#include "luxxle/browser/new_tab/new_tab_shows_options.h"
+#include "luxxle/browser/ntp_background/brave_ntp_custom_background_service_factory.h"
+#include "luxxle/browser/resources/brave_new_tab_page_refresh/grit/brave_new_tab_page_refresh_generated_map.h"
+#include "luxxle/browser/ui/brave_ui_features.h"
+#include "luxxle/browser/ui/webui/brave_webui_source.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/components/ntp_background_images/browser/ntp_custom_images_source.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/themes/theme_syncable_service.h"
 #include "chrome/browser/ui/webui/favicon_source.h"
@@ -37,7 +37,7 @@
 #include "ui/webui/webui_util.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/components/brave_vpn/common/brave_vpn_utils.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #endif
 
 namespace brave_new_tab_page_refresh {
@@ -51,11 +51,11 @@ void NewTabPageInitializer::Initialize() {
   source_ = content::WebUIDataSource::CreateAndAdd(GetProfile(),
                                                    chrome::kChromeUINewTabHost);
 
-  if (brave::ShouldNewTabShowBlankpage(GetProfile())) {
-    source_->SetDefaultResource(IDR_BRAVE_BLANK_NEW_TAB_HTML);
+  if (luxxle::ShouldNewTabShowBlankpage(GetProfile())) {
+    source_->SetDefaultResource(/* REMOVED: IDR_BRAVE_BLANK_NEW_TAB_HTML */ 0);
   } else {
     webui::SetupWebUIDataSource(source_, kBraveNewTabPageRefreshGenerated,
-                                IDR_BRAVE_NEW_TAB_PAGE_HTML);
+                                /* REMOVED: IDR_BRAVE_NEW_TAB_PAGE_HTML */ 0);
   }
 
   AddBackgroundColorToSource(source_, web_ui_->GetWebContents());

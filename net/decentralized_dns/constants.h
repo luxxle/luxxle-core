@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_NET_DECENTRALIZED_DNS_CONSTANTS_H_
-#define BRAVE_NET_DECENTRALIZED_DNS_CONSTANTS_H_
+#ifndef LUXXLE_NET_DECENTRALIZED_DNS_CONSTANTS_H_
+#define LUXXLE_NET_DECENTRALIZED_DNS_CONSTANTS_H_
 
 #include <optional>
 #include <string>
@@ -28,4 +28,4 @@ NET_EXPORT std::string GetUnstoppableDomainSuffixFullList();
 
 }  // namespace decentralized_dns
 
-#endif  // BRAVE_NET_DECENTRALIZED_DNS_CONSTANTS_H_
+#endif  // LUXXLE_NET_DECENTRALIZED_DNS_CONSTANTS_H_

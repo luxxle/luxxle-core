@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_EXTENSIONS_BRAVE_EXTENSION_MENU_ITEM_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_EXTENSIONS_BRAVE_EXTENSION_MENU_ITEM_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_EXTENSIONS_BRAVE_EXTENSION_MENU_ITEM_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_EXTENSIONS_BRAVE_EXTENSION_MENU_ITEM_VIEW_H_
 
 #include <memory>
 
@@ -34,4 +34,4 @@ class BraveExtensionMenuItemView : public ExtensionMenuItemView {
   void UpdatePinButtonIcon();
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_EXTENSIONS_BRAVE_EXTENSION_MENU_ITEM_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_EXTENSIONS_BRAVE_EXTENSION_MENU_ITEM_VIEW_H_

@@ -3,8 +3,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_PRIVATE_NEW_TAB_PAGE_BRAVE_PRIVATE_NEW_TAB_PAGE_HANDLER_H_
-#define BRAVE_BROWSER_UI_WEBUI_PRIVATE_NEW_TAB_PAGE_BRAVE_PRIVATE_NEW_TAB_PAGE_HANDLER_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_PRIVATE_NEW_TAB_PAGE_BRAVE_PRIVATE_NEW_TAB_PAGE_HANDLER_H_
+#define LUXXLE_BROWSER_UI_WEBUI_PRIVATE_NEW_TAB_PAGE_BRAVE_PRIVATE_NEW_TAB_PAGE_HANDLER_H_
 
 #include <stdint.h>
 
@@ -13,9 +13,9 @@
 
 #include "base/scoped_observation.h"
 #include "base/timer/timer.h"
-#include "brave/components/brave_private_new_tab_ui/common/brave_private_new_tab.mojom.h"
-#include "brave/components/tor/buildflags/buildflags.h"
-#include "brave/components/tor/tor_launcher_observer.h"
+#include "luxxle/components/brave_private_new_tab_ui/common/brave_private_new_tab.mojom.h"
+#include "luxxle/components/tor/buildflags/buildflags.h"
+#include "luxxle/components/tor/tor_launcher_observer.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
 #include "mojo/public/cpp/bindings/pending_remote.h"
 #include "mojo/public/cpp/bindings/receiver.h"
@@ -83,4 +83,4 @@ class BravePrivateNewTabPageHandler
   mojo::Receiver<brave_private_new_tab::mojom::PageHandler> receiver_;
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_PRIVATE_NEW_TAB_PAGE_BRAVE_PRIVATE_NEW_TAB_PAGE_HANDLER_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_PRIVATE_NEW_TAB_PAGE_BRAVE_PRIVATE_NEW_TAB_PAGE_HANDLER_H_

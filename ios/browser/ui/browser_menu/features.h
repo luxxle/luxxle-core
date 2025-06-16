@@ -3,16 +3,16 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_IOS_BROWSER_UI_BROWSER_MENU_FEATURES_H_
-#define BRAVE_IOS_BROWSER_UI_BROWSER_MENU_FEATURES_H_
+#ifndef LUXXLE_IOS_BROWSER_UI_BROWSER_MENU_FEATURES_H_
+#define LUXXLE_IOS_BROWSER_UI_BROWSER_MENU_FEATURES_H_
 
 #import "base/feature_list.h"
 
-namespace brave::features {
+namespace luxxle::features {
 
 // Whether or not to use the new browser menu UI
 BASE_DECLARE_FEATURE(kModernBrowserMenuEnabled);
 
-}  // namespace brave::features
+}  // namespace luxxle::features
 
-#endif  // BRAVE_IOS_BROWSER_UI_BROWSER_MENU_FEATURES_H_
+#endif  // LUXXLE_IOS_BROWSER_UI_BROWSER_MENU_FEATURES_H_

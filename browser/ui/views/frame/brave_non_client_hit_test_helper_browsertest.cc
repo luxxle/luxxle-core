@@ -4,7 +4,7 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 #include "base/test/scoped_feature_list.h"
-#include "brave/browser/ui/browser_commands.h"
+#include "luxxle/browser/ui/browser_commands.h"
 #include "chrome/browser/ui/views/frame/browser_non_client_frame_view.h"
 #include "chrome/browser/ui/views/frame/browser_view.h"
 #include "chrome/browser/ui/views/toolbar/reload_button.h"

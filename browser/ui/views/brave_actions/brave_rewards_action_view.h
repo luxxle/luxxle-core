@@ -3,8 +3,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_BRAVE_ACTIONS_BRAVE_REWARDS_ACTION_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_BRAVE_ACTIONS_BRAVE_REWARDS_ACTION_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_BRAVE_ACTIONS_BRAVE_REWARDS_ACTION_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_BRAVE_ACTIONS_BRAVE_REWARDS_ACTION_VIEW_H_
 
 #include <memory>
 #include <string>
@@ -12,12 +12,12 @@
 
 #include "base/memory/raw_ptr.h"
 #include "base/memory/weak_ptr.h"
-#include "brave/browser/brave_rewards/rewards_tab_helper.h"
-#include "brave/browser/ui/brave_rewards/rewards_panel_coordinator.h"
-#include "brave/components/brave_rewards/content/rewards_notification_service.h"
-#include "brave/components/brave_rewards/content/rewards_notification_service_observer.h"
-#include "brave/components/brave_rewards/content/rewards_service.h"
-#include "brave/components/brave_rewards/content/rewards_service_observer.h"
+// REMOVED: #include "luxxle/browser/brave_rewards/.*"
+#include "luxxle/browser/ui/brave_rewards/rewards_panel_coordinator.h"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
 #include "chrome/browser/ui/tabs/tab_strip_model_observer.h"
 #include "chrome/browser/ui/views/toolbar/toolbar_button.h"
 #include "components/prefs/pref_change_registrar.h"
@@ -133,4 +133,4 @@ class BraveRewardsActionView
   base::WeakPtrFactory<BraveRewardsActionView> weak_factory_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_BRAVE_ACTIONS_BRAVE_REWARDS_ACTION_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_BRAVE_ACTIONS_BRAVE_REWARDS_ACTION_VIEW_H_

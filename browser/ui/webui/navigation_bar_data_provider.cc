@@ -3,10 +3,10 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/navigation_bar_data_provider.h"
+#include "luxxle/browser/ui/webui/navigation_bar_data_provider.h"
 
-#include "brave/browser/brave_rewards/rewards_util.h"
-#include "brave/browser/brave_wallet/brave_wallet_context_utils.h"
+// REMOVED: #include "luxxle/browser/brave_rewards/.*"
+// REMOVED: #include "luxxle/browser/brave_wallet/.*"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/grit/generated_resources.h"

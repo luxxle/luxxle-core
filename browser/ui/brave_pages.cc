@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/brave_pages.h"
+#include "luxxle/browser/ui/brave_pages.h"
 
 #include "base/strings/strcat.h"
-#include "brave/browser/ui/webui/webcompat_reporter/webcompat_reporter_dialog.h"
-#include "brave/components/ai_chat/core/common/features.h"
-#include "brave/components/brave_wallet/common/brave_wallet.mojom.h"
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/components/sidebar/browser/constants.h"
+#include "luxxle/browser/ui/webui/webcompat_reporter/webcompat_reporter_dialog.h"
+#include "luxxle/components/ai_chat/core/common/features.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/components/sidebar/browser/constants.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_navigator_params.h"
 #include "chrome/browser/ui/chrome_pages.h"
@@ -18,7 +18,7 @@
 #include "chrome/common/webui_url_constants.h"
 #include "url/gurl.h"
 
-namespace brave {
+namespace luxxle {
 
 void ShowBraveRewards(Browser* browser) {
   ShowSingletonTabOverwritingNTP(browser, GURL(kRewardsPageURL));

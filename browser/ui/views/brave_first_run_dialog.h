@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_BRAVE_FIRST_RUN_DIALOG_H_
-#define BRAVE_BROWSER_UI_VIEWS_BRAVE_FIRST_RUN_DIALOG_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_BRAVE_FIRST_RUN_DIALOG_H_
+#define LUXXLE_BROWSER_UI_VIEWS_BRAVE_FIRST_RUN_DIALOG_H_
 
 #include "base/functional/callback.h"
 #include "base/memory/raw_ptr.h"
-#include "brave/browser/shell_integrations/buildflags/buildflags.h"
+#include "luxxle/browser/shell_integrations/buildflags/buildflags.h"
 #include "ui/base/metadata/metadata_header_macros.h"
 #include "ui/views/window/dialog_delegate.h"
 
@@ -45,4 +45,4 @@ class BraveFirstRunDialog : public views::DialogDelegateView {
 #endif
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_BRAVE_FIRST_RUN_DIALOG_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_BRAVE_FIRST_RUN_DIALOG_H_

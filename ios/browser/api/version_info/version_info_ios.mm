@@ -6,7 +6,7 @@
 #include "brave/ios/browser/api/version_info/version_info_ios.h"
 
 #include "base/strings/sys_string_conversions.h"
-#include "brave/components/version_info/version_info.h"
+#include "luxxle/components/version_info/version_info.h"
 #include "components/version_info/version_info.h"
 #include "components/version_info/version_string.h"
 #include "ios/chrome/common/channel_info.h"

@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_SIDE_PANEL_BRAVE_SIDE_PANEL_UTILS_H_
-#define BRAVE_BROWSER_UI_SIDE_PANEL_BRAVE_SIDE_PANEL_UTILS_H_
+#ifndef LUXXLE_BROWSER_UI_SIDE_PANEL_BRAVE_SIDE_PANEL_UTILS_H_
+#define LUXXLE_BROWSER_UI_SIDE_PANEL_BRAVE_SIDE_PANEL_UTILS_H_
 
 namespace content {
 class WebContents;
@@ -12,7 +12,7 @@ class WebContents;
 
 class SidePanelRegistry;
 
-namespace brave {
+namespace luxxle {
 
 // Register per-tab(contextual) side-panel registry.
 // Defined at //luxxle/browser/ui/views/side_panel/brave_side_panel_utils.cc as
@@ -22,4 +22,4 @@ void RegisterContextualSidePanel(SidePanelRegistry* registry,
 
 }  // namespace brave
 
-#endif  // BRAVE_BROWSER_UI_SIDE_PANEL_BRAVE_SIDE_PANEL_UTILS_H_
+#endif  // LUXXLE_BROWSER_UI_SIDE_PANEL_BRAVE_SIDE_PANEL_UTILS_H_

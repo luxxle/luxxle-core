@@ -3,15 +3,15 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/brave_vpn/vpn_panel_handler.h"
-#include "brave/browser/ui/webui/brave_vpn/vpn_panel_ui.h"
+#include "luxxle/browser/ui/webui/brave_vpn/vpn_panel_handler.h"
+#include "luxxle/browser/ui/webui/brave_vpn/vpn_panel_ui.h"
 
 #include <utility>
 
-#include "brave/browser/brave_vpn/brave_vpn_service_factory.h"
-#include "brave/components/brave_vpn/browser/brave_vpn_service.h"
-#include "brave/components/brave_vpn/common/brave_vpn_constants.h"
-#include "brave/components/brave_vpn/common/brave_vpn_utils.h"
+// REMOVED: #include "luxxle/browser/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_finder.h"
 #include "chrome/browser/ui/browser_tabstrip.h"

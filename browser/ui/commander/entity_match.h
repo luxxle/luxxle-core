@@ -8,15 +8,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef BRAVE_BROWSER_UI_COMMANDER_ENTITY_MATCH_H_
-#define BRAVE_BROWSER_UI_COMMANDER_ENTITY_MATCH_H_
+#ifndef LUXXLE_BROWSER_UI_COMMANDER_ENTITY_MATCH_H_
+#define LUXXLE_BROWSER_UI_COMMANDER_ENTITY_MATCH_H_
 
 #include <memory>
 #include <string>
 #include <vector>
 
 #include "base/memory/raw_ptr.h"
-#include "brave/browser/ui/commander/command_source.h"
+#include "luxxle/browser/ui/commander/command_source.h"
 #include "components/sessions/core/session_id.h"
 #include "components/tab_groups/tab_group_id.h"
 #include "ui/gfx/range/range.h"
@@ -128,4 +128,4 @@ std::vector<TabMatch> TabsMatchingInput(const Browser* browser,
 
 }  // namespace commander
 
-#endif  // BRAVE_BROWSER_UI_COMMANDER_ENTITY_MATCH_H_
+#endif  // LUXXLE_BROWSER_UI_COMMANDER_ENTITY_MATCH_H_

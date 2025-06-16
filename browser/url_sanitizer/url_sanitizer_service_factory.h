@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_URL_SANITIZER_URL_SANITIZER_SERVICE_FACTORY_H_
-#define BRAVE_BROWSER_URL_SANITIZER_URL_SANITIZER_SERVICE_FACTORY_H_
+#ifndef LUXXLE_BROWSER_URL_SANITIZER_URL_SANITIZER_SERVICE_FACTORY_H_
+#define LUXXLE_BROWSER_URL_SANITIZER_URL_SANITIZER_SERVICE_FACTORY_H_
 
 #include <memory>
 
 #include "components/keyed_service/content/browser_context_keyed_service_factory.h"
 
 #if BUILDFLAG(IS_ANDROID)
-#include "brave/components/url_sanitizer/common/mojom/url_sanitizer.mojom.h"
+#include "luxxle/components/url_sanitizer/common/mojom/url_sanitizer.mojom.h"
 #include "mojo/public/cpp/bindings/pending_remote.h"
 #endif  // # BUILDFLAG(IS_ANDROID)
 
@@ -21,7 +21,7 @@ class NoDestructor;
 }  // namespace base
 class Profile;
 
-namespace brave {
+namespace luxxle {
 
 class URLSanitizerService;
 
@@ -55,4 +55,4 @@ class URLSanitizerServiceFactory : public BrowserContextKeyedServiceFactory {
 
 }  // namespace brave
 
-#endif  // BRAVE_BROWSER_URL_SANITIZER_URL_SANITIZER_SERVICE_FACTORY_H_
+#endif  // LUXXLE_BROWSER_URL_SANITIZER_URL_SANITIZER_SERVICE_FACTORY_H_

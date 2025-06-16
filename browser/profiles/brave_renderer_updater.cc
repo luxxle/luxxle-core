@@ -3,23 +3,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/profiles/brave_renderer_updater.h"
+#include "luxxle/browser/profiles/brave_renderer_updater.h"
 
 #include <utility>
 
 #include "base/check_is_test.h"
 #include "base/functional/bind.h"
-#include "brave/browser/brave_wallet/brave_wallet_context_utils.h"
-#include "brave/common/brave_renderer_configuration.mojom.h"
-#include "brave/components/brave_wallet/browser/keyring_service.h"
-#include "brave/components/brave_wallet/browser/pref_names.h"
-#include "brave/components/brave_wallet/common/brave_wallet.mojom.h"
-#include "brave/components/brave_wallet/common/brave_wallet_types.h"
-#include "brave/components/constants/pref_names.h"
-#include "brave/components/de_amp/browser/de_amp_util.h"
-#include "brave/components/de_amp/common/pref_names.h"
-#include "brave/components/playlist/browser/pref_names.h"
-#include "brave/components/playlist/common/features.h"
+// REMOVED: #include "luxxle/browser/brave_wallet/.*"
+#include "luxxle/common/brave_renderer_configuration.mojom.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/de_amp/browser/de_amp_util.h"
+#include "luxxle/components/de_amp/common/pref_names.h"
+#include "luxxle/components/playlist/browser/pref_names.h"
+#include "luxxle/components/playlist/common/features.h"
 #include "chrome/browser/profiles/profile.h"
 #include "components/prefs/pref_service.h"
 #include "content/public/browser/render_process_host.h"
@@ -28,7 +28,7 @@
 #include "third_party/widevine/cdm/buildflags.h"
 
 #if BUILDFLAG(ENABLE_TOR)
-#include "brave/components/tor/pref_names.h"
+#include "luxxle/components/tor/pref_names.h"
 #endif
 
 #if BUILDFLAG(ENABLE_EXTENSIONS)
@@ -109,9 +109,9 @@ void BraveRendererUpdater::InitializeRenderer(
   UpdateRenderer(&renderer_configuration);
 }
 
-std::vector<mojo::AssociatedRemote<brave::mojom::BraveRendererConfiguration>>
+std::vector<mojo::AssociatedRemote<luxxle::mojom::BraveRendererConfiguration>>
 BraveRendererUpdater::GetRendererConfigurations() {
-  std::vector<mojo::AssociatedRemote<brave::mojom::BraveRendererConfiguration>>
+  std::vector<mojo::AssociatedRemote<luxxle::mojom::BraveRendererConfiguration>>
       rv;
   for (content::RenderProcessHost::iterator it(
            content::RenderProcessHost::AllHostsIterator());
@@ -130,15 +130,15 @@ BraveRendererUpdater::GetRendererConfigurations() {
   return rv;
 }
 
-mojo::AssociatedRemote<brave::mojom::BraveRendererConfiguration>
+mojo::AssociatedRemote<luxxle::mojom::BraveRendererConfiguration>
 BraveRendererUpdater::GetRendererConfiguration(
     content::RenderProcessHost* render_process_host) {
   IPC::ChannelProxy* channel = render_process_host->GetChannel();
   if (!channel) {
-    return mojo::AssociatedRemote<brave::mojom::BraveRendererConfiguration>();
+    return mojo::AssociatedRemote<luxxle::mojom::BraveRendererConfiguration>();
   }
 
-  mojo::AssociatedRemote<brave::mojom::BraveRendererConfiguration>
+  mojo::AssociatedRemote<luxxle::mojom::BraveRendererConfiguration>
       renderer_configuration;
   channel->GetRemoteAssociatedInterface(&renderer_configuration);
 
@@ -169,7 +169,7 @@ void BraveRendererUpdater::UpdateAllRenderers() {
 }
 
 void BraveRendererUpdater::UpdateRenderer(
-    mojo::AssociatedRemote<brave::mojom::BraveRendererConfiguration>*
+    mojo::AssociatedRemote<luxxle::mojom::BraveRendererConfiguration>*
         renderer_configuration) {
 #if BUILDFLAG(ENABLE_EXTENSIONS)
   extensions::ExtensionRegistry* registry =
@@ -234,7 +234,7 @@ void BraveRendererUpdater::UpdateRenderer(
       pref_service->GetBoolean(playlist::kPlaylistEnabledPref);
 
   (*renderer_configuration)
-      ->SetConfiguration(brave::mojom::DynamicParams::New(
+      ->SetConfiguration(luxxle::mojom::DynamicParams::New(
           install_window_brave_ethereum_provider,
           install_window_ethereum_provider,
           allow_overwrite_window_ethereum_provider,

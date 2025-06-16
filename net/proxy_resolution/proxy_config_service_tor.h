@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_NET_PROXY_RESOLUTION_PROXY_CONFIG_SERVICE_TOR_H_
-#define BRAVE_NET_PROXY_RESOLUTION_PROXY_CONFIG_SERVICE_TOR_H_
+#ifndef LUXXLE_NET_PROXY_RESOLUTION_PROXY_CONFIG_SERVICE_TOR_H_
+#define LUXXLE_NET_PROXY_RESOLUTION_PROXY_CONFIG_SERVICE_TOR_H_
 
 #include <string>
 
@@ -64,4 +64,4 @@ class NET_EXPORT ProxyConfigServiceTor : public net::ProxyConfigService {
 
 }  // namespace net
 
-#endif  // BRAVE_NET_PROXY_RESOLUTION_PROXY_CONFIG_SERVICE_TOR_H_
+#endif  // LUXXLE_NET_PROXY_RESOLUTION_PROXY_CONFIG_SERVICE_TOR_H_

@@ -3,8 +3,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_TOP_SITES_FACADE_H_
-#define BRAVE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_TOP_SITES_FACADE_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_TOP_SITES_FACADE_H_
+#define LUXXLE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_TOP_SITES_FACADE_H_
 
 #include <map>
 #include <memory>
@@ -14,7 +14,7 @@
 
 #include "base/memory/raw_ref.h"
 #include "base/memory/weak_ptr.h"
-#include "brave/browser/ui/webui/brave_new_tab_page_refresh/brave_new_tab_page.mojom.h"
+#include "luxxle/browser/ui/webui/brave_new_tab_page_refresh/brave_new_tab_page.mojom.h"
 #include "components/ntp_tiles/most_visited_sites.h"
 #include "components/prefs/pref_change_registrar.h"
 
@@ -84,4 +84,4 @@ class TopSitesFacade : public ntp_tiles::MostVisitedSites::Observer {
 
 }  // namespace brave_new_tab_page_refresh
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_TOP_SITES_FACADE_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_TOP_SITES_FACADE_H_

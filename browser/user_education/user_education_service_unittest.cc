@@ -7,7 +7,7 @@
 
 #include "base/files/scoped_temp_dir.h"
 #include "base/test/scoped_feature_list.h"
-#include "brave/browser/user_education/features.h"
+#include "luxxle/browser/user_education/features.h"
 #include "chrome/browser/user_education/user_education_service_factory.h"
 #include "chrome/test/base/testing_profile.h"
 #include "content/public/test/browser_task_environment.h"

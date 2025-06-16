@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/brave_browser.h"
+#include "luxxle/browser/ui/brave_browser.h"
 
 #include "base/test/run_until.h"
-#include "brave/browser/ui/browser_commands.h"
-#include "brave/components/constants/pref_names.h"
+#include "luxxle/browser/ui/browser_commands.h"
+#include "luxxle/components/constants/pref_names.h"
 #include "chrome/browser/devtools/devtools_window_testing.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser_commands.h"
@@ -137,7 +137,7 @@ IN_PROC_BROWSER_TEST_F(BraveBrowserBrowserTest,
   new_browser->profile()->GetPrefs()->SetBoolean(kEnableClosingLastTab, false);
 
   // When "Bring all tabs to this window" commands executes
-  brave::BringAllTabs(browser());
+  luxxle::BringAllTabs(browser());
 
   // Then other windows should be closed
   base::RunLoop().RunUntilIdle();

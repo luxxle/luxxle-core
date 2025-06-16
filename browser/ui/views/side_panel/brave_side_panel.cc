@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/views/side_panel/brave_side_panel.h"
+#include "luxxle/browser/ui/views/side_panel/brave_side_panel.h"
 
 #include <algorithm>
 #include <optional>
@@ -11,13 +11,13 @@
 
 #include "base/check_is_test.h"
 #include "base/functional/bind.h"
-#include "brave/browser/ui/brave_browser.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
-#include "brave/browser/ui/views/frame/brave_contents_view_util.h"
-#include "brave/browser/ui/views/side_panel/brave_side_panel_resize_widget.h"
-#include "brave/components/sidebar/browser/constants.h"
-#include "brave/components/sidebar/browser/pref_names.h"
+#include "luxxle/browser/ui/brave_browser.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/frame/brave_contents_view_util.h"
+#include "luxxle/browser/ui/views/side_panel/brave_side_panel_resize_widget.h"
+#include "luxxle/components/sidebar/browser/constants.h"
+#include "luxxle/components/sidebar/browser/pref_names.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser_window/public/browser_window_features.h"
 #include "chrome/browser/ui/color/chrome_color_id.h"

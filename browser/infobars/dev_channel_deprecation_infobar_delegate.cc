@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/infobars/dev_channel_deprecation_infobar_delegate.h"
+#include "luxxle/browser/infobars/dev_channel_deprecation_infobar_delegate.h"
 
 #include <memory>
 
-#include "brave/browser/infobars/brave_confirm_infobar_creator.h"
-#include "brave/components/constants/url_constants.h"
+#include "luxxle/browser/infobars/brave_confirm_infobar_creator.h"
+#include "luxxle/components/constants/url_constants.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/common/channel_info.h"
 #include "components/infobars/core/infobar.h"

@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_BRAVE_ICON_WITH_BADGE_IMAGE_SOURCE_H_
-#define BRAVE_BROWSER_UI_BRAVE_ICON_WITH_BADGE_IMAGE_SOURCE_H_
+#ifndef LUXXLE_BROWSER_UI_BRAVE_ICON_WITH_BADGE_IMAGE_SOURCE_H_
+#define LUXXLE_BROWSER_UI_BRAVE_ICON_WITH_BADGE_IMAGE_SOURCE_H_
 
 #include <optional>
 
@@ -16,7 +16,7 @@ class Canvas;
 class Rect;
 }  // namespace gfx
 
-namespace brave {
+namespace luxxle {
 
 inline constexpr SkColor kBadgeNotificationBG = SkColorSetRGB(0xfb, 0x54, 0x2b);
 inline constexpr SkColor kBadgeTextColor = SK_ColorWHITE;
@@ -62,4 +62,4 @@ class BraveIconWithBadgeImageSource : public IconWithBadgeImageSource {
 
 }  // namespace brave
 
-#endif  // BRAVE_BROWSER_UI_BRAVE_ICON_WITH_BADGE_IMAGE_SOURCE_H_
+#endif  // LUXXLE_BROWSER_UI_BRAVE_ICON_WITH_BADGE_IMAGE_SOURCE_H_

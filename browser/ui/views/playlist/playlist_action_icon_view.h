@@ -3,16 +3,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_ACTION_ICON_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_ACTION_ICON_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_ACTION_ICON_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_ACTION_ICON_VIEW_H_
 
 #include <vector>
 
 #include "base/memory/weak_ptr.h"
 #include "base/scoped_observation.h"
-#include "brave/browser/ui/views/playlist/playlist_bubbles_controller.h"
-#include "brave/components/playlist/browser/playlist_tab_helper_observer.h"
-#include "brave/components/playlist/common/mojom/playlist.mojom.h"
+#include "luxxle/browser/ui/views/playlist/playlist_bubbles_controller.h"
+#include "luxxle/components/playlist/browser/playlist_tab_helper_observer.h"
+#include "luxxle/components/playlist/common/mojom/playlist.mojom.h"
 #include "chrome/browser/ui/views/page_action/page_action_icon_view.h"
 #include "components/prefs/pref_member.h"
 #include "ui/base/metadata/metadata_header_macros.h"
@@ -82,4 +82,4 @@ class PlaylistActionIconView : public PageActionIconView,
   base::WeakPtrFactory<PlaylistActionIconView> weak_ptr_factory_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_ACTION_ICON_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_ACTION_ICON_VIEW_H_

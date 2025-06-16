@@ -11,9 +11,9 @@
 #include "base/run_loop.h"
 #include "base/task/single_thread_task_runner.h"
 #include "base/test/scoped_run_loop_timeout.h"
-#include "brave/browser/brave_rewards/rewards_service_factory.h"
-#include "brave/browser/net/brave_network_audit_test_helper.h"
-#include "brave/components/brave_rewards/content/rewards_service_impl.h"
+// REMOVED: #include "luxxle/browser/brave_rewards/.*"
+#include "luxxle/browser/net/brave_network_audit_test_helper.h"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/test/base/in_process_browser_test.h"
@@ -22,7 +22,7 @@
 #include "content/public/test/browser_test.h"
 #include "services/network/public/cpp/network_switches.h"
 
-namespace brave {
+namespace luxxle {
 
 namespace {
 

@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/search_engines/search_engine_provider_util.h"
+#include "luxxle/browser/search_engines/search_engine_provider_util.h"
 
 #include <memory>
 #include <string>
@@ -13,9 +13,9 @@
 #include "base/containers/contains.h"
 #include "base/containers/fixed_flat_set.h"
 #include "base/values.h"
-#include "brave/browser/search_engines/pref_names.h"
-#include "brave/components/l10n/common/locale_util.h"
-#include "brave/components/search_engines/brave_prepopulated_engines.h"
+#include "luxxle/browser/search_engines/pref_names.h"
+#include "luxxle/components/l10n/common/locale_util.h"
+#include "luxxle/components/search_engines/brave_prepopulated_engines.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/search_engines/template_url_prepopulate_data_resolver_factory.h"
 #include "chrome/browser/search_engines/template_url_service_factory.h"
@@ -28,7 +28,7 @@
 #include "components/search_engines/template_url_prepopulate_data_resolver.h"
 #include "components/search_engines/template_url_service.h"
 
-namespace brave {
+namespace luxxle {
 
 namespace {
 constexpr auto kTargetCountriesForEnableSearchSuggestionsByDefault =

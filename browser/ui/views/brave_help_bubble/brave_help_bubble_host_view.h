@@ -3,14 +3,14 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_BRAVE_HELP_BUBBLE_BRAVE_HELP_BUBBLE_HOST_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_BRAVE_HELP_BUBBLE_BRAVE_HELP_BUBBLE_HOST_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_BRAVE_HELP_BUBBLE_BRAVE_HELP_BUBBLE_HOST_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_BRAVE_HELP_BUBBLE_BRAVE_HELP_BUBBLE_HOST_VIEW_H_
 
 #include <memory>
 #include <string>
 
 #include "base/timer/timer.h"
-#include "brave/browser/ui/views/brave_help_bubble/brave_help_bubble_delegate_view.h"
+#include "luxxle/browser/ui/views/brave_help_bubble/brave_help_bubble_delegate_view.h"
 #include "ui/views/interaction/element_tracker_views.h"
 #include "ui/views/view.h"
 #include "ui/views/widget/widget_observer.h"
@@ -69,4 +69,4 @@ class BraveHelpBubbleHostView : public views::View,
   base::WeakPtrFactory<BraveHelpBubbleHostView> weak_factory_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_BRAVE_HELP_BUBBLE_BRAVE_HELP_BUBBLE_HOST_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_BRAVE_HELP_BUBBLE_BRAVE_HELP_BUBBLE_HOST_VIEW_H_

@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/welcome_page/brave_welcome_ui.h"
+#include "luxxle/browser/ui/webui/welcome_page/brave_welcome_ui.h"
 
 #include <algorithm>
 #include <memory>
@@ -12,15 +12,15 @@
 #include "base/feature_list.h"
 #include "base/memory/raw_ptr.h"
 #include "base/task/single_thread_task_runner.h"
-#include "brave/browser/brave_browser_features.h"
-#include "brave/browser/ui/webui/brave_webui_source.h"
-#include "brave/browser/ui/webui/settings/brave_import_bulk_data_handler.h"
-#include "brave/browser/ui/webui/settings/brave_search_engines_handler.h"
-#include "brave/browser/ui/webui/welcome_page/welcome_dom_handler.h"
-#include "brave/components/brave_welcome/common/features.h"
-#include "brave/components/brave_welcome/resources/grit/brave_welcome_generated_map.h"
-#include "brave/components/constants/pref_names.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/browser/brave_browser_features.h"
+#include "luxxle/browser/ui/webui/brave_webui_source.h"
+#include "luxxle/browser/ui/webui/settings/brave_import_bulk_data_handler.h"
+#include "luxxle/browser/ui/webui/settings/brave_search_engines_handler.h"
+#include "luxxle/browser/ui/webui/welcome_page/welcome_dom_handler.h"
+#include "luxxle/components/brave_welcome/common/features.h"
+#include "luxxle/components/brave_welcome/resources/grit/brave_welcome_generated_map.h"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/regional_capabilities/regional_capabilities_service_factory.h"
 #include "chrome/browser/ui/browser.h"

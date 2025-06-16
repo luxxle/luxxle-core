@@ -3,8 +3,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_SERVICES_PRINTING_PDF_TO_BITMAP_CONVERTER_H_
-#define BRAVE_SERVICES_PRINTING_PDF_TO_BITMAP_CONVERTER_H_
+#ifndef LUXXLE_SERVICES_PRINTING_PDF_TO_BITMAP_CONVERTER_H_
+#define LUXXLE_SERVICES_PRINTING_PDF_TO_BITMAP_CONVERTER_H_
 
 #include "base/memory/read_only_shared_memory_region.h"
 #include "brave/services/printing/public/mojom/pdf_to_bitmap_converter.mojom.h"
@@ -33,4 +33,4 @@ class PdfToBitmapConverter : public printing::mojom::PdfToBitmapConverter {
 
 }  // namespace printing
 
-#endif  // BRAVE_SERVICES_PRINTING_PDF_TO_BITMAP_CONVERTER_H_
+#endif  // LUXXLE_SERVICES_PRINTING_PDF_TO_BITMAP_CONVERTER_H_

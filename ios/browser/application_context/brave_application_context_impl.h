@@ -3,16 +3,16 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_IOS_BROWSER_APPLICATION_CONTEXT_BRAVE_APPLICATION_CONTEXT_IMPL_H_
-#define BRAVE_IOS_BROWSER_APPLICATION_CONTEXT_BRAVE_APPLICATION_CONTEXT_IMPL_H_
+#ifndef LUXXLE_IOS_BROWSER_APPLICATION_CONTEXT_BRAVE_APPLICATION_CONTEXT_IMPL_H_
+#define LUXXLE_IOS_BROWSER_APPLICATION_CONTEXT_BRAVE_APPLICATION_CONTEXT_IMPL_H_
 
 #include <memory>
 #include <string>
 
-#include "brave/components/brave_component_updater/browser/brave_component.h"
-#include "brave/components/debounce/core/browser/debounce_component_installer.h"
-#include "brave/components/https_upgrade_exceptions/browser/https_upgrade_exceptions_service.h"
-#include "brave/components/url_sanitizer/browser/url_sanitizer_component_installer.h"
+#include "luxxle/components/brave_component_updater/browser/brave_component.h"
+#include "luxxle/components/debounce/core/browser/debounce_component_installer.h"
+#include "luxxle/components/https_upgrade_exceptions/browser/https_upgrade_exceptions_service.h"
+#include "luxxle/components/url_sanitizer/browser/url_sanitizer_component_installer.h"
 #include "ios/chrome/browser/application_context/model/application_context_impl.h"
 
 namespace base {
@@ -41,7 +41,7 @@ class BraveApplicationContextImpl : public ApplicationContextImpl {
   gcm::GCMDriver* GetGCMDriver() override;
 
   // BraveApplicationContextImpl
-  brave::URLSanitizerComponentInstaller* url_sanitizer_component_installer();
+  luxxle::URLSanitizerComponentInstaller* url_sanitizer_component_installer();
   debounce::DebounceComponentInstaller* debounce_component_installer();
   https_upgrade_exceptions::HttpsUpgradeExceptionsService*
   https_upgrade_exceptions_service();
@@ -58,7 +58,7 @@ class BraveApplicationContextImpl : public ApplicationContextImpl {
       brave_component_updater_delegate_;
   std::unique_ptr<brave_component_updater::LocalDataFilesService>
       local_data_files_service_;
-  std::unique_ptr<brave::URLSanitizerComponentInstaller>
+  std::unique_ptr<luxxle::URLSanitizerComponentInstaller>
       url_sanitizer_component_installer_;
   std::unique_ptr<debounce::DebounceComponentInstaller>
       debounce_component_installer_;
@@ -66,4 +66,4 @@ class BraveApplicationContextImpl : public ApplicationContextImpl {
       https_upgrade_exceptions_service_;
 };
 
-#endif  // BRAVE_IOS_BROWSER_APPLICATION_CONTEXT_BRAVE_APPLICATION_CONTEXT_IMPL_H_
+#endif  // LUXXLE_IOS_BROWSER_APPLICATION_CONTEXT_BRAVE_APPLICATION_CONTEXT_IMPL_H_

@@ -20,7 +20,7 @@
 #error "This file requires ARC support."
 #endif
 
-namespace brave {
+namespace luxxle {
 namespace ios {
 password_manager::PasswordForm::Scheme
 PasswordManagerSchemeFromPasswordFormScheme(PasswordFormScheme scheme) {
@@ -319,7 +319,7 @@ void PasswordStoreConsumerIOS::OnGetPasswordStoreResults(
 
   password_manager::PasswordFormDigest form_digest_args =
       password_manager::PasswordFormDigest(
-          /*scheme*/ brave::ios::PasswordManagerSchemeFromPasswordFormScheme(
+          /*scheme*/ luxxle::ios::PasswordManagerSchemeFromPasswordFormScheme(
               formScheme),
           /*signon_realm*/ net::GURLWithNSURL(url).spec(),
           /*url*/ net::GURLWithNSURL(url));
@@ -343,7 +343,7 @@ void PasswordStoreConsumerIOS::OnGetPasswordStoreResults(
             passwordElement:base::SysUTF16ToNSString(result->password_element)
               passwordValue:base::SysUTF16ToNSString(result->password_value)
             isBlockedByUser:result->blocked_by_user
-                     scheme:brave::ios::
+                     scheme:luxxle::ios::
                                 PasswordFormSchemeFromPasswordManagerScheme(
                                     result->scheme)];
 

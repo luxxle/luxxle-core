@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_MISC_METRICS_MISC_ANDROID_METRICS_H_
-#define BRAVE_BROWSER_MISC_METRICS_MISC_ANDROID_METRICS_H_
+#ifndef LUXXLE_BROWSER_MISC_METRICS_MISC_ANDROID_METRICS_H_
+#define LUXXLE_BROWSER_MISC_METRICS_MISC_ANDROID_METRICS_H_
 
 #include "base/memory/raw_ptr.h"
 #include "base/time/time.h"
-#include "brave/components/misc_metrics/common/misc_metrics.mojom.h"
+#include "luxxle/components/misc_metrics/common/misc_metrics.mojom.h"
 #include "mojo/public/cpp/bindings/receiver_set.h"
 
 class SearchEngineTracker;
@@ -49,4 +49,4 @@ class MiscAndroidMetrics : public mojom::MiscAndroidMetrics {
 
 }  // namespace misc_metrics
 
-#endif  // BRAVE_BROWSER_MISC_METRICS_MISC_ANDROID_METRICS_H_
+#endif  // LUXXLE_BROWSER_MISC_METRICS_MISC_ANDROID_METRICS_H_

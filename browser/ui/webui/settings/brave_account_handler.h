@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_ACCOUNT_HANDLER_H_
-#define BRAVE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_ACCOUNT_HANDLER_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_ACCOUNT_HANDLER_H_
+#define LUXXLE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_ACCOUNT_HANDLER_H_
 
 #include <string>
 
-#include "brave/components/brave_account/core/mojom/brave_account.mojom.h"
+#include "luxxle/components/brave_account/core/mojom/brave_account.mojom.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
 #include "mojo/public/cpp/bindings/receiver.h"
 
@@ -33,4 +33,4 @@ class BraveAccountHandler : public mojom::BraveAccountHandler {
 };
 }  // namespace brave_account
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_ACCOUNT_HANDLER_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_ACCOUNT_HANDLER_H_

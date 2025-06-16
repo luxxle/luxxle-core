@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_INFOBARS_DEV_CHANNEL_DEPRECATION_INFOBAR_DELEGATE_H_
-#define BRAVE_BROWSER_INFOBARS_DEV_CHANNEL_DEPRECATION_INFOBAR_DELEGATE_H_
+#ifndef LUXXLE_BROWSER_INFOBARS_DEV_CHANNEL_DEPRECATION_INFOBAR_DELEGATE_H_
+#define LUXXLE_BROWSER_INFOBARS_DEV_CHANNEL_DEPRECATION_INFOBAR_DELEGATE_H_
 
 #include <vector>
 
-#include "brave/components/infobars/core/brave_confirm_infobar_delegate.h"
+#include "luxxle/components/infobars/core/brave_confirm_infobar_delegate.h"
 
 class DevChannelDeprecationInfoBarDelegate
     : public BraveConfirmInfoBarDelegate {
@@ -35,4 +35,4 @@ class DevChannelDeprecationInfoBarDelegate
   GURL GetLinkURL() const override;
 };
 
-#endif  // BRAVE_BROWSER_INFOBARS_DEV_CHANNEL_DEPRECATION_INFOBAR_DELEGATE_H_
+#endif  // LUXXLE_BROWSER_INFOBARS_DEV_CHANNEL_DEPRECATION_INFOBAR_DELEGATE_H_

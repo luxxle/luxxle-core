@@ -3,10 +3,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/side_panel/bookmarks/brave_bookmarks_side_panel_coordinator.h"
+#include "luxxle/browser/ui/views/side_panel/bookmarks/brave_bookmarks_side_panel_coordinator.h"
 
 #include "base/functional/bind.h"
-#include "brave/browser/ui/views/side_panel/brave_bookmarks_side_panel_view.h"
+#include "luxxle/browser/ui/views/side_panel/brave_bookmarks_side_panel_view.h"
 #include "chrome/browser/ui/views/side_panel/side_panel_entry.h"
 #include "chrome/browser/ui/views/side_panel/side_panel_registry.h"
 

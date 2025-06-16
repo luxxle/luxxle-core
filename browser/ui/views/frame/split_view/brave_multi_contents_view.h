@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_FRAME_SPLIT_VIEW_BRAVE_MULTI_CONTENTS_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_FRAME_SPLIT_VIEW_BRAVE_MULTI_CONTENTS_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_FRAME_SPLIT_VIEW_BRAVE_MULTI_CONTENTS_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_FRAME_SPLIT_VIEW_BRAVE_MULTI_CONTENTS_VIEW_H_
 
 #include <memory>
 #include <vector>
 
 #include "base/gtest_prod_util.h"
-#include "brave/browser/ui/views/split_view/split_view_separator_delegate.h"
+#include "luxxle/browser/ui/views/split_view/split_view_separator_delegate.h"
 #include "chrome/browser/ui/views/frame/multi_contents_view.h"
 #include "ui/base/metadata/metadata_header_macros.h"
 
@@ -58,4 +58,4 @@ class BraveMultiContentsView : public MultiContentsView,
   std::unique_ptr<views::Widget> secondary_location_bar_widget_;
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_FRAME_SPLIT_VIEW_BRAVE_MULTI_CONTENTS_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_FRAME_SPLIT_VIEW_BRAVE_MULTI_CONTENTS_VIEW_H_

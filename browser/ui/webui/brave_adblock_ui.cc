@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/brave_adblock_ui.h"
+#include "luxxle/browser/ui/webui/brave_adblock_ui.h"
 
 #include <memory>
 #include <string>
@@ -11,15 +11,15 @@
 
 #include "base/scoped_observation.h"
 #include "base/values.h"
-#include "brave/browser/brave_browser_process.h"
-#include "brave/browser/ui/webui/brave_webui_source.h"
-#include "brave/components/brave_adblock/resources/grit/brave_adblock_generated_map.h"
-#include "brave/components/brave_shields/content/browser/ad_block_custom_filters_provider.h"
-#include "brave/components/brave_shields/content/browser/ad_block_service.h"
-#include "brave/components/brave_shields/content/browser/ad_block_subscription_service_manager.h"
-#include "brave/components/brave_shields/content/browser/ad_block_subscription_service_manager_observer.h"
-#include "brave/components/brave_shields/core/browser/ad_block_component_service_manager.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/ui/webui/brave_webui_source.h"
+#include "luxxle/components/brave_adblock/resources/grit/brave_adblock_generated_map.h"
+#include "luxxle/components/brave_shields/content/browser/ad_block_custom_filters_provider.h"
+#include "luxxle/components/brave_shields/content/browser/ad_block_service.h"
+#include "luxxle/components/brave_shields/content/browser/ad_block_subscription_service_manager.h"
+#include "luxxle/components/brave_shields/content/browser/ad_block_subscription_service_manager_observer.h"
+#include "luxxle/components/brave_shields/core/browser/ad_block_component_service_manager.h"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "build/build_config.h"
 #include "components/grit/brave_components_resources.h"
 #include "content/public/browser/web_ui_message_handler.h"
@@ -329,7 +329,7 @@ void AdblockDOMHandler::RefreshSubscriptionsList() {
 BraveAdblockUI::BraveAdblockUI(content::WebUI* web_ui)
     : WebUIController(web_ui) {
   CreateAndAddWebUIDataSource(web_ui, kAdblockHost, kBraveAdblockGenerated,
-                              IDR_BRAVE_ADBLOCK_HTML);
+                              /* REMOVED: IDR_BRAVE_ADBLOCK_HTML */ 0);
   web_ui->AddMessageHandler(std::make_unique<AdblockDOMHandler>());
 }
 

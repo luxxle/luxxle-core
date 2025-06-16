@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/sync/brave_sync_devices_android.h"
+#include "luxxle/browser/sync/brave_sync_devices_android.h"
 
 #include <string>
 #include <utility>
@@ -11,9 +11,9 @@
 #include "base/android/jni_android.h"
 #include "base/android/jni_string.h"
 #include "base/json/json_writer.h"
-#include "brave/components/brave_sync/sync_service_impl_helper.h"
-#include "brave/components/sync/service/brave_sync_service_impl.h"
-#include "brave/components/sync_device_info/brave_device_info.h"
+#include "luxxle/components/brave_sync/sync_service_impl_helper.h"
+#include "luxxle/components/sync/service/brave_sync_service_impl.h"
+#include "luxxle/components/sync_device_info/brave_device_info.h"
 #include "chrome/android/chrome_jni_headers/BraveSyncDevices_jni.h"
 #include "chrome/browser/profiles/profile_manager.h"
 #include "chrome/browser/sync/device_info_sync_service_factory.h"

@@ -3,15 +3,15 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_AI_CHAT_AI_CHAT_UI_H_
-#define BRAVE_BROWSER_UI_WEBUI_AI_CHAT_AI_CHAT_UI_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_AI_CHAT_AI_CHAT_UI_H_
+#define LUXXLE_BROWSER_UI_WEBUI_AI_CHAT_AI_CHAT_UI_H_
 
 #include <memory>
 #include <string>
 
-#include "brave/browser/ui/webui/ai_chat/ai_chat_ui_page_handler.h"
-#include "brave/components/ai_chat/core/common/mojom/ai_chat.mojom.h"
-#include "brave/components/ai_chat/core/common/mojom/tab_tracker.mojom.h"
+#include "luxxle/browser/ui/webui/ai_chat/ai_chat_ui_page_handler.h"
+#include "luxxle/components/ai_chat/core/common/mojom/ai_chat.mojom.h"
+#include "luxxle/components/ai_chat/core/common/mojom/tab_tracker.mojom.h"
 #include "chrome/browser/ui/webui/top_chrome/top_chrome_web_ui_controller.h"
 #include "content/public/browser/web_ui_controller.h"
 #include "ui/webui/mojo_web_ui_controller.h"
@@ -85,4 +85,4 @@ class AIChatUIConfig : public content::WebUIConfig {
 #endif  // #if BUILDFLAG(IS_ANDROID)
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_AI_CHAT_AI_CHAT_UI_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_AI_CHAT_AI_CHAT_UI_H_

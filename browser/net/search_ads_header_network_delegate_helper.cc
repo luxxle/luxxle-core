@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/net/search_ads_header_network_delegate_helper.h"
+#include "luxxle/browser/net/search_ads_header_network_delegate_helper.h"
 
-#include "brave/components/brave_ads/core/public/prefs/pref_names.h"
-#include "brave/components/brave_rewards/core/pref_names.h"
-#include "brave/components/brave_search/common/brave_search_utils.h"
+// REMOVED: #include "luxxle/components/brave_ads/.*"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+#include "luxxle/components/brave_search/common/brave_search_utils.h"
 #include "chrome/browser/profiles/profile.h"
 #include "components/prefs/pref_service.h"
 #include "content/public/browser/browser_context.h"
@@ -28,7 +28,7 @@ bool SearchAdsEnabledForProfile(Profile* profile) {
 
 }  // namespace
 
-namespace brave {
+namespace luxxle {
 
 int OnBeforeStartTransaction_SearchAdsHeader(
     net::HttpRequestHeaders* headers,

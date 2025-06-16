@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/toolbar/brave_bookmark_context_menu_controller.h"
+#include "luxxle/browser/ui/toolbar/brave_bookmark_context_menu_controller.h"
 
 #include <memory>
 #include <vector>
 
 #include "base/check_is_test.h"
-#include "brave/app/brave_command_ids.h"
-#include "brave/browser/ui/bookmark/brave_bookmark_prefs.h"
-#include "brave/browser/ui/browser_commands.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/browser/ui/bookmark/brave_bookmark_prefs.h"
+#include "luxxle/browser/ui/browser_commands.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/bookmarks/bookmark_model_factory.h"
 #include "chrome/browser/profiles/profile.h"
@@ -77,7 +77,7 @@ bool BraveBookmarkContextMenuController::IsCommandIdChecked(
       CHECK_IS_TEST();
       return false;
     }
-    return prefs_->GetBoolean(brave::bookmarks::prefs::kShowAllBookmarksButton);
+    return prefs_->GetBoolean(luxxle::bookmarks::prefs::kShowAllBookmarksButton);
   }
 
   return BookmarkContextMenuController::IsCommandIdChecked(command_id);
@@ -125,7 +125,7 @@ void BraveBookmarkContextMenuController::ExecuteCommand(int command_id,
       CHECK_IS_TEST();
     }
 
-    brave::ToggleAllBookmarksButtonVisibility(browser_);
+    luxxle::ToggleAllBookmarksButtonVisibility(browser_);
     return;
   }
 

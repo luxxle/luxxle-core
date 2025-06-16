@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/side_panel/brave_side_panel_resize_widget.h"
+#include "luxxle/browser/ui/views/side_panel/brave_side_panel_resize_widget.h"
 
 #include <utility>
 
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
-#include "brave/browser/ui/views/side_panel/brave_side_panel.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/side_panel/brave_side_panel.h"
 #include "build/build_config.h"
 #include "ui/base/metadata/metadata_impl_macros.h"
 #include "ui/views/controls/resize_area.h"

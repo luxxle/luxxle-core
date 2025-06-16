@@ -3,13 +3,13 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_AI_CHAT_AI_CHAT_UNTRUSTED_CONVERSATION_UI_H_
-#define BRAVE_BROWSER_UI_WEBUI_AI_CHAT_AI_CHAT_UNTRUSTED_CONVERSATION_UI_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_AI_CHAT_AI_CHAT_UNTRUSTED_CONVERSATION_UI_H_
+#define LUXXLE_BROWSER_UI_WEBUI_AI_CHAT_AI_CHAT_UNTRUSTED_CONVERSATION_UI_H_
 
 #include <memory>
 
-#include "brave/components/ai_chat/core/common/mojom/ai_chat.mojom-forward.h"
-#include "brave/components/ai_chat/core/common/mojom/untrusted_frame.mojom-forward.h"
+#include "luxxle/components/ai_chat/core/common/mojom/ai_chat.mojom-forward.h"
+#include "luxxle/components/ai_chat/core/common/mojom/untrusted_frame.mojom-forward.h"
 #include "content/public/browser/webui_config.h"
 #include "ui/webui/mojo_web_ui_controller.h"
 
@@ -50,4 +50,4 @@ class AIChatUntrustedConversationUI : public ui::MojoWebUIController {
   WEB_UI_CONTROLLER_TYPE_DECL();
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_AI_CHAT_AI_CHAT_UNTRUSTED_CONVERSATION_UI_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_AI_CHAT_AI_CHAT_UNTRUSTED_CONVERSATION_UI_H_

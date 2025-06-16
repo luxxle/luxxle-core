@@ -9,22 +9,22 @@
 #include <utility>
 
 #include "base/feature_list.h"
-#include "brave/components/ai_chat/core/common/features.h"
-#include "brave/components/ai_chat/renderer/page_content_extractor.h"
-#include "brave/components/ai_rewriter/common/buildflags/buildflags.h"
-#include "brave/components/brave_search/common/brave_search_utils.h"
-#include "brave/components/brave_search/renderer/brave_search_render_frame_observer.h"
-#include "brave/components/brave_shields/core/common/features.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
-#include "brave/components/brave_wallet/common/features.h"
-#include "brave/components/cosmetic_filters/renderer/cosmetic_filters_js_render_frame_observer.h"
-#include "brave/components/playlist/common/buildflags/buildflags.h"
-#include "brave/components/safe_builtins/renderer/safe_builtins.h"
-#include "brave/components/script_injector/renderer/script_injector_render_frame_observer.h"
-#include "brave/components/skus/common/features.h"
-#include "brave/components/skus/renderer/skus_render_frame_observer.h"
-#include "brave/components/speedreader/common/buildflags/buildflags.h"
-#include "brave/components/web_discovery/buildflags/buildflags.h"
+#include "luxxle/components/ai_chat/core/common/features.h"
+#include "luxxle/components/ai_chat/renderer/page_content_extractor.h"
+#include "luxxle/components/ai_rewriter/common/buildflags/buildflags.h"
+#include "luxxle/components/brave_search/common/brave_search_utils.h"
+#include "luxxle/components/brave_search/renderer/brave_search_render_frame_observer.h"
+#include "luxxle/components/brave_shields/core/common/features.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/cosmetic_filters/renderer/cosmetic_filters_js_render_frame_observer.h"
+#include "luxxle/components/playlist/common/buildflags/buildflags.h"
+#include "luxxle/components/safe_builtins/renderer/safe_builtins.h"
+#include "luxxle/components/script_injector/renderer/script_injector_render_frame_observer.h"
+#include "luxxle/components/skus/common/features.h"
+#include "luxxle/components/skus/renderer/skus_render_frame_observer.h"
+#include "luxxle/components/speedreader/common/buildflags/buildflags.h"
+#include "luxxle/components/web_discovery/buildflags/buildflags.h"
 #include "brave/renderer/brave_render_frame_observer.h"
 #include "brave/renderer/brave_render_thread_observer.h"
 #include "brave/renderer/brave_wallet/brave_wallet_render_frame_observer.h"
@@ -43,25 +43,25 @@
 #include "url/gurl.h"
 
 #if BUILDFLAG(ENABLE_AI_REWRITER)
-#include "brave/components/ai_rewriter/common/features.h"
-#include "brave/components/ai_rewriter/renderer/ai_rewriter_agent.h"
+#include "luxxle/components/ai_rewriter/common/features.h"
+#include "luxxle/components/ai_rewriter/renderer/ai_rewriter_agent.h"
 #endif
 
 #if BUILDFLAG(ENABLE_SPEEDREADER)
-#include "brave/components/speedreader/common/features.h"
-#include "brave/components/speedreader/renderer/speedreader_render_frame_observer.h"
+#include "luxxle/components/speedreader/common/features.h"
+#include "luxxle/components/speedreader/renderer/speedreader_render_frame_observer.h"
 #endif
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/components/brave_vpn/common/brave_vpn_utils.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #if BUILDFLAG(IS_ANDROID)
-#include "brave/components/brave_mobile_subscription/renderer/android/subscription_render_frame_observer.h"
+#include "luxxle/components/brave_mobile_subscription/renderer/android/subscription_render_frame_observer.h"
 #endif  // BUILDFLAG(IS_ANDROID)
 #endif  // BUILDFLAG(ENABLE_BRAVE_VPN)
 
 #if BUILDFLAG(ENABLE_PLAYLIST)
-#include "brave/components/playlist/common/features.h"
-#include "brave/components/playlist/renderer/playlist_render_frame_observer.h"
+#include "luxxle/components/playlist/common/features.h"
+#include "luxxle/components/playlist/renderer/playlist_render_frame_observer.h"
 #endif
 
 #if BUILDFLAG(ENABLE_WIDEVINE)
@@ -70,8 +70,8 @@
 #endif
 
 #if BUILDFLAG(ENABLE_WEB_DISCOVERY_NATIVE)
-#include "brave/components/web_discovery/common/features.h"
-#include "brave/components/web_discovery/renderer/blink_document_extractor.h"
+#include "luxxle/components/web_discovery/common/features.h"
+#include "luxxle/components/web_discovery/renderer/blink_document_extractor.h"
 #endif
 
 namespace {
@@ -140,7 +140,7 @@ void BraveContentRendererClient::RenderThreadStarted() {
       browser_interface_broker_.get());
 
   blink::WebScriptController::RegisterExtension(
-      brave::SafeBuiltins::CreateV8Extension());
+      luxxle::SafeBuiltins::CreateV8Extension());
 }
 
 void BraveContentRendererClient::RenderFrameCreated(

@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_SANDBOX_WIN_SRC_MODULE_FILE_NAME_INTERCEPTION_H_
-#define BRAVE_SANDBOX_WIN_SRC_MODULE_FILE_NAME_INTERCEPTION_H_
+#ifndef LUXXLE_SANDBOX_WIN_SRC_MODULE_FILE_NAME_INTERCEPTION_H_
+#define LUXXLE_SANDBOX_WIN_SRC_MODULE_FILE_NAME_INTERCEPTION_H_
 
 #include <Windows.h>
 
@@ -52,4 +52,4 @@ TargetGetModuleFileNameExW(GetModuleFileNameExWFunction orig,
 
 }  // namespace sandbox
 
-#endif  // BRAVE_SANDBOX_WIN_SRC_MODULE_FILE_NAME_INTERCEPTION_H_
+#endif  // LUXXLE_SANDBOX_WIN_SRC_MODULE_FILE_NAME_INTERCEPTION_H_

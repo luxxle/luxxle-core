@@ -3,19 +3,19 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/speedreader/speedreader_toolbar_data_handler_impl.h"
+#include "luxxle/browser/ui/webui/speedreader/speedreader_toolbar_data_handler_impl.h"
 
 #include <memory>
 #include <utility>
 
-#include "brave/browser/brave_browser_features.h"
-#include "brave/browser/speedreader/speedreader_service_factory.h"
-#include "brave/browser/speedreader/speedreader_tab_helper.h"
-#include "brave/browser/ui/brave_browser.h"
-#include "brave/browser/ui/brave_browser_window.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/components/ai_chat/core/browser/utils.h"
-#include "brave/components/speedreader/tts_player.h"
+#include "luxxle/browser/brave_browser_features.h"
+#include "luxxle/browser/speedreader/speedreader_service_factory.h"
+#include "luxxle/browser/speedreader/speedreader_tab_helper.h"
+#include "luxxle/browser/ui/brave_browser.h"
+#include "luxxle/browser/ui/brave_browser_window.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/components/ai_chat/core/browser/utils.h"
+#include "luxxle/components/speedreader/tts_player.h"
 #include "build/build_config.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/themes/theme_service_factory.h"

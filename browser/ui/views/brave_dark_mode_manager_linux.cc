@@ -3,9 +3,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/brave_dark_mode_manager_linux.h"
+#include "luxxle/browser/ui/views/brave_dark_mode_manager_linux.h"
 
-#include "brave/browser/themes/brave_dark_mode_utils.h"
+#include "luxxle/browser/themes/brave_dark_mode_utils.h"
 #include "ui/linux/linux_ui_factory.h"
 
 namespace ui {

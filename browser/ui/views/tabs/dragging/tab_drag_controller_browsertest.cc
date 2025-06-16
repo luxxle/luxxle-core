@@ -5,7 +5,7 @@
 
 #include "chrome/browser/ui/views/tabs/dragging/tab_drag_controller.h"
 
-#include "brave/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/tabs/features.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_tabstrip.h"
 #include "chrome/browser/ui/views/tabs/tab_strip.h"

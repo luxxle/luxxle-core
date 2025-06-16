@@ -15,32 +15,32 @@
 #include "base/test/bind.h"
 #include "base/test/run_until.h"
 #include "base/test/scoped_feature_list.h"
-#include "brave/app/brave_command_ids.h"
-#include "brave/browser/ui/browser_commands.h"
-#include "brave/browser/ui/sidebar/sidebar_controller.h"
-#include "brave/browser/ui/sidebar/sidebar_model.h"
-#include "brave/browser/ui/sidebar/sidebar_service_factory.h"
-#include "brave/browser/ui/sidebar/sidebar_utils.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/browser/ui/tabs/split_view_browser_data.h"
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
-#include "brave/browser/ui/views/side_panel/brave_side_panel.h"
-#include "brave/browser/ui/views/side_panel/brave_side_panel_resize_widget.h"
-#include "brave/browser/ui/views/sidebar/sidebar_container_view.h"
-#include "brave/browser/ui/views/sidebar/sidebar_control_view.h"
-#include "brave/browser/ui/views/sidebar/sidebar_items_contents_view.h"
-#include "brave/browser/ui/views/sidebar/sidebar_items_scroll_view.h"
-#include "brave/browser/ui/views/tabs/vertical_tab_utils.h"
-#include "brave/browser/ui/views/toolbar/brave_toolbar_view.h"
-#include "brave/browser/ui/views/toolbar/side_panel_button.h"
-#include "brave/components/ai_chat/core/common/features.h"
-#include "brave/components/constants/brave_switches.h"
-#include "brave/components/playlist/common/features.h"
-#include "brave/components/sidebar/browser/constants.h"
-#include "brave/components/sidebar/browser/pref_names.h"
-#include "brave/components/sidebar/browser/sidebar_item.h"
-#include "brave/components/sidebar/browser/sidebar_service.h"
-#include "brave/components/sidebar/common/features.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/browser/ui/browser_commands.h"
+#include "luxxle/browser/ui/sidebar/sidebar_controller.h"
+#include "luxxle/browser/ui/sidebar/sidebar_model.h"
+#include "luxxle/browser/ui/sidebar/sidebar_service_factory.h"
+#include "luxxle/browser/ui/sidebar/sidebar_utils.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/side_panel/brave_side_panel.h"
+#include "luxxle/browser/ui/views/side_panel/brave_side_panel_resize_widget.h"
+#include "luxxle/browser/ui/views/sidebar/sidebar_container_view.h"
+#include "luxxle/browser/ui/views/sidebar/sidebar_control_view.h"
+#include "luxxle/browser/ui/views/sidebar/sidebar_items_contents_view.h"
+#include "luxxle/browser/ui/views/sidebar/sidebar_items_scroll_view.h"
+#include "luxxle/browser/ui/views/tabs/vertical_tab_utils.h"
+#include "luxxle/browser/ui/views/toolbar/brave_toolbar_view.h"
+#include "luxxle/browser/ui/views/toolbar/side_panel_button.h"
+#include "luxxle/components/ai_chat/core/common/features.h"
+#include "luxxle/components/constants/brave_switches.h"
+#include "luxxle/components/playlist/common/features.h"
+#include "luxxle/components/sidebar/browser/constants.h"
+#include "luxxle/components/sidebar/browser/pref_names.h"
+#include "luxxle/components/sidebar/browser/sidebar_item.h"
+#include "luxxle/components/sidebar/browser/sidebar_service.h"
+#include "luxxle/components/sidebar/common/features.h"
 #include "build/build_config.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/search_engines/template_url_service_factory.h"
@@ -600,7 +600,7 @@ IN_PROC_BROWSER_TEST_F(SidebarBrowserTest, EventDetectWidgetTest) {
             widget->GetWindowBoundsInScreen().right());
 
   auto* tab_strip_model = browser()->tab_strip_model();
-  brave::NewSplitViewForTab(browser());
+  luxxle::NewSplitViewForTab(browser());
   auto* split_view_data = browser()->GetFeatures().split_view_browser_data();
   ASSERT_TRUE(split_view_data);
   ASSERT_TRUE(split_view_data->IsTabTiled(
@@ -1299,7 +1299,7 @@ IN_PROC_BROWSER_TEST_F(SidebarBrowserTest, SidebarRightSideTest) {
   // Sidebar is on right by default
   EXPECT_FALSE(IsSidebarUIOnLeft());
 
-  brave::ToggleVerticalTabStrip(browser());
+  luxxle::ToggleVerticalTabStrip(browser());
   ASSERT_TRUE(tabs::utils::ShouldShowVerticalTabs(browser()));
 
   auto* prefs = browser()->profile()->GetPrefs();

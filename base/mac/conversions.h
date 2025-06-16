@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BASE_MAC_CONVERSIONS_H_
-#define BRAVE_BASE_MAC_CONVERSIONS_H_
+#ifndef LUXXLE_BASE_MAC_CONVERSIONS_H_
+#define LUXXLE_BASE_MAC_CONVERSIONS_H_
 
 #import <Foundation/Foundation.h>
 
@@ -13,7 +13,7 @@
 #include <vector>
 
 /// This file is for converting from STL to Objective-C and vice-versa.
-namespace brave {
+namespace luxxle {
 template <typename T, typename U>
 struct is_objc_convertible {
   static const bool value =
@@ -126,4 +126,4 @@ std::vector<T> ns_to_vector(NSArray* array) {
 
 }  // namespace brave
 
-#endif  // BRAVE_BASE_MAC_CONVERSIONS_H_
+#endif  // LUXXLE_BASE_MAC_CONVERSIONS_H_

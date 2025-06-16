@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_COMMON_IMPORTER_IMPORTER_CONSTANTS_H_
-#define BRAVE_COMMON_IMPORTER_IMPORTER_CONSTANTS_H_
+#ifndef LUXXLE_COMMON_IMPORTER_IMPORTER_CONSTANTS_H_
+#define LUXXLE_COMMON_IMPORTER_IMPORTER_CONSTANTS_H_
 
 #include "build/build_config.h"
 
@@ -31,4 +31,4 @@ inline constexpr char kYandexBrowser[] = "Yandex";
 inline constexpr char kWhaleBrowser[] = "NAVER Whale";
 // End of browser names section
 
-#endif  // BRAVE_COMMON_IMPORTER_IMPORTER_CONSTANTS_H_
+#endif  // LUXXLE_COMMON_IMPORTER_IMPORTER_CONSTANTS_H_

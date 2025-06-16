@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/side_panel/playlist/playlist_side_panel_coordinator.h"
+#include "luxxle/browser/ui/views/side_panel/playlist/playlist_side_panel_coordinator.h"
 
 #include <memory>
 
 #include "base/check_is_test.h"
 #include "base/functional/callback.h"
-#include "brave/browser/ui/sidebar/sidebar_controller.h"
-#include "brave/browser/ui/sidebar/sidebar_model.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/browser/ui/sidebar/sidebar_controller.h"
+#include "luxxle/browser/ui/sidebar/sidebar_model.h"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/app/vector_icons/vector_icons.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"

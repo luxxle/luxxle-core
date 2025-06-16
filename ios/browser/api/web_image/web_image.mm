@@ -33,14 +33,14 @@ static const float animated_image_frame_delay = 2.0;
 }  // namespace WebImage
 
 @interface WebImageDownloader () {
-  std::unique_ptr<brave::ImageDownloader> image_fetcher_;
+  std::unique_ptr<luxxle::ImageDownloader> image_fetcher_;
 }
 @end
 
 @implementation WebImageDownloader
 - (instancetype)initWithBrowserState:(ProfileIOS*)profile {
   if ((self = [super init])) {
-    image_fetcher_ = std::make_unique<brave::ImageDownloader>(
+    image_fetcher_ = std::make_unique<luxxle::ImageDownloader>(
         profile->GetSharedURLLoaderFactory());
   }
   return self;

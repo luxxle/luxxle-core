@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/brave_wallet/market/market_ui.h"
+#include "luxxle/browser/ui/webui/brave_wallet/market/market_ui.h"
 
 #include <string>
 
-#include "brave/browser/ui/webui/untrusted_sanitized_image_source.h"
-#include "brave/components/brave_wallet/browser/brave_wallet_constants.h"
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/components/market_display/resources/grit/market_display_generated_map.h"
+#include "luxxle/browser/ui/webui/untrusted_sanitized_image_source.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/components/market_display/resources/grit/market_display_generated_map.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/grit/browser_resources.h"
 #include "chrome/grit/generated_resources.h"
@@ -33,12 +33,12 @@ UntrustedMarketUI::UntrustedMarketUI(content::WebUI* web_ui)
     std::u16string l10n_str = l10n_util::GetStringUTF16(str.id);
     untrusted_source->AddString(str.name, l10n_str);
   }
-  untrusted_source->SetDefaultResource(IDR_BRAVE_WALLET_MARKET_DISPLAY_HTML);
+  untrusted_source->SetDefaultResource(/* REMOVED: IDR_BRAVE_WALLET_MARKET_DISPLAY_HTML */ 0);
   untrusted_source->AddResourcePaths(kMarketDisplayGenerated);
   untrusted_source->AddFrameAncestor(GURL(kBraveUIWalletPageURL));
   untrusted_source->AddFrameAncestor(GURL(kBraveUIWalletPanelURL));
   webui::SetupWebUIDataSource(untrusted_source, kMarketDisplayGenerated,
-                              IDR_BRAVE_WALLET_MARKET_DISPLAY_HTML);
+                              /* REMOVED: IDR_BRAVE_WALLET_MARKET_DISPLAY_HTML */ 0);
 
   untrusted_source->OverrideContentSecurityPolicy(
       network::mojom::CSPDirectiveName::ScriptSrc,

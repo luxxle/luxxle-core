@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/net/brave_network_audit_test_helper.h"
+#include "luxxle/browser/net/brave_network_audit_test_helper.h"
 
 #include <array>
 #include <string_view>
@@ -11,12 +11,12 @@
 #include "base/json/json_file_value_serializer.h"
 #include "base/test/values_test_util.h"
 #include "base/values.h"
-#include "brave/browser/net/brave_network_audit_allowed_lists.h"
+#include "luxxle/browser/net/brave_network_audit_allowed_lists.h"
 #include "chrome/test/base/in_process_browser_test.h"
 #include "content/public/test/browser_test_utils.h"
 #include "third_party/re2/src/re2/re2.h"
 
-namespace brave {
+namespace luxxle {
 namespace {
 // Based on the implementation of isPrivateIP() from NPM's "ip" module.
 // See https://github.com/indutny/node-ip/blob/master/lib/ip.js

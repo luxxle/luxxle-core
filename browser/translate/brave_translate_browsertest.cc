@@ -12,9 +12,9 @@
 #include "base/test/bind.h"
 #include "base/test/mock_callback.h"
 #include "base/test/scoped_feature_list.h"
-#include "brave/components/constants/brave_paths.h"
-#include "brave/components/constants/brave_services_key.h"
-#include "brave/components/translate/core/common/brave_translate_features.h"
+#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/constants/brave_services_key.h"
+#include "luxxle/components/translate/core/common/brave_translate_features.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/translate/chrome_translate_client.h"
 #include "chrome/browser/translate/translate_test_utils.h"
@@ -109,7 +109,7 @@ class BraveTranslateBrowserTest : public InProcessBrowserTest {
 
   void SetUpOnMainThread() override {
     base::FilePath test_data_dir;
-    CHECK(base::PathService::Get(brave::DIR_TEST_DATA, &test_data_dir));
+    CHECK(base::PathService::Get(luxxle::DIR_TEST_DATA, &test_data_dir));
     embedded_test_server()->ServeFilesFromDirectory(test_data_dir);
     CHECK(embedded_test_server()->Start());
     https_server_.RegisterRequestHandler(base::BindRepeating(

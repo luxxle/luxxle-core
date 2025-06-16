@@ -3,9 +3,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ai_chat/ai_chat_urls.h"
-#include "brave/browser/ui/webui/ai_chat/ai_chat_ui.h"
-#include "brave/components/ai_chat/core/browser/utils.h"
+#include "luxxle/browser/ai_chat/ai_chat_urls.h"
+#include "luxxle/browser/ui/webui/ai_chat/ai_chat_ui.h"
+#include "luxxle/components/ai_chat/core/browser/utils.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/views/side_panel/side_panel_registry.h"
 #include "chrome/browser/ui/views/side_panel/side_panel_web_ui_view.h"
@@ -37,7 +37,7 @@ std::unique_ptr<views::View> CreateAIChatSidePanelWebView(
 
 }  // namespace
 
-namespace brave {
+namespace luxxle {
 
 // Register here for an entry that is used for all tabs and its life time is
 // tied with tab. If it has specific life time, use separated manager for

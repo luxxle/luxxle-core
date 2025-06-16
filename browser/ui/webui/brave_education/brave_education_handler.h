@@ -5,11 +5,11 @@
 
 // based on //chrome/browser/ui/webui/whats_new/whats_new_handler.h
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_HANDLER_H_
-#define BRAVE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_HANDLER_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_HANDLER_H_
+#define LUXXLE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_HANDLER_H_
 
-#include "brave/browser/ui/webui/brave_education/brave_education.mojom.h"
-#include "brave/components/brave_education/education_urls.h"
+#include "luxxle/browser/ui/webui/brave_education/brave_education.mojom.h"
+#include "luxxle/components/brave_education/education_urls.h"
 #include "content/public/browser/web_ui_message_handler.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
 #include "mojo/public/cpp/bindings/pending_remote.h"
@@ -39,4 +39,4 @@ class BraveEducationHandler : public brave_education::mojom::PageHandler {
   brave_education::EducationPageType page_type_;
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_HANDLER_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_HANDLER_H_

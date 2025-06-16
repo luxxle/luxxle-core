@@ -3,15 +3,15 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_NEW_TAB_TAKEOVER_ANDROID_NEW_TAB_TAKEOVER_UI_H_
-#define BRAVE_BROWSER_UI_WEBUI_NEW_TAB_TAKEOVER_ANDROID_NEW_TAB_TAKEOVER_UI_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_NEW_TAB_TAKEOVER_ANDROID_NEW_TAB_TAKEOVER_UI_H_
+#define LUXXLE_BROWSER_UI_WEBUI_NEW_TAB_TAKEOVER_ANDROID_NEW_TAB_TAKEOVER_UI_H_
 
 #include <memory>
 #include <string>
 
 #include "base/memory/raw_ptr.h"
-#include "brave/components/new_tab_takeover/mojom/new_tab_takeover.mojom.h"
-#include "brave/components/ntp_background_images/browser/mojom/ntp_background_images.mojom.h"
+#include "luxxle/components/new_tab_takeover/mojom/new_tab_takeover.mojom.h"
+#include "luxxle/components/ntp_background_images/browser/mojom/ntp_background_images.mojom.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
 #include "mojo/public/cpp/bindings/receiver.h"
 #include "ui/webui/mojo_web_ui_controller.h"
@@ -68,4 +68,4 @@ class NewTabTakeoverUI : public ui::MojoWebUIController,
   WEB_UI_CONTROLLER_TYPE_DECL();
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_NEW_TAB_TAKEOVER_ANDROID_NEW_TAB_TAKEOVER_UI_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_NEW_TAB_TAKEOVER_ANDROID_NEW_TAB_TAKEOVER_UI_H_

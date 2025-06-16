@@ -19,7 +19,7 @@
 #include "brave/ios/browser/skus/skus_service_factory.h"
 #include "brave/ios/browser/url_sanitizer/url_sanitizer_service_factory+private.h"
 
-namespace brave {
+namespace luxxle {
 
 void EnsureProfileKeyedServiceFactoriesBuilt() {
   ai_chat::ModelServiceFactory::GetInstance();
@@ -32,7 +32,7 @@ void EnsureProfileKeyedServiceFactoriesBuilt() {
   brave_wallet::MeldIntegrationServiceFactory::GetInstance();
   brave_wallet::SwapServiceFactory::GetInstance();
   skus::SkusServiceFactory::GetInstance();
-  brave::URLSanitizerServiceFactory::GetInstance();
+  luxxle::URLSanitizerServiceFactory::GetInstance();
   debounce::DebounceServiceFactory::GetInstance();
   webcompat_reporter::WebcompatReporterServiceFactory::GetInstance();
 }

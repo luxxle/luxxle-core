@@ -3,16 +3,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_WALLET_HANDLER_H_
-#define BRAVE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_WALLET_HANDLER_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_WALLET_HANDLER_H_
+#define LUXXLE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_WALLET_HANDLER_H_
 
 #include <string>
 #include <utility>
 
 #include "base/memory/weak_ptr.h"
-#include "brave/components/brave_wallet/browser/json_rpc_service.h"
-#include "brave/components/brave_wallet/browser/network_manager.h"
-#include "brave/components/brave_wallet/common/brave_wallet.mojom.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
 #include "chrome/browser/ui/webui/settings/settings_page_ui_handler.h"
 
 class PrefService;
@@ -69,4 +69,4 @@ class BraveWalletHandler : public settings::SettingsPageUIHandler {
   base::WeakPtrFactory<BraveWalletHandler> weak_ptr_factory_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_WALLET_HANDLER_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_WALLET_HANDLER_H_

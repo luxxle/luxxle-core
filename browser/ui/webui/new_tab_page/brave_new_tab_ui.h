@@ -3,16 +3,16 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_NEW_TAB_PAGE_BRAVE_NEW_TAB_UI_H_
-#define BRAVE_BROWSER_UI_WEBUI_NEW_TAB_PAGE_BRAVE_NEW_TAB_UI_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_NEW_TAB_PAGE_BRAVE_NEW_TAB_UI_H_
+#define LUXXLE_BROWSER_UI_WEBUI_NEW_TAB_PAGE_BRAVE_NEW_TAB_UI_H_
 
 #include <memory>
 #include <string>
 
 #include "base/memory/raw_ptr.h"
-#include "brave/components/brave_new_tab_ui/brave_new_tab_page.mojom.h"
-#include "brave/components/brave_news/common/brave_news.mojom.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
+#include "luxxle/components/brave_new_tab_ui/brave_new_tab_page.mojom.h"
+#include "luxxle/components/brave_news/common/brave_news.mojom.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #include "chrome/browser/ui/webui/searchbox/realbox_handler.h"
 #include "components/regional_capabilities/regional_capabilities_service.h"
 #include "content/public/browser/web_ui_controller.h"
@@ -23,7 +23,7 @@
 #include "ui/webui/resources/cr_components/searchbox/searchbox.mojom.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/components/brave_vpn/common/mojom/brave_vpn.mojom.h"  // nogncheck
+// REMOVED: #include "luxxle/components/brave_vpn/.*"  // nogncheck
 #endif  // BUILDFLAG(ENABLE_BRAVE_VPN)
 
 namespace brave_ads {
@@ -91,4 +91,4 @@ class BraveNewTabUI : public ui::MojoWebUIController,
   WEB_UI_CONTROLLER_TYPE_DECL();
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_NEW_TAB_PAGE_BRAVE_NEW_TAB_UI_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_NEW_TAB_PAGE_BRAVE_NEW_TAB_UI_H_

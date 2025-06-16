@@ -5,7 +5,7 @@
 
 #include "brave/ios/browser/api/translate/features.h"
 
-namespace brave::features {
+namespace luxxle::features {
 
 BASE_FEATURE(kBraveTranslateEnabled,
              "BraveTranslateEnabled",
@@ -15,4 +15,4 @@ BASE_FEATURE(kBraveAppleTranslateEnabled,
              "BraveAppleTranslateEnabled",
              base::FEATURE_DISABLED_BY_DEFAULT);
 
-}  // namespace brave::features
+}  // namespace luxxle::features

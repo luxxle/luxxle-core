@@ -3,13 +3,13 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_IOS_BROWSER_API_AI_CHAT_AI_CHAT_SERVICE_FACTORY_H_
-#define BRAVE_IOS_BROWSER_API_AI_CHAT_AI_CHAT_SERVICE_FACTORY_H_
+#ifndef LUXXLE_IOS_BROWSER_API_AI_CHAT_AI_CHAT_SERVICE_FACTORY_H_
+#define LUXXLE_IOS_BROWSER_API_AI_CHAT_AI_CHAT_SERVICE_FACTORY_H_
 
 #include <memory>
 
 #include "base/no_destructor.h"
-#include "brave/components/ai_chat/core/browser/ai_chat_metrics.h"
+#include "luxxle/components/ai_chat/core/browser/ai_chat_metrics.h"
 #include "ios/chrome/browser/shared/model/profile/profile_keyed_service_factory_ios.h"
 
 class ProfileIOS;
@@ -47,4 +47,4 @@ class AIChatServiceFactory : public ProfileKeyedServiceFactoryIOS {
 };
 }  // namespace ai_chat
 
-#endif  // BRAVE_IOS_BROWSER_API_AI_CHAT_AI_CHAT_SERVICE_FACTORY_H_
+#endif  // LUXXLE_IOS_BROWSER_API_AI_CHAT_AI_CHAT_SERVICE_FACTORY_H_

@@ -6,7 +6,7 @@
 #include <string>
 
 #include "base/path_service.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "chrome/test/base/android/android_browser_test.h"
 #include "chrome/test/base/chrome_test_utils.h"
 #include "chrome/test/base/testing_browser_process.h"
@@ -54,7 +54,7 @@ class AndroidYouTubeScriptInjectorBrowserTest : public PlatformBrowserTest {
 
   base::FilePath GetTestDataDir() {
     base::ScopedAllowBlockingForTesting allow_blocking;
-    return base::PathService::CheckedGet(brave::DIR_TEST_DATA);
+    return base::PathService::CheckedGet(luxxle::DIR_TEST_DATA);
   }
 
   void TearDownInProcessBrowserTestFixture() override {

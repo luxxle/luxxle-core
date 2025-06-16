@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/frame/brave_browser_frame.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_frame.h"
 
-#include "brave/browser/themes/brave_private_window_theme_supplier.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/browser/ui/tabs/shared_pinned_tab_service.h"
-#include "brave/browser/ui/tabs/shared_pinned_tab_service_factory.h"
-#include "brave/browser/ui/views/frame/brave_browser_root_view.h"
+#include "luxxle/browser/themes/brave_private_window_theme_supplier.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/tabs/shared_pinned_tab_service.h"
+#include "luxxle/browser/ui/tabs/shared_pinned_tab_service_factory.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_root_view.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/themes/theme_service.h"
 #include "chrome/browser/themes/theme_service_factory.h"

@@ -8,11 +8,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include "brave/browser/ui/commander/entity_match.h"
+#include "luxxle/browser/ui/commander/entity_match.h"
 
 #include <utility>
 
-#include "brave/browser/ui/commander/fuzzy_finder.h"
+#include "luxxle/browser/ui/commander/fuzzy_finder.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_list.h"
 #include "chrome/browser/ui/tabs/tab_group.h"

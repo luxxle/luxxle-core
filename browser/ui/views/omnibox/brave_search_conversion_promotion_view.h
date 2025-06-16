@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_OMNIBOX_BRAVE_SEARCH_CONVERSION_PROMOTION_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_OMNIBOX_BRAVE_SEARCH_CONVERSION_PROMOTION_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_OMNIBOX_BRAVE_SEARCH_CONVERSION_PROMOTION_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_OMNIBOX_BRAVE_SEARCH_CONVERSION_PROMOTION_VIEW_H_
 
 #include <memory>
 #include <optional>
@@ -12,7 +12,7 @@
 
 #include "base/memory/raw_ptr.h"
 #include "base/memory/raw_ref.h"
-#include "brave/components/brave_search_conversion/types.h"
+#include "luxxle/components/brave_search_conversion/types.h"
 #include "chrome/browser/ui/views/omnibox/omnibox_mouse_enter_exit_handler.h"
 #include "ui/base/metadata/metadata_header_macros.h"
 #include "ui/views/view.h"
@@ -97,4 +97,4 @@ class BraveSearchConversionPromotionView : public views::View {
   raw_ref<TemplateURLService> template_url_service_;
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_OMNIBOX_BRAVE_SEARCH_CONVERSION_PROMOTION_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_OMNIBOX_BRAVE_SEARCH_CONVERSION_PROMOTION_VIEW_H_

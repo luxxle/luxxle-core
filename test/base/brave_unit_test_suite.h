@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_TEST_BASE_BRAVE_UNIT_TEST_SUITE_H_
-#define BRAVE_TEST_BASE_BRAVE_UNIT_TEST_SUITE_H_
+#ifndef LUXXLE_TEST_BASE_BRAVE_UNIT_TEST_SUITE_H_
+#define LUXXLE_TEST_BASE_BRAVE_UNIT_TEST_SUITE_H_
 
 #include <memory>
 
@@ -24,4 +24,4 @@ class BraveUnitTestSuite : public ChromeUnitTestSuite {
   void Initialize() override;
 };
 
-#endif  // BRAVE_TEST_BASE_BRAVE_UNIT_TEST_SUITE_H_
+#endif  // LUXXLE_TEST_BASE_BRAVE_UNIT_TEST_SUITE_H_

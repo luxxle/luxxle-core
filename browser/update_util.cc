@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/update_util.h"
+#include "luxxle/browser/update_util.h"
 
 #include "base/command_line.h"
-#include "brave/components/constants/brave_switches.h"
+#include "luxxle/components/constants/brave_switches.h"
 
-namespace brave {
+namespace luxxle {
 
 bool UpdateEnabled() {
 #if defined(OFFICIAL_BUILD)

@@ -3,14 +3,14 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_BRAVE_NEWS_BRAVE_NEWS_ACTION_ICON_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_BRAVE_NEWS_BRAVE_NEWS_ACTION_ICON_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_BRAVE_NEWS_BRAVE_NEWS_ACTION_ICON_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_BRAVE_NEWS_BRAVE_NEWS_ACTION_ICON_VIEW_H_
 
 #include <string>
 #include <vector>
 
 #include "base/scoped_observation.h"
-#include "brave/browser/brave_news/brave_news_tab_helper.h"
+#include "luxxle/browser/brave_news/brave_news_tab_helper.h"
 #include "chrome/browser/ui/views/page_action/page_action_icon_view.h"
 #include "components/prefs/pref_member.h"
 #include "ui/base/metadata/metadata_header_macros.h"
@@ -76,4 +76,4 @@ class BraveNewsActionIconView : public PageActionIconView,
   base::WeakPtrFactory<BraveNewsActionIconView> weak_ptr_factory_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_BRAVE_NEWS_BRAVE_NEWS_ACTION_ICON_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_BRAVE_NEWS_BRAVE_NEWS_ACTION_ICON_VIEW_H_

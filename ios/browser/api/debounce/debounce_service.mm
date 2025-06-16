@@ -6,7 +6,7 @@
 #include "brave/ios/browser/api/debounce/debounce_service+private.h"
 
 #include "base/memory/raw_ptr.h"
-#include "brave/components/debounce/core/browser/debounce_service.h"
+#include "luxxle/components/debounce/core/browser/debounce_service.h"
 #import "net/base/apple/url_conversions.h"
 #include "url/gurl.h"
 

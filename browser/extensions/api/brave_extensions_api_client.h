@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_EXTENSIONS_API_BRAVE_EXTENSIONS_API_CLIENT_H_
-#define BRAVE_BROWSER_EXTENSIONS_API_BRAVE_EXTENSIONS_API_CLIENT_H_
+#ifndef LUXXLE_BROWSER_EXTENSIONS_API_BRAVE_EXTENSIONS_API_CLIENT_H_
+#define LUXXLE_BROWSER_EXTENSIONS_API_BRAVE_EXTENSIONS_API_CLIENT_H_
 
 #include "chrome/browser/extensions/api/chrome_extensions_api_client.h"
 #include "extensions/browser/api/web_request/web_request_info.h"
@@ -21,4 +21,4 @@ class BraveExtensionsAPIClient : public ChromeExtensionsAPIClient {
 
 }  // namespace extensions
 
-#endif  // BRAVE_BROWSER_EXTENSIONS_API_BRAVE_EXTENSIONS_API_CLIENT_H_
+#endif  // LUXXLE_BROWSER_EXTENSIONS_API_BRAVE_EXTENSIONS_API_CLIENT_H_

@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/brave_vpn/brave_vpn_fallback_dialog_view.h"
+#include "luxxle/browser/ui/views/brave_vpn/brave_vpn_fallback_dialog_view.h"
 
 #include <memory>
 #include <utility>
 
-#include "brave/browser/brave_features_internal_names.h"
-#include "brave/components/brave_vpn/common/pref_names.h"
+#include "luxxle/browser/brave_features_internal_names.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #include "chrome/browser/about_flags.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/profile.h"
@@ -27,7 +27,7 @@
 #include "ui/views/controls/styled_label.h"
 #include "ui/views/layout/box_layout.h"
 
-namespace brave {
+namespace luxxle {
 void ShowBraveVpnIKEv2FallbackDialog() {
   brave_vpn::BraveVpnFallbackDialogView::Show(chrome::FindLastActive());
 }

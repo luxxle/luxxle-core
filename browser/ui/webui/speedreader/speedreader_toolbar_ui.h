@@ -3,14 +3,14 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_SPEEDREADER_SPEEDREADER_TOOLBAR_UI_H_
-#define BRAVE_BROWSER_UI_WEBUI_SPEEDREADER_SPEEDREADER_TOOLBAR_UI_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_SPEEDREADER_SPEEDREADER_TOOLBAR_UI_H_
+#define LUXXLE_BROWSER_UI_WEBUI_SPEEDREADER_SPEEDREADER_TOOLBAR_UI_H_
 
 #include <memory>
 #include <string>
 
-#include "brave/browser/ui/webui/speedreader/speedreader_toolbar_data_handler_impl.h"
-#include "brave/components/speedreader/common/speedreader_toolbar.mojom.h"
+#include "luxxle/browser/ui/webui/speedreader/speedreader_toolbar_data_handler_impl.h"
+#include "luxxle/components/speedreader/common/speedreader_toolbar.mojom.h"
 #include "chrome/browser/ui/webui/top_chrome/top_chrome_web_ui_controller.h"
 #include "chrome/browser/ui/webui/top_chrome/top_chrome_webui_config.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
@@ -64,4 +64,4 @@ class SpeedreaderToolbarUIConfig
   bool ShouldAutoResizeHost() override;
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_SPEEDREADER_SPEEDREADER_TOOLBAR_UI_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_SPEEDREADER_SPEEDREADER_TOOLBAR_UI_H_

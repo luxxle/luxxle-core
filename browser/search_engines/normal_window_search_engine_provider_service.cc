@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/search_engines/normal_window_search_engine_provider_service.h"
+#include "luxxle/browser/search_engines/normal_window_search_engine_provider_service.h"
 
 #include <string>
 
 #include "base/functional/bind.h"
-#include "brave/browser/search_engines/pref_names.h"
-#include "brave/browser/search_engines/search_engine_provider_util.h"
-#include "brave/components/l10n/common/country_code_util.h"
-#include "brave/components/search_engines/brave_prepopulated_engines.h"
+#include "luxxle/browser/search_engines/pref_names.h"
+#include "luxxle/browser/search_engines/search_engine_provider_util.h"
+#include "luxxle/components/l10n/common/country_code_util.h"
+#include "luxxle/components/search_engines/brave_prepopulated_engines.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/search_engines/template_url_prepopulate_data_resolver_factory.h"
@@ -26,7 +26,7 @@
 NormalWindowSearchEngineProviderService::
     NormalWindowSearchEngineProviderService(Profile* profile)
     : profile_(profile) {
-  brave::UpdateDefaultSearchSuggestionsPrefs(*g_browser_process->local_state(),
+  luxxle::UpdateDefaultSearchSuggestionsPrefs(*g_browser_process->local_state(),
                                              *profile_->GetPrefs());
   private_search_provider_guid_.Init(
       prefs::kSyncedDefaultPrivateSearchProviderGUID, profile_->GetPrefs(),
@@ -63,11 +63,11 @@ void NormalWindowSearchEngineProviderService::OnTemplateURLServiceLoaded() {
 
 void NormalWindowSearchEngineProviderService::
     PrepareInitialPrivateSearchProvider() {
-  brave::PrepareDefaultPrivateSearchProviderDataIfNeeded(*profile_);
+  luxxle::PrepareDefaultPrivateSearchProviderDataIfNeeded(*profile_);
 }
 
 void NormalWindowSearchEngineProviderService::OnPreferenceChanged() {
-  brave::UpdateDefaultPrivateSearchProviderData(*profile_);
+  luxxle::UpdateDefaultPrivateSearchProviderData(*profile_);
 }
 
 void NormalWindowSearchEngineProviderService::MigrateSearchEnginePrefsInJP() {

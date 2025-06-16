@@ -3,26 +3,26 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/net/brave_static_redirect_network_delegate_helper.h"
+#include "luxxle/browser/net/brave_static_redirect_network_delegate_helper.h"
 
 #include <memory>
 #include <string>
 
 #include "base/strings/string_util.h"
-#include "brave/browser/net/url_context.h"
-#include "brave/components/geolocation/brave_geolocation_buildflags.h"
-#include "brave/components/static_redirect_helper/static_redirect_helper.h"
+#include "luxxle/browser/net/url_context.h"
+#include "luxxle/components/geolocation/brave_geolocation_buildflags.h"
+#include "luxxle/components/static_redirect_helper/static_redirect_helper.h"
 #include "components/component_updater/component_updater_url_constants.h"
 #include "net/base/net_errors.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "url/gurl.h"
 #include "url/url_constants.h"
 
-using brave::ResponseCallback;
+using luxxle::ResponseCallback;
 
 TEST(BraveStaticRedirectNetworkDelegateHelperTest, NoModifyTypicalURL) {
   const GURL url("https://bradhatesprimes.brave.com/composite_numbers_ftw");
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_TRUE(request_info->new_url_spec.empty());
@@ -34,7 +34,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest, ModifyGeoURL) {
       "https://www.googleapis.com/geolocation/v1/geolocate?key=2_3_5_7");
   const GURL expected_url(BUILDFLAG(GOOGLEAPIS_URL));
 
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, expected_url);
@@ -49,7 +49,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest, ModifyCRLSet1) {
       "https://redirector.brave.com/release2/chrome_component/"
       "AJ4r388iQSJq_4819/4819_all_crl-set-5934829738003798040.data.crx3");
 
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, expected_url);
@@ -65,7 +65,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest, ModifyCRLSet2) {
       "https://redirector.brave.com/edgedl/release2/chrome_compone"
       "nt/AJ4r388iQSJq_4819/4819_all_crl-set-5934829738003798040.data.crx3");
 
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, expected_url);
@@ -82,7 +82,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest, ModifyCRLSet3) {
       "LLjIBPPmveI_4988/"
       "4988_all_crl-set-6296993568184466307.data.crx3");
 
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, expected_url);
@@ -105,7 +105,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest, ModifyCRXDownload) {
       "extens"
       "ion_2_0_673_0.crx");
 
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, expected_url);
@@ -120,7 +120,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest, ModifyCRLSet1_http) {
       "https://redirector.brave.com/release2/chrome_component/"
       "AJ4r388iQSJq_4819/4819_all_crl-set-5934829738003798040.data.crx3");
 
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, expected_url);
@@ -136,7 +136,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest, ModifyCRLSet2_http) {
       "https://redirector.brave.com/edgedl/release2/chrome_compone"
       "nt/AJ4r388iQSJq_4819/4819_all_crl-set-5934829738003798040.data.crx3");
 
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, expected_url);
@@ -152,7 +152,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest, ModifyCRLSet3_http) {
       "LLjIBPPmveI_4988/"
       "4988_all_crl-set-6296993568184466307.data.crx3");
 
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, expected_url);
@@ -171,7 +171,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest, ModifyCRLSet5_http) {
       "khaoiebndkojlmppeemjhbpbandiljpe_58_win_advr4ucepztwtigvw3fduftsvbeq."
       "crx3");
 
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, expected_url);
@@ -194,7 +194,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest, ModifyCRXDownload_http) {
       "extens"
       "ion_2_0_673_0.crx");
 
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, expected_url);
@@ -202,15 +202,15 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest, ModifyCRXDownload_http) {
 }
 
 TEST(BraveStaticRedirectNetworkDelegateHelperTest, ModifySafeBrowsingURLV4) {
-  brave::SetSafeBrowsingEndpointForTesting(true);
+  luxxle::SetSafeBrowsingEndpointForTesting(true);
   const GURL url(
       "https://safebrowsing.googleapis.com/v4/"
       "threatListUpdates:fetch?$req=ChkKCGNocm9taXVtEg02Ni");
   GURL::Replacements replacements;
-  replacements.SetHostStr(brave::kSafeBrowsingTestingEndpoint);
+  replacements.SetHostStr(luxxle::kSafeBrowsingTestingEndpoint);
   const GURL expected_url(url.ReplaceComponents(replacements));
 
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, expected_url);
@@ -218,15 +218,15 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest, ModifySafeBrowsingURLV4) {
 }
 
 TEST(BraveStaticRedirectNetworkDelegateHelperTest, ModifySafeBrowsingURLV5) {
-  brave::SetSafeBrowsingEndpointForTesting(true);
+  luxxle::SetSafeBrowsingEndpointForTesting(true);
   const GURL url(
       "https://safebrowsing.googleapis.com/v5/"
       "threatListUpdates:fetch?$req=ChkKCGNocm9taXVtEg02Ni");
   GURL::Replacements replacements;
-  replacements.SetHostStr(brave::kSafeBrowsingTestingEndpoint);
+  replacements.SetHostStr(luxxle::kSafeBrowsingTestingEndpoint);
   GURL expected_url(url.ReplaceComponents(replacements));
 
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, expected_url);
@@ -241,7 +241,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest, ModifyGvt1) {
       "https://redirector.brave.com/edgedl/release2/"
       "NfaZYtcKdtFc0LUvFkcNFA_0.3/AKveSIjhHAm2K09XAMovFEQ");
 
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, expected_url);
@@ -256,7 +256,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest, ModifyGoogleDl) {
       "https://redirector.brave.com/release2/"
       "NfaZYtcKdtFc0LUvFkcNFA_0.3/AKveSIjhHAm2K09XAMovFEQ");
 
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, expected_url);
@@ -269,7 +269,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest, DontModifyGvt1ForWidevine) {
       "L2Nocm9tZV9leHRlbnNpb24vYmxvYnMvYjYxQUFXaFBmeUtPbVFUYUh"
       "mRGV0MS1Wdw/4.10.1610.0_oimompecagnajdejgnnjijobebaeigek"
       ".crx");
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, "");
@@ -282,7 +282,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest, DontModifyGvt1ForWidevine2) {
       "adpwdrehowm2a6w7spq52lx3eyla_4.10.2891.0/"
       "oimompecagnajdejgnnjijobebaeigek_4.10.2891.0_mac_arm64_"
       "adebp6igda2i2udepjmfqykgfjja.crx3");
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, "");
@@ -296,7 +296,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest,
       "L2Nocm9tZV9leHRlbnNpb24vYmxvYnMvYjYxQUFXaFBmeUtPbVFUYUh"
       "mRGV0MS1Wdw/4.10.1610.0_oimompecagnajdejgnnjijobebaeigek"
       ".crx");
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, "");
@@ -310,7 +310,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest,
       "adpwdrehowm2a6w7spq52lx3eyla_4.10.2891.0/"
       "oimompecagnajdejgnnjijobebaeigek_4.10.2891.0_mac_arm64_"
       "adebp6igda2i2udepjmfqykgfjja.crx3");
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, "");
@@ -319,7 +319,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest,
 
 TEST(BraveStaticRedirectNetworkDelegateHelperTest,
      ModifySafeBrowsingFileCheckURL) {
-  brave::SetSafeBrowsingEndpointForTesting(true);
+  luxxle::SetSafeBrowsingEndpointForTesting(true);
   const GURL url(
       "https://sb-ssl.google.com/safebrowsing/clientreport/download?"
       "key=DUMMY_KEY");
@@ -327,7 +327,7 @@ TEST(BraveStaticRedirectNetworkDelegateHelperTest,
       "https://sb-ssl.brave.com/safebrowsing/clientreport/download?"
       "key=DUMMY_KEY");
 
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
   EXPECT_EQ(request_info->new_url_spec, expected_url);

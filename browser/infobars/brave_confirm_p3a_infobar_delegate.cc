@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/infobars/brave_confirm_p3a_infobar_delegate.h"
+#include "luxxle/browser/infobars/brave_confirm_p3a_infobar_delegate.h"
 
 #include <memory>
 #include <utility>
 
-#include "brave/components/constants/pref_names.h"
-#include "brave/components/constants/url_constants.h"
-#include "brave/components/p3a/pref_names.h"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/constants/url_constants.h"
+#include "luxxle/components/p3a/pref_names.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/infobars/confirm_infobar_creator.h"
 #include "chrome/grit/branded_strings.h"

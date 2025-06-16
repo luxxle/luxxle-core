@@ -7,7 +7,7 @@
 
 #include "base/strings/sys_string_conversions.h"
 #include "brave/base/mac/conversions.h"
-#include "brave/components/brave_shields/core/browser/adblock/rs/src/lib.rs.h"
+#include "luxxle/components/brave_shields/core/browser/adblock/rs/src/lib.rs.h"
 
 #if !defined(__has_feature) || !__has_feature(objc_arc)
 #error "This file requires ARC support."
@@ -238,9 +238,9 @@ class AdblockEngineBox final {
                                     exceptions:(NSArray<NSString*>*)exceptions
                                          error:(NSError**)error {
   const auto result = adblock_engine->hidden_class_id_selectors(
-      brave::ns_to_vector<std::string>(classes),
-      brave::ns_to_vector<std::string>(ids),
-      brave::ns_to_vector<std::string>(exceptions));
+      luxxle::ns_to_vector<std::string>(classes),
+      luxxle::ns_to_vector<std::string>(ids),
+      luxxle::ns_to_vector<std::string>(exceptions));
   if (result.result_kind != adblock::ResultKind::Success) {
     if (error) {
       *error = [[self class] adblockErrorForKind:result.result_kind

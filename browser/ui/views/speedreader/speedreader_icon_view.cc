@@ -3,15 +3,15 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/views/speedreader/speedreader_icon_view.h"
+#include "luxxle/browser/ui/views/speedreader/speedreader_icon_view.h"
 
 #include <string>
 
-#include "brave/app/brave_command_ids.h"
-#include "brave/browser/speedreader/speedreader_tab_helper.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/components/speedreader/common/features.h"
-#include "brave/components/vector_icons/vector_icons.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/browser/speedreader/speedreader_tab_helper.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/components/speedreader/common/features.h"
+#include "luxxle/components/vector_icons/vector_icons.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/ui/views/location_bar/location_bar_bubble_delegate_view.h"
 #include "chrome/browser/ui/views/page_action/page_action_icon_view.h"

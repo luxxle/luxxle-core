@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/omnibox/brave_omnibox_view_views.h"
+#include "luxxle/browser/ui/views/omnibox/brave_omnibox_view_views.h"
 
-#include "brave/browser/brave_browser_features.h"
-#include "brave/browser/url_sanitizer/url_sanitizer_service_factory.h"
-#include "brave/components/url_sanitizer/browser/url_sanitizer_service.h"
+#include "luxxle/browser/brave_browser_features.h"
+#include "luxxle/browser/url_sanitizer/url_sanitizer_service_factory.h"
+#include "luxxle/components/url_sanitizer/browser/url_sanitizer_service.h"
 #include "build/build_config.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/profiles/profile.h"
@@ -61,14 +61,14 @@ class BraveOmniboxViewViewsTest : public InProcessBrowserTest {
     base::RunLoop loop;
 
     auto* url_sanitizer_service =
-        brave::URLSanitizerServiceFactory::GetForBrowserContext(
+        luxxle::URLSanitizerServiceFactory::GetForBrowserContext(
             browser()->profile());
     url_sanitizer_service->SetInitializationCallbackForTesting(
         loop.QuitClosure());
-    brave::URLSanitizerComponentInstaller::RawConfig config;
+    luxxle::URLSanitizerComponentInstaller::RawConfig config;
     config.matchers = matchers;
     auto* component_intaller =
-        static_cast<brave::URLSanitizerComponentInstaller::Observer*>(
+        static_cast<luxxle::URLSanitizerComponentInstaller::Observer*>(
             url_sanitizer_service);
     component_intaller->OnConfigReady(config);
 

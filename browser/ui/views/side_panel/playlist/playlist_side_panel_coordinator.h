@@ -3,16 +3,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_SIDE_PANEL_PLAYLIST_PLAYLIST_SIDE_PANEL_COORDINATOR_H_
-#define BRAVE_BROWSER_UI_VIEWS_SIDE_PANEL_PLAYLIST_PLAYLIST_SIDE_PANEL_COORDINATOR_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_SIDE_PANEL_PLAYLIST_PLAYLIST_SIDE_PANEL_COORDINATOR_H_
+#define LUXXLE_BROWSER_UI_VIEWS_SIDE_PANEL_PLAYLIST_PLAYLIST_SIDE_PANEL_COORDINATOR_H_
 
 #include <memory>
 #include <string>
 
 #include "base/gtest_prod_util.h"
 #include "base/scoped_observation.h"
-#include "brave/browser/ui/views/side_panel/playlist/playlist_contents_wrapper.h"
-#include "brave/browser/ui/views/side_panel/playlist/playlist_side_panel_web_view.h"
+#include "luxxle/browser/ui/views/side_panel/playlist/playlist_contents_wrapper.h"
+#include "luxxle/browser/ui/views/side_panel/playlist/playlist_side_panel_web_view.h"
 #include "chrome/browser/ui/browser_user_data.h"
 #include "ui/views/view.h"
 #include "ui/views/view_observer.h"
@@ -95,4 +95,4 @@ class PlaylistSidePanelCoordinator
   BROWSER_USER_DATA_KEY_DECL();
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_SIDE_PANEL_PLAYLIST_PLAYLIST_SIDE_PANEL_COORDINATOR_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_SIDE_PANEL_PLAYLIST_PLAYLIST_SIDE_PANEL_COORDINATOR_H_

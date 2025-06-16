@@ -10,8 +10,8 @@
 
 #include "base/containers/flat_map.h"
 #include "base/strings/utf_string_conversions.h"
-#include "brave/components/constants/url_constants.h"
-#include "brave/components/webui/webui_resources.h"
+#include "luxxle/components/constants/url_constants.h"
+#include "luxxle/components/webui/webui_resources.h"
 #include "brave/ios/browser/ui/webui/brave_web_ui_ios_data_source.h"
 #include "build/build_config.h"
 #include "components/grit/components_resources.h"
@@ -26,8 +26,8 @@ namespace {
 void CustomizeWebUIHTMLSource(web::WebUIIOS* web_ui,
                               const std::string& name,
                               web::WebUIIOSDataSource* source) {
-  source->AddResourcePaths(brave::GetWebUIResources(name));
-  source->AddLocalizedStrings(brave::GetWebUILocalizedStrings(name));
+  source->AddResourcePaths(luxxle::GetWebUIResources(name));
+  source->AddLocalizedStrings(luxxle::GetWebUILocalizedStrings(name));
 }
 
 web::WebUIIOSDataSource* CreateWebUIDataSource(
@@ -48,7 +48,7 @@ web::WebUIIOSDataSource* CreateWebUIDataSource(
 
 }  // namespace
 
-namespace brave {
+namespace luxxle {
 
 web::WebUIIOSDataSource* CreateAndAddWebUIDataSource(
     web::WebUIIOS* web_ui,

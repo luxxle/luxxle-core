@@ -3,14 +3,14 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_BRAVE_ACTIONS_BRAVE_SHIELDS_ACTION_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_BRAVE_ACTIONS_BRAVE_SHIELDS_ACTION_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_BRAVE_ACTIONS_BRAVE_SHIELDS_ACTION_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_BRAVE_ACTIONS_BRAVE_SHIELDS_ACTION_VIEW_H_
 
 #include <memory>
 
 #include "base/memory/raw_ptr.h"
 #include "base/memory/raw_ref.h"
-#include "brave/browser/brave_shields/brave_shields_tab_helper.h"
+#include "luxxle/browser/brave_shields/brave_shields_tab_helper.h"
 #include "chrome/browser/ui/tabs/tab_strip_model_observer.h"
 #include "chrome/browser/ui/views/bubble/webui_bubble_manager.h"
 #include "ui/base/metadata/metadata_header_macros.h"
@@ -72,4 +72,4 @@ class BraveShieldsActionView
   std::unique_ptr<WebUIBubbleManager> webui_bubble_manager_;
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_BRAVE_ACTIONS_BRAVE_SHIELDS_ACTION_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_BRAVE_ACTIONS_BRAVE_SHIELDS_ACTION_VIEW_H_

@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/settings/brave_adblock_handler.h"
+#include "luxxle/browser/ui/webui/settings/brave_adblock_handler.h"
 
 #include <string>
 #include <utility>
@@ -12,14 +12,14 @@
 #include "base/functional/bind.h"
 #include "base/json/values_util.h"
 #include "base/values.h"
-#include "brave/browser/brave_browser_process.h"
-#include "brave/components/brave_adblock/resources/grit/brave_adblock_generated_map.h"
-#include "brave/components/brave_shields/content/browser/ad_block_custom_filters_provider.h"
-#include "brave/components/brave_shields/content/browser/ad_block_service.h"
-#include "brave/components/brave_shields/core/browser/ad_block_component_service_manager.h"
-#include "brave/components/brave_shields/core/browser/ad_block_custom_resource_provider.h"
-#include "brave/components/brave_shields/core/common/features.h"
-#include "brave/components/brave_shields/core/common/pref_names.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/components/brave_adblock/resources/grit/brave_adblock_generated_map.h"
+#include "luxxle/components/brave_shields/content/browser/ad_block_custom_filters_provider.h"
+#include "luxxle/components/brave_shields/content/browser/ad_block_service.h"
+#include "luxxle/components/brave_shields/core/browser/ad_block_component_service_manager.h"
+#include "luxxle/components/brave_shields/core/browser/ad_block_custom_resource_provider.h"
+#include "luxxle/components/brave_shields/core/common/features.h"
+#include "luxxle/components/brave_shields/core/common/pref_names.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/ui/browser_finder.h"
 #include "chrome/browser/ui/singleton_tabs.h"

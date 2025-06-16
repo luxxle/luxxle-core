@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/toolbar/brave_location_bar_model_delegate.h"
+#include "luxxle/browser/ui/toolbar/brave_location_bar_model_delegate.h"
 
 #include "base/feature_list.h"
 #include "base/strings/utf_string_conversions.h"
-#include "brave/browser/ui/brave_scheme_utils.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/components/constants/url_constants.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/browser/ui/brave_scheme_utils.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/components/constants/url_constants.h"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "components/prefs/pref_service.h"
@@ -18,9 +18,9 @@
 #include "extensions/buildflags/buildflags.h"
 
 #if !BUILDFLAG(IS_ANDROID)
-#include "brave/browser/ui/tabs/brave_tab_prefs.h"
-#include "brave/browser/ui/tabs/shared_pinned_tab_service.h"
-#include "brave/browser/ui/tabs/shared_pinned_tab_service_factory.h"
+#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/shared_pinned_tab_service.h"
+#include "luxxle/browser/ui/tabs/shared_pinned_tab_service_factory.h"
 #endif
 
 BraveLocationBarModelDelegate::BraveLocationBarModelDelegate(Browser* browser)

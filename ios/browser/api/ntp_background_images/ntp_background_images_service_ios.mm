@@ -9,11 +9,11 @@
 
 #include "base/memory/raw_ptr.h"
 #include "base/strings/sys_string_conversions.h"
-#include "brave/components/brave_ads/core/browser/service/ads_service.h"
-#include "brave/components/ntp_background_images/browser/features.h"
-#include "brave/components/ntp_background_images/browser/ntp_background_images_data.h"
-#include "brave/components/ntp_background_images/browser/ntp_background_images_service.h"
-#include "brave/components/ntp_background_images/browser/ntp_sponsored_images_data.h"
+// REMOVED: #include "luxxle/components/brave_ads/.*"
+#include "luxxle/components/ntp_background_images/browser/features.h"
+#include "luxxle/components/ntp_background_images/browser/ntp_background_images_data.h"
+#include "luxxle/components/ntp_background_images/browser/ntp_background_images_service.h"
+#include "luxxle/components/ntp_background_images/browser/ntp_sponsored_images_data.h"
 #include "brave/ios/browser/api/ntp_background_images/ntp_background_image+private.h"
 #include "brave/ios/browser/api/ntp_background_images/ntp_sponsored_image+private.h"
 

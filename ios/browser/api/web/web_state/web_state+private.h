@@ -7,8 +7,8 @@
 #include "base/memory/weak_ptr.h"
 #import "brave/ios/browser/api/web/web_state/web_state.h"
 
-#ifndef BRAVE_IOS_BROWSER_API_WEB_WEB_STATE_WEB_STATE_PRIVATE_H_
-#define BRAVE_IOS_BROWSER_API_WEB_WEB_STATE_WEB_STATE_PRIVATE_H_
+#ifndef LUXXLE_IOS_BROWSER_API_WEB_WEB_STATE_WEB_STATE_PRIVATE_H_
+#define LUXXLE_IOS_BROWSER_API_WEB_WEB_STATE_WEB_STATE_PRIVATE_H_
 
 class Browser;
 
@@ -24,4 +24,4 @@ class WebState;
 - (base::WeakPtr<web::WebState>)internalWebState;
 @end
 
-#endif  // BRAVE_IOS_BROWSER_API_WEB_WEB_STATE_WEB_STATE_PRIVATE_H_
+#endif  // LUXXLE_IOS_BROWSER_API_WEB_WEB_STATE_WEB_STATE_PRIVATE_H_

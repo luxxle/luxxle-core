@@ -3,16 +3,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/omnibox/brave_omnibox_result_view.h"
+#include "luxxle/browser/ui/views/omnibox/brave_omnibox_result_view.h"
 
 #include <memory>
 
 #include "base/time/time.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/browser/ui/views/omnibox/brave_omnibox_popup_view_views.h"
-#include "brave/browser/ui/views/omnibox/brave_search_conversion_promotion_view.h"
-#include "brave/components/omnibox/browser/leo_provider.h"
-#include "brave/components/omnibox/browser/promotion_utils.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/views/omnibox/brave_omnibox_popup_view_views.h"
+#include "luxxle/browser/ui/views/omnibox/brave_search_conversion_promotion_view.h"
+#include "luxxle/components/omnibox/browser/leo_provider.h"
+#include "luxxle/components/omnibox/browser/promotion_utils.h"
 #include "brave/grit/brave_theme_resources.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/ui/views/omnibox/omnibox_match_cell_view.h"

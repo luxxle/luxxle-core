@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/bookmarks/bookmark_bar_instructions_view.h"
+#include "luxxle/browser/ui/views/bookmarks/bookmark_bar_instructions_view.h"
 
 #include <algorithm>
 
 #include "base/strings/utf_string_conversions.h"
-#include "brave/browser/ui/brave_view_ids.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/browser/ui/color/color_palette.h"
+#include "luxxle/browser/ui/brave_view_ids.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/color/color_palette.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/defaults.h"
 #include "chrome/browser/profiles/profile.h"

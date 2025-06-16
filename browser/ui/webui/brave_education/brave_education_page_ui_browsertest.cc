@@ -8,9 +8,9 @@
 #include <utility>
 
 #include "base/memory/weak_ptr.h"
-#include "brave/components/brave_education/education_urls.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/components/brave_education/education_urls.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/common/webui_url_constants.h"
 #include "chrome/test/base/chrome_test_utils.h"

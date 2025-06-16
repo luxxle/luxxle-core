@@ -3,10 +3,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/importer/brave_external_process_importer_host.h"
+#include "luxxle/browser/importer/brave_external_process_importer_host.h"
 
-#include "brave/browser/importer/brave_importer_p3a.h"
-#include "brave/browser/importer/extensions_import_helpers.h"
+#include "luxxle/browser/importer/brave_importer_p3a.h"
+#include "luxxle/browser/importer/extensions_import_helpers.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/importer/importer_lock_dialog.h"
 

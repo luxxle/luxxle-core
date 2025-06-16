@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/brave_ads/notification_ad_popup.h"
+#include "luxxle/browser/ui/views/brave_ads/notification_ad_popup.h"
 
 #include <tuple>
 
-#include "brave/browser/themes/brave_dark_mode_utils.h"
-#include "brave/browser/ui/brave_ads/notification_ad.h"
-#include "brave/browser/ui/brave_ads/notification_ad_popup_handler.h"
-#include "brave/browser/ui/views/brave_ads/notification_ad_popup_collection.h"
-#include "brave/components/brave_ads/browser/ad_units/notification_ad/custom_notification_ad_feature.h"
+#include "luxxle/browser/themes/brave_dark_mode_utils.h"
+#include "luxxle/browser/ui/brave_ads/notification_ad.h"
+#include "luxxle/browser/ui/brave_ads/notification_ad_popup_handler.h"
+#include "luxxle/browser/ui/views/brave_ads/notification_ad_popup_collection.h"
+// REMOVED: #include "luxxle/components/brave_ads/.*"
 #include "brave/test/views/snapshot/widget_snapshot_checker.h"
 #include "chrome/browser/platform_util.h"
 #include "chrome/browser/ui/browser.h"

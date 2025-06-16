@@ -3,13 +3,13 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_PRIVATE_NEW_TAB_PAGE_BRAVE_PRIVATE_NEW_TAB_UI_H_
-#define BRAVE_BROWSER_UI_WEBUI_PRIVATE_NEW_TAB_PAGE_BRAVE_PRIVATE_NEW_TAB_UI_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_PRIVATE_NEW_TAB_PAGE_BRAVE_PRIVATE_NEW_TAB_UI_H_
+#define LUXXLE_BROWSER_UI_WEBUI_PRIVATE_NEW_TAB_PAGE_BRAVE_PRIVATE_NEW_TAB_UI_H_
 
 #include <memory>
 #include <string>
 
-#include "brave/components/brave_private_new_tab_ui/common/brave_private_new_tab.mojom-forward.h"
+#include "luxxle/components/brave_private_new_tab_ui/common/brave_private_new_tab.mojom-forward.h"
 #include "chrome/common/webui_url_constants.h"
 #include "content/public/browser/web_ui_controller.h"
 #include "content/public/browser/webui_config.h"
@@ -48,4 +48,4 @@ class BravePrivateNewTabUI : public ui::MojoWebUIController {
   WEB_UI_CONTROLLER_TYPE_DECL();
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_PRIVATE_NEW_TAB_PAGE_BRAVE_PRIVATE_NEW_TAB_UI_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_PRIVATE_NEW_TAB_PAGE_BRAVE_PRIVATE_NEW_TAB_UI_H_

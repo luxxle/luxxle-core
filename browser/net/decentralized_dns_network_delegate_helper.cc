@@ -3,19 +3,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/net/decentralized_dns_network_delegate_helper.h"
+#include "luxxle/browser/net/decentralized_dns_network_delegate_helper.h"
 
 #include <optional>
 #include <utility>
 #include <vector>
 
-#include "brave/browser/brave_wallet/brave_wallet_service_factory.h"
-#include "brave/components/brave_wallet/browser/brave_wallet_service.h"
-#include "brave/components/brave_wallet/browser/json_rpc_service.h"
-#include "brave/components/brave_wallet/common/brave_wallet.mojom.h"
-#include "brave/components/decentralized_dns/core/constants.h"
-#include "brave/components/decentralized_dns/core/utils.h"
-#include "brave/components/ipfs/ipfs_utils.h"
+// REMOVED: #include "luxxle/browser/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/decentralized_dns/core/constants.h"
+#include "luxxle/components/decentralized_dns/core/utils.h"
+#include "luxxle/components/ipfs/ipfs_utils.h"
 #include "chrome/browser/browser_process.h"
 #include "content/public/browser/browser_context.h"
 #include "net/base/net_errors.h"
@@ -23,8 +23,8 @@
 namespace decentralized_dns {
 
 int OnBeforeURLRequest_DecentralizedDnsPreRedirectWork(
-    const brave::ResponseCallback& next_callback,
-    std::shared_ptr<brave::BraveRequestInfo> ctx) {
+    const luxxle::ResponseCallback& next_callback,
+    std::shared_ptr<luxxle::BraveRequestInfo> ctx) {
   DCHECK(!next_callback.is_null());
 
   if (!ctx->browser_context || ctx->browser_context->IsOffTheRecord() ||
@@ -77,8 +77,8 @@ int OnBeforeURLRequest_DecentralizedDnsPreRedirectWork(
 }
 
 void OnBeforeURLRequest_EnsRedirectWork(
-    const brave::ResponseCallback& next_callback,
-    std::shared_ptr<brave::BraveRequestInfo> ctx,
+    const luxxle::ResponseCallback& next_callback,
+    std::shared_ptr<luxxle::BraveRequestInfo> ctx,
     const std::vector<uint8_t>& content_hash,
     bool require_offchain_consent,
     brave_wallet::mojom::ProviderError error,
@@ -107,8 +107,8 @@ void OnBeforeURLRequest_EnsRedirectWork(
 }
 
 void OnBeforeURLRequest_SnsRedirectWork(
-    const brave::ResponseCallback& next_callback,
-    std::shared_ptr<brave::BraveRequestInfo> ctx,
+    const luxxle::ResponseCallback& next_callback,
+    std::shared_ptr<luxxle::BraveRequestInfo> ctx,
     const std::optional<GURL>& url,
     brave_wallet::mojom::SolanaProviderError error,
     const std::string& error_message) {
@@ -123,8 +123,8 @@ void OnBeforeURLRequest_SnsRedirectWork(
 }
 
 void OnBeforeURLRequest_UnstoppableDomainsRedirectWork(
-    const brave::ResponseCallback& next_callback,
-    std::shared_ptr<brave::BraveRequestInfo> ctx,
+    const luxxle::ResponseCallback& next_callback,
+    std::shared_ptr<luxxle::BraveRequestInfo> ctx,
     const std::optional<GURL>& url,
     brave_wallet::mojom::ProviderError error,
     const std::string& error_message) {

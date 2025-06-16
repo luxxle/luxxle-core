@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/wallet_bubble_manager_delegate_impl.h"
+#include "luxxle/browser/ui/wallet_bubble_manager_delegate_impl.h"
 
 #include <memory>
 #include <optional>
@@ -11,9 +11,9 @@
 #include <vector>
 
 #include "base/memory/raw_ptr.h"
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
-#include "brave/browser/ui/views/wallet_bubble_focus_observer.h"
-#include "brave/browser/ui/webui/brave_wallet/wallet_common_ui.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/wallet_bubble_focus_observer.h"
+#include "luxxle/browser/ui/webui/brave_wallet/wallet_common_ui.h"
 #include "chrome/browser/file_select_helper.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"

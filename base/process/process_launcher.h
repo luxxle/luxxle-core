@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BASE_PROCESS_PROCESS_LAUNCHER_H_
-#define BRAVE_BASE_PROCESS_PROCESS_LAUNCHER_H_
+#ifndef LUXXLE_BASE_PROCESS_PROCESS_LAUNCHER_H_
+#define LUXXLE_BASE_PROCESS_PROCESS_LAUNCHER_H_
 
 #include <optional>
 #include <string>
@@ -12,7 +12,7 @@
 #include "base/process/launch.h"
 #include "base/process/process.h"
 
-namespace brave {
+namespace luxxle {
 class ProcessLauncher {
   ProcessLauncher();
   ~ProcessLauncher();
@@ -29,4 +29,4 @@ class ProcessLauncher {
 
 }  // namespace brave
 
-#endif  // BRAVE_BASE_PROCESS_PROCESS_LAUNCHER_H_
+#endif  // LUXXLE_BASE_PROCESS_PROCESS_LAUNCHER_H_

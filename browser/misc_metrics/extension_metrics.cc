@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/misc_metrics/extension_metrics.h"
+#include "luxxle/browser/misc_metrics/extension_metrics.h"
 
 #include "base/containers/fixed_flat_set.h"
 #include "base/metrics/histogram_macros.h"
-#include "brave/browser/ui/webui/settings/brave_extensions_manifest_v2_handler.h"
+#include "luxxle/browser/ui/webui/settings/brave_extensions_manifest_v2_handler.h"
 #include "extensions/browser/extension_registry.h"
 
 namespace misc_metrics {

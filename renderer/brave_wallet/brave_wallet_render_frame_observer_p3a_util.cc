@@ -5,7 +5,7 @@
 
 #include "brave/renderer/brave_wallet/brave_wallet_render_frame_observer_p3a_util.h"
 
-#include "brave/components/brave_wallet/renderer/v8_helper.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
 #include "gin/converter.h"
 #include "third_party/blink/public/platform/browser_interface_broker_proxy.h"
 #include "third_party/blink/public/platform/scheduler/web_agent_group_scheduler.h"
@@ -30,7 +30,7 @@ BraveWalletRenderFrameObserverP3AUtil::
 
 void BraveWalletRenderFrameObserverP3AUtil::ReportJSProviders(
     content::RenderFrame* render_frame,
-    const brave::mojom::DynamicParams& dynamic_params) {
+    const luxxle::mojom::DynamicParams& dynamic_params) {
   CHECK(render_frame);
   if (!EnsureConnected(render_frame)) {
     return;

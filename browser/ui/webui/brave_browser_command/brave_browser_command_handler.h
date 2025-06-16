@@ -5,15 +5,15 @@
 
 // based on //chrome/browser/ui/webui/browser_command/browser_command_handler.h
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_BRAVE_BROWSER_COMMAND_BRAVE_BROWSER_COMMAND_HANDLER_H_
-#define BRAVE_BROWSER_UI_WEBUI_BRAVE_BROWSER_COMMAND_BRAVE_BROWSER_COMMAND_HANDLER_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_BRAVE_BROWSER_COMMAND_BRAVE_BROWSER_COMMAND_HANDLER_H_
+#define LUXXLE_BROWSER_UI_WEBUI_BRAVE_BROWSER_COMMAND_BRAVE_BROWSER_COMMAND_HANDLER_H_
 
 #include <memory>
 #include <string_view>
 #include <utility>
 #include <vector>
 
-#include "brave/ui/webui/resources/js/brave_browser_command/brave_browser_command.mojom.h"
+#include "luxxle/ui/webui/resources/js/brave_browser_command/brave_browser_command.mojom.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
 #include "mojo/public/cpp/bindings/receiver.h"
 #include "ui/base/window_open_disposition.h"
@@ -59,4 +59,4 @@ class BraveBrowserCommandHandler
       page_handler_;
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_BRAVE_BROWSER_COMMAND_BRAVE_BROWSER_COMMAND_HANDLER_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_BRAVE_BROWSER_COMMAND_BRAVE_BROWSER_COMMAND_HANDLER_H_

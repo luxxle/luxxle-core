@@ -3,25 +3,25 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/ai_chat/ai_chat_untrusted_conversation_ui.h"
+#include "luxxle/browser/ui/webui/ai_chat/ai_chat_untrusted_conversation_ui.h"
 
 #include <string>
 #include <utility>
 
 #include "base/strings/escape.h"
 #include "base/strings/stringprintf.h"
-#include "brave/browser/ai_chat/ai_chat_service_factory.h"
-#include "brave/browser/ai_chat/ai_chat_urls.h"
-#include "brave/browser/ui/side_panel/ai_chat/ai_chat_side_panel_utils.h"
-#include "brave/browser/ui/webui/ai_chat/ai_chat_ui.h"
-#include "brave/browser/ui/webui/untrusted_sanitized_image_source.h"
-#include "brave/components/ai_chat/core/browser/ai_chat_service.h"
-#include "brave/components/ai_chat/core/browser/constants.h"
-#include "brave/components/ai_chat/core/browser/conversation_handler.h"
-#include "brave/components/ai_chat/core/common/mojom/ai_chat.mojom.h"
-#include "brave/components/ai_chat/core/common/mojom/untrusted_frame.mojom.h"
-#include "brave/components/ai_chat/resources/grit/ai_chat_ui_generated_map.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/browser/ai_chat/ai_chat_service_factory.h"
+#include "luxxle/browser/ai_chat/ai_chat_urls.h"
+#include "luxxle/browser/ui/side_panel/ai_chat/ai_chat_side_panel_utils.h"
+#include "luxxle/browser/ui/webui/ai_chat/ai_chat_ui.h"
+#include "luxxle/browser/ui/webui/untrusted_sanitized_image_source.h"
+#include "luxxle/components/ai_chat/core/browser/ai_chat_service.h"
+#include "luxxle/components/ai_chat/core/browser/constants.h"
+#include "luxxle/components/ai_chat/core/browser/conversation_handler.h"
+#include "luxxle/components/ai_chat/core/common/mojom/ai_chat.mojom.h"
+#include "luxxle/components/ai_chat/core/common/mojom/untrusted_frame.mojom.h"
+#include "luxxle/components/ai_chat/resources/grit/ai_chat_ui_generated_map.h"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/browser/profiles/profile.h"
 #include "components/grit/brave_components_resources.h"
 #include "content/public/browser/render_frame_host.h"
@@ -35,7 +35,7 @@
 #include "url/url_constants.h"
 
 #if BUILDFLAG(IS_ANDROID)
-#include "brave/browser/ui/android/ai_chat/brave_leo_settings_launcher_helper.h"
+#include "luxxle/browser/ui/android/ai_chat/brave_leo_settings_launcher_helper.h"
 #else
 #include "chrome/browser/ui/browser.h"
 #endif

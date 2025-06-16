@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_COOKIE_LIST_OPT_IN_PAGE_HANDLER_H_
-#define BRAVE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_COOKIE_LIST_OPT_IN_PAGE_HANDLER_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_COOKIE_LIST_OPT_IN_PAGE_HANDLER_H_
+#define LUXXLE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_COOKIE_LIST_OPT_IN_PAGE_HANDLER_H_
 
 #include "base/memory/raw_ptr.h"
 #include "base/memory/weak_ptr.h"
-#include "brave/components/brave_shields/core/common/cookie_list_opt_in.mojom.h"
+#include "luxxle/components/brave_shields/core/common/cookie_list_opt_in.mojom.h"
 #include "chrome/browser/ui/webui/top_chrome/top_chrome_web_ui_controller.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
 #include "mojo/public/cpp/bindings/receiver.h"
@@ -44,4 +44,4 @@ class CookieListOptInPageHandler
   raw_ptr<Profile> profile_ = nullptr;
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_COOKIE_LIST_OPT_IN_PAGE_HANDLER_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_COOKIE_LIST_OPT_IN_PAGE_HANDLER_H_

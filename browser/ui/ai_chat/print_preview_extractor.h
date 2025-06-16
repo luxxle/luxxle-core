@@ -3,15 +3,15 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_AI_CHAT_PRINT_PREVIEW_EXTRACTOR_H_
-#define BRAVE_BROWSER_UI_AI_CHAT_PRINT_PREVIEW_EXTRACTOR_H_
+#ifndef LUXXLE_BROWSER_UI_AI_CHAT_PRINT_PREVIEW_EXTRACTOR_H_
+#define LUXXLE_BROWSER_UI_AI_CHAT_PRINT_PREVIEW_EXTRACTOR_H_
 
 #include <memory>
 #include <string>
 #include <vector>
 
 #include "base/memory/weak_ptr.h"
-#include "brave/components/ai_chat/content/browser/ai_chat_tab_helper.h"
+#include "luxxle/components/ai_chat/content/browser/ai_chat_tab_helper.h"
 #include "content/public/browser/web_contents.h"
 #include "printing/buildflags/buildflags.h"
 
@@ -55,4 +55,4 @@ class PrintPreviewExtractor
 
 }  // namespace ai_chat
 
-#endif  // BRAVE_BROWSER_UI_AI_CHAT_PRINT_PREVIEW_EXTRACTOR_H_
+#endif  // LUXXLE_BROWSER_UI_AI_CHAT_PRINT_PREVIEW_EXTRACTOR_H_

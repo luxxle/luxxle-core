@@ -40,9 +40,9 @@ source_set("brave_new_tab_page_refresh") {
   deps = [
     ":mojom",
     "//luxxle/browser:browser_process",
-    "//luxxle/browser/brave_ads",
-    "//luxxle/browser/brave_rewards",
-    "//luxxle/browser/brave_rewards:util",
+    # REMOVED: "//luxxle/browser/brave_ads",
+    # REMOVED: "//luxxle/browser/brave_rewards",
+    # REMOVED: "//luxxle/browser/brave_rewards:util",
     "//luxxle/browser/misc_metrics",
     "//luxxle/browser/ntp_background",
     # Commented out: generated_resources target removed for minimal build

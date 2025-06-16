@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_IOS_BROWSER_API_SYNC_BRAVE_SYNC_WORKER_H_
-#define BRAVE_IOS_BROWSER_API_SYNC_BRAVE_SYNC_WORKER_H_
+#ifndef LUXXLE_IOS_BROWSER_API_SYNC_BRAVE_SYNC_WORKER_H_
+#define LUXXLE_IOS_BROWSER_API_SYNC_BRAVE_SYNC_WORKER_H_
 
 #include <functional>
 #include <memory>
@@ -14,7 +14,7 @@
 #include "base/memory/raw_ptr.h"
 #include "base/scoped_multi_source_observation.h"
 #include "base/scoped_observation.h"
-#include "brave/components/brave_sync/time_limited_words.h"
+#include "luxxle/components/brave_sync/time_limited_words.h"
 #include "components/sync/engine/sync_protocol_error.h"
 #include "components/sync/service/sync_service.h"
 #include "components/sync/service/sync_service_observer.h"
@@ -126,4 +126,4 @@ class BraveSyncWorker : public syncer::SyncServiceObserver {
   base::WeakPtrFactory<BraveSyncWorker> weak_ptr_factory_{this};
 };
 
-#endif  // BRAVE_IOS_BROWSER_API_SYNC_BRAVE_SYNC_WORKER_H_
+#endif  // LUXXLE_IOS_BROWSER_API_SYNC_BRAVE_SYNC_WORKER_H_

@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/new_tab_page/top_sites_message_handler.h"
+#include "luxxle/browser/ui/webui/new_tab_page/top_sites_message_handler.h"
 
 #include <map>
 #include <memory>
@@ -12,13 +12,13 @@
 
 #include "base/i18n/rtl.h"
 #include "base/strings/utf_string_conversions.h"
-#include "brave/browser/ntp_background/view_counter_service_factory.h"
-#include "brave/browser/profiles/profile_util.h"
-#include "brave/browser/ui/webui/new_tab_page/brave_new_tab_ui.h"
-#include "brave/browser/ui/webui/new_tab_page/brave_new_tab_ui_utils.h"
-#include "brave/components/constants/pref_names.h"
-#include "brave/components/ntp_background_images/browser/ntp_sponsored_images_data.h"
-#include "brave/components/ntp_background_images/browser/view_counter_service.h"
+#include "luxxle/browser/ntp_background/view_counter_service_factory.h"
+#include "luxxle/browser/profiles/profile_util.h"
+#include "luxxle/browser/ui/webui/new_tab_page/brave_new_tab_ui.h"
+#include "luxxle/browser/ui/webui/new_tab_page/brave_new_tab_ui_utils.h"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/ntp_background_images/browser/ntp_sponsored_images_data.h"
+#include "luxxle/components/ntp_background_images/browser/view_counter_service.h"
 #include "chrome/browser/ntp_tiles/chrome_most_visited_sites_factory.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/webui/new_tab_page/ntp_pref_names.h"

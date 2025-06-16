@@ -10,14 +10,14 @@
 #import "base/command_line.h"
 #import "base/task/sequenced_task_runner.h"
 #include "base/task/single_thread_task_runner.h"
-#include "brave/components/brave_component_updater/browser/brave_component.h"
-#include "brave/components/brave_component_updater/browser/brave_component_updater_delegate.h"
-#include "brave/components/brave_component_updater/browser/local_data_files_service.h"
-#include "brave/components/brave_sync/network_time_helper.h"
-#include "brave/components/brave_wallet/browser/wallet_data_files_installer.h"
-#include "brave/components/debounce/core/browser/debounce_component_installer.h"
-#include "brave/components/https_upgrade_exceptions/browser/https_upgrade_exceptions_service.h"
-#include "brave/components/url_sanitizer/browser/url_sanitizer_component_installer.h"
+#include "luxxle/components/brave_component_updater/browser/brave_component.h"
+#include "luxxle/components/brave_component_updater/browser/brave_component_updater_delegate.h"
+#include "luxxle/components/brave_component_updater/browser/local_data_files_service.h"
+#include "luxxle/components/brave_sync/network_time_helper.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/debounce/core/browser/debounce_component_installer.h"
+#include "luxxle/components/https_upgrade_exceptions/browser/https_upgrade_exceptions_service.h"
+#include "luxxle/components/url_sanitizer/browser/url_sanitizer_component_installer.h"
 #include "brave/ios/browser/brave_wallet/wallet_data_files_installer_delegate_impl.h"
 #include "ios/chrome/browser/shared/model/application_context/application_context.h"
 #include "net/base/features.h"
@@ -67,11 +67,11 @@ BraveApplicationContextImpl::local_data_files_service() {
   return local_data_files_service_.get();
 }
 
-brave::URLSanitizerComponentInstaller*
+luxxle::URLSanitizerComponentInstaller*
 BraveApplicationContextImpl::url_sanitizer_component_installer() {
   if (!url_sanitizer_component_installer_) {
     url_sanitizer_component_installer_ =
-        std::make_unique<brave::URLSanitizerComponentInstaller>(
+        std::make_unique<luxxle::URLSanitizerComponentInstaller>(
             local_data_files_service());
   }
   return url_sanitizer_component_installer_.get();

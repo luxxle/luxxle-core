@@ -3,16 +3,16 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/brave_new_tab_page_refresh/vpn_facade.h"
+#include "luxxle/browser/ui/webui/brave_new_tab_page_refresh/vpn_facade.h"
 
-#include "brave/components/constants/pref_names.h"
+#include "luxxle/components/constants/pref_names.h"
 #include "chrome/browser/ui/browser_window/public/browser_window_features.h"
 #include "chrome/browser/ui/browser_window/public/browser_window_interface.h"
 #include "components/tabs/public/tab_interface.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/browser/ui/brave_vpn/brave_vpn_controller.h"
-#include "brave/components/brave_vpn/browser/brave_vpn_service.h"
+#include "luxxle/browser/ui/brave_vpn/brave_vpn_controller.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #endif
 
 namespace brave_new_tab_page_refresh {

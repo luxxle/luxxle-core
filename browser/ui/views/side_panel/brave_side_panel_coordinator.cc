@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/side_panel/brave_side_panel_coordinator.h"
+#include "luxxle/browser/ui/views/side_panel/brave_side_panel_coordinator.h"
 
 #include <optional>
 #include <string>
@@ -11,13 +11,13 @@
 
 #include "base/debug/crash_logging.h"
 #include "base/debug/dump_without_crashing.h"
-#include "brave/browser/ui/sidebar/sidebar_service_factory.h"
-#include "brave/browser/ui/sidebar/sidebar_utils.h"
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
-#include "brave/browser/ui/views/sidebar/sidebar_container_view.h"
-#include "brave/browser/ui/views/toolbar/brave_toolbar_view.h"
-#include "brave/browser/ui/views/toolbar/side_panel_button.h"
-#include "brave/components/sidebar/browser/sidebar_service.h"
+#include "luxxle/browser/ui/sidebar/sidebar_service_factory.h"
+#include "luxxle/browser/ui/sidebar/sidebar_utils.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/sidebar/sidebar_container_view.h"
+#include "luxxle/browser/ui/views/toolbar/brave_toolbar_view.h"
+#include "luxxle/browser/ui/views/toolbar/side_panel_button.h"
+#include "luxxle/components/sidebar/browser/sidebar_service.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/views/side_panel/side_panel_entry.h"

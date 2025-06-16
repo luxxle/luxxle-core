@@ -3,21 +3,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/net/brave_site_hacks_network_delegate_helper.h"
+#include "luxxle/browser/net/brave_site_hacks_network_delegate_helper.h"
 
 #include <memory>
 #include <string>
 #include <utility>
 #include <vector>
 
-#include "brave/browser/net/url_context.h"
-#include "brave/components/constants/network_constants.h"
+#include "luxxle/browser/net/url_context.h"
+#include "luxxle/components/constants/network_constants.h"
 #include "net/base/net_errors.h"
 #include "net/url_request/url_request_job.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "url/origin.h"
 
-using brave::ResponseCallback;
+using luxxle::ResponseCallback;
 
 TEST(BraveSiteHacksNetworkDelegateHelperTest, UANotAllowedTest) {
   const std::vector<GURL> urls({GURL("https://brianbondy.com"),
@@ -30,8 +30,8 @@ TEST(BraveSiteHacksNetworkDelegateHelperTest, UANotAllowedTest) {
     headers.SetHeader(kUserAgentHeader,
                       "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 "
                       "(KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36");
-    auto brave_request_info = std::make_shared<brave::BraveRequestInfo>(url);
-    int rc = brave::OnBeforeStartTransaction_SiteHacksWork(
+    auto brave_request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
+    int rc = luxxle::OnBeforeStartTransaction_SiteHacksWork(
         &headers, ResponseCallback(), brave_request_info);
     auto user_agent = headers.GetHeader(kUserAgentHeader);
     EXPECT_EQ(rc, net::OK);
@@ -50,9 +50,9 @@ TEST(BraveSiteHacksNetworkDelegateHelperTest, ReferrerPreserved) {
     net::HttpRequestHeaders headers;
     const GURL original_referrer("https://hello.brianbondy.com/about");
 
-    auto brave_request_info = std::make_shared<brave::BraveRequestInfo>(url);
+    auto brave_request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
     brave_request_info->referrer = original_referrer;
-    int rc = brave::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
+    int rc = luxxle::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
                                                      brave_request_info);
     EXPECT_EQ(rc, net::OK);
     // new_url should not be set.
@@ -68,9 +68,9 @@ TEST(BraveSiteHacksNetworkDelegateHelperTest, ReferrerTruncated) {
   for (const auto& url : urls) {
     const GURL original_referrer("https://hello.brianbondy.com/about");
 
-    auto brave_request_info = std::make_shared<brave::BraveRequestInfo>(url);
+    auto brave_request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
     brave_request_info->referrer = original_referrer;
-    int rc = brave::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
+    int rc = luxxle::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
                                                      brave_request_info);
     EXPECT_EQ(rc, net::OK);
     // new_url should not be set.
@@ -87,13 +87,13 @@ TEST(BraveSiteHacksNetworkDelegateHelperTest,
                                 GURL("https://slashdot.org/5"),
                                 GURL("https://bondy.brian.org")});
   for (const auto& url : urls) {
-    auto brave_request_info = std::make_shared<brave::BraveRequestInfo>(url);
+    auto brave_request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
     brave_request_info->tab_origin =
         GURL("chrome-extension://aemmndcbldboiebfnladdacbdfmadadm/");
     const GURL original_referrer("https://hello.brianbondy.com/about");
     brave_request_info->referrer = original_referrer;
 
-    int rc = brave::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
+    int rc = luxxle::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
                                                      brave_request_info);
     EXPECT_EQ(rc, net::OK);
     // new_url should not be set
@@ -143,11 +143,11 @@ TEST(BraveSiteHacksNetworkDelegateHelperTest, QueryStringUntouched) {
        "https://example.com/Unsubscribe.html?fake_param=abc&mkt_tok=123"});
   for (const auto& url : urls) {
     auto brave_request_info =
-        std::make_shared<brave::BraveRequestInfo>(GURL(url));
+        std::make_shared<luxxle::BraveRequestInfo>(GURL(url));
     brave_request_info->initiator_url =
         GURL("https://example.net");  // cross-site
     brave_request_info->method = "GET";
-    int rc = brave::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
+    int rc = luxxle::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
                                                      brave_request_info);
     EXPECT_EQ(rc, net::OK);
     // new_url should not be set
@@ -165,10 +165,10 @@ TEST(BraveSiteHacksNetworkDelegateHelperTest, QueryStringExempted) {
 
   for (const auto& initiator : initiators) {
     auto brave_request_info =
-        std::make_shared<brave::BraveRequestInfo>(tracking_url);
+        std::make_shared<luxxle::BraveRequestInfo>(tracking_url);
     brave_request_info->initiator_url = GURL(initiator);
     brave_request_info->method = "GET";
-    int rc = brave::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
+    int rc = luxxle::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
                                                      brave_request_info);
     EXPECT_EQ(rc, net::OK);
     // new_url should not be set
@@ -178,14 +178,14 @@ TEST(BraveSiteHacksNetworkDelegateHelperTest, QueryStringExempted) {
   // Internal redirect
   {
     auto brave_request_info =
-        std::make_shared<brave::BraveRequestInfo>(tracking_url);
+        std::make_shared<luxxle::BraveRequestInfo>(tracking_url);
     brave_request_info->initiator_url =
         GURL("https://example.net");  // cross-site
     brave_request_info->method = "GET";
     brave_request_info->internal_redirect = true;
     brave_request_info->redirect_source =
         GURL("https://example.org");  // cross-site
-    int rc = brave::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
+    int rc = luxxle::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
                                                      brave_request_info);
     EXPECT_EQ(rc, net::OK);
     // new_url should not be set
@@ -195,13 +195,13 @@ TEST(BraveSiteHacksNetworkDelegateHelperTest, QueryStringExempted) {
   // POST requests
   {
     auto brave_request_info =
-        std::make_shared<brave::BraveRequestInfo>(tracking_url);
+        std::make_shared<luxxle::BraveRequestInfo>(tracking_url);
     brave_request_info->initiator_url =
         GURL("https://example.net");  // cross-site
     brave_request_info->method = "POST";
     brave_request_info->redirect_source =
         GURL("https://example.org");  // cross-site
-    int rc = brave::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
+    int rc = luxxle::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
                                                      brave_request_info);
     EXPECT_EQ(rc, net::OK);
     // new_url should not be set
@@ -211,13 +211,13 @@ TEST(BraveSiteHacksNetworkDelegateHelperTest, QueryStringExempted) {
   // Same-site redirect
   {
     auto brave_request_info =
-        std::make_shared<brave::BraveRequestInfo>(tracking_url);
+        std::make_shared<luxxle::BraveRequestInfo>(tracking_url);
     brave_request_info->initiator_url =
         GURL("https://example.net");  // cross-site
     brave_request_info->method = "GET";
     brave_request_info->redirect_source =
         GURL("https://sub.example.com");  // same-site
-    int rc = brave::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
+    int rc = luxxle::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
                                                      brave_request_info);
     EXPECT_EQ(rc, net::OK);
     // new_url should not be set
@@ -263,11 +263,11 @@ TEST(BraveSiteHacksNetworkDelegateHelperTest, QueryStringFiltered) {
         "https://example.com/?foo=bar"}});
   for (const auto& pair : urls) {
     auto brave_request_info =
-        std::make_shared<brave::BraveRequestInfo>(GURL(pair.first));
+        std::make_shared<luxxle::BraveRequestInfo>(GURL(pair.first));
     brave_request_info->initiator_url =
         GURL("https://example.net");  // cross-site
     brave_request_info->method = "GET";
-    int rc = brave::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
+    int rc = luxxle::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
                                                      brave_request_info);
     EXPECT_EQ(rc, net::OK);
     EXPECT_EQ(brave_request_info->new_url_spec, pair.second);
@@ -275,14 +275,14 @@ TEST(BraveSiteHacksNetworkDelegateHelperTest, QueryStringFiltered) {
 
   // Cross-site redirect
   {
-    auto brave_request_info = std::make_shared<brave::BraveRequestInfo>(
+    auto brave_request_info = std::make_shared<luxxle::BraveRequestInfo>(
         GURL("https://example.com/?fbclid=1"));
     brave_request_info->initiator_url =
         GURL("https://example.com");  // same-origin
     brave_request_info->method = "GET";
     brave_request_info->redirect_source =
         GURL("https://example.net");  // cross-site
-    int rc = brave::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
+    int rc = luxxle::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
                                                      brave_request_info);
     EXPECT_EQ(rc, net::OK);
     EXPECT_EQ(brave_request_info->new_url_spec, "https://example.com/");
@@ -290,11 +290,11 @@ TEST(BraveSiteHacksNetworkDelegateHelperTest, QueryStringFiltered) {
 
   // Direct navigation
   {
-    auto brave_request_info = std::make_shared<brave::BraveRequestInfo>(
+    auto brave_request_info = std::make_shared<luxxle::BraveRequestInfo>(
         GURL("https://example.com/?fbclid=2"));
     brave_request_info->initiator_url = GURL();
     brave_request_info->method = "GET";
-    int rc = brave::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
+    int rc = luxxle::OnBeforeURLRequest_SiteHacksWork(ResponseCallback(),
                                                      brave_request_info);
     EXPECT_EQ(rc, net::OK);
     EXPECT_EQ(brave_request_info->new_url_spec, "https://example.com/");

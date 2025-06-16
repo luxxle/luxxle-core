@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_IOS_BROWSER_API_HISTORY_HISTORY_DRIVER_IOS_H_
-#define BRAVE_IOS_BROWSER_API_HISTORY_HISTORY_DRIVER_IOS_H_
+#ifndef LUXXLE_IOS_BROWSER_API_HISTORY_HISTORY_DRIVER_IOS_H_
+#define LUXXLE_IOS_BROWSER_API_HISTORY_HISTORY_DRIVER_IOS_H_
 
 #include <vector>
 
@@ -52,4 +52,4 @@ class HistoryDriverIOS : public history::BrowsingHistoryDriver {
   WebHistoryServiceGetter history_service_getter_;
 };
 
-#endif  // BRAVE_IOS_BROWSER_API_HISTORY_HISTORY_DRIVER_IOS_H_
+#endif  // LUXXLE_IOS_BROWSER_API_HISTORY_HISTORY_DRIVER_IOS_H_

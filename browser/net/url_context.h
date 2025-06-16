@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_NET_URL_CONTEXT_H_
-#define BRAVE_BROWSER_NET_URL_CONTEXT_H_
+#ifndef LUXXLE_BROWSER_NET_URL_CONTEXT_H_
+#define LUXXLE_BROWSER_NET_URL_CONTEXT_H_
 
 #include <memory>
 #include <optional>
@@ -30,17 +30,17 @@ namespace network {
 struct ResourceRequest;
 }
 
-namespace brave {
+namespace luxxle {
 struct BraveRequestInfo;
 using ResponseCallback = base::RepeatingCallback<void()>;
 }  // namespace brave
 
 namespace brave_rewards {
-int OnBeforeURLRequest(const brave::ResponseCallback& next_callback,
-                       std::shared_ptr<brave::BraveRequestInfo> ctx);
+int OnBeforeURLRequest(const luxxle::ResponseCallback& next_callback,
+                       std::shared_ptr<luxxle::BraveRequestInfo> ctx);
 }  // namespace brave_rewards
 
-namespace brave {
+namespace luxxle {
 
 enum BraveNetworkDelegateEventType {
   kOnBeforeRequest,
@@ -126,12 +126,12 @@ struct BraveRequestInfo {
 
   std::optional<std::string> devtools_request_id;
 
-  static std::shared_ptr<brave::BraveRequestInfo> MakeCTX(
+  static std::shared_ptr<luxxle::BraveRequestInfo> MakeCTX(
       const network::ResourceRequest& request,
       content::FrameTreeNodeId frame_tree_node_id,
       uint64_t request_identifier,
       content::BrowserContext* browser_context,
-      std::shared_ptr<brave::BraveRequestInfo> old_ctx);
+      std::shared_ptr<luxxle::BraveRequestInfo> old_ctx);
 
  private:
   // Please don't add any more friends here if it can be avoided.
@@ -158,4 +158,4 @@ using OnHeadersReceivedCallback = base::RepeatingCallback<int(
 
 }  // namespace brave
 
-#endif  // BRAVE_BROWSER_NET_URL_CONTEXT_H_
+#endif  // LUXXLE_BROWSER_NET_URL_CONTEXT_H_

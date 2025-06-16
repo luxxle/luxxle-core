@@ -8,7 +8,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include "brave/browser/ui/commander/tab_command_source.h"
+#include "luxxle/browser/ui/commander/tab_command_source.h"
 
 #include <algorithm>
 #include <memory>
@@ -19,9 +19,9 @@
 
 #include "base/functional/bind.h"
 #include "base/strings/utf_string_conversions.h"
-#include "brave/app/command_utils.h"
-#include "brave/browser/ui/commander/entity_match.h"
-#include "brave/browser/ui/commander/fuzzy_finder.h"
+#include "luxxle/app/command_utils.h"
+#include "luxxle/browser/ui/commander/entity_match.h"
+#include "luxxle/browser/ui/commander/fuzzy_finder.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/send_tab_to_self/send_tab_to_self_util.h"
 #include "chrome/browser/ui/accelerator_utils.h"

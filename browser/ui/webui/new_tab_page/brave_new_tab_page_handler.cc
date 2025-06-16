@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/new_tab_page/brave_new_tab_page_handler.h"
+#include "luxxle/browser/ui/webui/new_tab_page/brave_new_tab_page_handler.h"
 
 #include <algorithm>
 #include <optional>
@@ -13,19 +13,19 @@
 #include "base/functional/bind.h"
 #include "base/strings/utf_string_conversions.h"
 #include "base/values.h"
-#include "brave/browser/brave_browser_process.h"
-#include "brave/browser/ntp_background/custom_background_file_manager.h"
-#include "brave/browser/ntp_background/ntp_background_prefs.h"
-#include "brave/browser/ntp_background/view_counter_service_factory.h"
-#include "brave/browser/ui/webui/new_tab_page/brave_new_tab_ui.h"
-#include "brave/components/brave_search_conversion/p3a.h"
-#include "brave/components/brave_search_conversion/pref_names.h"
-#include "brave/components/brave_search_conversion/types.h"
-#include "brave/components/brave_search_conversion/utils.h"
-#include "brave/components/ntp_background_images/browser/ntp_background_images_data.h"
-#include "brave/components/ntp_background_images/browser/ntp_background_images_service.h"
-#include "brave/components/ntp_background_images/browser/url_constants.h"
-#include "brave/components/ntp_background_images/browser/view_counter_service.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/ntp_background/custom_background_file_manager.h"
+#include "luxxle/browser/ntp_background/ntp_background_prefs.h"
+#include "luxxle/browser/ntp_background/view_counter_service_factory.h"
+#include "luxxle/browser/ui/webui/new_tab_page/brave_new_tab_ui.h"
+#include "luxxle/components/brave_search_conversion/p3a.h"
+#include "luxxle/components/brave_search_conversion/pref_names.h"
+#include "luxxle/components/brave_search_conversion/types.h"
+#include "luxxle/components/brave_search_conversion/utils.h"
+#include "luxxle/components/ntp_background_images/browser/ntp_background_images_data.h"
+#include "luxxle/components/ntp_background_images/browser/ntp_background_images_service.h"
+#include "luxxle/components/ntp_background_images/browser/url_constants.h"
+#include "luxxle/components/ntp_background_images/browser/view_counter_service.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/search_engines/template_url_service_factory.h"
@@ -52,9 +52,9 @@
 #include "url/origin.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/browser/brave_vpn/brave_vpn_service_factory.h"
-#include "brave/browser/ui/brave_vpn/brave_vpn_controller.h"
-#include "brave/components/brave_vpn/browser/brave_vpn_service.h"
+// REMOVED: #include "luxxle/browser/brave_vpn/.*"
+#include "luxxle/browser/ui/brave_vpn/brave_vpn_controller.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #endif
 
 namespace {

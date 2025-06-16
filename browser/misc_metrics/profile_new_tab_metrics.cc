@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/misc_metrics/profile_new_tab_metrics.h"
+#include "luxxle/browser/misc_metrics/profile_new_tab_metrics.h"
 
 #include <optional>
 
 #include "base/containers/contains.h"
 #include "base/metrics/histogram_macros.h"
-#include "brave/browser/new_tab/new_tab_shows_options.h"
-#include "brave/components/constants/pref_names.h"
+#include "luxxle/browser/new_tab/new_tab_shows_options.h"
+#include "luxxle/components/constants/pref_names.h"
 #include "chrome/common/pref_names.h"
 #include "components/prefs/pref_service.h"
 #include "url/gurl.h"
@@ -35,13 +35,13 @@ ProfileNewTabMetrics::~ProfileNewTabMetrics() = default;
 
 void ProfileNewTabMetrics::ReportNewTabPageDefault() {
   std::optional<NewTabPageDefaultType> type;
-  brave::NewTabPageShowsOptions option =
-      static_cast<brave::NewTabPageShowsOptions>(
+  luxxle::NewTabPageShowsOptions option =
+      static_cast<luxxle::NewTabPageShowsOptions>(
           profile_prefs_->GetInteger(kNewTabPageShowsOptions));
 
-  if (option == brave::NewTabPageShowsOptions::kDashboard) {
+  if (option == luxxle::NewTabPageShowsOptions::kDashboard) {
     type = NewTabPageDefaultType::kDashboard;
-  } else if (option == brave::NewTabPageShowsOptions::kHomepage) {
+  } else if (option == luxxle::NewTabPageShowsOptions::kHomepage) {
     if (profile_prefs_->GetBoolean(prefs::kHomePageIsNewTabPage)) {
       type = NewTabPageDefaultType::kDashboard;
     } else {
@@ -58,7 +58,7 @@ void ProfileNewTabMetrics::ReportNewTabPageDefault() {
         type = NewTabPageDefaultType::kHomepageOther;
       }
     }
-  } else if (option == brave::NewTabPageShowsOptions::kBlankpage) {
+  } else if (option == luxxle::NewTabPageShowsOptions::kBlankpage) {
     type = NewTabPageDefaultType::kBlank;
   }
 

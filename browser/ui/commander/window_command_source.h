@@ -8,10 +8,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef BRAVE_BROWSER_UI_COMMANDER_WINDOW_COMMAND_SOURCE_H_
-#define BRAVE_BROWSER_UI_COMMANDER_WINDOW_COMMAND_SOURCE_H_
+#ifndef LUXXLE_BROWSER_UI_COMMANDER_WINDOW_COMMAND_SOURCE_H_
+#define LUXXLE_BROWSER_UI_COMMANDER_WINDOW_COMMAND_SOURCE_H_
 
-#include "brave/browser/ui/commander/command_source.h"
+#include "luxxle/browser/ui/commander/command_source.h"
 
 namespace commander {
 
@@ -30,4 +30,4 @@ class WindowCommandSource : public CommandSource {
 };
 }  // namespace commander
 
-#endif  // BRAVE_BROWSER_UI_COMMANDER_WINDOW_COMMAND_SOURCE_H_
+#endif  // LUXXLE_BROWSER_UI_COMMANDER_WINDOW_COMMAND_SOURCE_H_

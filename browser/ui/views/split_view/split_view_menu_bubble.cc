@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/split_view/split_view_menu_bubble.h"
+#include "luxxle/browser/ui/views/split_view/split_view_menu_bubble.h"
 
 #include <memory>
 
 #include "base/functional/bind.h"
-#include "brave/app/brave_command_ids.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/components/vector_icons/vector_icons.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/components/vector_icons/vector_icons.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_commands.h"
 #include "components/grit/brave_components_strings.h"

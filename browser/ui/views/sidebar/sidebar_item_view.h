@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_ITEM_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_ITEM_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_ITEM_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_ITEM_VIEW_H_
 
 #include <string>
 
-#include "brave/browser/ui/views/sidebar/sidebar_button_view.h"
+#include "luxxle/browser/ui/views/sidebar/sidebar_button_view.h"
 
 class SidebarItemView : public SidebarButtonView {
   METADATA_HEADER(SidebarItemView, SidebarButtonView)
@@ -36,4 +36,4 @@ class SidebarItemView : public SidebarButtonView {
   bool draw_horizontal_border_top_ = false;
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_ITEM_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_ITEM_VIEW_H_

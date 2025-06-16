@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_TABS_VERTICAL_TAB_UTILS_H_
-#define BRAVE_BROWSER_UI_VIEWS_TABS_VERTICAL_TAB_UTILS_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_TABS_VERTICAL_TAB_UTILS_H_
+#define LUXXLE_BROWSER_UI_VIEWS_TABS_VERTICAL_TAB_UTILS_H_
 
 #include <utility>
 
@@ -34,4 +34,4 @@ std::pair<int, int> GetLeadingTrailingCaptionButtonWidth(
 
 }  // namespace tabs::utils
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_TABS_VERTICAL_TAB_UTILS_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_TABS_VERTICAL_TAB_UTILS_H_

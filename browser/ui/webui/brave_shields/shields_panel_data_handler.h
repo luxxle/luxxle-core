@@ -3,15 +3,15 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_SHIELDS_PANEL_DATA_HANDLER_H_
-#define BRAVE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_SHIELDS_PANEL_DATA_HANDLER_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_SHIELDS_PANEL_DATA_HANDLER_H_
+#define LUXXLE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_SHIELDS_PANEL_DATA_HANDLER_H_
 
 #include <string>
 #include <vector>
 
 #include "base/memory/raw_ptr.h"
-#include "brave/browser/brave_shields/brave_shields_tab_helper.h"
-#include "brave/components/brave_shields/core/common/brave_shields_panel.mojom.h"
+#include "luxxle/browser/brave_shields/brave_shields_tab_helper.h"
+#include "luxxle/components/brave_shields/core/common/brave_shields_panel.mojom.h"
 #include "chrome/browser/ui/tabs/tab_strip_model_observer.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
 #include "mojo/public/cpp/bindings/receiver.h"
@@ -80,4 +80,4 @@ class ShieldsPanelDataHandler
   brave_shields::mojom::SiteBlockInfo site_block_info_;
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_SHIELDS_PANEL_DATA_HANDLER_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_SHIELDS_PANEL_DATA_HANDLER_H_

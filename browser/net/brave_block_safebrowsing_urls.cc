@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/net/brave_block_safebrowsing_urls.h"
+#include "luxxle/browser/net/brave_block_safebrowsing_urls.h"
 
 #include <vector>
 
@@ -12,7 +12,7 @@
 #include "net/base/net_errors.h"
 #include "url/gurl.h"
 
-namespace brave {
+namespace luxxle {
 
 constexpr char kDummyUrl[] = "https://no-thanks.invalid";
 

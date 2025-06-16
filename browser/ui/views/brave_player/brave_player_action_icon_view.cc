@@ -3,16 +3,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/brave_player/brave_player_action_icon_view.h"
+#include "luxxle/browser/ui/views/brave_player/brave_player_action_icon_view.h"
 
 #include <memory>
 #include <string>
 
 #include "base/strings/strcat.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/components/brave_player/common/buildflags/buildflags.h"
-#include "brave/components/brave_player/common/url_constants.h"
-#include "brave/components/vector_icons/vector_icons.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/components/brave_player/common/buildflags/buildflags.h"
+#include "luxxle/components/brave_player/common/url_constants.h"
+#include "luxxle/components/vector_icons/vector_icons.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "brave/grit/brave_theme_resources.h"
 #include "chrome/browser/ui/browser_tabstrip.h"
@@ -77,7 +77,7 @@ views::BubbleDialogDelegate* BravePlayerActionIconView::GetBubble() const {
 
 void BravePlayerActionIconView::UpdateIconImage() {
   SetImageModel(
-      ui::ImageModel::FromResourceId(IDR_BRAVE_PLAYER_ACTION_VIEW_ICON));
+      ui::ImageModel::FromResourceId(/* REMOVED: IDR_BRAVE_PLAYER_ACTION_VIEW_ICON */ 0));
 }
 
 const gfx::VectorIcon& BravePlayerActionIconView::GetVectorIcon() const {

@@ -3,16 +3,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/webcompat_reporter/webcompat_reporter_service_delegate.h"
+#include "luxxle/browser/webcompat_reporter/webcompat_reporter_service_delegate.h"
 
 #include <optional>
 
-#include "brave/common/brave_channel_info.h"
-#include "brave/components/brave_shields/content/browser/ad_block_service.h"
-#include "brave/components/brave_shields/content/browser/brave_shields_util.h"
-#include "brave/components/brave_shields/core/browser/ad_block_component_service_manager.h"
-#include "brave/components/brave_shields/core/browser/filter_list_catalog_entry.h"
-#include "brave/components/webcompat_reporter/browser/webcompat_reporter_utils.h"
+#include "luxxle/common/brave_channel_info.h"
+#include "luxxle/components/brave_shields/content/browser/ad_block_service.h"
+#include "luxxle/components/brave_shields/content/browser/brave_shields_util.h"
+#include "luxxle/components/brave_shields/core/browser/ad_block_component_service_manager.h"
+#include "luxxle/components/brave_shields/core/browser/filter_list_catalog_entry.h"
+#include "luxxle/components/webcompat_reporter/browser/webcompat_reporter_utils.h"
 #include "components/component_updater/component_updater_service.h"
 
 namespace webcompat_reporter {
@@ -56,7 +56,7 @@ WebcompatReporterServiceDelegateImpl::GetAdblockFilterListNames() const {
 
 std::optional<std::string>
 WebcompatReporterServiceDelegateImpl::GetChannelName() const {
-  return brave::GetChannelName();
+  return luxxle::GetChannelName();
 }
 
 std::optional<std::string>

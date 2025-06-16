@@ -3,25 +3,25 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/settings/brave_settings_leo_assistant_handler.h"
+#include "luxxle/browser/ui/webui/settings/brave_settings_leo_assistant_handler.h"
 
 #include <algorithm>
 #include <utility>
 #include <vector>
 
 #include "base/containers/contains.h"
-#include "brave/browser/ai_chat/ai_chat_service_factory.h"
-#include "brave/browser/brave_browser_process.h"
-#include "brave/browser/misc_metrics/process_misc_metrics.h"
-#include "brave/browser/ui/sidebar/sidebar_service_factory.h"
-#include "brave/components/ai_chat/core/browser/ai_chat_metrics.h"
-#include "brave/components/ai_chat/core/browser/ai_chat_service.h"
-#include "brave/components/ai_chat/core/browser/model_validator.h"
-#include "brave/components/ai_chat/core/browser/utils.h"
-#include "brave/components/ai_chat/core/common/features.h"
-#include "brave/components/ai_chat/core/common/pref_names.h"
-#include "brave/components/sidebar/browser/sidebar_item.h"
-#include "brave/components/sidebar/browser/sidebar_service.h"
+#include "luxxle/browser/ai_chat/ai_chat_service_factory.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/misc_metrics/process_misc_metrics.h"
+#include "luxxle/browser/ui/sidebar/sidebar_service_factory.h"
+#include "luxxle/components/ai_chat/core/browser/ai_chat_metrics.h"
+#include "luxxle/components/ai_chat/core/browser/ai_chat_service.h"
+#include "luxxle/components/ai_chat/core/browser/model_validator.h"
+#include "luxxle/components/ai_chat/core/browser/utils.h"
+#include "luxxle/components/ai_chat/core/common/features.h"
+#include "luxxle/components/ai_chat/core/common/pref_names.h"
+#include "luxxle/components/sidebar/browser/sidebar_item.h"
+#include "luxxle/components/sidebar/browser/sidebar_service.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/profile.h"
 #include "components/prefs/pref_service.h"

@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_PROFILES_PROFILE_UTIL_H_
-#define BRAVE_BROWSER_PROFILES_PROFILE_UTIL_H_
+#ifndef LUXXLE_BROWSER_PROFILES_PROFILE_UTIL_H_
+#define LUXXLE_BROWSER_PROFILES_PROFILE_UTIL_H_
 
-#include "brave/components/brave_webtorrent/browser/buildflags/buildflags.h"
+#include "luxxle/components/brave_webtorrent/browser/buildflags/buildflags.h"
 
 class Profile;
 
-namespace brave {
+namespace luxxle {
 
 // Used for capturing the value of kBraveCurrentDataVersion so that the
 // default search engine for that version can be determined. New profiles
@@ -37,4 +37,4 @@ void MigrateFingerprintingSettings(Profile* profile);
 
 }  // namespace brave
 
-#endif  // BRAVE_BROWSER_PROFILES_PROFILE_UTIL_H_
+#endif  // LUXXLE_BROWSER_PROFILES_PROFILE_UTIL_H_

@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_SERVER_CHECKER_H_
-#define BRAVE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_SERVER_CHECKER_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_SERVER_CHECKER_H_
+#define LUXXLE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_SERVER_CHECKER_H_
 
 #include <memory>
 #include <optional>
@@ -13,7 +13,7 @@
 #include "base/functional/callback.h"
 #include "base/memory/raw_ref.h"
 #include "base/memory/weak_ptr.h"
-#include "brave/components/brave_education/education_urls.h"
+#include "luxxle/components/brave_education/education_urls.h"
 
 class PrefService;
 
@@ -58,4 +58,4 @@ class BraveEducationServerChecker {
 
 }  // namespace brave_education
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_SERVER_CHECKER_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_SERVER_CHECKER_H_

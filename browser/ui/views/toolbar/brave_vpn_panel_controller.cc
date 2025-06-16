@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/toolbar/brave_vpn_panel_controller.h"
+#include "luxxle/browser/ui/views/toolbar/brave_vpn_panel_controller.h"
 
 #include <string>
 
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/views/bubble/webui_bubble_manager.h"

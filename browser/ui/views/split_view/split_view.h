@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_SPLIT_VIEW_SPLIT_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_SPLIT_VIEW_SPLIT_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_SPLIT_VIEW_SPLIT_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_SPLIT_VIEW_SPLIT_VIEW_H_
 
 #include <memory>
 #include <vector>
@@ -12,10 +12,10 @@
 #include "base/memory/raw_ptr.h"
 #include "base/memory/raw_ref.h"
 #include "base/types/pass_key.h"
-#include "brave/browser/ui/tabs/split_view_browser_data.h"
-#include "brave/browser/ui/tabs/split_view_browser_data_observer.h"
-#include "brave/browser/ui/views/split_view/split_view_layout_manager.h"
-#include "brave/components/speedreader/common/buildflags/buildflags.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data_observer.h"
+#include "luxxle/browser/ui/views/split_view/split_view_layout_manager.h"
+#include "luxxle/components/speedreader/common/buildflags/buildflags.h"
 #include "chrome/browser/ui/exclusive_access/fullscreen_observer.h"
 #include "chrome/browser/ui/views/frame/scrim_view.h"
 #include "ui/base/metadata/metadata_header_macros.h"
@@ -24,7 +24,7 @@
 #include "ui/views/widget/widget_observer.h"
 
 #if BUILDFLAG(ENABLE_SPEEDREADER)
-#include "brave/browser/ui/views/speedreader/reader_mode_toolbar_view.h"
+#include "luxxle/browser/ui/views/speedreader/reader_mode_toolbar_view.h"
 #endif
 
 namespace content {
@@ -178,4 +178,4 @@ class SplitView : public views::View,
       fullscreen_observation_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_SPLIT_VIEW_SPLIT_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_SPLIT_VIEW_SPLIT_VIEW_H_

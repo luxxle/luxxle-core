@@ -7,9 +7,9 @@
 
 #include "base/feature_list.h"
 #include "base/no_destructor.h"
-#include "brave/components/skus/browser/skus_service_impl.h"
-#include "brave/components/skus/browser/skus_utils.h"
-#include "brave/components/skus/common/features.h"
+#include "luxxle/components/skus/browser/skus_service_impl.h"
+#include "luxxle/components/skus/browser/skus_utils.h"
+#include "luxxle/components/skus/common/features.h"
 #include "components/keyed_service/core/keyed_service.h"
 #include "components/pref_registry/pref_registry_syncable.h"
 #include "ios/chrome/browser/shared/model/application_context/application_context.h"

@@ -9,7 +9,7 @@
 #include "base/functional/bind.h"
 #include "base/ios/ns_error_util.h"
 #include "base/strings/sys_string_conversions.h"
-#include "brave/components/constants/url_constants.h"
+#include "luxxle/components/constants/url_constants.h"
 #include "brave/ios/browser/api/web_view/brave_web_view.h"
 #include "brave/ios/browser/web/brave_web_main_parts.h"
 #import "components/translate/ios/browser/translate_java_script_feature.h"

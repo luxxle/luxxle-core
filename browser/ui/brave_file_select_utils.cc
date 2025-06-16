@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/brave_file_select_utils.h"
+#include "luxxle/browser/ui/brave_file_select_utils.h"
 
 #include <unordered_map>
 
@@ -18,7 +18,7 @@
 #include "ui/base/l10n/l10n_util.h"
 #include "url/origin.h"
 
-namespace brave {
+namespace luxxle {
 
 namespace {
 
@@ -65,24 +65,24 @@ std::u16string GetSiteFrameTitleForFileSelect(
       kResourceIDs = {
           {/*FileSelectTitleType::kOpen,*/
            {
-               IDS_BRAVE_FILE_SELECT_OPEN_TITLE,  //  brave::SiteFrameTitleType::kStandardSameOrigin
-               IDS_BRAVE_FILE_SELECT_OPEN_TITLE_IFRAME,  // brave::SiteFrameTitleType::kStandardDifferentOrigin
-               IDS_BRAVE_FILE_SELECT_OPEN_TITLE_NONSTANDARD_URL,  // brave::SiteFrameTitleType::kNonStandardSameOrigin
-               IDS_BRAVE_FILE_SELECT_OPEN_TITLE_NONSTANDARD_URL_IFRAME  // brave::SiteFrameTitleType::kNonStandardDifferentOrigin
+               IDS_BRAVE_FILE_SELECT_OPEN_TITLE,  //  luxxle::SiteFrameTitleType::kStandardSameOrigin
+               IDS_BRAVE_FILE_SELECT_OPEN_TITLE_IFRAME,  // luxxle::SiteFrameTitleType::kStandardDifferentOrigin
+               IDS_BRAVE_FILE_SELECT_OPEN_TITLE_NONSTANDARD_URL,  // luxxle::SiteFrameTitleType::kNonStandardSameOrigin
+               IDS_BRAVE_FILE_SELECT_OPEN_TITLE_NONSTANDARD_URL_IFRAME  // luxxle::SiteFrameTitleType::kNonStandardDifferentOrigin
            },
            /*FileSelectTitleType::kSave,*/
            {
-               IDS_BRAVE_FILE_SELECT_SAVE_TITLE,  // brave::SiteFrameTitleType::kStandardSameOrigin
-               IDS_BRAVE_FILE_SELECT_SAVE_TITLE_IFRAME,  // brave::SiteFrameTitleType::kStandardDifferentOrigin
-               IDS_BRAVE_FILE_SELECT_SAVE_TITLE_NONSTANDARD_URL,  // brave::SiteFrameTitleType::kNonStandardSameOrigin
-               IDS_BRAVE_FILE_SELECT_SAVE_TITLE_NONSTANDARD_URL_IFRAME  // brave::SiteFrameTitleType::kNonStandardDifferentOrigin
+               IDS_BRAVE_FILE_SELECT_SAVE_TITLE,  // luxxle::SiteFrameTitleType::kStandardSameOrigin
+               IDS_BRAVE_FILE_SELECT_SAVE_TITLE_IFRAME,  // luxxle::SiteFrameTitleType::kStandardDifferentOrigin
+               IDS_BRAVE_FILE_SELECT_SAVE_TITLE_NONSTANDARD_URL,  // luxxle::SiteFrameTitleType::kNonStandardSameOrigin
+               IDS_BRAVE_FILE_SELECT_SAVE_TITLE_NONSTANDARD_URL_IFRAME  // luxxle::SiteFrameTitleType::kNonStandardDifferentOrigin
            },
            /*FileSelectTitleType::kChromiumDefault*/
            {
-               IDS_JAVASCRIPT_MESSAGEBOX_TITLE,  // brave::SiteFrameTitleType::kStandardSameOrigin
-               IDS_JAVASCRIPT_MESSAGEBOX_TITLE_IFRAME,  // brave::SiteFrameTitleType::kStandardDifferentOrigin,
-               IDS_JAVASCRIPT_MESSAGEBOX_TITLE_NONSTANDARD_URL,  // brave::SiteFrameTitleType::kNonStandardSameOrigin
-               IDS_JAVASCRIPT_MESSAGEBOX_TITLE_NONSTANDARD_URL_IFRAME,  // brave::SiteFrameTitleType::kNonStandardDifferentOrigin,
+               IDS_JAVASCRIPT_MESSAGEBOX_TITLE,  // luxxle::SiteFrameTitleType::kStandardSameOrigin
+               IDS_JAVASCRIPT_MESSAGEBOX_TITLE_IFRAME,  // luxxle::SiteFrameTitleType::kStandardDifferentOrigin,
+               IDS_JAVASCRIPT_MESSAGEBOX_TITLE_NONSTANDARD_URL,  // luxxle::SiteFrameTitleType::kNonStandardSameOrigin
+               IDS_JAVASCRIPT_MESSAGEBOX_TITLE_NONSTANDARD_URL_IFRAME,  // luxxle::SiteFrameTitleType::kNonStandardDifferentOrigin,
            }}};
 
   if (frame_type == SiteFrameTitleType::kStandardSameOrigin ||

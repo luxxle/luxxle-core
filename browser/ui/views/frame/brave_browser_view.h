@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_VIEW_H_
 
 #include <map>
 #include <memory>
@@ -15,13 +15,13 @@
 #include "base/memory/raw_ptr.h"
 #include "base/memory/weak_ptr.h"
 #include "base/scoped_observation.h"
-#include "brave/browser/ui/commands/accelerator_service.h"
-#include "brave/browser/ui/tabs/brave_tab_strip_model.h"
-#include "brave/browser/ui/tabs/split_view_browser_data.h"
-#include "brave/browser/ui/tabs/split_view_browser_data_observer.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
-#include "brave/components/brave_wayback_machine/buildflags/buildflags.h"
-#include "brave/components/commands/browser/accelerator_pref_manager.h"
+#include "luxxle/browser/ui/commands/accelerator_service.h"
+#include "luxxle/browser/ui/tabs/brave_tab_strip_model.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data_observer.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#include "luxxle/components/brave_wayback_machine/buildflags/buildflags.h"
+#include "luxxle/components/commands/browser/accelerator_pref_manager.h"
 #include "build/build_config.h"
 #include "chrome/browser/ui/tabs/tab_model.h"
 #include "chrome/browser/ui/views/frame/browser_view.h"
@@ -30,11 +30,11 @@
 #include "ui/base/metadata/metadata_header_macros.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/browser/ui/views/toolbar/brave_vpn_panel_controller.h"
+#include "luxxle/browser/ui/views/toolbar/brave_vpn_panel_controller.h"
 #endif
 
 #if BUILDFLAG(ENABLE_SPEEDREADER)
-#include "brave/browser/ui/views/speedreader/reader_mode_toolbar_view.h"
+#include "luxxle/browser/ui/views/speedreader/reader_mode_toolbar_view.h"
 #endif
 
 #if BUILDFLAG(ENABLE_SPEEDREADER)
@@ -247,4 +247,4 @@ class BraveBrowserView : public BrowserView,
   base::WeakPtrFactory<BraveBrowserView> weak_ptr_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_VIEW_H_

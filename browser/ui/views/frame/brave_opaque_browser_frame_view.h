@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_FRAME_BRAVE_OPAQUE_BROWSER_FRAME_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_FRAME_BRAVE_OPAQUE_BROWSER_FRAME_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_FRAME_BRAVE_OPAQUE_BROWSER_FRAME_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_FRAME_BRAVE_OPAQUE_BROWSER_FRAME_VIEW_H_
 
 #include <memory>
 
@@ -38,4 +38,4 @@ class BraveOpaqueBrowserFrameView : public OpaqueBrowserFrameView {
   std::unique_ptr<BraveWindowFrameGraphic> frame_graphic_;
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_FRAME_BRAVE_OPAQUE_BROWSER_FRAME_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_FRAME_BRAVE_OPAQUE_BROWSER_FRAME_VIEW_H_

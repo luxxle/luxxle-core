@@ -17,7 +17,7 @@
 #include "ios/chrome/browser/shared/model/profile/profile_manager_ios.h"
 #include "net/base/apple/url_conversions.h"
 
-namespace brave {
+namespace luxxle {
 AutocompleteMatch::Type MatchTypeFromBraveType(
     BraveIOSAutocompleteMatchType type) {
   switch (type) {
@@ -108,14 +108,14 @@ BraveIOSAutocompleteMatchType BraveTypeFromMatchType(
 
     return [[BraveIOSAutocompleteMatch alloc]
           initWithText:text
-                  type:brave::BraveTypeFromMatchType(match.type)
+                  type:luxxle::BraveTypeFromMatchType(match.type)
         destinationURL:net::NSURLWithGURL(match.destination_url)];
   }
   return nil;
 }
 
 + (bool)isSearchType:(BraveIOSAutocompleteMatchType)type {
-  return AutocompleteMatch::IsSearchType(brave::MatchTypeFromBraveType(type));
+  return AutocompleteMatch::IsSearchType(luxxle::MatchTypeFromBraveType(type));
 }
 
 @end

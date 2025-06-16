@@ -9,22 +9,22 @@
 #include "base/test/bind.h"
 #include "base/test/run_until.h"
 #include "base/test/scoped_feature_list.h"
-#include "brave/browser/ui/browser_commands.h"
-#include "brave/browser/ui/tabs/brave_tab_menu_model.h"
-#include "brave/browser/ui/tabs/brave_tab_prefs.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
-#include "brave/browser/ui/views/frame/vertical_tab_strip_region_view.h"
-#include "brave/browser/ui/views/frame/vertical_tab_strip_widget_delegate_view.h"
-#include "brave/browser/ui/views/tabs/brave_browser_tab_strip_controller.h"
-#include "brave/browser/ui/views/tabs/brave_compound_tab_container.h"
-#include "brave/browser/ui/views/tabs/brave_new_tab_button.h"
-#include "brave/browser/ui/views/tabs/brave_tab_context_menu_contents.h"
-#include "brave/browser/ui/views/tabs/brave_tab_strip.h"
-#include "brave/browser/ui/views/tabs/brave_tab_strip_layout_helper.h"
-#include "brave/browser/ui/views/tabs/switches.h"
-#include "brave/browser/ui/views/tabs/vertical_tab_utils.h"
-#include "brave/components/constants/pref_names.h"
+#include "luxxle/browser/ui/browser_commands.h"
+#include "luxxle/browser/ui/tabs/brave_tab_menu_model.h"
+#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/frame/vertical_tab_strip_region_view.h"
+#include "luxxle/browser/ui/views/frame/vertical_tab_strip_widget_delegate_view.h"
+#include "luxxle/browser/ui/views/tabs/brave_browser_tab_strip_controller.h"
+#include "luxxle/browser/ui/views/tabs/brave_compound_tab_container.h"
+#include "luxxle/browser/ui/views/tabs/brave_new_tab_button.h"
+#include "luxxle/browser/ui/views/tabs/brave_tab_context_menu_contents.h"
+#include "luxxle/browser/ui/views/tabs/brave_tab_strip.h"
+#include "luxxle/browser/ui/views/tabs/brave_tab_strip_layout_helper.h"
+#include "luxxle/browser/ui/views/tabs/switches.h"
+#include "luxxle/browser/ui/views/tabs/vertical_tab_utils.h"
+#include "luxxle/components/constants/pref_names.h"
 #include "build/build_config.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
@@ -141,7 +141,7 @@ class VerticalTabStripBrowserTest : public InProcessBrowserTest {
   }
 
   void ToggleVerticalTabStrip() {
-    brave::ToggleVerticalTabStrip(browser());
+    luxxle::ToggleVerticalTabStrip(browser());
     browser_non_client_frame_view()->DeprecatedLayoutImmediately();
   }
 
@@ -274,7 +274,7 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripBrowserTest, WindowTitle) {
 
   auto check_if_window_title_gets_visible = [&]() {
     // Show window title bar
-    brave::ToggleWindowTitleVisibilityForVerticalTabs(browser());
+    luxxle::ToggleWindowTitleVisibilityForVerticalTabs(browser());
     browser_non_client_frame_view()->DeprecatedLayoutImmediately();
     EXPECT_TRUE(tabs::utils::ShouldShowWindowTitleForVerticalTabs(browser()));
     EXPECT_TRUE(browser_view()->ShouldShowWindowTitle());
@@ -288,7 +288,7 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripBrowserTest, WindowTitle) {
   }
 
   // Hide window title bar
-  brave::ToggleWindowTitleVisibilityForVerticalTabs(browser());
+  luxxle::ToggleWindowTitleVisibilityForVerticalTabs(browser());
   browser_non_client_frame_view()->DeprecatedLayoutImmediately();
   EXPECT_FALSE(tabs::utils::ShouldShowWindowTitleForVerticalTabs(browser()));
   EXPECT_FALSE(browser_view()->ShouldShowWindowTitle());

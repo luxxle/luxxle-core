@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/brave_first_run_dialog.h"
+#include "luxxle/browser/ui/views/brave_first_run_dialog.h"
 
 #include <memory>
 #include <utility>
@@ -27,7 +27,7 @@
 #include "ui/views/window/dialog_delegate.h"
 
 #if BUILDFLAG(ENABLE_PIN_SHORTCUT)
-#include "brave/browser/brave_shell_integration.h"
+#include "luxxle/browser/brave_shell_integration.h"
 #else  // BUILDFLAG(ENABLE_PIN_SHORTCUT)
 #include "chrome/browser/shell_integration.h"
 #endif

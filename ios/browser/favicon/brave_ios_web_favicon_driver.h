@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_IOS_BROWSER_FAVICON_BRAVE_IOS_WEB_FAVICON_DRIVER_H_
-#define BRAVE_IOS_BROWSER_FAVICON_BRAVE_IOS_WEB_FAVICON_DRIVER_H_
+#ifndef LUXXLE_IOS_BROWSER_FAVICON_BRAVE_IOS_WEB_FAVICON_DRIVER_H_
+#define LUXXLE_IOS_BROWSER_FAVICON_BRAVE_IOS_WEB_FAVICON_DRIVER_H_
 
 #include <memory>
 #include <vector>
@@ -87,7 +87,7 @@ class BraveIOSWebFaviconDriver
                         bool icon_url_changed);
 
   // Image Fetcher used to fetch favicon.
-  brave::ImageDownloader image_fetcher_;
+  luxxle::ImageDownloader image_fetcher_;
   std::size_t max_image_width_;
   std::size_t max_image_height_;
 
@@ -98,4 +98,4 @@ class BraveIOSWebFaviconDriver
 
 }  // namespace brave_favicon
 
-#endif  // BRAVE_IOS_BROWSER_FAVICON_BRAVE_IOS_WEB_FAVICON_DRIVER_H_
+#endif  // LUXXLE_IOS_BROWSER_FAVICON_BRAVE_IOS_WEB_FAVICON_DRIVER_H_

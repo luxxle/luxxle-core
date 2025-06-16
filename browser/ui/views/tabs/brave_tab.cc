@@ -3,19 +3,19 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/views/tabs/brave_tab.h"
+#include "luxxle/browser/ui/views/tabs/brave_tab.h"
 
 #include <algorithm>
 #include <optional>
 #include <utility>
 
-#include "brave/browser/ui/tabs/brave_tab_layout_constants.h"
-#include "brave/browser/ui/tabs/brave_tab_prefs.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
-#include "brave/browser/ui/views/frame/vertical_tab_strip_region_view.h"
-#include "brave/browser/ui/views/frame/vertical_tab_strip_widget_delegate_view.h"
-#include "brave/browser/ui/views/tabs/vertical_tab_utils.h"
+#include "luxxle/browser/ui/tabs/brave_tab_layout_constants.h"
+#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/frame/vertical_tab_strip_region_view.h"
+#include "luxxle/browser/ui/views/frame/vertical_tab_strip_widget_delegate_view.h"
+#include "luxxle/browser/ui/views/tabs/vertical_tab_utils.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/views/tabs/alert_indicator_button.h"

@@ -3,18 +3,18 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/new_tab_takeover/android/new_tab_takeover_ui_config.h"
+#include "luxxle/browser/ui/webui/new_tab_takeover/android/new_tab_takeover_ui_config.h"
 
 #include <memory>
 #include <utility>
 
-#include "brave/browser/brave_ads/ads_service_factory.h"
-#include "brave/browser/ntp_background/view_counter_service_factory.h"
-#include "brave/browser/ui/webui/new_tab_takeover/android/new_tab_takeover_ui.h"
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/components/ntp_background_images/browser/ntp_p3a_helper.h"
-#include "brave/components/ntp_background_images/browser/ntp_sponsored_rich_media_ad_event_handler.h"
-#include "brave/components/ntp_background_images/browser/view_counter_service.h"
+// REMOVED: #include "luxxle/browser/brave_ads/.*"
+#include "luxxle/browser/ntp_background/view_counter_service_factory.h"
+#include "luxxle/browser/ui/webui/new_tab_takeover/android/new_tab_takeover_ui.h"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/components/ntp_background_images/browser/ntp_p3a_helper.h"
+#include "luxxle/components/ntp_background_images/browser/ntp_sponsored_rich_media_ad_event_handler.h"
+#include "luxxle/components/ntp_background_images/browser/view_counter_service.h"
 #include "chrome/browser/profiles/profile.h"
 #include "content/public/browser/web_ui.h"
 #include "content/public/common/url_constants.h"

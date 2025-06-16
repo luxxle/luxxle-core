@@ -3,21 +3,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/split_view/split_view.h"
+#include "luxxle/browser/ui/views/split_view/split_view.h"
 
 #include <utility>
 
 #include "base/types/to_address.h"
-#include "brave/browser/ui/brave_browser.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
-#include "brave/browser/ui/views/frame/brave_contents_layout_manager.h"
-#include "brave/browser/ui/views/frame/brave_contents_view_util.h"
-#include "brave/browser/ui/views/split_view/split_view_layout_manager.h"
-#include "brave/browser/ui/views/split_view/split_view_location_bar.h"
-#include "brave/browser/ui/views/split_view/split_view_separator.h"
-#include "brave/ui/color/nala/nala_color_id.h"
+#include "luxxle/browser/ui/brave_browser.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/frame/brave_contents_layout_manager.h"
+#include "luxxle/browser/ui/views/frame/brave_contents_view_util.h"
+#include "luxxle/browser/ui/views/split_view/split_view_layout_manager.h"
+#include "luxxle/browser/ui/views/split_view/split_view_location_bar.h"
+#include "luxxle/browser/ui/views/split_view/split_view_separator.h"
+#include "luxxle/ui/color/nala/nala_color_id.h"
 #include "chrome/browser/devtools/devtools_window.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
@@ -35,7 +35,7 @@
 #include "ui/views/painter.h"
 
 #if BUILDFLAG(ENABLE_SPEEDREADER)
-#include "brave/browser/speedreader/speedreader_tab_helper.h"
+#include "luxxle/browser/speedreader/speedreader_tab_helper.h"
 #endif
 
 namespace {

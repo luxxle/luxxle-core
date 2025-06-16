@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_FRAME_VIEW_LINUX_NATIVE_H_
-#define BRAVE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_FRAME_VIEW_LINUX_NATIVE_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_FRAME_VIEW_LINUX_NATIVE_H_
+#define LUXXLE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_FRAME_VIEW_LINUX_NATIVE_H_
 
 #include <memory>
 #include <utility>
@@ -39,4 +39,4 @@ class BraveBrowserFrameViewLinuxNative : public BrowserFrameViewLinuxNative {
   std::pair<int, int> leading_trailing_caption_button_width_;
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_FRAME_VIEW_LINUX_NATIVE_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_FRAME_BRAVE_BROWSER_FRAME_VIEW_LINUX_NATIVE_H_

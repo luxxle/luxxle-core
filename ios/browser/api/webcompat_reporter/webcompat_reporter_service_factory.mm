@@ -5,8 +5,8 @@
 
 #include "brave/ios/browser/api/webcompat_reporter/webcompat_reporter_service_factory.h"
 
-#include "brave/components/webcompat_reporter/browser/webcompat_reporter_service.h"
-#include "brave/components/webcompat_reporter/common/pref_names.h"
+#include "luxxle/components/webcompat_reporter/browser/webcompat_reporter_service.h"
+#include "luxxle/components/webcompat_reporter/common/pref_names.h"
 #include "brave/ios/browser/api/webcompat_reporter/webcompat_reporter_service_delegate.h"
 #include "components/pref_registry/pref_registry_syncable.h"
 #include "ios/chrome/browser/shared/model/application_context/application_context.h"

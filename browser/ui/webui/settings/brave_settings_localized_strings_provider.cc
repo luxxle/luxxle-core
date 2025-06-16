@@ -3,26 +3,26 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/settings/brave_settings_localized_strings_provider.h"
+#include "luxxle/browser/ui/webui/settings/brave_settings_localized_strings_provider.h"
 
 #include <string>
 
 #include "base/strings/string_number_conversions.h"
 #include "base/strings/utf_string_conversions.h"
-#include "brave/browser/shell_integrations/buildflags/buildflags.h"
-#include "brave/browser/ui/webui/brave_settings_ui.h"
-#include "brave/browser/ui/webui/settings/brave_privacy_handler.h"
-#include "brave/components/ai_chat/core/browser/model_validator.h"
-#include "brave/components/brave_rewards/core/pref_names.h"
-#include "brave/components/brave_shields/core/common/features.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
-#include "brave/components/brave_wallet/browser/pref_names.h"
-#include "brave/components/constants/url_constants.h"
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/components/email_aliases/features.h"
-#include "brave/components/playlist/common/buildflags/buildflags.h"
-#include "brave/components/request_otr/common/buildflags/buildflags.h"
-#include "brave/components/version_info/version_info.h"
+#include "luxxle/browser/shell_integrations/buildflags/buildflags.h"
+#include "luxxle/browser/ui/webui/brave_settings_ui.h"
+#include "luxxle/browser/ui/webui/settings/brave_privacy_handler.h"
+#include "luxxle/components/ai_chat/core/browser/model_validator.h"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+#include "luxxle/components/brave_shields/core/common/features.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/constants/url_constants.h"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/components/email_aliases/features.h"
+#include "luxxle/components/playlist/common/buildflags/buildflags.h"
+#include "luxxle/components/request_otr/common/buildflags/buildflags.h"
+#include "luxxle/components/version_info/version_info.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/media/router/media_router_feature.h"
@@ -42,7 +42,7 @@
 #include "ui/base/l10n/l10n_util.h"
 
 #if BUILDFLAG(ENABLE_PLAYLIST)
-#include "brave/components/playlist/common/features.h"
+#include "luxxle/components/playlist/common/features.h"
 #endif
 
 namespace settings {

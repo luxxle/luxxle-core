@@ -3,14 +3,14 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_IOS_BROWSER_API_AI_CHAT_ASSOCIATED_CONTENT_DRIVER_IOS_H_
-#define BRAVE_IOS_BROWSER_API_AI_CHAT_ASSOCIATED_CONTENT_DRIVER_IOS_H_
+#ifndef LUXXLE_IOS_BROWSER_API_AI_CHAT_ASSOCIATED_CONTENT_DRIVER_IOS_H_
+#define LUXXLE_IOS_BROWSER_API_AI_CHAT_ASSOCIATED_CONTENT_DRIVER_IOS_H_
 
 #include <string>
 #include <string_view>
 
 #include "base/memory/weak_ptr.h"
-#include "brave/components/ai_chat/core/browser/associated_content_driver.h"
+#include "luxxle/components/ai_chat/core/browser/associated_content_driver.h"
 
 @protocol AIChatDelegate;
 
@@ -36,4 +36,4 @@ class AssociatedContentDriverIOS : public AssociatedContentDriver {
 
 }  // namespace ai_chat
 
-#endif  // BRAVE_IOS_BROWSER_API_AI_CHAT_ASSOCIATED_CONTENT_DRIVER_IOS_H_
+#endif  // LUXXLE_IOS_BROWSER_API_AI_CHAT_ASSOCIATED_CONTENT_DRIVER_IOS_H_

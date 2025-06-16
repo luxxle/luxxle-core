@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_IMPORTER_EXTENSIONS_IMPORT_HELPERS_H_
-#define BRAVE_BROWSER_IMPORTER_EXTENSIONS_IMPORT_HELPERS_H_
+#ifndef LUXXLE_BROWSER_IMPORTER_EXTENSIONS_IMPORT_HELPERS_H_
+#define LUXXLE_BROWSER_IMPORTER_EXTENSIONS_IMPORT_HELPERS_H_
 
 #include <string>
 #include <vector>
@@ -92,4 +92,4 @@ class ExtensionsImporter {
 
 }  // namespace extensions_import
 
-#endif  // BRAVE_BROWSER_IMPORTER_EXTENSIONS_IMPORT_HELPERS_H_
+#endif  // LUXXLE_BROWSER_IMPORTER_EXTENSIONS_IMPORT_HELPERS_H_

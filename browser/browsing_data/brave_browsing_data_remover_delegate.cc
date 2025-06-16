@@ -3,19 +3,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/browsing_data/brave_browsing_data_remover_delegate.h"
+#include "luxxle/browser/browsing_data/brave_browsing_data_remover_delegate.h"
 
 #include <utility>
 #include <vector>
 
 #include "base/containers/flat_map.h"
 #include "base/no_destructor.h"
-#include "brave/browser/ai_chat/ai_chat_service_factory.h"
-#include "brave/browser/brave_news/brave_news_controller_factory.h"
-#include "brave/components/ai_chat/core/browser/ai_chat_service.h"
-#include "brave/components/brave_news/browser/brave_news_controller.h"
-#include "brave/components/content_settings/core/browser/brave_content_settings_pref_provider.h"
-#include "brave/components/content_settings/core/browser/brave_content_settings_utils.h"
+#include "luxxle/browser/ai_chat/ai_chat_service_factory.h"
+#include "luxxle/browser/brave_news/brave_news_controller_factory.h"
+#include "luxxle/components/ai_chat/core/browser/ai_chat_service.h"
+#include "luxxle/components/brave_news/browser/brave_news_controller.h"
+#include "luxxle/components/content_settings/core/browser/brave_content_settings_pref_provider.h"
+#include "luxxle/components/content_settings/core/browser/brave_content_settings_utils.h"
 #include "build/build_config.h"
 #include "chrome/browser/browsing_data/chrome_browsing_data_remover_constants.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"

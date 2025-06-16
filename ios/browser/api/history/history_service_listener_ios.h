@@ -5,8 +5,8 @@
 
 #import <Foundation/Foundation.h>
 
-#ifndef BRAVE_IOS_BROWSER_API_HISTORY_HISTORY_SERVICE_LISTENER_IOS_H_
-#define BRAVE_IOS_BROWSER_API_HISTORY_HISTORY_SERVICE_LISTENER_IOS_H_
+#ifndef LUXXLE_IOS_BROWSER_API_HISTORY_HISTORY_SERVICE_LISTENER_IOS_H_
+#define LUXXLE_IOS_BROWSER_API_HISTORY_HISTORY_SERVICE_LISTENER_IOS_H_
 
 #include "base/memory/raw_ptr.h"
 #include "brave/ios/browser/api/history/brave_history_observer.h"
@@ -17,7 +17,7 @@
       historyService:(void*)service;
 @end
 
-namespace brave {
+namespace luxxle {
 namespace ios {
 class HistoryServiceListenerIOS : public history::HistoryServiceObserver {
  public:
@@ -44,4 +44,4 @@ class HistoryServiceListenerIOS : public history::HistoryServiceObserver {
 }  // namespace ios
 }  // namespace brave
 
-#endif  // BRAVE_IOS_BROWSER_API_HISTORY_HISTORY_SERVICE_LISTENER_IOS_H_
+#endif  // LUXXLE_IOS_BROWSER_API_HISTORY_HISTORY_SERVICE_LISTENER_IOS_H_

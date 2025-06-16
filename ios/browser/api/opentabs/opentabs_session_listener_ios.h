@@ -5,8 +5,8 @@
 
 #import <Foundation/Foundation.h>
 
-#ifndef BRAVE_IOS_BROWSER_API_OPENTABS_OPENTABS_SESSION_LISTENER_IOS_H_
-#define BRAVE_IOS_BROWSER_API_OPENTABS_OPENTABS_SESSION_LISTENER_IOS_H_
+#ifndef LUXXLE_IOS_BROWSER_API_OPENTABS_OPENTABS_SESSION_LISTENER_IOS_H_
+#define LUXXLE_IOS_BROWSER_API_OPENTABS_OPENTABS_SESSION_LISTENER_IOS_H_
 
 #include "base/memory/raw_ptr.h"
 #include "brave/ios/browser/api/opentabs/brave_opentabs_observer.h"
@@ -18,7 +18,7 @@
          syncService:(void*)service;
 @end
 
-namespace brave {
+namespace luxxle {
 namespace ios {
 
 class OpenTabsSessionListenerIOS : public syncer::SyncServiceObserver {
@@ -40,4 +40,4 @@ class OpenTabsSessionListenerIOS : public syncer::SyncServiceObserver {
 }  // namespace ios
 }  // namespace brave
 
-#endif  // BRAVE_IOS_BROWSER_API_OPENTABS_OPENTABS_SESSION_LISTENER_IOS_H_
+#endif  // LUXXLE_IOS_BROWSER_API_OPENTABS_OPENTABS_SESSION_LISTENER_IOS_H_

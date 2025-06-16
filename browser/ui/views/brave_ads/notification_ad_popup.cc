@@ -3,21 +3,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/brave_ads/notification_ad_popup.h"
+#include "luxxle/browser/ui/views/brave_ads/notification_ad_popup.h"
 
 #include <string>
 
 #include "base/check_is_test.h"
 #include "base/time/time.h"
-#include "brave/browser/ui/brave_ads/notification_ad_delegate.h"
-#include "brave/browser/ui/views/brave_ads/bounds_util.h"
-#include "brave/browser/ui/views/brave_ads/color_util.h"
-#include "brave/browser/ui/views/brave_ads/notification_ad_popup_collection.h"
-#include "brave/browser/ui/views/brave_ads/notification_ad_popup_widget.h"
-#include "brave/browser/ui/views/brave_ads/notification_ad_view.h"
-#include "brave/browser/ui/views/brave_ads/notification_ad_view_factory.h"
-#include "brave/components/brave_ads/browser/ad_units/notification_ad/custom_notification_ad_feature.h"
-#include "brave/components/brave_ads/core/public/prefs/pref_names.h"
+#include "luxxle/browser/ui/brave_ads/notification_ad_delegate.h"
+#include "luxxle/browser/ui/views/brave_ads/bounds_util.h"
+#include "luxxle/browser/ui/views/brave_ads/color_util.h"
+#include "luxxle/browser/ui/views/brave_ads/notification_ad_popup_collection.h"
+#include "luxxle/browser/ui/views/brave_ads/notification_ad_popup_widget.h"
+#include "luxxle/browser/ui/views/brave_ads/notification_ad_view.h"
+#include "luxxle/browser/ui/views/brave_ads/notification_ad_view_factory.h"
+// REMOVED: #include "luxxle/components/brave_ads/.*"
+// REMOVED: #include "luxxle/components/brave_ads/.*"
 #include "brave/grit/brave_generated_resources.h"
 #include "build/build_config.h"
 #include "chrome/browser/profiles/profile.h"

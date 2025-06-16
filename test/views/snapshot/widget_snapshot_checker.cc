@@ -12,7 +12,7 @@
 #include "base/path_service.h"
 #include "base/strings/string_number_conversions.h"
 #include "base/threading/thread_restrictions.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "build/build_config.h"
 #include "cc/test/pixel_comparator.h"
 #include "cc/test/pixel_test_utils.h"
@@ -92,7 +92,7 @@ bool CompareSnaphot(const SkBitmap& png_bitmap, base::FilePath snapshot_path) {
 base::FilePath GetTestDataDir() {
   base::ScopedAllowBlockingForTesting allow_block;
   base::FilePath test_data_dir;
-  base::PathService::Get(brave::DIR_TEST_DATA, &test_data_dir);
+  base::PathService::Get(luxxle::DIR_TEST_DATA, &test_data_dir);
   return test_data_dir;
 }
 

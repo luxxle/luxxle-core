@@ -3,9 +3,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/frame/brave_contents_view_util.h"
+#include "luxxle/browser/ui/views/frame/brave_contents_view_util.h"
 
-#include "brave/browser/ui/brave_browser.h"
+#include "luxxle/browser/ui/brave_browser.h"
 #include "chrome/browser/ui/browser.h"
 #include "ui/compositor/layer.h"
 #include "ui/views/view.h"

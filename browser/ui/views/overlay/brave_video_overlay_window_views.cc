@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/overlay/brave_video_overlay_window_views.h"
+#include "luxxle/browser/ui/views/overlay/brave_video_overlay_window_views.h"
 
 #include <memory>
 #include <utility>
@@ -12,9 +12,9 @@
 #include "base/strings/strcat.h"
 #include "base/strings/stringprintf.h"
 #include "base/strings/utf_string_conversions.h"
-#include "brave/browser/ui/views/overlay/brave_back_to_tab_label_button.h"
-#include "brave/components/vector_icons/vector_icons.h"
-#include "brave/ui/color/nala/nala_color_id.h"
+#include "luxxle/browser/ui/views/overlay/brave_back_to_tab_label_button.h"
+#include "luxxle/components/vector_icons/vector_icons.h"
+#include "luxxle/ui/color/nala/nala_color_id.h"
 #include "chrome/browser/ui/color/chrome_color_id.h"
 #include "chrome/browser/ui/views/overlay/close_image_button.h"
 #include "chrome/browser/ui/views/overlay/constants.h"

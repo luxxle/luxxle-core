@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_NET_RESOURCE_CONTEXT_DATA_H_
-#define BRAVE_BROWSER_NET_RESOURCE_CONTEXT_DATA_H_
+#ifndef LUXXLE_BROWSER_NET_RESOURCE_CONTEXT_DATA_H_
+#define LUXXLE_BROWSER_NET_RESOURCE_CONTEXT_DATA_H_
 
 #include <cstdint>
 #include <memory>
@@ -96,4 +96,4 @@ class ResourceContextData : public base::SupportsUserData::Data {
   base::WeakPtrFactory<ResourceContextData> weak_factory_;
 };
 
-#endif  // BRAVE_BROWSER_NET_RESOURCE_CONTEXT_DATA_H_
+#endif  // LUXXLE_BROWSER_NET_RESOURCE_CONTEXT_DATA_H_

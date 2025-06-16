@@ -12,9 +12,9 @@
 #include "base/metrics/histogram_macros.h"
 #include "base/strings/sys_string_conversions.h"
 #include "base/time/time.h"
-#include "brave/components/p3a/metric_log_type.h"
-#include "brave/components/p3a/p3a_service.h"
-#include "brave/components/p3a/pref_names.h"
+#include "luxxle/components/p3a/metric_log_type.h"
+#include "luxxle/components/p3a/p3a_service.h"
+#include "luxxle/components/p3a/pref_names.h"
 #include "components/prefs/pref_service.h"
 
 P3AMetricLogType const P3AMetricLogTypeSlow =

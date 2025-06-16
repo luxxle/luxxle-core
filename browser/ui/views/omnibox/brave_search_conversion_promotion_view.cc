@@ -3,18 +3,18 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/omnibox/brave_search_conversion_promotion_view.h"
+#include "luxxle/browser/ui/views/omnibox/brave_search_conversion_promotion_view.h"
 
 #include <utility>
 
 #include "base/logging.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/browser/ui/views/omnibox/brave_omnibox_popup_view_views.h"
-#include "brave/browser/ui/views/omnibox/brave_omnibox_result_view.h"
-#include "brave/components/brave_search_conversion/p3a.h"
-#include "brave/components/brave_search_conversion/utils.h"
-#include "brave/components/search_engines/brave_prepopulated_engines.h"
-#include "brave/components/vector_icons/vector_icons.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/views/omnibox/brave_omnibox_popup_view_views.h"
+#include "luxxle/browser/ui/views/omnibox/brave_omnibox_result_view.h"
+#include "luxxle/components/brave_search_conversion/p3a.h"
+#include "luxxle/components/brave_search_conversion/utils.h"
+#include "luxxle/components/search_engines/brave_prepopulated_engines.h"
+#include "luxxle/components/vector_icons/vector_icons.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "brave/grit/brave_theme_resources.h"
 #include "cc/paint/paint_flags.h"
@@ -671,12 +671,12 @@ std::optional<int> BraveSearchConversionPromotionView::GetBackgroundGraphic()
   const bool use_dark =
       ui::NativeTheme::GetInstanceForNativeUi()->ShouldUseDarkColors();
   if (!UseDDG()) {
-    return use_dark ? IDR_BRAVE_SEARCH_CONVERSION_BANNER_GRAPHIC_DARK
-                    : IDR_BRAVE_SEARCH_CONVERSION_BANNER_GRAPHIC;
+    return use_dark ? /* REMOVED: IDR_BRAVE_SEARCH_CONVERSION_BANNER_GRAPHIC_DARK */ 0
+                    : /* REMOVED: IDR_BRAVE_SEARCH_CONVERSION_BANNER_GRAPHIC */ 0;
   }
 
-  return use_dark ? IDR_BRAVE_SEARCH_CONVERSION_BANNER_GRAPHIC_DDG_DARK
-                  : IDR_BRAVE_SEARCH_CONVERSION_BANNER_GRAPHIC_DDG;
+  return use_dark ? /* REMOVED: IDR_BRAVE_SEARCH_CONVERSION_BANNER_GRAPHIC_DDG_DARK */ 0
+                  : /* REMOVED: IDR_BRAVE_SEARCH_CONVERSION_BANNER_GRAPHIC_DDG */ 0;
 }
 
 BEGIN_METADATA(BraveSearchConversionPromotionView)

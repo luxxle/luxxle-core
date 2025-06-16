@@ -3,16 +3,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_SHIELDS_PANEL_UI_H_
-#define BRAVE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_SHIELDS_PANEL_UI_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_SHIELDS_PANEL_UI_H_
+#define LUXXLE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_SHIELDS_PANEL_UI_H_
 
 #include <memory>
 #include <string>
 
-#include "brave/browser/ui/webui/brave_shields/shields_panel_data_handler.h"
-#include "brave/browser/ui/webui/brave_shields/shields_panel_handler.h"
-#include "brave/components/brave_shields/core/common/brave_shields_panel.mojom.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/browser/ui/webui/brave_shields/shields_panel_data_handler.h"
+#include "luxxle/browser/ui/webui/brave_shields/shields_panel_handler.h"
+#include "luxxle/components/brave_shields/core/common/brave_shields_panel.mojom.h"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/browser/ui/webui/top_chrome/top_chrome_web_ui_controller.h"
 #include "chrome/browser/ui/webui/top_chrome/top_chrome_webui_config.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
@@ -70,4 +70,4 @@ class ShieldsPanelUIConfig
   bool ShouldAutoResizeHost() override;
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_SHIELDS_PANEL_UI_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_BRAVE_SHIELDS_SHIELDS_PANEL_UI_H_

@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_STRIP_LAYOUT_HELPER_H_
-#define BRAVE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_STRIP_LAYOUT_HELPER_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_STRIP_LAYOUT_HELPER_H_
+#define LUXXLE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_STRIP_LAYOUT_HELPER_H_
 
 #include <optional>
 #include <vector>
 
-#include "brave/browser/ui/views/sidebar/sidebar_item_view.h"
+#include "luxxle/browser/ui/views/sidebar/sidebar_item_view.h"
 
 namespace gfx {
 class Rect;
@@ -55,4 +55,4 @@ void UpdateInsertionIndexForVerticalTabs(
 
 }  // namespace tabs
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_STRIP_LAYOUT_HELPER_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_TABS_BRAVE_TAB_STRIP_LAYOUT_HELPER_H_

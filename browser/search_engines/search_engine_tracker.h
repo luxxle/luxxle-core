@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_SEARCH_ENGINES_SEARCH_ENGINE_TRACKER_H_
-#define BRAVE_BROWSER_SEARCH_ENGINES_SEARCH_ENGINE_TRACKER_H_
+#ifndef LUXXLE_BROWSER_SEARCH_ENGINES_SEARCH_ENGINE_TRACKER_H_
+#define LUXXLE_BROWSER_SEARCH_ENGINES_SEARCH_ENGINE_TRACKER_H_
 
 #include <memory>
 
 #include "base/memory/raw_ptr.h"
 #include "base/scoped_observation.h"
-#include "brave/components/time_period_storage/weekly_event_storage.h"
-#include "brave/components/web_discovery/buildflags/buildflags.h"
+#include "luxxle/components/time_period_storage/weekly_event_storage.h"
+#include "luxxle/components/web_discovery/buildflags/buildflags.h"
 #include "components/keyed_service/content/browser_context_keyed_service_factory.h"
 #include "components/keyed_service/core/keyed_service.h"
 #include "components/prefs/pref_change_registrar.h"
@@ -139,4 +139,4 @@ class SearchEngineTracker : public KeyedService,
 #endif
 };
 
-#endif  // BRAVE_BROWSER_SEARCH_ENGINES_SEARCH_ENGINE_TRACKER_H_
+#endif  // LUXXLE_BROWSER_SEARCH_ENGINES_SEARCH_ENGINE_TRACKER_H_

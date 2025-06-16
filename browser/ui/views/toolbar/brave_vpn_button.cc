@@ -3,20 +3,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/toolbar/brave_vpn_button.h"
+#include "luxxle/browser/ui/views/toolbar/brave_vpn_button.h"
 
 #include <optional>
 #include <utility>
 
 #include "base/memory/raw_ptr.h"
 #include "base/notreached.h"
-#include "brave/app/brave_command_ids.h"
-#include "brave/app/vector_icons/vector_icons.h"
-#include "brave/browser/brave_vpn/brave_vpn_service_factory.h"
-#include "brave/browser/ui/brave_icon_with_badge_image_source.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/components/brave_vpn/browser/brave_vpn_service.h"
-#include "brave/components/vector_icons/vector_icons.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/app/vector_icons/vector_icons.h"
+// REMOVED: #include "luxxle/browser/brave_vpn/.*"
+#include "luxxle/browser/ui/brave_icon_with_badge_image_source.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#include "luxxle/components/vector_icons/vector_icons.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_commands.h"
@@ -128,7 +128,7 @@ const ui::ColorProvider* GetColorProviderForView(
 }
 
 // An image with custom badge image(not text).
-class BraveVPNBadgeImageSource : public brave::BraveIconWithBadgeImageSource {
+class BraveVPNBadgeImageSource : public luxxle::BraveIconWithBadgeImageSource {
  public:
   BraveVPNBadgeImageSource(const gfx::Size& image_size,
                            int icon_size,
@@ -146,7 +146,7 @@ class BraveVPNBadgeImageSource : public brave::BraveIconWithBadgeImageSource {
   }
 
  private:
-  // brave::BraveIconWithBadgeImageSource:
+  // luxxle::BraveIconWithBadgeImageSource:
   void PaintBadgeWithoutText(const gfx::Rect& badge_rect,
                              gfx::Canvas* canvas) override {
     auto image =

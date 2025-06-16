@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/webcompat_reporter/webcompat_reporter_service_factory.h"
+#include "luxxle/browser/webcompat_reporter/webcompat_reporter_service_factory.h"
 
 #include <memory>
 #include <utility>
 
 #include "base/no_destructor.h"
-#include "brave/browser/brave_browser_process.h"
-#include "brave/browser/webcompat_reporter/webcompat_reporter_service_delegate.h"
-#include "brave/components/webcompat_reporter/browser/webcompat_reporter_service.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/webcompat_reporter/webcompat_reporter_service_delegate.h"
+#include "luxxle/components/webcompat_reporter/browser/webcompat_reporter_service.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/content_settings/cookie_settings_factory.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"

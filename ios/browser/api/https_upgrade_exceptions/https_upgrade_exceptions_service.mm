@@ -8,7 +8,7 @@
 #include "base/containers/contains.h"
 #include "base/feature_list.h"
 #include "base/memory/raw_ptr.h"
-#include "brave/components/https_upgrade_exceptions/browser/https_upgrade_exceptions_service.h"
+#include "luxxle/components/https_upgrade_exceptions/browser/https_upgrade_exceptions_service.h"
 #include "brave/ios/browser/application_context/brave_application_context_impl.h"
 #include "ios/chrome/browser/shared/model/application_context/application_context.h"
 #include "net/base/apple/url_conversions.h"

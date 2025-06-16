@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_SPLIT_VIEW_SPLIT_VIEW_SEPARATOR_H_
-#define BRAVE_BROWSER_UI_VIEWS_SPLIT_VIEW_SPLIT_VIEW_SEPARATOR_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_SPLIT_VIEW_SPLIT_VIEW_SEPARATOR_H_
+#define LUXXLE_BROWSER_UI_VIEWS_SPLIT_VIEW_SPLIT_VIEW_SEPARATOR_H_
 
 #include <memory>
 
 #include "base/memory/raw_ptr.h"
 #include "base/scoped_observation.h"
-#include "brave/browser/ui/views/split_view/split_view_separator_delegate.h"
+#include "luxxle/browser/ui/views/split_view/split_view_separator_delegate.h"
 #include "ui/views/controls/resize_area.h"
 #include "ui/views/controls/resize_area_delegate.h"
 #include "ui/views/view.h"
@@ -87,4 +87,4 @@ class SplitViewSeparator : public views::ResizeArea,
       parent_view_observation_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_SPLIT_VIEW_SPLIT_VIEW_SEPARATOR_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_SPLIT_VIEW_SPLIT_VIEW_SEPARATOR_H_

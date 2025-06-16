@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/net/brave_stp_util.h"
+#include "luxxle/browser/net/brave_stp_util.h"
 
 #include <string>
 #include <string_view>
@@ -11,7 +11,7 @@
 #include "base/no_destructor.h"
 #include "net/base/registry_controlled_domains/registry_controlled_domain.h"
 
-namespace brave {
+namespace luxxle {
 
 base::flat_set<std::string_view>* TrackableSecurityHeaders() {
   static base::NoDestructor<base::flat_set<std::string_view>>

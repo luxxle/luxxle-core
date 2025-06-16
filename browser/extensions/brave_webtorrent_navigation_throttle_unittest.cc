@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/extensions/brave_webtorrent_navigation_throttle.h"
+#include "luxxle/browser/extensions/brave_webtorrent_navigation_throttle.h"
 
 #include <memory>
 #include <utility>
@@ -13,7 +13,7 @@
 #include "base/files/scoped_temp_dir.h"
 #include "base/memory/raw_ptr.h"
 #include "base/values.h"
-#include "brave/components/constants/pref_names.h"
+#include "luxxle/components/constants/pref_names.h"
 #include "chrome/browser/extensions/extension_service.h"
 #include "chrome/browser/extensions/load_error_reporter.h"
 #include "chrome/browser/extensions/test_extension_system.h"

@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/infobars/brave_sync_account_deleted_infobar_delegate.h"
+#include "luxxle/browser/infobars/brave_sync_account_deleted_infobar_delegate.h"
 
 #include <memory>
 #include <utility>
 
 #include "base/memory/ptr_util.h"
-#include "brave/browser/ui/views/infobars/brave_sync_account_deleted_infobar.h"
-#include "brave/components/brave_sync/brave_sync_prefs.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/browser/ui/views/infobars/brave_sync_account_deleted_infobar.h"
+#include "luxxle/components/brave_sync/brave_sync_prefs.h"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/infobars/confirm_infobar_creator.h"
 #include "chrome/browser/profiles/profile.h"

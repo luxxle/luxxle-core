@@ -4,13 +4,13 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 #include "base/path_service.h"
-#include "brave/browser/themes/brave_dark_mode_utils.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/browser/ui/color/brave_color_mixer.h"
-#include "brave/browser/ui/color/color_palette.h"
-#include "brave/components/constants/brave_paths.h"
-#include "brave/components/constants/pref_names.h"
-#include "brave/ui/color/nala/nala_color_id.h"
+#include "luxxle/browser/themes/brave_dark_mode_utils.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/color/brave_color_mixer.h"
+#include "luxxle/browser/ui/color/color_palette.h"
+#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/ui/color/nala/nala_color_id.h"
 #include "build/build_config.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/themes/test/theme_service_changed_waiter.h"
@@ -63,7 +63,7 @@ class BraveThemeServiceTest : public InProcessBrowserTest {
   base::FilePath GetTestDataDir() {
     base::FilePath test_data_dir;
     base::ScopedAllowBlockingForTesting allow_blocking;
-    CHECK(base::PathService::Get(brave::DIR_TEST_DATA, &test_data_dir));
+    CHECK(base::PathService::Get(luxxle::DIR_TEST_DATA, &test_data_dir));
     return test_data_dir;
   }
 

@@ -13,14 +13,14 @@
 #include "base/feature_list.h"
 #include "base/functional/bind.h"
 #include "base/functional/callback_helpers.h"
-#include "brave/browser/brave_browser_features.h"
-#include "brave/browser/ui/brave_browser_window.h"
-#include "brave/browser/ui/brave_file_select_utils.h"
-#include "brave/browser/ui/sidebar/sidebar.h"
-#include "brave/browser/ui/sidebar/sidebar_controller.h"
-#include "brave/browser/ui/tabs/brave_tab_prefs.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/components/constants/pref_names.h"
+#include "luxxle/browser/brave_browser_features.h"
+#include "luxxle/browser/ui/brave_browser_window.h"
+#include "luxxle/browser/ui/brave_file_select_utils.h"
+#include "luxxle/browser/ui/sidebar/sidebar.h"
+#include "luxxle/browser/ui/sidebar/sidebar_controller.h"
+#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/components/constants/pref_names.h"
 #include "chrome/browser/lifetime/browser_close_manager.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/search/search.h"
@@ -151,12 +151,12 @@ void BraveBrowser::RunFileChooser(
     // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/public/mojom/choosers/file_chooser.mojom;l=27;drc=047c7dc4ee1ce908d7fea38ca063fa2f80f92c77
     CHECK(render_frame_host);
     const url::Origin& origin = render_frame_host->GetLastCommittedOrigin();
-    new_params->title = brave::GetFileSelectTitle(
+    new_params->title = luxxle::GetFileSelectTitle(
         content::WebContents::FromRenderFrameHost(render_frame_host), origin,
         origin,
         params.mode == blink::mojom::FileChooserParams::Mode::kSave
-            ? brave::FileSelectTitleType::kSave
-            : brave::FileSelectTitleType::kOpen);
+            ? luxxle::FileSelectTitleType::kSave
+            : luxxle::FileSelectTitleType::kOpen);
   }
   Browser::RunFileChooser(render_frame_host, listener, *new_params);
 #endif

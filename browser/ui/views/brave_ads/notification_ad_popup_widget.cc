@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/brave_ads/notification_ad_popup_widget.h"
+#include "luxxle/browser/ui/views/brave_ads/notification_ad_popup_widget.h"
 
 #include <utility>
 
-#include "brave/components/brave_ads/browser/ad_units/notification_ad/custom_notification_ad_feature.h"
+// REMOVED: #include "luxxle/components/brave_ads/.*"
 #include "build/build_config.h"
 #include "ui/gfx/geometry/rect.h"
 #include "ui/native_theme/native_theme.h"

@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_BUBBLES_CONTROLLER_H_
-#define BRAVE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_BUBBLES_CONTROLLER_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_BUBBLES_CONTROLLER_H_
+#define LUXXLE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_BUBBLES_CONTROLLER_H_
 
 #include "base/memory/raw_ptr.h"
 #include "base/memory/weak_ptr.h"
@@ -51,4 +51,4 @@ class PlaylistBubblesController
 
 }  // namespace playlist
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_BUBBLES_CONTROLLER_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_PLAYLIST_PLAYLIST_BUBBLES_CONTROLLER_H_

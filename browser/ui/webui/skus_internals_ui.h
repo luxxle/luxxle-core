@@ -3,15 +3,15 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_SKUS_INTERNALS_UI_H_
-#define BRAVE_BROWSER_UI_WEBUI_SKUS_INTERNALS_UI_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_SKUS_INTERNALS_UI_H_
+#define LUXXLE_BROWSER_UI_WEBUI_SKUS_INTERNALS_UI_H_
 
 #include <string>
 
 #include "base/memory/raw_ptr.h"
 #include "base/values.h"
-#include "brave/components/skus/common/skus_internals.mojom.h"
-#include "brave/components/skus/common/skus_sdk.mojom.h"
+#include "luxxle/components/skus/common/skus_internals.mojom.h"
+#include "luxxle/components/skus/common/skus_sdk.mojom.h"
 #include "content/public/browser/web_ui_controller.h"
 #include "mojo/public/cpp/bindings/pending_remote.h"
 #include "mojo/public/cpp/bindings/receiver_set.h"
@@ -66,4 +66,4 @@ class SkusInternalsUI : public content::WebUIController,
   WEB_UI_CONTROLLER_TYPE_DECL();
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_SKUS_INTERNALS_UI_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_SKUS_INTERNALS_UI_H_

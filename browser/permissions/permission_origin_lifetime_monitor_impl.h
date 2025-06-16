@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_PERMISSIONS_PERMISSION_ORIGIN_LIFETIME_MONITOR_IMPL_H_
-#define BRAVE_BROWSER_PERMISSIONS_PERMISSION_ORIGIN_LIFETIME_MONITOR_IMPL_H_
+#ifndef LUXXLE_BROWSER_PERMISSIONS_PERMISSION_ORIGIN_LIFETIME_MONITOR_IMPL_H_
+#define LUXXLE_BROWSER_PERMISSIONS_PERMISSION_ORIGIN_LIFETIME_MONITOR_IMPL_H_
 
 #include <string>
 
@@ -12,8 +12,8 @@
 #include "base/memory/raw_ptr.h"
 #include "base/memory/weak_ptr.h"
 #include "base/scoped_observation.h"
-#include "brave/components/ephemeral_storage/ephemeral_storage_service_observer.h"
-#include "brave/components/permissions/permission_origin_lifetime_monitor.h"
+#include "luxxle/components/ephemeral_storage/ephemeral_storage_service_observer.h"
+#include "luxxle/components/permissions/permission_origin_lifetime_monitor.h"
 
 namespace content {
 class BrowserContext;
@@ -63,4 +63,4 @@ class PermissionOriginLifetimeMonitorImpl
 
 }  // namespace permissions
 
-#endif  // BRAVE_BROWSER_PERMISSIONS_PERMISSION_ORIGIN_LIFETIME_MONITOR_IMPL_H_
+#endif  // LUXXLE_BROWSER_PERMISSIONS_PERMISSION_ORIGIN_LIFETIME_MONITOR_IMPL_H_

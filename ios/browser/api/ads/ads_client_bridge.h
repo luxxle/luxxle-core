@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_IOS_BROWSER_API_ADS_ADS_CLIENT_BRIDGE_H_
-#define BRAVE_IOS_BROWSER_API_ADS_ADS_CLIENT_BRIDGE_H_
+#ifndef LUXXLE_IOS_BROWSER_API_ADS_ADS_CLIENT_BRIDGE_H_
+#define LUXXLE_IOS_BROWSER_API_ADS_ADS_CLIENT_BRIDGE_H_
 
 #import <Foundation/Foundation.h>
 
@@ -13,7 +13,7 @@
 #include <vector>
 
 #include "base/values.h"
-#include "brave/components/brave_ads/core/mojom/brave_ads.mojom-shared.h"
+// REMOVED: #include "luxxle/components/brave_ads/.*"
 #import "brave/components/brave_ads/core/public/ads_client/ads_client.h"
 
 @protocol AdsClientBridge
@@ -63,4 +63,4 @@
 
 @end
 
-#endif  // BRAVE_IOS_BROWSER_API_ADS_ADS_CLIENT_BRIDGE_H_
+#endif  // LUXXLE_IOS_BROWSER_API_ADS_ADS_CLIENT_BRIDGE_H_

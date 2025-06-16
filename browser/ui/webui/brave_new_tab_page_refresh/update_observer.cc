@@ -3,17 +3,17 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/brave_new_tab_page_refresh/update_observer.h"
+#include "luxxle/browser/ui/webui/brave_new_tab_page_refresh/update_observer.h"
 
 #include <utility>
 
-#include "brave/browser/ntp_background/ntp_background_prefs.h"
-#include "brave/browser/ui/webui/brave_new_tab_page_refresh/top_sites_facade.h"
-#include "brave/components/brave_perf_predictor/common/pref_names.h"
-#include "brave/components/brave_search_conversion/pref_names.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
-#include "brave/components/constants/pref_names.h"
-#include "brave/components/ntp_background_images/common/pref_names.h"
+#include "luxxle/browser/ntp_background/ntp_background_prefs.h"
+#include "luxxle/browser/ui/webui/brave_new_tab_page_refresh/top_sites_facade.h"
+#include "luxxle/components/brave_perf_predictor/common/pref_names.h"
+#include "luxxle/components/brave_search_conversion/pref_names.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/ntp_background_images/common/pref_names.h"
 #include "chrome/browser/ui/webui/new_tab_page/ntp_pref_names.h"
 #include "chrome/common/pref_names.h"
 

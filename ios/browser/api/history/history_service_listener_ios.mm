@@ -24,7 +24,7 @@
                   dateAdded:(NSDate* _Nullable)dateAdded;
 @end
 
-namespace brave {
+namespace luxxle {
 namespace ios {
 
 HistoryServiceListenerIOS::HistoryServiceListenerIOS(
@@ -114,7 +114,7 @@ void HistoryServiceListenerIOS::OnHistoryDeletions(
 }  // namespace brave
 
 @interface HistoryServiceListenerImpl () {
-  std::unique_ptr<brave::ios::HistoryServiceListenerIOS> observer_;
+  std::unique_ptr<luxxle::ios::HistoryServiceListenerIOS> observer_;
   raw_ptr<history::HistoryService> history_service_;
 }
 @end
@@ -123,7 +123,7 @@ void HistoryServiceListenerIOS::OnHistoryDeletions(
 - (instancetype)init:(id<HistoryServiceObserver>)observer
       historyService:(void*)service {
   if ((self = [super init])) {
-    observer_ = std::make_unique<brave::ios::HistoryServiceListenerIOS>(
+    observer_ = std::make_unique<luxxle::ios::HistoryServiceListenerIOS>(
         observer, static_cast<history::HistoryService*>(service));
 
     history_service_ = static_cast<history::HistoryService*>(service);

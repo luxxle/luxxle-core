@@ -38,7 +38,7 @@
 
 #define EXPAND_FEATURE_ENTRIES(...) __VA_ARGS__,
 
-#define BRAVE_MODULE_FILENAME_PATCH                                            \
+#define LUXXLE_MODULE_FILENAME_PATCH                                            \
   IF_BUILDFLAG(                                                                \
       IS_WIN,                                                                  \
       EXPAND_FEATURE_ENTRIES({                                                 \
@@ -50,7 +50,7 @@
           FEATURE_VALUE_TYPE(sandbox::policy::features::kModuleFileNamePatch), \
       }))
 
-#define BRAVE_WORKAROUND_NEW_WINDOW_FLASH                                  \
+#define LUXXLE_WORKAROUND_NEW_WINDOW_FLASH                                  \
   IF_BUILDFLAG(                                                            \
       IS_WIN,                                                              \
       EXPAND_FEATURE_ENTRIES({                                             \
@@ -63,7 +63,7 @@
       }))
 
 #if !BUILDFLAG(IS_ANDROID)
-#define BRAVE_COMMANDS_FEATURE_ENTRIES                                      \
+#define LUXXLE_COMMANDS_FEATURE_ENTRIES                                      \
   EXPAND_FEATURE_ENTRIES(                                                   \
       {                                                                     \
           "brave-commands",                                                 \
@@ -77,11 +77,11 @@
        "Enable quick commands in the omnibox", kOsWin | kOsMac | kOsLinux,  \
        FEATURE_VALUE_TYPE(features::kBraveCommandsInOmnibox)})
 #else
-#define BRAVE_COMMANDS_FEATURE_ENTRIES
+#define LUXXLE_COMMANDS_FEATURE_ENTRIES
 #endif
 
 #if BUILDFLAG(IS_LINUX)
-#define BRAVE_CHANGE_ACTIVE_TAB_ON_SCROLL_EVENT_FEATURE_ENTRIES               \
+#define LUXXLE_CHANGE_ACTIVE_TAB_ON_SCROLL_EVENT_FEATURE_ENTRIES               \
   EXPAND_FEATURE_ENTRIES({                                                    \
       "brave-change-active-tab-on-scroll-event",                              \
       "Change active tab on scroll event",                                    \
@@ -90,11 +90,11 @@
       FEATURE_VALUE_TYPE(tabs::features::kBraveChangeActiveTabOnScrollEvent), \
   })
 #else
-#define BRAVE_CHANGE_ACTIVE_TAB_ON_SCROLL_EVENT_FEATURE_ENTRIES
+#define LUXXLE_CHANGE_ACTIVE_TAB_ON_SCROLL_EVENT_FEATURE_ENTRIES
 #endif
 
 #if BUILDFLAG(IS_ANDROID)
-#define BRAVE_BACKGROUND_VIDEO_PLAYBACK_ANDROID                                \
+#define LUXXLE_BACKGROUND_VIDEO_PLAYBACK_ANDROID                                \
   EXPAND_FEATURE_ENTRIES({                                                     \
       "brave-background-video-playback",                                       \
       "Background video playback",                                             \
@@ -104,7 +104,7 @@
       FEATURE_VALUE_TYPE(                                                      \
           preferences::features::kBraveBackgroundVideoPlayback),               \
   })
-#define BRAVE_SAFE_BROWSING_ANDROID                                           \
+#define LUXXLE_SAFE_BROWSING_ANDROID                                           \
   EXPAND_FEATURE_ENTRIES({                                                    \
       "brave-safe-browsing",                                                  \
       "Safe Browsing",                                                        \
@@ -114,12 +114,12 @@
       FEATURE_VALUE_TYPE(safe_browsing::features::kBraveAndroidSafeBrowsing), \
   })
 #else
-#define BRAVE_BACKGROUND_VIDEO_PLAYBACK_ANDROID
-#define BRAVE_SAFE_BROWSING_ANDROID
+#define LUXXLE_BACKGROUND_VIDEO_PLAYBACK_ANDROID
+#define LUXXLE_SAFE_BROWSING_ANDROID
 #endif  // BUILDFLAG(IS_ANDROID)
 
 #if !BUILDFLAG(IS_ANDROID)
-#define BRAVE_TABS_FEATURE_ENTRIES                                         \
+#define LUXXLE_TABS_FEATURE_ENTRIES                                         \
   EXPAND_FEATURE_ENTRIES(                                                  \
       {                                                                    \
           "brave-shared-pinned-tabs",                                      \
@@ -157,11 +157,11 @@
           FEATURE_VALUE_TYPE(tabs::features::kBraveSplitView),             \
       })
 #else
-#define BRAVE_TABS_FEATURE_ENTRIES
+#define LUXXLE_TABS_FEATURE_ENTRIES
 #endif
 
 #if BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX)
-#define BRAVE_MIDDLE_CLICK_AUTOSCROLL_FEATURE_ENTRY                      \
+#define LUXXLE_MIDDLE_CLICK_AUTOSCROLL_FEATURE_ENTRY                      \
   EXPAND_FEATURE_ENTRIES({                                               \
       "middle-button-autoscroll",                                        \
       "Middle button autoscroll",                                        \
@@ -170,10 +170,10 @@
       FEATURE_VALUE_TYPE(blink::features::kMiddleButtonClickAutoscroll), \
   })
 #else
-#define BRAVE_MIDDLE_CLICK_AUTOSCROLL_FEATURE_ENTRY
+#define LUXXLE_MIDDLE_CLICK_AUTOSCROLL_FEATURE_ENTRY
 #endif
 
-#define BRAVE_OMNIBOX_FEATURES                                                \
+#define LUXXLE_OMNIBOX_FEATURES                                                \
   EXPAND_FEATURE_ENTRIES(                                                     \
       {                                                                       \
           "brave-omnibox-tab-switch-by-default",                              \
@@ -193,22 +193,22 @@
       })
 
 #if BUILDFLAG(IS_MAC) && BUILDFLAG(ENABLE_UPDATER)
-#define BRAVE_UPDATER_FEATURE_ENTRIES                  \
+#define LUXXLE_UPDATER_FEATURE_ENTRIES                  \
   EXPAND_FEATURE_ENTRIES({                             \
       "brave-use-omaha4-alpha",                        \
       "Use Omaha 4 Alpha",                             \
       "Use the new automatic update system",           \
       kOsDesktop | kOsMac,                             \
-      FEATURE_VALUE_TYPE(brave::kBraveUseOmaha4Alpha), \
+      FEATURE_VALUE_TYPE(luxxle::kBraveUseOmaha4Alpha), \
   })
 #else
-#define BRAVE_UPDATER_FEATURE_ENTRIES
+#define LUXXLE_UPDATER_FEATURE_ENTRIES
 #endif
 
 // Keep the last item empty.
 #define LAST_BRAVE_FEATURE_ENTRIES_ITEM
 
-#define BRAVE_ABOUT_FLAGS_FEATURE_ENTRIES                                      \
+#define LUXXLE_ABOUT_FLAGS_FEATURE_ENTRIES                                      \
   EXPAND_FEATURE_ENTRIES(                                                      \
       {                                                                        \
           "brave-ntp-search-widget",                                           \

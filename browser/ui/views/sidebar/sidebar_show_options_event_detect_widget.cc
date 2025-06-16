@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/sidebar/sidebar_show_options_event_detect_widget.h"
+#include "luxxle/browser/ui/views/sidebar/sidebar_show_options_event_detect_widget.h"
 
 #include <utility>
 
 #include "base/memory/raw_ref.h"
-#include "brave/app/vector_icons/vector_icons.h"
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/app/vector_icons/vector_icons.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "ui/base/l10n/l10n_util.h"
 #include "ui/gfx/canvas.h"

@@ -3,13 +3,13 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/misc_metrics/theme_metrics.h"
+#include "luxxle/browser/misc_metrics/theme_metrics.h"
 
 #include <memory>
 
 #include "base/test/metrics/histogram_tester.h"
-#include "brave/browser/themes/brave_dark_mode_utils.h"
-#include "brave/components/constants/pref_names.h"
+#include "luxxle/browser/themes/brave_dark_mode_utils.h"
+#include "luxxle/components/constants/pref_names.h"
 #include "chrome/browser/themes/theme_service.h"
 #include "chrome/browser/themes/theme_service_factory.h"
 #include "chrome/test/base/scoped_testing_local_state.h"

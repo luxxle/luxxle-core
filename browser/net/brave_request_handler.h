@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_NET_BRAVE_REQUEST_HANDLER_H_
-#define BRAVE_BROWSER_NET_BRAVE_REQUEST_HANDLER_H_
+#ifndef LUXXLE_BROWSER_NET_BRAVE_REQUEST_HANDLER_H_
+#define LUXXLE_BROWSER_NET_BRAVE_REQUEST_HANDLER_H_
 
 #include <map>
 #include <memory>
 #include <string>
 #include <vector>
 
-#include "brave/browser/net/url_context.h"
+#include "luxxle/browser/net/url_context.h"
 #include "content/public/browser/browser_thread.h"
 #include "net/base/completion_once_callback.h"
 
@@ -28,35 +28,35 @@ class BraveRequestHandler {
 
   bool IsRequestIdentifierValid(uint64_t request_identifier);
 
-  int OnBeforeURLRequest(std::shared_ptr<brave::BraveRequestInfo> ctx,
+  int OnBeforeURLRequest(std::shared_ptr<luxxle::BraveRequestInfo> ctx,
                          net::CompletionOnceCallback callback,
                          GURL* new_url);
 
-  int OnBeforeStartTransaction(std::shared_ptr<brave::BraveRequestInfo> ctx,
+  int OnBeforeStartTransaction(std::shared_ptr<luxxle::BraveRequestInfo> ctx,
                                net::CompletionOnceCallback callback,
                                net::HttpRequestHeaders* headers);
   int OnHeadersReceived(
-      std::shared_ptr<brave::BraveRequestInfo> ctx,
+      std::shared_ptr<luxxle::BraveRequestInfo> ctx,
       net::CompletionOnceCallback callback,
       const net::HttpResponseHeaders* original_response_headers,
       scoped_refptr<net::HttpResponseHeaders>* override_response_headers,
       GURL* allowed_unsafe_redirect_url);
 
-  void OnURLRequestDestroyed(std::shared_ptr<brave::BraveRequestInfo> ctx);
+  void OnURLRequestDestroyed(std::shared_ptr<luxxle::BraveRequestInfo> ctx);
   void RunCallbackForRequestIdentifier(uint64_t request_identifier, int rv);
 
  private:
   void SetupCallbacks();
-  void RunNextCallback(std::shared_ptr<brave::BraveRequestInfo> ctx);
+  void RunNextCallback(std::shared_ptr<luxxle::BraveRequestInfo> ctx);
 
-  std::vector<brave::OnBeforeURLRequestCallback> before_url_request_callbacks_;
-  std::vector<brave::OnBeforeStartTransactionCallback>
+  std::vector<luxxle::OnBeforeURLRequestCallback> before_url_request_callbacks_;
+  std::vector<luxxle::OnBeforeStartTransactionCallback>
       before_start_transaction_callbacks_;
-  std::vector<brave::OnHeadersReceivedCallback> headers_received_callbacks_;
+  std::vector<luxxle::OnHeadersReceivedCallback> headers_received_callbacks_;
 
   std::map<uint64_t, net::CompletionOnceCallback> callbacks_;
 
   base::WeakPtrFactory<BraveRequestHandler> weak_factory_{this};
 };
 
-#endif  // BRAVE_BROWSER_NET_BRAVE_REQUEST_HANDLER_H_
+#endif  // LUXXLE_BROWSER_NET_BRAVE_REQUEST_HANDLER_H_

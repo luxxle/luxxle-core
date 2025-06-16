@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_RENDERER_BRAVE_CONTENT_RENDERER_CLIENT_H_
-#define BRAVE_RENDERER_BRAVE_CONTENT_RENDERER_CLIENT_H_
+#ifndef LUXXLE_RENDERER_BRAVE_CONTENT_RENDERER_CLIENT_H_
+#define LUXXLE_RENDERER_BRAVE_CONTENT_RENDERER_CLIENT_H_
 
 #include <memory>
 
-#include "brave/components/brave_search/renderer/brave_search_service_worker_holder.h"
+#include "luxxle/components/brave_search/renderer/brave_search_service_worker_holder.h"
 #include "chrome/renderer/chrome_content_renderer_client.h"
 #include "v8/include/v8.h"
 
@@ -59,4 +59,4 @@ class BraveContentRendererClient : public ChromeContentRendererClient {
       brave_search_service_worker_holder_;
 };
 
-#endif  // BRAVE_RENDERER_BRAVE_CONTENT_RENDERER_CLIENT_H_
+#endif  // LUXXLE_RENDERER_BRAVE_CONTENT_RENDERER_CLIENT_H_

@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_STARTUP_BRAVE_OBSOLETE_SYSTEM_INFOBAR_DELEGATE_H_
-#define BRAVE_BROWSER_UI_STARTUP_BRAVE_OBSOLETE_SYSTEM_INFOBAR_DELEGATE_H_
+#ifndef LUXXLE_BROWSER_UI_STARTUP_BRAVE_OBSOLETE_SYSTEM_INFOBAR_DELEGATE_H_
+#define LUXXLE_BROWSER_UI_STARTUP_BRAVE_OBSOLETE_SYSTEM_INFOBAR_DELEGATE_H_
 
 #include <string>
 #include <vector>
 
 #include "base/memory/weak_ptr.h"
-#include "brave/components/infobars/core/brave_confirm_infobar_delegate.h"
+#include "luxxle/components/infobars/core/brave_confirm_infobar_delegate.h"
 
 namespace infobars {
 class ContentInfoBarManager;
@@ -49,4 +49,4 @@ class BraveObsoleteSystemInfoBarDelegate : public BraveConfirmInfoBarDelegate {
   base::WeakPtrFactory<BraveObsoleteSystemInfoBarDelegate> weak_factory_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_STARTUP_BRAVE_OBSOLETE_SYSTEM_INFOBAR_DELEGATE_H_
+#endif  // LUXXLE_BROWSER_UI_STARTUP_BRAVE_OBSOLETE_SYSTEM_INFOBAR_DELEGATE_H_

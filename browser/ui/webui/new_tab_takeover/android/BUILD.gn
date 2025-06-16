@@ -17,7 +17,7 @@ source_set("new_tab_takeover") {
 
   deps = [
     "//base",
-    "//luxxle/browser/brave_ads:brave_ads",
+    # REMOVED: "//luxxle/browser/brave_ads:brave_ads",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/constants",
     # Commented out: removed components dependency - using Chromium defaults instead

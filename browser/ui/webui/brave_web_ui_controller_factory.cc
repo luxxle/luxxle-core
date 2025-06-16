@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/brave_web_ui_controller_factory.h"
+#include "luxxle/browser/ui/webui/brave_web_ui_controller_factory.h"
 
 #include <memory>
 #include <string>
@@ -11,23 +11,23 @@
 #include "base/feature_list.h"
 #include "base/memory/ptr_util.h"
 #include "base/no_destructor.h"
-#include "brave/browser/brave_ads/ads_service_factory.h"
-#include "brave/browser/brave_browser_features.h"
-#include "brave/browser/brave_news/brave_news_controller_factory.h"
-#include "brave/browser/brave_rewards/rewards_util.h"
-#include "brave/browser/ntp_background/view_counter_service_factory.h"
-#include "brave/browser/ui/webui/ads_internals/ads_internals_ui.h"
-#include "brave/browser/ui/webui/brave_rewards/rewards_page_ui.h"
-#include "brave/browser/ui/webui/brave_rewards/rewards_web_ui_utils.h"
-#include "brave/browser/ui/webui/brave_rewards_internals_ui.h"
-#include "brave/browser/ui/webui/skus_internals_ui.h"
-#include "brave/components/ai_rewriter/common/buildflags/buildflags.h"
-#include "brave/components/brave_wallet/common/common_utils.h"
-#include "brave/components/constants/pref_names.h"
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/components/playlist/common/buildflags/buildflags.h"
-#include "brave/components/skus/common/features.h"
-#include "brave/components/tor/buildflags/buildflags.h"
+// REMOVED: #include "luxxle/browser/brave_ads/.*"
+#include "luxxle/browser/brave_browser_features.h"
+#include "luxxle/browser/brave_news/brave_news_controller_factory.h"
+// REMOVED: #include "luxxle/browser/brave_rewards/.*"
+#include "luxxle/browser/ntp_background/view_counter_service_factory.h"
+#include "luxxle/browser/ui/webui/ads_internals/ads_internals_ui.h"
+#include "luxxle/browser/ui/webui/brave_rewards/rewards_page_ui.h"
+#include "luxxle/browser/ui/webui/brave_rewards/rewards_web_ui_utils.h"
+#include "luxxle/browser/ui/webui/brave_rewards_internals_ui.h"
+#include "luxxle/browser/ui/webui/skus_internals_ui.h"
+#include "luxxle/components/ai_rewriter/common/buildflags/buildflags.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/components/playlist/common/buildflags/buildflags.h"
+#include "luxxle/components/skus/common/features.h"
+#include "luxxle/components/tor/buildflags/buildflags.h"
 #include "build/build_config.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/profile.h"
@@ -40,40 +40,40 @@
 #include "url/gurl.h"
 
 #if !BUILDFLAG(IS_ANDROID)
-#include "brave/browser/brave_wallet/brave_wallet_context_utils.h"
-#include "brave/browser/ui/webui/brave_new_tab_page_refresh/brave_new_tab_page_ui.h"
-#include "brave/browser/ui/webui/brave_news_internals/brave_news_internals_ui.h"
-#include "brave/browser/ui/webui/brave_wallet/wallet_page_ui.h"
-#include "brave/browser/ui/webui/new_tab_page/brave_new_tab_ui.h"
-#include "brave/browser/ui/webui/welcome_page/brave_welcome_ui.h"
-#include "brave/components/brave_news/common/features.h"
-#include "brave/components/brave_wallet/browser/brave_wallet_utils.h"
-#include "brave/components/brave_wallet/common/brave_wallet.mojom.h"
-#include "brave/components/commands/common/features.h"
+// REMOVED: #include "luxxle/browser/brave_wallet/.*"
+#include "luxxle/browser/ui/webui/brave_new_tab_page_refresh/brave_new_tab_page_ui.h"
+#include "luxxle/browser/ui/webui/brave_news_internals/brave_news_internals_ui.h"
+#include "luxxle/browser/ui/webui/brave_wallet/wallet_page_ui.h"
+#include "luxxle/browser/ui/webui/new_tab_page/brave_new_tab_ui.h"
+#include "luxxle/browser/ui/webui/welcome_page/brave_welcome_ui.h"
+#include "luxxle/components/brave_news/common/features.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/commands/common/features.h"
 #include "chrome/browser/regional_capabilities/regional_capabilities_service_factory.h"
 #endif
 
 #if BUILDFLAG(IS_ANDROID)
-#include "brave/browser/brave_wallet/brave_wallet_service_factory.h"
-#include "brave/browser/ui/webui/brave_wallet/android/android_wallet_page_ui.h"
-#include "brave/components/brave_wallet/browser/brave_wallet_service.h"
-#include "brave/components/brave_wallet/browser/keyring_service.h"
+// REMOVED: #include "luxxle/browser/brave_wallet/.*"
+#include "luxxle/browser/ui/webui/brave_wallet/android/android_wallet_page_ui.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
 #endif
 
-#include "brave/browser/brave_vpn/vpn_utils.h"
+// REMOVED: #include "luxxle/browser/brave_vpn/.*"
 
 #if BUILDFLAG(ENABLE_PLAYLIST_WEBUI)
-#include "brave/browser/ui/webui/playlist_ui.h"
-#include "brave/components/playlist/common/features.h"
+#include "luxxle/browser/ui/webui/playlist_ui.h"
+#include "luxxle/components/playlist/common/features.h"
 #endif
 
 #if BUILDFLAG(ENABLE_TOR)
-#include "brave/browser/ui/webui/tor_internals_ui.h"
+#include "luxxle/browser/ui/webui/tor_internals_ui.h"
 #endif
 
 #if BUILDFLAG(ENABLE_AI_REWRITER)
-#include "brave/browser/ui/webui/ai_rewriter/ai_rewriter_ui.h"
-#include "brave/components/ai_rewriter/common/features.h"
+#include "luxxle/browser/ui/webui/ai_rewriter/ai_rewriter_ui.h"
+#include "luxxle/components/ai_rewriter/common/features.h"
 #endif
 
 using content::WebUI;

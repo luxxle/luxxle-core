@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/importer/brave_external_process_importer_client.h"
+#include "luxxle/browser/importer/brave_external_process_importer_client.h"
 
 #include <utility>
 
 #include "base/functional/bind.h"
-#include "brave/browser/importer/brave_in_process_importer_bridge.h"
+#include "luxxle/browser/importer/brave_in_process_importer_bridge.h"
 #include "chrome/grit/generated_resources.h"
 #include "content/public/browser/service_process_host.h"
 
@@ -30,7 +30,7 @@ bool ShouldUseBraveImporter(importer::ImporterType type) {
 
 template <>
 inline sandbox::mojom::Sandbox
-content::GetServiceSandboxType<brave::mojom::ProfileImport>() {
+content::GetServiceSandboxType<luxxle::mojom::ProfileImport>() {
   return sandbox::mojom::Sandbox::kNoSandbox;
 }
 

@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/net/brave_ad_block_tp_network_delegate_helper.h"
+#include "luxxle/browser/net/brave_ad_block_tp_network_delegate_helper.h"
 
 #include <memory>
 #include <string>
@@ -12,12 +12,12 @@
 #include "base/memory/raw_ptr.h"
 #include "base/path_service.h"
 #include "base/task/single_thread_task_runner.h"
-#include "brave/browser/brave_browser_process.h"
-#include "brave/browser/net/url_context.h"
-#include "brave/components/brave_component_updater/browser/brave_component.h"
-#include "brave/components/brave_shields/content/browser/ad_block_service.h"
-#include "brave/components/brave_shields/content/browser/ad_block_subscription_download_manager.h"
-#include "brave/components/brave_shields/content/test/test_filters_provider.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/net/url_context.h"
+#include "luxxle/components/brave_component_updater/browser/brave_component.h"
+#include "luxxle/components/brave_shields/content/browser/ad_block_service.h"
+#include "luxxle/components/brave_shields/content/browser/ad_block_subscription_download_manager.h"
+#include "luxxle/components/brave_shields/content/test/test_filters_provider.h"
 #include "brave/test/base/testing_brave_browser_process.h"
 #include "chrome/browser/net/system_network_context_manager.h"
 #include "chrome/common/chrome_paths.h"
@@ -30,7 +30,7 @@
 #include "services/network/host_resolver.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
-using brave::ResponseCallback;
+using luxxle::ResponseCallback;
 using brave_component_updater::BraveComponent;
 using brave_shields::TestFiltersProvider;
 
@@ -110,7 +110,7 @@ class BraveAdBlockTPNetworkDelegateHelperTest : public testing::Test {
     host_resolver_ = std::make_unique<net::MockHostResolver>();
     resolver_wrapper_ = std::make_unique<network::HostResolver>(
         host_resolver_.get(), net::NetLog::Get());
-    brave::SetAdblockCnameHostResolverForTesting(resolver_wrapper_.get());
+    luxxle::SetAdblockCnameHostResolverForTesting(resolver_wrapper_.get());
 
     stub_resolver_config_reader_ =
         std::make_unique<StubResolverConfigReader>(local_state_->Get());
@@ -133,7 +133,7 @@ class BraveAdBlockTPNetworkDelegateHelperTest : public testing::Test {
 
   // Returns true if the request handler deferred control back to the calling
   // thread before completion, or true if it completed instantly.
-  bool CheckRequest(std::shared_ptr<brave::BraveRequestInfo> request_info) {
+  bool CheckRequest(std::shared_ptr<luxxle::BraveRequestInfo> request_info) {
     // `request_identifier` must be nonzero, or else nothing will be tested.
     request_info->request_identifier = 1;
 
@@ -164,33 +164,33 @@ class BraveAdBlockTPNetworkDelegateHelperTest : public testing::Test {
 
 TEST_F(BraveAdBlockTPNetworkDelegateHelperTest, NoInitiatorURL) {
   const GURL url("https://bradhatesprimes.brave.com/composite_numbers_ftw");
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   request_info->resource_type = blink::mojom::ResourceType::kScript;
 
   EXPECT_FALSE(CheckRequest(request_info));
-  EXPECT_EQ(request_info->blocked_by, brave::kNotBlocked);
+  EXPECT_EQ(request_info->blocked_by, luxxle::kNotBlocked);
   EXPECT_TRUE(request_info->new_url_spec.empty());
 }
 
 TEST_F(BraveAdBlockTPNetworkDelegateHelperTest, EmptyRequestURL) {
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(GURL());
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(GURL());
   request_info->initiator_url = GURL("https://example.com");
   request_info->resource_type = blink::mojom::ResourceType::kScript;
 
   EXPECT_FALSE(CheckRequest(request_info));
-  EXPECT_EQ(request_info->blocked_by, brave::kNotBlocked);
+  EXPECT_EQ(request_info->blocked_by, luxxle::kNotBlocked);
   EXPECT_TRUE(request_info->new_url_spec.empty());
 }
 
 TEST_F(BraveAdBlockTPNetworkDelegateHelperTest, DevToolURL) {
   const GURL url("devtools://devtools/");
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   request_info->initiator_url =
       GURL("devtools://devtools/bundled/root/root.js");
   request_info->resource_type = blink::mojom::ResourceType::kScript;
 
   EXPECT_FALSE(CheckRequest(request_info));
-  EXPECT_EQ(request_info->blocked_by, brave::kNotBlocked);
+  EXPECT_EQ(request_info->blocked_by, luxxle::kNotBlocked);
   EXPECT_TRUE(request_info->new_url_spec.empty());
 }
 
@@ -198,12 +198,12 @@ TEST_F(BraveAdBlockTPNetworkDelegateHelperTest, RequestDataURL) {
   const GURL url(
       "data:image/gif;base64,R0lGODlhAQABAIAAAP///"
       "wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==");
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   request_info->initiator_url = GURL("https://example.com");
   request_info->resource_type = blink::mojom::ResourceType::kImage;
 
   EXPECT_FALSE(CheckRequest(request_info));
-  EXPECT_EQ(request_info->blocked_by, brave::kNotBlocked);
+  EXPECT_EQ(request_info->blocked_by, luxxle::kNotBlocked);
   EXPECT_TRUE(request_info->new_url_spec.empty());
 }
 
@@ -211,13 +211,13 @@ TEST_F(BraveAdBlockTPNetworkDelegateHelperTest, SimpleBlocking) {
   ResetAdblockInstance("||brave.com/test.txt");
 
   const GURL url("https://brave.com/test.txt");
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   request_info->request_identifier = 1;
   request_info->resource_type = blink::mojom::ResourceType::kScript;
   request_info->initiator_url = GURL("https://bravesoftware.com");
 
   EXPECT_TRUE(CheckRequest(request_info));
-  EXPECT_EQ(request_info->blocked_by, brave::kAdBlocked);
+  EXPECT_EQ(request_info->blocked_by, luxxle::kAdBlocked);
   EXPECT_TRUE(request_info->new_url_spec.empty());
   // It's unclear whether or not this is a Tor request, so no DNS queries are
   // made (`browser_context` is `nullptr`).
@@ -228,13 +228,13 @@ TEST_F(BraveAdBlockTPNetworkDelegateHelperTest, Default1pException) {
   ResetAdblockInstance("||brave.com/test.txt");
 
   const GURL url("https://brave.com/test.txt");
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   request_info->request_identifier = 1;
   request_info->resource_type = blink::mojom::ResourceType::kScript;
   request_info->initiator_url = GURL("https://brave.com");
 
   EXPECT_TRUE(CheckRequest(request_info));
-  EXPECT_EQ(request_info->blocked_by, brave::kNotBlocked);
+  EXPECT_EQ(request_info->blocked_by, luxxle::kNotBlocked);
   EXPECT_TRUE(request_info->new_url_spec.empty());
   EXPECT_EQ(0ULL, host_resolver_->num_resolve());
 }
@@ -243,14 +243,14 @@ TEST_F(BraveAdBlockTPNetworkDelegateHelperTest, AggressiveNo1pException) {
   ResetAdblockInstance("||brave.com/test.txt");
 
   const GURL url("https://brave.com/test.txt");
-  auto request_info = std::make_shared<brave::BraveRequestInfo>(url);
+  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(url);
   request_info->request_identifier = 1;
   request_info->resource_type = blink::mojom::ResourceType::kScript;
   request_info->initiator_url = GURL("https://brave.com");
   request_info->aggressive_blocking = true;
 
   EXPECT_TRUE(CheckRequest(request_info));
-  EXPECT_EQ(request_info->blocked_by, brave::kAdBlocked);
+  EXPECT_EQ(request_info->blocked_by, luxxle::kAdBlocked);
   EXPECT_TRUE(request_info->new_url_spec.empty());
   // It's unclear whether or not this is a Tor request, so no DNS queries are
   // made (`browser_context` is `nullptr`).

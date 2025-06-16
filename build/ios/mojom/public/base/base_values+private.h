@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BUILD_IOS_MOJOM_PUBLIC_BASE_BASE_VALUES_PRIVATE_H_
-#define BRAVE_BUILD_IOS_MOJOM_PUBLIC_BASE_BASE_VALUES_PRIVATE_H_
+#ifndef LUXXLE_BUILD_IOS_MOJOM_PUBLIC_BASE_BASE_VALUES_PRIVATE_H_
+#define LUXXLE_BUILD_IOS_MOJOM_PUBLIC_BASE_BASE_VALUES_PRIVATE_H_
 
 #include "base/values.h"
 #include "brave/build/ios/mojom/public/base/base_values.h"
 
 @class MojoBaseValue;
 
-namespace brave {
+namespace luxxle {
 
 // Clone the contents of a `base::Value` whos type is `base::Value::Type::LIST`
 // into an Obj-C NSArray container. Any types found within the `base::Value`
@@ -47,4 +47,4 @@ base::Value::Dict BaseValueDictFromNSDictionary(
 - (base::Value)cppObjPtr;
 @end
 
-#endif  // BRAVE_BUILD_IOS_MOJOM_PUBLIC_BASE_BASE_VALUES_PRIVATE_H_
+#endif  // LUXXLE_BUILD_IOS_MOJOM_PUBLIC_BASE_BASE_VALUES_PRIVATE_H_

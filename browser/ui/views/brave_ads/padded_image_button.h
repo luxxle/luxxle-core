@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_BRAVE_ADS_PADDED_IMAGE_BUTTON_H_
-#define BRAVE_BROWSER_UI_VIEWS_BRAVE_ADS_PADDED_IMAGE_BUTTON_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_BRAVE_ADS_PADDED_IMAGE_BUTTON_H_
+#define LUXXLE_BROWSER_UI_VIEWS_BRAVE_ADS_PADDED_IMAGE_BUTTON_H_
 
 #include "ui/base/metadata/metadata_header_macros.h"
 #include "ui/views/controls/button/image_button.h"
@@ -38,4 +38,4 @@ class PaddedImageButton final : public views::ImageButton {
 
 }  // namespace brave_ads
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_BRAVE_ADS_PADDED_IMAGE_BUTTON_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_BRAVE_ADS_PADDED_IMAGE_BUTTON_H_

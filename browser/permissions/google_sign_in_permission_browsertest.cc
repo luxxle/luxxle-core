@@ -5,11 +5,11 @@
 
 #include "base/memory/raw_ptr.h"
 #include "base/path_service.h"
-#include "brave/components/brave_shields/content/browser/brave_shields_util.h"
-#include "brave/components/brave_shields/core/common/brave_shield_constants.h"
-#include "brave/components/constants/brave_paths.h"
-#include "brave/components/constants/pref_names.h"
-#include "brave/components/google_sign_in_permission/features.h"
+#include "luxxle/components/brave_shields/content/browser/brave_shields_util.h"
+#include "luxxle/components/brave_shields/core/common/brave_shield_constants.h"
+#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/google_sign_in_permission/features.h"
 #include "chrome/browser/content_settings/cookie_settings_factory.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/browser/profiles/profile.h"
@@ -72,7 +72,7 @@ class GoogleSignInBrowserTest : public InProcessBrowserTest {
     current_browser_ = InProcessBrowserTest::browser();
 
     base::FilePath test_data_dir;
-    base::PathService::Get(brave::DIR_TEST_DATA, &test_data_dir);
+    base::PathService::Get(luxxle::DIR_TEST_DATA, &test_data_dir);
 
     https_server_ = std::make_unique<net::EmbeddedTestServer>(
         net::test_server::EmbeddedTestServer::TYPE_HTTPS);

@@ -5,8 +5,8 @@
 
 #include <string>
 
-#include "brave/browser/net/brave_stp_util.h"
-#include "brave/browser/net/url_context.h"
+#include "luxxle/browser/net/brave_stp_util.h"
+#include "luxxle/browser/net/url_context.h"
 #include "chrome/test/base/chrome_render_view_host_test_harness.h"
 #include "content/public/test/browser_task_environment.h"
 #include "net/http/http_util.h"
@@ -16,8 +16,8 @@
 #include "net/url_request/url_request_test_util.h"
 #include "url/gurl.h"
 
-using brave::RemoveTrackableSecurityHeadersForThirdParty;
-using brave::TrackableSecurityHeaders;
+using luxxle::RemoveTrackableSecurityHeadersForThirdParty;
+using luxxle::TrackableSecurityHeaders;
 using net::HttpResponseHeaders;
 
 

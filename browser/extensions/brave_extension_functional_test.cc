@@ -3,10 +3,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/extensions/brave_extension_functional_test.h"
+#include "luxxle/browser/extensions/brave_extension_functional_test.h"
 
 #include "base/path_service.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "chrome/browser/extensions/chrome_extension_test_notification_observer.h"
 #include "chrome/browser/extensions/crx_installer.h"
 #include "chrome/browser/profiles/profile.h"
@@ -53,14 +53,14 @@ void ExtensionFunctionalTest::SetUp() {
 
 void ExtensionFunctionalTest::InitEmbeddedTestServer() {
   base::FilePath test_data_dir;
-  base::PathService::Get(brave::DIR_TEST_DATA, &test_data_dir);
+  base::PathService::Get(luxxle::DIR_TEST_DATA, &test_data_dir);
   embedded_test_server()->ServeFilesFromDirectory(test_data_dir);
   ASSERT_TRUE(embedded_test_server()->Start());
 }
 
 void ExtensionFunctionalTest::GetTestDataDir(base::FilePath* test_data_dir) {
   base::ScopedAllowBlockingForTesting allow_blocking;
-  base::PathService::Get(brave::DIR_TEST_DATA, test_data_dir);
+  base::PathService::Get(luxxle::DIR_TEST_DATA, test_data_dir);
 }
 
 }  // namespace extensions

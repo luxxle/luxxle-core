@@ -20,7 +20,7 @@
 #error "This file requires ARC support."
 #endif
 
-namespace brave {
+namespace luxxle {
 namespace ios {
 
 SendTabToSelfModelListenerIOS::SendTabToSelfModelListenerIOS(
@@ -84,7 +84,7 @@ void SendTabToSelfModelListenerIOS::EntriesOpenedRemotely(
 }  // namespace brave
 
 @interface SendTabToSelfModelListenerImpl () {
-  std::unique_ptr<brave::ios::SendTabToSelfModelListenerIOS> observer_;
+  std::unique_ptr<luxxle::ios::SendTabToSelfModelListenerIOS> observer_;
   raw_ptr<send_tab_to_self::SendTabToSelfModel> model_;
 }
 @end
@@ -93,7 +93,7 @@ void SendTabToSelfModelListenerIOS::EntriesOpenedRemotely(
 - (instancetype)init:(id<SendTabToSelfModelStateObserver>)observer
     sendTabToSelfModel:(void*)model {
   if ((self = [super init])) {
-    observer_ = std::make_unique<brave::ios::SendTabToSelfModelListenerIOS>(
+    observer_ = std::make_unique<luxxle::ios::SendTabToSelfModelListenerIOS>(
         observer, static_cast<send_tab_to_self::SendTabToSelfModel*>(model));
 
     model_ = static_cast<send_tab_to_self::SendTabToSelfModel*>(model);

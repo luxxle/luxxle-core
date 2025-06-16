@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/bookmarks/brave_bookmark_context_menu.h"
+#include "luxxle/browser/ui/views/bookmarks/brave_bookmark_context_menu.h"
 
 #include <vector>
 
-#include "brave/browser/ui/toolbar/brave_bookmark_context_menu_controller.h"
+#include "luxxle/browser/ui/toolbar/brave_bookmark_context_menu_controller.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/ui/views/bookmarks/bookmark_context_menu.h"
 #include "chrome/grit/generated_resources.h"

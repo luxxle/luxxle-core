@@ -20,7 +20,7 @@ source_set("android_browser_process") {
     "//base",
     "//luxxle/browser/android/preferences",
     "//luxxle/browser/android/safe_browsing",
-    "//luxxle/browser/brave_ads/android:jni_headers",
+    # REMOVED: "//luxxle/browser/brave_ads/android:jni_headers",
     "//luxxle/build/android:jni_headers",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_ads/browser",

@@ -22,7 +22,7 @@
 #pragma mark WebState
 
 @interface WebState () {
-  std::unique_ptr<brave::NativeWebState> web_state_;
+  std::unique_ptr<luxxle::NativeWebState> web_state_;
 }
 @end
 
@@ -31,7 +31,7 @@
                  isOffTheRecord:(bool)isOffTheRecord {
   if ((self = [super init])) {
     web_state_ =
-        std::make_unique<brave::NativeWebState>(browser, isOffTheRecord);
+        std::make_unique<luxxle::NativeWebState>(browser, isOffTheRecord);
   }
   return self;
 }

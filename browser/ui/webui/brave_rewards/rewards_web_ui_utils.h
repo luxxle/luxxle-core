@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_BRAVE_REWARDS_REWARDS_WEB_UI_UTILS_H_
-#define BRAVE_BROWSER_UI_WEBUI_BRAVE_REWARDS_REWARDS_WEB_UI_UTILS_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_BRAVE_REWARDS_REWARDS_WEB_UI_UTILS_H_
+#define LUXXLE_BROWSER_UI_WEBUI_BRAVE_REWARDS_REWARDS_WEB_UI_UTILS_H_
 
 namespace content {
 class BrowserContext;
@@ -19,4 +19,4 @@ bool ShouldBlockRewardsWebUI(content::BrowserContext* browser_context,
 
 }  // namespace brave_rewards
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_BRAVE_REWARDS_REWARDS_WEB_UI_UTILS_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_BRAVE_REWARDS_REWARDS_WEB_UI_UTILS_H_

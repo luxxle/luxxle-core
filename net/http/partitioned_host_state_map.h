@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_NET_HTTP_PARTITIONED_HOST_STATE_MAP_H_
-#define BRAVE_NET_HTTP_PARTITIONED_HOST_STATE_MAP_H_
+#ifndef LUXXLE_NET_HTTP_PARTITIONED_HOST_STATE_MAP_H_
+#define LUXXLE_NET_HTTP_PARTITIONED_HOST_STATE_MAP_H_
 
 #include <algorithm>
 #include <array>
@@ -141,4 +141,4 @@ class NET_EXPORT PartitionedHostStateMap : public PartitionedHostStateMapBase {
 
 }  // namespace net
 
-#endif  // BRAVE_NET_HTTP_PARTITIONED_HOST_STATE_MAP_H_
+#endif  // LUXXLE_NET_HTTP_PARTITIONED_HOST_STATE_MAP_H_

@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_EXTENSIONS_API_IDENTITY_BRAVE_WEB_AUTH_FLOW_H_
-#define BRAVE_BROWSER_EXTENSIONS_API_IDENTITY_BRAVE_WEB_AUTH_FLOW_H_
+#ifndef LUXXLE_BROWSER_EXTENSIONS_API_IDENTITY_BRAVE_WEB_AUTH_FLOW_H_
+#define LUXXLE_BROWSER_EXTENSIONS_API_IDENTITY_BRAVE_WEB_AUTH_FLOW_H_
 
 #include <memory>
 #include <optional>
@@ -66,4 +66,4 @@ class BraveWebAuthFlow : public WebAuthFlow::Delegate {
 
 }  // namespace extensions
 
-#endif  // BRAVE_BROWSER_EXTENSIONS_API_IDENTITY_BRAVE_WEB_AUTH_FLOW_H_
+#endif  // LUXXLE_BROWSER_EXTENSIONS_API_IDENTITY_BRAVE_WEB_AUTH_FLOW_H_

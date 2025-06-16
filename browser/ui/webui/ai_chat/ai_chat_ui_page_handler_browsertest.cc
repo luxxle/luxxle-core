@@ -3,20 +3,20 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/ai_chat/ai_chat_ui_page_handler.h"
+#include "luxxle/browser/ui/webui/ai_chat/ai_chat_ui_page_handler.h"
 
 #include "base/path_service.h"
 #include "base/run_loop.h"
 #include "base/strings/strcat.h"
 #include "base/test/gtest_util.h"
 #include "base/test/run_until.h"
-#include "brave/browser/ai_chat/ai_chat_service_factory.h"
-#include "brave/browser/ai_chat/tab_tracker_service_factory.h"
-#include "brave/browser/ui/webui/ai_chat/ai_chat_ui.h"
-#include "brave/components/ai_chat/core/browser/ai_chat_service.h"
-#include "brave/components/ai_chat/core/browser/tab_tracker_service.h"
-#include "brave/components/ai_chat/core/common/mojom/tab_tracker.mojom.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/browser/ai_chat/ai_chat_service_factory.h"
+#include "luxxle/browser/ai_chat/tab_tracker_service_factory.h"
+#include "luxxle/browser/ui/webui/ai_chat/ai_chat_ui.h"
+#include "luxxle/components/ai_chat/core/browser/ai_chat_service.h"
+#include "luxxle/components/ai_chat/core/browser/tab_tracker_service.h"
+#include "luxxle/components/ai_chat/core/common/mojom/tab_tracker.mojom.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "chrome/test/base/chrome_test_utils.h"
 #include "chrome/test/base/in_process_browser_test.h"
 #include "chrome/test/base/platform_browser_test.h"
@@ -51,7 +51,7 @@ class AIChatUIPageHandlerBrowserTest : public PlatformBrowserTest,
     tracker->AddObserver(std::move(pending_remote));
 
     https_server_.ServeFilesFromDirectory(
-        base::PathService::CheckedGet(brave::DIR_TEST_DATA));
+        base::PathService::CheckedGet(luxxle::DIR_TEST_DATA));
 
     mock_cert_verifier_.mock_cert_verifier()->set_default_result(net::OK);
     host_resolver()->AddRule("*", "127.0.0.1");

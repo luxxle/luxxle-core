@@ -5,6 +5,6 @@
 
 #include "brave/ios/browser/api/brave_services_key/brave_services_key.h"
 
-#include "brave/components/constants/brave_services_key.h"
+#include "luxxle/components/constants/brave_services_key.h"
 
 NSString* const kBraveServicesKey = @BUILDFLAG(BRAVE_SERVICES_KEY);

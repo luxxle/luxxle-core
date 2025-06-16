@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_TOOLBAR_BRAVE_BOOKMARK_CONTEXT_MENU_CONTROLLER_H_
-#define BRAVE_BROWSER_UI_TOOLBAR_BRAVE_BOOKMARK_CONTEXT_MENU_CONTROLLER_H_
+#ifndef LUXXLE_BROWSER_UI_TOOLBAR_BRAVE_BOOKMARK_CONTEXT_MENU_CONTROLLER_H_
+#define LUXXLE_BROWSER_UI_TOOLBAR_BRAVE_BOOKMARK_CONTEXT_MENU_CONTROLLER_H_
 
 #include <memory>
 #include <vector>
 
 #include "base/memory/raw_ptr.h"
-#include "brave/browser/ui/toolbar/bookmark_bar_sub_menu_model.h"
+#include "luxxle/browser/ui/toolbar/bookmark_bar_sub_menu_model.h"
 #include "chrome/browser/ui/bookmarks/bookmark_context_menu_controller.h"
 #include "ui/gfx/native_widget_types.h"
 
@@ -65,4 +65,4 @@ class BraveBookmarkContextMenuController
   std::unique_ptr<BookmarkBarSubMenuModel> brave_bookmarks_submenu_model_;
 };
 
-#endif  // BRAVE_BROWSER_UI_TOOLBAR_BRAVE_BOOKMARK_CONTEXT_MENU_CONTROLLER_H_
+#endif  // LUXXLE_BROWSER_UI_TOOLBAR_BRAVE_BOOKMARK_CONTEXT_MENU_CONTROLLER_H_

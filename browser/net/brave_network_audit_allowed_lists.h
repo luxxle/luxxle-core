@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_NET_BRAVE_NETWORK_AUDIT_ALLOWED_LISTS_H_
-#define BRAVE_BROWSER_NET_BRAVE_NETWORK_AUDIT_ALLOWED_LISTS_H_
+#ifndef LUXXLE_BROWSER_NET_BRAVE_NETWORK_AUDIT_ALLOWED_LISTS_H_
+#define LUXXLE_BROWSER_NET_BRAVE_NETWORK_AUDIT_ALLOWED_LISTS_H_
 
 #include <array>
 #include <string_view>
 
 #include "base/containers/fixed_flat_set.h"
 
-namespace brave {
+namespace luxxle {
 
 // Before adding to this list, get approval from the security team.
 inline constexpr auto kAllowedUrlProtocols =
@@ -81,4 +81,4 @@ inline constexpr auto kAllowedUrlPrefixes = std::to_array<std::string_view>({
 
 }  // namespace brave
 
-#endif  // BRAVE_BROWSER_NET_BRAVE_NETWORK_AUDIT_ALLOWED_LISTS_H_
+#endif  // LUXXLE_BROWSER_NET_BRAVE_NETWORK_AUDIT_ALLOWED_LISTS_H_

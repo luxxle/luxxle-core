@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/themes/brave_dark_mode_utils.h"
+#include "luxxle/browser/themes/brave_dark_mode_utils.h"
 
 #include <utility>
 
@@ -12,9 +12,9 @@
 #include "base/logging.h"
 #include "base/notreached.h"
 #include "base/strings/string_util.h"
-#include "brave/browser/themes/brave_dark_mode_utils_internal.h"
-#include "brave/components/constants/brave_switches.h"
-#include "brave/components/constants/pref_names.h"
+#include "luxxle/browser/themes/brave_dark_mode_utils_internal.h"
+#include "luxxle/components/constants/brave_switches.h"
+#include "luxxle/components/constants/pref_names.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/common/channel_info.h"

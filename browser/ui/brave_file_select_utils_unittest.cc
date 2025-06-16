@@ -3,10 +3,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/brave_file_select_utils.h"
+#include "luxxle/browser/ui/brave_file_select_utils.h"
 
 #include "base/strings/utf_string_conversions.h"
-#include "brave/components/l10n/common/test/scoped_default_locale.h"
+#include "luxxle/components/l10n/common/test/scoped_default_locale.h"
 #include "components/javascript_dialogs/app_modal_dialog_manager.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "url/origin.h"
@@ -94,11 +94,11 @@ TEST(BraveFileSelectUtilsUnitTest, GetSiteFrameTitle_InSyncWithUpstream) {
             : url::Origin::Create(GURL(test_case.alerting_frame_url));
     EXPECT_EQ(javascript_dialogs::AppModalDialogManager::GetSiteFrameTitle(
                   main_frame_origin, alerting_frame_origin),
-              brave::GetSiteFrameTitleForFileSelect(
-                  brave::GetSiteFrameTitleType(main_frame_origin,
+              luxxle::GetSiteFrameTitleForFileSelect(
+                  luxxle::GetSiteFrameTitleType(main_frame_origin,
                                                alerting_frame_origin),
                   alerting_frame_origin,
-                  brave::FileSelectTitleType::kChromiumDefault));
+                  luxxle::FileSelectTitleType::kChromiumDefault));
   }
 }
 
@@ -198,10 +198,10 @@ TEST(BraveFileSelectUtilsUnitTest, GetSiteFrameTitleForFileSelect_Open) {
             ? main_frame_origin
             : url::Origin::Create(GURL(test_case.alerting_frame_url));
     EXPECT_EQ(base::UTF8ToUTF16(test_case.expected),
-              brave::GetSiteFrameTitleForFileSelect(
-                  brave::GetSiteFrameTitleType(main_frame_origin,
+              luxxle::GetSiteFrameTitleForFileSelect(
+                  luxxle::GetSiteFrameTitleType(main_frame_origin,
                                                alerting_frame_origin),
-                  alerting_frame_origin, brave::FileSelectTitleType::kOpen));
+                  alerting_frame_origin, luxxle::FileSelectTitleType::kOpen));
   }
 }
 
@@ -301,9 +301,9 @@ TEST(BraveFileSelectUtilsUnitTest, GetSiteFrameTitleForFileSelect_Save) {
             ? main_frame_origin
             : url::Origin::Create(GURL(test_case.alerting_frame_url));
     EXPECT_EQ(base::UTF8ToUTF16(test_case.expected),
-              brave::GetSiteFrameTitleForFileSelect(
-                  brave::GetSiteFrameTitleType(main_frame_origin,
+              luxxle::GetSiteFrameTitleForFileSelect(
+                  luxxle::GetSiteFrameTitleType(main_frame_origin,
                                                alerting_frame_origin),
-                  alerting_frame_origin, brave::FileSelectTitleType::kSave));
+                  alerting_frame_origin, luxxle::FileSelectTitleType::kSave));
   }
 }

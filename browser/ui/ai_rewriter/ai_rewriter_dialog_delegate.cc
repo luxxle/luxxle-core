@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/ai_rewriter/ai_rewriter_dialog_delegate.h"
+#include "luxxle/browser/ui/ai_rewriter/ai_rewriter_dialog_delegate.h"
 
 #include <memory>
 #include <optional>
@@ -16,10 +16,10 @@
 #include "base/memory/weak_ptr.h"
 #include "base/process/kill.h"
 #include "base/scoped_observation.h"
-#include "brave/browser/ui/webui/ai_rewriter/ai_rewriter_ui.h"
-#include "brave/components/ai_rewriter/common/features.h"
-#include "brave/components/ai_rewriter/common/mojom/ai_rewriter.mojom.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/browser/ui/webui/ai_rewriter/ai_rewriter_ui.h"
+#include "luxxle/components/ai_rewriter/common/features.h"
+#include "luxxle/components/ai_rewriter/common/mojom/ai_rewriter.mojom.h"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/browser/tab_contents/web_contents_collection.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_finder.h"

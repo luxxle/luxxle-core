@@ -11,8 +11,8 @@
 #include "base/path_service.h"
 #include "base/strings/sys_string_conversions.h"
 #include "base/version.h"
-#include "brave/components/brave_wallet/browser/brave_wallet_constants.h"
-#include "brave/components/brave_wallet/browser/wallet_data_files_installer.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
 #include "ios/chrome/browser/shared/model/paths/paths.h"
 
 @implementation BraveWalletTokenRegistryUtils

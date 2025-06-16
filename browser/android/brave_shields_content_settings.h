@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_ANDROID_BRAVE_SHIELDS_CONTENT_SETTINGS_H_
-#define BRAVE_BROWSER_ANDROID_BRAVE_SHIELDS_CONTENT_SETTINGS_H_
+#ifndef LUXXLE_BROWSER_ANDROID_BRAVE_SHIELDS_CONTENT_SETTINGS_H_
+#define LUXXLE_BROWSER_ANDROID_BRAVE_SHIELDS_CONTENT_SETTINGS_H_
 
 #include <jni.h>
 #include <string>
@@ -38,4 +38,4 @@ class BraveShieldsContentSettings {
 }  // namespace android
 }  // namespace chrome
 
-#endif  // BRAVE_BROWSER_ANDROID_BRAVE_SHIELDS_CONTENT_SETTINGS_H_
+#endif  // LUXXLE_BROWSER_ANDROID_BRAVE_SHIELDS_CONTENT_SETTINGS_H_

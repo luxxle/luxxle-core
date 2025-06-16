@@ -8,14 +8,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include "brave/browser/ui/commander/bookmark_command_source.h"
+#include "luxxle/browser/ui/commander/bookmark_command_source.h"
 
 #include <memory>
 #include <optional>
 #include <utility>
 #include <vector>
 
-#include "brave/browser/ui/commander/fuzzy_finder.h"
+#include "luxxle/browser/ui/commander/fuzzy_finder.h"
 #include "chrome/browser/bookmarks/bookmark_model_factory.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"

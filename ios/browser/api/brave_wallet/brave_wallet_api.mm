@@ -7,12 +7,12 @@
 
 #include "base/memory/raw_ptr.h"
 #include "base/strings/sys_string_conversions.h"
-#include "brave/components/brave_wallet/browser/blockchain_registry.h"
-#include "brave/components/brave_wallet/browser/brave_wallet_p3a.h"
-#include "brave/components/brave_wallet/browser/brave_wallet_service.h"
-#include "brave/components/brave_wallet/browser/ethereum_provider_impl.h"
-#include "brave/components/brave_wallet/browser/solana_provider_impl.h"
-#include "brave/components/brave_wallet/resources/grit/brave_wallet_script_generated.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
 #include "brave/ios/browser/api/brave_wallet/brave_wallet.mojom.objc+private.h"
 #include "brave/ios/browser/api/brave_wallet/brave_wallet_provider_delegate_ios+private.h"
 #include "brave/ios/browser/api/brave_wallet/brave_wallet_provider_delegate_ios.h"
@@ -142,15 +142,15 @@ BraveWalletProviderScriptKey const BraveWalletProviderScriptKeyWalletStandard =
       case BraveWalletCoinTypeEth:
         return {std::make_pair(
             BraveWalletProviderScriptKeyEthereum,
-            IDR_BRAVE_WALLET_SCRIPT_ETHEREUM_PROVIDER_SCRIPT_BUNDLE_JS)};
+            /* REMOVED: IDR_BRAVE_WALLET_SCRIPT_ETHEREUM_PROVIDER_SCRIPT_BUNDLE_JS */ 0)};
       case BraveWalletCoinTypeSol:
         return {std::make_pair(
                     BraveWalletProviderScriptKeySolana,
-                    IDR_BRAVE_WALLET_SCRIPT_SOLANA_PROVIDER_SCRIPT_BUNDLE_JS),
+                    /* REMOVED: IDR_BRAVE_WALLET_SCRIPT_SOLANA_PROVIDER_SCRIPT_BUNDLE_JS */ 0),
                 std::make_pair(BraveWalletProviderScriptKeySolanaWeb3,
-                               IDR_BRAVE_WALLET_SOLANA_WEB3_JS),
+                               /* REMOVED: IDR_BRAVE_WALLET_SOLANA_WEB3_JS */ 0),
                 std::make_pair(BraveWalletProviderScriptKeyWalletStandard,
-                               IDR_BRAVE_WALLET_STANDARD_JS)};
+                               /* REMOVED: IDR_BRAVE_WALLET_STANDARD_JS */ 0)};
       case BraveWalletCoinTypeFil:
         // Currently not supported
         return {std::make_pair(@"", 0)};

@@ -3,10 +3,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/settings/brave_settings_secure_dns_handler.h"
+#include "luxxle/browser/ui/webui/settings/brave_settings_secure_dns_handler.h"
 
 #include "base/feature_list.h"
-#include "brave/components/brave_vpn/common/features.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #include "chrome/browser/browser_process.h"
 #include "chrome/common/pref_names.h"
 #include "components/prefs/pref_service.h"

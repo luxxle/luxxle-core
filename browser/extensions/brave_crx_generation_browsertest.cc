@@ -8,7 +8,7 @@
 #include "base/files/scoped_file.h"
 #include "base/path_service.h"
 #include "base/run_loop.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "chrome/browser/extensions/crx_installer.h"
 #include "chrome/browser/extensions/install_tracker.h"
 #include "chrome/browser/profiles/profile.h"
@@ -104,7 +104,7 @@ class BraveCrxGenerationTest : public InProcessBrowserTest {
   base::FilePath GetTestDataDir() {
     base::FilePath test_data_dir;
     base::ScopedAllowBlockingForTesting allow_blocking;
-    CHECK(base::PathService::Get(brave::DIR_TEST_DATA, &test_data_dir));
+    CHECK(base::PathService::Get(luxxle::DIR_TEST_DATA, &test_data_dir));
     return test_data_dir;
   }
 

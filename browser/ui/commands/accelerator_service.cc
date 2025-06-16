@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/commands/accelerator_service.h"
+#include "luxxle/browser/ui/commands/accelerator_service.h"
 
 #include <algorithm>
 #include <iterator>
@@ -14,11 +14,11 @@
 #include "base/containers/contains.h"
 #include "base/containers/flat_map.h"
 #include "base/containers/flat_set.h"
-#include "brave/app/command_utils.h"
-#include "brave/components/commands/browser/accelerator_pref_manager.h"
-#include "brave/components/commands/common/accelerator_parsing.h"
-#include "brave/components/commands/common/commands.mojom-forward.h"
-#include "brave/components/commands/common/commands.mojom.h"
+#include "luxxle/app/command_utils.h"
+#include "luxxle/components/commands/browser/accelerator_pref_manager.h"
+#include "luxxle/components/commands/common/accelerator_parsing.h"
+#include "luxxle/components/commands/common/commands.mojom-forward.h"
+#include "luxxle/components/commands/common/commands.mojom.h"
 #include "components/prefs/pref_service.h"
 #include "mojo/public/cpp/bindings/pending_remote.h"
 #include "ui/base/accelerators/accelerator.h"

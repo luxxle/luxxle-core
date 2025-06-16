@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/settings/brave_sync_handler.h"
+#include "luxxle/browser/ui/webui/settings/brave_sync_handler.h"
 
 #include <memory>
 #include <string>
@@ -13,13 +13,13 @@
 #include "base/functional/bind.h"
 #include "base/strings/string_number_conversions.h"
 #include "base/types/cxx23_to_underlying.h"
-#include "brave/components/brave_sync/brave_sync_prefs.h"
-#include "brave/components/brave_sync/crypto/crypto.h"
-#include "brave/components/brave_sync/qr_code_data.h"
-#include "brave/components/brave_sync/sync_service_impl_helper.h"
-#include "brave/components/brave_sync/time_limited_words.h"
-#include "brave/components/sync/service/brave_sync_service_impl.h"
-#include "brave/components/sync_device_info/brave_device_info.h"
+#include "luxxle/components/brave_sync/brave_sync_prefs.h"
+#include "luxxle/components/brave_sync/crypto/crypto.h"
+#include "luxxle/components/brave_sync/qr_code_data.h"
+#include "luxxle/components/brave_sync/sync_service_impl_helper.h"
+#include "luxxle/components/brave_sync/time_limited_words.h"
+#include "luxxle/components/sync/service/brave_sync_service_impl.h"
+#include "luxxle/components/sync_device_info/brave_device_info.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/sync/device_info_sync_service_factory.h"

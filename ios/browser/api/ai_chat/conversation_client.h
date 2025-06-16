@@ -3,14 +3,14 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_IOS_BROWSER_API_AI_CHAT_CONVERSATION_CLIENT_H_
-#define BRAVE_IOS_BROWSER_API_AI_CHAT_CONVERSATION_CLIENT_H_
+#ifndef LUXXLE_IOS_BROWSER_API_AI_CHAT_CONVERSATION_CLIENT_H_
+#define LUXXLE_IOS_BROWSER_API_AI_CHAT_CONVERSATION_CLIENT_H_
 
 #include <string>
 #include <vector>
 
 #include "base/memory/weak_ptr.h"
-#include "brave/components/ai_chat/core/common/mojom/ai_chat.mojom.h"
+#include "luxxle/components/ai_chat/core/common/mojom/ai_chat.mojom.h"
 #include "mojo/public/cpp/bindings/receiver.h"
 
 @protocol AIChatDelegate;
@@ -65,4 +65,4 @@ class ConversationClient : public mojom::ConversationUI,
 
 }  // namespace ai_chat
 
-#endif  // BRAVE_IOS_BROWSER_API_AI_CHAT_CONVERSATION_CLIENT_H_
+#endif  // LUXXLE_IOS_BROWSER_API_AI_CHAT_CONVERSATION_CLIENT_H_

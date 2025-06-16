@@ -3,9 +3,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/extensions/api/brave_theme_api.h"
-#include "brave/browser/themes/brave_dark_mode_utils.h"
-#include "brave/components/constants/pref_names.h"
+#include "luxxle/browser/extensions/api/brave_theme_api.h"
+#include "luxxle/browser/themes/brave_dark_mode_utils.h"
+#include "luxxle/components/constants/pref_names.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/test/base/in_process_browser_test.h"

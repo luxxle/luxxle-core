@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/toolbar/brave_bookmark_context_menu_controller.h"
+#include "luxxle/browser/ui/toolbar/brave_bookmark_context_menu_controller.h"
 
 #include <stddef.h>
 
@@ -12,7 +12,7 @@
 
 #include "base/memory/raw_ptr.h"
 #include "base/values.h"
-#include "brave/browser/ui/bookmark/bookmark_helper.h"
+#include "luxxle/browser/ui/bookmark/bookmark_helper.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/bookmarks/bookmark_merged_surface_service_factory.h"
 #include "chrome/browser/bookmarks/bookmark_model_factory.h"
@@ -158,14 +158,14 @@ TEST_F(BraveBookmarkContextMenuControllerTest, AddBraveBookmarksSubmenu) {
   EXPECT_TRUE(controller.IsCommandIdChecked(IDC_BRAVE_BOOKMARK_BAR_NTP));
 
   // Set state as Always.
-  brave::SetBookmarkState(brave::BookmarkBarState::kAlways,
+  luxxle::SetBookmarkState(luxxle::BookmarkBarState::kAlways,
                           profile_->GetPrefs());
   EXPECT_TRUE(controller.IsCommandIdChecked(IDC_BRAVE_BOOKMARK_BAR_ALWAYS));
   EXPECT_FALSE(controller.IsCommandIdChecked(IDC_BRAVE_BOOKMARK_BAR_NEVER));
   EXPECT_FALSE(controller.IsCommandIdChecked(IDC_BRAVE_BOOKMARK_BAR_NTP));
 
   // Set state as Never.
-  brave::SetBookmarkState(brave::BookmarkBarState::kNever,
+  luxxle::SetBookmarkState(luxxle::BookmarkBarState::kNever,
                           profile_->GetPrefs());
   EXPECT_FALSE(controller.IsCommandIdChecked(IDC_BRAVE_BOOKMARK_BAR_ALWAYS));
   EXPECT_TRUE(controller.IsCommandIdChecked(IDC_BRAVE_BOOKMARK_BAR_NEVER));

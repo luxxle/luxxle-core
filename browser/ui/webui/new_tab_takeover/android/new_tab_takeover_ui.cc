@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/new_tab_takeover/android/new_tab_takeover_ui.h"
+#include "luxxle/browser/ui/webui/new_tab_takeover/android/new_tab_takeover_ui.h"
 
 #include <memory>
 #include <ranges>
@@ -12,12 +12,12 @@
 
 #include "base/strings/stringprintf.h"
 #include "base/values.h"
-#include "brave/browser/ui/webui/brave_webui_source.h"
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/components/new_tab_takeover/grit/new_tab_takeover_generated_map.h"
-#include "brave/components/ntp_background_images/browser/ntp_sponsored_rich_media_ad_event_handler.h"
-#include "brave/components/ntp_background_images/browser/url_constants.h"
-#include "brave/components/ntp_background_images/browser/view_counter_service.h"
+#include "luxxle/browser/ui/webui/brave_webui_source.h"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/components/new_tab_takeover/grit/new_tab_takeover_generated_map.h"
+#include "luxxle/components/ntp_background_images/browser/ntp_sponsored_rich_media_ad_event_handler.h"
+#include "luxxle/components/ntp_background_images/browser/url_constants.h"
+#include "luxxle/components/ntp_background_images/browser/view_counter_service.h"
 #include "chrome/browser/ui/android/tab_model/tab_model.h"
 #include "chrome/browser/ui/android/tab_model/tab_model_list.h"
 #include "components/grit/brave_components_resources.h"

@@ -2,8 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_RENDERER_CONTEXT_MENU_SPELLING_OPTIONS_SUBMENU_OBSERVER_H_
-#define BRAVE_BROWSER_RENDERER_CONTEXT_MENU_SPELLING_OPTIONS_SUBMENU_OBSERVER_H_
+#ifndef LUXXLE_BROWSER_RENDERER_CONTEXT_MENU_SPELLING_OPTIONS_SUBMENU_OBSERVER_H_
+#define LUXXLE_BROWSER_RENDERER_CONTEXT_MENU_SPELLING_OPTIONS_SUBMENU_OBSERVER_H_
 
 #include "chrome/browser/renderer_context_menu/spelling_options_submenu_observer.h"
 
@@ -29,4 +29,4 @@ class BraveSpellingOptionsSubMenuObserver
   GtestMode gtest_mode_;
 };
 
-#endif  // BRAVE_BROWSER_RENDERER_CONTEXT_MENU_SPELLING_OPTIONS_SUBMENU_OBSERVER_H_
+#endif  // LUXXLE_BROWSER_RENDERER_CONTEXT_MENU_SPELLING_OPTIONS_SUBMENU_OBSERVER_H_

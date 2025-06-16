@@ -3,12 +3,12 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/app/command_utils.h"
+#include "luxxle/app/command_utils.h"
 
 #include "base/containers/contains.h"
 #include "base/containers/flat_set.h"
 #include "base/test/scoped_feature_list.h"
-#include "brave/components/commands/common/features.h"
+#include "luxxle/components/commands/common/features.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/ui/views/accelerator_table.h"
 #include "testing/gtest/include/gtest/gtest.h"

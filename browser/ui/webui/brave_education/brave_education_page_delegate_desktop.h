@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_PAGE_DELEGATE_DESKTOP_H_
-#define BRAVE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_PAGE_DELEGATE_DESKTOP_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_PAGE_DELEGATE_DESKTOP_H_
+#define LUXXLE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_PAGE_DELEGATE_DESKTOP_H_
 
 #include "base/memory/raw_ref.h"
-#include "brave/browser/ui/webui/brave_browser_command/brave_browser_command_handler.h"
+#include "luxxle/browser/ui/webui/brave_browser_command/brave_browser_command_handler.h"
 #include "ui/base/window_open_disposition.h"
 #include "url/gurl.h"
 
@@ -35,4 +35,4 @@ class BraveEducationPageDelegateDesktop
 
 }  // namespace brave_education
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_PAGE_DELEGATE_DESKTOP_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_PAGE_DELEGATE_DESKTOP_H_

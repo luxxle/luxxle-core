@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/extensions/api/brave_theme_api.h"
+#include "luxxle/browser/extensions/api/brave_theme_api.h"
 
 #include <memory>
 #include <optional>
@@ -11,8 +11,8 @@
 
 #include "base/json/json_writer.h"
 #include "base/values.h"
-#include "brave/browser/themes/brave_dark_mode_utils.h"
-#include "brave/common/extensions/api/brave_theme.h"
+#include "luxxle/browser/themes/brave_dark_mode_utils.h"
+#include "luxxle/common/extensions/api/brave_theme.h"
 
 namespace extensions::api {
 

@@ -3,10 +3,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/app/brave_command_ids.h"
-#include "brave/browser/tor/tor_profile_service_factory.h"
-#include "brave/components/constants/pref_names.h"
-#include "brave/components/tor/buildflags/buildflags.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/browser/tor/tor_profile_service_factory.h"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/tor/buildflags/buildflags.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"

@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_SIDE_PANEL_PLAYLIST_PLAYLIST_CONTENTS_WRAPPER_H_
-#define BRAVE_BROWSER_UI_VIEWS_SIDE_PANEL_PLAYLIST_PLAYLIST_CONTENTS_WRAPPER_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_SIDE_PANEL_PLAYLIST_PLAYLIST_CONTENTS_WRAPPER_H_
+#define LUXXLE_BROWSER_UI_VIEWS_SIDE_PANEL_PLAYLIST_PLAYLIST_CONTENTS_WRAPPER_H_
 
 #include <memory>
 #include <string>
 
 #include "base/scoped_observation.h"
-#include "brave/browser/ui/webui/playlist_ui.h"
+#include "luxxle/browser/ui/webui/playlist_ui.h"
 #include "chrome/browser/ui/exclusive_access/fullscreen_observer.h"
 #include "chrome/browser/ui/webui/top_chrome/webui_contents_wrapper.h"
 
@@ -78,4 +78,4 @@ class PlaylistContentsWrapper
       fullscreen_observation_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_SIDE_PANEL_PLAYLIST_PLAYLIST_CONTENTS_WRAPPER_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_SIDE_PANEL_PLAYLIST_PLAYLIST_CONTENTS_WRAPPER_H_

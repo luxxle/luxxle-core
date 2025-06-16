@@ -3,16 +3,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/settings/default_brave_shields_handler.h"
+#include "luxxle/browser/ui/webui/settings/default_brave_shields_handler.h"
 
 #include <utility>
 
 #include "base/functional/bind.h"
 #include "base/values.h"
-#include "brave/browser/webcompat_reporter/webcompat_reporter_service_factory.h"
-#include "brave/components/brave_shields/content/browser/brave_shields_util.h"
-#include "brave/components/brave_shields/core/common/features.h"
-#include "brave/components/webcompat_reporter/browser/webcompat_reporter_service.h"
+#include "luxxle/browser/webcompat_reporter/webcompat_reporter_service_factory.h"
+#include "luxxle/components/brave_shields/content/browser/brave_shields_util.h"
+#include "luxxle/components/brave_shields/core/common/features.h"
+#include "luxxle/components/webcompat_reporter/browser/webcompat_reporter_service.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/content_settings/cookie_settings_factory.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"

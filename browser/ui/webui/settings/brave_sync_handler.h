@@ -3,8 +3,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_SYNC_HANDLER_H_
-#define BRAVE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_SYNC_HANDLER_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_SYNC_HANDLER_H_
+#define LUXXLE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_SYNC_HANDLER_H_
 
 #include "base/memory/raw_ptr.h"
 #include "base/memory/weak_ptr.h"
@@ -70,4 +70,4 @@ class BraveSyncHandler : public settings::SettingsPageUIHandler,
   base::WeakPtrFactory<BraveSyncHandler> weak_ptr_factory_;
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_SYNC_HANDLER_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_SYNC_HANDLER_H_

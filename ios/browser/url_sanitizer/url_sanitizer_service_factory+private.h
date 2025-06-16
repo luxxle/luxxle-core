@@ -3,8 +3,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_IOS_BROWSER_URL_SANITIZER_URL_SANITIZER_SERVICE_FACTORY_PRIVATE_H_
-#define BRAVE_IOS_BROWSER_URL_SANITIZER_URL_SANITIZER_SERVICE_FACTORY_PRIVATE_H_
+#ifndef LUXXLE_IOS_BROWSER_URL_SANITIZER_URL_SANITIZER_SERVICE_FACTORY_PRIVATE_H_
+#define LUXXLE_IOS_BROWSER_URL_SANITIZER_URL_SANITIZER_SERVICE_FACTORY_PRIVATE_H_
 
 #include <memory>
 
@@ -23,12 +23,12 @@ class BrowserState;
 class KeyedService;
 class ProfileIOS;
 
-namespace brave {
+namespace luxxle {
 class URLSanitizerService;
 
 class URLSanitizerServiceFactory : public ProfileKeyedServiceFactoryIOS {
  public:
-  static brave::URLSanitizerService* GetServiceForState(ProfileIOS* profile);
+  static luxxle::URLSanitizerService* GetServiceForState(ProfileIOS* profile);
 
   static URLSanitizerServiceFactory* GetInstance();
 
@@ -45,4 +45,4 @@ class URLSanitizerServiceFactory : public ProfileKeyedServiceFactoryIOS {
 
 }  // namespace brave
 
-#endif  // BRAVE_IOS_BROWSER_URL_SANITIZER_URL_SANITIZER_SERVICE_FACTORY_PRIVATE_H_
+#endif  // LUXXLE_IOS_BROWSER_URL_SANITIZER_URL_SANITIZER_SERVICE_FACTORY_PRIVATE_H_

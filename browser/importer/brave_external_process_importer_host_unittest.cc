@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/importer/brave_external_process_importer_host.h"
+#include "luxxle/browser/importer/brave_external_process_importer_host.h"
 
 #include <memory>
 #include <string>
@@ -14,9 +14,9 @@
 #include "base/functional/callback.h"
 #include "base/path_service.h"
 #include "base/test/bind.h"
-#include "brave/browser/importer/extensions_import_helpers.h"
-#include "brave/common/importer/importer_constants.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/browser/importer/extensions_import_helpers.h"
+#include "luxxle/common/importer/importer_constants.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "chrome/browser/extensions/load_error_reporter.h"
 #include "chrome/browser/extensions/test_extension_system.h"
 #include "chrome/browser/importer/importer_progress_observer.h"
@@ -96,7 +96,7 @@ class BraveExternalProcessImporterHostUnitTest : public testing::Test {
     base::CreateDirectory(profile_->GetPath().AppendASCII("IndexedDB"));
 
     base::FilePath test_data_dir;
-    base::PathService::Get(brave::DIR_TEST_DATA, &test_data_dir);
+    base::PathService::Get(luxxle::DIR_TEST_DATA, &test_data_dir);
     base::CopyDirectory(test_data_dir.AppendASCII("extensions")
                             .AppendASCII("import")
                             .AppendASCII("Chrome"),

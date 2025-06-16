@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_EXTENSIONS_BRAVE_EXTENSION_MANAGEMENT_H_
-#define BRAVE_BROWSER_EXTENSIONS_BRAVE_EXTENSION_MANAGEMENT_H_
+#ifndef LUXXLE_BROWSER_EXTENSIONS_BRAVE_EXTENSION_MANAGEMENT_H_
+#define LUXXLE_BROWSER_EXTENSIONS_BRAVE_EXTENSION_MANAGEMENT_H_
 
 #include "base/scoped_observation.h"
 #include "chrome/browser/extensions/extension_management.h"
@@ -35,4 +35,4 @@ class BraveExtensionManagement : public ExtensionManagement,
 
 }  // namespace extensions
 
-#endif  // BRAVE_BROWSER_EXTENSIONS_BRAVE_EXTENSION_MANAGEMENT_H_
+#endif  // LUXXLE_BROWSER_EXTENSIONS_BRAVE_EXTENSION_MANAGEMENT_H_

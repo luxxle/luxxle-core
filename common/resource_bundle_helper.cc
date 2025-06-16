@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/common/resource_bundle_helper.h"
+#include "luxxle/common/resource_bundle_helper.h"
 
 #include <string>
 
@@ -62,7 +62,7 @@ base::FilePath GetScaledResourcesPakFilePath(
 
 }  // namespace
 
-namespace brave {
+namespace luxxle {
 
 void InitializeResourceBundle() {
 #if BUILDFLAG(IS_ANDROID)

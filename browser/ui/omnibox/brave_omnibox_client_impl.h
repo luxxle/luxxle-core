@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_OMNIBOX_BRAVE_OMNIBOX_CLIENT_IMPL_H_
-#define BRAVE_BROWSER_UI_OMNIBOX_BRAVE_OMNIBOX_CLIENT_IMPL_H_
+#ifndef LUXXLE_BROWSER_UI_OMNIBOX_BRAVE_OMNIBOX_CLIENT_IMPL_H_
+#define LUXXLE_BROWSER_UI_OMNIBOX_BRAVE_OMNIBOX_CLIENT_IMPL_H_
 
 #include "base/memory/raw_ptr.h"
-#include "brave/browser/autocomplete/brave_autocomplete_scheme_classifier.h"
-#include "brave/components/time_period_storage/weekly_storage.h"
+#include "luxxle/browser/autocomplete/brave_autocomplete_scheme_classifier.h"
+#include "luxxle/components/time_period_storage/weekly_storage.h"
 #include "chrome/browser/ui/omnibox/chrome_omnibox_client.h"
 #include "components/prefs/pref_change_registrar.h"
 
@@ -59,4 +59,4 @@ class BraveOmniboxClientImpl : public ChromeOmniboxClient {
   PrefChangeRegistrar pref_change_registrar_;
 };
 
-#endif  // BRAVE_BROWSER_UI_OMNIBOX_BRAVE_OMNIBOX_CLIENT_IMPL_H_
+#endif  // LUXXLE_BROWSER_UI_OMNIBOX_BRAVE_OMNIBOX_CLIENT_IMPL_H_

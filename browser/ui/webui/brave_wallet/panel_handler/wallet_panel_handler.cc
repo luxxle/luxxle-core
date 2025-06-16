@@ -3,14 +3,14 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/brave_wallet/panel_handler/wallet_panel_handler.h"
+#include "luxxle/browser/ui/webui/brave_wallet/panel_handler/wallet_panel_handler.h"
 
 #include <utility>
 
 #include "base/functional/callback.h"
-#include "brave/browser/brave_wallet/brave_wallet_tab_helper.h"
-#include "brave/components/brave_wallet/browser/permission_utils.h"
-#include "brave/components/permissions/contexts/brave_wallet_permission_context.h"
+// REMOVED: #include "luxxle/browser/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/permissions/contexts/brave_wallet_permission_context.h"
 #include "content/public/browser/render_frame_host.h"
 #include "content/public/browser/web_contents.h"
 

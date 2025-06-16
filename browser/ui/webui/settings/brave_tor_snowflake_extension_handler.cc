@@ -3,13 +3,13 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/settings/brave_tor_snowflake_extension_handler.h"
+#include "luxxle/browser/ui/webui/settings/brave_tor_snowflake_extension_handler.h"
 
 #include <memory>
 #include <string>
 
 #include "base/memory/scoped_refptr.h"
-#include "brave/components/tor/pref_names.h"
+#include "luxxle/components/tor/pref_names.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/extensions/extension_allowlist.h"
 #include "chrome/browser/extensions/extension_service.h"

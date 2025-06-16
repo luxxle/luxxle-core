@@ -4,14 +4,14 @@
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 #include "base/scoped_observation.h"
-#include "brave/browser/brave_rewards/rewards_service_factory.h"
-#include "brave/browser/perf/brave_perf_switches.h"
-#include "brave/components/ai_chat/core/browser/utils.h"
-#include "brave/components/brave_ads/core/public/prefs/pref_names.h"
-#include "brave/components/brave_news/common/pref_names.h"
-#include "brave/components/brave_rewards/content/rewards_service.h"
-#include "brave/components/brave_rewards/content/rewards_service_observer.h"
-#include "brave/components/speedreader/common/buildflags/buildflags.h"
+// REMOVED: #include "luxxle/browser/brave_rewards/.*"
+#include "luxxle/browser/perf/brave_perf_switches.h"
+#include "luxxle/components/ai_chat/core/browser/utils.h"
+// REMOVED: #include "luxxle/components/brave_ads/.*"
+#include "luxxle/components/brave_news/common/pref_names.h"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+#include "luxxle/components/speedreader/common/buildflags/buildflags.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/test/base/in_process_browser_test.h"
@@ -20,8 +20,8 @@
 #include "content/public/test/browser_test_utils.h"
 
 #if BUILDFLAG(ENABLE_SPEEDREADER)
-#include "brave/browser/speedreader/speedreader_service_factory.h"
-#include "brave/components/speedreader/speedreader_service.h"
+#include "luxxle/browser/speedreader/speedreader_service_factory.h"
+#include "luxxle/components/speedreader/speedreader_service.h"
 #endif
 
 namespace {

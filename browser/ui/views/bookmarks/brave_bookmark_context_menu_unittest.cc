@@ -3,16 +3,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/bookmarks/brave_bookmark_context_menu.h"
+#include "luxxle/browser/ui/views/bookmarks/brave_bookmark_context_menu.h"
 
 #include <memory>
 #include <string>
 #include <utility>
 #include <vector>
 
-#include "brave/app/brave_command_ids.h"
-#include "brave/browser/ui/bookmark/brave_bookmark_prefs.h"
-#include "brave/browser/ui/toolbar/brave_bookmark_context_menu_controller.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/browser/ui/bookmark/brave_bookmark_prefs.h"
+#include "luxxle/browser/ui/toolbar/brave_bookmark_context_menu_controller.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/bookmarks/bookmark_merged_surface_service_factory.h"
 #include "chrome/browser/bookmarks/bookmark_model_factory.h"
@@ -53,7 +53,7 @@ class BraveBookmarkContextMenuTest : public testing::Test {
     model_ = BookmarkModelFactory::GetForBrowserContext(profile_.get());
     prefs_ = std::make_unique<TestingPrefServiceSimple>();
 
-    brave::bookmarks::prefs::RegisterProfilePrefs(prefs_->registry());
+    luxxle::bookmarks::prefs::RegisterProfilePrefs(prefs_->registry());
 
     bookmarks::test::WaitForBookmarkModelToLoad(model_);
     WaitForBookmarkMergedSurfaceServiceToLoad(
@@ -115,11 +115,11 @@ TEST_F(BraveBookmarkContextMenuTest, ShowAllBookmarksButtonMenuCheckedState) {
   ASSERT_TRUE(bookmark_context_menu->IsItemChecked(
       IDC_TOGGLE_ALL_BOOKMARKS_BUTTON_VISIBILITY));
 
-  prefs_->SetBoolean(brave::bookmarks::prefs::kShowAllBookmarksButton, false);
+  prefs_->SetBoolean(luxxle::bookmarks::prefs::kShowAllBookmarksButton, false);
   EXPECT_FALSE(bookmark_context_menu->IsItemChecked(
       IDC_TOGGLE_ALL_BOOKMARKS_BUTTON_VISIBILITY));
 
-  prefs_->SetBoolean(brave::bookmarks::prefs::kShowAllBookmarksButton, true);
+  prefs_->SetBoolean(luxxle::bookmarks::prefs::kShowAllBookmarksButton, true);
   EXPECT_TRUE(bookmark_context_menu->IsItemChecked(
       IDC_TOGGLE_ALL_BOOKMARKS_BUTTON_VISIBILITY));
 }

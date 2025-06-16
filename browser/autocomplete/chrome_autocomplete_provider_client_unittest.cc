@@ -4,7 +4,7 @@
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 #include "base/test/scoped_feature_list.h"
-#include "brave/components/ai_chat/core/common/features.h"
+#include "luxxle/components/ai_chat/core/common/features.h"
 #include "components/omnibox/browser/autocomplete_controller.h"
 #include "components/omnibox/browser/autocomplete_match.h"
 #include "components/omnibox/browser/autocomplete_result.h"

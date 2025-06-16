@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/brave_icon_with_badge_image_source.h"
+#include "luxxle/browser/ui/brave_icon_with_badge_image_source.h"
 
 #include <algorithm>
 #include <optional>
@@ -32,7 +32,7 @@ constexpr int kTextHeightTarget = kBadgeHeight - (kVPadding * 2);
 constexpr int kMaxIncrementAttempts = 5;
 }  // namespace
 
-namespace brave {
+namespace luxxle {
 
 BraveIconWithBadgeImageSource::BraveIconWithBadgeImageSource(
     const gfx::Size& size,

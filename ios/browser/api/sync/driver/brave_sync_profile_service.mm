@@ -22,7 +22,7 @@ static_assert(static_cast<NSInteger>(syncer::UserSelectableType::kCookies) ==
                   static_cast<NSInteger>(syncer::UserSelectableType::kLastType),
               "syncer::UserSelectableType has changed in a Chromium update");
 
-namespace brave {
+namespace luxxle {
 namespace ios {
 std::unordered_map<syncer::UserSelectableType, BraveSyncUserSelectableTypes>
     mapping = {
@@ -109,21 +109,21 @@ BraveSyncUserSelectableTypes options_from_user_types(
       user_types.Put(type);
     }
   }
-  return brave::ios::options_from_user_types(user_types);
+  return luxxle::ios::options_from_user_types(user_types);
 }
 
 - (BraveSyncUserSelectableTypes)userSelectedTypes {
   DCHECK_CURRENTLY_ON(web::WebThread::UI);
   syncer::UserSelectableTypeSet types =
       sync_service_->GetUserSettings()->GetSelectedTypes();
-  return brave::ios::options_from_user_types(types);
+  return luxxle::ios::options_from_user_types(types);
 }
 
 - (void)setUserSelectedTypes:(BraveSyncUserSelectableTypes)options {
   DCHECK_CURRENTLY_ON(web::WebThread::UI);
   bool sync_everything = false;
   syncer::UserSelectableTypeSet selected_types =
-      brave::ios::user_types_from_options(options);
+      luxxle::ios::user_types_from_options(options);
   sync_service_->GetUserSettings()->SetSelectedTypes(sync_everything,
                                                      selected_types);
 }

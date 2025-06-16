@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/permissions/permission_origin_lifetime_monitor_impl.h"
+#include "luxxle/browser/permissions/permission_origin_lifetime_monitor_impl.h"
 
 #include <utility>
 
-#include "brave/browser/ephemeral_storage/ephemeral_storage_service_factory.h"
-#include "brave/components/brave_wallet/browser/permission_utils.h"
-#include "brave/components/ephemeral_storage/ephemeral_storage_service.h"
+#include "luxxle/browser/ephemeral_storage/ephemeral_storage_service_factory.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/ephemeral_storage/ephemeral_storage_service.h"
 #include "net/base/features.h"
 #include "net/base/url_util.h"
 

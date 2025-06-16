@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/brave_wallet/line_chart/line_chart_ui.h"
+#include "luxxle/browser/ui/webui/brave_wallet/line_chart/line_chart_ui.h"
 
 #include <string>
 
-#include "brave/components/brave_wallet/browser/brave_wallet_constants.h"
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/components/line_chart_display/resources/grit/line_chart_display_generated_map.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/components/line_chart_display/resources/grit/line_chart_display_generated_map.h"
 #include "chrome/grit/browser_resources.h"
 #include "chrome/grit/generated_resources.h"
 #include "components/grit/brave_components_resources.h"
@@ -31,12 +31,12 @@ UntrustedLineChartUI::UntrustedLineChartUI(content::WebUI* web_ui)
   }
 
   untrusted_source->SetDefaultResource(
-      IDR_BRAVE_WALLET_LINE_CHART_DISPLAY_HTML);
+      /* REMOVED: IDR_BRAVE_WALLET_LINE_CHART_DISPLAY_HTML */ 0);
   untrusted_source->AddResourcePaths(kLineChartDisplayGenerated);
   untrusted_source->AddFrameAncestor(GURL(kBraveUIWalletPageURL));
   untrusted_source->AddFrameAncestor(GURL(kBraveUIWalletPanelURL));
   webui::SetupWebUIDataSource(untrusted_source, kLineChartDisplayGenerated,
-                              IDR_BRAVE_WALLET_LINE_CHART_DISPLAY_HTML);
+                              /* REMOVED: IDR_BRAVE_WALLET_LINE_CHART_DISPLAY_HTML */ 0);
   untrusted_source->OverrideContentSecurityPolicy(
       network::mojom::CSPDirectiveName::ScriptSrc,
       std::string("script-src 'self' chrome-untrusted://resources "

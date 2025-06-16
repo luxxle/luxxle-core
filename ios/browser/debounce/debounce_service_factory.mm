@@ -6,9 +6,9 @@
 #include "brave/ios/browser/debounce/debounce_service_factory.h"
 
 #include "base/no_destructor.h"
-#include "brave/components/debounce/core/browser/debounce_component_installer.h"
-#include "brave/components/debounce/core/browser/debounce_service.h"
-#include "brave/components/debounce/core/common/features.h"
+#include "luxxle/components/debounce/core/browser/debounce_component_installer.h"
+#include "luxxle/components/debounce/core/browser/debounce_service.h"
+#include "luxxle/components/debounce/core/common/features.h"
 #include "brave/ios/browser/api/debounce/debounce_service+private.h"
 #include "brave/ios/browser/application_context/brave_application_context_impl.h"
 #include "brave/ios/browser/debounce/debounce_service_factory+private.h"

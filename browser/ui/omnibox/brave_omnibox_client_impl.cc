@@ -3,22 +3,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/omnibox/brave_omnibox_client_impl.h"
+#include "luxxle/browser/ui/omnibox/brave_omnibox_client_impl.h"
 
 #include <string>
 
 #include "base/check_is_test.h"
-#include "brave/browser/autocomplete/brave_autocomplete_scheme_classifier.h"
-#include "brave/browser/misc_metrics/profile_misc_metrics_service.h"
-#include "brave/browser/misc_metrics/profile_misc_metrics_service_factory.h"
-#include "brave/browser/search_engines/search_engine_tracker.h"
-#include "brave/components/ai_chat/core/browser/ai_chat_metrics.h"
-#include "brave/components/brave_rewards/core/pref_names.h"
-#include "brave/components/brave_search_conversion/p3a.h"
-#include "brave/components/brave_search_conversion/utils.h"
-#include "brave/components/omnibox/browser/brave_omnibox_prefs.h"
-#include "brave/components/omnibox/browser/promotion_utils.h"
-#include "brave/components/p3a_utils/bucket.h"
+#include "luxxle/browser/autocomplete/brave_autocomplete_scheme_classifier.h"
+#include "luxxle/browser/misc_metrics/profile_misc_metrics_service.h"
+#include "luxxle/browser/misc_metrics/profile_misc_metrics_service_factory.h"
+#include "luxxle/browser/search_engines/search_engine_tracker.h"
+#include "luxxle/components/ai_chat/core/browser/ai_chat_metrics.h"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+#include "luxxle/components/brave_search_conversion/p3a.h"
+#include "luxxle/components/brave_search_conversion/utils.h"
+#include "luxxle/components/omnibox/browser/brave_omnibox_prefs.h"
+#include "luxxle/components/omnibox/browser/promotion_utils.h"
+#include "luxxle/components/p3a_utils/bucket.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/omnibox/chrome_omnibox_client.h"

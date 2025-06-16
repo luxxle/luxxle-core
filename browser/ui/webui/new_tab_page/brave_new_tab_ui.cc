@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/new_tab_page/brave_new_tab_ui.h"
+#include "luxxle/browser/ui/webui/new_tab_page/brave_new_tab_ui.h"
 
 #include <utility>
 
@@ -11,27 +11,27 @@
 #include "base/check_is_test.h"
 #include "base/feature_list.h"
 #include "base/strings/stringprintf.h"
-#include "brave/browser/brave_browser_process.h"
-#include "brave/browser/brave_news/brave_news_controller_factory.h"
-#include "brave/browser/misc_metrics/process_misc_metrics.h"
-#include "brave/browser/new_tab/new_tab_shows_options.h"
-#include "brave/browser/ntp_background/brave_ntp_custom_background_service_factory.h"
-#include "brave/browser/ntp_background/ntp_p3a_helper_impl.h"
-#include "brave/browser/ui/brave_ui_features.h"
-#include "brave/browser/ui/webui/brave_webui_source.h"
-#include "brave/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.h"
-#include "brave/browser/ui/webui/new_tab_page/brave_new_tab_page_handler.h"
-#include "brave/browser/ui/webui/new_tab_page/top_sites_message_handler.h"
-#include "brave/components/brave_ads/core/browser/service/ads_service.h"
-#include "brave/components/brave_new_tab/resources/grit/brave_new_tab_generated_map.h"
-#include "brave/components/brave_news/browser/brave_news_controller.h"
-#include "brave/components/brave_news/common/features.h"
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/components/misc_metrics/new_tab_metrics.h"
-#include "brave/components/ntp_background_images/browser/ntp_custom_images_source.h"
-#include "brave/components/ntp_background_images/browser/ntp_sponsored_rich_media_ad_event_handler.h"
-#include "brave/components/ntp_background_images/browser/view_counter_service.h"
-#include "brave/components/ntp_background_images/common/url_constants.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/brave_news/brave_news_controller_factory.h"
+#include "luxxle/browser/misc_metrics/process_misc_metrics.h"
+#include "luxxle/browser/new_tab/new_tab_shows_options.h"
+#include "luxxle/browser/ntp_background/brave_ntp_custom_background_service_factory.h"
+#include "luxxle/browser/ntp_background/ntp_p3a_helper_impl.h"
+#include "luxxle/browser/ui/brave_ui_features.h"
+#include "luxxle/browser/ui/webui/brave_webui_source.h"
+#include "luxxle/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.h"
+#include "luxxle/browser/ui/webui/new_tab_page/brave_new_tab_page_handler.h"
+#include "luxxle/browser/ui/webui/new_tab_page/top_sites_message_handler.h"
+// REMOVED: #include "luxxle/components/brave_ads/.*"
+#include "luxxle/components/brave_new_tab/resources/grit/brave_new_tab_generated_map.h"
+#include "luxxle/components/brave_news/browser/brave_news_controller.h"
+#include "luxxle/components/brave_news/common/features.h"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/components/misc_metrics/new_tab_metrics.h"
+#include "luxxle/components/ntp_background_images/browser/ntp_custom_images_source.h"
+#include "luxxle/components/ntp_background_images/browser/ntp_sponsored_rich_media_ad_event_handler.h"
+#include "luxxle/components/ntp_background_images/browser/view_counter_service.h"
+#include "luxxle/components/ntp_background_images/common/url_constants.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/search_engines/template_url_service_factory.h"
 #include "chrome/browser/themes/theme_syncable_service.h"
@@ -51,9 +51,9 @@
 #include "ui/webui/resources/cr_components/searchbox/searchbox.mojom.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/browser/brave_vpn/brave_vpn_service_factory.h"
-#include "brave/components/brave_vpn/browser/brave_vpn_service.h"
-#include "brave/components/brave_vpn/common/brave_vpn_utils.h"
+// REMOVED: #include "luxxle/browser/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #endif
 
 using ntp_background_images::NTPCustomImagesSource;
@@ -100,17 +100,17 @@ BraveNewTabUI::BraveNewTabUI(
   Profile* profile = Profile::FromWebUI(web_ui);
   web_ui->OverrideTitle(l10n_util::GetStringUTF16(IDS_NEW_TAB_TITLE));
 
-  if (brave::ShouldNewTabShowBlankpage(profile)) {
+  if (luxxle::ShouldNewTabShowBlankpage(profile)) {
     content::WebUIDataSource* source =
         content::WebUIDataSource::CreateAndAdd(profile, name);
-    source->SetDefaultResource(IDR_BRAVE_BLANK_NEW_TAB_HTML);
+    source->SetDefaultResource(/* REMOVED: IDR_BRAVE_BLANK_NEW_TAB_HTML */ 0);
     AddBackgroundColorToSource(source, web_contents);
     return;
   }
 
   // Non blank NTP.
   content::WebUIDataSource* source = CreateAndAddWebUIDataSource(
-      web_ui, name, kBraveNewTabGenerated, IDR_BRAVE_NEW_TAB_HTML);
+      web_ui, name, kBraveNewTabGenerated, /* REMOVED: IDR_BRAVE_NEW_TAB_HTML */ 0);
 
   web_ui->AddRequestableScheme(content::kChromeUIUntrustedScheme);
 

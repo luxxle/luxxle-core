@@ -5,8 +5,8 @@
 
 #import <Foundation/Foundation.h>
 
-#ifndef BRAVE_IOS_BROWSER_API_PASSWORD_PASSWORD_STORE_LISTENER_IOS_H_
-#define BRAVE_IOS_BROWSER_API_PASSWORD_PASSWORD_STORE_LISTENER_IOS_H_
+#ifndef LUXXLE_IOS_BROWSER_API_PASSWORD_PASSWORD_STORE_LISTENER_IOS_H_
+#define LUXXLE_IOS_BROWSER_API_PASSWORD_PASSWORD_STORE_LISTENER_IOS_H_
 
 #include <vector>
 
@@ -20,7 +20,7 @@
            (scoped_refptr<password_manager::PasswordStoreInterface>)store;
 @end
 
-namespace brave {
+namespace luxxle {
 namespace ios {
 
 class PasswordStoreListenerIOS
@@ -47,4 +47,4 @@ class PasswordStoreListenerIOS
 }  // namespace ios
 }  // namespace brave
 
-#endif  // BRAVE_IOS_BROWSER_API_PASSWORD_PASSWORD_STORE_LISTENER_IOS_H_
+#endif  // LUXXLE_IOS_BROWSER_API_PASSWORD_PASSWORD_STORE_LISTENER_IOS_H_

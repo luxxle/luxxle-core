@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_ITEMS_CONTENTS_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_ITEMS_CONTENTS_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_ITEMS_CONTENTS_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_ITEMS_CONTENTS_VIEW_H_
 
 #include <memory>
 #include <optional>
@@ -12,9 +12,9 @@
 #include "base/functional/callback_forward.h"
 #include "base/memory/raw_ptr.h"
 #include "base/scoped_observation.h"
-#include "brave/browser/ui/sidebar/sidebar_model.h"
-#include "brave/browser/ui/views/sidebar/sidebar_button_view.h"
-#include "brave/components/sidebar/browser/sidebar_item.h"
+#include "luxxle/browser/ui/sidebar/sidebar_model.h"
+#include "luxxle/browser/ui/views/sidebar/sidebar_button_view.h"
+#include "luxxle/components/sidebar/browser/sidebar_item.h"
 #include "ui/menus/simple_menu_model.h"
 #include "ui/views/context_menu_controller.h"
 #include "ui/views/controls/button/button.h"
@@ -136,4 +136,4 @@ class SidebarItemsContentsView : public views::View,
       this};
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_ITEMS_CONTENTS_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_ITEMS_CONTENTS_VIEW_H_

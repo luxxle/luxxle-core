@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/ai_rewriter/ai_rewriter_ui.h"
+#include "luxxle/browser/ui/webui/ai_rewriter/ai_rewriter_ui.h"
 
 #include <string>
 #include <utility>
@@ -13,19 +13,19 @@
 #include "base/notimplemented.h"
 #include "base/strings/string_util.h"
 #include "base/strings/utf_string_conversions.h"
-#include "brave/browser/ai_chat/ai_chat_service_factory.h"
-#include "brave/browser/ui/ai_rewriter/ai_rewriter_dialog_delegate.h"
-#include "brave/browser/ui/webui/ai_chat/ai_chat_ui_page_handler.h"
-#include "brave/browser/ui/webui/brave_webui_source.h"
-#include "brave/components/ai_chat/core/browser/ai_chat_service.h"
-#include "brave/components/ai_chat/core/browser/constants.h"
-#include "brave/components/ai_chat/core/browser/engine/engine_consumer.h"
-#include "brave/components/ai_chat/core/browser/utils.h"
-#include "brave/components/ai_chat/core/common/mojom/ai_chat.mojom.h"
-#include "brave/components/ai_rewriter/common/features.h"
-#include "brave/components/ai_rewriter/common/mojom/ai_rewriter.mojom.h"
-#include "brave/components/ai_rewriter/resources/page/grit/ai_rewriter_ui_generated_map.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/browser/ai_chat/ai_chat_service_factory.h"
+#include "luxxle/browser/ui/ai_rewriter/ai_rewriter_dialog_delegate.h"
+#include "luxxle/browser/ui/webui/ai_chat/ai_chat_ui_page_handler.h"
+#include "luxxle/browser/ui/webui/brave_webui_source.h"
+#include "luxxle/components/ai_chat/core/browser/ai_chat_service.h"
+#include "luxxle/components/ai_chat/core/browser/constants.h"
+#include "luxxle/components/ai_chat/core/browser/engine/engine_consumer.h"
+#include "luxxle/components/ai_chat/core/browser/utils.h"
+#include "luxxle/components/ai_chat/core/common/mojom/ai_chat.mojom.h"
+#include "luxxle/components/ai_rewriter/common/features.h"
+#include "luxxle/components/ai_rewriter/common/mojom/ai_rewriter.mojom.h"
+#include "luxxle/components/ai_rewriter/resources/page/grit/ai_rewriter_ui_generated_map.h"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser_finder.h"
 #include "chrome/browser/ui/webui/constrained_web_dialog_ui.h"

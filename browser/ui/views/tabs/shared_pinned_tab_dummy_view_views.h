@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_TABS_SHARED_PINNED_TAB_DUMMY_VIEW_VIEWS_H_
-#define BRAVE_BROWSER_UI_VIEWS_TABS_SHARED_PINNED_TAB_DUMMY_VIEW_VIEWS_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_TABS_SHARED_PINNED_TAB_DUMMY_VIEW_VIEWS_H_
+#define LUXXLE_BROWSER_UI_VIEWS_TABS_SHARED_PINNED_TAB_DUMMY_VIEW_VIEWS_H_
 
 #include <memory>
 
 #include "base/memory/scoped_refptr.h"
-#include "brave/browser/ui/tabs/shared_pinned_tab_dummy_view.h"
+#include "luxxle/browser/ui/tabs/shared_pinned_tab_dummy_view.h"
 #include "chrome/browser/ui/thumbnails/thumbnail_image.h"
 #include "ui/views/metadata/view_factory.h"
 #include "ui/views/view.h"
@@ -55,4 +55,4 @@ END_VIEW_BUILDER
 
 DEFINE_VIEW_BUILDER(/*no export*/, SharedPinnedTabDummyViewViews)
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_TABS_SHARED_PINNED_TAB_DUMMY_VIEW_VIEWS_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_TABS_SHARED_PINNED_TAB_DUMMY_VIEW_VIEWS_H_

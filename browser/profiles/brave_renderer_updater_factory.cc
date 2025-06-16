@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/profiles/brave_renderer_updater_factory.h"
+#include "luxxle/browser/profiles/brave_renderer_updater_factory.h"
 
 #include "base/no_destructor.h"
-#include "brave/browser/brave_wallet/brave_wallet_service_factory.h"
-#include "brave/browser/profiles/brave_renderer_updater.h"
-#include "brave/components/brave_wallet/browser/brave_wallet_service.h"
+// REMOVED: #include "luxxle/browser/brave_wallet/.*"
+#include "luxxle/browser/profiles/brave_renderer_updater.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/profile.h"
 

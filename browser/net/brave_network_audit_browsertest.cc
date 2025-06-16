@@ -17,9 +17,9 @@
 #include "base/test/scoped_run_loop_timeout.h"
 #include "base/test/test_timeouts.h"
 #include "base/time/time.h"
-#include "brave/browser/net/brave_network_audit_allowed_lists.h"
-#include "brave/browser/net/brave_network_audit_test_helper.h"
-#include "brave/components/playlist/common/buildflags/buildflags.h"
+#include "luxxle/browser/net/brave_network_audit_allowed_lists.h"
+#include "luxxle/browser/net/brave_network_audit_test_helper.h"
+#include "luxxle/components/playlist/common/buildflags/buildflags.h"
 #include "chrome/browser/password_manager/profile_password_store_factory.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
@@ -32,16 +32,16 @@
 #include "testing/gmock/include/gmock/gmock.h"
 
 #if defined(TOOLKIT_VIEWS)
-#include "brave/browser/ui/sidebar/sidebar_controller.h"
-#include "brave/browser/ui/sidebar/sidebar_model.h"
-#include "brave/components/sidebar/browser/sidebar_item.h"
+#include "luxxle/browser/ui/sidebar/sidebar_controller.h"
+#include "luxxle/browser/ui/sidebar/sidebar_model.h"
+#include "luxxle/components/sidebar/browser/sidebar_item.h"
 #endif
 
 #if BUILDFLAG(ENABLE_PLAYLIST_WEBUI)
-#include "brave/components/playlist/common/features.h"
+#include "luxxle/components/playlist/common/features.h"
 #endif
 
-namespace brave {
+namespace luxxle {
 namespace {
 
 // Max amount of time to wait after getting an URL loaded, in milliseconds. Note

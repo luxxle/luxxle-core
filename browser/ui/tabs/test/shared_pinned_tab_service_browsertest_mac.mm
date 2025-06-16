@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/tabs/test/shared_pinned_tab_service_browsertest.h"
+#include "luxxle/browser/ui/tabs/test/shared_pinned_tab_service_browsertest.h"
 
 #include <AppKit/AppKit.h>
 
-#include "brave/browser/ui/views/frame/brave_browser_frame_mac.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_frame_mac.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/ui/browser_commands.h"
 #import "chrome/browser/ui/views/frame/browser_frame_mac.h"

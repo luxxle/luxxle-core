@@ -24,7 +24,7 @@
 #error "This file requires ARC support."
 #endif
 
-namespace brave {
+namespace luxxle {
 
 #pragma mark NativeWebState
 

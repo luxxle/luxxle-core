@@ -5,8 +5,8 @@
 
 #import <Foundation/Foundation.h>
 
-#ifndef BRAVE_IOS_BROWSER_API_OPENTABS_SENDTAB_MODEL_LISTENER_IOS_H_
-#define BRAVE_IOS_BROWSER_API_OPENTABS_SENDTAB_MODEL_LISTENER_IOS_H_
+#ifndef LUXXLE_IOS_BROWSER_API_OPENTABS_SENDTAB_MODEL_LISTENER_IOS_H_
+#define LUXXLE_IOS_BROWSER_API_OPENTABS_SENDTAB_MODEL_LISTENER_IOS_H_
 
 #include <string>
 #include <vector>
@@ -23,7 +23,7 @@
     sendTabToSelfModel:(void*)model;
 @end
 
-namespace brave {
+namespace luxxle {
 namespace ios {
 
 class SendTabToSelfModelListenerIOS
@@ -52,4 +52,4 @@ class SendTabToSelfModelListenerIOS
 }  // namespace ios
 }  // namespace brave
 
-#endif  // BRAVE_IOS_BROWSER_API_OPENTABS_SENDTAB_MODEL_LISTENER_IOS_H_
+#endif  // LUXXLE_IOS_BROWSER_API_OPENTABS_SENDTAB_MODEL_LISTENER_IOS_H_

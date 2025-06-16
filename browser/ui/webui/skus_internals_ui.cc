@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/skus_internals_ui.h"
+#include "luxxle/browser/ui/webui/skus_internals_ui.h"
 
 #include <memory>
 #include <string_view>
@@ -16,13 +16,13 @@
 #include "base/notreached.h"
 #include "base/strings/utf_string_conversions.h"
 #include "base/task/thread_pool.h"
-#include "brave/browser/brave_browser_process.h"
-#include "brave/browser/skus/skus_service_factory.h"
-#include "brave/browser/ui/webui/brave_webui_source.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
-#include "brave/components/skus/browser/pref_names.h"
-#include "brave/components/skus/browser/resources/grit/skus_internals_generated_map.h"
-#include "brave/components/skus/common/skus_sdk.mojom.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/skus/skus_service_factory.h"
+#include "luxxle/browser/ui/webui/brave_webui_source.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#include "luxxle/components/skus/browser/pref_names.h"
+#include "luxxle/components/skus/browser/resources/grit/skus_internals_generated_map.h"
+#include "luxxle/components/skus/common/skus_sdk.mojom.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/chrome_select_file_policy.h"
@@ -34,12 +34,12 @@
 #include "ui/shell_dialogs/selected_file_info.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/browser/brave_vpn/brave_vpn_service_factory.h"
-#include "brave/components/brave_vpn/browser/brave_vpn_service.h"
-#include "brave/components/brave_vpn/browser/brave_vpn_service_helper.h"
-#include "brave/components/brave_vpn/browser/connection/brave_vpn_connection_manager.h"
-#include "brave/components/brave_vpn/common/brave_vpn_utils.h"
-#include "brave/components/brave_vpn/common/pref_names.h"
+// REMOVED: #include "luxxle/browser/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #endif
 
 namespace {

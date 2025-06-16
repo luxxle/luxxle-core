@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_PERMISSIONS_BRAVE_DAPP_PERMISSION_PROMPT_DIALOG_CONTROLLER_ANDROID_H_
-#define BRAVE_BROWSER_PERMISSIONS_BRAVE_DAPP_PERMISSION_PROMPT_DIALOG_CONTROLLER_ANDROID_H_
+#ifndef LUXXLE_BROWSER_PERMISSIONS_BRAVE_DAPP_PERMISSION_PROMPT_DIALOG_CONTROLLER_ANDROID_H_
+#define LUXXLE_BROWSER_PERMISSIONS_BRAVE_DAPP_PERMISSION_PROMPT_DIALOG_CONTROLLER_ANDROID_H_
 
 #include <jni.h>
 #include <string>
@@ -12,7 +12,7 @@
 
 #include "base/android/scoped_java_ref.h"
 #include "base/memory/raw_ptr.h"
-#include "brave/components/brave_wallet/common/brave_wallet.mojom.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
 
 namespace content {
 class WebContents;
@@ -56,4 +56,4 @@ class BraveDappPermissionPromptDialogController {
   base::android::ScopedJavaGlobalRef<jobject> java_object_;
 };
 
-#endif  // BRAVE_BROWSER_PERMISSIONS_BRAVE_DAPP_PERMISSION_PROMPT_DIALOG_CONTROLLER_ANDROID_H_
+#endif  // LUXXLE_BROWSER_PERMISSIONS_BRAVE_DAPP_PERMISSION_PROMPT_DIALOG_CONTROLLER_ANDROID_H_

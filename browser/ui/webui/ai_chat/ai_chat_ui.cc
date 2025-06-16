@@ -3,28 +3,28 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/ai_chat/ai_chat_ui.h"
+#include "luxxle/browser/ui/webui/ai_chat/ai_chat_ui.h"
 
 #include <algorithm>
 #include <memory>
 #include <utility>
 
 #include "base/strings/stringprintf.h"
-#include "brave/browser/ai_chat/ai_chat_service_factory.h"
-#include "brave/browser/ai_chat/tab_tracker_service_factory.h"
-#include "brave/browser/ui/side_panel/ai_chat/ai_chat_side_panel_utils.h"
-#include "brave/browser/ui/webui/ai_chat/ai_chat_ui_page_handler.h"
-#include "brave/browser/ui/webui/brave_webui_source.h"
-#include "brave/components/ai_chat/core/browser/ai_chat_service.h"
-#include "brave/components/ai_chat/core/browser/constants.h"
-#include "brave/components/ai_chat/core/browser/tab_tracker_service.h"
-#include "brave/components/ai_chat/core/browser/utils.h"
-#include "brave/components/ai_chat/core/common/constants.h"
-#include "brave/components/ai_chat/core/common/features.h"
-#include "brave/components/ai_chat/core/common/mojom/ai_chat.mojom.h"
-#include "brave/components/ai_chat/core/common/pref_names.h"
-#include "brave/components/ai_chat/resources/grit/ai_chat_ui_generated_map.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/browser/ai_chat/ai_chat_service_factory.h"
+#include "luxxle/browser/ai_chat/tab_tracker_service_factory.h"
+#include "luxxle/browser/ui/side_panel/ai_chat/ai_chat_side_panel_utils.h"
+#include "luxxle/browser/ui/webui/ai_chat/ai_chat_ui_page_handler.h"
+#include "luxxle/browser/ui/webui/brave_webui_source.h"
+#include "luxxle/components/ai_chat/core/browser/ai_chat_service.h"
+#include "luxxle/components/ai_chat/core/browser/constants.h"
+#include "luxxle/components/ai_chat/core/browser/tab_tracker_service.h"
+#include "luxxle/components/ai_chat/core/browser/utils.h"
+#include "luxxle/components/ai_chat/core/common/constants.h"
+#include "luxxle/components/ai_chat/core/common/features.h"
+#include "luxxle/components/ai_chat/core/common/mojom/ai_chat.mojom.h"
+#include "luxxle/components/ai_chat/core/common/pref_names.h"
+#include "luxxle/components/ai_chat/resources/grit/ai_chat_ui_generated_map.h"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/webui/favicon_source.h"
 #include "components/favicon_base/favicon_url_parser.h"

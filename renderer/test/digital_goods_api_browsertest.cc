@@ -4,7 +4,7 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 #include "base/path_service.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "build/build_config.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/tabs/tab_strip_model.h"
@@ -25,7 +25,7 @@ class DigitalGoodsAPIBrowserTest : public InProcessBrowserTest,
   DigitalGoodsAPIBrowserTest()
       : https_server_(net::EmbeddedTestServer::TYPE_HTTPS) {
     base::FilePath test_data_dir;
-    base::PathService::Get(brave::DIR_TEST_DATA, &test_data_dir);
+    base::PathService::Get(luxxle::DIR_TEST_DATA, &test_data_dir);
     https_server_.SetSSLConfig(net::EmbeddedTestServer::CERT_OK);
     https_server_.ServeFilesFromDirectory(test_data_dir);
   }

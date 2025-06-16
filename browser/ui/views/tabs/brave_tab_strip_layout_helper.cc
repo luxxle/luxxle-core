@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/tabs/brave_tab_strip_layout_helper.h"
+#include "luxxle/browser/ui/views/tabs/brave_tab_strip_layout_helper.h"
 
 #include <limits>
 #include <optional>
 
-#include "brave/browser/ui/tabs/brave_tab_layout_constants.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/browser/ui/views/tabs/brave_tab_group_header.h"
-#include "brave/browser/ui/views/tabs/brave_tab_strip.h"
+#include "luxxle/browser/ui/tabs/brave_tab_layout_constants.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/views/tabs/brave_tab_group_header.h"
+#include "luxxle/browser/ui/views/tabs/brave_tab_strip.h"
 #include "chrome/browser/ui/layout_constants.h"
 #include "chrome/browser/ui/tabs/tab_style.h"
 #include "chrome/browser/ui/tabs/tab_types.h"

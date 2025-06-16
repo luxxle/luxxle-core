@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/playlist/selectable_list_view.h"
+#include "luxxle/browser/ui/views/playlist/selectable_list_view.h"
 
 #include "base/strings/utf_string_conversions.h"
-#include "brave/app/vector_icons/vector_icons.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/browser/ui/views/playlist/thumbnail_view.h"
-#include "brave/components/vector_icons/vector_icons.h"
+#include "luxxle/app/vector_icons/vector_icons.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/views/playlist/thumbnail_view.h"
+#include "luxxle/components/vector_icons/vector_icons.h"
 #include "ui/base/metadata/metadata_impl_macros.h"
 #include "ui/views/background.h"
 #include "ui/views/controls/image_view.h"

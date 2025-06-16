@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_FRAME_BRAVE_CONTENTS_VIEW_UTIL_H_
-#define BRAVE_BROWSER_UI_VIEWS_FRAME_BRAVE_CONTENTS_VIEW_UTIL_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_FRAME_BRAVE_CONTENTS_VIEW_UTIL_H_
+#define LUXXLE_BROWSER_UI_VIEWS_FRAME_BRAVE_CONTENTS_VIEW_UTIL_H_
 
 #include <memory>
 
-#include "brave/browser/ui/views/view_shadow.h"
+#include "luxxle/browser/ui/views/view_shadow.h"
 
 class Browser;
 
@@ -36,4 +36,4 @@ class BraveContentsViewUtil {
   static int GetRoundedCornersWebViewMargin(Browser* browser);
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_FRAME_BRAVE_CONTENTS_VIEW_UTIL_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_FRAME_BRAVE_CONTENTS_VIEW_UTIL_H_

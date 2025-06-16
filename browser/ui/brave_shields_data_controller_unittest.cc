@@ -6,11 +6,11 @@
 #include <memory>
 
 #include "base/memory/raw_ptr.h"
-#include "brave/browser/brave_shields/brave_shields_tab_helper.h"
-#include "brave/components/brave_shields/content/browser/brave_shields_util.h"
-#include "brave/components/brave_shields/core/common/brave_shield_constants.h"
-#include "brave/components/brave_shields/core/common/brave_shields_panel.mojom.h"
-#include "brave/components/brave_shields/core/common/features.h"
+#include "luxxle/browser/brave_shields/brave_shields_tab_helper.h"
+#include "luxxle/components/brave_shields/content/browser/brave_shields_util.h"
+#include "luxxle/components/brave_shields/core/common/brave_shield_constants.h"
+#include "luxxle/components/brave_shields/core/common/brave_shields_panel.mojom.h"
+#include "luxxle/components/brave_shields/core/common/features.h"
 #include "build/build_config.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/test/base/testing_browser_process.h"

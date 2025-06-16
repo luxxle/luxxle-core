@@ -5,8 +5,8 @@
 
 #include <memory>
 
-#include "brave/browser/metrics/buildflags/buildflags.h"
-#include "brave/browser/metrics/metrics_reporting_util.h"
+#include "luxxle/browser/metrics/buildflags/buildflags.h"
+#include "luxxle/browser/metrics/metrics_reporting_util.h"
 #include "chrome/test/base/scoped_testing_local_state.h"
 #include "chrome/test/base/testing_browser_process.h"
 #include "components/metrics/metrics_pref_names.h"

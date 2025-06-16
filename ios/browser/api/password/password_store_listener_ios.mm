@@ -17,7 +17,7 @@
 #error "This file requires ARC support."
 #endif
 
-namespace brave {
+namespace luxxle {
 namespace ios {
 
 PasswordStoreListenerIOS::PasswordStoreListenerIOS(
@@ -94,7 +94,7 @@ void PasswordStoreListenerIOS::OnLoginsRetained(
 }  // namespace brave
 
 @interface PasswordStoreListenerImpl () {
-  std::unique_ptr<brave::ios::PasswordStoreListenerIOS> observer_;
+  std::unique_ptr<luxxle::ios::PasswordStoreListenerIOS> observer_;
 }
 @end
 
@@ -104,7 +104,7 @@ void PasswordStoreListenerIOS::OnLoginsRetained(
            (scoped_refptr<password_manager::PasswordStoreInterface>)store {
   if ((self = [super init])) {
     observer_ =
-        std::make_unique<brave::ios::PasswordStoreListenerIOS>(observer, store);
+        std::make_unique<luxxle::ios::PasswordStoreListenerIOS>(observer, store);
   }
   return self;
 }

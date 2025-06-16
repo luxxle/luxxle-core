@@ -3,16 +3,16 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_VPN_FACADE_H_
-#define BRAVE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_VPN_FACADE_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_VPN_FACADE_H_
+#define LUXXLE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_VPN_FACADE_H_
 
 #include <optional>
 #include <string>
 
 #include "base/memory/raw_ptr.h"
 #include "base/memory/raw_ref.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
-#include "brave/components/brave_vpn/common/mojom/brave_vpn.mojom.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 
 namespace tabs {
 class TabInterface;
@@ -72,4 +72,4 @@ class VPNFacade {
 
 }  // namespace brave_new_tab_page_refresh
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_VPN_FACADE_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_BRAVE_NEW_TAB_PAGE_REFRESH_VPN_FACADE_H_

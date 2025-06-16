@@ -10,13 +10,13 @@
 #include "ios/web/public/web_state_observer.h"
 #include "url/gurl.h"
 
-#ifndef BRAVE_IOS_BROWSER_API_WEB_WEB_STATE_WEB_STATE_NATIVE_H_
-#define BRAVE_IOS_BROWSER_API_WEB_WEB_STATE_WEB_STATE_NATIVE_H_
+#ifndef LUXXLE_IOS_BROWSER_API_WEB_WEB_STATE_WEB_STATE_NATIVE_H_
+#define LUXXLE_IOS_BROWSER_API_WEB_WEB_STATE_WEB_STATE_NATIVE_H_
 
 class Browser;
 class GURL;
 
-namespace brave {
+namespace luxxle {
 
 class NativeWebState final {
  public:
@@ -49,4 +49,4 @@ class NativeWebState final {
 
 }  // namespace brave
 
-#endif  // BRAVE_IOS_BROWSER_API_WEB_WEB_STATE_WEB_STATE_NATIVE_H_
+#endif  // LUXXLE_IOS_BROWSER_API_WEB_WEB_STATE_WEB_STATE_NATIVE_H_

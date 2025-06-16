@@ -5,15 +5,15 @@
 
 // based on //chrome/browser/ui/webui/whats_new/whats_new_ui.h
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_PAGE_UI_H_
-#define BRAVE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_PAGE_UI_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_PAGE_UI_H_
+#define LUXXLE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_PAGE_UI_H_
 
 #include <memory>
 
-#include "brave/browser/ui/webui/brave_browser_command/brave_browser_command_handler.h"
-#include "brave/browser/ui/webui/brave_education/brave_education.mojom.h"
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/ui/webui/resources/js/brave_browser_command/brave_browser_command.mojom.h"
+#include "luxxle/browser/ui/webui/brave_browser_command/brave_browser_command_handler.h"
+#include "luxxle/browser/ui/webui/brave_education/brave_education.mojom.h"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/ui/webui/resources/js/brave_browser_command/brave_browser_command.mojom.h"
 #include "content/public/browser/webui_config.h"
 #include "content/public/common/url_constants.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
@@ -89,4 +89,4 @@ class BraveEducationPageUI
   WEB_UI_CONTROLLER_TYPE_DECL();
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_PAGE_UI_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_BRAVE_EDUCATION_BRAVE_EDUCATION_PAGE_UI_H_

@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/importer/extensions_import_helpers.h"
+#include "luxxle/browser/importer/extensions_import_helpers.h"
 
 #include <algorithm>
 #include <memory>
@@ -14,7 +14,7 @@
 #include "base/files/file_util.h"
 #include "base/no_destructor.h"
 #include "base/task/sequenced_task_runner.h"
-#include "brave/common/importer/chrome_importer_utils.h"
+#include "luxxle/common/importer/chrome_importer_utils.h"
 #include "chrome/browser/extensions/extension_service.h"
 #include "chrome/browser/extensions/webstore_install_with_prompt.h"
 #include "chrome/browser/profiles/profile.h"

@@ -12,11 +12,11 @@
 #include "base/path_service.h"
 #include "base/run_loop.h"
 #include "base/test/bind.h"
-#include "brave/app/brave_command_ids.h"
-#include "brave/browser/ui/browser_dialogs.h"
-#include "brave/browser/ui/views/text_recognition_dialog_tracker.h"
-#include "brave/browser/ui/views/text_recognition_dialog_view.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/browser/ui/browser_dialogs.h"
+#include "luxxle/browser/ui/views/text_recognition_dialog_tracker.h"
+#include "luxxle/browser/ui/views/text_recognition_dialog_view.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "chrome/browser/renderer_context_menu/render_view_context_menu_test_util.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/tabs/tab_strip_model.h"
@@ -44,7 +44,7 @@ class TextRecognitionBrowserTest : public InProcessBrowserTest {
     content::SetupCrossSiteRedirector(embedded_test_server());
 
     base::FilePath test_data_dir;
-    base::PathService::Get(brave::DIR_TEST_DATA, &test_data_dir);
+    base::PathService::Get(luxxle::DIR_TEST_DATA, &test_data_dir);
     test_data_dir = test_data_dir.AppendASCII(kEmbeddedTestServerDirectory);
     embedded_test_server()->ServeFilesFromDirectory(test_data_dir);
 
@@ -65,7 +65,7 @@ class TextRecognitionBrowserTest : public InProcessBrowserTest {
     if (!web_contents)
       return;
 
-    brave::ShowTextRecognitionDialog(web_contents.get(), image);
+    luxxle::ShowTextRecognitionDialog(web_contents.get(), image);
   }
 
   void WaitUntil(base::RepeatingCallback<bool()> condition) {

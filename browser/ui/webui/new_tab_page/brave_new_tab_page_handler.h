@@ -3,8 +3,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_NEW_TAB_PAGE_BRAVE_NEW_TAB_PAGE_HANDLER_H_
-#define BRAVE_BROWSER_UI_WEBUI_NEW_TAB_PAGE_BRAVE_NEW_TAB_PAGE_HANDLER_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_NEW_TAB_PAGE_BRAVE_NEW_TAB_PAGE_HANDLER_H_
+#define LUXXLE_BROWSER_UI_WEBUI_NEW_TAB_PAGE_BRAVE_NEW_TAB_PAGE_HANDLER_H_
 
 #include <memory>
 #include <string>
@@ -13,9 +13,9 @@
 #include "base/memory/raw_ptr.h"
 #include "base/memory/weak_ptr.h"
 #include "base/scoped_observation.h"
-#include "brave/browser/ui/webui/new_tab_page/brave_new_tab_ui.h"
-#include "brave/components/brave_new_tab_ui/brave_new_tab_page.mojom.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
+#include "luxxle/browser/ui/webui/new_tab_page/brave_new_tab_ui.h"
+#include "luxxle/components/brave_new_tab_ui/brave_new_tab_page.mojom.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #include "components/prefs/pref_change_registrar.h"
 #include "components/search_engines/template_url_service.h"
 #include "components/search_engines/template_url_service_observer.h"
@@ -24,7 +24,7 @@
 #include "ui/shell_dialogs/select_file_dialog.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/components/brave_vpn/common/mojom/brave_vpn.mojom.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #endif  // BUILDFLAG(ENABLE_BRAVE_VPN)
 
 namespace base {
@@ -124,4 +124,4 @@ class BraveNewTabPageHandler : public brave_new_tab_page::mojom::PageHandler,
   base::WeakPtrFactory<BraveNewTabPageHandler> weak_factory_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_NEW_TAB_PAGE_BRAVE_NEW_TAB_PAGE_HANDLER_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_NEW_TAB_PAGE_BRAVE_NEW_TAB_PAGE_HANDLER_H_

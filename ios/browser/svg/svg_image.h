@@ -5,8 +5,8 @@
 
 #import <Foundation/Foundation.h>
 
-#ifndef BRAVE_IOS_BROWSER_SVG_SVG_IMAGE_H_
-#define BRAVE_IOS_BROWSER_SVG_SVG_IMAGE_H_
+#ifndef LUXXLE_IOS_BROWSER_SVG_SVG_IMAGE_H_
+#define LUXXLE_IOS_BROWSER_SVG_SVG_IMAGE_H_
 
 class SkBitmap;
 
@@ -17,4 +17,4 @@ namespace SVGImage {
 SkBitmap MakeFromData(const NSData* data, size_t width, size_t height);
 }  // namespace SVGImage
 
-#endif  // BRAVE_IOS_BROWSER_SVG_SVG_IMAGE_H_
+#endif  // LUXXLE_IOS_BROWSER_SVG_SVG_IMAGE_H_

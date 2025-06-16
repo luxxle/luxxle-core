@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/tabs/vertical_tab_utils.h"
+#include "luxxle/browser/ui/views/tabs/vertical_tab_utils.h"
 
 #include "base/check_is_test.h"
 #include "base/command_line.h"
-#include "brave/browser/ui/tabs/brave_tab_prefs.h"
-#include "brave/browser/ui/views/tabs/switches.h"
+#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/views/tabs/switches.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "components/prefs/pref_service.h"
@@ -22,7 +22,7 @@
 #endif
 
 #if BUILDFLAG(IS_LINUX)
-#include "brave/browser/ui/views/frame/brave_browser_frame_view_linux_native.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_frame_view_linux_native.h"
 #include "chrome/browser/themes/theme_service.h"
 #include "chrome/browser/themes/theme_service_factory.h"
 #include "chrome/browser/ui/layout_constants.h"

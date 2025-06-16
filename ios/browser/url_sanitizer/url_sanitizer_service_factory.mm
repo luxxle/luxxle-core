@@ -6,8 +6,8 @@
 #include "brave/ios/browser/url_sanitizer/url_sanitizer_service_factory.h"
 
 #include "base/no_destructor.h"
-#include "brave/components/url_sanitizer/browser/url_sanitizer_component_installer.h"
-#include "brave/components/url_sanitizer/browser/url_sanitizer_service.h"
+#include "luxxle/components/url_sanitizer/browser/url_sanitizer_component_installer.h"
+#include "luxxle/components/url_sanitizer/browser/url_sanitizer_service.h"
 #include "brave/ios/browser/api/url_sanitizer/url_sanitizer_service+private.h"
 #include "brave/ios/browser/application_context/brave_application_context_impl.h"
 #include "brave/ios/browser/keyed_service/keyed_service_factory_wrapper+private.h"
@@ -24,18 +24,18 @@
 @implementation URLSanitizerServiceFactory
 + (nullable id)serviceForProfile:(ProfileIOS*)profile {
   // Create and start the local data file service and component installer
-  brave::URLSanitizerService* urlSanitizer =
-      brave::URLSanitizerServiceFactory::GetServiceForState(profile);
+  luxxle::URLSanitizerService* urlSanitizer =
+      luxxle::URLSanitizerServiceFactory::GetServiceForState(profile);
   return [[URLSanitizerService alloc] initWithURLSanitizerService:urlSanitizer];
 }
 @end
 
-namespace brave {
+namespace luxxle {
 
 // static
-brave::URLSanitizerService* URLSanitizerServiceFactory::GetServiceForState(
+luxxle::URLSanitizerService* URLSanitizerServiceFactory::GetServiceForState(
     ProfileIOS* profile) {
-  return GetInstance()->GetServiceForProfileAs<brave::URLSanitizerService>(
+  return GetInstance()->GetServiceForProfileAs<luxxle::URLSanitizerService>(
       profile, true);
 }
 
@@ -56,8 +56,8 @@ URLSanitizerServiceFactory::~URLSanitizerServiceFactory() = default;
 std::unique_ptr<KeyedService>
 URLSanitizerServiceFactory::BuildServiceInstanceFor(
     web::BrowserState* context) const {
-  std::unique_ptr<brave::URLSanitizerService> service =
-      std::make_unique<brave::URLSanitizerService>();
+  std::unique_ptr<luxxle::URLSanitizerService> service =
+      std::make_unique<luxxle::URLSanitizerService>();
   BraveApplicationContextImpl* braveContext =
       static_cast<BraveApplicationContextImpl*>(GetApplicationContext());
   braveContext->url_sanitizer_component_installer()->AddObserver(service.get());

@@ -3,21 +3,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/split_view/split_view.h"
+#include "luxxle/browser/ui/views/split_view/split_view.h"
 
 #include <utility>
 
 #include "base/test/run_until.h"
-#include "brave/browser/brave_browser_features.h"
-#include "brave/browser/ui/browser_commands.h"
-#include "brave/browser/ui/tabs/brave_tab_layout_constants.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/browser/ui/tabs/split_view_browser_data.h"
-#include "brave/browser/ui/views/brave_javascript_tab_modal_dialog_view_views.h"
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
-#include "brave/browser/ui/views/frame/split_view/brave_multi_contents_view.h"
-#include "brave/browser/ui/views/split_view/split_view_layout_manager.h"
-#include "brave/browser/ui/views/split_view/split_view_separator.h"
+#include "luxxle/browser/brave_browser_features.h"
+#include "luxxle/browser/ui/browser_commands.h"
+#include "luxxle/browser/ui/tabs/brave_tab_layout_constants.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data.h"
+#include "luxxle/browser/ui/views/brave_javascript_tab_modal_dialog_view_views.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/frame/split_view/brave_multi_contents_view.h"
+#include "luxxle/browser/ui/views/split_view/split_view_layout_manager.h"
+#include "luxxle/browser/ui/views/split_view/split_view_separator.h"
 #include "chrome/browser/ui/browser_commands.h"
 #include "chrome/browser/ui/browser_tabstrip.h"
 #include "chrome/browser/ui/browser_window/public/browser_window_features.h"
@@ -263,7 +263,7 @@ IN_PROC_BROWSER_TEST_F(SplitViewBrowserTest, ScrimForSecondaryContents) {
     GTEST_SKIP();
   }
 
-  brave::NewSplitViewForTab(browser());
+  luxxle::NewSplitViewForTab(browser());
 
   auto child_widget_delegate = std::make_unique<views::WidgetDelegate>();
   auto child_widget = std::make_unique<views::Widget>();
@@ -317,7 +317,7 @@ IN_PROC_BROWSER_TEST_F(SplitViewBrowserTest,
   EXPECT_FALSE(split_view_separator().menu_button_widget_->IsVisible());
 
   // When tiling tabs and one of them is the active tab,
-  brave::NewSplitViewForTab(browser());
+  luxxle::NewSplitViewForTab(browser());
   auto* split_view_data = browser()->GetFeatures().split_view_browser_data();
   ASSERT_TRUE(split_view_data);
   ASSERT_TRUE(split_view_data->IsTabTiled(
@@ -334,7 +334,7 @@ IN_PROC_BROWSER_TEST_F(SplitViewBrowserTest,
 IN_PROC_BROWSER_TEST_F(SplitViewBrowserTest,
                        BreakingTileMakesSecondaryWebViewHidden) {
   // Given there were tiled tabs
-  brave::NewSplitViewForTab(browser());
+  luxxle::NewSplitViewForTab(browser());
   auto* split_view_data = browser()->GetFeatures().split_view_browser_data();
   ASSERT_TRUE(split_view_data);
   ASSERT_TRUE(split_view_data->IsTabTiled(
@@ -358,7 +358,7 @@ IN_PROC_BROWSER_TEST_F(SplitViewBrowserTest,
 IN_PROC_BROWSER_TEST_F(SplitViewBrowserTest,
                        ActivateNonTiledTabShouldHideSecondaryWebView) {
   // Given there were tiled tabs and non tiled tab, and split view is visible
-  brave::NewSplitViewForTab(browser());
+  luxxle::NewSplitViewForTab(browser());
   auto* split_view_data = browser()->GetFeatures().split_view_browser_data();
   ASSERT_TRUE(split_view_data);
   ASSERT_TRUE(split_view_data->IsTabTiled(
@@ -384,7 +384,7 @@ IN_PROC_BROWSER_TEST_F(SplitViewBrowserTest,
                        ActivateTiledTabsShouldShowWebView) {
   // Given there were tiled tabs and non tiled tab, and the non tiled tab is the
   // active tab
-  brave::NewSplitViewForTab(browser());
+  luxxle::NewSplitViewForTab(browser());
   auto* split_view_data = browser()->GetFeatures().split_view_browser_data();
   ASSERT_TRUE(split_view_data);
   ASSERT_TRUE(split_view_data->IsTabTiled(
@@ -405,7 +405,7 @@ IN_PROC_BROWSER_TEST_F(SplitViewBrowserTest,
 IN_PROC_BROWSER_TEST_F(SplitViewBrowserTest,
                        SecondaryWebViewShouldHoldNonActiveTiledTab) {
   // Given that two tabs are tiled
-  brave::NewSplitViewForTab(browser());
+  luxxle::NewSplitViewForTab(browser());
   auto* split_view_data = browser()->GetFeatures().split_view_browser_data();
   ASSERT_TRUE(split_view_data);
   ASSERT_TRUE(split_view_data->IsTabTiled(
@@ -449,9 +449,9 @@ IN_PROC_BROWSER_TEST_F(SplitViewBrowserTest,
 
 IN_PROC_BROWSER_TEST_F(SplitViewBrowserTest, SplitViewSizeDelta) {
   // Given there are two tiles
-  brave::NewSplitViewForTab(browser());
+  luxxle::NewSplitViewForTab(browser());
   chrome::AddTabAt(browser(), GURL(), -1, /*foreground*/ true);
-  brave::NewSplitViewForTab(browser());
+  luxxle::NewSplitViewForTab(browser());
 
   // When size delta is set
   auto* split_view_layout_manager =
@@ -470,7 +470,7 @@ IN_PROC_BROWSER_TEST_F(SplitViewBrowserTest, SplitViewSizeDelta) {
 IN_PROC_BROWSER_TEST_F(
     SplitViewBrowserTest,
     JavascriptTabModalDialogView_DialogShouldBeCenteredToRelatedWebView) {
-  brave::NewSplitViewForTab(browser());
+  luxxle::NewSplitViewForTab(browser());
   auto* active_contents = chrome_test_utils::GetActiveWebContents(this);
 
   auto* dialog = new BraveJavaScriptTabModalDialogViewViews(
@@ -502,8 +502,8 @@ IN_PROC_BROWSER_TEST_F(
 IN_PROC_BROWSER_TEST_F(
     SplitViewBrowserTest,
     MAYBE_JavascriptTabModalDialogView_DialogShouldBeCenteredToRelatedWebView_InVerticalTab) {
-  brave::ToggleVerticalTabStrip(browser());
-  brave::NewSplitViewForTab(browser());
+  luxxle::ToggleVerticalTabStrip(browser());
+  luxxle::NewSplitViewForTab(browser());
   auto* active_contents = chrome_test_utils::GetActiveWebContents(this);
 
   auto* dialog = new BraveJavaScriptTabModalDialogViewViews(
@@ -523,7 +523,7 @@ IN_PROC_BROWSER_TEST_F(
 }
 
 IN_PROC_BROWSER_TEST_F(SplitViewBrowserTest, SplitViewTabPathTest) {
-  brave::NewSplitViewForTab(browser());
+  luxxle::NewSplitViewForTab(browser());
   int active_index = tab_strip_model().active_index();
   ASSERT_NE(TabStripModel::kNoTab, active_index);
 
@@ -549,7 +549,7 @@ IN_PROC_BROWSER_TEST_F(SplitViewBrowserTest, SplitViewTabPathTest) {
 }
 
 IN_PROC_BROWSER_TEST_F(SplitViewBrowserTest, SplitViewFullscreenTest) {
-  brave::NewSplitViewForTab(browser());
+  luxxle::NewSplitViewForTab(browser());
 
   // In split view tile, both contents are visible and have its border.
   EXPECT_TRUE(browser_view().contents_container()->GetVisible());

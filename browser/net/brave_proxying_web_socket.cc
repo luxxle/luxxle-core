@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/net/brave_proxying_web_socket.h"
+#include "luxxle/browser/net/brave_proxying_web_socket.h"
 
 #include <optional>
 #include <utility>
 
 #include "base/functional/bind.h"
 #include "base/strings/string_util.h"
-#include "brave/browser/net/brave_request_handler.h"
-#include "brave/components/constants/network_constants.h"
+#include "luxxle/browser/net/brave_request_handler.h"
+#include "luxxle/components/constants/network_constants.h"
 #include "content/public/browser/browser_context.h"
 #include "content/public/browser/browser_thread.h"
 #include "content/public/browser/render_frame_host.h"
@@ -89,7 +89,7 @@ void BraveProxyingWebSocket::Start(
         weak_factory_.GetWeakPtr());
   }
 
-  ctx_ = brave::BraveRequestInfo::MakeCTX(request_, frame_tree_node_id_,
+  ctx_ = luxxle::BraveRequestInfo::MakeCTX(request_, frame_tree_node_id_,
                                           request_id_, browser_context_, ctx_);
   int result = request_handler_->OnBeforeURLRequest(
       ctx_, continuation, &redirect_url_);
@@ -155,7 +155,7 @@ void BraveProxyingWebSocket::ContinueToHeadersReceived() {
   auto continuation = base::BindRepeating(
       &BraveProxyingWebSocket::OnHeadersReceivedComplete,
       weak_factory_.GetWeakPtr());
-  ctx_ = brave::BraveRequestInfo::MakeCTX(request_, frame_tree_node_id_,
+  ctx_ = luxxle::BraveRequestInfo::MakeCTX(request_, frame_tree_node_id_,
                                           request_id_, browser_context_, ctx_);
   int result = request_handler_->OnHeadersReceived(
       ctx_, continuation, response_.headers.get(),
@@ -268,7 +268,7 @@ void BraveProxyingWebSocket::OnBeforeSendHeadersCompleteFromProxy(
       &BraveProxyingWebSocket::OnBeforeSendHeadersComplete,
       weak_factory_.GetWeakPtr());
 
-  ctx_ = brave::BraveRequestInfo::MakeCTX(request_, frame_tree_node_id_,
+  ctx_ = luxxle::BraveRequestInfo::MakeCTX(request_, frame_tree_node_id_,
                                           request_id_, browser_context_, ctx_);
   int result = request_handler_->OnBeforeStartTransaction(
       ctx_, continuation, &request_.headers);

@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_IOS_BROWSER_API_BOOKMARKS_BOOKMARK_MODEL_LISTENER_IOS_H_
-#define BRAVE_IOS_BROWSER_API_BOOKMARKS_BOOKMARK_MODEL_LISTENER_IOS_H_
+#ifndef LUXXLE_IOS_BROWSER_API_BOOKMARKS_BOOKMARK_MODEL_LISTENER_IOS_H_
+#define LUXXLE_IOS_BROWSER_API_BOOKMARKS_BOOKMARK_MODEL_LISTENER_IOS_H_
 
 #import <Foundation/Foundation.h>
 
@@ -20,7 +20,7 @@
        bookmarkModel:(void*)bookmarkModel;
 @end
 
-namespace brave {
+namespace luxxle {
 namespace ios {
 class BookmarkModelListener : public bookmarks::BookmarkModelObserver {
  public:
@@ -58,4 +58,4 @@ class BookmarkModelListener : public bookmarks::BookmarkModelObserver {
 }  // namespace ios
 }  // namespace brave
 
-#endif  // BRAVE_IOS_BROWSER_API_BOOKMARKS_BOOKMARK_MODEL_LISTENER_IOS_H_
+#endif  // LUXXLE_IOS_BROWSER_API_BOOKMARKS_BOOKMARK_MODEL_LISTENER_IOS_H_

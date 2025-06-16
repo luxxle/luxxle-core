@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_PAGE_ACTION_WAYBACK_MACHINE_STATE_MANAGER_H_
-#define BRAVE_BROWSER_UI_VIEWS_PAGE_ACTION_WAYBACK_MACHINE_STATE_MANAGER_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_PAGE_ACTION_WAYBACK_MACHINE_STATE_MANAGER_H_
+#define LUXXLE_BROWSER_UI_VIEWS_PAGE_ACTION_WAYBACK_MACHINE_STATE_MANAGER_H_
 
 #include "base/memory/raw_ref.h"
 #include "base/memory/weak_ptr.h"
@@ -42,4 +42,4 @@ class WaybackMachineStateManager : public TabStripModelObserver {
   base::WeakPtrFactory<WaybackMachineStateManager> weak_factory_{this};
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_PAGE_ACTION_WAYBACK_MACHINE_STATE_MANAGER_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_PAGE_ACTION_WAYBACK_MACHINE_STATE_MANAGER_H_

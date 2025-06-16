@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/extensions/brave_component_loader.h"
+#include "luxxle/browser/extensions/brave_component_loader.h"
 
 #include <string>
 #include <utility>
@@ -11,12 +11,12 @@
 #include "base/command_line.h"
 #include "base/functional/bind.h"
 #include "base/json/json_reader.h"
-#include "brave/components/brave_component_updater/browser/brave_component_installer.h"
-#include "brave/components/brave_component_updater/browser/brave_on_demand_updater.h"
-#include "brave/components/brave_extension/grit/brave_extension.h"
-#include "brave/components/brave_webtorrent/grit/brave_webtorrent_resources.h"
-#include "brave/components/constants/brave_switches.h"
-#include "brave/components/constants/pref_names.h"
+#include "luxxle/components/brave_component_updater/browser/brave_component_installer.h"
+#include "luxxle/components/brave_component_updater/browser/brave_on_demand_updater.h"
+#include "luxxle/components/brave_extension/grit/brave_extension.h"
+#include "luxxle/components/brave_webtorrent/grit/brave_webtorrent_resources.h"
+#include "luxxle/components/constants/brave_switches.h"
+#include "luxxle/components/constants/pref_names.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/extensions/extension_service.h"
 #include "chrome/browser/profiles/profile.h"

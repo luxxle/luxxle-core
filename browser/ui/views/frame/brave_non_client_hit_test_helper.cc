@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/frame/brave_non_client_hit_test_helper.h"
+#include "luxxle/browser/ui/views/frame/brave_non_client_hit_test_helper.h"
 
-#include "brave/browser/ui/views/tabs/vertical_tab_utils.h"
+#include "luxxle/browser/ui/views/tabs/vertical_tab_utils.h"
 #include "chrome/browser/ui/views/frame/browser_view.h"
 #include "chrome/browser/ui/views/toolbar/toolbar_view.h"
 #include "ui/base/hit_test.h"
 #include "ui/views/window/hit_test_utils.h"
 
-namespace brave {
+namespace luxxle {
 
 int NonClientHitTest(BrowserView* browser_view,
                      const gfx::Point& point_in_widget) {

@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/brave_shields/cookie_list_opt_in_page_handler.h"
+#include "luxxle/browser/ui/webui/brave_shields/cookie_list_opt_in_page_handler.h"
 
 #include <utility>
 
 #include "base/metrics/histogram_functions.h"
-#include "brave/browser/brave_browser_process.h"
-#include "brave/components/brave_shields/content/browser/ad_block_service.h"
-#include "brave/components/brave_shields/core/browser/ad_block_component_service_manager.h"
-#include "brave/components/brave_shields/core/common/brave_shield_constants.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/components/brave_shields/content/browser/ad_block_service.h"
+#include "luxxle/components/brave_shields/core/browser/ad_block_component_service_manager.h"
+#include "luxxle/components/brave_shields/core/common/brave_shield_constants.h"
 
 CookieListOptInPageHandler::CookieListOptInPageHandler(
     mojo::PendingReceiver<brave_shields::mojom::CookieListOptInPageHandler>

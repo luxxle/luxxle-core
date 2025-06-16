@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/tabs/brave_tab_color_mixer.h"
+#include "luxxle/browser/ui/tabs/brave_tab_color_mixer.h"
 
 #include "base/containers/fixed_flat_map.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/ui/color/nala/nala_color_id.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/ui/color/nala/nala_color_id.h"
 #include "chrome/browser/ui/color/chrome_color_id.h"
 #include "ui/color/color_mixer.h"
 #include "ui/color/color_provider.h"

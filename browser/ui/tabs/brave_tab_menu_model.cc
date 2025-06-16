@@ -3,16 +3,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/tabs/brave_tab_menu_model.h"
+#include "luxxle/browser/ui/tabs/brave_tab_menu_model.h"
 
 #include <algorithm>
 #include <vector>
 
 #include "base/feature_list.h"
-#include "brave/browser/ui/browser_commands.h"
-#include "brave/browser/ui/tabs/brave_tab_strip_model.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/browser/ui/tabs/split_view_browser_data.h"
+#include "luxxle/browser/ui/browser_commands.h"
+#include "luxxle/browser/ui/tabs/brave_tab_strip_model.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/sessions/tab_restore_service_factory.h"
@@ -139,7 +139,7 @@ void BraveTabMenuModel::BuildItemsForSplitView(
   //  * if the tab is tiled, show "Close Split View" and "Break into Tabs"
   //  * else show "New Split View"
   if (indices.size() == 1u) {
-    if (brave::IsTabsTiled(browser, indices)) {
+    if (luxxle::IsTabsTiled(browser, indices)) {
       InsertItemWithStringIdAt(++index, CommandBreakTile, IDS_IDC_BREAK_TILE);
       InsertItemWithStringIdAt(++index, CommandSwapTabsInTile,
                                IDS_IDC_SWAP_SPLIT_VIEW);
@@ -151,16 +151,16 @@ void BraveTabMenuModel::BuildItemsForSplitView(
     return;
   }
 
-  if (brave::CanTileTabs(browser, indices)) {
+  if (luxxle::CanTileTabs(browser, indices)) {
     InsertItemWithStringIdAt(++index, CommandTileTabs, IDS_IDC_TILE_TABS);
     return;
   }
 
-  if (brave::IsTabsTiled(browser, indices)) {
+  if (luxxle::IsTabsTiled(browser, indices)) {
     InsertItemWithStringIdAt(++index, CommandBreakTile, IDS_IDC_BREAK_TILE);
   }
 
-  if (brave::IsTabsTiled(browser, {tab_strip_model->active_index()})) {
+  if (luxxle::IsTabsTiled(browser, {tab_strip_model->active_index()})) {
     InsertItemWithStringIdAt(++index, CommandSwapTabsInTile,
                              IDS_IDC_SWAP_SPLIT_VIEW);
   }

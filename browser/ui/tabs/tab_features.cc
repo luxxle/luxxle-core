@@ -3,16 +3,16 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/tabs/public/tab_features.h"
+#include "luxxle/browser/ui/tabs/public/tab_features.h"
 
 #include <memory>
 #include <utility>
 
 #include "base/memory/ptr_util.h"
 #include "base/no_destructor.h"
-#include "brave/browser/ai_chat/ai_chat_utils.h"
-#include "brave/browser/ai_chat/tab_data_web_contents_observer.h"
-#include "brave/browser/ui/side_panel/brave_side_panel_utils.h"
+#include "luxxle/browser/ai_chat/ai_chat_utils.h"
+#include "luxxle/browser/ai_chat/tab_data_web_contents_observer.h"
+#include "luxxle/browser/ui/side_panel/brave_side_panel_utils.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/tabs/public/tab_features.h"
 #include "components/tabs/public/tab_interface.h"
@@ -48,7 +48,7 @@ void TabFeatures::Init(TabInterface& tab, Profile* profile) {
 
   // Expect upstream's Init to create the registry.
   CHECK(side_panel_registry());
-  brave::RegisterContextualSidePanel(side_panel_registry(), tab.GetContents());
+  luxxle::RegisterContextualSidePanel(side_panel_registry(), tab.GetContents());
 
   if (ai_chat::IsAllowedForContext(profile)) {
     tab_data_observer_ = std::make_unique<ai_chat::TabDataWebContentsObserver>(

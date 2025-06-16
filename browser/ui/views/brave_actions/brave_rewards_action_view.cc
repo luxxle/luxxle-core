@@ -3,22 +3,22 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/views/brave_actions/brave_rewards_action_view.h"
+#include "luxxle/browser/ui/views/brave_actions/brave_rewards_action_view.h"
 
 #include <memory>
 #include <string>
 #include <utility>
 
 #include "base/strings/string_number_conversions.h"
-#include "brave/app/vector_icons/vector_icons.h"
-#include "brave/browser/brave_rewards/rewards_service_factory.h"
-#include "brave/browser/ui/brave_icon_with_badge_image_source.h"
-#include "brave/browser/ui/webui/brave_rewards/rewards_page_top_ui.h"
-#include "brave/components/brave_rewards/content/rewards_p3a.h"
-#include "brave/components/brave_rewards/content/rewards_service.h"
-#include "brave/components/brave_rewards/core/pref_names.h"
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/components/vector_icons/vector_icons.h"
+#include "luxxle/app/vector_icons/vector_icons.h"
+// REMOVED: #include "luxxle/browser/brave_rewards/.*"
+#include "luxxle/browser/ui/brave_icon_with_badge_image_source.h"
+#include "luxxle/browser/ui/webui/brave_rewards/rewards_page_top_ui.h"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/components/vector_icons/vector_icons.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
@@ -88,7 +88,7 @@ const ui::ColorProvider* GetColorProviderForWebContents(
 }
 
 // Draws a custom badge for the "verified" checkmark.
-class RewardsBadgeImageSource : public brave::BraveIconWithBadgeImageSource {
+class RewardsBadgeImageSource : public luxxle::BraveIconWithBadgeImageSource {
  public:
   RewardsBadgeImageSource(const gfx::Size& size,
                           GetColorProviderCallback get_color_provider_callback)
@@ -104,7 +104,7 @@ class RewardsBadgeImageSource : public brave::BraveIconWithBadgeImageSource {
   }
 
  private:
-  // brave::BraveIconWithBadgeImageSource:
+  // luxxle::BraveIconWithBadgeImageSource:
   void PaintBadgeWithoutText(const gfx::Rect& badge_rect,
                              gfx::Canvas* canvas) override {
     if (!verified_icon_) {
@@ -254,7 +254,7 @@ void BraveRewardsActionView::Update() {
 
   auto [text, background_color] = GetBadgeTextAndBackground();
   image_source->SetBadge(std::make_unique<IconWithBadgeImageSource::Badge>(
-      text, brave::kBadgeTextColor, background_color));
+      text, luxxle::kBadgeTextColor, background_color));
   image_source->UseVerifiedIcon(background_color == kBadgeVerifiedBG);
 
   SetImageModel(views::Button::STATE_NORMAL,
@@ -436,7 +436,7 @@ BraveRewardsActionView::GetBadgeTextAndBackground() {
       browser_window_interface_->GetProfile()->GetPrefs()->GetString(
           brave_rewards::prefs::kBadgeText);
   if (!text_pref.empty()) {
-    return {text_pref, brave::kBadgeNotificationBG};
+    return {text_pref, luxxle::kBadgeNotificationBG};
   }
 
   // 2. Display the number of current notifications, if non-zero.
@@ -445,7 +445,7 @@ BraveRewardsActionView::GetBadgeTextAndBackground() {
     std::string text =
         notifications > 99 ? "99+" : base::NumberToString(notifications);
 
-    return {text, brave::kBadgeNotificationBG};
+    return {text, luxxle::kBadgeNotificationBG};
   }
 
   // 3. Display a verified checkmark for verified publishers.
@@ -453,7 +453,7 @@ BraveRewardsActionView::GetBadgeTextAndBackground() {
     return {"", kBadgeVerifiedBG};
   }
 
-  return {"", brave::kBadgeNotificationBG};
+  return {"", luxxle::kBadgeNotificationBG};
 }
 
 size_t BraveRewardsActionView::GetRewardsNotificationCount() {

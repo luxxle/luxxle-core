@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_EDIT_ITEM_BUBBLE_DELEGATE_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_EDIT_ITEM_BUBBLE_DELEGATE_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_EDIT_ITEM_BUBBLE_DELEGATE_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_EDIT_ITEM_BUBBLE_DELEGATE_VIEW_H_
 
 #include <memory>
 
 #include "base/memory/raw_ptr.h"
-#include "brave/components/sidebar/browser/sidebar_item.h"
+#include "luxxle/components/sidebar/browser/sidebar_item.h"
 #include "ui/base/metadata/metadata_macros_internal.h"
 #include "ui/views/bubble/bubble_dialog_delegate_view.h"
 #include "ui/views/controls/textfield/textfield_controller.h"
@@ -60,4 +60,4 @@ class SidebarEditItemBubbleDelegateView
   raw_ptr<views::Textfield> url_tf_ = nullptr;
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_EDIT_ITEM_BUBBLE_DELEGATE_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_SIDEBAR_SIDEBAR_EDIT_ITEM_BUBBLE_DELEGATE_VIEW_H_

@@ -23,10 +23,10 @@
 #include "base/test/scoped_run_loop_timeout.h"
 #include "base/test/test_timeouts.h"
 #include "base/time/time.h"
-#include "brave/browser/net/brave_network_audit_allowed_lists.h"
-#include "brave/browser/net/brave_network_audit_test_helper.h"
-#include "brave/browser/ui/brave_browser.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/browser/net/brave_network_audit_allowed_lists.h"
+#include "luxxle/browser/net/brave_network_audit_test_helper.h"
+#include "luxxle/browser/ui/brave_browser.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/test/base/in_process_browser_test.h"
@@ -41,7 +41,7 @@
 #include "testing/gmock/include/gmock/gmock.h"
 #include "third_party/re2/src/re2/re2.h"
 
-namespace brave {
+namespace luxxle {
 namespace {
 
 // Both timeouts in seconds
@@ -78,7 +78,7 @@ class BraveNetworkAuditSearchAdTest : public InProcessBrowserTest {
     https_server_->SetSSLConfig(net::EmbeddedTestServer::CERT_OK);
 
     base::FilePath test_data_dir =
-        base::PathService::CheckedGet(brave::DIR_TEST_DATA);
+        base::PathService::CheckedGet(luxxle::DIR_TEST_DATA);
     test_data_dir = test_data_dir.AppendASCII(kEmbeddedTestServerDirectory);
     https_server_->ServeFilesFromDirectory(test_data_dir);
 

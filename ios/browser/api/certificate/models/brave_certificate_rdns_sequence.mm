@@ -33,8 +33,8 @@
     _countryOrRegion = base::SysUTF8ToNSString(rdns.country_name);
     _stateOrProvince = base::SysUTF8ToNSString(rdns.state_or_province_name);
     _locality = base::SysUTF8ToNSString(rdns.locality_name);
-    _organization = brave::vector_to_ns(rdns.organization_names);
-    _organizationalUnit = brave::vector_to_ns(rdns.organization_unit_names);
+    _organization = luxxle::vector_to_ns(rdns.organization_names);
+    _organizationalUnit = luxxle::vector_to_ns(rdns.organization_unit_names);
     _commonName = base::SysUTF8ToNSString(rdns.common_name);
     _userId = base::SysUTF8ToNSString(uniqueId.bytes().AsString());
   }

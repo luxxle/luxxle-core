@@ -7,7 +7,7 @@
 
 #include "base/path_service.h"
 #include "base/strings/utf_string_conversions.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
@@ -42,7 +42,7 @@ class BraveWindowNameBrowserTest : public InProcessBrowserTest {
     InProcessBrowserTest::SetUpOnMainThread();
     https_server_.SetSSLConfig(net::EmbeddedTestServer::CERT_TEST_NAMES);
     base::FilePath test_data_dir;
-    base::PathService::Get(brave::DIR_TEST_DATA, &test_data_dir);
+    base::PathService::Get(luxxle::DIR_TEST_DATA, &test_data_dir);
     test_data_dir = test_data_dir.AppendASCII(kEmbeddedTestServerDirectory);
     https_server_.ServeFilesFromDirectory(test_data_dir);
     EXPECT_TRUE(https_server_.Start());

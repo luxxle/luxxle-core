@@ -5,7 +5,7 @@
 
 #include "brave/test/base/brave_testing_profile.h"
 
-#include "brave/components/constants/pref_names.h"
+#include "luxxle/components/constants/pref_names.h"
 #include "components/gcm_driver/gcm_buildflags.h"
 #include "components/prefs/pref_service.h"
 

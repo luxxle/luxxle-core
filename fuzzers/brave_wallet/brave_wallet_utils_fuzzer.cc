@@ -8,7 +8,7 @@
 #include <string>
 
 #include "base/logging.h"
-#include "brave/components/brave_wallet/browser/brave_wallet_utils.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
 
 struct Environment {
   Environment() { logging::SetMinLogLevel(logging::LOG_FATAL); }

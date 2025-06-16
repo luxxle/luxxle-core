@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/tabs/brave_tab_context_menu_contents.h"
+#include "luxxle/browser/ui/views/tabs/brave_tab_context_menu_contents.h"
 
 #include <algorithm>
 #include <iterator>
@@ -15,13 +15,13 @@
 #include "base/functional/bind.h"
 #include "base/notimplemented.h"
 #include "base/notreached.h"
-#include "brave/browser/ui/browser_commands.h"
-#include "brave/browser/ui/tabs/brave_tab_menu_model.h"
-#include "brave/browser/ui/tabs/brave_tab_prefs.h"
-#include "brave/browser/ui/tabs/brave_tab_strip_model.h"
-#include "brave/browser/ui/tabs/split_view_browser_data.h"
-#include "brave/browser/ui/views/tabs/brave_browser_tab_strip_controller.h"
-#include "brave/browser/ui/views/tabs/vertical_tab_utils.h"
+#include "luxxle/browser/ui/browser_commands.h"
+#include "luxxle/browser/ui/tabs/brave_tab_menu_model.h"
+#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/brave_tab_strip_model.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data.h"
+#include "luxxle/browser/ui/views/tabs/brave_browser_tab_strip_controller.h"
+#include "luxxle/browser/ui/views/tabs/vertical_tab_utils.h"
 #include "chrome/browser/defaults.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/sessions/tab_restore_service_factory.h"
@@ -109,7 +109,7 @@ bool BraveTabContextMenuContents::IsCommandIdVisible(int command_id) const {
   }
 
   if (command_id == BraveTabMenuModel::CommandBringAllTabsToThisWindow) {
-    return brave::CanBringAllTabs(browser_);
+    return luxxle::CanBringAllTabs(browser_);
   }
 
   return ui::SimpleMenuModel::Delegate::IsCommandIdVisible(command_id);
@@ -174,7 +174,7 @@ bool BraveTabContextMenuContents::IsBraveCommandIdEnabled(
       return false;
     }
     case BraveTabMenuModel::CommandCloseDuplicateTabs:
-      return brave::HasDuplicateTabs(browser_);
+      return luxxle::HasDuplicateTabs(browser_);
     case BraveTabMenuModel::CommandShowVerticalTabs:
       [[fallthrough]];
     case BraveTabMenuModel::CommandBringAllTabsToThisWindow:
@@ -202,7 +202,7 @@ void BraveTabContextMenuContents::ExecuteBraveCommand(int command_id) {
       chrome::BookmarkAllTabs(browser_);
       return;
     case BraveTabMenuModel::CommandShowVerticalTabs: {
-      brave::ToggleVerticalTabStrip(browser_);
+      luxxle::ToggleVerticalTabStrip(browser_);
       BrowserView::GetBrowserViewForBrowser(browser_)->InvalidateLayout();
       return;
     }
@@ -222,11 +222,11 @@ void BraveTabContextMenuContents::ExecuteBraveCommand(int command_id) {
       return;
     }
     case BraveTabMenuModel::CommandBringAllTabsToThisWindow: {
-      brave::BringAllTabs(browser_);
+      luxxle::BringAllTabs(browser_);
       return;
     }
     case BraveTabMenuModel::CommandCloseDuplicateTabs:
-      brave::CloseDuplicateTabs(browser_);
+      luxxle::CloseDuplicateTabs(browser_);
       return;
     case BraveTabMenuModel::CommandNewSplitView:
       NewSplitView();
@@ -265,19 +265,19 @@ void BraveTabContextMenuContents::OnMenuClosed() {
 void BraveTabContextMenuContents::NewSplitView() {
   auto* model = browser_->tab_strip_model();
   auto* tab = model->GetTabAtIndex(tab_index_);
-  brave::NewSplitViewForTab(browser_, tab->GetHandle());
+  luxxle::NewSplitViewForTab(browser_, tab->GetHandle());
 }
 
 void BraveTabContextMenuContents::TileSelectedTabs() {
-  brave::TileTabs(browser_, GetTabIndicesForSplitViewCommand());
+  luxxle::TileTabs(browser_, GetTabIndicesForSplitViewCommand());
 }
 
 void BraveTabContextMenuContents::BreakSelectedTile() {
-  brave::BreakTiles(browser_, GetTabIndicesForSplitViewCommand());
+  luxxle::BreakTiles(browser_, GetTabIndicesForSplitViewCommand());
 }
 
 void BraveTabContextMenuContents::SwapTabsInTile() {
-  brave::SwapTabsInTile(browser_);
+  luxxle::SwapTabsInTile(browser_);
 }
 
 std::vector<int> BraveTabContextMenuContents::GetTabIndicesForSplitViewCommand()

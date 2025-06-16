@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_MISC_METRICS_DOH_METRICS_H_
-#define BRAVE_BROWSER_MISC_METRICS_DOH_METRICS_H_
+#ifndef LUXXLE_BROWSER_MISC_METRICS_DOH_METRICS_H_
+#define LUXXLE_BROWSER_MISC_METRICS_DOH_METRICS_H_
 
 #include <memory>
 
 #include "base/gtest_prod_util.h"
 #include "base/memory/weak_ptr.h"
 #include "base/timer/timer.h"
-#include "brave/components/time_period_storage/weekly_storage.h"
+#include "luxxle/components/time_period_storage/weekly_storage.h"
 #include "components/prefs/pref_change_registrar.h"
 #include "services/network/public/mojom/network_service.mojom.h"
 
@@ -75,4 +75,4 @@ class DohMetrics {
 
 }  // namespace misc_metrics
 
-#endif  // BRAVE_BROWSER_MISC_METRICS_DOH_METRICS_H_
+#endif  // LUXXLE_BROWSER_MISC_METRICS_DOH_METRICS_H_

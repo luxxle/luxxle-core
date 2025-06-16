@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/settings/brave_importer_observer.h"
+#include "luxxle/browser/ui/webui/settings/brave_importer_observer.h"
 
 #include <memory>
 #include <utility>
@@ -11,7 +11,7 @@
 #include "base/logging.h"
 #include "base/test/bind.h"
 #include "base/test/values_test_util.h"
-#include "brave/browser/importer/brave_external_process_importer_host.h"
+#include "luxxle/browser/importer/brave_external_process_importer_host.h"
 #include "content/public/test/browser_task_environment.h"
 #include "testing/gtest/include/gtest/gtest.h"
 

@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/webui/settings/brave_relaunch_handler_mac.h"
+#include "luxxle/browser/ui/webui/settings/brave_relaunch_handler_mac.h"
 
 #import "brave/browser/mac/sparkle_glue.h"
-#include "brave/browser/mac_features.h"
+#include "luxxle/browser/mac_features.h"
 
 namespace brave_relaunch_handler {
 
 bool RelaunchOnMac() {
-  return !brave::ShouldUseOmaha4() && [SparkleGlue sharedSparkleGlue] &&
+  return !luxxle::ShouldUseOmaha4() && [SparkleGlue sharedSparkleGlue] &&
          [[SparkleGlue sharedSparkleGlue] relaunch];
 }
 

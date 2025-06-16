@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/playlist/playlist_action_dialogs.h"
+#include "luxxle/browser/ui/views/playlist/playlist_action_dialogs.h"
 
 #include <algorithm>
 #include <string>
@@ -11,15 +11,15 @@
 #include <variant>
 
 #include "base/strings/stringprintf.h"
-#include "brave/browser/playlist/playlist_service_factory.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/browser/ui/playlist/playlist_browser_finder.h"
-#include "brave/browser/ui/views/location_bar/brave_location_bar_view.h"
-#include "brave/browser/ui/views/playlist/playlist_bubbles_controller.h"
-#include "brave/browser/ui/views/playlist/thumbnail_view.h"
-#include "brave/browser/ui/views/side_panel/playlist/playlist_side_panel_coordinator.h"
-#include "brave/components/playlist/browser/playlist_service.h"
-#include "brave/components/playlist/browser/playlist_tab_helper.h"
+#include "luxxle/browser/playlist/playlist_service_factory.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/playlist/playlist_browser_finder.h"
+#include "luxxle/browser/ui/views/location_bar/brave_location_bar_view.h"
+#include "luxxle/browser/ui/views/playlist/playlist_bubbles_controller.h"
+#include "luxxle/browser/ui/views/playlist/thumbnail_view.h"
+#include "luxxle/browser/ui/views/side_panel/playlist/playlist_side_panel_coordinator.h"
+#include "luxxle/components/playlist/browser/playlist_service.h"
+#include "luxxle/components/playlist/browser/playlist_tab_helper.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_finder.h"
 #include "chrome/browser/ui/browser_window/public/browser_window_features.h"

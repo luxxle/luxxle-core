@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/extensions/brave_theme_event_router.h"
+#include "luxxle/browser/extensions/brave_theme_event_router.h"
 
 #include <memory>
 #include <string>
 #include <utility>
 
-#include "brave/browser/themes/brave_dark_mode_utils.h"
-#include "brave/common/extensions/api/brave_theme.h"
+#include "luxxle/browser/themes/brave_dark_mode_utils.h"
+#include "luxxle/common/extensions/api/brave_theme.h"
 #include "chrome/browser/profiles/profile.h"
 #include "extensions/browser/event_router.h"
 #include "ui/native_theme/native_theme.h"

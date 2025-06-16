@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/metrics/metrics_reporting_util.h"
-#include "brave/browser/ui/browser_dialogs.h"
+#include "luxxle/browser/metrics/metrics_reporting_util.h"
+#include "luxxle/browser/ui/browser_dialogs.h"
 #include "chrome/browser/ui/session_crashed_bubble.h"
 
 // static
@@ -14,7 +14,7 @@ void SessionCrashedBubble::ShowIfNotOffTheRecordProfileBrave(
   // If crash report permission ask dialog is launched, tab restore bubble will
   // be shown after closing aks dialog.
   if (ShouldShowCrashReportPermissionAskDialog()) {
-    brave::ShowCrashReportPermissionAskDialog(browser);
+    luxxle::ShowCrashReportPermissionAskDialog(browser);
     return;
   }
 

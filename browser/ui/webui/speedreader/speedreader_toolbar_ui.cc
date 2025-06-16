@@ -3,16 +3,16 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/speedreader/speedreader_toolbar_ui.h"
+#include "luxxle/browser/ui/webui/speedreader/speedreader_toolbar_ui.h"
 
 #include <utility>
 
-#include "brave/browser/ui/webui/brave_webui_source.h"
-#include "brave/components/ai_chat/core/browser/utils.h"
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/components/speedreader/common/constants.h"
-#include "brave/components/speedreader/common/features.h"
-#include "brave/components/speedreader/resources/panel/grit/brave_speedreader_toolbar_generated_map.h"
+#include "luxxle/browser/ui/webui/brave_webui_source.h"
+#include "luxxle/components/ai_chat/core/browser/utils.h"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/components/speedreader/common/constants.h"
+#include "luxxle/components/speedreader/common/features.h"
+#include "luxxle/components/speedreader/resources/panel/grit/brave_speedreader_toolbar_generated_map.h"
 #include "build/build_config.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser_finder.h"

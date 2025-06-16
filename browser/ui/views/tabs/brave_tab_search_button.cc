@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * you can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/tabs/brave_tab_search_button.h"
+#include "luxxle/browser/ui/views/tabs/brave_tab_search_button.h"
 
 #include <memory>
 
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/components/vector_icons/vector_icons.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/components/vector_icons/vector_icons.h"
 #include "chrome/browser/ui/color/chrome_color_id.h"
 #include "chrome/browser/ui/views/tabs/tab_strip.h"
 #include "chrome/browser/ui/views/tabs/tab_strip_controller.h"

@@ -24,7 +24,7 @@
                        model:(bookmarks::BookmarkModel*)model;
 @end
 
-namespace brave {
+namespace luxxle {
 namespace ios {
 
 BookmarkModelListener::BookmarkModelListener(id<BookmarkModelObserver> observer,
@@ -145,7 +145,7 @@ void BookmarkModelListener::BookmarkAllUserNodesRemoved(
 }  // namespace brave
 
 @interface BookmarkModelListenerImpl () {
-  std::unique_ptr<brave::ios::BookmarkModelListener> observer_;
+  std::unique_ptr<luxxle::ios::BookmarkModelListener> observer_;
   raw_ptr<bookmarks::BookmarkModel> bookmarkModel_;
 }
 @end
@@ -154,7 +154,7 @@ void BookmarkModelListener::BookmarkAllUserNodesRemoved(
 - (instancetype)init:(id<BookmarkModelObserver>)observer
        bookmarkModel:(void*)model {
   if ((self = [super init])) {
-    observer_ = std::make_unique<brave::ios::BookmarkModelListener>(
+    observer_ = std::make_unique<luxxle::ios::BookmarkModelListener>(
         observer, static_cast<bookmarks::BookmarkModel*>(model));
     bookmarkModel_ = static_cast<bookmarks::BookmarkModel*>(model);
   }

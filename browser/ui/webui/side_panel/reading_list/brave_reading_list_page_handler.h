@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_SIDE_PANEL_READING_LIST_BRAVE_READING_LIST_PAGE_HANDLER_H_
-#define BRAVE_BROWSER_UI_WEBUI_SIDE_PANEL_READING_LIST_BRAVE_READING_LIST_PAGE_HANDLER_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_SIDE_PANEL_READING_LIST_BRAVE_READING_LIST_PAGE_HANDLER_H_
+#define LUXXLE_BROWSER_UI_WEBUI_SIDE_PANEL_READING_LIST_BRAVE_READING_LIST_PAGE_HANDLER_H_
 
 #include "chrome/browser/ui/webui/side_panel/reading_list/reading_list.mojom.h"
 #include "chrome/browser/ui/webui/side_panel/reading_list/reading_list_page_handler.h"
@@ -29,4 +29,4 @@ class BraveReadingListPageHandler : public ReadingListPageHandler,
   void OnVisibilityChanged(content::Visibility visibility) override;
 };
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_SIDE_PANEL_READING_LIST_BRAVE_READING_LIST_PAGE_HANDLER_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_SIDE_PANEL_READING_LIST_BRAVE_READING_LIST_PAGE_HANDLER_H_

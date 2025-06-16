@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/browser_commands.h"
+#include "luxxle/browser/ui/browser_commands.h"
 
 #include <algorithm>
 #include <memory>
@@ -19,27 +19,27 @@
 #include "base/i18n/time_formatting.h"
 #include "base/path_service.h"
 #include "base/strings/utf_string_conversions.h"
-#include "brave/app/brave_command_ids.h"
-#include "brave/browser/brave_shields/brave_shields_tab_helper.h"
-#include "brave/browser/debounce/debounce_service_factory.h"
-#include "brave/browser/ui/bookmark/brave_bookmark_prefs.h"
-#include "brave/browser/ui/brave_browser.h"
-#include "brave/browser/ui/sidebar/sidebar_service_factory.h"
-#include "brave/browser/ui/tabs/brave_tab_prefs.h"
-#include "brave/browser/ui/tabs/brave_tab_strip_model.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/browser/ui/tabs/split_view_browser_data.h"
-#include "brave/browser/ui/views/frame/vertical_tab_strip_region_view.h"
-#include "brave/browser/ui/views/frame/vertical_tab_strip_widget_delegate_view.h"
-#include "brave/browser/url_sanitizer/url_sanitizer_service_factory.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
-#include "brave/components/constants/pref_names.h"
-#include "brave/components/debounce/core/browser/debounce_service.h"
-#include "brave/components/query_filter/utils.h"
-#include "brave/components/sidebar/browser/sidebar_service.h"
-#include "brave/components/speedreader/common/buildflags/buildflags.h"
-#include "brave/components/tor/buildflags/buildflags.h"
-#include "brave/components/url_sanitizer/browser/url_sanitizer_service.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/browser/brave_shields/brave_shields_tab_helper.h"
+#include "luxxle/browser/debounce/debounce_service_factory.h"
+#include "luxxle/browser/ui/bookmark/brave_bookmark_prefs.h"
+#include "luxxle/browser/ui/brave_browser.h"
+#include "luxxle/browser/ui/sidebar/sidebar_service_factory.h"
+#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/brave_tab_strip_model.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data.h"
+#include "luxxle/browser/ui/views/frame/vertical_tab_strip_region_view.h"
+#include "luxxle/browser/ui/views/frame/vertical_tab_strip_widget_delegate_view.h"
+#include "luxxle/browser/url_sanitizer/url_sanitizer_service_factory.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/debounce/core/browser/debounce_service.h"
+#include "luxxle/components/query_filter/utils.h"
+#include "luxxle/components/sidebar/browser/sidebar_service.h"
+#include "luxxle/components/speedreader/common/buildflags/buildflags.h"
+#include "luxxle/components/tor/buildflags/buildflags.h"
+#include "luxxle/components/url_sanitizer/browser/url_sanitizer_service.h"
 #include "chrome/browser/bookmarks/bookmark_html_writer.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/profile.h"
@@ -73,7 +73,7 @@
 #include "url/origin.h"
 
 #if defined(TOOLKIT_VIEWS)
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
 #include "chrome/browser/ui/views/side_panel/side_panel_entry.h"
 #include "chrome/browser/ui/views/side_panel/side_panel_entry_id.h"
 #include "chrome/browser/ui/views/side_panel/side_panel_enums.h"
@@ -81,40 +81,40 @@
 #endif
 
 #if BUILDFLAG(ENABLE_SPEEDREADER)
-#include "brave/browser/speedreader/speedreader_service_factory.h"
-#include "brave/browser/speedreader/speedreader_tab_helper.h"
-#include "brave/components/speedreader/speedreader_service.h"
+#include "luxxle/browser/speedreader/speedreader_service_factory.h"
+#include "luxxle/browser/speedreader/speedreader_tab_helper.h"
+#include "luxxle/components/speedreader/speedreader_service.h"
 #endif
 
 #if BUILDFLAG(ENABLE_TOR)
-#include "brave/browser/tor/tor_profile_manager.h"
-#include "brave/browser/tor/tor_profile_service_factory.h"
-#include "brave/components/tor/tor_profile_service.h"
+#include "luxxle/browser/tor/tor_profile_manager.h"
+#include "luxxle/browser/tor/tor_profile_service_factory.h"
+#include "luxxle/components/tor/tor_profile_service.h"
 #endif
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/browser/brave_vpn/brave_vpn_service_factory.h"
-#include "brave/browser/ui/brave_vpn/brave_vpn_controller.h"
-#include "brave/components/brave_vpn/browser/brave_vpn_service.h"
-#include "brave/components/brave_vpn/common/brave_vpn_constants.h"
-#include "brave/components/brave_vpn/common/brave_vpn_utils.h"
-#include "brave/components/brave_vpn/common/pref_names.h"
+// REMOVED: #include "luxxle/browser/brave_vpn/.*"
+#include "luxxle/browser/ui/brave_vpn/brave_vpn_controller.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 
 #if BUILDFLAG(IS_WIN)
-#include "brave/browser/brave_vpn/win/storage_utils.h"
-#include "brave/browser/brave_vpn/win/wireguard_utils_win.h"
+// REMOVED: #include "luxxle/browser/brave_vpn/.*"
+// REMOVED: #include "luxxle/browser/brave_vpn/.*"
 #endif  // BUILDFLAG(ENABLE_BRAVE_VPN)
 
 #endif  // BUILDFLAG(ENABLE_BRAVE_VPN)
 
 #if BUILDFLAG(ENABLE_COMMANDER)
-#include "brave/browser/ui/commander/commander_service.h"
-#include "brave/browser/ui/commander/commander_service_factory.h"
+#include "luxxle/browser/ui/commander/commander_service.h"
+#include "luxxle/browser/ui/commander/commander_service_factory.h"
 #endif
 
 using content::WebContents;
 
-namespace brave {
+namespace luxxle {
 
 namespace {
 
@@ -334,7 +334,7 @@ void CopySanitizedURL(Browser* browser, const GURL& url) {
   if (!browser || !browser->profile()) {
     return;
   }
-  GURL sanitized_url = brave::URLSanitizerServiceFactory::GetForBrowserContext(
+  GURL sanitized_url = luxxle::URLSanitizerServiceFactory::GetForBrowserContext(
                            browser->profile())
                            ->SanitizeURL(url);
 
@@ -366,7 +366,7 @@ void CopyLinkWithStrictCleaning(Browser* browser, const GURL& url) {
     final_url = filtered_url.value();
   }
   // Sanitize url.
-  final_url = brave::URLSanitizerServiceFactory::GetForBrowserContext(
+  final_url = luxxle::URLSanitizerServiceFactory::GetForBrowserContext(
                   browser->profile())
                   ->SanitizeURL(final_url);
 
@@ -997,8 +997,8 @@ void ExportAllBookmarks(Browser* browser) {
 void ToggleAllBookmarksButtonVisibility(Browser* browser) {
   auto* prefs = browser->profile()->GetPrefs();
   prefs->SetBoolean(
-      brave::bookmarks::prefs::kShowAllBookmarksButton,
-      !prefs->GetBoolean(brave::bookmarks::prefs::kShowAllBookmarksButton));
+      luxxle::bookmarks::prefs::kShowAllBookmarksButton,
+      !prefs->GetBoolean(luxxle::bookmarks::prefs::kShowAllBookmarksButton));
 }
 
 bool CanOpenNewSplitViewForTab(Browser* browser,

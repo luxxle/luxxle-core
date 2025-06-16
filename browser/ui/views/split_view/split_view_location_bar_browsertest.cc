@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/split_view/split_view_location_bar.h"
+#include "luxxle/browser/ui/views/split_view/split_view_location_bar.h"
 
 #include <memory>
 #include <utility>
@@ -12,12 +12,12 @@
 #include "base/strings/utf_string_conversions.h"
 #include "base/test/bind.h"
 #include "base/timer/timer.h"
-#include "brave/browser/ui/browser_commands.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/browser/ui/tabs/split_view_browser_data.h"
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
-#include "brave/browser/ui/views/frame/split_view/brave_multi_contents_view.h"
-#include "brave/browser/ui/views/split_view/split_view.h"
+#include "luxxle/browser/ui/browser_commands.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/tabs/split_view_browser_data.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/frame/split_view/brave_multi_contents_view.h"
+#include "luxxle/browser/ui/views/split_view/split_view.h"
 #include "chrome/browser/ui/browser_commands.h"
 #include "chrome/browser/ui/browser_tabstrip.h"
 #include "chrome/browser/ui/ui_features.h"
@@ -61,7 +61,7 @@ class SplitViewLocationBarBrowserTest
     if (IsSideBySideEnabled()) {
       chrome::NewSplitTab(browser());
     } else {
-      brave::NewSplitViewForTab(browser());
+      luxxle::NewSplitViewForTab(browser());
     }
   }
 
@@ -72,7 +72,7 @@ class SplitViewLocationBarBrowserTest
       ASSERT_TRUE(tab->IsSplit());
       tab_strip_model().RemoveSplit(tab->GetSplit().value());
     } else {
-      brave::BreakTiles(browser());
+      luxxle::BreakTiles(browser());
     }
   }
 

@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_BRAVE_BROWSER_ACTIONS_H_
-#define BRAVE_BROWSER_UI_BRAVE_BROWSER_ACTIONS_H_
+#ifndef LUXXLE_BROWSER_UI_BRAVE_BROWSER_ACTIONS_H_
+#define LUXXLE_BROWSER_UI_BRAVE_BROWSER_ACTIONS_H_
 
 #include "chrome/browser/ui/browser_actions.h"
 
@@ -18,4 +18,4 @@ class BraveBrowserActions : public BrowserActions {
   void InitializeBrowserActions() override;
 };
 
-#endif  // BRAVE_BROWSER_UI_BRAVE_BROWSER_ACTIONS_H_
+#endif  // LUXXLE_BROWSER_UI_BRAVE_BROWSER_ACTIONS_H_

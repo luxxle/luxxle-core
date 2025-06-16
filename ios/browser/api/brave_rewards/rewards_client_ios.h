@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_IOS_BROWSER_API_BRAVE_REWARDS_REWARDS_CLIENT_IOS_H_
-#define BRAVE_IOS_BROWSER_API_BRAVE_REWARDS_REWARDS_CLIENT_IOS_H_
+#ifndef LUXXLE_IOS_BROWSER_API_BRAVE_REWARDS_REWARDS_CLIENT_IOS_H_
+#define LUXXLE_IOS_BROWSER_API_BRAVE_REWARDS_REWARDS_CLIENT_IOS_H_
 
 #import <Foundation/Foundation.h>
 
 #include <string>
 #include <vector>
 
-#include "brave/components/brave_rewards/core/mojom/rewards_engine.mojom.h"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
 #include "mojo/public/cpp/bindings/associated_receiver.h"
 #include "mojo/public/cpp/bindings/associated_remote.h"
 
@@ -85,4 +85,4 @@ class RewardsClientIOS : public brave_rewards::mojom::RewardsEngineClient {
                      DecryptStringCallback callback) override;
 };
 
-#endif  // BRAVE_IOS_BROWSER_API_BRAVE_REWARDS_REWARDS_CLIENT_IOS_H_
+#endif  // LUXXLE_IOS_BROWSER_API_BRAVE_REWARDS_REWARDS_CLIENT_IOS_H_

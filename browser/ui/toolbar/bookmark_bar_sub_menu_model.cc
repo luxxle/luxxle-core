@@ -3,9 +3,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/toolbar/bookmark_bar_sub_menu_model.h"
+#include "luxxle/browser/ui/toolbar/bookmark_bar_sub_menu_model.h"
 
-#include "brave/browser/ui/bookmark/bookmark_helper.h"
+#include "luxxle/browser/ui/bookmark/bookmark_helper.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/grit/generated_resources.h"
@@ -33,27 +33,27 @@ void BookmarkBarSubMenuModel::Build() {
 void BookmarkBarSubMenuModel::ExecuteCommand(int command_id, int event_flags) {
   switch (command_id) {
     case IDC_BRAVE_BOOKMARK_BAR_ALWAYS:
-      brave::SetBookmarkState(brave::BookmarkBarState::kAlways,
+      luxxle::SetBookmarkState(luxxle::BookmarkBarState::kAlways,
                               profile_->GetPrefs());
       return;
     case IDC_BRAVE_BOOKMARK_BAR_NEVER:
-      brave::SetBookmarkState(brave::BookmarkBarState::kNever,
+      luxxle::SetBookmarkState(luxxle::BookmarkBarState::kNever,
                               profile_->GetPrefs());
       return;
     case IDC_BRAVE_BOOKMARK_BAR_NTP:
-      brave::SetBookmarkState(brave::BookmarkBarState::kNtp,
+      luxxle::SetBookmarkState(luxxle::BookmarkBarState::kNtp,
                               profile_->GetPrefs());
       return;
   }
 }
 
 bool BookmarkBarSubMenuModel::IsCommandIdChecked(int command_id) const {
-  switch (brave::GetBookmarkBarState(profile_->GetPrefs())) {
-    case brave::BookmarkBarState::kAlways:
+  switch (luxxle::GetBookmarkBarState(profile_->GetPrefs())) {
+    case luxxle::BookmarkBarState::kAlways:
       return command_id == IDC_BRAVE_BOOKMARK_BAR_ALWAYS;
-    case brave::BookmarkBarState::kNtp:
+    case luxxle::BookmarkBarState::kNtp:
       return command_id == IDC_BRAVE_BOOKMARK_BAR_NTP;
-    case brave::BookmarkBarState::kNever:
+    case luxxle::BookmarkBarState::kNever:
       return command_id == IDC_BRAVE_BOOKMARK_BAR_NEVER;
   }
   return false;

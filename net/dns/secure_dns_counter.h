@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_NET_DNS_SECURE_DNS_COUNTER_H_
-#define BRAVE_NET_DNS_SECURE_DNS_COUNTER_H_
+#ifndef LUXXLE_NET_DNS_SECURE_DNS_COUNTER_H_
+#define LUXXLE_NET_DNS_SECURE_DNS_COUNTER_H_
 
 #include "base/synchronization/lock.h"
 #include "net/base/net_export.h"
@@ -52,4 +52,4 @@ class NET_EXPORT SecureDnsCounter {
 
 }  // namespace net
 
-#endif  // BRAVE_NET_DNS_SECURE_DNS_COUNTER_H_
+#endif  // LUXXLE_NET_DNS_SECURE_DNS_COUNTER_H_

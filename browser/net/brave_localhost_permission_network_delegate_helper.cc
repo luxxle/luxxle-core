@@ -3,12 +3,12 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/net/brave_localhost_permission_network_delegate_helper.h"
+#include "luxxle/browser/net/brave_localhost_permission_network_delegate_helper.h"
 
 #include <vector>
 
-#include "brave/browser/brave_browser_process.h"
-#include "brave/components/localhost_permission/localhost_permission_component.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/components/localhost_permission/localhost_permission_component.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "components/content_settings/core/browser/host_content_settings_map.h"
 #include "components/prefs/pref_service.h"
@@ -20,7 +20,7 @@
 #include "net/base/url_util.h"
 #include "third_party/blink/public/common/permissions/permission_utils.h"
 
-namespace brave {
+namespace luxxle {
 
 void OnPermissionRequestStatus(
     content::FrameTreeNodeId frame_tree_node_id,

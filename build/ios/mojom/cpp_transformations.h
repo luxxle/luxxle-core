@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BUILD_IOS_MOJOM_CPP_TRANSFORMATIONS_H_
-#define BRAVE_BUILD_IOS_MOJOM_CPP_TRANSFORMATIONS_H_
+#ifndef LUXXLE_BUILD_IOS_MOJOM_CPP_TRANSFORMATIONS_H_
+#define LUXXLE_BUILD_IOS_MOJOM_CPP_TRANSFORMATIONS_H_
 
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
@@ -318,4 +318,4 @@ NS_INLINE base::flat_map<std::string, std::string> MapFromNSDictionary(
   return map;
 }
 
-#endif  // BRAVE_BUILD_IOS_MOJOM_CPP_TRANSFORMATIONS_H_
+#endif  // LUXXLE_BUILD_IOS_MOJOM_CPP_TRANSFORMATIONS_H_

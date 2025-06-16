@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/net/brave_reduce_language_network_delegate_helper.h"
+#include "luxxle/browser/net/brave_reduce_language_network_delegate_helper.h"
 
 #include <array>
 #include <string>
@@ -12,10 +12,10 @@
 
 #include "base/containers/fixed_flat_set.h"
 #include "base/strings/string_split.h"
-#include "brave/browser/brave_browser_process.h"
-#include "brave/browser/brave_shields/brave_farbling_service_factory.h"
-#include "brave/components/brave_shields/content/browser/brave_farbling_service.h"
-#include "brave/components/brave_shields/content/browser/brave_shields_util.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/brave_shields/brave_farbling_service_factory.h"
+#include "luxxle/components/brave_shields/content/browser/brave_farbling_service.h"
+#include "luxxle/components/brave_shields/content/browser/brave_shields_util.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/browser/profiles/profile.h"
 #include "components/content_settings/core/browser/host_content_settings_map.h"
@@ -27,7 +27,7 @@
 
 using brave_shields::ControlType;
 
-namespace brave {
+namespace luxxle {
 
 namespace {
 constexpr char kAcceptLanguageMax[] = "en-US,en;q=0.9";
@@ -63,7 +63,7 @@ std::string FarbleAcceptLanguageHeader(
     accept_language_string += "," + tokens[0];
   }
   // Add a fake q value after the language code.
-  brave::FarblingPRNG prng;
+  luxxle::FarblingPRNG prng;
 
   auto* brave_farbling_service =
       BraveFarblingServiceFactory::GetForProfile(profile);

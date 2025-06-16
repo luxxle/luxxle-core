@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/infobars/sync_cannot_run_infobar_delegate.h"
+#include "luxxle/browser/infobars/sync_cannot_run_infobar_delegate.h"
 
 #include <memory>
 #include <string>
 #include <utility>
 
 #include "base/memory/raw_ptr.h"
-#include "brave/browser/ui/brave_pages.h"
-#include "brave/components/brave_sync/brave_sync_prefs.h"
+#include "luxxle/browser/ui/brave_pages.h"
+#include "luxxle/components/brave_sync/brave_sync_prefs.h"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/infobars/confirm_infobar_creator.h"
 #include "chrome/browser/profiles/profile.h"
@@ -99,7 +99,7 @@ std::u16string SyncCannotRunInfoBarDelegate::GetButtonLabel(
 
 bool SyncCannotRunInfoBarDelegate::Accept() {
   // "Check details" button
-  brave::ShowSync(browser_);
+  luxxle::ShowSync(browser_);
   return true;
 }
 

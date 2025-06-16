@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_NET_BRAVE_PROXYING_URL_LOADER_FACTORY_H_
-#define BRAVE_BROWSER_NET_BRAVE_PROXYING_URL_LOADER_FACTORY_H_
+#ifndef LUXXLE_BROWSER_NET_BRAVE_PROXYING_URL_LOADER_FACTORY_H_
+#define LUXXLE_BROWSER_NET_BRAVE_PROXYING_URL_LOADER_FACTORY_H_
 
 #include <cstdint>
 #include <map>
@@ -22,8 +22,8 @@
 #include "base/memory/ref_counted_delete_on_sequence.h"
 #include "base/memory/weak_ptr.h"
 #include "base/time/time.h"
-#include "brave/browser/net/resource_context_data.h"
-#include "brave/browser/net/url_context.h"
+#include "luxxle/browser/net/resource_context_data.h"
+#include "luxxle/browser/net/url_context.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
 #include "mojo/public/cpp/bindings/pending_remote.h"
 #include "mojo/public/cpp/bindings/receiver_set.h"
@@ -117,7 +117,7 @@ class BraveProxyingURLLoaderFactory
     base::TimeTicks start_time_;
 
     // TODO(iefremov): Get rid of shared_ptr, we should clearly own the pointer.
-    std::shared_ptr<brave::BraveRequestInfo> ctx_;
+    std::shared_ptr<luxxle::BraveRequestInfo> ctx_;
     const raw_ref<BraveProxyingURLLoaderFactory> factory_;
     network::ResourceRequest request_;
     const uint64_t request_id_;
@@ -243,4 +243,4 @@ class BraveProxyingURLLoaderFactory
   base::WeakPtrFactory<BraveProxyingURLLoaderFactory> weak_factory_;
 };
 
-#endif  // BRAVE_BROWSER_NET_BRAVE_PROXYING_URL_LOADER_FACTORY_H_
+#endif  // LUXXLE_BROWSER_NET_BRAVE_PROXYING_URL_LOADER_FACTORY_H_

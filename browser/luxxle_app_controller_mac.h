@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_BRAVE_APP_CONTROLLER_MAC_H_
-#define BRAVE_BROWSER_BRAVE_APP_CONTROLLER_MAC_H_
+#ifndef LUXXLE_BROWSER_LUXXLE_APP_CONTROLLER_MAC_H_
+#define LUXXLE_BROWSER_LUXXLE_APP_CONTROLLER_MAC_H_
 
 #import <Cocoa/Cocoa.h>
 
@@ -12,7 +12,7 @@
 
 // * Manages logic to switch hotkey between copy and copy clean link item.
 // * Add "New Private Window with Tor" to the dock menu.
-@interface BraveAppController : AppController
+@interface LuxxleAppController : AppController
 @end
 
-#endif  // BRAVE_BROWSER_BRAVE_APP_CONTROLLER_MAC_H_
+#endif  // LUXXLE_BROWSER_LUXXLE_APP_CONTROLLER_MAC_H_

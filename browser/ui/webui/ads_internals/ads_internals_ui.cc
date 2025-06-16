@@ -3,13 +3,13 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/ads_internals/ads_internals_ui.h"
+#include "luxxle/browser/ui/webui/ads_internals/ads_internals_ui.h"
 
 #include <utility>
 
-#include "brave/browser/ui/webui/brave_webui_source.h"
-#include "brave/components/brave_ads/browser/resources/grit/ads_internals_generated_map.h"
-#include "brave/components/brave_ads/core/browser/service/ads_service.h"
+#include "luxxle/browser/ui/webui/brave_webui_source.h"
+// REMOVED: #include "luxxle/components/brave_ads/.*"
+// REMOVED: #include "luxxle/components/brave_ads/.*"
 #include "chrome/browser/profiles/profile.h"
 #include "components/grit/brave_components_resources.h"
 #include "components/prefs/pref_service.h"

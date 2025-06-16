@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BUILD_IOS_MOJOM_PUBLIC_BASE_BASE_VALUES_H_
-#define BRAVE_BUILD_IOS_MOJOM_PUBLIC_BASE_BASE_VALUES_H_
+#ifndef LUXXLE_BUILD_IOS_MOJOM_PUBLIC_BASE_BASE_VALUES_H_
+#define LUXXLE_BUILD_IOS_MOJOM_PUBLIC_BASE_BASE_VALUES_H_
 
 #import <Foundation/Foundation.h>
 
@@ -58,4 +58,4 @@ NS_SWIFT_NAME(MojoBase.Value)
 
 NS_ASSUME_NONNULL_END
 
-#endif  // BRAVE_BUILD_IOS_MOJOM_PUBLIC_BASE_BASE_VALUES_H_
+#endif  // LUXXLE_BUILD_IOS_MOJOM_PUBLIC_BASE_BASE_VALUES_H_

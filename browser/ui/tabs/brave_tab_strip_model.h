@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_TABS_BRAVE_TAB_STRIP_MODEL_H_
-#define BRAVE_BROWSER_UI_TABS_BRAVE_TAB_STRIP_MODEL_H_
+#ifndef LUXXLE_BROWSER_UI_TABS_BRAVE_TAB_STRIP_MODEL_H_
+#define LUXXLE_BROWSER_UI_TABS_BRAVE_TAB_STRIP_MODEL_H_
 
 #include <cstdint>
 #include <vector>
@@ -51,4 +51,4 @@ class BraveTabStripModel : public TabStripModel {
   std::vector<int> mru_cycle_list_;
 };
 
-#endif  // BRAVE_BROWSER_UI_TABS_BRAVE_TAB_STRIP_MODEL_H_
+#endif  // LUXXLE_BROWSER_UI_TABS_BRAVE_TAB_STRIP_MODEL_H_

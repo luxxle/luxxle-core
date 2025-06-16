@@ -216,10 +216,10 @@
         }();
         break;
       case base::Value::Type::DICT:
-        self.dictionaryValue = brave::NSDictionaryFromBaseValue(value.Clone());
+        self.dictionaryValue = luxxle::NSDictionaryFromBaseValue(value.Clone());
         break;
       case base::Value::Type::LIST:
-        self.listValue = brave::NSArrayFromBaseValue(value.Clone());
+        self.listValue = luxxle::NSArrayFromBaseValue(value.Clone());
         break;
       case base::Value::Type::NONE:
       default:
@@ -253,10 +253,10 @@
       return base::Value(blob);
     }
     case MojoBaseValueTagDictionaryValue: {
-      return brave::BaseValueFromNSDictionary(self.dictionaryValue);
+      return luxxle::BaseValueFromNSDictionary(self.dictionaryValue);
     }
     case MojoBaseValueTagListValue: {
-      return brave::BaseValueFromNSArray(self.listValue);
+      return luxxle::BaseValueFromNSArray(self.listValue);
     }
     case MojoBaseValueTagNull:
     default:
@@ -306,7 +306,7 @@
 
 @end
 
-namespace brave {
+namespace luxxle {
 
 NSArray<MojoBaseValue*>* NSArrayFromBaseValue(base::Value value) {
   auto result = [[NSMutableArray alloc] init];

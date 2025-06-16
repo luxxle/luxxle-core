@@ -3,8 +3,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_RENDERER_BRAVE_RENDER_FRAME_OBSERVER_H_
-#define BRAVE_RENDERER_BRAVE_RENDER_FRAME_OBSERVER_H_
+#ifndef LUXXLE_RENDERER_BRAVE_RENDER_FRAME_OBSERVER_H_
+#define LUXXLE_RENDERER_BRAVE_RENDER_FRAME_OBSERVER_H_
 
 #include <string>
 
@@ -32,4 +32,4 @@ class BraveRenderFrameObserver : public content::RenderFrameObserver {
   service_manager::BinderRegistry registry_;
 };
 
-#endif  // BRAVE_RENDERER_BRAVE_RENDER_FRAME_OBSERVER_H_
+#endif  // LUXXLE_RENDERER_BRAVE_RENDER_FRAME_OBSERVER_H_

@@ -16,7 +16,7 @@
 #error "This file requires ARC support."
 #endif
 
-namespace brave {
+namespace luxxle {
 namespace ios {
 
 OpenTabsSessionListenerIOS::OpenTabsSessionListenerIOS(
@@ -56,7 +56,7 @@ void OpenTabsSessionListenerIOS::OnSyncShutdown(syncer::SyncService* sync) {
 }  // namespace brave
 
 @interface OpenTabsSessionListenerImpl () {
-  std::unique_ptr<brave::ios::OpenTabsSessionListenerIOS> observer_;
+  std::unique_ptr<luxxle::ios::OpenTabsSessionListenerIOS> observer_;
   raw_ptr<syncer::SyncService> sync_service_;
 }
 @end
@@ -65,7 +65,7 @@ void OpenTabsSessionListenerIOS::OnSyncShutdown(syncer::SyncService* sync) {
 - (instancetype)init:(id<OpenTabsSessionStateObserver>)observer
          syncService:(void*)service {
   if ((self = [super init])) {
-    observer_ = std::make_unique<brave::ios::OpenTabsSessionListenerIOS>(
+    observer_ = std::make_unique<luxxle::ios::OpenTabsSessionListenerIOS>(
         observer, static_cast<syncer::SyncService*>(service));
 
     sync_service_ = static_cast<syncer::SyncService*>(service);

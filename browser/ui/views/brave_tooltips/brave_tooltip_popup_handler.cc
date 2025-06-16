@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/brave_tooltips/brave_tooltip_popup_handler.h"
+#include "luxxle/browser/ui/brave_tooltips/brave_tooltip_popup_handler.h"
 
 #include <map>
 #include <string>
 
-#include "brave/browser/ui/brave_tooltips/brave_tooltip.h"
-#include "brave/browser/ui/views/brave_tooltips/brave_tooltip_popup.h"
+#include "luxxle/browser/ui/brave_tooltips/brave_tooltip.h"
+#include "luxxle/browser/ui/views/brave_tooltips/brave_tooltip_popup.h"
 
 namespace {
 

@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/autocomplete/brave_autocomplete_scheme_classifier.h"
+#include "luxxle/browser/autocomplete/brave_autocomplete_scheme_classifier.h"
 
 #include <string>
 
 #include "base/strings/string_util.h"
-#include "brave/components/constants/pref_names.h"
-#include "brave/components/constants/url_constants.h"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/constants/url_constants.h"
 #include "chrome/browser/profiles/profile.h"
 #include "components/prefs/pref_service.h"
 

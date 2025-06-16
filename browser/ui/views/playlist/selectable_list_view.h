@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_PLAYLIST_SELECTABLE_LIST_VIEW_H_
-#define BRAVE_BROWSER_UI_VIEWS_PLAYLIST_SELECTABLE_LIST_VIEW_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_PLAYLIST_SELECTABLE_LIST_VIEW_H_
+#define LUXXLE_BROWSER_UI_VIEWS_PLAYLIST_SELECTABLE_LIST_VIEW_H_
 
 #include <algorithm>
 #include <memory>
@@ -12,9 +12,9 @@
 #include <vector>
 
 #include "base/containers/flat_set.h"
-#include "brave/browser/ui/views/playlist/thumbnail_provider.h"
-#include "brave/components/playlist/browser/playlist_constants.h"
-#include "brave/components/playlist/common/mojom/playlist.mojom.h"
+#include "luxxle/browser/ui/views/playlist/thumbnail_provider.h"
+#include "luxxle/components/playlist/browser/playlist_constants.h"
+#include "luxxle/components/playlist/common/mojom/playlist.mojom.h"
 #include "chrome/grit/generated_resources.h"
 #include "components/grit/brave_components_strings.h"
 #include "ui/base/l10n/l10n_util.h"
@@ -207,4 +207,4 @@ using SelectablePlaylistsView =
                        /*multi_selectable=*/false,
                        /*need_at_least_one_selected=*/true>;
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_PLAYLIST_SELECTABLE_LIST_VIEW_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_PLAYLIST_SELECTABLE_LIST_VIEW_H_

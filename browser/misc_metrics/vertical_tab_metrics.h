@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_MISC_METRICS_VERTICAL_TAB_METRICS_H_
-#define BRAVE_BROWSER_MISC_METRICS_VERTICAL_TAB_METRICS_H_
+#ifndef LUXXLE_BROWSER_MISC_METRICS_VERTICAL_TAB_METRICS_H_
+#define LUXXLE_BROWSER_MISC_METRICS_VERTICAL_TAB_METRICS_H_
 
 #include <memory>
 
 #include "base/containers/flat_map.h"
 #include "base/memory/raw_ptr.h"
-#include "brave/components/time_period_storage/weekly_storage.h"
+#include "luxxle/components/time_period_storage/weekly_storage.h"
 #include "chrome/browser/ui/browser_list_observer.h"
 #include "chrome/browser/ui/tabs/tab_strip_model_observer.h"
 #include "components/prefs/pref_change_registrar.h"
@@ -92,4 +92,4 @@ class VerticalTabMetrics : public BrowserListObserver {
 
 }  // namespace misc_metrics
 
-#endif  // BRAVE_BROWSER_MISC_METRICS_VERTICAL_TAB_METRICS_H_
+#endif  // LUXXLE_BROWSER_MISC_METRICS_VERTICAL_TAB_METRICS_H_

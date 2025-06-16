@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_TEXT_RECOGNITION_DIALOG_TRACKER_H_
-#define BRAVE_BROWSER_UI_VIEWS_TEXT_RECOGNITION_DIALOG_TRACKER_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_TEXT_RECOGNITION_DIALOG_TRACKER_H_
+#define LUXXLE_BROWSER_UI_VIEWS_TEXT_RECOGNITION_DIALOG_TRACKER_H_
 
 #include "base/memory/raw_ptr.h"
 #include "base/scoped_observation.h"
@@ -40,4 +40,4 @@ class TextRecognitionDialogTracker
   WEB_CONTENTS_USER_DATA_KEY_DECL();
 };
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_TEXT_RECOGNITION_DIALOG_TRACKER_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_TEXT_RECOGNITION_DIALOG_TRACKER_H_

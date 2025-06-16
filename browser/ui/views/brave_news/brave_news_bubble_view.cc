@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/views/brave_news/brave_news_bubble_view.h"
+#include "luxxle/browser/ui/views/brave_news/brave_news_bubble_view.h"
 
 #include <memory>
 #include <vector>
@@ -11,13 +11,13 @@
 #include "base/memory/weak_ptr.h"
 #include "base/scoped_observation.h"
 #include "base/strings/utf_string_conversions.h"
-#include "brave/browser/brave_news/brave_news_tab_helper.h"
-#include "brave/browser/themes/brave_dark_mode_utils.h"
-#include "brave/browser/ui/views/brave_news/brave_news_bubble_controller.h"
-#include "brave/browser/ui/views/brave_news/brave_news_feed_item_view.h"
-#include "brave/browser/ui/views/brave_news/brave_news_feeds_container_view.h"
-#include "brave/components/brave_news/common/pref_names.h"
-#include "brave/components/vector_icons/vector_icons.h"
+#include "luxxle/browser/brave_news/brave_news_tab_helper.h"
+#include "luxxle/browser/themes/brave_dark_mode_utils.h"
+#include "luxxle/browser/ui/views/brave_news/brave_news_bubble_controller.h"
+#include "luxxle/browser/ui/views/brave_news/brave_news_feed_item_view.h"
+#include "luxxle/browser/ui/views/brave_news/brave_news_feeds_container_view.h"
+#include "luxxle/components/brave_news/common/pref_names.h"
+#include "luxxle/components/vector_icons/vector_icons.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_finder.h"

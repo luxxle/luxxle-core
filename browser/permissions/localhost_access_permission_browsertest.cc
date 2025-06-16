@@ -7,14 +7,14 @@
 #include "base/path_service.h"
 #include "base/strings/strcat.h"
 #include "base/test/thread_test_helper.h"
-#include "brave/browser/brave_browser_process.h"
-#include "brave/components/brave_component_updater/browser/local_data_files_service.h"
-#include "brave/components/brave_shields/content/browser/ad_block_service.h"
-#include "brave/components/brave_shields/content/browser/brave_shields_util.h"
-#include "brave/components/brave_shields/content/test/test_filters_provider.h"
-#include "brave/components/brave_shields/core/common/features.h"
-#include "brave/components/constants/brave_paths.h"
-#include "brave/components/localhost_permission/localhost_permission_component.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/components/brave_component_updater/browser/local_data_files_service.h"
+#include "luxxle/components/brave_shields/content/browser/ad_block_service.h"
+#include "luxxle/components/brave_shields/content/browser/brave_shields_util.h"
+#include "luxxle/components/brave_shields/content/test/test_filters_provider.h"
+#include "luxxle/components/brave_shields/core/common/features.h"
+#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/localhost_permission/localhost_permission_component.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/profiles/profile_manager.h"
@@ -72,7 +72,7 @@ class LocalhostAccessBrowserTest : public InProcessBrowserTest {
     https_server_ = std::make_unique<net::EmbeddedTestServer>(
         net::test_server::EmbeddedTestServer::TYPE_HTTPS);
     base::FilePath test_data_dir;
-    base::PathService::Get(brave::DIR_TEST_DATA, &test_data_dir);
+    base::PathService::Get(luxxle::DIR_TEST_DATA, &test_data_dir);
     https_server_->ServeFilesFromDirectory(test_data_dir);
     content::SetupCrossSiteRedirector(https_server_.get());
     ASSERT_TRUE(https_server_->Start());

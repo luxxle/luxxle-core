@@ -15,7 +15,7 @@
 #error "This file requires ARC support."
 #endif
 
-namespace brave {
+namespace luxxle {
 ImageDownloader::ImageDownloader(
     scoped_refptr<network::SharedURLLoaderFactory> url_loader_factory)
     : image_fetcher_(url_loader_factory) {}

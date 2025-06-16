@@ -4,8 +4,8 @@
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 #include "base/path_service.h"
-#include "brave/browser/extensions/api/identity/brave_web_auth_flow.h"
-#include "brave/components/constants/brave_paths.h"
+#include "luxxle/browser/extensions/api/identity/brave_web_auth_flow.h"
+#include "luxxle/components/constants/brave_paths.h"
 #include "chrome/browser/extensions/extension_apitest.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
@@ -22,7 +22,7 @@ class IdentityExtensionApiTest : public ExtensionApiTest {
   IdentityExtensionApiTest() = default;
   void SetUpOnMainThread() override {
     ExtensionApiTest::SetUpOnMainThread();
-    base::PathService::Get(brave::DIR_TEST_DATA, &extension_dir_);
+    base::PathService::Get(luxxle::DIR_TEST_DATA, &extension_dir_);
     extension_dir_ = extension_dir_.AppendASCII("extensions/api_test");
   }
   base::FilePath extension_dir_;

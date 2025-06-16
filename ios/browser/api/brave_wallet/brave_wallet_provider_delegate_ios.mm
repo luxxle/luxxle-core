@@ -9,7 +9,7 @@
 
 #include "base/strings/sys_string_conversions.h"
 #include "brave/base/mac/conversions.h"
-#include "brave/components/brave_wallet/common/brave_wallet.mojom.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
 #include "brave/ios/browser/api/brave_wallet/brave_wallet_provider_delegate_ios+private.h"
 #include "brave/ios/browser/api/url/url_origin_ios+private.h"
 #include "net/base/apple/url_conversions.h"
@@ -72,7 +72,7 @@ void BraveWalletProviderDelegateBridge::RequestPermissions(
                              v);
   };
   [bridge_ requestPermissions:static_cast<BraveWalletCoinType>(type)
-                     accounts:brave::vector_to_ns(accounts)
+                     accounts:luxxle::vector_to_ns(accounts)
                    completion:completion];
 }
 
@@ -89,12 +89,12 @@ BraveWalletProviderDelegateBridge::GetAllowedAccounts(
     const std::vector<std::string>& accounts) {
   NSArray<NSString*>* results =
       [bridge_ getAllowedAccounts:static_cast<BraveWalletCoinType>(type)
-                         accounts:brave::vector_to_ns(accounts)];
+                         accounts:luxxle::vector_to_ns(accounts)];
   if (!results) {
     return std::nullopt;
   }
 
-  return brave::ns_to_vector<std::string>(results);
+  return luxxle::ns_to_vector<std::string>(results);
 }
 
 bool BraveWalletProviderDelegateBridge::IsPermissionDenied(

@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/common/brave_channel_info.h"
+#include "luxxle/common/brave_channel_info.h"
 
 #include "chrome/common/channel_info.h"
 #include "components/version_info/channel.h"
 
-namespace brave {
+namespace luxxle {
 
 std::string GetChannelName() {
 #if defined(OFFICIAL_BUILD)

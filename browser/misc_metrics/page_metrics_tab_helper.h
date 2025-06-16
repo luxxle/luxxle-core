@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_MISC_METRICS_PAGE_METRICS_TAB_HELPER_H_
-#define BRAVE_BROWSER_MISC_METRICS_PAGE_METRICS_TAB_HELPER_H_
+#ifndef LUXXLE_BROWSER_MISC_METRICS_PAGE_METRICS_TAB_HELPER_H_
+#define LUXXLE_BROWSER_MISC_METRICS_PAGE_METRICS_TAB_HELPER_H_
 
 #include "base/memory/raw_ptr.h"
 #include "content/public/browser/web_contents.h"
@@ -45,4 +45,4 @@ class PageMetricsTabHelper
 
 }  // namespace misc_metrics
 
-#endif  // BRAVE_BROWSER_MISC_METRICS_PAGE_METRICS_TAB_HELPER_H_
+#endif  // LUXXLE_BROWSER_MISC_METRICS_PAGE_METRICS_TAB_HELPER_H_

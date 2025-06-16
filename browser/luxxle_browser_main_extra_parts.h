@@ -3,20 +3,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_BRAVE_BROWSER_MAIN_EXTRA_PARTS_H_
-#define BRAVE_BROWSER_BRAVE_BROWSER_MAIN_EXTRA_PARTS_H_
+#ifndef LUXXLE_BROWSER_LUXXLE_BROWSER_MAIN_EXTRA_PARTS_H_
+#define LUXXLE_BROWSER_LUXXLE_BROWSER_MAIN_EXTRA_PARTS_H_
 
 #include "base/compiler_specific.h"
 #include "chrome/browser/chrome_browser_main.h"
 #include "chrome/browser/chrome_browser_main_extra_parts.h"
 
-class BraveBrowserMainExtraParts : public ChromeBrowserMainExtraParts {
+class LuxxleBrowserMainExtraParts : public ChromeBrowserMainExtraParts {
  public:
-  BraveBrowserMainExtraParts();
-  BraveBrowserMainExtraParts(const BraveBrowserMainExtraParts&) = delete;
-  BraveBrowserMainExtraParts& operator=(const BraveBrowserMainExtraParts&) =
+  LuxxleBrowserMainExtraParts();
+  LuxxleBrowserMainExtraParts(const LuxxleBrowserMainExtraParts&) = delete;
+  LuxxleBrowserMainExtraParts& operator=(const LuxxleBrowserMainExtraParts&) =
       delete;
-  ~BraveBrowserMainExtraParts() override;
+  ~LuxxleBrowserMainExtraParts() override;
 
   // ChromeBrowserMainExtraParts overrides.
   void PostBrowserStart() override;
@@ -24,4 +24,4 @@ class BraveBrowserMainExtraParts : public ChromeBrowserMainExtraParts {
   void PreProfileInit() override;
 };
 
-#endif  // BRAVE_BROWSER_BRAVE_BROWSER_MAIN_EXTRA_PARTS_H_
+#endif  // LUXXLE_BROWSER_LUXXLE_BROWSER_MAIN_EXTRA_PARTS_H_

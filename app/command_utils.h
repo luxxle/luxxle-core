@@ -3,8 +3,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_APP_COMMAND_UTILS_H_
-#define BRAVE_APP_COMMAND_UTILS_H_
+#ifndef LUXXLE_APP_COMMAND_UTILS_H_
+#define LUXXLE_APP_COMMAND_UTILS_H_
 
 #include <string>
 
@@ -24,4 +24,4 @@ std::string GetCommandName(int command_id);
 
 }  // namespace commands
 
-#endif  // BRAVE_APP_COMMAND_UTILS_H_
+#endif  // LUXXLE_APP_COMMAND_UTILS_H_

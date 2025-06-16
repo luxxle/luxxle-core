@@ -7,13 +7,13 @@
 #include <utility>
 
 #include "base/containers/flat_set.h"
-#include "brave/browser/ui/commands/accelerator_service.h"
-#include "brave/browser/ui/commands/default_accelerators.h"
+#include "luxxle/browser/ui/commands/accelerator_service.h"
+#include "luxxle/browser/ui/commands/default_accelerators.h"
 #include "chrome/browser/ui/views/accelerator_table.h"
 #include "ui/base/accelerators/accelerator.h"
 
 #if BUILDFLAG(IS_MAC)
-#include "brave/browser/ui/views/commands/default_accelerators_mac.h"
+#include "luxxle/browser/ui/views/commands/default_accelerators_mac.h"
 #endif  // BUILDFLAG(IS_MAC)
 
 namespace commands {

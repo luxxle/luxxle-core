@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_VIEWS_BRAVE_ADS_NOTIFICATION_AD_POPUP_H_
-#define BRAVE_BROWSER_UI_VIEWS_BRAVE_ADS_NOTIFICATION_AD_POPUP_H_
+#ifndef LUXXLE_BROWSER_UI_VIEWS_BRAVE_ADS_NOTIFICATION_AD_POPUP_H_
+#define LUXXLE_BROWSER_UI_VIEWS_BRAVE_ADS_NOTIFICATION_AD_POPUP_H_
 
 #include <cstdint>
 #include <memory>
@@ -12,7 +12,7 @@
 #include "base/memory/raw_ptr.h"
 #include "base/memory/raw_ref.h"
 #include "base/scoped_observation.h"
-#include "brave/browser/ui/brave_ads/notification_ad.h"
+#include "luxxle/browser/ui/brave_ads/notification_ad.h"
 #include "ui/base/metadata/metadata_header_macros.h"
 #include "ui/display/display_observer.h"
 #include "ui/gfx/animation/animation_delegate.h"
@@ -167,4 +167,4 @@ class NotificationAdPopup final : public views::WidgetDelegateView,
 
 }  // namespace brave_ads
 
-#endif  // BRAVE_BROWSER_UI_VIEWS_BRAVE_ADS_NOTIFICATION_AD_POPUP_H_
+#endif  // LUXXLE_BROWSER_UI_VIEWS_BRAVE_ADS_NOTIFICATION_AD_POPUP_H_

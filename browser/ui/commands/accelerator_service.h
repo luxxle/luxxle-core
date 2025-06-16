@@ -3,8 +3,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_COMMANDS_ACCELERATOR_SERVICE_H_
-#define BRAVE_BROWSER_UI_COMMANDS_ACCELERATOR_SERVICE_H_
+#ifndef LUXXLE_BROWSER_UI_COMMANDS_ACCELERATOR_SERVICE_H_
+#define LUXXLE_BROWSER_UI_COMMANDS_ACCELERATOR_SERVICE_H_
 
 #include <string>
 #include <vector>
@@ -12,8 +12,8 @@
 #include "base/containers/flat_set.h"
 #include "base/observer_list.h"
 #include "base/observer_list_types.h"
-#include "brave/components/commands/browser/accelerator_pref_manager.h"
-#include "brave/components/commands/common/commands.mojom.h"
+#include "luxxle/components/commands/browser/accelerator_pref_manager.h"
+#include "luxxle/components/commands/common/commands.mojom.h"
 #include "components/keyed_service/core/keyed_service.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
 #include "mojo/public/cpp/bindings/pending_remote.h"
@@ -90,4 +90,4 @@ class AcceleratorService : public mojom::CommandsService, public KeyedService {
 };
 }  // namespace commands
 
-#endif  // BRAVE_BROWSER_UI_COMMANDS_ACCELERATOR_SERVICE_H_
+#endif  // LUXXLE_BROWSER_UI_COMMANDS_ACCELERATOR_SERVICE_H_

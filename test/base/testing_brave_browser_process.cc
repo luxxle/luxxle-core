@@ -12,12 +12,12 @@
 #include "base/memory/scoped_refptr.h"
 #include "base/task/sequenced_task_runner.h"
 #include "base/task/thread_pool.h"
-#include "brave/components/brave_shields/content/browser/ad_block_service.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
-#include "brave/components/tor/buildflags/buildflags.h"
+#include "luxxle/components/brave_shields/content/browser/ad_block_service.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#include "luxxle/components/tor/buildflags/buildflags.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/components/brave_vpn/browser/connection/brave_vpn_connection_manager.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #endif
 namespace tor {
 class BraveTorClientUpdater;
@@ -84,7 +84,7 @@ TestingBraveBrowserProcess::request_otr_component_installer() {
 }
 #endif
 
-brave::URLSanitizerComponentInstaller*
+luxxle::URLSanitizerComponentInstaller*
 TestingBraveBrowserProcess::URLSanitizerComponentInstaller() {
   return nullptr;
 }
@@ -120,7 +120,7 @@ p3a::P3AService* TestingBraveBrowserProcess::p3a_service() {
   return nullptr;
 }
 
-brave::BraveReferralsService*
+luxxle::BraveReferralsService*
 TestingBraveBrowserProcess::brave_referrals_service() {
   return nullptr;
 }

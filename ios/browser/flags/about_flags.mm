@@ -6,16 +6,16 @@
 // This file is included into //ios/chrome/browser/flags/about_flags.mm
 
 #include "base/strings/string_util.h"
-#include "brave/components/ai_chat/core/common/features.h"
-#include "brave/components/brave_component_updater/browser/features.h"
-#include "brave/components/brave_rewards/core/features.h"
-#include "brave/components/brave_shields/core/common/features.h"
-#include "brave/components/brave_user_agent/common/features.h"
-#include "brave/components/brave_wallet/common/features.h"
-#include "brave/components/de_amp/common/features.h"
-#include "brave/components/debounce/core/common/features.h"
-#include "brave/components/ntp_background_images/browser/features.h"
-#include "brave/components/skus/common/features.h"
+#include "luxxle/components/ai_chat/core/common/features.h"
+#include "luxxle/components/brave_component_updater/browser/features.h"
+// REMOVED: #include "luxxle/components/brave_rewards/.*"
+#include "luxxle/components/brave_shields/core/common/features.h"
+#include "luxxle/components/brave_user_agent/common/features.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/de_amp/common/features.h"
+#include "luxxle/components/debounce/core/common/features.h"
+#include "luxxle/components/ntp_background_images/browser/features.h"
+#include "luxxle/components/skus/common/features.h"
 #include "brave/ios/browser/api/translate/features.h"
 #include "brave/ios/browser/playlist/features.h"
 #include "brave/ios/browser/ui/browser_menu/features.h"
@@ -27,7 +27,7 @@
 
 #define EXPAND_FEATURE_ENTRIES(...) __VA_ARGS__,
 
-#define BRAVE_SKU_SDK_FEATURE_ENTRIES                   \
+#define LUXXLE_SKU_SDK_FEATURE_ENTRIES                   \
   EXPAND_FEATURE_ENTRIES({                              \
       "skus-sdk",                                       \
       "Enable experimental SKU SDK",                    \
@@ -36,7 +36,7 @@
       FEATURE_VALUE_TYPE(skus::features::kSkusFeature), \
   })
 
-#define BRAVE_NATIVE_WALLET_FEATURE_ENTRIES                                   \
+#define LUXXLE_NATIVE_WALLET_FEATURE_ENTRIES                                   \
   EXPAND_FEATURE_ENTRIES(                                                     \
       {                                                                       \
           "brave-wallet-zcash",                                               \
@@ -73,7 +73,7 @@
                                  kBraveWalletTransactionSimulationsFeature),  \
       })
 
-#define BRAVE_SHIELDS_FEATURE_ENTRIES                                          \
+#define LUXXLE_SHIELDS_FEATURE_ENTRIES                                          \
   EXPAND_FEATURE_ENTRIES(                                                      \
       {                                                                        \
           "brave-shred",                                                       \
@@ -123,7 +123,7 @@
               brave_shields::features::kBraveIOSEnableFarblingPlugins),        \
       })
 
-#define BRAVE_AI_CHAT_FEATURE_ENTRIES                                      \
+#define LUXXLE_AI_CHAT_FEATURE_ENTRIES                                      \
   EXPAND_FEATURE_ENTRIES(                                                  \
       {                                                                    \
           "brave-ai-chat",                                                 \
@@ -140,7 +140,7 @@
           FEATURE_VALUE_TYPE(ai_chat::features::kAIChatHistory),           \
       })
 
-#define BRAVE_PLAYLIST_FEATURE_ENTRIES                        \
+#define LUXXLE_PLAYLIST_FEATURE_ENTRIES                        \
   EXPAND_FEATURE_ENTRIES({                                    \
       "brave-new-playlist-ui",                                \
       "Enables new Playlist UI",                              \
@@ -152,7 +152,7 @@
 // Keep the last item empty.
 #define LAST_BRAVE_FEATURE_ENTRIES_ITEM
 
-#define BRAVE_ABOUT_FLAGS_FEATURE_ENTRIES                                      \
+#define LUXXLE_ABOUT_FLAGS_FEATURE_ENTRIES                                      \
   EXPAND_FEATURE_ENTRIES(                                                      \
       {                                                                        \
           "use-dev-updater-url",                                               \
@@ -167,21 +167,21 @@
           "Use modern browser menu UI",                                        \
           "Replace the standard more button menu with a modern replacement",   \
           flags_ui::kOsIos,                                                    \
-          FEATURE_VALUE_TYPE(brave::features::kModernBrowserMenuEnabled),      \
+          FEATURE_VALUE_TYPE(luxxle::features::kModernBrowserMenuEnabled),      \
       },                                                                       \
       {                                                                        \
           "brave-translate-enabled",                                           \
           "Use Brave Translate",                                               \
           "Enables page translation",                                          \
           flags_ui::kOsIos,                                                    \
-          FEATURE_VALUE_TYPE(brave::features::kBraveTranslateEnabled),         \
+          FEATURE_VALUE_TYPE(luxxle::features::kBraveTranslateEnabled),         \
       },                                                                       \
       {                                                                        \
           "brave-translate-apple-enabled",                                     \
           "Use Apple Offline Translate",                                       \
           "Enables page translation using Apple APIs",                         \
           flags_ui::kOsIos,                                                    \
-          FEATURE_VALUE_TYPE(brave::features::kBraveAppleTranslateEnabled),    \
+          FEATURE_VALUE_TYPE(luxxle::features::kBraveAppleTranslateEnabled),    \
       },                                                                       \
       {                                                                        \
           "use-brave-user-agent",                                              \
@@ -195,7 +195,7 @@
           "Use Chromium Web Embedder",                                         \
           "Replace WKWebView usages with Chromium web views",                  \
           flags_ui::kOsIos,                                                    \
-          FEATURE_VALUE_TYPE(brave::features::kUseChromiumWebViews),           \
+          FEATURE_VALUE_TYPE(luxxle::features::kUseChromiumWebViews),           \
       },                                                                       \
       {                                                                        \
           "brave-ntp-branded-wallpaper-demo",                                  \

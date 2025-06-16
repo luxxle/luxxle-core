@@ -3,20 +3,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_IMPORTER_BRAVE_EXTERNAL_PROCESS_IMPORTER_CLIENT_H_
-#define BRAVE_BROWSER_IMPORTER_BRAVE_EXTERNAL_PROCESS_IMPORTER_CLIENT_H_
+#ifndef LUXXLE_BROWSER_IMPORTER_BRAVE_EXTERNAL_PROCESS_IMPORTER_CLIENT_H_
+#define LUXXLE_BROWSER_IMPORTER_BRAVE_EXTERNAL_PROCESS_IMPORTER_CLIENT_H_
 
 #include <string>
 
 #include "base/memory/weak_ptr.h"
-#include "brave/common/importer/profile_import.mojom.h"
+#include "luxxle/common/importer/profile_import.mojom.h"
 #include "chrome/browser/importer/external_process_importer_client.h"
 #include "mojo/public/cpp/bindings/receiver.h"
 #include "mojo/public/cpp/bindings/remote.h"
 
 class BraveExternalProcessImporterClient
     : public ExternalProcessImporterClient,
-      public brave::mojom::ProfileImportObserver {
+      public luxxle::mojom::ProfileImportObserver {
  public:
   BraveExternalProcessImporterClient(
       base::WeakPtr<ExternalProcessImporterHost> importer_host,
@@ -35,7 +35,7 @@ class BraveExternalProcessImporterClient
   void CloseMojoHandles() override;
   void OnImportItemFinished(importer::ImportItem import_item) override;
 
-  // brave::mojom::ProfileImportObserver overrides:
+  // luxxle::mojom::ProfileImportObserver overrides:
   void OnCreditCardImportReady(const std::u16string& name_on_card,
                                const std::u16string& expiration_month,
                                const std::u16string& expiration_year,
@@ -48,10 +48,10 @@ class BraveExternalProcessImporterClient
  private:
   // Used to start and stop the actual brave importer running in a different
   // process.
-  mojo::Remote<brave::mojom::ProfileImport> brave_profile_import_;
+  mojo::Remote<luxxle::mojom::ProfileImport> brave_profile_import_;
 
   // Used to receive progress updates from the brave importer.
-  mojo::Receiver<brave::mojom::ProfileImportObserver> brave_receiver_{this};
+  mojo::Receiver<luxxle::mojom::ProfileImportObserver> brave_receiver_{this};
 };
 
-#endif  // BRAVE_BROWSER_IMPORTER_BRAVE_EXTERNAL_PROCESS_IMPORTER_CLIENT_H_
+#endif  // LUXXLE_BROWSER_IMPORTER_BRAVE_EXTERNAL_PROCESS_IMPORTER_CLIENT_H_

@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_IMPORT_BULK_DATA_HANDLER_H_
-#define BRAVE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_IMPORT_BULK_DATA_HANDLER_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_IMPORT_BULK_DATA_HANDLER_H_
+#define LUXXLE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_IMPORT_BULK_DATA_HANDLER_H_
 
 #include <memory>
 #include <optional>
@@ -12,8 +12,8 @@
 #include "base/containers/flat_set.h"
 #include "base/functional/callback.h"
 #include "base/memory/weak_ptr.h"
-#include "brave/browser/ui/webui/settings/brave_import_data_handler.h"
-#include "brave/browser/ui/webui/settings/brave_importer_observer.h"
+#include "luxxle/browser/ui/webui/settings/brave_import_data_handler.h"
+#include "luxxle/browser/ui/webui/settings/brave_importer_observer.h"
 #include "build/build_config.h"
 
 namespace settings {
@@ -62,4 +62,4 @@ class BraveImportBulkDataHandler : public BraveImportDataHandler {
 
 }  // namespace settings
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_IMPORT_BULK_DATA_HANDLER_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_SETTINGS_BRAVE_IMPORT_BULK_DATA_HANDLER_H_

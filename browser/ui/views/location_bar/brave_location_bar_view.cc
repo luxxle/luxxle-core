@@ -3,25 +3,25 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/location_bar/brave_location_bar_view.h"
+#include "luxxle/browser/ui/views/location_bar/brave_location_bar_view.h"
 
 #include <optional>
 #include <utility>
 
 #include "base/containers/contains.h"
 #include "base/feature_list.h"
-#include "brave/app/vector_icons/vector_icons.h"
-#include "brave/browser/themes/brave_theme_service.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/browser/ui/tabs/brave_tab_prefs.h"
-#include "brave/browser/ui/tabs/features.h"
-#include "brave/browser/ui/views/brave_actions/brave_actions_container.h"
-#include "brave/browser/ui/views/brave_news/brave_news_action_icon_view.h"
-#include "brave/browser/ui/views/location_bar/brave_search_conversion/promotion_button_controller.h"
-#include "brave/browser/ui/views/location_bar/brave_search_conversion/promotion_button_view.h"
-#include "brave/browser/ui/views/playlist/playlist_action_icon_view.h"
-#include "brave/browser/ui/views/toolbar/brave_toolbar_view.h"
-#include "brave/components/commander/common/buildflags/buildflags.h"
+#include "luxxle/app/vector_icons/vector_icons.h"
+#include "luxxle/browser/themes/brave_theme_service.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/features.h"
+#include "luxxle/browser/ui/views/brave_actions/brave_actions_container.h"
+#include "luxxle/browser/ui/views/brave_news/brave_news_action_icon_view.h"
+#include "luxxle/browser/ui/views/location_bar/brave_search_conversion/promotion_button_controller.h"
+#include "luxxle/browser/ui/views/location_bar/brave_search_conversion/promotion_button_view.h"
+#include "luxxle/browser/ui/views/playlist/playlist_action_icon_view.h"
+#include "luxxle/browser/ui/views/toolbar/brave_toolbar_view.h"
+#include "luxxle/components/commander/common/buildflags/buildflags.h"
 #include "brave/grit/brave_theme_resources.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/themes/theme_service_factory.h"
@@ -49,13 +49,13 @@
 #include "ui/views/view_utils.h"
 
 #if BUILDFLAG(ENABLE_TOR)
-#include "brave/browser/ui/views/location_bar/onion_location_view.h"
+#include "luxxle/browser/ui/views/location_bar/onion_location_view.h"
 #endif
 
 #if BUILDFLAG(ENABLE_COMMANDER)
-#include "brave/browser/ui/commander/commander_service_factory.h"
-#include "brave/components/commander/browser/commander_frontend_delegate.h"
-#include "brave/components/commander/common/features.h"
+#include "luxxle/browser/ui/commander/commander_service_factory.h"
+#include "luxxle/components/commander/browser/commander_frontend_delegate.h"
+#include "luxxle/components/commander/common/features.h"
 #endif
 
 namespace {

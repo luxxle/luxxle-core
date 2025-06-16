@@ -1,0 +1,96 @@
+# Copyright (c) 2022 The Luxxle Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at https://mozilla.org/MPL/2.0/.
+
+import("//luxxle/build/config.gni")
+import("//build/buildflag_header.gni")
+import("//build/config/features.gni")
+import("//chrome/common/features.gni")
+
+buildflag_header("sparkle_buildflags") {
+  header = "sparkle_buildflags.h"
+  flags = [ "ENABLE_SPARKLE=$enable_sparkle" ]
+}
+
+if (enable_sparkle && !build_sparkle) {
+  bundle_data("prebuilt_sparkle_framework_bundle_data") {
+    sources = [ "//build/mac_files/sparkle_binaries/Sparkle.framework" ]
+    outputs = [ "{{bundle_contents_dir}}/Frameworks/{{source_file_part}}" ]
+  }
+}
+
+source_set("browser_process") {
+  visibility = [
+    "//luxxle/browser/*",
+    "//chrome/browser/*",
+  ]
+
+
+  deps = [
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/request_otr/common/buildflags",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/tor/buildflags",
+    "//chrome/browser:browser_process",
+    "//extensions/buildflags",
+  ]
+}
+
+group("browser") {
+  visibility = [
+    "//luxxle:browser_dependencies",
+    "//luxxle/browser/*",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/core/engine:headers",
+    "//luxxle/test:*",
+
+    # these are layering violation and need to be fixed
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/content:testutil",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/brave_rewards/test:brave_rewards_unit_tests",
+  ]
+
+  if (enable_sparkle) {
+    if (build_sparkle) {
+      deps = [ "//luxxle/vendor/sparkle:sparkle_framework_bundle_data" ]
+    } else {
+      deps = [ ":prebuilt_sparkle_framework_bundle_data" ]
+    }
+  }
+
+  # Group depending on upstream's counterpart to make it easier to manage
+  # dependencies in brave/ (//chrome/browser does not depend on this target
+  # so //luxxle/browser becomes essentially an alias for //chrome/browser now).
+  public_deps = [ "//chrome/browser" ]
+}
+
+if (is_mac) {
+  source_set("mac_features") {
+    sources = [
+      "mac_features.cc",
+      "mac_features.h",
+    ]
+    deps = [ "//base" ]
+  }
+}
+
+source_set("unit_tests") {
+  testonly = true
+
+  sources = []
+  deps = []
+
+  if (is_win) {
+    sources += [ "default_protocol_handler_utils_win_unittest.cc" ]
+
+    deps += [
+      "//base",
+      "//luxxle/browser",
+      "//testing/gtest",
+    ]
+  }
+}

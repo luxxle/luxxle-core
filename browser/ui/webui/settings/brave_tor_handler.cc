@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/settings/brave_tor_handler.h"
+#include "luxxle/browser/ui/webui/settings/brave_tor_handler.h"
 
 #include <memory>
 #include <optional>
@@ -17,10 +17,10 @@
 #include "base/json/json_writer.h"
 #include "base/memory/ref_counted_memory.h"
 #include "base/values.h"
-#include "brave/browser/tor/tor_profile_service_factory.h"
-#include "brave/components/tor/pref_names.h"
-#include "brave/components/tor/tor_profile_service.h"
-#include "brave/components/tor/tor_utils.h"
+#include "luxxle/browser/tor/tor_profile_service_factory.h"
+#include "luxxle/components/tor/pref_names.h"
+#include "luxxle/components/tor/tor_profile_service.h"
+#include "luxxle/components/tor/tor_utils.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/image_fetcher/image_decoder_impl.h"
 #include "components/image_fetcher/core/image_decoder.h"

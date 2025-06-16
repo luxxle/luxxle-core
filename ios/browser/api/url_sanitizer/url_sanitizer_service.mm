@@ -8,12 +8,12 @@
 #include <string>
 
 #include "base/memory/raw_ptr.h"
-#include "brave/components/url_sanitizer/browser/url_sanitizer_service.h"
+#include "luxxle/components/url_sanitizer/browser/url_sanitizer_service.h"
 #import "net/base/apple/url_conversions.h"
 #include "url/gurl.h"
 
 @interface URLSanitizerService () {
-  raw_ptr<brave::URLSanitizerService> urlSanitizer_;  // NOT OWNED
+  raw_ptr<luxxle::URLSanitizerService> urlSanitizer_;  // NOT OWNED
 }
 
 @end
@@ -21,7 +21,7 @@
 @implementation URLSanitizerService
 
 - (instancetype)initWithURLSanitizerService:
-    (brave::URLSanitizerService*)urlSanitizer {
+    (luxxle::URLSanitizerService*)urlSanitizer {
   self = [super init];
   if (self) {
     urlSanitizer_ = urlSanitizer;

@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/views/frame/vertical_tab_strip_region_view.h"
+#include "luxxle/browser/ui/views/frame/vertical_tab_strip_region_view.h"
 
 #include <algorithm>
 #include <memory>
@@ -13,18 +13,18 @@
 
 #include "base/functional/bind.h"
 #include "base/strings/string_split.h"
-#include "brave/app/vector_icons/vector_icons.h"
-#include "brave/browser/ui/brave_browser.h"
-#include "brave/browser/ui/color/brave_color_id.h"
-#include "brave/browser/ui/tabs/brave_tab_prefs.h"
-#include "brave/browser/ui/views/brave_tab_search_bubble_host.h"
-#include "brave/browser/ui/views/frame/brave_contents_view_util.h"
-#include "brave/browser/ui/views/tabs/brave_new_tab_button.h"
-#include "brave/browser/ui/views/tabs/brave_tab_search_button.h"
-#include "brave/browser/ui/views/tabs/brave_tab_strip_layout_helper.h"
-#include "brave/browser/ui/views/tabs/vertical_tab_utils.h"
-#include "brave/components/constants/pref_names.h"
-#include "brave/components/vector_icons/vector_icons.h"
+#include "luxxle/app/vector_icons/vector_icons.h"
+#include "luxxle/browser/ui/brave_browser.h"
+#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/views/brave_tab_search_bubble_host.h"
+#include "luxxle/browser/ui/views/frame/brave_contents_view_util.h"
+#include "luxxle/browser/ui/views/tabs/brave_new_tab_button.h"
+#include "luxxle/browser/ui/views/tabs/brave_tab_search_button.h"
+#include "luxxle/browser/ui/views/tabs/brave_tab_strip_layout_helper.h"
+#include "luxxle/browser/ui/views/tabs/vertical_tab_utils.h"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/vector_icons/vector_icons.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/themes/theme_properties.h"
 #include "chrome/browser/ui/browser_list.h"

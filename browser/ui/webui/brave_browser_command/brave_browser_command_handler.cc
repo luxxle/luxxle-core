@@ -5,19 +5,19 @@
 
 // based on //chrome/browser/ui/webui/browser_command/browser_command_handler.cc
 
-#include "brave/browser/ui/webui/brave_browser_command/brave_browser_command_handler.h"
+#include "luxxle/browser/ui/webui/brave_browser_command/brave_browser_command_handler.h"
 
 #include "base/containers/contains.h"
-#include "brave/browser/ai_chat/ai_chat_service_factory.h"
-#include "brave/browser/brave_rewards/rewards_service_factory.h"
-#include "brave/browser/brave_wallet/brave_wallet_service_factory.h"
-#include "brave/components/brave_education/education_urls.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
-#include "brave/components/constants/webui_url_constants.h"
+#include "luxxle/browser/ai_chat/ai_chat_service_factory.h"
+// REMOVED: #include "luxxle/browser/brave_rewards/.*"
+// REMOVED: #include "luxxle/browser/brave_wallet/.*"
+#include "luxxle/components/brave_education/education_urls.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/browser/profiles/profile.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/browser/brave_vpn/vpn_utils.h"
+// REMOVED: #include "luxxle/browser/brave_vpn/.*"
 #endif
 
 namespace {

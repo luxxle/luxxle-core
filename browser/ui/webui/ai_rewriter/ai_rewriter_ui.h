@@ -3,18 +3,18 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BROWSER_UI_WEBUI_AI_REWRITER_AI_REWRITER_UI_H_
-#define BRAVE_BROWSER_UI_WEBUI_AI_REWRITER_AI_REWRITER_UI_H_
+#ifndef LUXXLE_BROWSER_UI_WEBUI_AI_REWRITER_AI_REWRITER_UI_H_
+#define LUXXLE_BROWSER_UI_WEBUI_AI_REWRITER_AI_REWRITER_UI_H_
 
 #include <memory>
 #include <string>
 
 #include "base/memory/weak_ptr.h"
-#include "brave/browser/ui/ai_rewriter/ai_rewriter_dialog_delegate.h"
-#include "brave/browser/ui/webui/ai_chat/ai_chat_ui_page_handler.h"
-#include "brave/components/ai_chat/core/browser/engine/engine_consumer.h"
-#include "brave/components/ai_chat/core/common/mojom/ai_chat.mojom-forward.h"
-#include "brave/components/ai_rewriter/common/mojom/ai_rewriter.mojom.h"
+#include "luxxle/browser/ui/ai_rewriter/ai_rewriter_dialog_delegate.h"
+#include "luxxle/browser/ui/webui/ai_chat/ai_chat_ui_page_handler.h"
+#include "luxxle/components/ai_chat/core/browser/engine/engine_consumer.h"
+#include "luxxle/components/ai_chat/core/common/mojom/ai_chat.mojom-forward.h"
+#include "luxxle/components/ai_rewriter/common/mojom/ai_rewriter.mojom.h"
 #include "chrome/browser/ui/webui/constrained_web_dialog_ui.h"
 #include "chrome/browser/ui/webui/top_chrome/top_chrome_web_ui_controller.h"
 #include "content/public/browser/web_contents.h"
@@ -82,4 +82,4 @@ class AIRewriterUI : public ConstrainedWebDialogUI,
 
 }  // namespace ai_rewriter
 
-#endif  // BRAVE_BROWSER_UI_WEBUI_AI_REWRITER_AI_REWRITER_UI_H_
+#endif  // LUXXLE_BROWSER_UI_WEBUI_AI_REWRITER_AI_REWRITER_UI_H_

@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/ui/brave_browser.h"
-#include "brave/browser/ui/browser_commands.h"
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
-#include "brave/browser/ui/views/frame/vertical_tab_strip_region_view.h"
-#include "brave/browser/ui/views/frame/vertical_tab_strip_widget_delegate_view.h"
-#include "brave/browser/ui/views/tabs/vertical_tab_utils.h"
-#include "brave/components/constants/pref_names.h"
+#include "luxxle/browser/ui/brave_browser.h"
+#include "luxxle/browser/ui/browser_commands.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/frame/vertical_tab_strip_region_view.h"
+#include "luxxle/browser/ui/views/frame/vertical_tab_strip_widget_delegate_view.h"
+#include "luxxle/browser/ui/views/tabs/vertical_tab_utils.h"
+#include "luxxle/components/constants/pref_names.h"
 #include "build/build_config.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/frame/window_frame_util.h"
@@ -91,7 +91,7 @@ class VerticalTabSearchButtonBrowserTest : public InProcessBrowserTest {
 
 IN_PROC_BROWSER_TEST_F(VerticalTabSearchButtonBrowserTest,
                        ButtonClickCreatesBubble) {
-  brave::ToggleVerticalTabStrip(browser());
+  luxxle::ToggleVerticalTabStrip(browser());
   ASSERT_TRUE(tabs::utils::ShouldShowVerticalTabs(browser()));
 
   ASSERT_EQ(nullptr, bubble_manager()->GetBubbleWidget());

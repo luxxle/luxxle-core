@@ -7,8 +7,8 @@
 
 #include <optional>
 
-#include "brave/app/brave_command_ids.h"
-#include "brave/components/ai_chat/core/common/pref_names.h"
+#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/components/ai_chat/core/common/pref_names.h"
 #include "chrome/browser/autocomplete/autocomplete_classifier_factory.h"
 #include "chrome/browser/autocomplete/chrome_autocomplete_provider_client.h"
 #include "chrome/browser/custom_handlers/protocol_handler_registry_factory.h"

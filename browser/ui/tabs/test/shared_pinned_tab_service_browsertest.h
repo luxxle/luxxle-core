@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_TABS_TEST_SHARED_PINNED_TAB_SERVICE_BROWSERTEST_H_
-#define BRAVE_BROWSER_UI_TABS_TEST_SHARED_PINNED_TAB_SERVICE_BROWSERTEST_H_
+#ifndef LUXXLE_BROWSER_UI_TABS_TEST_SHARED_PINNED_TAB_SERVICE_BROWSERTEST_H_
+#define LUXXLE_BROWSER_UI_TABS_TEST_SHARED_PINNED_TAB_SERVICE_BROWSERTEST_H_
 
 #include "base/test/scoped_feature_list.h"
-#include "brave/browser/ui/tabs/shared_pinned_tab_service_factory.h"
+#include "luxxle/browser/ui/tabs/shared_pinned_tab_service_factory.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/tabs/tab_strip_model.h"
 #include "chrome/test/base/in_process_browser_test.h"
@@ -45,4 +45,4 @@ class SharedPinnedTabServiceBrowserTest : public InProcessBrowserTest {
   std::unique_ptr<base::RunLoop> run_loop_;
 };
 
-#endif  // BRAVE_BROWSER_UI_TABS_TEST_SHARED_PINNED_TAB_SERVICE_BROWSERTEST_H_
+#endif  // LUXXLE_BROWSER_UI_TABS_TEST_SHARED_PINNED_TAB_SERVICE_BROWSERTEST_H_

@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef BRAVE_BROWSER_UI_TOOLBAR_BRAVE_APP_MENU_MODEL_H_
-#define BRAVE_BROWSER_UI_TOOLBAR_BRAVE_APP_MENU_MODEL_H_
+#ifndef LUXXLE_BROWSER_UI_TOOLBAR_BRAVE_APP_MENU_MODEL_H_
+#define LUXXLE_BROWSER_UI_TOOLBAR_BRAVE_APP_MENU_MODEL_H_
 
 #include <memory>
 #include <optional>
@@ -13,12 +13,12 @@
 #include <vector>
 
 #include "base/gtest_prod_util.h"
-#include "brave/components/brave_vpn/common/buildflags/buildflags.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #include "chrome/browser/ui/toolbar/app_menu_model.h"
 #include "ui/menus/simple_menu_model.h"
 
 #if defined(TOOLKIT_VIEWS)
-#include "brave/components/sidebar/browser/sidebar_service.h"
+#include "luxxle/components/sidebar/browser/sidebar_service.h"
 #endif  // defined(TOOLKIT_VIEWS)
 
 namespace ui {
@@ -78,4 +78,4 @@ class BraveAppMenuModel : public AppMenuModel {
 #endif  // defined(TOOLKIT_VIEWS)
 };
 
-#endif  // BRAVE_BROWSER_UI_TOOLBAR_BRAVE_APP_MENU_MODEL_H_
+#endif  // LUXXLE_BROWSER_UI_TOOLBAR_BRAVE_APP_MENU_MODEL_H_

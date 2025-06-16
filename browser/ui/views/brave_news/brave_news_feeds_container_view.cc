@@ -3,13 +3,13 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/views/brave_news/brave_news_feeds_container_view.h"
+#include "luxxle/browser/ui/views/brave_news/brave_news_feeds_container_view.h"
 
 #include <memory>
 
-#include "brave/browser/brave_news/brave_news_tab_helper.h"
-#include "brave/browser/themes/brave_dark_mode_utils.h"
-#include "brave/browser/ui/views/brave_news/brave_news_feed_item_view.h"
+#include "luxxle/browser/brave_news/brave_news_tab_helper.h"
+#include "luxxle/browser/themes/brave_dark_mode_utils.h"
+#include "luxxle/browser/ui/views/brave_news/brave_news_feed_item_view.h"
 #include "content/public/browser/web_contents.h"
 #include "third_party/skia/include/core/SkColor.h"
 #include "ui/base/metadata/metadata_impl_macros.h"

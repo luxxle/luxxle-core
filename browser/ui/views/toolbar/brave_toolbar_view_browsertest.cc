@@ -3,21 +3,21 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/views/toolbar/brave_toolbar_view.h"
+#include "luxxle/browser/ui/views/toolbar/brave_toolbar_view.h"
 
 #include "base/functional/callback_helpers.h"
 #include "base/memory/raw_ptr.h"
 #include "base/test/scoped_feature_list.h"
-#include "brave/browser/ui/views/frame/brave_browser_view.h"
-#include "brave/browser/ui/views/toolbar/ai_chat_button.h"
-#include "brave/browser/ui/views/toolbar/bookmark_button.h"
-#include "brave/browser/ui/views/toolbar/wallet_button.h"
-#include "brave/components/ai_chat/core/browser/utils.h"
-#include "brave/components/ai_chat/core/common/features.h"
-#include "brave/components/ai_chat/core/common/pref_names.h"
-#include "brave/components/brave_wallet/browser/pref_names.h"
-#include "brave/components/constants/pref_names.h"
-#include "brave/components/skus/common/features.h"
+#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/toolbar/ai_chat_button.h"
+#include "luxxle/browser/ui/views/toolbar/bookmark_button.h"
+#include "luxxle/browser/ui/views/toolbar/wallet_button.h"
+#include "luxxle/components/ai_chat/core/browser/utils.h"
+#include "luxxle/components/ai_chat/core/common/features.h"
+#include "luxxle/components/ai_chat/core/common/pref_names.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/skus/common/features.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/profiles/profile_attributes_storage.h"
@@ -46,10 +46,10 @@
 #include "ui/views/view.h"
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "brave/browser/ui/views/toolbar/brave_vpn_button.h"
-#include "brave/components/brave_vpn/common/brave_vpn_utils.h"
-#include "brave/components/brave_vpn/common/features.h"
-#include "brave/components/brave_vpn/common/pref_names.h"
+#include "luxxle/browser/ui/views/toolbar/brave_vpn_button.h"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/brave_vpn/.*"
 #endif
 
 class BraveToolbarViewTest : public InProcessBrowserTest {

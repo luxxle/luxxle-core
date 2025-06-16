@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/views/brave_actions/brave_shields_action_view.h"
+#include "luxxle/browser/ui/views/brave_actions/brave_shields_action_view.h"
 
 #include <memory>
 #include <string>
@@ -11,12 +11,12 @@
 
 #include "base/check_deref.h"
 #include "base/memory/weak_ptr.h"
-#include "brave/browser/ui/brave_icon_with_badge_image_source.h"
-#include "brave/browser/ui/webui/brave_shields/shields_panel_ui.h"
-#include "brave/components/constants/pref_names.h"
-#include "brave/components/constants/url_constants.h"
-#include "brave/components/constants/webui_url_constants.h"
-#include "brave/components/speedreader/common/buildflags/buildflags.h"
+#include "luxxle/browser/ui/brave_icon_with_badge_image_source.h"
+#include "luxxle/browser/ui/webui/brave_shields/shields_panel_ui.h"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/constants/url_constants.h"
+#include "luxxle/components/constants/webui_url_constants.h"
+#include "luxxle/components/speedreader/common/buildflags/buildflags.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/layout_constants.h"
 #include "chrome/browser/ui/omnibox/omnibox_theme.h"
@@ -46,7 +46,7 @@
 #include "url/gurl.h"
 
 #if BUILDFLAG(ENABLE_SPEEDREADER)
-#include "brave/browser/speedreader/speedreader_tab_helper.h"
+#include "luxxle/browser/speedreader/speedreader_tab_helper.h"
 #endif
 
 namespace {
@@ -149,7 +149,7 @@ BraveShieldsActionView::GetImageSource() {
                    : base::WeakPtr<content::WebContents>());
 
   std::unique_ptr<IconWithBadgeImageSource> image_source(
-      new brave::BraveIconWithBadgeImageSource(
+      new luxxle::BraveIconWithBadgeImageSource(
           preferred_size, std::move(get_color_provider_callback),
           GetLayoutConstant(LOCATION_BAR_TRAILING_ICON_SIZE),
           kBraveActionLeftMarginExtra));
@@ -189,8 +189,8 @@ gfx::ImageSkia BraveShieldsActionView::GetIconImage(bool is_enabled) {
   ui::ResourceBundle& rb = ui::ResourceBundle::GetSharedInstance();
   gfx::ImageSkia image;
   const SkBitmap bitmap =
-      rb.GetImageNamed(is_enabled ? IDR_BRAVE_SHIELDS_ICON_64
-                                  : IDR_BRAVE_SHIELDS_ICON_64_DISABLED)
+      rb.GetImageNamed(is_enabled ? /* REMOVED: IDR_BRAVE_SHIELDS_ICON_64 */ 0
+                                  : /* REMOVED: IDR_BRAVE_SHIELDS_ICON_64_DISABLED */ 0)
           .AsBitmap();
   float scale = static_cast<float>(bitmap.width()) /
                 GetLayoutConstant(LOCATION_BAR_TRAILING_ICON_SIZE);

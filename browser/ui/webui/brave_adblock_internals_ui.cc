@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/browser/ui/webui/brave_adblock_internals_ui.h"
+#include "luxxle/browser/ui/webui/brave_adblock_internals_ui.h"
 
 #include <memory>
 #include <optional>
@@ -15,10 +15,10 @@
 #include "base/process/process.h"
 #include "base/strings/string_number_conversions.h"
 #include "base/values.h"
-#include "brave/browser/brave_browser_process.h"
-#include "brave/browser/ui/webui/brave_webui_source.h"
-#include "brave/components/brave_adblock/adblock_internals/resources/grit/brave_adblock_internals_generated_map.h"
-#include "brave/components/brave_shields/content/browser/ad_block_service.h"
+#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/ui/webui/brave_webui_source.h"
+#include "luxxle/components/brave_adblock/adblock_internals/resources/grit/brave_adblock_internals_generated_map.h"
+#include "luxxle/components/brave_shields/content/browser/ad_block_service.h"
 #include "components/grit/brave_components_resources.h"
 #include "content/public/browser/web_ui.h"
 #include "content/public/browser/web_ui_controller.h"
@@ -137,7 +137,7 @@ BraveAdblockInternalsUI::BraveAdblockInternalsUI(content::WebUI* web_ui)
     : content::WebUIController(web_ui) {
   CreateAndAddWebUIDataSource(web_ui, kAdblockInternalsHost,
                               kBraveAdblockInternalsGenerated,
-                              IDR_BRAVE_ADBLOCK_INTERNALS_HTML);
+                              /* REMOVED: IDR_BRAVE_ADBLOCK_INTERNALS_HTML */ 0);
 
   web_ui->AddMessageHandler(
       std::make_unique<BraveAdblockInternalsMessageHandler>());

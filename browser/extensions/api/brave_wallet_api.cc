@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/browser/extensions/api/brave_wallet_api.h"
+#include "luxxle/browser/extensions/api/brave_wallet_api.h"
 
 #include <optional>
 #include <string>
@@ -11,10 +11,10 @@
 #include "base/feature_list.h"
 #include "base/json/json_writer.h"
 #include "base/values.h"
-#include "brave/common/extensions/api/brave_wallet.h"
-#include "brave/components/brave_wallet/browser/brave_wallet_utils.h"
-#include "brave/components/brave_wallet/common/brave_wallet.mojom.h"
-#include "brave/components/brave_wallet/common/common_utils.h"
+#include "luxxle/common/extensions/api/brave_wallet.h"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/brave_wallet/.*"
 #include "brave/grit/brave_generated_resources.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/extensions/extension_tab_util.h"
