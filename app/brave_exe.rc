@@ -36,7 +36,7 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 // icons.  To avoid breaking existing shortcuts, add new icons at the end
 // (following the ordering described above).
 #if defined(OFFICIAL_BUILD)
-IDR_MAINFRAME           ICON       "theme\\luxxle\\win\\brave.ico"
+IDR_MAINFRAME           ICON       "theme\\luxxle\\win\\luxxle.ico"
 // These three are no longer used, but remain as placeholders. (They cannot be
 // removed, or existing shortcuts to the later resources will break.)
 IDR_MAINFRAME_2         ICON       "theme\\luxxle\\win\\placeholder.ico"

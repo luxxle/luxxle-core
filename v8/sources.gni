@@ -11,7 +11,6 @@ brave_v8_headers_public_deps =
     # Commented out: removed components dependency - using Chromium defaults instead
     # [ "//luxxle/components/brave_page_graph/common:buildflags" ]
 
-if (enable_brave_page_graph) {
   brave_v8_headers_sources +=
       [ "//luxxle/v8/include/v8-isolate-page-graph-utils.h" ]
 }

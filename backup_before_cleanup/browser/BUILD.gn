@@ -26,6 +26,7 @@ source_set("browser_process") {
     "//chrome/browser/*",
   ]
 
+  sources = [ "brave_browser_process.h" ]
 
   deps = [
     # Commented out: removed components dependency - using Chromium defaults instead

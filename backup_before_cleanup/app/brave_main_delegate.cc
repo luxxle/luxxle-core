@@ -1,9 +1,9 @@
-/* Copyright (c) 2019 The Luxxle Authors. All rights reserved.
+/* Copyright (c) 2019 The Brave Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "luxxle/app/brave_main_delegate.h"
+#include "brave/app/brave_main_delegate.h"
 
 #include <memory>
 #include <optional>
@@ -14,17 +14,17 @@
 #include "base/path_service.h"
 #include "base/strings/strcat.h"
 #include "base/time/time.h"
-#include "luxxle/browser/brave_content_browser_client.h"
-#include "luxxle/common/resource_bundle_helper.h"
-#include "luxxle/components/brave_component_updater/browser/features.h"
-#include "luxxle/components/brave_component_updater/browser/switches.h"
-#include "luxxle/components/brave_sync/buildflags.h"
-#include "luxxle/components/constants/brave_switches.h"
-#include "luxxle/components/speedreader/common/buildflags/buildflags.h"
-#include "luxxle/components/update_client/buildflags.h"
-#include "luxxle/components/variations/command_line_utils.h"
-#include "luxxle/renderer/brave_content_renderer_client.h"
-#include "luxxle/utility/brave_content_utility_client.h"
+#include "brave/browser/brave_content_browser_client.h"
+#include "brave/common/resource_bundle_helper.h"
+#include "brave/components/brave_component_updater/browser/features.h"
+#include "brave/components/brave_component_updater/browser/switches.h"
+#include "brave/components/brave_sync/buildflags.h"
+#include "brave/components/constants/brave_switches.h"
+#include "brave/components/speedreader/common/buildflags/buildflags.h"
+#include "brave/components/update_client/buildflags.h"
+#include "brave/components/variations/command_line_utils.h"
+#include "brave/renderer/brave_content_renderer_client.h"
+#include "brave/utility/brave_content_utility_client.h"
 #include "build/build_config.h"
 #include "chrome/app/chrome_main_delegate.h"
 #include "chrome/common/chrome_features.h"
@@ -131,7 +131,7 @@ void BraveMainDelegate::AppendCommandLineOptions() {
 
   command_line->AppendSwitchASCII(switches::kLsoUrl, kDummyUrl);
 
-  // Luxxle's sync protocol does not use the sync service url
+  // Brave's sync protocol does not use the sync service url
   if (!command_line->HasSwitch(syncer::kSyncServiceURL)) {
     command_line->AppendSwitchASCII(syncer::kSyncServiceURL,
                                     brave_sync_service_url.c_str());
@@ -182,8 +182,8 @@ void BraveMainDelegate::PreSandboxStartup() {
   base::GetLinuxDistro();
 #endif
 
-  if (luxxle::SubprocessNeedsResourceBundle()) {
-    luxxle::InitializeResourceBundle();
+  if (brave::SubprocessNeedsResourceBundle()) {
+    brave::InitializeResourceBundle();
   }
 }
 

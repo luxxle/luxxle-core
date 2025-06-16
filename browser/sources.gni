@@ -5,9 +5,7 @@
 
 import("//luxxle/browser/ai_chat/android/sources.gni")
 import("//luxxle/browser/autocomplete/sources.gni")
-import("//luxxle/browser/brave_news/sources.gni")
 import("//luxxle/browser/brave_referrals/sources.gni")
-import("//luxxle/browser/brave_rewards/android/sources.gni")
 import("//luxxle/browser/browsing_data/sources.gni")
 import("//luxxle/browser/cosmetic_filters/sources.gni")
 import("//luxxle/browser/debounce/sources.gni")
@@ -117,12 +115,6 @@ brave_chrome_browser_deps = [
   "//luxxle/browser/ai_chat",
   "//luxxle/browser/brave_adaptive_captcha",
   "//luxxle/browser/brave_adaptive_captcha:impl",
-  "//luxxle/browser/brave_ads",
-  "//luxxle/browser/brave_ads:impl",
-  "//luxxle/browser/brave_ads/creatives/search_result_ad",
-  "//luxxle/browser/brave_ads/tabs",
-  "//luxxle/browser/brave_rewards:brave_rewards_impl",
-  "//luxxle/browser/brave_rewards:util",
   "//luxxle/browser/component_updater",
   "//luxxle/browser/metrics/buildflags",
   "//luxxle/browser/misc_metrics",
@@ -382,7 +374,6 @@ if (!is_android) {
     "//luxxle/browser/ui/tabs:impl",
     "//luxxle/browser/ui/webui/brave_new_tab_page_refresh",
     "//luxxle/browser/ui/webui/brave_new_tab_page_refresh:mojom",
-    "//luxxle/browser/ui/webui/brave_news_internals",
     "//luxxle/browser/user_education:features",
     "//chrome/browser/regional_capabilities",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -488,15 +479,12 @@ if (enable_web_discovery_native) {
 if (is_android) {
   brave_chrome_browser_sources += [
     "//luxxle/browser/android/brave_init_android.cc",
-    "//luxxle/browser/sync/brave_sync_devices_android.cc",
-    "//luxxle/browser/sync/brave_sync_devices_android.h",
     "//chrome/browser/bookmarks/bookmark_html_writer.cc",
     "//chrome/browser/bookmarks/bookmark_html_writer.h",
     "//chrome/browser/importer/profile_writer.cc",
     "//chrome/browser/importer/profile_writer.h",
   ]
 
-  brave_chrome_browser_sources += brave_browser_brave_rewards_android_sources
   brave_chrome_browser_sources += brave_browser_misc_metrics_android_sources
 
   brave_chrome_browser_deps += [
@@ -506,7 +494,6 @@ if (is_android) {
     "//luxxle/browser/android/safe_browsing:buildflags",
     "//luxxle/browser/android/youtube_script_injector",
     "//luxxle/browser/android/youtube_script_injector:features",
-    "//luxxle/browser/brave_ads/android",
     "//luxxle/browser/download/android:jni_headers",
     "//luxxle/browser/ntp_background/android",
     "//luxxle/browser/ui/webui/new_tab_takeover/android:new_tab_takeover",
@@ -525,7 +512,6 @@ if (is_android) {
 
   brave_chrome_browser_deps += [
     "//luxxle/app:brave_generated_resources_grit",
-    "//luxxle/browser/brave_ads/tooltips",
     "//luxxle/browser/importer",
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -636,7 +622,6 @@ if (is_mac) {
 
 brave_chrome_browser_sources += brave_browser_profiles_sources
 brave_chrome_browser_sources += brave_browser_autocomplete_sources
-brave_chrome_browser_sources += brave_browser_brave_news_sources
 brave_chrome_browser_sources += brave_browser_brave_referrals_sources
 brave_chrome_browser_sources += brave_browser_browsing_data_sources
 brave_chrome_browser_sources += brave_browser_cosmetic_filters_sources
@@ -661,7 +646,6 @@ brave_chrome_browser_sources += brave_browser_web_discovery_sources
 brave_chrome_browser_sources += brave_browser_webcompat_reporter_sources
 
 brave_chrome_browser_deps += brave_browser_autocomplete_deps
-brave_chrome_browser_deps += brave_browser_brave_news_deps
 brave_chrome_browser_deps += brave_browser_brave_referrals_deps
 brave_chrome_browser_deps += brave_browser_browsing_data_deps
 brave_chrome_browser_deps += brave_browser_cosmetic_filters_deps
@@ -693,8 +677,6 @@ brave_chrome_browser_ui_allow_circular_includes_from +=
 
 brave_chrome_browser_allow_circular_includes_from = [
   "//luxxle/browser/ui",
-  "//luxxle/browser/brave_ads:impl",
-  "//luxxle/browser/brave_ads/creatives/search_result_ad",
   "//luxxle/browser/ntp_background",
 ]
 
