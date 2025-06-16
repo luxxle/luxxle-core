@@ -15,7 +15,6 @@ source_set("unittests") {
     deps = [
       "//base/test:test_support",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_shields/content/browser",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/resources:strings_grit",
       "//chrome/browser",

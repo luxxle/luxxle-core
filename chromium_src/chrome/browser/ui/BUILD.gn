@@ -1,35 +1,8 @@
-# Copyright (c) 2020 The Brave Authors. All rights reserved.
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this file,
-# You can obtain one at http://mozilla.org/MPL/2.0/.
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 
-# Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_webtorrent/browser/buildflags/buildflags.gni")
-import("//build/config/ui.gni")
+# Empty BUILD.gn file - all Brave overrides have been removed
+# This file exists only to satisfy build dependencies that still reference this path
 
 group("ui") {
-  deps = []  # Initialize empty deps array
-  
-  if (is_mac) {
-    deps += [ "//luxxle/browser:mac_features" ]
-  }
-
-  if (toolkit_views) {
-    deps += [
-      # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/ai_chat/content/browser",
-      # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/ai_chat/core/browser",
-      # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/ai_chat/core/common",
-      # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/sidebar/browser",
-    ]
-  }
-
-  # Commented out: Webtorrent functionality disabled for Luxxle
-  # if (enable_brave_webtorrent) {
-  #   # Commented out: removed components dependency - using Chromium defaults instead
-  #   # deps += [ "//luxxle/components/brave_webtorrent/browser" ]
-  # }
-}
+  # No dependencies - using Chromium defaults
+} 

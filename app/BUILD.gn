@@ -5,13 +5,10 @@
 
 import("//luxxle/browser/shell_integrations/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/playlist/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/request_otr/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/speedreader/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/text_recognition/common/buildflags/buildflags.gni")
 import("//luxxle/resources/brave_grit.gni")
@@ -63,11 +60,8 @@ source_set("command_ids") {
 brave_grit("brave_generated_resources_grit") {
   defines = [
     # Commented out: removed feature flags that require components
-    # "enable_brave_vpn=$enable_brave_vpn",
     # "enable_pin_shortcut=$enable_pin_shortcut",
-    # "enable_playlist_webui=$enable_playlist_webui", 
     # "enable_request_otr=$enable_request_otr",
-    # "enable_speedreader=$enable_speedreader",
     # "enable_text_recognition=$enable_text_recognition",
   ]
   source = "brave_generated_resources.grd"

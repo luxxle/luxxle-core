@@ -30,11 +30,9 @@ source_set("browser_process") {
 
   deps = [
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_vpn/common/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/request_otr/common/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/speedreader/common/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/tor/buildflags",
     "//chrome/browser:browser_process",

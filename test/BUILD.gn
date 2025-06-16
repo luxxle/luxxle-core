@@ -6,13 +6,8 @@
 import("//luxxle/android/android_browser_tests.gni")
 import("//luxxle/browser/metrics/buildflags/buildflags.gni")
 import("//luxxle/build/config.gni")
-# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
-# import("//luxxle/components/brave_wayback_machine/buildflags/buildflags.gni")
-# import("//luxxle/components/brave_webtorrent/browser/buildflags/buildflags.gni")
 # import("//luxxle/components/ntp_background_images/buildflags/buildflags.gni")
-# import("//luxxle/components/playlist/common/buildflags/buildflags.gni")
 # import("//luxxle/components/request_otr/common/buildflags/buildflags.gni")
-# import("//luxxle/components/speedreader/common/buildflags/buildflags.gni")
 # import("//luxxle/components/tor/buildflags/buildflags.gni")
 # import("//luxxle/components/web_discovery/buildflags/buildflags.gni")
 import("//luxxle/test/testing.gni")
@@ -44,17 +39,12 @@ static_library("test_support") {
   deps = [
     "//luxxle/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/content/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/content/test:test_support",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_vpn/common/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/tor/buildflags",
   ]
   # Commented out: VPN component removed
-  # if (enable_brave_vpn) {
-  #   deps += [ "//luxxle/components/brave_vpn/browser/connection:api" ]
   # }
 }
 
@@ -109,15 +99,16 @@ test("brave_unit_tests") {
     "//luxxle/browser/browsing_data/brave_browsing_data_remover_delegate_unittest.cc",
     "//luxxle/browser/download/brave_download_item_model_unittest.cc",
     "//luxxle/browser/profiles/profile_util_unittest.cc",
-    "//luxxle/chromium_src/chrome/browser/favicon/favicon_utils_unittest.cc",
-    "//luxxle/chromium_src/chrome/browser/history/history_utils_unittest.cc",
-    "//luxxle/chromium_src/chrome/browser/lookalikes/lookalike_url_navigation_throttle_unittest.cc",
-    "//luxxle/chromium_src/chrome/browser/signin/account_consistency_disabled_unittest.cc",
+    # Removed chromium_src unittest files - no longer needed after removing Brave overrides
+    # "//luxxle/chromium_src/chrome/browser/favicon/favicon_utils_unittest.cc",
+    # "//luxxle/chromium_src/chrome/browser/history/history_utils_unittest.cc",
+    # "//luxxle/chromium_src/chrome/browser/lookalikes/lookalike_url_navigation_throttle_unittest.cc",
+    # "//luxxle/chromium_src/chrome/browser/signin/account_consistency_disabled_unittest.cc",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/chromium_src/components/autofill/core/browser/studies/autofill_experiments_unittest.cc",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/chromium_src/components/variations/service/field_trial_unittest.cc",
-    "//luxxle/chromium_src/net/cookies/brave_canonical_cookie_unittest.cc",
+    # "//luxxle/chromium_src/net/cookies/brave_canonical_cookie_unittest.cc",
     "//luxxle/common/brave_content_client_unittest.cc",
     "//luxxle/common/profiler/thread_profile_configuration_unittest.cc",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -129,13 +120,10 @@ test("brave_unit_tests") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_perf_predictor/browser/named_third_party_registry_unittest.cc",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_perf_predictor/browser/p3a_bandwidth_savings_tracker_unittest.cc",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_private_cdn/private_cdn_helper_unittest.cc",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search/browser/brave_search_default_host_unittest.cc",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search/browser/brave_search_fallback_host_unittest.cc",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_sync/crypto/crypto_unittest.cc",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -209,9 +197,6 @@ test("brave_unit_tests") {
     "//luxxle/browser/autocomplete:unit_tests",
     "//luxxle/browser/brave_ads",
     "//luxxle/browser/brave_ads/device_id:unit_tests",
-    "//luxxle/browser/brave_stats:unit_tests",
-    "//luxxle/browser/brave_wallet",
-    "//luxxle/browser/brave_wallet:unit_tests",
     "//luxxle/browser/content_settings:unit_tests",
     "//luxxle/browser/decentralized_dns/test:unit_tests",
     "//luxxle/browser/ephemeral_storage:unit_tests",
@@ -236,7 +221,8 @@ test("brave_unit_tests") {
     # "//luxxle/chromium_src/components/privacy_sandbox:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/chromium_src/components/webui/flags:unit_tests",
-    "//luxxle/chromium_src/net/base:unit_tests",
+    # Removed chromium_src/net/base:unit_tests - no longer needed after removing Brave overrides
+    # "//luxxle/chromium_src/net/base:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/ai_chat/core/browser:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -278,31 +264,19 @@ test("brave_unit_tests") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_rewards/core/engine/test",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search/browser:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search/common:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search_conversion",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search_conversion:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_service_keys:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/content/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/content/test:test_support",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/content/test:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/core/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/core/common:mojom",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/core/test:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_sync:crypto",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -312,21 +286,13 @@ test("brave_unit_tests") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_user_agent/browser:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser:constants",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser:pref_names",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser/test:brave_wallet_unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/common:mojom",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/common:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/renderer/test:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/challenge_bypass_ristretto:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -372,11 +338,8 @@ test("brave_unit_tests") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/omnibox/browser:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/p3a",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/p3a:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/p3a_utils/test:p3a_utils_unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/permissions:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -392,7 +355,6 @@ test("brave_unit_tests") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/search_engines:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/services/brave_wallet/zcash:zcash_decoder_unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/sessions/content:unit_tests",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -508,7 +470,6 @@ test("brave_unit_tests") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_rewards/content",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_stats/browser",
   ]
 
   if (is_win) {
@@ -527,23 +488,15 @@ test("brave_unit_tests") {
     deps += [ "//luxxle/browser/widevine:unittests" ]
   }
 
-  if (enable_brave_vpn) {
     deps += [
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_vpn/browser:unit_tests",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_vpn/common:unit_tests",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_vpn/common/wireguard:unit_tests",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/skus/browser:unit_tests",
     ]
     if (is_win) {
       deps += [
-        "//luxxle/browser/brave_vpn/dns:unit_tests",
-        "//luxxle/browser/brave_vpn/win:unit_tests",
-        "//luxxle/browser/brave_vpn/win/brave_vpn_helper:unit_tests",
-        "//luxxle/browser/brave_vpn/win/brave_vpn_wireguard_service:unit_tests",
       ]
     }
   }
@@ -551,11 +504,8 @@ test("brave_unit_tests") {
     deps += [ "//chrome/browser/ui/views" ]
   }
 
-  if (enable_playlist) {
     deps += [
-      "//luxxle/browser/playlist/test:unit_tests",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/playlist/common:unit_tests",
     ]
   }
 
@@ -599,10 +549,9 @@ test("brave_unit_tests") {
       "//luxxle/browser/ui/views/accelerator_table_unittest.cc",
       "//luxxle/browser/ui/views/bookmarks/brave_bookmark_context_menu_unittest.cc",
       "//luxxle/browser/ui/views/wallet_bubble_focus_observer_unittest.cc",
-      "//luxxle/browser/ui/webui/brave_wallet/wallet_common_ui_unittest.cc",
-      "//luxxle/browser/ui/webui/settings/brave_wallet_handler_unittest.cc",
-      "//luxxle/chromium_src/chrome/browser/devtools/url_constants_unittest.cc",
-      "//luxxle/chromium_src/chrome/browser/profiles/profile_avatar_icon_util_unittest.cc",
+      # Removed chromium_src unittest files - no longer needed after removing Brave overrides
+      # "//luxxle/chromium_src/chrome/browser/devtools/url_constants_unittest.cc",
+      # "//luxxle/chromium_src/chrome/browser/profiles/profile_avatar_icon_util_unittest.cc",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/chromium_src/components/update_client/request_sender_unittest.cc",
       "//chrome/browser/push_messaging/push_messaging_app_identifier_unittest.cc",
@@ -628,8 +577,8 @@ test("brave_unit_tests") {
       # "//components/password_manager/core/browser/ui/weak_check_utility_unittest.cc",
 
       # TODO(samartnik): this should work on Android, we will review it once unit tests are set up on CI
-      "//luxxle/browser/ui/brave_shields_data_controller_unittest.cc",
-      "//luxxle/chromium_src/chrome/browser/external_protocol/external_protocol_handler_unittest.cc",
+      # Removed chromium_src unittest files - no longer needed after removing Brave overrides
+      # "//luxxle/chromium_src/chrome/browser/external_protocol/external_protocol_handler_unittest.cc",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/chromium_src/components/search_engines/brave_template_url_prepopulate_data_unittest.cc",
       # Commented out: removed components dependency - using Chromium defaults instead
@@ -654,15 +603,10 @@ test("brave_unit_tests") {
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/brave_news/common:unit_tests",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_shields/core/common:mojom",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_vpn/common/buildflags",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet/browser:pref_names",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet/browser:utils",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet/common:test_support",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/commands/browser:unit_tests",
       # Commented out: removed components dependency - using Chromium defaults instead
@@ -695,8 +639,9 @@ test("brave_unit_tests") {
 
   if (is_mac) {
     sources += [
-      "//luxxle/chromium_src/chrome/browser/shell_integration_unittest_mac.cc",
-      "//luxxle/chromium_src/chrome/common/chrome_constants_unittest_mac.cc",
+          # Removed chromium_src unittest files - no longer needed after removing Brave overrides
+    # "//luxxle/chromium_src/chrome/browser/shell_integration_unittest_mac.cc",
+    # "//luxxle/chromium_src/chrome/common/chrome_constants_unittest_mac.cc",
     ]
   }
 
@@ -775,21 +720,15 @@ test("brave_unit_tests") {
     ]
   }
 
-  if (enable_brave_wayback_machine) {
     sources += [
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wayback_machine/brave_wayback_machine_utils_unittest.cc",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wayback_machine/wayback_machine_url_fetcher_unittest.cc",
     ]
 
     # Commented out: removed components dependency - using Chromium defaults instead
-    # deps += [ "//luxxle/components/brave_wayback_machine" ]
   }
 
-  if (enable_speedreader) {
     # Commented out: removed components dependency - using Chromium defaults instead
-    # deps += [ "//luxxle/components/speedreader:unit_tests" ]
   }
 }
 
@@ -820,12 +759,13 @@ if (!is_android) {
 
     if (is_win) {
       sources = [
-        "//luxxle/chromium_src/chrome/install_static/brave_install_details_unittest.cc",
-        "//luxxle/chromium_src/chrome/install_static/brave_install_modes_unittest.cc",
-        "//luxxle/chromium_src/chrome/install_static/brave_install_util_unittest.cc",
-        "//luxxle/chromium_src/chrome/install_static/brave_product_install_details_unittest.cc",
-        "//luxxle/chromium_src/chrome/install_static/brave_user_data_dir_win_unittest.cc",
-        "//luxxle/chromium_src/chrome/installer/mini_installer/brave_mini_installer_unittest.cc",
+            # Removed chromium_src unittest files - no longer needed after removing Brave overrides
+    # "//luxxle/chromium_src/chrome/install_static/brave_install_details_unittest.cc",
+    # "//luxxle/chromium_src/chrome/install_static/brave_install_modes_unittest.cc",
+    # "//luxxle/chromium_src/chrome/install_static/brave_install_util_unittest.cc",
+    # "//luxxle/chromium_src/chrome/install_static/brave_product_install_details_unittest.cc",
+    # "//luxxle/chromium_src/chrome/install_static/brave_user_data_dir_win_unittest.cc",
+    # "//luxxle/chromium_src/chrome/installer/mini_installer/brave_mini_installer_unittest.cc",
       ]
       include_dirs = [ "$target_gen_dir" ]
       deps += [
@@ -844,9 +784,9 @@ if (!is_android) {
         "//testing/gtest",
       ]
 
-      if (enable_brave_vpn) {
         deps += [
-          "//luxxle/chromium_src/chrome/installer/setup/test:vpn_unit_tests",
+          # Removed chromium_src unittest files - no longer needed after removing Brave overrides
+    # "//luxxle/chromium_src/chrome/installer/setup/test:vpn_unit_tests",
         ]
       }
     }
@@ -939,9 +879,7 @@ if (!is_android) {
       # deps += [ "//luxxle/components/sidebar/browser" ]
     }
 
-    if (enable_playlist_webui) {
       # Commented out: removed components dependency - using Chromium defaults instead
-      # deps += [ "//luxxle/components/playlist/common" ]
     }
   }
 }
@@ -970,27 +908,6 @@ test("brave_browser_tests") {
     "//luxxle/browser/brave_content_browser_client_browsertest.cc",
     "//luxxle/browser/brave_prefs_browsertest.cc",
     "//luxxle/browser/brave_scheme_load_browsertest.cc",
-    "//luxxle/browser/brave_shields/ad_block_devtools_browsertest.cc",
-    "//luxxle/browser/brave_shields/ad_block_service_browsertest.cc",
-    "//luxxle/browser/brave_shields/ad_block_service_browsertest.h",
-    "//luxxle/browser/brave_shields/brave_shields_web_contents_observer_browsertest.cc",
-    "//luxxle/browser/brave_shields/brave_timestamp_rounding_browsertest.cc",
-    "//luxxle/browser/brave_shields/cookie_expiry_browsertest.cc",
-    "//luxxle/browser/brave_shields/cookie_pref_service_browsertest.cc",
-    "//luxxle/browser/brave_shields/domain_block_page_browsertest.cc",
-    "//luxxle/browser/brave_shields/eventsource_pool_limit_browsertest.cc",
-    "//luxxle/browser/brave_shields/https_upgrade_browsertest.cc",
-    "//luxxle/browser/brave_shields/websockets_pool_limit_browsertest.cc",
-    "//luxxle/browser/brave_wallet/brave_wallet_ethereum_chain_browsertest.cc",
-    "//luxxle/browser/brave_wallet/brave_wallet_event_emitter_browsertest.cc",
-    "//luxxle/browser/brave_wallet/brave_wallet_service_browsertest.cc",
-    "//luxxle/browser/brave_wallet/brave_wallet_sign_message_browsertest.cc",
-    "//luxxle/browser/brave_wallet/brave_wallet_tab_helper_browsertest.cc",
-    "//luxxle/browser/brave_wallet/ethereum_provider_browsertest.cc",
-    "//luxxle/browser/brave_wallet/send_or_sign_transaction_browsertest.cc",
-    "//luxxle/browser/brave_wallet/solana_provider_browsertest.cc",
-    "//luxxle/browser/brave_wallet/solana_provider_renderer_browsertest.cc",
-    "//luxxle/browser/brave_wallet/wallet_watch_asset_browsertest.cc",
     "//luxxle/browser/content_settings/brave_content_settings_browsertest.cc",
     "//luxxle/browser/debounce/debounce_browsertest.cc",
     "//luxxle/browser/extensions/api/brave_theme_api_browsertest.cc",
@@ -1015,15 +932,15 @@ test("brave_browser_tests") {
     "//luxxle/browser/ui/brave_browser_command_controller_browsertest.cc",
     "//luxxle/browser/ui/content_settings/brave_autoplay_blocked_image_model_browsertest.cc",
     "//luxxle/browser/ui/toolbar/brave_app_menu_model_browsertest.cc",
-    "//luxxle/browser/ui/webui/brave_wallet/wallet_panel_ui_browsertest.cc",
     "//luxxle/browser/ui/webui/new_tab_page/brave_new_tab_ui_browsertest.cc",
     "//luxxle/browser/ui/webui/private_new_tab_page/brave_private_new_tab_page_browsertest.cc",
     "//luxxle/browser/ui/webui/welcome_page/brave_welcome_ui_browsertest.cc",
     "//luxxle/browser/web_package/signed_exchange_request_browsertest.cc",
-    "//luxxle/chromium_src/chrome/browser/safe_browsing/download_protection/check_client_download_request_base_browsertest.cc",
-    "//luxxle/chromium_src/chrome/browser/ui/hats/hats_service_browsertest.cc",
-    "//luxxle/chromium_src/chrome/browser/ui/views/location_bar/location_bar_view_browsertest.cc",
-    "//luxxle/chromium_src/chrome/browser/ui/views/tabs/tab_hover_card_bubble_view_browsertest.cc",
+    # Removed chromium_src browsertest files - no longer needed after removing Brave overrides
+    # "//luxxle/chromium_src/chrome/browser/safe_browsing/download_protection/check_client_download_request_base_browsertest.cc",
+    # "//luxxle/chromium_src/chrome/browser/ui/hats/hats_service_browsertest.cc",
+    # "//luxxle/chromium_src/chrome/browser/ui/views/location_bar/location_bar_view_browsertest.cc",
+    # "//luxxle/chromium_src/chrome/browser/ui/views/tabs/tab_hover_card_bubble_view_browsertest.cc",
     "//luxxle/common/brave_channel_info_browsertest.cc",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_perf_predictor/browser/perf_predictor_tab_helper_browsertest.cc",
@@ -1057,10 +974,6 @@ test("brave_browser_tests") {
     "//luxxle/browser/brave_news:browser_tests",
     "//luxxle/browser/brave_rewards",
     "//luxxle/browser/brave_rewards/test:browser_tests",
-    "//luxxle/browser/brave_stats:browser_tests",
-    "//luxxle/browser/brave_wallet",
-    "//luxxle/browser/brave_wallet:browser_tests",
-    "//luxxle/browser/brave_wallet:tab_helper",
     "//luxxle/browser/browsing_data:browser_tests",
     "//luxxle/browser/decentralized_dns/test:browser_tests",
     "//luxxle/browser/ephemeral_storage:browser_tests",
@@ -1109,47 +1022,27 @@ test("brave_browser_tests") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_rewards/content",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/content/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/content/test:test_support",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/core/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/core/common",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_sync:prefs",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_vpn/common/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser:constants",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser:permission_utils",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser:pref_names",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser:utils",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/common:common_constants",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/common:mojom",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/common:test_support",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/renderer",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/resources:ethereum_provider_generated_resources",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wayback_machine/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_webtorrent/browser/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/constants",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -1175,7 +1068,6 @@ test("brave_browser_tests") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/skus/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/speedreader/common/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/tor/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -1346,12 +1238,9 @@ test("brave_browser_tests") {
     ]
   }
 
-  if (enable_brave_vpn) {
     deps += [
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_vpn/browser",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_vpn/common",
     ]
   }
   if (is_android) {
@@ -1363,34 +1252,24 @@ test("brave_browser_tests") {
     sources += [ "//luxxle/browser/ui/views/crash_report_permission_ask_dialog_browsertest.cc" ]
   }
 
-  if (enable_brave_wayback_machine) {
     # Commented out: removed components dependency - using Chromium defaults instead
-    # sources += [ "//luxxle/components/brave_wayback_machine/brave_wayback_machine_browsertest.cc" ]
     # Commented out: removed components dependency - using Chromium defaults instead
-    # deps += [ "//luxxle/components/brave_wayback_machine" ]
   }
 
-  if (enable_speedreader && toolkit_views) {
-    sources += [ "//luxxle/browser/speedreader/speedreader_browsertest.cc" ]
     deps += [
       "//luxxle/browser/ui/views/split_view/",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/ai_chat/core/common",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/speedreader",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/speedreader/common:mojom",
       "//chrome/browser/ui/browser_window",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//components/language/core/browser:browser",
     ]
   }
 
-  if (enable_playlist) {
     deps += [
-      "//luxxle/browser/playlist/test:browser_tests",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/playlist/browser",
     ]
   }
 
@@ -1417,7 +1296,6 @@ test("brave_browser_tests") {
     sources += [
       "//luxxle/browser/ui/views/bookmarks/bookmark_bar_browsertest.cc",
       "//luxxle/browser/ui/views/brave_actions/brave_actions_container_browsertest.cc",
-      "//luxxle/browser/ui/views/brave_shields/cookie_list_opt_in_browsertest.cc",
       "//luxxle/browser/ui/views/frame/brave_non_client_hit_test_helper_browsertest.cc",
       "//luxxle/browser/ui/views/frame/brave_tabs_search_button_browsertest.cc",
       "//luxxle/browser/ui/views/frame/vertical_tab_strip_root_view_browsertest.cc",
@@ -1443,8 +1321,6 @@ test("brave_browser_tests") {
       "//chrome/browser/ui/views/bubble",
     ]
 
-    if (enable_brave_vpn) {
-      sources += [ "//luxxle/browser/ui/views/toolbar/brave_vpn_panel_controller_browsertest.cc" ]
     }
   }
 
@@ -1452,7 +1328,6 @@ test("brave_browser_tests") {
     sources += [
       "//luxxle/browser/brave_autofill_browsertest.cc",
       "//luxxle/browser/brave_resources_browsertest.cc",
-      "//luxxle/browser/brave_shields/ad_block_custom_resources_browsertest.cc",
       "//luxxle/browser/renderer_context_menu/test/render_view_context_menu_browsertest.cc",
       "//luxxle/browser/ssl/certificate_transparency_browsertest.cc",
       "//luxxle/browser/ui/views/toolbar/wallet_button_notification_source_browsertest.cc",
@@ -1463,7 +1338,6 @@ test("brave_browser_tests") {
       "//luxxle/browser/ai_chat:browser_tests",
       "//luxxle/browser/banners:browser_tests",
       "//luxxle/browser/brave_ads/creatives/search_result_ad:browser_tests",
-      "//luxxle/browser/brave_search:browser_tests",
       "//luxxle/browser/password_manager:browser_tests",
       "//luxxle/browser/sharing_hub:browser_tests",
       "//luxxle/browser/ui/ai_rewriter:browsertest",
@@ -1474,7 +1348,6 @@ test("brave_browser_tests") {
       "//luxxle/browser/ui/whats_new:browser_test",
       "//luxxle/browser/url_sanitizer:browser_tests",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet/browser:test_support",
       "//chrome:packed_resources",
       "//chrome/browser/apps/app_service:app_service",
       "//chrome/browser/apps/app_service:constants",
@@ -1514,7 +1387,6 @@ test("brave_browser_tests") {
       "//luxxle/browser/extensions/api/identity/test:browsertests",
       "//luxxle/browser/importer:browser_tests",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_webtorrent/browser",
     ]
   }
 
@@ -1585,7 +1457,6 @@ if (is_android) {
     sources = [
       "//luxxle/android/javatests/org/chromium/chrome/browser/BraveSafetyNetThreatsPrioritiesTest.java",
       "//luxxle/android/javatests/org/chromium/chrome/browser/BytecodeTest.java",
-      "//luxxle/android/javatests/org/chromium/chrome/browser/brave_wallet/BraveWalletUtilsTest.java",
       "//luxxle/android/javatests/org/chromium/chrome/browser/homepage/settings/BraveHomepageSettingsTest.java",
       "//luxxle/android/javatests/org/chromium/chrome/browser/language/settings/BraveLanguageSettingsTest.java",
       "//luxxle/android/javatests/org/chromium/chrome/browser/password_manager/settings/BravePasswordSettingsTest.java",
@@ -1602,7 +1473,6 @@ if (is_android) {
       "//base:base_shared_preferences_java",
       "//luxxle/android/javatests:brave_test_java_org.chromium.chrome.browser.download",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet/common:mojom_java",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/safe_browsing/android:brave_safe_browsing_java",
       "//cc:cc_java",

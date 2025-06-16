@@ -12,7 +12,6 @@ source_set("app") {
   configs += [
     "//luxxle/ios/browser/api/ai_chat:mojom_header_config",
     "//luxxle/ios/browser/api/webcompat_reporter:mojom_header_config",
-    "//luxxle/ios/browser/api/brave_wallet:mojom_header_config",
     "//luxxle/ios/browser/api/skus:mojom_header_config",
   ]
 
@@ -45,9 +44,7 @@ source_set("app") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/ntp_background_images/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/p3a",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/p3a:buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/skus/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -61,11 +58,7 @@ source_set("app") {
     "//luxxle/ios/browser/api/ai_chat:ai_chat_mojom_wrappers",
     "//luxxle/ios/browser/api/bookmarks",
     "//luxxle/ios/browser/api/brave_rewards",
-    "//luxxle/ios/browser/api/brave_shields",
-    "//luxxle/ios/browser/api/brave_stats",
     "//luxxle/ios/browser/api/brave_user_agent",
-    "//luxxle/ios/browser/api/brave_wallet",
-    "//luxxle/ios/browser/api/brave_wallet:wallet_mojom_wrappers",
     "//luxxle/ios/browser/api/content_settings",
     "//luxxle/ios/browser/api/de_amp",
     "//luxxle/ios/browser/api/history",
@@ -73,7 +66,6 @@ source_set("app") {
     "//luxxle/ios/browser/api/ipfs",
     "//luxxle/ios/browser/api/ntp_background_images",
     "//luxxle/ios/browser/api/opentabs",
-    "//luxxle/ios/browser/api/p3a",
     "//luxxle/ios/browser/api/password",
     "//luxxle/ios/browser/api/qr_code",
     "//luxxle/ios/browser/api/query_filter",

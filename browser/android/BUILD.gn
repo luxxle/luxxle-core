@@ -12,8 +12,6 @@ source_set("android_browser_process") {
     "brave_feature_util.cc",
     "brave_local_state_android.cc",
     "brave_relaunch_utils.cc",
-    "brave_shields_content_settings.cc",
-    "brave_shields_content_settings.h",
     "brave_sync_worker.cc",
     "brave_sync_worker.h",
   ]
@@ -27,7 +25,6 @@ source_set("android_browser_process") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_ads/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/content/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_sync",
     # Commented out: removed components dependency - using Chromium defaults instead

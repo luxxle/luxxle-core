@@ -6,8 +6,6 @@
 # Commented out: removed Brave component buildflags imports
 # These were causing duplicate declaration errors since components have been removed
 # import("//luxxle/components/ai_rewriter/common/buildflags/buildflags.gni")
-# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
-# import("//luxxle/components/speedreader/common/buildflags/buildflags.gni")
 import("//build/config/features.gni")
 
 source_set("renderer") {
@@ -22,16 +20,11 @@ source_set("renderer") {
 
   deps = [
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search/renderer",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/core/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/renderer",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/cosmetic_filters/renderer",
-    "//luxxle/renderer/brave_wallet/",
     "//v8",
   ]
 
@@ -40,8 +33,6 @@ source_set("renderer") {
   #   deps += [ "//luxxle/components/ai_rewriter/renderer" ]
   # }
 
-  # if (enable_speedreader) {
-  #   deps += [ "//luxxle/components/speedreader/renderer" ]
   # }
 
   if (is_android) {

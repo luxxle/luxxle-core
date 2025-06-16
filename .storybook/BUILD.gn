@@ -5,8 +5,6 @@
 
 # Commented out: removed Brave component buildflags imports
 # These were causing duplicate declaration errors since components have been removed
-# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
-# import("//luxxle/components/speedreader/common/buildflags/buildflags.gni")
 
 group("storybook") {
   # Depend on any generated JS output that will
@@ -21,15 +19,9 @@ group("storybook") {
     # "//luxxle/components/brave_new_tab_ui:mojom_js",
     # "//luxxle/components/brave_news/common:mojom_js",
     # "//luxxle/components/brave_rewards/core/mojom:mojom_js",
-    # "//luxxle/components/brave_shields/core/common:mojom_js",
-    # "//luxxle/components/brave_vpn/common/mojom:mojom_js",
-    # "//luxxle/components/brave_wallet/common:mojom_js",
     "//mojo/public/js:bindings",
     "//mojo/public/js:resources",
   ]
 
-  # Commented out: speedreader component removed
-  # if (enable_speedreader) {
-  #   deps += [ "//luxxle/components/speedreader/common:mojom_js" ]
   # }
 }

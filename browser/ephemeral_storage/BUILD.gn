@@ -28,11 +28,8 @@ source_set("browser_tests") {
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/brave_component_updater/browser",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_shields/content/browser",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_shields/content/test:test_support",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_shields/core/common",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/ephemeral_storage",
       "//chrome/browser",

@@ -14,11 +14,9 @@ brave_flags_deps = [
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/brave_rewards/core/buildflags",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_shields/core/common",
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/brave_user_agent/common:common",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_wallet/common",
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/de_amp/common",
   # Commented out: removed components dependency - using Chromium defaults instead
@@ -27,7 +25,6 @@ brave_flags_deps = [
   # "//luxxle/components/ntp_background_images/browser",
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/skus/common",
-  "//luxxle/ios/browser/playlist",
   "//luxxle/ios/browser/ui/browser_menu:features",
   "//luxxle/ios/browser/ui/web_view:features",
   # Commented out: removed components dependency - using Chromium defaults instead

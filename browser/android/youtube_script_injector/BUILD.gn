@@ -17,7 +17,6 @@ source_set("youtube_script_injector") {
     ":features",
     "//base",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/content/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/constants",
     "//chrome/browser/profiles:profile",

@@ -3,12 +3,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-# LUXXLE MODIFICATION: Import config.gni for build arguments, comment out others
-# import(
-#     "//luxxle/browser/brave_vpn/win/brave_vpn_wireguard_service/allowlist.gni")
+# LUXXLE MODIFICATION: Minimal build configuration for Chromium-based browser
 import("//luxxle/build/config.gni")  # Need this for build arguments
-# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
-# import("//luxxle/tools/crates/config.gni")
 
 # Keep essential Chromium imports
 import("//build/config/locales.gni")
@@ -26,26 +22,9 @@ if (enable_library_cdms) {
   import("//media/cdm/library_cdm/cdm_paths.gni")
 }
 
-# LUXXLE: Disabled Brave paks import
-# if (!is_ios) {
-#   import("//luxxle/brave_paks.gni")
-# }
-
 if (is_mac) {
-  # LUXXLE: Disabled Brave Mac imports  
-  # import("//luxxle/build/mac/tweak_info_plist.gni")
   import("//build/config/mac/rules.gni")
 }
-
-# LUXXLE: Disabled Brave Windows signing
-# if (is_win) {
-#   import("//luxxle/build/win/sign.gni")
-# }
-
-# LUXXLE: Disabled Brave Linux channels
-# if (is_linux) {
-#   import("//luxxle/build/linux/channels.gni")
-# }
 
 declare_args() {
   audit_dev_deps = true
@@ -63,9 +42,7 @@ group("all") {
 
   if (!is_android && !is_ios) {
     deps += [
-      # LUXXLE: Removed Brave tests, kept standard Chromium tests
-      # "//luxxle/test:brave_installer_unittests",
-      # "//luxxle/test:brave_network_audit_tests",
+      # LUXXLE: Standard Chromium tests only
       "//chrome/test:browser_tests",
       "//chrome/test:unit_tests",
       "//components:components_unittests",
@@ -73,22 +50,6 @@ group("all") {
       "//net:net_unittests",
     ]
   }
-
-  # LUXXLE: Removed all Brave-specific iOS and Android tests
-  # if (!is_ios) {
-  #   deps += [
-  #     "//luxxle/test:brave_browser_tests",
-  #     "//luxxle/test:brave_unit_tests",
-  #   ]
-  # }
-
-  # if (is_android) {
-  #   deps += [
-  #     "//luxxle/build/android:brave",
-  #     "//luxxle/test:brave_java_unit_tests",
-  #     "//luxxle/test:brave_junit_tests",
-  #   ]
-  # }
 }
 
 if (!is_ios) {
@@ -103,10 +64,7 @@ if (!is_ios) {
   group("browser_dependencies") {
     deps = [
       "browser",
-      "chromium_src/chrome/app",
       "common",
-      # Commented out: removed components dependency - using Chromium defaults instead
-      # "//components/omnibox/common",
       "//services/device/public/cpp:device_features",
     ]
 
@@ -116,116 +74,24 @@ if (!is_ios) {
       deps += [ ":packed_resources" ]
     }
   }
-
-  group("storybook") {
-    deps = [ "//luxxle/.storybook:storybook" ]
-  }
 }
 
-# Windows installer and signing logic commented out - not needed for development
-# if (is_win) {
-#   packed_files_rc_file =
-#       "$root_out_dir/gen/chrome/installer/mini_installer/packed_delta_files.rc"
-#   action("delta_installer_archive") {
-#     script = "//luxxle/tools/win/create_delta_archive.py"
-#     if (skip_signing) {
-#       setup_exe = "setup.exe"
-#     } else {
-#       setup_exe = "presigned_binaries/setup.exe"
-#     }
-#     inputs = [
-#       # The original tool for delta archive generation was called "courgette".
-#       # But it runs out of memory on recent Chromium / Brave revisions. Its
-#       # drop-in replacement is Zucchini. We need to use its 64-bit version to
-#       # again prevent out of memory errors.
-#       "$root_out_dir/zucchini64.exe",
-#       "$root_out_dir/chrome.7z",
-#       "$root_out_dir/" + setup_exe,
-#     ]
-#     outputs = [
-#       "$root_out_dir/chrome_patch.diff",
-#       "$root_out_dir/chrome_patch.packed.7z",
-#       "$root_out_dir/setup_patch.diff",
-#       "$root_out_dir/setup_patch.packed.7z",
-#       packed_files_rc_file,
-#     ]
-#     deps = [
-#       "//chrome/installer/mini_installer:mini_installer_archive",
-#       "//chrome/installer/setup:setup",
-#       "//components/zucchini:zucchini64",
-#     ]
-#     if (!skip_signing) {
-#       deps += [ ":signed_setup_exe" ]
-#     }
-#     args = [
-#       "zucchini64.exe",
-#       "$last_chrome_installer/chrome.7z",
-#       "chrome.7z",
-#       "$last_chrome_installer/setup.exe",
-#       setup_exe,
-#       "chrome_patch.diff",
-#       "chrome_patch.packed.7z",
-#       "setup_patch.diff",
-#       "setup_patch.packed.7z",
-#       rebase_path(packed_files_rc_file, root_build_dir),
-#     ]
-#     if (is_component_build) {
-#       args += [ "--is_component_build" ]
-#     }
-#   }
-#
-#   if (!skip_signing) {
-#     sign("signed_setup_exe") {
-#       sources = [ "$root_out_dir/setup.exe" ]
-#       outputs = [ "$root_out_dir/presigned_binaries/setup.exe" ]
-#       deps = [ "//chrome/installer/setup:setup" ]
-#     }
-#     sign("signed_brave_exe") {
-#       sources = [ "$root_out_dir/brave.exe" ]
-#       outputs = [ "$root_out_dir/presigned_binaries/brave.exe" ]
-#       deps = [ "//luxxle/build/win:copy_exe" ]
-#     }
-#     sign("signed_chrome_dll") {
-#       sources = [ "$root_out_dir/chrome.dll" ]
-#       outputs = [ "$root_out_dir/presigned_binaries/chrome.dll" ]
-#       deps = [ "//chrome:chrome_dll" ]
-#     }
-#   }
-#
-#   group("mini_installer_dependencies") {
-#     deps = [ ":brave" ]
-#     if (!skip_signing) {
-#       deps += [
-#         ":signed_brave_exe",
-#         ":signed_chrome_dll",
-#         ":signed_setup_exe",
-#       ]
-#       if (enable_widevine && enable_cdm_host_verification) {
-#         deps += [
-#           "//luxxle/browser/widevine:brave_exe_sig",
-#           "//luxxle/browser/widevine:chrome_dll_sig",
-#         ]
-#       }
-#     }
-#   }
-# }
-
-group("luxxle") {
-  # LUXXLE MODIFICATION: Build vanilla Chromium instead of Brave
-  # Removed all Brave-specific dependencies to get clean Chromium
+# LUXXLE: Minimal resource packing - only essential resources
+group("packed_resources") {
   deps = [
-    "//chrome",  # Build standard Chromium
+    "//chrome:packed_resources",
   ]
-  
-  # Skip Brave version info and other Brave components
-  # Original Brave dependencies commented out:
-  # deps = [ "build/$target_os:brave" ]
-  # if (!is_android && !is_ios) {
-  #   deps += [
-  #     "//luxxle/components/version_info:generate_version",
-  #     "//chrome",
-  #   ]
-  # }
+}
+
+group("unpacked_resources") {
+  deps = [
+    "//chrome:unpacked_resources",
+  ]
+}
+
+# LUXXLE: Keep minimal Luxxle branding but remove Brave functionality
+group("luxxle") {
+  deps = [ "//chrome" ]
 }
 
 group("resources") {
@@ -253,7 +119,6 @@ if (is_android) {
       "//luxxle/android/java/org/chromium/chrome/browser/onboarding/animations/privacy_protection.json",
       "//luxxle/android/java/org/chromium/chrome/browser/onboarding/animations/save_data_and_battery.json",
       "//luxxle/android/java/org/chromium/chrome/browser/onboarding/animations/website_loads_faster.json",
-      "//luxxle/android/java/org/chromium/chrome/browser/vpn/brave_vpn_confirm.json",
     ]
     disable_compression = false
   }
@@ -278,18 +143,6 @@ if (is_mac) {
   }
 }
 
-group("unpacked_resources") {
-  if (!is_mac) {
-    deps = []
-    # LUXXLE: Commented out brave_extension dependency for simplified build
-    # if (enable_extensions) {
-    #   deps = [
-    #     "//luxxle/components/brave_extension/extension/brave_extension:locales",
-    #   ]
-    # }
-  }
-}
-
 #TODO(bridiver) - what to do
 if (!is_ios) {
   group("brave_tests") {
@@ -306,13 +159,6 @@ if (!is_ios) {
     if (use_libfuzzer) {
       deps += [ "//luxxle/fuzzers:brave_fuzzers" ]
     }
-  }
-}
-
-if (!is_ios) {
-  # LUXXLE: Use standard Chromium resource packing instead of Brave
-  group("packed_resources") {
-    public_deps = [ "//chrome:packed_resources" ]
   }
 }
 
@@ -408,12 +254,10 @@ group("create_dist") {
 #       foreach(locale, platform_pak_locales) {
 #         # public_deps is used intentionaly because ":create_dist_zip" needs the all dependency
 #         # of all locale files.
-#         public_deps += [ ":brave_shields_locales_${locale}" ]
 #       }
 #     }
 #
 #     foreach(locale, platform_pak_locales) {
-#       copy("brave_shields_locales_${locale}") {
 #         deps = [ "//luxxle/components/brave_extension/extension/brave_extension:locales_$locale" ]
 #
 #         locale = string_replace(locale, "-", "_")
@@ -593,7 +437,6 @@ group("create_dist") {
 #       inputs += get_target_outputs(":brave_locale_dist_resources")
 #       if (enable_extensions) {
 #         foreach(locale, platform_pak_locales) {
-#           inputs += get_target_outputs(":brave_shields_locales_${locale}")
 #         }
 #       }
 #     }
@@ -699,7 +542,6 @@ if (is_win && enable_resource_allowlist_generation) {
   # wireguard resources in pak files.
   action("merge_allowlists") {
     deps = [
-      "//luxxle/browser/brave_vpn/win/brave_vpn_wireguard_service:wireguard_resource_allowlist",
       "//chrome:resource_allowlist",
     ]
 

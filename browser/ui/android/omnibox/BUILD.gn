@@ -20,9 +20,6 @@ android_library("java") {
     "java/src/org/chromium/chrome/browser/omnibox/suggestions/BraveSuggestionHost.java",
     "java/src/org/chromium/chrome/browser/omnibox/suggestions/brave_leo/BraveLeoSuggestionProcessor.java",
     "java/src/org/chromium/chrome/browser/omnibox/suggestions/brave_leo/BraveLeoSuggestionViewBinder.java",
-    "java/src/org/chromium/chrome/browser/omnibox/suggestions/brave_search/BraveSearchBannerProcessor.java",
-    "java/src/org/chromium/chrome/browser/omnibox/suggestions/brave_search/BraveSearchBannerProperties.java",
-    "java/src/org/chromium/chrome/browser/omnibox/suggestions/brave_search/BraveSearchBannerViewBinder.java",
     "java/src/org/chromium/chrome/browser/omnibox/suggestions/editurl/BraveEditUrlSuggestionProcessor.java",
     "java/src/org/chromium/chrome/browser/omnibox/suggestions/editurl/BraveEditUrlSuggestionProcessorBase.java",
   ]
@@ -69,10 +66,8 @@ android_library("java") {
 android_resources("java_resources") {
   sources = [
     "java/res/drawable-night/ic_search_omnibox_promo.xml",
-    "java/res/drawable/bg_brave_search_banner.xml",
     "java/res/drawable/ic_brave_ai_color.xml",
     "java/res/drawable/ic_search_omnibox_promo.xml",
-    "java/res/layout/omnibox_brave_search_banner.xml",
     "java/res/values-night/colors.xml",
     "java/res/values/colors.xml",
     "java/res/values/dimens.xml",

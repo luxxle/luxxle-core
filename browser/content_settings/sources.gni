@@ -5,7 +5,6 @@
 
 brave_browser_content_settings_deps = [
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_shields/content/browser",
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//components/user_prefs",
 ]

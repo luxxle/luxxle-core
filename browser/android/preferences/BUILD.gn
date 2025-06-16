@@ -22,7 +22,6 @@ source_set("preferences") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_rewards/core",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/content/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_sync:prefs",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -52,9 +51,7 @@ java_cpp_strings("java_pref_names_srcjar") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_rewards/core/pref_names.h",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/core/common/pref_names.h",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_vpn/common/pref_names.h",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/constants/pref_names.h",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -72,13 +69,10 @@ java_cpp_strings("java_pref_names_srcjar") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/omnibox/browser/brave_omnibox_prefs.h",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/p3a/pref_names.h",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/request_otr/common/pref_names.h",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/search_engines/brave_search_engines_pref_names.h",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/speedreader/speedreader_pref_names.h",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//components/translate/core/browser/translate_pref_names.h",
   ]

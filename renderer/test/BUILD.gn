@@ -22,12 +22,9 @@ source_set("browser_tests") {
 
   deps = [
     "//base/test:test_support",
-    "//luxxle/browser/brave_wallet",
     "//luxxle/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser:utils",
     "//chrome/browser/profiles:profile",
     "//chrome/browser/ui",
     "//chrome/common",

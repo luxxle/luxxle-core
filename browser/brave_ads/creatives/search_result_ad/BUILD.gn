@@ -32,7 +32,6 @@ source_set("search_result_ad") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_rewards/core",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search/common",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/vector_icons",
     "//chrome/browser:browser_public_dependencies",

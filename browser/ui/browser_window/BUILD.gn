@@ -4,7 +4,6 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
 
 # Don't include this target. Use //chrome/browser/ui/browser_window
 # instead as it includes our additions.
@@ -25,12 +24,9 @@ source_set("impl") {
     "//luxxle/browser/ui/sidebar",
     "//luxxle/browser/ui/tabs:split_view",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_vpn/common/buildflags",
     "//chrome/browser/ui/browser_window",
   ]
 
   # Commented out: VPN functionality disabled for Luxxle
-  # if (enable_brave_vpn) {
-  #   deps += [ "//luxxle/browser/ui/brave_vpn" ]
   # }
 }

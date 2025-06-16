@@ -1,3 +1,0 @@
-include_rules = [
-  "+cc/paint/paint_flags.h",
-]

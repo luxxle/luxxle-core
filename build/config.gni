@@ -22,7 +22,7 @@ declare_args() {
   sparkle_eddsa_private_key = ""
   sparkle_eddsa_public_key = ""
 
-  brave_product_name = "brave"
+  brave_product_name = "Luxxle"
   brave_exe = ""
   brave_version_major = ""
   brave_version_minor = ""
@@ -43,77 +43,76 @@ declare_args() {
 
   # Enables brave/tools/redirect_cc target, replaces brave/chromium_src
   # overrides with empty ones to make //base buildable for redirect_cc.
+  # LUXXLE: Force disable redirect_cc completely
   is_redirect_cc_build = false
   android_aab_to_apk = false
   
   # ============================================================================
-  # LUXXLE FEATURE FLAGS - Centralized configuration for all Brave features
-  # Most features disabled for Luxxle minimal browser build
+  # LUXXLE MINIMAL BROWSER CONFIGURATION
+  # All Brave features disabled for clean Chromium experience
   # ============================================================================
   
-  # Core Features
+  # Core Features - ALL DISABLED
   enable_commander = false
   enable_brave_education = false
-  enable_custom_background = true  # User specifically requested this
+  enable_custom_background = false
   
-  # Wayback Machine and Archive Features
+  # Wayback Machine and Archive Features - DISABLED
   enable_brave_wayback_machine = false
   
-  # Torrent and P2P Features
+  # Torrent and P2P Features - DISABLED
   enable_brave_webtorrent = false
   enable_web_discovery = false
   enable_web_discovery_native = false
   
-  # Background Images and Visual Features
+  # Background Images and Visual Features - DISABLED
   enable_ntp_background_images = false
   
-  # Media and Playlist Features
+  # Media and Playlist Features - DISABLED
   enable_playlist = false
   enable_playlist_webui = false
   
-  # Privacy and Security Features
+  # Privacy and Security Features - DISABLED (use Chromium defaults)
   enable_request_otr = false
   enable_tor = false
   
-  # Metrics and Analytics - declared in metrics/buildflags/buildflags.gni
-  
-  # VPN and Network Features
+  # VPN and Network Features - DISABLED
   enable_brave_vpn = false
   
-  # Wallet and Crypto Features
+  # Wallet and Crypto Features - DISABLED
   enable_brave_wallet = false
   enable_ethereum_remote_client = false
   
-  # Rewards and Ads Features
+  # Rewards and Ads Features - DISABLED
   enable_brave_rewards = false
   enable_brave_ads = false
   enable_gemini_wallet = false
   enable_ipfs = false
   enable_ipfs_local_node = false
   
-  # Sync and Cloud Features
+  # Sync and Cloud Features - DISABLED (use Chromium sync)
   enable_brave_sync = false
   
-  # News and Content Features
+  # News and Content Features - DISABLED
   enable_brave_news = false
   enable_speedreader = false
   
-  # Search and Omnibox Features
+  # Search and Omnibox Features - DISABLED
   enable_brave_search = false
   
-  # Social and Communication Features
+  # Social and Communication Features - DISABLED
   enable_brave_talk = false
   
-  # Developer and Advanced Features
+  # Developer and Advanced Features - DISABLED
   enable_brave_federated = false
   enable_brave_translate = false
-  enable_brave_shields = true  # Keep core ad blocking
+  enable_brave_shields = false  # Use Chromium's built-in blocking
   
-  # AI and ML Features
+  # AI and ML Features - DISABLED
   enable_ai_chat = false
   enable_brave_leo = false
   
-  # Enterprise and Policy Features
+  # Enterprise and Policy Features - DISABLED
   enable_brave_enterprise = false
 }
 
@@ -184,7 +183,7 @@ brave_standalone_installer_exe = "BraveBrowserStandalone$_channel" +
       "Setup$_arch$brave_underline_full_version.exe"
   brave_silent_installer_exe = "BraveBrowserStandaloneSilent$_channel" +
                                "Setup$_arch$brave_underline_full_version.exe"
-  brave_untagged_installer_exe = "BraveBrowserStandaloneUntagged$_channel" +
+brave_untagged_installer_exe = "BraveBrowserStandaloneUntagged$_channel" +
                                  "Setup$_arch$brave_underline_full_version.exe"
 } else if (is_mac) {
   brave_exe = "$chrome_product_full_name.app"

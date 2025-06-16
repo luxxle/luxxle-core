@@ -1,4 +1,0 @@
-include_rules = [
-  "+components/crx_file",
-  "+components/update_client",
-]

@@ -25,7 +25,6 @@ brave_browser_brave_news_deps += [
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/brave_news/common",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_shields/content/browser",
   "//chrome/browser/profiles:profile",
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//components/keyed_service/content",

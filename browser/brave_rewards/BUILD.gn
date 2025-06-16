@@ -42,7 +42,6 @@ source_set("brave_rewards_impl") {
   deps = [
     ":util",
     "//base",
-    "//luxxle/browser/brave_wallet",
     "//luxxle/browser/ui:brave_rewards_source",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_rewards/content",

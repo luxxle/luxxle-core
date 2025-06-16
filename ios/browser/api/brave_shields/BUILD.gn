@@ -3,7 +3,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
-source_set("brave_shields") {
   sources = [
     "adblock_engine.h",
     "adblock_engine.mm",
@@ -20,11 +19,8 @@ source_set("brave_shields") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_component_updater/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/core/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/core/browser/adblock",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/core/common",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/cosmetic_filters/resources/data:generated_resources",
     # Commented out: removed components dependency - using Chromium defaults instead

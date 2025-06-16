@@ -15,7 +15,6 @@ brave_browser_search_engines_sources = [
 brave_browser_search_engines_deps = [
   "//base",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_search_conversion",
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/time_period_storage",
   "//chrome/browser/profiles:profile",
@@ -34,7 +33,6 @@ brave_browser_search_engines_deps = [
 
 if (is_android) {
   brave_browser_search_engines_sources += [
-    "//luxxle/browser/search_engines/brave_search_engine_pref_helper_android.cc",
     "//luxxle/browser/search_engines/normal_window_search_engine_provider_service_android.cc",
     "//luxxle/browser/search_engines/normal_window_search_engine_provider_service_android.h",
     "//luxxle/browser/search_engines/private_window_search_engine_provider_service_android.cc",
@@ -43,7 +41,6 @@ if (is_android) {
 
   brave_browser_search_engines_deps += [
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search/browser",
     "//chrome/browser/profiles:profile",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//components/prefs",

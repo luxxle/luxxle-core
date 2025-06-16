@@ -46,7 +46,6 @@ source_set("ai_chat") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/api_request_helper",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_stats/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/constants",
     # Commented out: removed components dependency - using Chromium defaults instead

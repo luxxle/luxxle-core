@@ -3,16 +3,9 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
-source_set("brave_wallet") {
   sources = [
     "asset_ratio_service_factory.cc",
     "asset_ratio_service_factory.h",
-    "brave_wallet_factory_wrappers.h",
-    "brave_wallet_factory_wrappers.mm",
-    "brave_wallet_ipfs_service_factory.h",
-    "brave_wallet_ipfs_service_factory.mm",
-    "brave_wallet_service_factory.h",
-    "brave_wallet_service_factory.mm",
     "meld_integration_service_factory.cc",
     "meld_integration_service_factory.h",
     "swap_service_factory.cc",
@@ -22,14 +15,9 @@ source_set("brave_wallet") {
   ]
   deps = [
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser:pref_names",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/common:mojom",
-    "//luxxle/ios/browser/api/brave_wallet:wallet_mojom_wrappers",
     "//luxxle/ios/browser/keyed_service",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//components/keyed_service/core",

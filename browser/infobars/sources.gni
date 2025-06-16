@@ -11,8 +11,6 @@ brave_browser_infobar_deps = []
 if (!is_android) {
   brave_browser_infobar_sources += [
     "//luxxle/browser/infobars/brave_confirm_infobar_creator.h",
-    "//luxxle/browser/infobars/brave_confirm_p3a_infobar_delegate.cc",
-    "//luxxle/browser/infobars/brave_confirm_p3a_infobar_delegate.h",
     "//luxxle/browser/infobars/brave_sync_account_deleted_infobar_delegate.cc",
     "//luxxle/browser/infobars/brave_sync_account_deleted_infobar_delegate.h",
     "//luxxle/browser/infobars/dev_channel_deprecation_infobar_delegate.cc",
@@ -36,7 +34,6 @@ if (!is_android) {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/infobars/core:core",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/p3a",
     "//chrome/app:branded_strings",
     "//chrome/browser/ui",
     # Commented out: removed components dependency - using Chromium defaults instead

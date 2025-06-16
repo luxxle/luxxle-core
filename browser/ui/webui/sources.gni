@@ -6,9 +6,7 @@
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/brave_education/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/playlist/common/buildflags/buildflags.gni")
 
 # This is required for chromium_src overrides.
 brave_browser_ui_webui_configs_deps = [
@@ -20,23 +18,16 @@ brave_browser_ui_webui_configs_deps = [
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/brave_private_cdn",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_shields/content/browser",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_vpn/common/buildflags",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/playlist/common/buildflags",
 ]
 
-if (enable_playlist_webui) {
   brave_browser_ui_webui_configs_deps +=
       # Commented out: removed components dependency - using Chromium defaults instead
-      # [ "//luxxle/components/playlist/common" ]
 }
 
-if (enable_brave_vpn) {
   brave_browser_ui_webui_configs_deps +=
       # Commented out: removed components dependency - using Chromium defaults instead
-      # [ "//luxxle/components/brave_vpn/browser" ]
 }
 
 if (enable_brave_education) {

@@ -14,7 +14,6 @@ component("renderer") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_drm:brave_drm_blink",
     # Commented out: removed Brave components - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/core/common:mojom",
   ]
 
   defines = [ "BLINK_IMPLEMENTATION=1" ]

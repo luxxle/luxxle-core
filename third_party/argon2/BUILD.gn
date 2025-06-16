@@ -18,11 +18,8 @@ static_library("argon2") {
   public_configs = [ ":external_config" ]
 
   visibility = [
-    "//luxxle/browser/brave_wallet:external_wallets_importer",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/common",
   ]
 
   defines = [ "ARGON2_NO_THREADS" ]

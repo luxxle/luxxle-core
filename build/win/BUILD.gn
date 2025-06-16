@@ -4,7 +4,6 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//brave/components/brave_vpn/common/buildflags/buildflags.gni")
 import("sign.gni")
 
 group("brave") {
@@ -12,10 +11,7 @@ group("brave") {
     ":copy_exe",
     ":copy_pdb",
   ]
-  if (enable_brave_vpn) {
     deps = [
-      "//brave/browser/brave_vpn/win/brave_vpn_helper",
-      "//brave/browser/brave_vpn/win/brave_vpn_wireguard_service:wireguard_service",
     ]
   }
 }

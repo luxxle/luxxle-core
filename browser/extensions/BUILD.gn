@@ -4,15 +4,10 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_wayback_machine/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_webtorrent/browser/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/playlist/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/speedreader/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/tor/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
@@ -37,7 +32,6 @@ source_set("component_loader") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_extension:static_resources",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_webtorrent:static_resources",
     "//chrome/browser:browser_process",
     "//chrome/browser/extensions",
     "//chrome/browser/profiles:profile",
@@ -61,7 +55,6 @@ source_set("brave_prefs_util_impl") {
 
   deps = [
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/content/browser",
     "//chrome/browser:browser_public_dependencies",
     "//chrome/browser/content_settings:content_settings_factory",
     "//chrome/browser/profiles:profile",
@@ -118,7 +111,6 @@ source_set("extensions") {
     "//luxxle/browser/brave_ads",
     "//luxxle/browser/brave_rewards",
     "//luxxle/browser/brave_rewards:util",
-    "//luxxle/browser/brave_search",
     "//luxxle/browser/component_updater",
     "//luxxle/browser/extensions/api:generated_api_registration",
     "//luxxle/browser/themes",
@@ -144,21 +136,13 @@ source_set("extensions") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_rewards/core/mojom",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/core/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_vpn/common/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser:pref_names",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser:utils",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wayback_machine/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_webtorrent:static_resources",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/constants",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -215,24 +199,16 @@ source_set("extensions") {
   # }
 
   # Commented out: all component features removed
-  # if (enable_brave_wayback_machine) {
   #   # Commented out: removed components dependency - using Chromium defaults instead
-  #   # deps += [ "//luxxle/components/brave_wayback_machine" ]
   # }
 
-  # if (enable_speedreader) {
   #   # Commented out: removed components dependency - using Chromium defaults instead
-  #   # deps += [ "//luxxle/components/speedreader" ]
   # }
 
-  # if (enable_brave_vpn) {
   #   # Commented out: removed components dependency - using Chromium defaults instead
-  #   # deps += [ "//luxxle/components/brave_vpn/common" ]
   # }
 
-  # if (enable_playlist) {
   #   # Commented out: removed components dependency - using Chromium defaults instead
-  #   # deps += [ "//luxxle/components/playlist/browser" ]
   # }
 
   # if (enable_tor) {
@@ -252,26 +228,18 @@ source_set("extensions") {
 
   # This API is still being used by the preferences page
   sources += [
-    "api/brave_wallet_api.cc",
-    "api/brave_wallet_api.h",
   ]
   deps += [
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/common:buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//components/prefs",
   ]
 
   # Commented out: webtorrent support removed
-  # if (enable_brave_webtorrent) {
   #   sources += [
-  #     "brave_webtorrent_navigation_throttle.cc",
-  #     "brave_webtorrent_navigation_throttle.h",
   #   ]
   #   # Commented out: removed components dependency - using Chromium defaults instead
-  #   # deps += [ "//luxxle/components/brave_webtorrent/browser" ]
   # }
 
   allow_circular_includes_from = [ ":brave_prefs_util_impl" ]
@@ -285,12 +253,9 @@ group("resources") {
     # "//luxxle/components/brave_extension:static_resources",
   ]
   # Commented out: webtorrent support removed
-  # if (enable_brave_webtorrent) {
   #   deps += [
   #     # Commented out: removed components dependency - using Chromium defaults instead
-  #     # "//luxxle/components/brave_webtorrent:generated_resources",
   #     # Commented out: removed components dependency - using Chromium defaults instead
-  #     # "//luxxle/components/brave_webtorrent:static_resources",
   #   ]
   # }
 }

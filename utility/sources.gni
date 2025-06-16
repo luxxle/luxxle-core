@@ -24,9 +24,7 @@ brave_utility_deps = [
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/services/bat_rewards/public/interfaces",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/services/brave_wallet:lib",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/services/brave_wallet/public/mojom",
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/tor/buildflags",
   "//mojo/public/cpp/bindings",

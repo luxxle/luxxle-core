@@ -9,7 +9,6 @@ brave_content_browser_deps = [
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/brave_service_keys",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_shields/core/common:mojom",
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/speech_to_text",
 ]

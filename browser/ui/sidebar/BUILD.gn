@@ -68,7 +68,6 @@ source_set("browser_tests") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/ai_chat/core/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/playlist/common",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/sidebar/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -99,7 +98,6 @@ source_set("unit_tests") {
     "//base",
     "//luxxle/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/playlist/common",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/sidebar/browser",
     "//chrome/browser/ui",

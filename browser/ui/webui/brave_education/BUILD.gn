@@ -8,7 +8,6 @@
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/brave_education/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
 import("//mojo/public/tools/bindings/mojom.gni")
 
 # Commented out: Education functionality disabled for Luxxle
@@ -41,7 +40,6 @@ source_set("brave_education") {
     # "//luxxle/browser/resources/brave_education:resources",
     "//luxxle/browser/ui/webui/brave_browser_command",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_vpn/common/buildflags",
     "//chrome/browser:browser_public_dependencies",
     "//chrome/browser/profiles:profile",
     "//chrome/browser/ui/browser_window",
@@ -53,8 +51,6 @@ source_set("brave_education") {
   ]
 
   # Commented out: VPN functionality disabled for Luxxle
-  # if (enable_brave_vpn) {
-  #   deps += [ "//luxxle/browser/ui/brave_vpn" ]
   # }
 
   public_deps = [
@@ -76,7 +72,6 @@ source_set("browser_tests") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_education",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_vpn/common/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/constants",
     "//chrome/browser/ui",
@@ -104,7 +99,6 @@ source_set("unit_tests") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_education",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_vpn/common/buildflags",
     "//chrome/browser/ui",
     "//chrome/test:test_support",
     # Commented out: removed components dependency - using Chromium defaults instead

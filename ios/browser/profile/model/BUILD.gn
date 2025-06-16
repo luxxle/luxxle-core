@@ -16,7 +16,6 @@ source_set("model") {
     "//luxxle/ios/browser/api/ai_chat",
     "//luxxle/ios/browser/api/webcompat_reporter",
     "//luxxle/ios/browser/brave_ads",
-    "//luxxle/ios/browser/brave_wallet",
     "//luxxle/ios/browser/debounce",
     "//luxxle/ios/browser/favicon",
     "//luxxle/ios/browser/skus",

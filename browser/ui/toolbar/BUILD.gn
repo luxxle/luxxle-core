@@ -4,7 +4,6 @@
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
 
 assert(!is_android)
 
@@ -32,12 +31,9 @@ source_set("brave_app_menu_unit_test") {
     "//ui/views:test_support",
   ]
   # Commented out: VPN support removed
-  # if (enable_brave_vpn) {
-  #   sources = [ "//luxxle/browser/ui/toolbar/brave_vpn_menu_model_unittest.cc" ]
   #   deps += [
   #     "//base",
   #     # Commented out: removed components dependency - using Chromium defaults instead
-  #     # "//luxxle/components/brave_vpn/common",
   #   ]
   # }
 }

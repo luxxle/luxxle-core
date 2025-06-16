@@ -4,7 +4,6 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/speedreader/common/buildflags/buildflags.gni")
 
 brave_browser_perf_sources = [
   "//luxxle/browser/perf/brave_perf_features_processor.cc",
@@ -19,16 +18,11 @@ brave_browser_perf_deps = [
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/brave_rewards/content",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_shields/content/browser",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_shields/core/browser",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_shields/core/common/",
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//components/prefs",
 ]
 
-if (enable_speedreader) {
   # Commented out: removed components dependency - using Chromium defaults instead
-  # brave_browser_perf_deps += [ "//luxxle/components/speedreader" ]
 }

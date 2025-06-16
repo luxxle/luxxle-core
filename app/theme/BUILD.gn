@@ -4,7 +4,6 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/playlist/common/buildflags/buildflags.gni")
 import("//luxxle/resources/brave_grit.gni")
 import("//chrome/common/features.gni")
 
@@ -13,8 +12,6 @@ assert(!is_android)
 brave_grit("brave_theme_resources") {
   source = "brave_theme_resources.grd"
   defines = chrome_grit_defines
-  # Commented out: playlist support removed
-  # defines += [ "enable_playlist_webui=$enable_playlist_webui" ]
   outputs = [
     "grit/brave_theme_resources.h",
     "grit/brave_theme_resources_map.cc",

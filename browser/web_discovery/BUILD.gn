@@ -16,7 +16,6 @@ import("//extensions/buildflags/buildflags.gni")
 #     ]
 #     deps = [
 #       "//base",
-#       "//luxxle/browser/brave_search",
 #       # Commented out: removed components dependency - using Chromium defaults instead
 #       # "//luxxle/components/web_discovery/browser",
 #       # Commented out: removed components dependency - using Chromium defaults instead

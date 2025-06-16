@@ -4,17 +4,12 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/playlist/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/speedreader/common/buildflags/buildflags.gni")
 import("//build/config/ui.gni")
 import("//components/vector_icons/vector_icons.gni")
 
 # Local definitions for removed component flags
-enable_brave_vpn_panel = false  # Disabled for Luxxle
-enable_speedreader = false      # Disabled for Luxxle
 
 aggregate_vector_icons("brave_vector_icons") {
   icon_directory = "."
@@ -46,7 +41,6 @@ aggregate_vector_icons("brave_vector_icons") {
     ]
   }
 
-  if (enable_brave_vpn_panel) {
     sources += [
       "vpn_indicator_error.icon",
       "vpn_indicator_off.icon",
@@ -54,12 +48,7 @@ aggregate_vector_icons("brave_vector_icons") {
     ]
   }
 
-  if (enable_speedreader) {
     sources += [
-      "brave_speedreader_graphic_book1.icon",
-      "brave_speedreader_graphic_book2.icon",
-      "brave_speedreader_graphic_book3.icon",
-      "brave_speedreader_graphic_lines.icon",
     ]
   }
 }

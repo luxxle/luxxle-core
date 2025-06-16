@@ -4,7 +4,6 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_webtorrent/browser/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/tor/buildflags/buildflags.gni")
 import("//build/config/features.gni")
@@ -23,9 +22,7 @@ source_set("browser_tests") {
   ]
   deps = [
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/content/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/core/common",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/geolocation",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -95,9 +92,7 @@ source_set("unit_tests") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_rewards/core:features",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/content/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/content/test:test_support",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/geolocation",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -116,9 +111,7 @@ source_set("unit_tests") {
   ]
 
   # Commented out: webtorrent support removed
-  # if (enable_brave_webtorrent) {
   #   sources += [
-  #     "//luxxle/browser/extensions/brave_webtorrent_navigation_throttle_unittest.cc",
   #     "//luxxle/browser/net/brave_torrent_redirect_network_delegate_helper_unittest.cc",
   #   ]
 

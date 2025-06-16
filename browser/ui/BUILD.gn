@@ -11,19 +11,15 @@ import("//luxxle/build/config.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/brave_education/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_wayback_machine/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/commander/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/ntp_background_images/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/playlist/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/request_otr/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/speedreader/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/text_recognition/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
@@ -49,11 +45,8 @@ group("ui_public_dependencies") {
     ":brave_tab_features",
     ":brave_tab_prefs",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wayback_machine/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/playlist/common/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/speedreader/common/buildflags",
   ]
 }
 
@@ -72,7 +65,6 @@ source_set("ui") {
     "//luxxle/browser/brave_rewards",
     "//luxxle/browser/skus",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/core/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/webcompat/core/common",
     "//chrome/browser/ui:browser_navigator_params_headers",
@@ -111,12 +103,6 @@ source_set("ui") {
     "webui/brave_rewards/rewards_web_ui_utils.h",
     "webui/brave_rewards_internals_ui.cc",
     "webui/brave_rewards_internals_ui.h",
-    "webui/brave_wallet/line_chart/line_chart_ui.cc",
-    "webui/brave_wallet/line_chart/line_chart_ui.h",
-    "webui/brave_wallet/market/market_ui.cc",
-    "webui/brave_wallet/market/market_ui.h",
-    "webui/brave_wallet/nft/nft_ui.cc",
-    "webui/brave_wallet/nft/nft_ui.h",
     "webui/brave_web_ui_controller_factory.cc",
     "webui/brave_web_ui_controller_factory.h",
     "webui/brave_webui_source.cc",
@@ -280,16 +266,6 @@ source_set("ui") {
       "webui/brave_rewards/rewards_page_top_ui.h",
       "webui/brave_settings_ui.cc",
       "webui/brave_settings_ui.h",
-      "webui/brave_shields/cookie_list_opt_in_page_handler.cc",
-      "webui/brave_shields/cookie_list_opt_in_page_handler.h",
-      "webui/brave_shields/cookie_list_opt_in_ui.cc",
-      "webui/brave_shields/cookie_list_opt_in_ui.h",
-      "webui/brave_shields/shields_panel_data_handler.cc",
-      "webui/brave_shields/shields_panel_data_handler.h",
-      "webui/brave_shields/shields_panel_handler.cc",
-      "webui/brave_shields/shields_panel_handler.h",
-      "webui/brave_shields/shields_panel_ui.cc",
-      "webui/brave_shields/shields_panel_ui.h",
       "webui/navigation_bar_data_provider.cc",
       "webui/navigation_bar_data_provider.h",
       "webui/new_tab_page/brave_new_tab_message_handler.cc",
@@ -322,8 +298,6 @@ source_set("ui") {
       "webui/settings/brave_importer_observer.h",
       "webui/settings/brave_privacy_handler.cc",
       "webui/settings/brave_privacy_handler.h",
-      "webui/settings/brave_search_engines_handler.cc",
-      "webui/settings/brave_search_engines_handler.h",
       "webui/settings/brave_settings_leo_assistant_handler.cc",
       "webui/settings/brave_settings_leo_assistant_handler.h",
       "webui/settings/brave_settings_localized_strings_provider.cc",
@@ -332,16 +306,8 @@ source_set("ui") {
       "webui/settings/brave_site_settings_handler.h",
       "webui/settings/brave_sync_handler.cc",
       "webui/settings/brave_sync_handler.h",
-      "webui/settings/brave_wallet_handler.cc",
-      "webui/settings/brave_wallet_handler.h",
-      "webui/settings/default_brave_shields_handler.cc",
-      "webui/settings/default_brave_shields_handler.h",
       "webui/side_panel/reading_list/brave_reading_list_page_handler.cc",
       "webui/side_panel/reading_list/brave_reading_list_page_handler.h",
-      "webui/speedreader/speedreader_toolbar_data_handler_impl.cc",
-      "webui/speedreader/speedreader_toolbar_data_handler_impl.h",
-      "webui/speedreader/speedreader_toolbar_ui.cc",
-      "webui/speedreader/speedreader_toolbar_ui.h",
       "webui/webcompat_reporter/webcompat_reporter_dialog.cc",
       "webui/webcompat_reporter/webcompat_reporter_dialog.h",
       "webui/welcome_page/brave_welcome_ui.cc",
@@ -371,7 +337,6 @@ source_set("ui") {
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/sidebar/common",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/speedreader/common/buildflags",
       "//chrome/app:generated_resources",
       "//chrome/browser/content_settings:content_settings_factory",
       "//chrome/browser/favicon",
@@ -535,8 +500,6 @@ source_set("ui") {
       "views/brave_news/brave_news_feed_item_view.h",
       "views/brave_news/brave_news_feeds_container_view.cc",
       "views/brave_news/brave_news_feeds_container_view.h",
-      "views/brave_shields/cookie_list_opt_in_bubble_host.cc",
-      "views/brave_shields/cookie_list_opt_in_bubble_host.h",
       "views/brave_tab_search_bubble_host.cc",
       "views/brave_tab_search_bubble_host.h",
       "views/commands/default_accelerators_views.cc",
@@ -580,8 +543,6 @@ source_set("ui") {
       "views/omnibox/brave_omnibox_view_views.h",
       "views/omnibox/brave_rounded_omnibox_results_frame.cc",
       "views/omnibox/brave_rounded_omnibox_results_frame.h",
-      "views/omnibox/brave_search_conversion_promotion_view.cc",
-      "views/omnibox/brave_search_conversion_promotion_view.h",
       "views/overlay/brave_back_to_tab_label_button.cc",
       "views/overlay/brave_back_to_tab_label_button.h",
       "views/overlay/brave_video_overlay_window_views.cc",
@@ -681,24 +642,14 @@ source_set("ui") {
       deps += [ "//chrome/browser/glic" ]
     }
 
-    if (enable_brave_vpn) {
-      deps += [ "//luxxle/browser/ui/brave_vpn" ]
 
       if (is_win) {
         sources += [
-          "views/brave_vpn/brave_vpn_dns_settings_notificiation_dialog_view.cc",
-          "views/brave_vpn/brave_vpn_dns_settings_notificiation_dialog_view.h",
-          "views/brave_vpn/brave_vpn_fallback_dialog_view.cc",
-          "views/brave_vpn/brave_vpn_fallback_dialog_view.h",
           "webui/settings/brave_settings_secure_dns_handler.cc",
           "webui/settings/brave_settings_secure_dns_handler.h",
-          "webui/settings/brave_vpn/brave_vpn_handler.cc",
-          "webui/settings/brave_vpn/brave_vpn_handler.h",
         ]
 
-        deps += [ "//luxxle/browser/brave_vpn/win:wireguard_utils" ]
       }
-      sources += [ "brave_vpn/brave_vpn_controller.cc" ]
     }
 
     if (use_aura) {
@@ -821,7 +772,8 @@ source_set("ui") {
 
     # //chrome/browser/ui depends on //luxxle/browser/ui, add this target here
     # to pull in dependencies needed for the overwrite codes in chromium_src.
-    "//luxxle/chromium_src/chrome/browser/ui",
+    # Removed chromium_src/chrome/browser/ui - no longer needed after removing Brave overrides
+    # "//luxxle/chromium_src/chrome/browser/ui",
     "//luxxle/common",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/ai_chat/content/browser",
@@ -874,15 +826,10 @@ source_set("ui") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_rewards/resources/rewards_page:rewards_page_generated",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search_conversion",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/content/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/core/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/core/common:mojom",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_sync:crypto",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -890,23 +837,14 @@ source_set("ui") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_sync:time_limited_codes",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_vpn/common/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser:constants",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser:pref_names",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser:utils",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet_ui/line_chart:line_chart_display_generated",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet_ui/market:market_display_generated",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet_ui/nft:nft_display_generated",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet_ui/page:brave_wallet_page_generated",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/constants",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -934,11 +872,8 @@ source_set("ui") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/ntp_widget_utils/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/p3a",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/p3a:buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/p3a_utils",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/query_filter",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -1039,22 +974,15 @@ source_set("ui") {
     "//url",
   ]
 
-  if (enable_brave_vpn) {
     deps += [
-      "//luxxle/browser/brave_vpn",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_vpn/browser",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_vpn/browser/connection:api",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_vpn/common",
     ]
     if (is_win) {
       deps += [
         # Commented out: removed components dependency - using Chromium defaults instead
-        # "//luxxle/components/brave_vpn/common/win",
         # Commented out: removed components dependency - using Chromium defaults instead
-        # "//luxxle/components/brave_vpn/common/wireguard",
       ]
     }
   }
@@ -1114,7 +1042,6 @@ source_set("ui") {
       "//luxxle/app/theme:brave_theme_resources",
       "//luxxle/app/theme:brave_unscaled_resources",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_webtorrent:static_resources",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/webcompat_reporter/browser",
       # Commented out: removed components dependency - using Chromium defaults instead
@@ -1147,9 +1074,7 @@ source_set("ui") {
     ]
   }
 
-  if (enable_brave_wayback_machine) {
     # Commented out: removed components dependency - using Chromium defaults instead
-    # deps += [ "//luxxle/components/brave_wayback_machine" ]
 
     if (toolkit_views) {
       sources += [
@@ -1163,18 +1088,9 @@ source_set("ui") {
     }
   }
 
-  if (enable_speedreader && !is_android) {
     # Commented out: removed components dependency - using Chromium defaults instead
-    # deps += [ "//luxxle/components/speedreader" ]
 
     sources += [
-      "speedreader/speedreader_bubble_view.h",
-      "views/speedreader/reader_mode_bubble.cc",
-      "views/speedreader/reader_mode_bubble.h",
-      "views/speedreader/reader_mode_toolbar_view.cc",
-      "views/speedreader/reader_mode_toolbar_view.h",
-      "views/speedreader/speedreader_icon_view.cc",
-      "views/speedreader/speedreader_icon_view.h",
     ]
   }
 
@@ -1228,7 +1144,6 @@ source_set("ui") {
   if (!is_android) {
     deps += [
       "//luxxle/app:brave_generated_resources_grit",
-      "//luxxle/browser/brave_wallet",
       "//luxxle/browser/resources/settings:resources",
       "//luxxle/common/importer",
       # Commented out: removed components dependency - using Chromium defaults instead
@@ -1244,15 +1159,12 @@ source_set("ui") {
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/brave_rewards/content",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_shields/resources/cookie_list_opt_in:cookie_list_opt_in_generated",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_shields/resources/panel:brave_shields_panel_generated",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/brave_sync",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/brave_sync:sync_service_impl_helper",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet/common",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/brave_welcome/common",
       # Commented out: removed components dependency - using Chromium defaults instead
@@ -1260,11 +1172,8 @@ source_set("ui") {
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/commands/common",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/speedreader/common",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/speedreader/common:mojom",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/speedreader/resources/panel:generated_resources",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/version_info",
       "//chrome/app:branded_strings",
@@ -1289,8 +1198,6 @@ source_set("ui") {
       "views/brave_actions/brave_actions_container.h",
       "views/brave_actions/brave_rewards_action_view.cc",
       "views/brave_actions/brave_rewards_action_view.h",
-      "views/brave_actions/brave_shields_action_view.cc",
-      "views/brave_actions/brave_shields_action_view.h",
       "views/brave_help_bubble/brave_help_bubble_delegate_view.cc",
       "views/brave_help_bubble/brave_help_bubble_delegate_view.h",
       "views/brave_help_bubble/brave_help_bubble_host_view.cc",
@@ -1307,10 +1214,6 @@ source_set("ui") {
       "views/frame/vertical_tab_strip_widget_delegate_view.h",
       "views/location_bar/brave_location_bar_view.cc",
       "views/location_bar/brave_location_bar_view.h",
-      "views/location_bar/brave_search_conversion/promotion_button_controller.cc",
-      "views/location_bar/brave_search_conversion/promotion_button_controller.h",
-      "views/location_bar/brave_search_conversion/promotion_button_view.cc",
-      "views/location_bar/brave_search_conversion/promotion_button_view.h",
       "views/location_bar/brave_star_view.cc",
       "views/location_bar/brave_star_view.h",
       "views/profiles/brave_avatar_toolbar_button.cc",
@@ -1389,36 +1292,17 @@ source_set("ui") {
     # deps += [ "//luxxle/components/ntp_background_images/browser" ]
   }
 
-  if (enable_brave_vpn && !is_android) {
     sources += [
-      "toolbar/brave_vpn_menu_model.cc",
-      "toolbar/brave_vpn_menu_model.h",
-      "webui/brave_vpn/brave_vpn_localized_string_provider.cc",
-      "webui/brave_vpn/brave_vpn_localized_string_provider.h",
-      "webui/brave_vpn/vpn_panel_handler.cc",
-      "webui/brave_vpn/vpn_panel_handler.h",
-      "webui/brave_vpn/vpn_panel_ui.cc",
-      "webui/brave_vpn/vpn_panel_ui.h",
     ]
     deps += [
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_vpn/common/mojom",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_vpn/resources:panel_resources",
       "//mojo/public/cpp/bindings",
       "//ui/webui:webui",
     ]
 
     if (toolkit_views) {
       sources += [
-        "views/toolbar/brave_vpn_button.cc",
-        "views/toolbar/brave_vpn_button.h",
-        "views/toolbar/brave_vpn_panel_controller.cc",
-        "views/toolbar/brave_vpn_panel_controller.h",
-        "views/toolbar/brave_vpn_status_label.cc",
-        "views/toolbar/brave_vpn_status_label.h",
-        "views/toolbar/brave_vpn_toggle_button.cc",
-        "views/toolbar/brave_vpn_toggle_button.h",
       ]
     }
   }
@@ -1447,8 +1331,6 @@ source_set("ui") {
       "commands/accelerator_service_factory.cc",
       "commands/accelerator_service_factory.h",
       "commands/default_accelerators.h",
-      "views/permission_bubble/brave_wallet_permission_prompt_impl.cc",
-      "views/permission_bubble/brave_wallet_permission_prompt_impl.h",
       "views/toolbar/wallet_button.cc",
       "views/toolbar/wallet_button.h",
       "views/toolbar/wallet_button_notification_source.cc",
@@ -1457,41 +1339,16 @@ source_set("ui") {
       "views/wallet_bubble_focus_observer.h",
       "wallet_bubble_manager_delegate_impl.cc",
       "wallet_bubble_manager_delegate_impl.h",
-      "webui/brave_wallet/ledger/ledger_ui.cc",
-      "webui/brave_wallet/ledger/ledger_ui.h",
-      "webui/brave_wallet/page_handler/wallet_page_handler.cc",
-      "webui/brave_wallet/page_handler/wallet_page_handler.h",
-      "webui/brave_wallet/panel_handler/wallet_panel_handler.cc",
-      "webui/brave_wallet/panel_handler/wallet_panel_handler.h",
-      "webui/brave_wallet/trezor/trezor_ui.cc",
-      "webui/brave_wallet/trezor/trezor_ui.h",
-      "webui/brave_wallet/wallet_common_ui.cc",
-      "webui/brave_wallet/wallet_common_ui.h",
-      "webui/brave_wallet/wallet_page_ui.cc",
-      "webui/brave_wallet/wallet_page_ui.h",
-      "webui/brave_wallet/wallet_panel_ui.cc",
-      "webui/brave_wallet/wallet_panel_ui.h",
     ]
     deps += [
-      "//luxxle/browser/brave_wallet:tab_helper",
-      "//luxxle/browser/ui/brave_wallet",
-      "//luxxle/browser/ui/webui/brave_wallet/common_handler",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet/browser:permission_utils",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet/common",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet/common:buildflags",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet/common:mojom",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet_ui:resources",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet_ui/ledger:ledger_bridge_generated",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet_ui/panel:brave_wallet_panel_generated",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet_ui/trezor:trezor_bridge_generated",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/commands/browser",
       # Commented out: removed components dependency - using Chromium defaults instead
@@ -1505,85 +1362,27 @@ source_set("ui") {
   }
   if (is_android) {
     sources += [
-      "webui/brave_wallet/android/android_wallet_page_handler.cc",
-      "webui/brave_wallet/android/android_wallet_page_handler.h",
-      "webui/brave_wallet/android/android_wallet_page_ui.cc",
-      "webui/brave_wallet/android/android_wallet_page_ui.h",
-      "webui/brave_wallet/common_handler/wallet_handler.cc",
-      "webui/brave_wallet/common_handler/wallet_handler.h",
-      "webui/brave_wallet/page_handler/wallet_page_handler.cc",
-      "webui/brave_wallet/page_handler/wallet_page_handler.h",
-      "webui/brave_wallet/wallet_common_ui.cc",
-      "webui/brave_wallet/wallet_common_ui.h",
     ]
     deps += [
-      "//luxxle/browser/brave_wallet",
-      "//luxxle/browser/ui/webui/brave_wallet/common_handler",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet/browser:hd_keyring",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet/common",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet/common:mojom",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet_ui:resources",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet_ui/page/screens/android-buy/android:brave_wallet_fund_wallet_page_generated",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet_ui/page/screens/fund-wallet/android:brave_wallet_deposit_page_generated",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet_ui/page/screens/send/android:brave_wallet_send_page_generated",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet_ui/page/screens/swap/android:brave_wallet_swap_page_generated",
     ]
   }
 
-  if (enable_playlist) {
     # Commented out: removed components dependency - using Chromium defaults instead
-    # deps += [ "//luxxle/components/playlist/common" ]
   }
 
-  if (enable_playlist_webui) {
     sources += [
-      "playlist/playlist_browser_finder.cc",
-      "playlist/playlist_browser_finder.h",
-      "playlist/playlist_dialogs.cc",
-      "playlist/playlist_dialogs.h",
-      "views/playlist/playlist_action_dialogs.cc",
-      "views/playlist/playlist_action_dialogs.h",
-      "views/playlist/playlist_action_icon_view.cc",
-      "views/playlist/playlist_action_icon_view.h",
-      "views/playlist/playlist_add_bubble_view.cc",
-      "views/playlist/playlist_add_bubble_view.h",
-      "views/playlist/playlist_browser_finder_views.cc",
-      "views/playlist/playlist_bubble_view.cc",
-      "views/playlist/playlist_bubble_view.h",
-      "views/playlist/playlist_bubbles_controller.cc",
-      "views/playlist/playlist_bubbles_controller.h",
-      "views/playlist/playlist_edit_bubble_view.cc",
-      "views/playlist/playlist_edit_bubble_view.h",
-      "views/playlist/selectable_list_view.cc",
-      "views/playlist/selectable_list_view.h",
-      "views/playlist/thumbnail_provider.cc",
-      "views/playlist/thumbnail_provider.h",
-      "views/playlist/thumbnail_view.cc",
-      "views/playlist/thumbnail_view.h",
-      "views/side_panel/playlist/playlist_contents_wrapper.cc",
-      "views/side_panel/playlist/playlist_contents_wrapper.h",
-      "views/side_panel/playlist/playlist_side_panel_coordinator.cc",
-      "views/side_panel/playlist/playlist_side_panel_coordinator.h",
-      "views/side_panel/playlist/playlist_side_panel_web_view.cc",
-      "views/side_panel/playlist/playlist_side_panel_web_view.h",
-      "webui/playlist_active_tab_tracker.cc",
-      "webui/playlist_active_tab_tracker.h",
-      "webui/playlist_ui.cc",
-      "webui/playlist_ui.h",
     ]
     deps += [
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/playlist/browser",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/playlist/browser/resources:generated_resources",
       "//chrome/browser/picture_in_picture",
       "//chrome/browser/ui/exclusive_access",
       # Commented out: removed components dependency - using Chromium defaults instead
@@ -1662,16 +1461,11 @@ source_set("unit_tests") {
       "//ui/gfx",
     ]
 
-    if (enable_brave_vpn) {
-      sources += [ "views/toolbar/brave_vpn_button_unittest.cc" ]
       deps += [
         "//base",
         # Commented out: removed components dependency - using Chromium defaults instead
-        # "//luxxle/components/brave_vpn/browser",
         # Commented out: removed components dependency - using Chromium defaults instead
-        # "//luxxle/components/brave_vpn/browser/connection:api",
         # Commented out: removed components dependency - using Chromium defaults instead
-        # "//luxxle/components/brave_vpn/browser/connection/ikev2:sim",
         # Commented out: removed components dependency - using Chromium defaults instead
         # "//luxxle/components/skus/browser",
         "//chrome/browser/prefs",

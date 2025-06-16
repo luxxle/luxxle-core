@@ -10,7 +10,6 @@ source_set("brave_ads") {
   sources = [
     "ads_service_delegate.h",
     "ads_service_factory.h",
-    "analytics/p3a/brave_stats_helper.h",
     "virtual_pref_provider_delegate.h",
   ]
 
@@ -45,7 +44,6 @@ source_set("impl") {
     "ad_units/notification_ad/notification_ad_platform_bridge.h",
     "ads_service_delegate.cc",
     "ads_service_factory.cc",
-    "analytics/p3a/brave_stats_helper.cc",
     "application_state/background_helper/background_helper.cc",
     "application_state/background_helper/background_helper_holder.cc",
     "application_state/background_helper/background_helper_holder.h",
@@ -65,14 +63,12 @@ source_set("impl") {
     "//luxxle/browser/brave_ads/tooltips",
     "//luxxle/browser/brave_rewards",
     "//luxxle/browser/brave_rewards:util",
-    "//luxxle/browser/brave_stats",
     "//luxxle/browser/ui/brave_ads",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_adaptive_captcha",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_ads/browser/application_state",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/p3a_utils",
     "//chrome/browser:browser_process",
     "//chrome/browser:browser_public_dependencies",
     "//chrome/browser:primitives",
@@ -159,7 +155,6 @@ source_set("browser_tests") {
   sources = [
     "ads_service_waiter.cc",
     "ads_service_waiter.h",
-    "analytics/p3a/brave_stats_helper_browsertest.cc",
     "application_state/notification_helper/notification_helper_impl_mock.cc",
     "application_state/notification_helper/notification_helper_impl_mock.h",
   ]

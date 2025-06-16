@@ -83,9 +83,6 @@ android_aar_prebuilt("com_google_android_play_core_java") {
       "libs/com_google_android_play_core/com_google_android_play_core.info"
 }
 
-android_aar_prebuilt("com_brave_playlist_java") {
-  aar_path = "libs/com_brave_playlist/playlist_release.aar"
-  info_path = "libs/com_brave_playlist/playlist_release.info"
   deps = [
     ":androidx_media3_media3_exoplayer_hls_java",
     ":androidx_room_room_runtime_java",

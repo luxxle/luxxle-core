@@ -15,17 +15,8 @@ config("mojom_header_config") {
   include_dirs = [ "$target_gen_dir" ]
 }
 
-source_set("brave_wallet") {
   configs += [ ":mojom_header_config" ]
   sources = [
-    "brave_wallet_api+private.h",
-    "brave_wallet_api.h",
-    "brave_wallet_api.mm",
-    "brave_wallet_provider_delegate_ios+private.h",
-    "brave_wallet_provider_delegate_ios.h",
-    "brave_wallet_provider_delegate_ios.mm",
-    "brave_wallet_solana_utils.h",
-    "brave_wallet_solana_utils.mm",
     "token_registry_utils.h",
     "token_registry_utils.mm",
   ]
@@ -34,17 +25,12 @@ source_set("brave_wallet") {
     "//base",
     "//luxxle/base/mac",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser:constants",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/resources:ethereum_provider_generated_resources",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/resources:static_resources_grit",
     "//luxxle/ios/browser/api/url",
-    "//luxxle/ios/browser/brave_wallet",
     "//ios/chrome/browser/content_settings/model",
     "//ios/chrome/browser/shared/model/paths",
     "//ios/chrome/browser/shared/model/profile",
@@ -56,12 +42,9 @@ source_set("brave_wallet") {
 
 ios_objc_mojom_wrappers("wallet_mojom_wrappers") {
   # Commented out: removed components dependency - using Chromium defaults instead
-  # mojom_target = "//luxxle/components/brave_wallet/common:mojom"
   sources = [
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/common/brave_wallet.mojom",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/common/meld_integration.mojom",
   ]
   generate_namespace = false
   exclude_types = [

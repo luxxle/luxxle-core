@@ -4,11 +4,9 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/common/typescript.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/speedreader/common/buildflags/buildflags.gni")
 import("//tools/grit/preprocess_if_expr.gni")
 import("//tools/polymer/css_to_wrapper.gni")
 import("//tools/polymer/html_to_wrapper.gni")
@@ -347,9 +345,6 @@ leo_icons = [
   "product-brave-talk.svg",
   "product-brave-wallet.svg",
   "product-ipfs-outline.svg",
-  "product-playlist-add.svg",
-  "product-playlist-bold-add-color.svg",
-  "product-playlist.svg",
   "product-private-window.svg",
   "product-sync.svg",
   "product-translate.svg",
@@ -462,7 +457,6 @@ leo_icons = [
   "stop-circle.svg",
 ]
 
-if (enable_brave_vpn_panel) {
   leo_icons += [
     "country-al.svg",
     "country-ar.svg",
@@ -520,7 +514,6 @@ if (enable_brave_vpn_panel) {
   ]
 }
 
-if (enable_speedreader) {
   leo_icons += [
     "characters.svg",
     "forward-outline.svg",
@@ -528,7 +521,6 @@ if (enable_speedreader) {
     "minus.svg",
     "pause-outline.svg",
     "play-outline.svg",
-    "product-speedreader.svg",
     "readermode-column-default.svg",
     "readermode-column-wide.svg",
     "readermode-dislexyc.svg",

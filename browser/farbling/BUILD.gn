@@ -35,11 +35,8 @@ if (!is_android) {
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/brave_component_updater/browser:browser",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_shields/content/browser",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_shields/content/browser:test_support",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_shields/core/common",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/constants",
       # Commented out: removed components dependency - using Chromium defaults instead

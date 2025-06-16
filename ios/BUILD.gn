@@ -12,10 +12,7 @@ import("//luxxle/ios/browser/api/ai_chat/headers.gni")
 import("//luxxle/ios/browser/api/brave_domains/headers.gni")
 import("//luxxle/ios/browser/api/brave_rewards/headers.gni")
 import("//luxxle/ios/browser/api/brave_services_key/headers.gni")
-import("//luxxle/ios/browser/api/brave_shields/headers.gni")
-import("//luxxle/ios/browser/api/brave_stats/headers.gni")
 import("//luxxle/ios/browser/api/brave_user_agent/headers.gni")
-import("//luxxle/ios/browser/api/brave_wallet/headers.gni")
 import("//luxxle/ios/browser/api/certificate/headers.gni")
 import("//luxxle/ios/browser/api/content_settings/headers.gni")
 import("//luxxle/ios/browser/api/credential_provider/headers.gni")
@@ -30,7 +27,6 @@ import("//luxxle/ios/browser/api/ipfs/headers.gni")
 import("//luxxle/ios/browser/api/ntp_background_images/headers.gni")
 import("//luxxle/ios/browser/api/omnibox/headers.gni")
 import("//luxxle/ios/browser/api/opentabs/headers.gni")
-import("//luxxle/ios/browser/api/p3a/headers.gni")
 import("//luxxle/ios/browser/api/qr_code/headers.gni")
 import("//luxxle/ios/browser/api/query_filter/headers.gni")
 import("//luxxle/ios/browser/api/session_restore/headers.gni")
@@ -81,7 +77,6 @@ brave_core_public_headers = [
   "//luxxle/ios/app/brave_core_main.h",
   "//luxxle/ios/app/brave_profile_controller.h",
   "//luxxle/ios/app/brave_core_switches.h",
-  "//luxxle/ios/browser/brave_wallet/brave_wallet_factory_wrappers.h",
   "//luxxle/ios/browser/skus/skus_sdk_factory_wrappers.h",
   "//luxxle/ios/browser/api/bookmarks/brave_bookmarks_api.h",
   "//luxxle/ios/browser/api/bookmarks/brave_bookmarks_observer.h",
@@ -104,7 +99,6 @@ brave_core_public_headers = [
 brave_core_public_headers += ads_public_headers
 brave_core_public_headers += ai_chat_public_headers
 brave_core_public_headers += brave_domains_public_headers
-brave_core_public_headers += brave_shields_public_headers
 brave_core_public_headers += browser_api_url_sanitizer_public_headers
 brave_core_public_headers += browser_url_sanitizer_public_headers
 brave_core_public_headers += browser_api_de_amp_public_headers
@@ -115,8 +109,6 @@ brave_core_public_headers +=
     browser_api_brave_user_agent_exceptions_ios_public_headers
 brave_core_public_headers += browser_api_https_upgrades_public_headers
 brave_core_public_headers += browser_debounce_public_headers
-brave_core_public_headers += brave_stats_public_headers
-brave_core_public_headers += brave_wallet_public_headers
 brave_core_public_headers += browser_api_certificate_public_headers
 brave_core_public_headers += browser_api_favicon_public_headers
 brave_core_public_headers += rewards_public_headers
@@ -127,7 +119,6 @@ brave_core_public_headers += browser_api_session_restore_public_headers
 brave_core_public_headers += browser_api_query_filter_public_headers
 brave_core_public_headers += skus_public_headers
 brave_core_public_headers += browser_api_url_public_headers
-brave_core_public_headers += brave_p3a_public_headers
 brave_core_public_headers += browser_api_web_webstate_public_headers
 brave_core_public_headers += ipfs_public_headers
 brave_core_public_headers += ntp_background_images_public_headers
@@ -191,7 +182,6 @@ ios_framework_bundle("brave_core_ios_framework") {
 
   deps += ads_public_deps
   deps += ai_chat_public_deps
-  deps += brave_wallet_public_deps
   deps += rewards_public_deps
   deps += skus_public_deps
   deps += credential_provider_public_deps

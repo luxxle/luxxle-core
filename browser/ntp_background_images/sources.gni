@@ -7,8 +7,6 @@
 # import("//luxxle/components/ntp_background_images/buildflags/buildflags.gni")
 
 brave_browser_ntp_background_images_sources = [
-  "//luxxle/browser/ntp_background_images/ntp_p3a_helper_impl.cc",
-  "//luxxle/browser/ntp_background_images/ntp_p3a_helper_impl.h",
   "//luxxle/browser/ntp_background_images/ntp_tab_helper.cc",
   "//luxxle/browser/ntp_background_images/ntp_tab_helper.h",
   "//luxxle/browser/ntp_background_images/view_counter_service_factory.cc",
@@ -22,7 +20,6 @@ brave_browser_ntp_background_images_deps = [
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/brave_ads/browser",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_stats/browser",
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/constants",
   # Commented out: removed components dependency - using Chromium defaults instead
@@ -32,9 +29,7 @@ brave_browser_ntp_background_images_deps = [
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/ntp_background_images/common",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/p3a",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/p3a_utils",
   "//chrome/browser:browser_process",
   "//chrome/browser/profiles:profile",
   "//chrome/common",

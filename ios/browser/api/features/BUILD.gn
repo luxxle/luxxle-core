@@ -20,19 +20,14 @@ source_set("features") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_rewards/core:features",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search_conversion:brave_search_conversion",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_shields/core/common:common",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_sync:features",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_user_agent/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/common:buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/common:common",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/de_amp/common",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -40,11 +35,9 @@ source_set("features") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/ntp_background_images/browser:browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/p3a:p3a",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/skus/common:common",
     "//luxxle/ios/browser/api/translate:features",
-    "//luxxle/ios/browser/playlist",
     "//luxxle/ios/browser/ui/browser_menu:features",
     "//luxxle/ios/browser/ui/web_view:features",
     "//build:blink_buildflags",

@@ -28,7 +28,6 @@ assert(!is_android)
 #     # Commented out: removed components dependency - using Chromium defaults instead
 #     # "//luxxle/components/brave_rewards/core/mojom:webui_js",
 #     # Commented out: removed components dependency - using Chromium defaults instead
-#     # "//luxxle/components/brave_vpn/common/mojom:mojom_js",
 #     # Commented out: removed components dependency - using Chromium defaults instead
 #     # "//luxxle/components/ntp_background_images/browser/mojom:mojom_js",
 #     "//ui/webui/resources/cr_components/searchbox:mojo_bindings_js",

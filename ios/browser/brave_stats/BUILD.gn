@@ -3,15 +3,11 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
-source_set("brave_stats") {
   sources = [
-    "brave_stats_prefs.cc",
-    "brave_stats_prefs.h",
   ]
   deps = [
     "//base",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser:pref_names",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//components/prefs",
   ]

@@ -12,7 +12,6 @@ source_set("browser_tests") {
   deps = [
     "//base",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search_conversion",
     "//chrome/browser",
     "//chrome/browser/search_engines",
     "//chrome/browser/ui",

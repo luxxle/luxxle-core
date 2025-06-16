@@ -3,8 +3,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-brave_app_playlist_deps = [
   "//luxxle/third_party/android_deps:androidx_media3_media3_exoplayer_hls_java",
-  "//luxxle/third_party/android_deps:com_brave_playlist_java",
   "//third_party/androidx:androidx_media3_media3_common_java",
 ]

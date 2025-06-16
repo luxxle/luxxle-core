@@ -13,7 +13,6 @@ brave_browser_permissions_sources = [
 brave_browser_permissions_deps = [
   "//base",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_wallet/browser:permission_utils",
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//components/keyed_service/content",
   # Commented out: removed components dependency - using Chromium defaults instead

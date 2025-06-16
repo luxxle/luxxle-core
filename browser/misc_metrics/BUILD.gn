@@ -45,7 +45,6 @@ static_library("misc_metrics_impl") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/misc_metrics",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/p3a_utils",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/time_period_storage",
     "//chrome/browser:browser_process",

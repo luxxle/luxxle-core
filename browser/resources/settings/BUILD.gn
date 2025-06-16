@@ -6,9 +6,7 @@
 import("//luxxle/browser/shell_integrations/buildflags/buildflags.gni")
 import("//luxxle/build/config.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_wayback_machine/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/tor/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
@@ -31,7 +29,6 @@ brave_grit("resources") {
   defines += [
     "is_release_channel=$is_release_channel",
     "enable_tor=$enable_tor",
-    "enable_brave_wayback_machine=$enable_brave_wayback_machine",
   ]
 
   enable_input_discovery_for_gn_analyze = false
@@ -91,9 +88,6 @@ preprocess_if_expr("preprocess") {
   defines = [
     # Commented out: components disabled for Luxxle
     # "enable_tor=$enable_tor",
-    # "enable_brave_wayback_machine=$enable_brave_wayback_machine",
-    # "enable_brave_vpn=$enable_brave_vpn",
-    # "enable_brave_vpn_wireguard=$enable_brave_vpn_wireguard",
     "enable_extensions=$enable_extensions",
     "enable_pin_shortcut=$enable_pin_shortcut",
     # "enable_web_discovery_native=$enable_web_discovery_native",

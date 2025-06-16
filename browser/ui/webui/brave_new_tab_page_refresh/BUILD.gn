@@ -4,7 +4,6 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/ntp_background_images/buildflags/buildflags.gni")
 import("//luxxle/build/config.gni")
@@ -16,7 +15,6 @@ assert(enable_custom_background)
 mojom("mojom") {
   sources = [ "brave_new_tab_page.mojom" ]
   # Commented out: removed components dependency - using Chromium defaults instead
-  # deps = [ "//luxxle/components/brave_vpn/common/mojom" ]
 }
 
 source_set("brave_new_tab_page_refresh") {
@@ -58,9 +56,7 @@ source_set("brave_new_tab_page_refresh") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_rewards/core/mojom:webui",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_search_conversion",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_vpn/common/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/misc_metrics",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -89,13 +85,9 @@ source_set("brave_new_tab_page_refresh") {
     "//ui/webui",
   ]
 
-  if (enable_brave_vpn) {
     deps += [
-      "//luxxle/browser/ui/brave_vpn",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_vpn/browser",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_vpn/common",
     ]
   }
 }

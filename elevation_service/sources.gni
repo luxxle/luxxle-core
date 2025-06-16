@@ -4,16 +4,10 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
 
 brave_elevation_service_lib_deps =
     # Commented out: removed components dependency - using Chromium defaults instead
-    # [ "//luxxle/components/brave_vpn/common/buildflags" ]
 
-if (is_win && enable_brave_vpn) {
   brave_elevation_service_lib_deps += [
-    "//luxxle/browser/brave_vpn/win:wireguard_utils",
-    "//luxxle/browser/brave_vpn/win/brave_vpn_helper:common",
-    "//luxxle/browser/brave_vpn/win/brave_vpn_wireguard_service:install_utils",
   ]
 }

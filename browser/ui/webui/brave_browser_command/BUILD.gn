@@ -5,7 +5,6 @@
 
 import("//luxxle/build/config.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_vpn/common/buildflags/buildflags.gni")
 import("//build/config/features.gni")
 import("//chrome/common/features.gni")
 
@@ -19,11 +18,9 @@ source_set("brave_browser_command") {
     "//base:base",
     "//luxxle/browser/ai_chat",
     "//luxxle/browser/brave_rewards",
-    "//luxxle/browser/brave_wallet",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/brave_education",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_vpn/common/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/constants",
     "//luxxle/ui/webui/resources/js/brave_browser_command:mojo_bindings",
@@ -33,7 +30,5 @@ source_set("brave_browser_command") {
     "//url:url",
   ]
 
-  if (enable_brave_vpn) {
-    deps += [ "//luxxle/browser/brave_vpn" ]
   }
 }

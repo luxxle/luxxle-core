@@ -9,7 +9,6 @@ if (!is_android) {
     defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]
 
     sources = [
-      "brave_wallet_permission_context_browsertest.cc",
       "google_sign_in_permission_browsertest.cc",
       "localhost_access_permission_browsertest.cc",
       "mock_permission_lifetime_prompt.cc",
@@ -22,21 +21,14 @@ if (!is_android) {
 
     deps = [
       "//luxxle/browser",
-      "//luxxle/browser/brave_wallet",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/brave_component_updater/browser:browser",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_shields/content/browser",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_shields/content/test:test_support",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_shields/core/common",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet/browser",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet/browser:permission_utils",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_wallet/common",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/ephemeral_storage",
       # Commented out: removed components dependency - using Chromium defaults instead
@@ -61,13 +53,11 @@ source_set("unit_tests") {
   defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]
 
   sources = [
-    "brave_wallet_permission_context_unittest.cc",
     "permission_lifetime_manager_unittest.cc",
   ]
 
   deps = [
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_wallet/browser:permission_utils",
     "//chrome/browser",
     "//chrome/browser/content_settings:content_settings_factory",
     "//chrome/browser/permissions",
