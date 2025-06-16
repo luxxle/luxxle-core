@@ -1,4 +1,4 @@
-// Copyright (c) 2016 The Brave Authors. All rights reserved.
+// Copyright (c) 2016 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -163,11 +163,11 @@ const Config = function () {
   this.gypTargetArch = 'x64'
   this.targetAndroidBase = 'classic'
   this.braveServicesProductionDomain =
-    getEnvConfig(['brave_services_production_domain']) || ''
+    getEnvConfig(['luxxle_services_production_domain']) || ''
   this.braveServicesStagingDomain =
-    getEnvConfig(['brave_services_staging_domain']) || ''
+    getEnvConfig(['luxxle_services_staging_domain']) || ''
   this.braveServicesDevDomain =
-    getEnvConfig(['brave_services_dev_domain']) || ''
+    getEnvConfig(['luxxle_services_dev_domain']) || ''
   this.braveGoogleApiKey =
     getEnvConfig(['brave_google_api_key'])
     || 'AIzaSyAREPLACEWITHYOUROWNGOOGLEAPIKEY2Q'
@@ -502,9 +502,9 @@ Config.prototype.buildArgs = function () {
     // Disable "Can't update Brave" notification on macOS until we have switched
     // to Omaha 4 and have background updates:
     enable_update_notifications: this.isOfficialBuild(),
-    brave_services_production_domain: this.braveServicesProductionDomain,
-    brave_services_staging_domain: this.braveServicesStagingDomain,
-    brave_services_dev_domain: this.braveServicesDevDomain,
+    luxxle_services_production_domain: this.braveServicesProductionDomain,
+    luxxle_services_staging_domain: this.braveServicesStagingDomain,
+    luxxle_services_dev_domain: this.braveServicesDevDomain,
     brave_services_key_id: this.brave_services_key_id,
     service_key_aichat: this.service_key_aichat,
     service_key_stt: this.service_key_stt,

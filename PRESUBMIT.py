@@ -1,4 +1,4 @@
-# Copyright (c) 2022 The Brave Authors. All rights reserved.
+# Copyright (c) 2022 The Luxxle Authors. All rights reserved.
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -139,7 +139,7 @@ def CheckLicense(input_api, output_api):
     # that's why we cannot force this regexp to have a precise year, also
     # uplifts may fail during year change period, so the year check is relaxed.
     new_file_license_re = input_api.re.compile((
-        r'.*? Copyright \(c\) %(year)s The Brave Authors\. All rights reserved\.\n'
+        r'.*? Copyright \(c\) %(year)s The Luxxle Authors\. All rights reserved\.\n'
         r'.*? This Source Code Form is subject to the terms of the Mozilla Public\n'
         r'.*? License, v\. 2\.0\. If a copy of the MPL was not distributed with this file,\n'
         r'.*? You can obtain one at https://mozilla.org/MPL/2\.0/\..*\n') %
@@ -148,7 +148,7 @@ def CheckLicense(input_api, output_api):
 
     # License regexp to match in EXISTING files, it allows some variance.
     existing_file_license_re = input_api.re.compile((
-        r'.*? Copyright \(c\) %(year)s The Brave Authors\. All rights reserved\.\n'
+        r'.*? Copyright \(c\) %(year)s The Luxxle Authors\. All rights reserved\.\n'
         r'.*? This Source Code Form is subject to the terms of the Mozilla Public\n'
         r'.*? License, v\. 2\.0\. If a copy of the MPL was not distributed with this(\n.*?)? file,\n?'
         r'.*? (y|Y)ou can obtain one at https?://mozilla.org/MPL/2\.0/\..*\n')
@@ -157,7 +157,7 @@ def CheckLicense(input_api, output_api):
 
     # License template for new files. Includes current year.
     expected_license_template = (
-        '%(comment)s Copyright (c) %(year)s The Brave Authors. All rights reserved.\n'
+        '%(comment)s Copyright (c) %(year)s The Luxxle Authors. All rights reserved.\n'
         '%(comment)s This Source Code Form is subject to the terms of the Mozilla Public\n'
         '%(comment)s License, v. 2.0. If a copy of the MPL was not distributed with this file,\n'
         '%(comment)s You can obtain one at https://mozilla.org/MPL/2.0/.\n'

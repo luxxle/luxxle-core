@@ -1,4 +1,4 @@
-# Copyright (c) 2023 The Brave Authors. All rights reserved.
+# Copyright (c) 2023 The Luxxle Authors. All rights reserved.
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -6,7 +6,7 @@
 import("//build/buildflag_header.gni")
 import("buildflags.gni")
 
-source_set("brave_domains") {
+source_set("luxxle_domains") {
   sources = [
     "service_domains.cc",
     "service_domains.h",
@@ -21,12 +21,12 @@ source_set("brave_domains") {
 buildflag_header("buildflags") {
   header = "buildflags.h"
   flags = [
-    "BRAVE_SERVICES_PRODUCTION_DOMAIN=\"$brave_services_production_domain\"",
-    "BRAVE_SERVICES_STAGING_DOMAIN=\"$brave_services_staging_domain\"",
-    "BRAVE_SERVICES_DEV_DOMAIN=\"$brave_services_dev_domain\"",
+    "LUXXLE_SERVICES_PRODUCTION_DOMAIN=\"$luxxle_services_production_domain\"",
+    "LUXXLE_SERVICES_STAGING_DOMAIN=\"$luxxle_services_staging_domain\"",
+    "LUXXLE_SERVICES_DEV_DOMAIN=\"$luxxle_services_dev_domain\"",
   ]
 
-  # Consumers should use the brave_domains helper functions.
+  # Consumers should use the luxxle_domains helper functions.
   visibility = [ ":*" ]
 }
 
@@ -36,7 +36,7 @@ source_set("unit_tests") {
   sources = [ "service_domains_unittest.cc" ]
 
   deps = [
-    ":brave_domains",
+    ":luxxle_domains",
     ":buildflags",
     "//base",
     "//testing/gmock",

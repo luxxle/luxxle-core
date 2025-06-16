@@ -1,4 +1,4 @@
-// Copyright (c) 2021 The Brave Authors. All rights reserved.
+// Copyright (c) 2021 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -41,14 +41,14 @@ module.exports = {
           'prefer': 'line'
         },
         'header': [
-          'Copyright (c) {YEAR} The Brave Authors. All rights reserved.',
+          'Copyright (c) {YEAR} The Luxxle Authors. All rights reserved.',
           'This Source Code Form is subject to the terms of the Mozilla Public',
           'License, v. 2.0. If a copy of the MPL was not distributed with this file,',
           'You can obtain one at https://mozilla.org/MPL/2.0/.'
         ],
         'altHeaders': [
           [
-            'Copyright (c) {YEAR} The Brave Authors. All rights reserved.',
+            'Copyright (c) {YEAR} The Luxxle Authors. All rights reserved.',
             '* This Source Code Form is subject to the terms of the Mozilla Public',
             '* License, v. 2.0. If a copy of the MPL was not distributed with this file,',
             '* You can obtain one at https://mozilla.org/MPL/2.0/.'
@@ -59,7 +59,7 @@ module.exports = {
             '* You can obtain one at https://mozilla.org/MPL/2.0/.'
           ],
           [
-            'Copyright (c) {YEAR} The Brave Authors. All rights reserved.',
+            'Copyright (c) {YEAR} The Luxxle Authors. All rights reserved.',
             'This Source Code Form is subject to the terms of the Mozilla Public',
             'License, v. 2.0. If a copy of the MPL was not distributed with this file,',
             'you can obtain one at https://mozilla.org/MPL/2.0/.'

@@ -1,4 +1,4 @@
-# Copyright (c) 2019 The Brave Authors. All rights reserved.
+# Copyright (c) 2019 The Luxxle Authors. All rights reserved.
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -9,7 +9,7 @@ import("//luxxle/build/ios/create_xcframework.gni")
 import("//luxxle/build/mac/tweak_info_plist.gni")
 import("//luxxle/ios/browser/api/ads/headers.gni")
 import("//luxxle/ios/browser/api/ai_chat/headers.gni")
-import("//luxxle/ios/browser/api/brave_domains/headers.gni")
+import("//luxxle/ios/browser/api/luxxle_domains/headers.gni")
 import("//luxxle/ios/browser/api/brave_rewards/headers.gni")
 import("//luxxle/ios/browser/api/brave_services_key/headers.gni")
 import("//luxxle/ios/browser/api/brave_user_agent/headers.gni")
@@ -98,7 +98,7 @@ brave_core_public_headers = [
 
 brave_core_public_headers += ads_public_headers
 brave_core_public_headers += ai_chat_public_headers
-brave_core_public_headers += brave_domains_public_headers
+brave_core_public_headers += luxxle_domains_public_headers
 brave_core_public_headers += browser_api_url_sanitizer_public_headers
 brave_core_public_headers += browser_url_sanitizer_public_headers
 brave_core_public_headers += browser_api_de_amp_public_headers

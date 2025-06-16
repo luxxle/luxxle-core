@@ -1,16 +1,16 @@
-// Copyright (c) 2023 The Brave Authors. All rights reserved.
+// Copyright (c) 2023 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#ifndef BRAVE_BRAVE_DOMAINS_SERVICE_DOMAINS_H_
-#define BRAVE_BRAVE_DOMAINS_SERVICE_DOMAINS_H_
+#ifndef LUXXLE_LUXXLE_DOMAINS_SERVICE_DOMAINS_H_
+#define LUXXLE_LUXXLE_DOMAINS_SERVICE_DOMAINS_H_
 
 #include <string>
 
 #include "base/command_line.h"
 
-namespace brave_domains {
+namespace luxxle_domains {
 
 enum ServicesEnvironment { DEV, STAGING, PROD };
 
@@ -23,7 +23,7 @@ enum ServicesEnvironment { DEV, STAGING, PROD };
 // When prefix is empty, returns base production services domain.
 //
 // All domains can be overridden globally via
-// CLI param syntax is brave-services-env={dev,staging,prod}.
+// CLI param syntax is luxxle-services-env={dev,staging,prod}.
 //
 // Precedence is:
 // 1. Prefix specific CLI overrides
@@ -35,6 +35,6 @@ std::string GetServicesDomain(
     ServicesEnvironment env_value_default_override = PROD,
     base::CommandLine* command_line = base::CommandLine::ForCurrentProcess());
 
-}  // namespace brave_domains
+}  // namespace luxxle_domains
 
-#endif  // BRAVE_BRAVE_DOMAINS_SERVICE_DOMAINS_H_
+#endif  // LUXXLE_LUXXLE_DOMAINS_SERVICE_DOMAINS_H_

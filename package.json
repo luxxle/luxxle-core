@@ -1,7 +1,7 @@
 {
-  "name": "brave-core",
-  "version": "1.81.34",
-  "description": "Brave Core is a set of changes, APIs and scripts used for customizing Chromium to make Brave.",
+  "name": "luxxle-core",
+  "version": "1.0.0",
+  "description": "Luxxle Core is a set of changes, APIs and scripts used for customizing Chromium to make Luxxle.",
   "main": "index.js",
   "scripts": {
     "audit_deps": "node ./build/commands/scripts/audit.js -- --audit_dev_deps",
@@ -19,7 +19,7 @@
     "update_patches": "node ./build/commands/scripts/commands.js update_patches",
     "apply_patches": "node ./build/commands/scripts/commands.js apply_patches",
     "start": "node ./build/commands/scripts/commands.js start",
-    "network-audit": "npm run test brave_network_audit_tests -- --ui-test-action-timeout=320000 --test-launcher-timeout=2200000",
+    "network-audit": "npm run test luxxle_network_audit_tests -- --ui-test-action-timeout=320000 --test-launcher-timeout=2200000",
     "push_l10n": "node ./build/commands/scripts/commands.js push_l10n",
     "pull_l10n": "node ./build/commands/scripts/commands.js pull_l10n",
     "chromium_rebase_l10n": "node ./build/commands/scripts/commands.js chromium_rebase_l10n",
@@ -35,10 +35,10 @@
     "web-ui-gen-grd": "node components/webpack/gen-webpack-grd",
     "web-ui-gen-tsconfig": "node build/commands/scripts/genTsConfig",
     "web-ui": "webpack --config components/webpack/webpack.config.js",
-    "build-storybook": "npm run build -- --target=brave:storybook && storybook build -c .storybook -o .storybook-out",
+    "build-storybook": "npm run build -- --target=luxxle:storybook && storybook build -c .storybook -o .storybook-out",
     "storybook": "storybook dev",
     "test-unit": "cross-env NODE_OPTIONS=--no-experimental-fetch jest -t",
-    "test-unit:wallet": "cross-env NODE_OPTIONS=--no-experimental-fetch jest --coverage=false components/brave_wallet_ui",
+    "test-unit:wallet": "cross-env NODE_OPTIONS=--no-experimental-fetch jest --coverage=false components/luxxle_wallet_ui",
     "test-python-scripts": "npm run pep8 && PYTHONPATH=./script python -m unittest discover -s ./script/test",
     "update_symlink": "node ./build/commands/scripts/commands.js update_symlink",
     "build_fuzzer": "node ./build/commands/scripts/commands.js build_fuzzer",
@@ -46,28 +46,28 @@
     "perf_tests": "node ./build/commands/scripts/commands.js run_perf_tests",
     "gen_env": "node ./build/commands/scripts/genEnv.js",
     "gen_gradle": "node ./build/commands/scripts/commands.js gen_gradle",
-    "ios_pack_js": "webpack --config ios/brave-ios/webpack.config.js",
+    "ios_pack_js": "webpack --config ios/luxxle-ios/webpack.config.js",
     "ios_bootstrap": "node ./build/commands/scripts/iosCommands.js ios_bootstrap",
-    "update_brave_tools_crates": "node ./build/commands/scripts/updateBraveToolsCrates.js",
+    "update_luxxle_tools_crates": "node ./build/commands/scripts/updateLuxxleToolsCrates.js",
     "build_rust_toolchain_aux": "node ./build/commands/scripts/buildRustToolchainAux.js",
     "update_wasm_resources": "node ./build/commands/scripts/updateWasmResources.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luxxle/brave-core.git"
+    "url": "git+https://github.com/luxxle/luxxle-core.git"
   },
   "author": {
-    "name": "Brave Software <support@brave.com>"
+    "name": "Luxxle Software <support@luxxle.com>"
   },
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/luxxle/brave-browser/issues"
+    "url": "https://github.com/luxxle/luxxle-browser/issues"
   },
   "engines": {
     "node": ">=20.0.0 <23.0.0",
     "npm": ">=10.0.0"
   },
-  "homepage": "https:/github.com/luxxle/brave-core#readme",
+  "homepage": "https://github.com/luxxle/luxxle-core#readme",
   "config": {
     "projects": {
       "chrome": {

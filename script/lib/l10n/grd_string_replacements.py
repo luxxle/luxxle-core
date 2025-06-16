@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright (c) 2022 The Brave Authors. All rights reserved.
+# Copyright (c) 2022 The Luxxle Authors. All rights reserved.
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/. */
@@ -10,9 +10,9 @@
 # for XTB files
 branding_replacements = [
     (r'The Chromium Authors. All rights reserved.',
-     r'The Brave Authors. All rights reserved.'),
+     r'The Luxxle Authors. All rights reserved.'),
     (r'Google LLC. All rights reserved.',
-     r'The Brave Authors. All rights reserved.'),
+     r'The Luxxle Authors. All rights reserved.'),
     (r'The Chromium Authors', r'Brave Software Inc'),
     (r'Google Chrome', r'Brave'),
     (r'(Google)(?! Play)', r'Brave'),

@@ -1,4 +1,4 @@
-/* Copyright (c) 2023 The Brave Authors. All rights reserved.
+/* Copyright (c) 2023 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
@@ -9,7 +9,7 @@
 #include <vector>
 
 #include "base/strings/strcat.h"
-#include "brave/brave_domains/service_domains.h"
+#include "brave/luxxle_domains/service_domains.h"
 #include "brave/browser/ai_chat/ai_chat_service_factory.h"
 #include "brave/browser/skus/skus_service_factory.h"
 #include "brave/components/ai_chat/core/browser/ai_chat_service.h"
@@ -151,10 +151,10 @@ void AIChatSettingsHelper::GetModelsWithSubtitles(
 
 void AIChatSettingsHelper::GetManageUrl(GetManageUrlCallback callback) {
 #if defined(OFFICIAL_BUILD)
-  std::string domain = brave_domains::GetServicesDomain(kAccountHostnamePart);
+  std::string domain = luxxle_domains::GetServicesDomain(kAccountHostnamePart);
 #else
-  std::string domain = brave_domains::GetServicesDomain(kAccountHostnamePart,
-                                                        brave_domains::STAGING);
+  std::string domain = luxxle_domains::GetServicesDomain(kAccountHostnamePart,
+                                                        luxxle_domains::STAGING);
 #endif
 
   std::move(callback).Run(

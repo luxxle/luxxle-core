@@ -22,8 +22,6 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "brave-ui": ["node_modules/@brave/brave-ui"],
-      "brave-ui/*": ["node_modules/@brave/brave-ui/*"],
       "gen/*": [
         // This list of paths in the format [configuration]/gen is not used at compile-time
         // since we don't want results from 1 compilation to affect another.
@@ -75,5 +73,17 @@
     "strictNullChecks": true,
     "noUnusedLocals": true
   },
-  "include": []
+  "include": [
+    "components/**/*.ts",
+    "components/**/*.tsx",
+    "browser/**/*.ts",
+    "browser/**/*.tsx",
+    "ui/**/*.ts",
+    "ui/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "ui/webui/resources/wasm/**/*",
+    "**/*.js"
+  ]
 }

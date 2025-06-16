@@ -3,7 +3,7 @@
 """This script runs `npm audit' and `cargo audit' on relevant paths in the
 repo."""
 
-# Copyright (c) 2020 The Brave Authors. All rights reserved.
+# Copyright (c) 2020 The Luxxle Authors. All rights reserved.
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
