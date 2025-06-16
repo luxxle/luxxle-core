@@ -3,8 +3,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-brave_ui_color_sources = []
-brave_ui_color_public_deps = [ "//luxxle/ui/color:nala_color_id" ]
+luxxle_ui_color_sources = []
+luxxle_ui_color_public_deps = [ "//luxxle/ui/color:nala_color_id" ]
 
-brave_ui_color_mixer_sources = []
-brave_ui_color_mixer_public_deps = [ "//luxxle/ui/color:brave_color_mixers" ]
+luxxle_ui_color_mixer_sources = []
+luxxle_ui_color_mixer_public_deps = [ "//luxxle/ui/color:luxxle_color_mixers" ]

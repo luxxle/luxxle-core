@@ -62,7 +62,7 @@ namespace {
 
 std::string GetSearchWidgetDefaultHost(
     regional_capabilities::RegionalCapabilitiesService* regional_capabilities) {
-  constexpr char kBraveSearchHost[] = "search.brave.com";
+  constexpr char kLuxxleSearchHost[] = "search.luxxle.com";
   constexpr char kYahooSearchHost[] = "search.yahoo.co.jp";
 
   regional_capabilities::CountryIdHolder country_id =
@@ -73,7 +73,7 @@ std::string GetSearchWidgetDefaultHost(
     return kYahooSearchHost;
   }
 
-  return kBraveSearchHost;
+  return kLuxxleSearchHost;
 }
 
 }  // namespace

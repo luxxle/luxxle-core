@@ -17,7 +17,7 @@
 namespace misc_metrics {
 
 namespace {
-constexpr char kBraveSearchHost[] = "search.brave.com";
+constexpr char kLuxxleSearchHost[] = "search.luxxle.com";
 constexpr char kBraveSearchPath[] = "/search";
 }  // namespace
 
@@ -53,7 +53,7 @@ void PageMetricsTabHelper::DidFinishNavigation(
     is_reload = true;
   }
   page_metrics_->IncrementPagesLoadedCount(is_reload);
-  if (navigation_handle->GetURL().host_piece() == kBraveSearchHost &&
+  if (navigation_handle->GetURL().host_piece() == kLuxxleSearchHost &&
       navigation_handle->GetURL().path_piece() == kBraveSearchPath) {
     page_metrics_->OnBraveQuery();
   }

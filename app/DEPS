@@ -1,22 +1,8 @@
-from brave_chromium_utils import inline_file
 inline_file('//chrome/app/DEPS', globals(), locals())
 
 include_rules += [
   "+chrome/app",
   "+chrome/common",
-  "+brave/browser",
-  "+brave/common",
-  "+brave/renderer/brave_content_renderer_client.h",
-  "+brave/components/brave_component_updater/browser/features.h",
-  "+brave/components/brave_component_updater/browser/switches.h",
-  "+brave/components/brave_sync/buildflags.h",
-  "+brave/components/constants/brave_switches.h",
-  "+brave/components/variations/buildflags.h",
-  "+brave/components/commands/common/features.h",
-  "+brave/components/speedreader/common/buildflags/buildflags.h",
-  "+brave/components/update_client/buildflags.h",
-  "+brave/components/variations/command_line_utils.h",
-  "+brave/utility/brave_content_utility_client.h",
   "+components/component_updater/component_updater_switches.h",
   "+components/dom_distiller/core/dom_distiller_switches.h",
   "+components/embedder_support/switches.h",

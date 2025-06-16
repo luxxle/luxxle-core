@@ -47,7 +47,7 @@ enum class SearchEngineP3A {
   kQwant,
   kYandex,
   kEcosia,
-  kBrave,
+  kLuxxle,
   kDaum,
   kNaver,
   kYahooJP,
@@ -58,12 +58,12 @@ enum class SearchEngineP3A {
 // is used to bucket a UMA histogram, and removing values breaks that.
 enum class SearchEngineSwitchP3A {
   kNoSwitch,
-  kBraveToGoogle,
-  kBraveToDDG,
-  kBraveToOther,
-  kGoogleToBrave,
-  kDDGToBrave,
-  kOtherToBrave,
+  kLuxxleToGoogle,
+  kLuxxleToDDG,
+  kLuxxleToOther,
+  kGoogleToLuxxle,
+  kDDGToLuxxle,
+  kOtherToLuxxle,
   kOtherToOther,
   kMaxValue = kOtherToOther,
 };

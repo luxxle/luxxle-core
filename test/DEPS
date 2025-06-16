@@ -1,7 +1,4 @@
 include_rules = [
-  "+brave/app",
-  "+brave/browser",
-  "+brave/common",
   "+chrome/browser",
   "+chrome/common",
   "+chrome/test",

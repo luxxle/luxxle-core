@@ -1,4 +1,3 @@
-from brave_chromium_utils import inline_file
 inline_file("//chrome/DEPS", globals(), locals())
 
 chrome_common_deps = {}
@@ -8,7 +7,6 @@ include_rules += chrome_common_deps["include_rules"]
 include_rules += [
   "+chrome/common",
   "+components/grit",
-  "+brave/components/constants",
 ]
 
 specific_include_rules = {

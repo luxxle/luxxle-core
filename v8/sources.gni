@@ -3,14 +3,12 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_page_graph/common/buildflags.gni")
+# Luxxle V8 extensions - minimal page graph utilities
+luxxle_v8_headers_sources = []
+luxxle_v8_headers_public_deps = []
 
-brave_v8_headers_sources = []
-brave_v8_headers_public_deps =
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # [ "//luxxle/components/brave_page_graph/common:buildflags" ]
-
-  brave_v8_headers_sources +=
+# Optional page graph utilities for Luxxle
+if (enable_luxxle_page_graph) {
+  luxxle_v8_headers_sources +=
       [ "//luxxle/v8/include/v8-isolate-page-graph-utils.h" ]
 }

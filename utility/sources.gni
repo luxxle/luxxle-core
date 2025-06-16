@@ -5,38 +5,24 @@
 
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/tor/buildflags/buildflags.gni")
-import("//luxxle/utility/importer/sources.gni")
+# Removed brave utility importer - using Chromium defaults instead
+# import("//luxxle/utility/importer/sources.gni")
 
-brave_utility_sources = [
-  "//luxxle/utility/brave_content_utility_client.cc",
-  "//luxxle/utility/brave_content_utility_client.h",
+luxxle_utility_sources = [
+  "//luxxle/utility/luxxle_content_utility_client.h",
 ]
 
-brave_utility_sources += brave_utility_importer_sources
-
-brave_utility_deps = [
-  # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/services/bat_ads:lib",
-  # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/services/bat_ads/public/interfaces",
-  # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/services/bat_rewards:lib",
-  # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/services/bat_rewards/public/interfaces",
-  # Commented out: removed components dependency - using Chromium defaults instead
-  # Commented out: removed components dependency - using Chromium defaults instead
-  # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/tor/buildflags",
+luxxle_utility_deps = [
   "//mojo/public/cpp/bindings",
 ]
 
 if (is_android) {
-  brave_utility_sources += [
+  luxxle_utility_sources += [
     "//chrome/utility/importer/bookmark_html_reader.cc",
     "//chrome/utility/importer/bookmark_html_reader.h",
   ]
 
-  brave_utility_deps += [
+  luxxle_utility_deps += [
     "//chrome/common/importer",
     "//chrome/common/importer:interfaces",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -44,16 +30,4 @@ if (is_android) {
   ]
 }
 
-brave_utility_deps += brave_utility_importer_deps
-
-if (enable_tor) {
-  brave_utility_deps += [
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/services/tor",
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/services/tor/public/interfaces",
-  ]
-}
-
-brave_utility_public_deps = []
-brave_utility_public_deps += brave_utility_importer_public_deps
+luxxle_utility_public_deps = []

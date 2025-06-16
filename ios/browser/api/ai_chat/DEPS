@@ -1,4 +1,2 @@
 include_rules = [
-  "+brave/components/ai_chat/core/browser",
-  "+brave/components/ai_chat/core/common",
 ]

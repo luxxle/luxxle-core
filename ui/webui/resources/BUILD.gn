@@ -127,12 +127,12 @@ transpile_web_ui("opaque_ke") {
 
 # Create a grdp that //ui/webui/resources can include in its main resources GRD
 generate_grd("static_grdp") {
-  grd_prefix = "brave_webui"
+  grd_prefix = "luxxle_webui"
   resource_path_prefix = "luxxle"
-  out_grd = "$brave_resources_extra_grdps_path/brave_static_resources.grdp"
+  out_grd = "$luxxle_resources_extra_grdps_path/luxxle_static_resources.grdp"
   input_files = static_files + rebase_path(leo_static_files, ".", "leo")
   input_files_base_dir =
-      rebase_path("$brave_resources_extra_grdps_path", root_build_dir)
+      rebase_path("$luxxle_resources_extra_grdps_path", root_build_dir)
   deps = [
     ":leo_static_copy",
     ":static_copy",
@@ -141,12 +141,12 @@ generate_grd("static_grdp") {
 
 # Create a grdp that //ui/webui/resources can include in its main resources GRD
 generate_grd("fonts_grdp") {
-  grd_prefix = "brave_webui"
+  grd_prefix = "luxxle_webui"
   resource_path_prefix = "luxxle"
-  out_grd = "$brave_resources_extra_grdps_path/brave_fonts_resources.grdp"
-  input_files = brave_font_files
+  out_grd = "$luxxle_resources_extra_grdps_path/luxxle_fonts_resources.grdp"
+  input_files = luxxle_font_files
   input_files_base_dir =
-      rebase_path("$brave_resources_extra_grdps_path", root_build_dir)
+      rebase_path("$luxxle_resources_extra_grdps_path", root_build_dir)
   deps = [ ":fonts_copy" ]
 }
 
@@ -534,13 +534,13 @@ leo_icons = [
 }
 
 generate_grd("icons_grdp") {
-  grd_prefix = "brave_icons"
-  resource_path_prefix = "brave-icons"
-  out_grd = "$brave_resources_extra_grdps_path/brave_icons_resources.grdp"
+  grd_prefix = "luxxle_icons"
+  resource_path_prefix = "luxxle-icons"
+  out_grd = "$luxxle_resources_extra_grdps_path/luxxle_icons_resources.grdp"
 
   input_files = leo_icons
   input_files_base_dir =
-      rebase_path("$brave_resources_extra_grdps_path/icons/", root_build_dir)
+      rebase_path("$luxxle_resources_extra_grdps_path/icons/", root_build_dir)
 
   deps = [ ":icons_copy" ]
 }
@@ -548,23 +548,23 @@ generate_grd("icons_grdp") {
 # Static files should be put relative to //ui/webui/resources main resources GRD
 copy("static_copy") {
   sources = static_files
-  outputs = [ "$brave_resources_extra_grdps_path/{{source_target_relative}}" ]
+  outputs = [ "$luxxle_resources_extra_grdps_path/{{source_target_relative}}" ]
 }
 
 copy("leo_static_copy") {
   sources = rebase_path(leo_static_files,
                         ".",
                         "../../../node_modules/@brave/leo/tokens")
-  outputs = [ "$brave_resources_extra_grdps_path/leo/css/{{source_file_part}}" ]
+  outputs = [ "$luxxle_resources_extra_grdps_path/leo/css/{{source_file_part}}" ]
 }
 
 # Static files should be put relative to //ui/webui/resources main resources GRD
 copy("fonts_copy") {
-  sources = brave_font_files
-  outputs = [ "$brave_resources_extra_grdps_path/{{source_target_relative}}" ]
+  sources = luxxle_font_files
+  outputs = [ "$luxxle_resources_extra_grdps_path/{{source_target_relative}}" ]
 }
 
 copy("icons_copy") {
   sources = rebase_path(leo_icons, ".", leo_icons_base_path)
-  outputs = [ "$brave_resources_extra_grdps_path/icons/{{source_file_part}}" ]
+  outputs = [ "$luxxle_resources_extra_grdps_path/icons/{{source_file_part}}" ]
 }

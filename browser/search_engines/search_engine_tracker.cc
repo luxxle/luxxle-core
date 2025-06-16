@@ -27,7 +27,7 @@ namespace {
 // Preference name switch events are stored under.
 constexpr char kSwitchSearchEngineP3AStorage[] =
     "brave.search.p3a_default_switch";
-constexpr char kBraveDomain[] = "brave.com";
+constexpr char kLuxxleDomain[] = "luxxle.com";
 constexpr char kGoogleDomain[] = "google.com";
 constexpr char kDDGDomain[] = "duckduckgo.com";
 
@@ -55,15 +55,15 @@ SearchEngineP3A GetSearchEngineProvider(const GURL& search_engine_url,
   } else if (type == SEARCH_ENGINE_YAHOO &&
              search_engine_url.host_piece().ends_with(".jp")) {
     result = SearchEngineP3A::kYahooJP;
-  } else if (type == SEARCH_ENGINE_BRAVE) {
-    result = SearchEngineP3A::kBrave;
+  } else if (type == SEARCH_ENGINE_LUXXLE) {
+    result = SearchEngineP3A::kLuxxle;
   } else if (type == SEARCH_ENGINE_OTHER) {
     if (base::EndsWith(search_engine_url.host(), "startpage.com",
                        base::CompareCase::INSENSITIVE_ASCII)) {
       result = SearchEngineP3A::kStartpage;
-    } else if (base::EndsWith(search_engine_url.host(), "brave.com",
-                              base::CompareCase::INSENSITIVE_ASCII)) {
-      result = SearchEngineP3A::kBrave;
+      } else if (base::EndsWith(search_engine_url.host(), "luxxle.com",
+                            base::CompareCase::INSENSITIVE_ASCII)) {
+    result = SearchEngineP3A::kLuxxle;
     }
   }
   return result;
@@ -76,23 +76,23 @@ SearchEngineSwitchP3A SearchEngineSwitchP3AMapAnswer(const GURL& to,
   DCHECK(from.is_valid());
   DCHECK(to.is_valid());
 
-  if (from.DomainIs(kBraveDomain)) {
-    // Switching away from Brave Search.
+  if (from.DomainIs(kLuxxleDomain)) {
+    // Switching away from Luxxle Search.
     if (to.DomainIs(kGoogleDomain)) {
-      answer = SearchEngineSwitchP3A::kBraveToGoogle;
+      answer = SearchEngineSwitchP3A::kLuxxleToGoogle;
     } else if (to.DomainIs(kDDGDomain)) {
-      answer = SearchEngineSwitchP3A::kBraveToDDG;
+      answer = SearchEngineSwitchP3A::kLuxxleToDDG;
     } else {
-      answer = SearchEngineSwitchP3A::kBraveToOther;
+      answer = SearchEngineSwitchP3A::kLuxxleToOther;
     }
-  } else if (to.DomainIs(kBraveDomain)) {
-    // Switching to Brave Search.
+  } else if (to.DomainIs(kLuxxleDomain)) {
+    // Switching to Luxxle Search.
     if (from.DomainIs(kGoogleDomain)) {
-      answer = SearchEngineSwitchP3A::kGoogleToBrave;
+      answer = SearchEngineSwitchP3A::kGoogleToLuxxle;
     } else if (from.DomainIs(kDDGDomain)) {
-      answer = SearchEngineSwitchP3A::kDDGToBrave;
+      answer = SearchEngineSwitchP3A::kDDGToLuxxle;
     } else {
-      answer = SearchEngineSwitchP3A::kOtherToBrave;
+      answer = SearchEngineSwitchP3A::kOtherToLuxxle;
     }
   } else {
     // Any other transition.
@@ -199,7 +199,7 @@ SearchEngineTracker::SearchEngineTracker(
 SearchEngineTracker::~SearchEngineTracker() = default;
 
 void SearchEngineTracker::RecordLocationBarQuery() {
-  if (current_default_engine_ == SearchEngineP3A::kBrave) {
+  if (current_default_engine_ == SearchEngineP3A::kLuxxle) {
     brave_search_conversion::p3a::RecordLocationBarQuery(local_state_);
   }
 }
@@ -222,7 +222,7 @@ void SearchEngineTracker::OnTemplateURLServiceChanged() {
       default_search_url_ = url;
 
       if (last_default_engine != current_default_engine_ &&
-          last_default_engine == SearchEngineP3A::kBrave) {
+          last_default_engine == SearchEngineP3A::kLuxxle) {
         brave_search_conversion::p3a::RecordDefaultEngineChurn(local_state_);
       }
     }
@@ -258,7 +258,7 @@ void SearchEngineTracker::RecordSwitchP3A(const GURL& url) {
     previous_search_url_ = url;
     switch_record_.Add(static_cast<int>(answer));
 
-    if (url.DomainIs(kBraveDomain)) {
+    if (url.DomainIs(kLuxxleDomain)) {
       brave_search_conversion::p3a::RecordDefaultEngineConversion(local_state_);
     }
   }

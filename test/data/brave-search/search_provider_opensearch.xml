@@ -1,6 +1,6 @@
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
-<ShortName>Brave</ShortName>
-<Description>Brave Search: private, independent, open</Description>
+<ShortName>Luxxle</ShortName>
+<Description>Luxxle Search: fast, private, secure</Description>
 <InputEncoding>UTF-8</InputEncoding>
-<Url type="text/html" method="get" template="https://search.brave.com/search?q={searchTerms}"/>
+<Url type="text/html" method="get" template="https://search.luxxle.com/search?q={searchTerms}"/>
 </OpenSearchDescription>
