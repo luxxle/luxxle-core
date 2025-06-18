@@ -144,6 +144,7 @@ const Config = function () {
   this.chromeVersion = this.getProjectVersion('chrome')
   this.chromiumRepo = getEnvConfig(['projects', 'chrome', 'repository', 'url'])
   this.braveCoreDir = braveCoreDir
+  this.luxxlePatchesDir = path.join(this.braveCoreDir, 'patches')
   this.buildToolsDir = path.join(this.srcDir, 'build')
   this.resourcesDir = path.join(this.rootDir, 'resources')
   this.depotToolsDir = getDepotToolsDir(this.braveCoreDir)

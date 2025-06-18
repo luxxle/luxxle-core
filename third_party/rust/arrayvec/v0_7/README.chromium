@@ -2,7 +2,7 @@ Name: arrayvec
 URL: https://crates.io/crates/arrayvec
 Version: 0.7.6
 License: Apache-2.0
-License File: //brave/third_party/rust/chromium_crates_io/vendor/arrayvec-v0_7/../../../../../../third_party/rust/chromium_crates_io/vendor/arrayvec-v0_7/LICENSE-APACHE
+License File: //luxxle/third_party/rust/chromium_crates_io/vendor/arrayvec-v0_7/../../../../../../third_party/rust/chromium_crates_io/vendor/arrayvec-v0_7/LICENSE-APACHE
 Shipped: yes
 Security Critical: yes
 

@@ -4,6 +4,6 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 brave_exec_script_allowlist = [
-  # //brave/.env parser.
-  "//brave/build/env_config.gni",
+  # //luxxle/.env parser.
+  "//luxxle/build/env_config.gni",
 ]

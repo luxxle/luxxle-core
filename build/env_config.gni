@@ -5,7 +5,7 @@
 
 declare_args() {
   # Path to .env file that contains variables to be used in the build.
-  env_config_file = "//brave/.env"
+  env_config_file = "//luxxle/.env"
 }
 
 # Parsed .env as a GN scope.

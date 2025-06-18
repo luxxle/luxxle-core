@@ -1,8 +1,0 @@
-# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
-
-# Empty BUILD.gn file - all Brave overrides have been removed
-# This file exists only to satisfy build dependencies that still reference this path
-
-group("ui") {
-  # No dependencies - using Chromium defaults
-} 

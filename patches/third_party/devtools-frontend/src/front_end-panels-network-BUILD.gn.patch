@@ -6,7 +6,7 @@ index 9b87b1adf6fb5b18ab6367ce5a244641b0310dc2..242fcc443f1d05ebcca3e760d356f908
      "./components:bundle",
      "./forward:bundle",
    ]
-+  import("//brave/third_party/devtools-frontend/src/front_end/panels/network/sources.gni")  sources += brave_devtools_front_end_panels_network_source
++  import("//luxxle/third_party/devtools-frontend/src/front_end/panels/network/sources.gni")  sources += brave_devtools_front_end_panels_network_source
  }
  
  devtools_entrypoint("bundle") {

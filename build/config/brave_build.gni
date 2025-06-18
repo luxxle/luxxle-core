@@ -6,12 +6,15 @@
 # Add imports here for things that need to be available in chromium code.
 # This file is included in most gn files either directly or through
 # import("//build/config/chrome_build.gni") in compiler.gni
-import("//brave/app/entitlements.gni")
-import("//brave/brave_repack_locales.gni")
-import("//brave/browser/extensions/resources.gni")
-import("//brave/browser/resources/settings/sources.gni")
-import("//brave/browser/ui/color/sources.gni")
-import("//brave/build/mac/config.gni")
+import("//luxxle/app/entitlements.gni")
+# Re-enabled: file created with minimal config
+import("//luxxle/brave_repack_locales.gni")
+import("//luxxle/browser/extensions/resources.gni")
+import("//luxxle/browser/resources/settings/sources.gni")
+# Commented out: checking if this exists
+# import("//luxxle/browser/ui/color/sources.gni")
+# Commented out: checking if this exists
+# import("//luxxle/build/mac/config.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//brave/components/content_settings/core/browser/sources.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
@@ -24,9 +27,10 @@ import("//brave/build/mac/config.gni")
 # import("//brave/components/sync_device_info/sources.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//brave/components/update_client/sources.gni")
-import("//brave/elevation_service/sources.gni")
-import("//brave/installer/linux/sources.gni")
-import("//brave/net/dns/sources.gni")
-import("//brave/net/sources.gni")
-import("//brave/resources/allowlist.gni")
-import("//brave/third_party/blink/renderer/includes.gni")
+# Commented out: checking if these exist in minimal Luxxle build
+# import("//luxxle/elevation_service/sources.gni")
+# import("//luxxle/installer/linux/sources.gni")
+import("//luxxle/net/dns/sources.gni")
+import("//luxxle/net/sources.gni")
+# import("//luxxle/resources/allowlist.gni")
+# import("//luxxle/third_party/blink/renderer/includes.gni")

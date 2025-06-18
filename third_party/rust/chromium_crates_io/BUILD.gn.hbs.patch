@@ -7,7 +7,7 @@ index 38a4bd496af..39908589b50 100644
      {{/if}}
      {{#each this.packages}}
 -      "//third_party/rust/{{this.name}}/{{this.epoch}}:lib",
-+      "//brave/third_party/rust/{{this.name}}/{{this.epoch}}:lib",
++      "//luxxle/third_party/rust/{{this.name}}/{{this.epoch}}:lib",
      {{/each}}
    ]
    {{else}}
@@ -15,7 +15,7 @@ index 38a4bd496af..39908589b50 100644
      deps += [
        {{#each this.packages}}
 -      "//third_party/rust/{{this.name}}/{{this.epoch}}:lib",
-+      "//brave/third_party/rust/{{this.name}}/{{this.epoch}}:lib",
++      "//luxxle/third_party/rust/{{this.name}}/{{this.epoch}}:lib",
        {{/each}}
      ]
    }
@@ -24,7 +24,7 @@ index 38a4bd496af..39908589b50 100644
    aliased_deps = {
      {{#each aliased_deps}}
 -    {{this.0}} = "{{this.1}}"
-+    {{this.0}} = "//brave/third_party/rust/{{this.1}}:lib"
++    {{this.0}} = "//luxxle/third_party/rust/{{this.1}}:lib"
      {{/each}}
    }
    {{/if}}
@@ -33,7 +33,7 @@ index 38a4bd496af..39908589b50 100644
    build_deps = [
      {{#each this.packages}}
 -      "//third_party/rust/{{this.name}}/{{this.epoch}}:buildrs_support",
-+      "//brave/third_party/rust/{{this.name}}/{{this.epoch}}:buildrs_support",
++      "//luxxle/third_party/rust/{{this.name}}/{{this.epoch}}:buildrs_support",
      {{/each}}
    ]
    {{else}}
@@ -41,7 +41,7 @@ index 38a4bd496af..39908589b50 100644
      build_deps += [
      {{#each this.packages}}
 -      "//third_party/rust/{{this.name}}/{{this.epoch}}:buildrs_support",
-+      "//brave/third_party/rust/{{this.name}}/{{this.epoch}}:buildrs_support",
++      "//luxxle/third_party/rust/{{this.name}}/{{this.epoch}}:buildrs_support",
      {{/each}}
      ]
    }

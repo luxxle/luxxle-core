@@ -228,4 +228,5 @@ module.exports = {
   updateStatus,
   printFailedPatchesInJsonFormat,
   allPatchStatus,
+  logPatchStatus,
 }

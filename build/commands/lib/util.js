@@ -21,19 +21,33 @@ const ActionGuard = require('./actionGuard')
 process.setMaxListeners(0)
 
 async function applyPatches(printPatchFailuresInJson) {
-  // LUXXLE MODIFICATION: Skip all patch application to get vanilla Chromium
-  // This allows us to build without any Brave modifications while keeping patch files as reference
+  // LUXXLE MODIFICATION: Re-enable patch application for necessary fixes
+  console.log('🔧 LUXXLE: Applying patches for build compatibility fixes')
+  
+  const GitPatcher = require('./gitPatcher')
   const Log = require('./logging')
-  Log.progressStart('apply patches (skipped for vanilla Chromium)')
-  console.log('🚀 LUXXLE: Skipping all patch application - building vanilla Chromium')
-  console.log('📁 Patch files are preserved in patches/ directory for reference')
+  const config = require('./config')
+
+  Log.progressStart('apply patches')
+
+  const patcher = new GitPatcher(
+    config.luxxlePatchesDir,
+    config.srcDir
+  )
+
+  const statuses = await patcher.applyPatches()
   
-  // Skip all patch operations but still call the chrome version update
   updateChromeVersion()
-  Log.progressFinish('apply patches (skipped for vanilla Chromium)')
-  
-  // Return empty status array since no patches were applied
-  return []
+  Log.progressFinish('apply patches')
+
+  if (printPatchFailuresInJson) {
+    const failures = statuses.filter(s => s.error)
+    console.log(JSON.stringify(failures))
+  } else {
+    statuses.forEach(s => Log.logPatchStatus(s))
+  }
+
+  return statuses
 }
 
 const isOverrideNewer = (original, override) => {

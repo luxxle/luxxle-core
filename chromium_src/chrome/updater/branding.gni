@@ -1,0 +1,12 @@
+# Copyright (c) 2024 The Luxxle Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at https://mozilla.org/MPL/2.0/.
+
+# Minimal branding override for Luxxle - use Chromium defaults
+# This file is imported by chrome/enterprise_companion/branding.gni
+
+# Define empty branding variables to use Chromium defaults
+brave_updater_branding = {
+  # Empty - use Chromium default branding
+} 
