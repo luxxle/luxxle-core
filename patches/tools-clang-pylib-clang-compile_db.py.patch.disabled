@@ -1,0 +1,9 @@
+diff --git a/tools/clang/pylib/clang/compile_db.py b/tools/clang/pylib/clang/compile_db.py
+index 2e415f1f78b749983abc7375bc78e97210c05d48..fbed3314f70825bca2d27552200569a2b0f07c23 100755
+--- a/tools/clang/pylib/clang/compile_db.py
++++ b/tools/clang/pylib/clang/compile_db.py
+@@ -206,3 +206,4 @@ def Read(path):
+   """
+   with open(os.path.join(path, 'compile_commands.json'), 'rb') as db:
+     return json.load(db)
++import os, sys; sys.path.append(os.path.join(os.path.dirname(__file__), *[os.pardir] * 4, 'luxxle', 'script')); from brave_chromium_utils import inline_chromium_src_override; inline_chromium_src_override(globals(), locals())

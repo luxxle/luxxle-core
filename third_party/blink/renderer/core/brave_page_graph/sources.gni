@@ -1,0 +1,9 @@
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+
+# Minimal page graph sources override for Luxxle - use Chromium defaults
+# This file is imported by third_party/blink/renderer/includes.gni
+
+# Define empty page graph variables to use Chromium defaults
+brave_page_graph_core_public_deps = []
+brave_page_graph_core_sources = []
+brave_page_graph_core_deps = [] 

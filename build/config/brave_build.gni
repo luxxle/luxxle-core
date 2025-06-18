@@ -11,26 +11,32 @@ import("//luxxle/app/entitlements.gni")
 import("//luxxle/brave_repack_locales.gni")
 import("//luxxle/browser/extensions/resources.gni")
 import("//luxxle/browser/resources/settings/sources.gni")
-# Commented out: checking if this exists
-# import("//luxxle/browser/ui/color/sources.gni")
+# Re-enabled: file exists and defines needed variables
+import("//luxxle/browser/ui/color/sources.gni")
 # Commented out: checking if this exists
 # import("//luxxle/build/mac/config.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//brave/components/content_settings/core/browser/sources.gni")
+# Re-enabled: file created for content settings core browser variables
+import("//luxxle/components/content_settings/core/browser/sources.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//brave/components/omnibox/browser/sources.gni")
+# Re-enabled: file created for omnibox browser variables
+import("//luxxle/components/omnibox/browser/sources.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//brave/components/search_engines/sources.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//brave/components/sync/service/sources.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//brave/components/sync_device_info/sources.gni")
+# Re-enabled: file created for sync device info variables
+import("//luxxle/components/sync_device_info/sources.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//brave/components/update_client/sources.gni")
-# Commented out: checking if these exist in minimal Luxxle build
-# import("//luxxle/elevation_service/sources.gni")
+# Re-enabled: file created for update client variables
+import("//luxxle/components/update_client/sources.gni")
+# Re-enabled: file exists and defines needed variables
+import("//luxxle/elevation_service/sources.gni")
+# Commented out: checking if this exists in minimal Luxxle build
 # import("//luxxle/installer/linux/sources.gni")
 import("//luxxle/net/dns/sources.gni")
 import("//luxxle/net/sources.gni")
 # import("//luxxle/resources/allowlist.gni")
-# import("//luxxle/third_party/blink/renderer/includes.gni")
+# Re-enabled: file exists and defines needed Blink variables
+import("//luxxle/third_party/blink/renderer/includes.gni")

@@ -1,0 +1,12 @@
+diff --git a/chrome/app/BUILD.gn b/chrome/app/BUILD.gn
+index bcd29bff12183f9a136bc5e9f3141a73a63d988d..7d5dcb638e9dd76ed0efd867ec75bd278d6d11c1 100644
+--- a/chrome/app/BUILD.gn
++++ b/chrome/app/BUILD.gn
+@@ -107,6 +107,7 @@ grit("generated_resources") {
+   if (is_android) {
+     outputs += android_generated_java_resources
+   }
++  deps = [ "//luxxle/app:brave_generated_resources_grit" ]
+ }
+ 
+ if (is_android) {

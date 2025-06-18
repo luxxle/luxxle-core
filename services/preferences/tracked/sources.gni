@@ -3,5 +3,5 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# Commented out: removed components dependency - using Chromium defaults instead
-# brave_services_preferences_tracked_deps = [ "//luxxle/components/constants" ]
+# Re-enabled: using existing Luxxle constants component
+brave_services_preferences_tracked_deps = [ "//luxxle/components/constants" ]

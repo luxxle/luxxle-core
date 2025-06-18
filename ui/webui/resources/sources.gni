@@ -1,7 +1,10 @@
-# Copyright (c) 2023 The Luxxle Authors. All rights reserved.
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
+
+# Minimal UI webui resources sources override for Luxxle - use Chromium defaults
+# This file provides variables for ui/webui/resources/BUILD.gn
 
 # Extra GRDPs to give //ui/webui/resources:build_grd
 # (which generates //ui/webui/resources/webui_generated_resources.grd)
@@ -17,6 +20,10 @@ luxxle_resources_extra_grdps = [
 ]
 
 luxxle_resources_extra_grdps_deps = [ "//luxxle/ui/webui/resources:grdp" ]
+
+# Define brave variables to use existing luxxle resources instead of Chromium defaults
+brave_resources_extra_grdps = luxxle_resources_extra_grdps
+brave_resources_extra_grdps_deps = luxxle_resources_extra_grdps_deps
 
 # At the moment, all non-static resources are only required for polymer WebUI.
 # This could change and, when it does, the `include_polymer` conditional can be removed

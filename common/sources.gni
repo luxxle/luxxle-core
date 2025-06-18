@@ -1,56 +1,12 @@
-# Copyright (c) 2023 The Luxxle Authors. All rights reserved.
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-brave_chrome_common_sources = [
-  "//luxxle/common/brave_channel_info.cc",
-  "//luxxle/common/brave_channel_info.h",
-  "//luxxle/common/resource_bundle_helper.cc",
-  "//luxxle/common/resource_bundle_helper.h",
-]
+# Minimal common sources override for Luxxle - use Chromium defaults
+# This file provides variables for chrome/common/BUILD.gn
 
-brave_chrome_common_deps = [
-  "//base",
-  "//luxxle/common:mojo_bindings",
-  "//luxxle/extensions:common",
-  # Commented out: removed components dependency - using Chromium defaults instead
-  # "//components/version_info:channel",
-  "//extensions/buildflags",
-  "//services/service_manager",
-  "//ui/base",
-]
-
-# Commented out: removed components dependency - using Chromium defaults instead
-# brave_chrome_common_public_deps = [ "//luxxle/components/constants" ]
-
-if (is_android) {
-  brave_chrome_common_sources += [
-    "//chrome/common/importer/imported_bookmark_entry.cc",
-    "//chrome/common/importer/imported_bookmark_entry.h",
-  ]
-}
-
-if (!is_android && !is_ios) {
-  brave_chrome_common_deps += [ "//luxxle/common/importer" ]
-}
-
-if (!is_ios) {
-  brave_chrome_common_sources += [
-    "//luxxle/common/brave_content_client.cc",
-    "//luxxle/common/brave_content_client.h",
-  ]
-
-  brave_chrome_common_deps += [
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/resources",
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/resources:static_resources_grit",
-    "//chrome/common:channel_info",
-    "//chrome/common:constants",
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # "//components/resources",
-    "//content/public/common",
-    "//third_party/widevine/cdm:buildflags",
-  ]
-}
+# Define empty chrome common variables to use Chromium defaults
+brave_chrome_common_sources = []
+brave_chrome_common_deps = []
+brave_chrome_common_public_deps = []

@@ -1,0 +1,7 @@
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+
+# Minimal signin internal identity manager sources override for Luxxle - use Chromium defaults
+# This file provides variables for components/signin/internal/identity_manager/BUILD.gn
+
+# Define empty signin internal identity manager variables to use Chromium defaults
+brave_components_signin_internal_identity_manager_sources = [] 

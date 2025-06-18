@@ -1,0 +1,20 @@
+diff --git a/third_party/lit/v3_0/BUILD.gn b/third_party/lit/v3_0/BUILD.gn
+index 2e4d492093aa2c44624a3ece9315caa1f597ed30..c1ee815f0ba16e802cdd6ac074fa862d611a94b7 100644
+--- a/third_party/lit/v3_0/BUILD.gn
++++ b/third_party/lit/v3_0/BUILD.gn
+@@ -116,6 +116,7 @@ ts_library("build_ts") {
+     "//ui/webui/resources/cr_components/most_visited:build_ts",
+     "//ui/webui/resources/cr_components/theme_color_picker:build_ts",
+     "//ui/webui/resources/cr_elements:build_ts",
++    "//chrome/browser/resources/settings:build_ts", "//luxxle/ui/webui/resources:build_ts"
+   ]
+   tsconfig_base = "tsconfig_base.json"
+   composite = true
+@@ -200,6 +201,7 @@ ts_library("build_ts") {
+             "${node_modules}/@lit/reactive-element/reactive-element.d.ts",
+             target_gen_dir),
+   ]
++  import("//luxxle/third_party/lit/v3_0/sources.gni") visibility += brave_lit_build_ts_visibility
+ }
+ 
+ bundle_js("build_bundle") {

@@ -1,0 +1,7 @@
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+# Minimal translate core common sources override for Luxxle - use Chromium defaults
+# This file provides variables for components/translate/core/common/BUILD.gn
+
+# Define empty translate core common variables to use Chromium defaults
+brave_components_translate_core_common_sources = []
+brave_components_translate_core_common_public_deps = [] 

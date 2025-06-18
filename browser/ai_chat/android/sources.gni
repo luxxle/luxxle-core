@@ -1,0 +1,8 @@
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+
+# Minimal AI chat android sources override for Luxxle - use Chromium defaults
+# This file provides variables for browser/sources.gni
+
+# Define empty AI chat android variables to use Chromium defaults
+brave_browser_ai_chat_android_sources = []
+brave_browser_ai_chat_android_deps = [] 

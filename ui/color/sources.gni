@@ -1,7 +1,18 @@
-# Copyright (c) 2024 The Luxxle Authors. All rights reserved.
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
+
+# Minimal UI color sources override for Luxxle - use Chromium defaults
+# This file provides variables for ui/color/BUILD.gn
+
+# Define empty UI color variables to use Chromium defaults
+brave_ui_color_sources = []
+brave_ui_color_public_deps = []
+
+# Define empty UI color mixer variables to use Chromium defaults
+brave_ui_color_mixer_sources = []
+brave_ui_color_mixer_public_deps = []
 
 luxxle_ui_color_sources = []
 luxxle_ui_color_public_deps = [ "//luxxle/ui/color:nala_color_id" ]

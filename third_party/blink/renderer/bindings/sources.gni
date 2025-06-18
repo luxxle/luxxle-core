@@ -3,6 +3,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
-brave_third_party_blink_renderer_bindings_generate_bindings_deps =
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # [ "//luxxle/components/brave_page_graph/common:buildflags" ]
+# Commented out: removed components dependency - using Chromium defaults instead
+# brave_third_party_blink_renderer_bindings_generate_bindings_deps = [ "//luxxle/components/brave_page_graph/common:buildflags" ]
+
+# Define empty bindings variables to use Chromium defaults
+brave_third_party_blink_renderer_bindings_generate_bindings_deps = []

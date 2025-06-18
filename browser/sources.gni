@@ -442,11 +442,10 @@ if (enable_sparkle) {
   ]
 }
 
-  brave_chrome_browser_deps += [
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # Commented out: removed components dependency - using Chromium defaults instead
-  ]
-}
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # brave_chrome_browser_deps += [
+  #   # component dependencies would go here
+  # ]
 
 if (enable_request_otr) {
   # Commented out: removed components dependency - using Chromium defaults instead
@@ -468,13 +467,10 @@ if (enable_web_discovery_native) {
   ]
 }
 
-  brave_chrome_browser_deps += [
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # Commented out: removed components dependency - using Chromium defaults instead
-  ]
-}
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # brave_chrome_browser_deps += [
+  #   # component dependencies would go here
+  # ]
 
 if (is_android) {
   brave_chrome_browser_sources += [
@@ -537,12 +533,10 @@ if (enable_extensions) {
     "//extensions/common:common_constants",
   ]
 
-    brave_chrome_browser_deps +=
-        # Commented out: removed components dependency - using Chromium defaults instead
-  }
-}
-
   # Commented out: removed components dependency - using Chromium defaults instead
+  # brave_chrome_browser_deps += [
+  #   # extension dependencies would go here
+  # ]
 }
 
 if (enable_tor) {

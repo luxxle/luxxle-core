@@ -1,0 +1,8 @@
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+
+# Minimal omnibox browser sources override for Luxxle - use Chromium defaults
+# This file provides variables for components/omnibox/browser/BUILD.gn
+
+# Define empty omnibox browser variables to use Chromium defaults
+brave_components_omnibox_browser_sources = []
+brave_components_omnibox_browser_deps = [] 

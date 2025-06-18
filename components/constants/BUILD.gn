@@ -1,0 +1,13 @@
+import("//build/config/features.gni")
+
+# This is a minimal constants component placeholder
+# TODO: Add actual Luxxle constants sources here
+source_set("constants") {
+  sources = [
+    # Placeholder - add actual constants files here
+  ]
+  
+  deps = [
+    "//base",
+  ]
+} 

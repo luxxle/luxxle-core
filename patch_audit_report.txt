@@ -205,7 +205,7 @@ INFRASTRUCTURE (277 patches):
   KEEP components-update_client-BUILD.gn.patch
   KEEP components-vector_icons-vector_icons.gni.patch
   KEEP components-visited_url_ranking-internal-BUILD.gn.patch
-  KEEP components-webapps-browser-BUILD.gn.patch
+  REMOVE components-webapps-browser-BUILD.gn.patch
   KEEP components-webui-version-resources-about_version.css.patch
   KEEP content-app_shim_remote_cocoa-render_widget_host_view_cocoa.mm.patch
   KEEP content-browser-BUILD.gn.patch

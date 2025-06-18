@@ -1,0 +1,8 @@
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+
+# Minimal update client sources override for Luxxle - use Chromium defaults
+# This file provides variables for components/update_client/BUILD.gn
+
+# Define empty update client variables to use Chromium defaults
+brave_components_update_client_deps = []
+brave_components_update_client_public_deps = [] 

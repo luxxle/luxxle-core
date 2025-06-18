@@ -1,0 +1,12 @@
+diff --git a/ui/webui/resources/cr_elements/cr_shared_vars.css b/ui/webui/resources/cr_elements/cr_shared_vars.css
+index bfcaf563de750a03c8dffc2e9ae29923de80561c..23148445c013d7b11359e0a40de6b173d6b8e612 100644
+--- a/ui/webui/resources/cr_elements/cr_shared_vars.css
++++ b/ui/webui/resources/cr_elements/cr_shared_vars.css
+@@ -4,6 +4,7 @@
+ 
+ /* #css_wrapper_metadata_start
+  * #type=vars-lit
++<if expr="not is_android and not is_ios">* #import=//resources/luxxle/br_elements/br_shared_vars.css.js</if>
+  * #scheme=relative
+  * #css_wrapper_metadata_end */
+ 

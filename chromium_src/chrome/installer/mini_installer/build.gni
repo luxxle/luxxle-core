@@ -1,0 +1,11 @@
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+
+# Minimal mini installer build override for Luxxle - use Chromium defaults
+# This file is imported by chrome/installer/mini_installer/BUILD.gn
+
+# Define a minimal template that delegates to the standard Chromium action
+template("brave_mini_installer_archive_action") {
+  action(target_name) {
+    forward_variables_from(invoker, "*")
+  }
+} 

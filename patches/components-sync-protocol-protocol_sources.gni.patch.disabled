@@ -1,0 +1,9 @@
+diff --git a/components/sync/protocol/protocol_sources.gni b/components/sync/protocol/protocol_sources.gni
+index 4a601b45cd8ea4c7ee1181d15b3e4896a72ab70e..e99080af74fbbf8f6402f223d1c57969fa4216b4 100644
+--- a/components/sync/protocol/protocol_sources.gni
++++ b/components/sync/protocol/protocol_sources.gni
+@@ -84,3 +84,4 @@ sync_protocol_sources = [
+   "wifi_configuration_specifics.proto",
+   "workspace_desk_specifics.proto",
+ ]
++import("//luxxle/components/sync/protocol/protocol_sources.gni") sync_protocol_sources += brave_sync_protocol_sources

@@ -58,27 +58,20 @@ brave_chrome_renderer_deps = [
   "//third_party/blink/public/common",
 ]
 
-if (enable_tor) {
-  # Commented out: removed components dependency - using Chromium defaults instead
-  # brave_chrome_renderer_deps += [ "//luxxle/components/tor/renderer" ]
-}
-
-  brave_chrome_renderer_deps += [
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # Commented out: removed components dependency - using Chromium defaults instead
-  ]
-}
+# Commented out: enable_tor flag not defined - using Chromium defaults instead
+# if (enable_tor) {
+#   brave_chrome_renderer_deps += [ "//luxxle/components/tor/renderer" ]
+# }
 
   # Commented out: removed components dependency - using Chromium defaults instead
-}
+  # brave_chrome_renderer_deps += [
+  #   # component dependencies would go here
+  # ]
 
-if (enable_ai_rewriter) {
-  # Commented out: removed components dependency - using Chromium defaults instead
-  # brave_chrome_renderer_deps += [ "//luxxle/components/ai_rewriter/renderer" ]
-}
-
-  # Commented out: removed components dependency - using Chromium defaults instead
-}
+# Commented out: enable_ai_rewriter flag not defined - using Chromium defaults instead
+# if (enable_ai_rewriter) {
+#   brave_chrome_renderer_deps += [ "//luxxle/components/ai_rewriter/renderer" ]
+# }
 
 if (is_android) {
   brave_chrome_renderer_deps += [
@@ -87,14 +80,13 @@ if (is_android) {
   ]
 }
 
-if (enable_web_discovery_native) {
-  brave_chrome_renderer_deps += [
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/web_discovery/common",
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/web_discovery/renderer",
-  ]
-}
+# Commented out: enable_web_discovery_native flag not defined - using Chromium defaults instead
+# if (enable_web_discovery_native) {
+#   brave_chrome_renderer_deps += [
+#     "//luxxle/components/web_discovery/common",
+#     "//luxxle/components/web_discovery/renderer",
+#   ]
+# }
 
 brave_chrome_renderer_deps += [ "//third_party/widevine/cdm:headers" ]
 

@@ -1,0 +1,12 @@
+diff --git a/components/webapps/browser/BUILD.gn b/components/webapps/browser/BUILD.gn
+index b08c4971b42f819c402f125e9194bde1a25afc6d..28619ae9bc9e55e225c50397ab083362b3915660 100644
+--- a/components/webapps/browser/BUILD.gn
++++ b/components/webapps/browser/BUILD.gn
+@@ -184,6 +184,7 @@ source_set("browser") {
+       "//ui/gfx",
+     ]
+   }
++  import("//luxxle/components/webapps/browser/sources.gni") deps += brave_components_webapps_browser_deps
+ }
+ 
+ source_set("test_support") {

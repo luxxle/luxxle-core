@@ -1,0 +1,9 @@
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+
+# Import existing Luxxle browser permissions
+import("//luxxle/browser/permissions/sources.gni")
+
+# Map brave components permissions to existing Luxxle browser permissions
+# This way we use Luxxle's existing permission system instead of Chromium defaults
+brave_components_permissions_sources = brave_browser_permissions_sources
+brave_components_permissions_deps = brave_browser_permissions_deps 

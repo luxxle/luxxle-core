@@ -1,0 +1,7 @@
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+
+# Minimal metrics sources override for Luxxle - use Chromium defaults
+# This file provides variables for components/metrics/BUILD.gn
+
+# Define empty metrics variables to use Chromium defaults
+brave_components_metrics_deps = [] 

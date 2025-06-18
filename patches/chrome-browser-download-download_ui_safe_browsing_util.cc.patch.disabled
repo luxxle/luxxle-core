@@ -1,0 +1,17 @@
+diff --git a/chrome/browser/download/download_ui_safe_browsing_util.cc b/chrome/browser/download/download_ui_safe_browsing_util.cc
+index 1234567890123456789012345678901234567890..abcdefabcdefabcdefabcdefabcdefabcdefabcd 100644
+--- a/chrome/browser/download/download_ui_safe_browsing_util.cc
++++ b/chrome/browser/download/download_ui_safe_browsing_util.cc
+@@ -30,6 +30,7 @@ using safe_browsing::ClientSafeBrowsingReportRequest;
+ #endif
+ 
++#if BUILDFLAG(SAFE_BROWSING_AVAILABLE)
+ std::string GetDangerPromptHistogramName(const std::string& suffix,
+                                          const download::DownloadItem& item) {
+   const char kPrefix[] = "Download.DownloadDangerPrompt";
+@@ -39,6 +40,7 @@ std::string GetDangerPromptHistogramName(const std::string& suffix,
+                             suffix.c_str());
+ }
++#endif
+ 
+ }  // namespace

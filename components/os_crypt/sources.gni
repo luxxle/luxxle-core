@@ -1,0 +1,8 @@
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+
+# Minimal OS crypt sources override for Luxxle - use Chromium defaults
+# OS cryptography typically uses system-provided functionality
+# No Luxxle-specific equivalent found, using Chromium implementation
+
+# Define empty OS crypt variables to use Chromium defaults
+brave_components_os_crypt_deps = [] 

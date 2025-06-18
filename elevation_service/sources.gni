@@ -5,9 +5,5 @@
 
 # Commented out: removed components dependency - using Chromium defaults instead
 
-brave_elevation_service_lib_deps =
-    # Commented out: removed components dependency - using Chromium defaults instead
-
-  brave_elevation_service_lib_deps += [
-  ]
-}
+# Define empty elevation service variables to use Chromium defaults
+brave_elevation_service_lib_deps = []

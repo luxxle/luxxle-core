@@ -1,0 +1,12 @@
+diff --git a/ios/chrome/browser/shared/model/prefs/BUILD.gn b/ios/chrome/browser/shared/model/prefs/BUILD.gn
+index 6ecdb32f1fb4c8dd4a2c4831b6748edc75214cfd..7fdbef6d7d41bbb5d54949b344f12e10a24c1994 100644
+--- a/ios/chrome/browser/shared/model/prefs/BUILD.gn
++++ b/ios/chrome/browser/shared/model/prefs/BUILD.gn
+@@ -147,6 +147,7 @@ source_set("browser_prefs") {
+   if (target_environment != "catalyst") {
+     deps += [ "//ios/chrome/browser/default_browser/model/default_status" ]
+   }
++  import("//luxxle/chromium_src/ios/chrome/browser/shared/model/prefs/sources.gni") deps += brave_browser_prefs_deps
+ }
+ 
+ source_set("unit_tests") {
