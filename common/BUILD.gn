@@ -11,8 +11,8 @@ import("//mojo/public/tools/bindings/mojom.gni")
 
 brave_common_visibility_targets = [
   ":*",
-  "//brave:browser_dependencies",
-  "//brave:child_dependencies",
+  "//luxxle:browser_dependencies",
+  "//luxxle:child_dependencies",
   "//luxxle/browser/*",
   "//luxxle/ios/browser/*",
   "//luxxle/renderer/*",

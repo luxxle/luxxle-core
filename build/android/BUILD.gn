@@ -44,7 +44,7 @@ action("sign_app_convert_aab_to_apk") {
 action("sign_app") {
   script = "//brave/build/android/sign_apk.py"
 
-  deps = [ "//brave:create_symbols_dist" ]
+  deps = [ "//luxxle:create_symbols_dist" ]
 
   if (target_cpu == "arm64" || target_cpu == "x64") {
     if (target_android_output_format == "aab") {

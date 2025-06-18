@@ -23,6 +23,3 @@ brave_browser_perf_deps = [
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//components/prefs",
 ]
-
-  # Commented out: removed components dependency - using Chromium defaults instead
-}

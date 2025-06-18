@@ -1,33 +1,5 @@
 # Copyright (c) 2024 The Luxxle Authors. All rights reserved.
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this file,
-# You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//build/buildflag_header.gni")
-# Commented out: removed components dependency - using Chromium defaults instead
-# import("//components/gcm_driver/config.gni")
-
+# Stripped down GCM driver - minimal functionality
 brave_browser_gcm_driver_sources = []
 brave_browser_gcm_driver_deps = []
-
-if (!use_gcm_from_platform) {
-  brave_browser_gcm_driver_sources += [
-    "//luxxle/browser/gcm_driver/brave_gcm_channel_status.cc",
-    "//luxxle/browser/gcm_driver/brave_gcm_channel_status.h",
-    "//luxxle/browser/gcm_driver/brave_gcm_utils.cc",
-    "//luxxle/browser/gcm_driver/brave_gcm_utils.h",
-  ]
-
-  brave_browser_gcm_driver_deps += [
-    "//base",
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/constants",
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # "//components/pref_registry",
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # "//components/prefs",
-
-    # For profile.h
-    "//content/public/browser",
-  ]
-}

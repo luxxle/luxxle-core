@@ -43,11 +43,15 @@ ESSENTIAL_PATCHES = {
 }
 
 def disable_patch(patch_file):
-    """Disable a patch by renaming it with .disabled extension"""
+    """Delete a patch file completely"""
     if patch_file.exists():
-        disabled_file = patch_file.with_suffix(patch_file.suffix + '.disabled')
-        shutil.move(str(patch_file), str(disabled_file))
-        print(f"Disabled: {patch_file.name}")
+        os.remove(str(patch_file))
+        print(f"Deleted: {patch_file.name}")
+    # Also remove .disabled version if it exists
+    disabled_file = patch_file.with_suffix(patch_file.suffix + '.disabled')
+    if disabled_file.exists():
+        os.remove(str(disabled_file))
+        print(f"Deleted: {disabled_file.name}")
 
 def enable_patch(patch_file):
     """Re-enable a patch by removing .disabled extension"""
@@ -56,39 +60,72 @@ def enable_patch(patch_file):
         shutil.move(str(disabled_file), str(patch_file))
         print(f"Re-enabled: {patch_file.name}")
 
+def read_patch_audit_report():
+    """Read patch audit report and return patches marked for removal"""
+    patches_to_remove = set()
+    audit_file = Path('patch_audit_report.txt')
+    
+    if audit_file.exists():
+        with open(audit_file, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line.startswith('REMOVE '):
+                    patch_name = line.replace('REMOVE ', '').strip()
+                    patches_to_remove.add(patch_name)
+    
+    return patches_to_remove
+
 def main():
     patches_dir = Path('patches')
     if not patches_dir.exists():
         print("patches directory not found!")
         return
     
-    # Get all patch files
+    # Read patches to remove from audit report
+    patches_to_remove = read_patch_audit_report()
+    
+    # Get all patch files (including .disabled ones)
     all_patches = list(patches_dir.glob('*.patch'))
+    disabled_patches = list(patches_dir.glob('*.patch.disabled'))
     
-    print(f"Found {len(all_patches)} patch files")
-    print(f"Will keep {len(ESSENTIAL_PATCHES)} essential patches")
-    print(f"Will disable {len(all_patches) - len(ESSENTIAL_PATCHES)} unnecessary patches")
+    print(f"Found {len(all_patches)} active patch files")
+    print(f"Found {len(disabled_patches)} disabled patch files")
+    print(f"Found {len(patches_to_remove)} patches marked for removal in audit report")
     
-    disabled_count = 0
+    deleted_count = 0
     
+    # Delete all .disabled patch files since they're not needed
+    for disabled_patch in disabled_patches:
+        print(f"DELETING DISABLED: {disabled_patch.name}")
+        os.remove(str(disabled_patch))
+        deleted_count += 1
+    
+    # Process patches marked for removal
+    for patch_name in patches_to_remove:
+        patch_file = patches_dir / patch_name
+        if patch_file.exists():
+            print(f"REMOVING: {patch_name}")
+            disable_patch(patch_file)  # This now deletes the file
+            deleted_count += 1
+    
+    # Also process based on essential patches list for backward compatibility
     for patch_file in all_patches:
-        # Convert path to relative string for comparison
         patch_name = str(patch_file.relative_to(patches_dir))
         
         if patch_name in ESSENTIAL_PATCHES:
             print(f"KEEPING: {patch_name}")
-            # Make sure it's enabled if it was previously disabled
             enable_patch(patch_file)
-        else:
+        elif patch_name not in patches_to_remove:
+            # Only disable if not already marked for removal
             print(f"DISABLING: {patch_name}")
             disable_patch(patch_file)
-            disabled_count += 1
+            deleted_count += 1
     
     print(f"\nSummary:")
     print(f"- Kept {len(ESSENTIAL_PATCHES)} essential patches")
-    print(f"- Disabled {disabled_count} unnecessary patches")
-    print(f"\nYou can now try building with only the essential patches!")
-    print(f"If build fails, you may need to add back specific patches to ESSENTIAL_PATCHES list.")
+    print(f"- Deleted {deleted_count} unnecessary patches")
+    print(f"\nPatches marked as REMOVE in audit report have been deleted!")
+    print(f"You can now try building without the removed patches.")
 
 if __name__ == "__main__":
     main() 

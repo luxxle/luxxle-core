@@ -31,3 +31,8 @@ if (is_android) {
 }
 
 luxxle_utility_public_deps = []
+
+# Compatibility aliases for Chromium build system
+brave_utility_sources = luxxle_utility_sources
+brave_utility_deps = luxxle_utility_deps
+brave_utility_public_deps = luxxle_utility_public_deps

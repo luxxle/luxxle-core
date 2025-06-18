@@ -60,5 +60,5 @@ extract_symbols("brave_symbols") {
     symbol_file = "$root_out_dir/brave.breakpad.$current_cpu"
   }
 
-  deps = [ "//brave:brave_dist_resources" ]
+  deps = [ "//luxxle:brave_dist_resources" ]
 }

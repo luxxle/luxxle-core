@@ -140,4 +140,3 @@ if (enable_extensions) {
     # Commented out: removed components dependency - using Chromium defaults instead
     "//extensions/browser",
   ]
-}
