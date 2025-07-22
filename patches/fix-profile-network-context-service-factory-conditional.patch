@@ -1,0 +1,24 @@
+diff --git a/chrome/browser/net/profile_network_context_service_factory.cc b/chrome/browser/net/profile_network_context_service_factory.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/net/profile_network_context_service_factory.cc
++++ b/chrome/browser/net/profile_network_context_service_factory.cc
+@@ -30,7 +30,9 @@
+ #endif
+ 
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX)
++#if BUILDFLAG(ENTERPRISE_CLIENT_CERTIFICATES)
+ #include "chrome/browser/enterprise/client_certificates/certificate_provisioning_service_factory.h"
++#endif
+ #endif
+ 
+ ProfileNetworkContextService*
+@@ -75,7 +77,9 @@
+   DependsOn(net::ServerCertificateDatabaseServiceFactory::GetInstance());
+ #endif
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX)
++#if BUILDFLAG(ENTERPRISE_CLIENT_CERTIFICATES)
+   DependsOn(client_certificates::CertificateProvisioningServiceFactory::
+                 GetInstance());
++#endif
+ #endif
+ }

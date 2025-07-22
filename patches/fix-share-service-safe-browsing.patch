@@ -1,0 +1,20 @@
+--- a/chrome/browser/webshare/share_service_impl.cc
++++ b/chrome/browser/webshare/share_service_impl.cc
+@@ -222,15 +222,17 @@ void ShareServiceImpl::Share(
+   }
+ 
+   DCHECK(!safe_browsing_request_);
++#if BUILDFLAG(SAFE_BROWSING_AVAILABLE)
+   if (should_check_url && g_browser_process->safe_browsing_service()) {
+     safe_browsing_request_.emplace(
+         g_browser_process->safe_browsing_service()->database_manager(),
+         web_contents->GetLastCommittedURL(),
+         base::BindOnce(&ShareServiceImpl::OnSafeBrowsingResultReceived,
+                        weak_factory_.GetWeakPtr(), title, text, share_url,
+                        std::move(files), std::move(callback)));
+     return;
+   }
++#endif
+ 
+   OnSafeBrowsingResultReceived(title, text, share_url, std::move(files),
+                                std::move(callback),

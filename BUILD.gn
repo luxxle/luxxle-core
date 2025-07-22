@@ -8,6 +8,10 @@
 import("//build/config/locales.gni")
 import("//chrome/browser/buildflags.gni") 
 import("//tools/grit/repack.gni")
+import("//luxxle/build_config.gni")
+
+# LUXXLE: Build configuration to enable features that use otherwise unused functions
+# This prevents unused function warnings by actually enabling the features
 
 group("all") {
   testonly = true

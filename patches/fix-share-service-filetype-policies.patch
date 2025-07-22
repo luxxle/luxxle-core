@@ -1,0 +1,15 @@
+diff --git a/chrome/browser/webshare/share_service_impl.cc b/chrome/browser/webshare/share_service_impl.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/webshare/share_service_impl.cc
++++ b/chrome/browser/webshare/share_service_impl.cc
+@@ -193,3 +193,4 @@ void ShareServiceImpl::Share(
+   }
+ 
++  #if BUILDFLAG(SAFE_BROWSING_AVAILABLE)
+   bool should_check_url = false;
+@@ -234,4 +234,5 @@ void ShareServiceImpl::Share(
+        return;
+   }
++  #endif
+ 
+   OnSafeBrowsingResultReceived(title, text, share_url, std::move(files),

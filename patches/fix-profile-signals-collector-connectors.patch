@@ -1,0 +1,24 @@
+diff --git a/chrome/browser/enterprise/signals/profile_signals_collector.cc b/chrome/browser/enterprise/signals/profile_signals_collector.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/enterprise/signals/profile_signals_collector.cc
++++ b/chrome/browser/enterprise/signals/profile_signals_collector.cc
+@@ -45,12 +45,15 @@
+       policy_blocklist_service_(
+           PolicyBlocklistFactory::GetForBrowserContext(profile)),
+       profile_prefs_(profile->GetPrefs()),
+-      policy_manager_(profile->GetCloudPolicyManager()),
+-      connectors_service_(
+-          enterprise_connectors::ConnectorsServiceFactory::GetForBrowserContext(
+-              profile)) {
++      policy_manager_(profile->GetCloudPolicyManager())
++#if BUILDFLAG(ENTERPRISE_CLOUD_CONTENT_ANALYSIS)
++      , connectors_service_(
++          enterprise_connectors::ConnectorsServiceFactory::GetForBrowserContext(
++              profile))
++#endif  // BUILDFLAG(ENTERPRISE_CLOUD_CONTENT_ANALYSIS)
++{
+ #if BUILDFLAG(ENTERPRISE_CLOUD_CONTENT_ANALYSIS)
+   DCHECK(connectors_service_);
+ #endif  // BUILDFLAG(ENTERPRISE_CLOUD_CONTENT_ANALYSIS)
+   DCHECK(policy_blocklist_service_);
+ }

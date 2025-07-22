@@ -1,0 +1,11 @@
+diff --git a/chrome/browser/ui/safety_hub/revoked_permissions_service.cc b/chrome/browser/ui/safety_hub/revoked_permissions_service.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/ui/safety_hub/revoked_permissions_service.cc
++++ b/chrome/browser/ui/safety_hub/revoked_permissions_service.cc
+@@ -30,5 +30,6 @@ 
+ #include "chrome/browser/engagement/site_engagement_service_factory.h"
+ #include "chrome/browser/ui/safety_hub/safety_hub_prefs.h"
+ #include "chrome/browser/ui/safety_hub/safety_hub_service.h"
+ #include "chrome/browser/ui/safety_hub/safety_hub_util.h"
++#include "chrome/browser/profiles/profile.h"
+ #include "chrome/common/chrome_features.h"

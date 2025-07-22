@@ -1,0 +1,11 @@
+diff --git a/chrome/browser/webshare/share_service_impl.cc b/chrome/browser/webshare/share_service_impl.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/webshare/share_service_impl.cc
++++ b/chrome/browser/webshare/share_service_impl.cc
+@@ -19,4 +19,6 @@
+ #include "chrome/common/chrome_features.h"
++#if BUILDFLAG(SAFE_BROWSING_AVAILABLE) 
+ #include "components/safe_browsing/content/common/file_type_policies.h"
+ #include "components/safe_browsing/core/browser/db/database_manager.h"
++#endif
+ #include "content/public/browser/web_contents.h"

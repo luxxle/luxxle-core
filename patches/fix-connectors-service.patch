@@ -1,0 +1,23 @@
+diff --git a/chrome/browser/enterprise/connectors/connectors_service.cc b/chrome/browser/enterprise/connectors/connectors_service.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/enterprise/connectors/connectors_service.cc
++++ b/chrome/browser/enterprise/connectors/connectors_service.cc
+@@ -99,6 +99,8 @@
+   return client_id;
+ }
+ 
++// LUXXLE: Commented out unused function to fix build error
++/*
+ void PopulateDeviceMetadata(const ReportingSettings& reporting_settings,
+                             Profile* profile,
+                             ClientMetadata::Device* device_proto) {
+@@ -113,6 +113,7 @@
+     device_proto->set_device_fqdn(policy::GetDeviceFqdn());
+     device_proto->set_network_name(policy::GetNetworkName());
+   }
+ }
++*/
+ 
+ bool IsURLExemptFromAnalysis(const GURL& url) {
+
+    

@@ -1,0 +1,46 @@
+diff --git a/components/enterprise/buildflags/buildflags.gni b/components/enterprise/buildflags/buildflags.gni
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/components/enterprise/buildflags/buildflags.gni
++++ b/components/enterprise/buildflags/buildflags.gni
+@@ -10,33 +10,29 @@ declare_args() {
+   # Indicates support for content analysis against a cloud agent for Enterprise
+   # Connector policies.
+-  enterprise_cloud_content_analysis =
+-      is_win || is_mac || is_linux || is_chromeos
++  enterprise_cloud_content_analysis = false
+ 
+   # Indicates support for content analysis against a cloud agent for Enterprise
+   # Connector policies.
+-  enterprise_local_content_analysis = is_win || is_mac || is_linux
++  enterprise_local_content_analysis = false
+ 
+   # Indicates support for Data Control rules.
+-  enterprise_data_controls =
+-      is_win || is_mac || is_linux || is_chromeos || is_android
++  enterprise_data_controls = false
+ 
+   # Indicates support for client certificates provisioning.
+-  enterprise_client_certificates = is_win || is_mac || is_linux
++  enterprise_client_certificates = false
+ 
+   # The watermark is currently implemented using the views framework.
+-  enterprise_watermark =
+-      toolkit_views && (is_win || is_mac || is_linux || is_chromeos)
++  enterprise_watermark = false
+ 
+-  enterprise_screenshot_protection = is_win || is_mac
++  enterprise_screenshot_protection = false
+ 
+-  enterprise_telomere_reporting = is_win || is_mac || is_linux
++  enterprise_telomere_reporting = false
+ }
+ 
+ declare_args() {
+   # Indicates if any content analysis support is present, whether local or
+   # cloud. This is used to improve readability of code and avoid relying on
+   # the fact that `enterprise_cloud_content_analysis` is a superset of
+   # `enterprise_local_content_analysis`.
+-  enterprise_content_analysis =
+-      enterprise_cloud_content_analysis || enterprise_local_content_analysis
++  enterprise_content_analysis = false
+ }

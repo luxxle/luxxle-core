@@ -1,0 +1,28 @@
+diff --git a/chrome/browser/download/download_ui_safe_browsing_util.cc b/chrome/browser/download/download_ui_safe_browsing_util.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/download/download_ui_safe_browsing_util.cc
++++ b/chrome/browser/download/download_ui_safe_browsing_util.cc
+@@ -31,13 +31,14 @@
+ #endif
+ 
+-std::string GetDangerPromptHistogramName(const std::string& suffix,
+-                                         const download::DownloadItem& item) {
+-  const char kPrefix[] = "Download.DownloadDangerPrompt";
+-  download::DownloadDangerType danger_type = item.GetDangerType();
+-  return base::StringPrintf("%s.%s.%s", kPrefix,
+-                            download::GetDownloadDangerTypeString(danger_type),
+-                            // "Proceed" or "Shown".
+-                            suffix.c_str());
+-}
++// LUXXLE: Commented out to prevent unused function error
++// std::string GetDangerPromptHistogramName(const std::string& suffix,
++//                                         const download::DownloadItem& item) {
++//   const char kPrefix[] = "Download.DownloadDangerPrompt";
++//   download::DownloadDangerType danger_type = item.GetDangerType();
++//   return base::StringPrintf("%s.%s.%s", kPrefix,
++                            // download::GetDownloadDangerTypeString(danger_type),
++                            // "Proceed" or "Shown".
++                            // suffix.c_str());
++// }
+ 
+ }  // namespace

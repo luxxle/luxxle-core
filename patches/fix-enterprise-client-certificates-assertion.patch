@@ -1,0 +1,12 @@
+diff --git a/components/enterprise/client_certificates/core/BUILD.gn b/components/enterprise/client_certificates/core/BUILD.gn
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/components/enterprise/client_certificates/core/BUILD.gn
++++ b/components/enterprise/client_certificates/core/BUILD.gn
+@@ -5,5 +5,5 @@
+ import("//components/enterprise/buildflags/buildflags.gni")
+ 
+-assert(enterprise_client_certificates)
++# LUXXLE: Enterprise client certificates completely disabled
+ 
+ source_set("dm_server_client") {
+   public = [ "dm_server_client.h" ]

@@ -1,0 +1,33 @@
+diff --git a/chrome/browser/enterprise/data_protection/data_protection_navigation_observer.cc b/chrome/browser/enterprise/data_protection/data_protection_navigation_observer.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/enterprise/data_protection/data_protection_navigation_observer.cc
++++ b/chrome/browser/enterprise/data_protection/data_protection_navigation_observer.cc
+@@ -56,17 +56,18 @@
+ // Returns whether a URL filtering event should be reported for safe verdicts.
+ // For warn/block+watermark verdicts, a security event is reported as part
+ // of the interstitial page appearing, so we only need to report in this class
+ // for SAFE verdicts where no interstitial was shown, only if a rule was
+ // triggered.
+-bool ShouldReportSafeUrlFilteringEvents(DataProtectionPageUserData* user_data) {
+-  DCHECK(user_data);
+-  return user_data->rt_lookup_response() &&
+-         !user_data->rt_lookup_response()->threat_info().empty() &&
+-         user_data->rt_lookup_response()->threat_info(0).verdict_type() ==
+-             safe_browsing::RTLookupResponse::ThreatInfo::SAFE &&
+-         user_data->rt_lookup_response()
+-             ->threat_info(0)
+-             .has_matched_url_navigation_rule();
+-}
++// LUXXLE: Commented out to prevent unused function error when SAFE_BROWSING_AVAILABLE is false
++// bool ShouldReportSafeUrlFilteringEvents(DataProtectionPageUserData* user_data) {
++//   DCHECK(user_data);
++//   return user_data->rt_lookup_response() &&
++//          !user_data->rt_lookup_response()->threat_info().empty() &&
++//          user_data->rt_lookup_response()->threat_info(0).verdict_type() ==
++//              safe_browsing::RTLookupResponse::ThreatInfo::SAFE &&
++//          user_data->rt_lookup_response()
++//              ->threat_info(0)
++//              .has_matched_url_navigation_rule();
++// }
+ 
+ void RunPendingNavigationCallback(

@@ -1,0 +1,36 @@
+diff --git a/chrome/browser/enterprise/connectors/reporting/telomere_reporting_context.cc b/chrome/browser/enterprise/connectors/reporting/telomere_reporting_context.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/enterprise/connectors/reporting/telomere_reporting_context.cc
++++ b/chrome/browser/enterprise/connectors/reporting/telomere_reporting_context.cc
+@@ -57,6 +57,7 @@ void ReportTelomereLogs() {
+   if (!context->HasActiveProfile()) {
+     return;
+   }
++#if BUILDFLAG(ENTERPRISE_CONNECTORS)
+   RealtimeReportingClient* reporting_client = context->GetReportingClient();
+   VLOG(2) << "enterprise.telomere_reporting: (reporting client != nullptr): "
+           << (reporting_client != nullptr) << ", kTelomereReporting: "
+@@ -75,6 +76,7 @@ void ReportTelomereLogs() {
+       base::BindOnce(&UploadToReportingServer,
+                      reporting_client->AsWeakPtrImpl(),
+                      g_browser_process->local_state()));
++#endif
+ }
+ 
+ }  // namespace
+@@ -177,6 +179,7 @@ void TelomereReportingContext::AddProfile(TelomereEventRouter* router,
+ 
+ RealtimeReportingClient* TelomereReportingContext::GetReportingClient() const {
+   for (auto& it : active_profiles_) {
++#if BUILDFLAG(ENTERPRISE_CONNECTORS)
+     Profile* profile = it.second;
+     RealtimeReportingClient* reporting_client =
+         RealtimeReportingClientFactory::GetForProfile(profile);
+@@ -187,6 +190,7 @@ RealtimeReportingClient* TelomereReportingContext::GetReportingClient() const {
+     if (settings.has_value() && !settings->per_profile) {
+       return reporting_client;
+     }
++#endif
+   }
+   return nullptr;
+ }

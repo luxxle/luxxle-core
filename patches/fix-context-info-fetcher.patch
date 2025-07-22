@@ -1,0 +1,13 @@
+diff --git a/chrome/browser/enterprise/signals/context_info_fetcher.cc b/chrome/browser/enterprise/signals/context_info_fetcher.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/enterprise/signals/context_info_fetcher.cc
++++ b/chrome/browser/enterprise/signals/context_info_fetcher.cc
+@@ -12,6 +12,7 @@
+ #include "base/threading/scoped_blocking_call.h"
+ #include "build/build_config.h"
+ #include "chrome/browser/browser_process.h"
++#include "components/prefs/pref_service.h"
+ #include "chrome/browser/enterprise/identifiers/profile_id_service_factory.h"
+ #include "chrome/browser/enterprise/util/affiliation.h"
+ #include "chrome/browser/policy/chrome_browser_policy_connector.h"
+ 

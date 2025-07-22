@@ -1,0 +1,19 @@
+diff --git a/chrome/browser/net/profile_network_context_service.cc b/chrome/browser/net/profile_network_context_service.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/net/profile_network_context_service.cc
++++ b/chrome/browser/net/profile_network_context_service.cc
+@@ -1169,6 +1169,7 @@
+ }
+ #endif
+ 
++#if BUILDFLAG(ENTERPRISE_CLIENT_CERTIFICATES)
+ std::unique_ptr<net::ClientCertStore>
+ ProfileNetworkContextService::CreateClientCertStore() {
+   if (!client_cert_store_factory_.is_null()) {
+@@ -1240,5 +1241,6 @@
+ #error Unknown platform.
+ #endif
+ }
++#endif
+ 
+ bool GetHttpCacheBackendResetParam(PrefService* local_state) {

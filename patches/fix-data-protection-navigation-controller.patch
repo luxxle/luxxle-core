@@ -1,0 +1,25 @@
+diff --git a/chrome/browser/enterprise/data_protection/data_protection_navigation_controller.cc b/chrome/browser/enterprise/data_protection/data_protection_navigation_controller.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/enterprise/data_protection/data_protection_navigation_controller.cc
++++ b/chrome/browser/enterprise/data_protection/data_protection_navigation_controller.cc
+@@ -12,4 +12,6 @@
+ #include "chrome/browser/ui/views/frame/browser_view.h"
++#if BUILDFLAG(ENTERPRISE_WATERMARK)
+ #include "components/enterprise/watermarking/content/watermark_text_container.h"
+ #include "components/enterprise/watermarking/watermark.h"
++#endif
+ #include "components/tabs/public/tab_interface.h"
+@@ -140,4 +140,5 @@ void DataProtectionNavigationController::ApplyDataProtectionSettingsOrDelayIfEmpt
+   // of the context of a navigation (ex. when printing).
++#if BUILDFLAG(ENTERPRISE_WATERMARK)
+   enterprise_watermark::WatermarkBlock block =
+       enterprise_watermark::DrawWatermarkToPaintRecord(
+           settings.watermark_text, enterprise_watermark::GetFillColor(),
+@@ -149,6 +149,7 @@ void DataProtectionNavigationController::ApplyDataProtectionSettingsOrDelayIfEmpt
+       ->SetWatermarkText(
+           block.record.ToSkPicture(SkRect::MakeWH(block.width, block.height)),
+           block.width, block.height);
++#endif
+ 
+   if (!settings.watermark_text.empty()) {
+     browser_view->ApplyWatermarkSettings(settings.watermark_text);

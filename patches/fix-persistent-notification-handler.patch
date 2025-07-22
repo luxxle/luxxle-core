@@ -1,0 +1,18 @@
+diff --git a/chrome/browser/notifications/persistent_notification_handler.cc b/chrome/browser/notifications/persistent_notification_handler.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/notifications/persistent_notification_handler.cc
++++ b/chrome/browser/notifications/persistent_notification_handler.cc
+@@ -287,7 +287,8 @@
+   // In case the data volume becomes excessive, logging should happen at a
+   // sampled rate. This rate is defined by the
+   // `kReportNotificationContentDetectionDataRate` feature parameter.
+-  if (base::RandDouble() * 100 >
++  // LUXXLE: Commented out to prevent build errors when safe browsing is disabled
++  /* if (base::RandDouble() * 100 >
+       safe_browsing::kReportNotificationContentDetectionDataRate.Get()) {
+     return;
+   }
+@@ -320,2 +320,3 @@
+               did_show_warning, did_user_unsubscribe, engagement_level)));
++  */
+ }
