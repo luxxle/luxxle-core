@@ -1,0 +1,23 @@
+diff --git a/chrome/browser/renderer_context_menu/link_to_text_menu_observer.cc b/chrome/browser/renderer_context_menu/link_to_text_menu_observer.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/renderer_context_menu/link_to_text_menu_observer.cc
++++ b/chrome/browser/renderer_context_menu/link_to_text_menu_observer.cc
+@@ -14,3 +14,6 @@
+ #include "chrome/app/chrome_command_ids.h"
++#include "components/enterprise/buildflags/buildflags.h"
++#if BUILDFLAG(ENTERPRISE_DATA_CONTROLS)
+ #include "chrome/browser/enterprise/data_protection/data_protection_clipboard_utils.h"
++#endif
+ #include "chrome/browser/feature_engagement/tracker_factory.h"
+@@ -413,2 +413,3 @@
+   data.text = base::UTF8ToUTF16(text);
++  #if BUILDFLAG(ENTERPRISE_DATA_CONTROLS)
+   size_t size = data.text.size() * sizeof(std::u16string::value_type);
+@@ -435,3 +435,7 @@
+           },
+           std::make_unique<ui::DataTransferEndpoint>(std::move(dte))));
++#else
++  ui::ScopedClipboardWriter scw(ui::ClipboardBuffer::kCopyPaste, std::make_unique<ui::DataTransferEndpoint>(std::move(dte)));
++  scw.WriteText(data.text);
++#endif
+ }

@@ -1,0 +1,20 @@
+diff --git a/chrome/browser/net/profile_network_context_service.cc b/chrome/browser/net/profile_network_context_service.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/net/profile_network_context_service.cc
++++ b/chrome/browser/net/profile_network_context_service.cc
+@@ -280,6 +280,7 @@
+ }
+ 
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX)
++#if BUILDFLAG(ENTERPRISE_CLIENT_CERTIFICATES)
+ std::unique_ptr<net::ClientCertStore> GetWrappedCertStore(
+     Profile* profile,
+     std::unique_ptr<net::ClientCertStore> platform_store) {
+@@ -308,6 +309,7 @@
+       profile_provisioning_service, browser_provisioning_service,
+       std::move(platform_store));
+ }
++#endif  // BUILDFLAG(ENTERPRISE_CLIENT_CERTIFICATES)
+ #endif  // BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX)
+ 
+ bool IsValidDNSConstraint(std::string_view possible_dns_constraint) {

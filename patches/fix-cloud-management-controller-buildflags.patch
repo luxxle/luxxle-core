@@ -1,0 +1,12 @@
+diff --git a/chrome/browser/policy/chrome_browser_cloud_management_controller_desktop.cc b/chrome/browser/policy/chrome_browser_cloud_management_controller_desktop.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/policy/chrome_browser_cloud_management_controller_desktop.cc
++++ b/chrome/browser/policy/chrome_browser_cloud_management_controller_desktop.cc
+@@ -6,6 +6,7 @@
+ 
+ #include "chrome/browser/policy/chrome_browser_cloud_management_controller_desktop.h"
+ 
++#include "components/enterprise/buildflags/buildflags.h"
+ #include <stdint.h>
+ 
+ #include <set>

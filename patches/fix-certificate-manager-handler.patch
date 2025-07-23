@@ -1,0 +1,20 @@
+diff --git a/chrome/browser/ui/webui/certificate_manager/certificate_manager_handler.cc b/chrome/browser/ui/webui/certificate_manager/certificate_manager_handler.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/ui/webui/certificate_manager/certificate_manager_handler.cc
++++ b/chrome/browser/ui/webui/certificate_manager/certificate_manager_handler.cc
+@@ -5,4 +5,5 @@
+ #include "chrome/browser/ui/webui/certificate_manager/certificate_manager_handler.h"
+ 
++#include "components/enterprise/buildflags/buildflags.h"
+ #include <memory>
+ #include <vector>
+@@ -224,5 +224,9 @@ CertificateManagerPageHandler::CertSource&
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX)
+       case certificate_manager_v2::mojom::CertificateSource::
+           kProvisionedClientCert:
++#if BUILDFLAG(ENTERPRISE_CLIENT_CERTIFICATES)
+         source_ptr = CreateProvisionedClientCertSource(profile_);
++#else
++        source_ptr = nullptr;
++#endif
+         break;

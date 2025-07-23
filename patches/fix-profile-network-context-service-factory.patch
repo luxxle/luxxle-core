@@ -2,6 +2,14 @@ diff --git a/chrome/browser/net/profile_network_context_service_factory.cc b/chr
 index 1234567890abcdef..abcdef1234567890 100644
 --- a/chrome/browser/net/profile_network_context_service_factory.cc
 +++ b/chrome/browser/net/profile_network_context_service_factory.cc
+@@ -6,6 +6,7 @@
+ 
+ #include "chrome/browser/net/profile_network_context_service_factory.h"
+ 
++#include "components/enterprise/buildflags/buildflags.h"
+ #include "build/build_config.h"
+ #include "build/chromeos_buildflags.h"
+ #include "chrome/browser/net/profile_network_context_service.h"
 @@ -25,7 +25,9 @@
  #endif
  
@@ -17,7 +25,7 @@ index 1234567890abcdef..abcdef1234567890 100644
  #endif
  #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX)
 +#if BUILDFLAG(ENTERPRISE_CLIENT_CERTIFICATES)
-   DependsOn(client_certificates::CertificateProvisioningServiceFactory::
+    DependsOn(client_certificates::CertificateProvisioningServiceFactory::
                  GetInstance());
 +#endif
  #endif

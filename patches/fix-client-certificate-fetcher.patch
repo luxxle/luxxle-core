@@ -1,0 +1,19 @@
+diff --git a/chrome/browser/enterprise/signals/client_certificate_fetcher.cc b/chrome/browser/enterprise/signals/client_certificate_fetcher.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/enterprise/signals/client_certificate_fetcher.cc
++++ b/chrome/browser/enterprise/signals/client_certificate_fetcher.cc
+@@ -5,4 +5,5 @@
+ #include "chrome/browser/enterprise/signals/client_certificate_fetcher.h"
+ 
++#include "components/enterprise/buildflags/buildflags.h"
+ #include <memory>
+ #include <utility>
+@@ -32,4 +32,8 @@ class ProfileNetworkContextServiceWrapperImpl
+   // ProfileNetworkContextServiceWrapper:
+   std::unique_ptr<net::ClientCertStore> CreateClientCertStore() override {
++#if BUILDFLAG(ENTERPRISE_CLIENT_CERTIFICATES)
+     return profile_network_context_service_->CreateClientCertStore();
++#else
++    return nullptr;
++#endif
+   }

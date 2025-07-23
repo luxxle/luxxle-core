@@ -2,6 +2,14 @@ diff --git a/chrome/browser/net/profile_network_context_service.cc b/chrome/brow
 index 1234567890abcdef..abcdef1234567890 100644
 --- a/chrome/browser/net/profile_network_context_service.cc
 +++ b/chrome/browser/net/profile_network_context_service.cc
+@@ -6,6 +6,7 @@
+ 
+ #include "chrome/browser/net/profile_network_context_service.h"
+ 
++#include "components/enterprise/buildflags/buildflags.h"
+ #include <memory>
+ #include <string>
+ #include <string_view>
 @@ -1169,6 +1169,7 @@
  }
  #endif

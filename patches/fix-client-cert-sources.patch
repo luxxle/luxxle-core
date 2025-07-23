@@ -1,0 +1,47 @@
+diff --git a/chrome/browser/ui/webui/certificate_manager/client_cert_sources.cc b/chrome/browser/ui/webui/certificate_manager/client_cert_sources.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/ui/webui/certificate_manager/client_cert_sources.cc
++++ b/chrome/browser/ui/webui/certificate_manager/client_cert_sources.cc
+@@ -5,5 +5,6 @@
+ #include "chrome/browser/ui/webui/certificate_manager/client_cert_sources.h"
+ 
++#include "components/enterprise/buildflags/buildflags.h"
+ #include <map>
+ #include <optional>
+ #include <string>
+@@ -58,3 +58,5 @@
+ #include "chrome/browser/browser_process.h"
++#if BUILDFLAG(ENTERPRISE_CLIENT_CERTIFICATES)
+ #include "chrome/browser/enterprise/client_certificates/certificate_provisioning_service_factory.h"
++#endif
+ #include "chrome/browser/policy/chrome_browser_policy_connector.h"
+@@ -232,5 +232,6 @@ class ClientCertStoreFactoryProvisioned : public ClientCertStoreFactory {
+ };
+ 
++#if BUILDFLAG(ENTERPRISE_CLIENT_CERTIFICATES)
+ std::unique_ptr<ClientCertStoreLoader> CreateProvisionedClientCertLoader(
+     Profile* profile) {
+   client_certificates::CertificateProvisioningService*
+@@ -259,6 +259,7 @@ std::unique_ptr<ClientCertStoreLoader> CreateProvisionedClientCertLoader(
+       std::make_unique<ClientCertStoreFactoryProvisioned>(
+           profile_provisioning_service, browser_provisioning_service));
+ }
++#endif
+ #endif
+ 
+ void PopulateCertInfosFromCertificateList(
+@@ -1110,7 +1110,14 @@ std::unique_ptr<CertificateManagerPageHandler::CertSource>
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX)
++#if BUILDFLAG(ENTERPRISE_CLIENT_CERTIFICATES)
+ std::unique_ptr<CertificateManagerPageHandler::CertSource>
+ CreateProvisionedClientCertSource(Profile* profile) {
+   return std::make_unique<ClientCertSource>(
+       CreateProvisionedClientCertLoader(profile));
+ }
++#endif
++#else
++std::unique_ptr<CertificateManagerPageHandler::CertSource>
++CreateProvisionedClientCertSource(Profile* profile) {
++  return nullptr;
++}
+ #endif

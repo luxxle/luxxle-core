@@ -1,0 +1,42 @@
+diff --git a/chrome/browser/chrome_content_browser_client.cc b/chrome/browser/chrome_content_browser_client.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/chrome_content_browser_client.cc
++++ b/chrome/browser/chrome_content_browser_client.cc
+@@ -6,6 +6,7 @@
+ 
+ #include "chrome/browser/chrome_content_browser_client.h"
+ 
++#include "components/enterprise/buildflags/buildflags.h"
+ #include <algorithm>
+ #include <iterator>
+ #include <map>
+@@ -111,3 +111,5 @@
+ #include "chrome/browser/net/profile_network_context_service.h"
++#if BUILDFLAG(ENTERPRISE_CLIENT_CERTIFICATES)
+ #include "chrome/browser/net/profile_network_context_service_factory.h"
++#endif
+ #include "chrome/browser/net/system_network_context_manager.h"
+@@ -6933,8 +6933,12 @@
+     network::mojom::NetworkContextParams* network_context_params,
+     cert_verifier::mojom::CertVerifierCreationParams*
+         cert_verifier_creation_params) {
++#if BUILDFLAG(ENTERPRISE_CLIENT_CERTIFICATES)
+   ProfileNetworkContextService* service =
+       ProfileNetworkContextServiceFactory::GetForContext(context);
++#else
++  ProfileNetworkContextService* service = nullptr;
++#endif
+   if (service) {
+     service->ConfigureNetworkContextParams(in_memory, relative_partition_path,
+                                            network_context_params,
+@@ -7138,6 +7138,10 @@
+ std::unique_ptr<net::ClientCertStore>
+ ChromeContentBrowserClient::CreateClientCertStore(
+     content::BrowserContext* browser_context) {
++#if BUILDFLAG(ENTERPRISE_CLIENT_CERTIFICATES)
+   return ProfileNetworkContextServiceFactory::GetForContext(browser_context)
+       ->CreateClientCertStore();
++#else
++  return nullptr;
++#endif
+ }

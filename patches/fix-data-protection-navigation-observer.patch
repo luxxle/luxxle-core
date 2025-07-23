@@ -2,32 +2,41 @@ diff --git a/chrome/browser/enterprise/data_protection/data_protection_navigatio
 index 1234567890abcdef..abcdef1234567890 100644
 --- a/chrome/browser/enterprise/data_protection/data_protection_navigation_observer.cc
 +++ b/chrome/browser/enterprise/data_protection/data_protection_navigation_observer.cc
-@@ -56,17 +56,18 @@
+@@ -5,5 +5,6 @@
+ #include "chrome/browser/enterprise/data_protection/data_protection_navigation_observer.h"
+ 
++#include "components/enterprise/buildflags/buildflags.h"
+ #include "base/check_op.h"
+ #include "base/functional/callback.h"
+ #include "base/logging.h"
+@@ -55,5 +55,6 @@ void LogVerdictSource(
+ }
+ 
++#if BUILDFLAG(SAFE_BROWSING_AVAILABLE)
  // Returns whether a URL filtering event should be reported for safe verdicts.
  // For warn/block+watermark verdicts, a security event is reported as part
  // of the interstitial page appearing, so we only need to report in this class
- // for SAFE verdicts where no interstitial was shown, only if a rule was
- // triggered.
--bool ShouldReportSafeUrlFilteringEvents(DataProtectionPageUserData* user_data) {
--  DCHECK(user_data);
--  return user_data->rt_lookup_response() &&
--         !user_data->rt_lookup_response()->threat_info().empty() &&
--         user_data->rt_lookup_response()->threat_info(0).verdict_type() ==
--             safe_browsing::RTLookupResponse::ThreatInfo::SAFE &&
--         user_data->rt_lookup_response()
--             ->threat_info(0)
--             .has_matched_url_navigation_rule();
--}
-+// LUXXLE: Commented out to prevent unused function error when SAFE_BROWSING_AVAILABLE is false
-+// bool ShouldReportSafeUrlFilteringEvents(DataProtectionPageUserData* user_data) {
-+//   DCHECK(user_data);
-+//   return user_data->rt_lookup_response() &&
-+//          !user_data->rt_lookup_response()->threat_info().empty() &&
-+//          user_data->rt_lookup_response()->threat_info(0).verdict_type() ==
-+//              safe_browsing::RTLookupResponse::ThreatInfo::SAFE &&
-+//          user_data->rt_lookup_response()
-+//              ->threat_info(0)
-+//              .has_matched_url_navigation_rule();
-+// }
+@@ -71,4 +71,5 @@ bool ShouldReportSafeUrlFilteringEvents(DataProtectionPageUserData* user_data) {
+              .has_matched_url_navigation_rule();
+ }
++#endif
  
  void RunPendingNavigationCallback(
+@@ -194,10 +194,15 @@ void LogVerdictSource(
+ }
+ 
+ bool IsScreenshotAllowedByDataControls(content::BrowserContext* context,
++#if BUILDFLAG(ENTERPRISE_DATA_CONTROLS)
+                                        const GURL& url) {
+   auto* rules = data_controls::ChromeRulesServiceFactory::GetInstance()
+                     ->GetForBrowserContext(context);
+   return rules ? !rules->BlockScreenshots(url) : true;
++#else
++                                       const GURL& url) {
++  return true;
++#endif
+ }
+ 
+ }  // namespace
+
+

@@ -1,0 +1,64 @@
+diff --git a/chrome/browser/enterprise/data_protection/data_protection_clipboard_utils.cc b/chrome/browser/enterprise/data_protection/data_protection_clipboard_utils.cc
+index 1234567890abcdef..abcdef1234567890 100644
+--- a/chrome/browser/enterprise/data_protection/data_protection_clipboard_utils.cc
++++ b/chrome/browser/enterprise/data_protection/data_protection_clipboard_utils.cc
+@@ -5,3 +5,5 @@
+ #include "chrome/browser/enterprise/data_protection/data_protection_clipboard_utils.h"
+ 
++#include "components/enterprise/buildflags/buildflags.h"
++
+ #include <algorithm>
+@@ -290,6 +290,7 @@ void PasteIfAllowedByDataControls(
+     content::ClipboardPasteData clipboard_paste_data,
+     content::ContentBrowserClient::IsClipboardPasteAllowedCallback callback) {
+   DCHECK(!SkipDataControlOrContentAnalysisChecks(destination));
++#if BUILDFLAG(ENTERPRISE_DATA_CONTROLS)
+ 
+   auto verdict = data_controls::ChromeRulesServiceFactory::GetInstance()
+                      ->GetForBrowserContext(destination.browser_context())
+@@ -340,6 +340,9 @@ void PasteIfAllowedByDataControls(
+   std::move(callback).Run(std::move(clipboard_paste_data));
+ #else
+   PasteIfAllowedByContentAnalysis(
++#else
++  std::move(callback).Run(std::move(clipboard_paste_data));
++#endif  // BUILDFLAG(ENTERPRISE_DATA_CONTROLS)
+       destination.web_contents(), source, destination, metadata,
+       std::move(clipboard_paste_data), std::move(callback));
+ #endif  // BUILDFLAG(IS_ANDROID) || !BUILDFLAG(ENTERPRISE_CONTENT_ANALYSIS)
+@@ -380,6 +380,7 @@ void IsCopyToOSClipboardRestricted(
+     content::ContentBrowserClient::IsClipboardCopyAllowedCallback callback) {
+   if (SkipDataControlOrContentAnalysisChecks(source)) {
+     std::move(callback).Run(metadata.format_type, data, std::nullopt);
++#if BUILDFLAG(ENTERPRISE_DATA_CONTROLS)
+     return;
+   }
+ 
+@@ -395,5 +395,8 @@ void IsCopyToOSClipboardRestricted(
+     return;
+   }
+ 
++#else
++  std::move(callback).Run(metadata.format_type, data, std::nullopt);
++#endif  // BUILDFLAG(ENTERPRISE_DATA_CONTROLS)
+   std::move(callback).Run(metadata.format_type, data, std::nullopt);
+ }
+@@ -539,8 +539,9 @@ void PasteIfAllowedByPolicy(
+ void IsClipboardCopyAllowedByPolicy(
+     const content::ClipboardEndpoint& source,
+     const content::ClipboardMetadata& metadata,
+     const content::ClipboardPasteData& data,
+     content::ContentBrowserClient::IsClipboardCopyAllowedCallback callback) {
++#if BUILDFLAG(ENTERPRISE_DATA_CONTROLS)
+ #if BUILDFLAG(IS_ANDROID)
+   if (!base::FeatureList::IsEnabled(
+           data_controls::kEnableClipboardDataControlsAndroid)) {
+@@ -574,4 +574,8 @@ void IsClipboardCopyAllowedByPolicy(
+ #endif  // !BUILDFLAG(IS_ANDROID)
+ 
+   IsCopyRestrictedByDialog(source, metadata, data, std::move(callback));
++#else
++  // When enterprise data controls are disabled, always allow clipboard copy
++  std::move(callback).Run(metadata.format_type, data, std::nullopt);
++#endif  // BUILDFLAG(ENTERPRISE_DATA_CONTROLS)
+ }

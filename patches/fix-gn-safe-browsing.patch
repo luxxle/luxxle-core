@@ -2,14 +2,16 @@ diff --git a/.gn b/.gn
 index 1234567890abcdef..abcdef1234567890 100644
 --- a/.gn
 +++ b/.gn
-@@ -77,2 +77,9 @@
+@@ -77,2 +77,12 @@
    clang_warning_suppression_file = "//build/config/warning_suppression.txt"
 +  
 +  # LUXXLE: Disable Safe Browsing and Enterprise features to prevent build errors
-+  SAFE_BROWSING_AVAILABLE = false
-+  ENTERPRISE_CLOUD_CONTENT_ANALYSIS = false
-+  ENTERPRISE_CONNECTORS = false
-+  ENTERPRISE_LOCAL_CONTENT_ANALYSIS = false
-+  ENABLE_EXTENSIONS = false
++  safe_browsing_available = false
++  enterprise_cloud_content_analysis = false
++  enterprise_connectors = false
++  enterprise_local_content_analysis = false
++  enterprise_watermark = false
++  enterprise_client_certificates = false
++  enable_extensions = true
++  enable_extensions_core = true
  }
- 
