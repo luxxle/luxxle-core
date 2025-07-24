@@ -11,7 +11,7 @@ class PrefService;
 
 namespace luxxle {
 
-void SetBraveAsDefaultPrivateSearchProvider(Profile& profile);
+void SetLuxxleAsDefaultPrivateSearchProvider(Profile& profile);
 
 // Initialize default provider for private profile.
 void PrepareDefaultPrivateSearchProviderDataIfNeeded(Profile& profile);
