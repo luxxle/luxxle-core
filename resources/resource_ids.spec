@@ -7,51 +7,51 @@
 # room for future growth.
 {
   "SRCDIR": "../..",
-  "brave/common/extensions/api/brave_api_resources.grd": {
+  "luxxle/common/extensions/api/luxxle_api_resources.grd": {
     "includes": [29580],
   },
-  "brave/components/resources/brave_components_resources.grd": {
+  "luxxle/components/resources/luxxle_components_resources.grd": {
     "includes": [29600],
   },
   # This file is generated during the build.
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_adblock/brave_adblock.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_adblock/luxxle_adblock.grd": {
     "META": {"sizes": {"includes": [10]}},
     "includes": [29670],
   },
   # This file is generated during the build.
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_new_tab/brave_new_tab.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_new_tab/luxxle_new_tab.grd": {
     "META": {"sizes": {"includes": [50]}},
     "includes": [29680],
   },
   # This file is generated during the build.
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_welcome/brave_welcome.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_welcome/luxxle_welcome.grd": {
     "META": {"sizes": {"includes": [20]}},
     "includes": [29730],
   },
   # This file is generated during the build.
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/browser/resources/settings/brave_settings_resources.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/browser/resources/settings/luxxle_settings_resources.grd": {
     "META": {"sizes": {"includes": [20]}},
     "includes": [29750],
   },
-  "brave/app/brave_generated_resources.grd": {
+  "luxxle/app/luxxle_generated_resources.grd": {
     "includes": [29770],
     "messages": [29780],
   },
-  "brave/app/theme/brave_theme_resources.grd": {
+  "luxxle/app/theme/luxxle_theme_resources.grd": {
     "structures": [30200],
   },
-  "brave/app/theme/brave_unscaled_resources.grd": {
+  "luxxle/app/theme/luxxle_unscaled_resources.grd": {
     "includes": [30300],
   },
   # This file is generated during the build.
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_webtorrent/brave_webtorrent.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_webtorrent/luxxle_webtorrent.grd": {
     "META": {"sizes": {"includes": [10]}},
     "includes": [30310],
   },
-  "brave/components/brave_webtorrent/resources.grd": {
+  "luxxle/components/luxxle_webtorrent/resources.grd": {
     "includes": [30320],
   },
-  "brave/components/brave_rewards/resources/brave_rewards_static_resources.grd": {
+  "luxxle/components/luxxle_rewards/resources/luxxle_rewards_static_resources.grd": {
     "includes": [30350],
   },
   # This file is generated during the build.
@@ -59,24 +59,24 @@
     "META": {"sizes": {"includes": [10]}},
     "includes": [30380],
   },
-  "brave/components/resources/brave_components_strings.grd": {
+  "luxxle/components/resources/luxxle_components_strings.grd": {
     "messages": [30410],
   },
   # This file is generated during the build.
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_wallet_page/brave_wallet_page.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_wallet_page/luxxle_wallet_page.grd": {
     "META": {"sizes": {"includes": [200]}},
     "includes": [33510],
   },
   # This file is generated during the build.
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_wallet_panel/brave_wallet_panel.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_wallet_panel/luxxle_wallet_panel.grd": {
     "META": {"sizes": {"includes": [200]}},
     "includes": [33720],
   },
-  "brave/components/brave_extension/extension/resources.grd": {
+  "luxxle/components/luxxle_extension/extension/resources.grd": {
     "includes": [33920],
   },
   # This file is generated during the build.
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_extension/brave_extension.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_extension/luxxle_extension.grd": {
     "META": {"sizes": {"includes": [10]}},
     "includes": [33940],
   },
@@ -90,7 +90,7 @@
     "META": {"sizes": {"includes": [10]}},
     "includes": [33960],
   },
-  "brave/components/tor/resources/tor_static_resources.grd": {
+  "luxxle/components/tor/resources/tor_static_resources.grd": {
     "includes": [33970],
   },
   # This file is generated during the build.
@@ -99,17 +99,17 @@
     "includes": [33980],
   },
   # This file is generated during the build.
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_wallet_script/brave_wallet_script.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_wallet_script/luxxle_wallet_script.grd": {
     "META": {"sizes": {"includes": [10]}},
     "includes": [33990],
   },
   # This file is generated during the build.
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_vpn_panel/brave_vpn_panel.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_vpn_panel/luxxle_vpn_panel.grd": {
     "META": {"sizes": {"includes": [10]}},
     "includes": [34000],
   },
   # This file is generated during the build.
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_shields_panel/brave_shields_panel.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_shields_panel/luxxle_shields_panel.grd": {
     "META": {"sizes": {"includes": [10]}},
     "includes": [34010],
   },
@@ -124,7 +124,7 @@
     "includes": [34030],
   },
   # This file is generated during the build.
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_private_new_tab/brave_private_new_tab.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_private_new_tab/luxxle_private_new_tab.grd": {
     "META": {"sizes": {"includes": [10]}},
     "includes": [34080],
   },
@@ -145,27 +145,27 @@
     "META": {"sizes": {"includes": [10]}},
     "includes": [34120],
   },
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_speedreader_toolbar/brave_speedreader_toolbar.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_speedreader_toolbar/luxxle_speedreader_toolbar.grd": {
     "META": {"sizes": {"includes": [10]}},
     "includes": [34130],
   },
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_adblock_internals/brave_adblock_internals.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_adblock_internals/luxxle_adblock_internals.grd": {
     "META": {"sizes": {"includes": [10]}},
     "includes": [34140],
   },
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_wallet_swap_page/brave_wallet_swap_page.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_wallet_swap_page/luxxle_wallet_swap_page.grd": {
     "META": {"sizes": {"includes": [100]}},
     "includes": [34250],
   },
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_wallet_send_page/brave_wallet_send_page.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_wallet_send_page/luxxle_wallet_send_page.grd": {
     "META": {"sizes": {"includes": [50]}},
     "includes": [34300],
   },
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_wallet_deposit_page/brave_wallet_deposit_page.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_wallet_deposit_page/luxxle_wallet_deposit_page.grd": {
     "META": {"sizes": {"includes": [100]}},
     "includes": [34400],
   },
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_wallet_fund_wallet_page/brave_wallet_fund_wallet_page.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_wallet_fund_wallet_page/luxxle_wallet_fund_wallet_page.grd": {
     "META": {"sizes": {"includes": [80]}},
     "includes": [34500],
   },
@@ -181,7 +181,7 @@
     "META": {"sizes": {"includes": [10]}},
     "includes": [34610],
   },
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_news_internals/brave_news_internals.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_news_internals/luxxle_news_internals.grd": {
     "META": {"sizes": {"includes": [10]}},
     "includes": [34620],
   },
@@ -210,7 +210,7 @@
     "META": {"sizes": {"includes": [50]}},
     "includes": [34720],
   },
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/browser/resources/brave_education/resources.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/browser/resources/luxxle_education/resources.grd": {
     "META": {"sizes": {"includes": [10]}},
     "includes": [34770],
   },
@@ -218,7 +218,7 @@
     "META": {"sizes": {"includes": [10]}},
     "includes": [34780],
   },
-  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-brave_new_tab_page_refresh/brave_new_tab_page_refresh.grd": {
+  "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_new_tab_page_refresh/luxxle_new_tab_page_refresh.grd": {
     "META": {"sizes": {"includes": [20]}},
     "includes": [34790],
   },

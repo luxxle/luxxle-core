@@ -19,40 +19,40 @@ OBJC_EXPORT
 /// Returns the domain registry
 ///  google.co.uk -> co.uk
 ///  google.com -> com
-@property(readonly) NSString* brave_registry NS_SWIFT_NAME(registry);
+@property(readonly) NSString* luxxle_registry NS_SWIFT_NAME(registry);
 
 /// Returns the eTLD+1 including private registries.
 @property(readonly)
-    NSString* brave_domainAndRegistry NS_SWIFT_NAME(domainAndRegistry);
+    NSString* luxxle_domainAndRegistry NS_SWIFT_NAME(domainAndRegistry);
 
 /// Returns the eTLD+1 not including private registries.
 @property(readonly)
-    NSString* brave_domainAndRegistryExcludingPrivateRegistries NS_SWIFT_NAME(
+    NSString* luxxle_domainAndRegistryExcludingPrivateRegistries NS_SWIFT_NAME(
         domainAndRegistryExcludingPrivateRegistries);
 
 /// Returns `true` when the `host` is an IP address.
-@property(readonly) bool brave_isHostIPAddress NS_SWIFT_NAME(isHostIPAddress);
+@property(readonly) bool luxxle_isHostIPAddress NS_SWIFT_NAME(isHostIPAddress);
 
 /// The string representation of a URL is called the spec.
 /// Returns the canonicalized URL's spec.
-@property(readonly) NSString* brave_spec NS_SWIFT_NAME(spec);
+@property(readonly) NSString* luxxle_spec NS_SWIFT_NAME(spec);
 
 /// Appends the key=value query parameter, escaping if needed.
-- (NSURL*)brave_addingQueryParameter:(NSString*)key
+- (NSURL*)luxxle_addingQueryParameter:(NSString*)key
                                value:(NSString*)value
     NS_SWIFT_NAME(addingQueryParameter(key:value:));
 
 /// Appends OR Replaces the key=value query parameter, escaping if needed.
-- (NSURL*)brave_replacingQueryParameter:(NSString*)key
+- (NSURL*)luxxle_replacingQueryParameter:(NSString*)key
                                   value:(NSString*)value
     NS_SWIFT_NAME(replacingQueryParameter(key:value:));
 
 /// Returns the value for the query parameter. NULL if no parameter exists.
-- (nullable NSString*)brave_valueForQueryParameter:(NSString*)key
+- (nullable NSString*)luxxle_valueForQueryParameter:(NSString*)key
     NS_SWIFT_NAME(valueForQueryParameter(key:));
 
 /// Returns true if the URL has a scheme.
-- (bool)brave_hasScheme:(NSString*)scheme NS_SWIFT_NAME(hasScheme(scheme:));
+- (bool)luxxle_hasScheme:(NSString*)scheme NS_SWIFT_NAME(hasScheme(scheme:));
 @end
 
 OBJC_EXPORT
@@ -61,20 +61,20 @@ OBJC_EXPORT
 /// Returns the domain registry
 ///  google.co.uk -> co.uk
 ///  google.com -> com
-+ (NSString*)brave_registryFromHost:(NSString*)host
++ (NSString*)luxxle_registryFromHost:(NSString*)host
     NS_SWIFT_NAME(registry(host:));
 
 /// Returns the eTLD+1 including private registries.
-+ (NSString*)brave_domainAndRegistryFromHost:(NSString*)host
++ (NSString*)luxxle_domainAndRegistryFromHost:(NSString*)host
     NS_SWIFT_NAME(domainAndRegistry(host:));
 
 /// Returns the eTLD+1 not including private registries.
-+ (NSString*)brave_domainAndRegistryExcludingPrivateRegistriesFromHost:
++ (NSString*)luxxle_domainAndRegistryExcludingPrivateRegistriesFromHost:
     (NSString*)host
     NS_SWIFT_NAME(domainAndRegistryExcludingPrivateRegistries(host:));
 
 /// Returns `true` when the `host` is an IP address.
-+ (bool)brave_isHostIPAddressFromHost:(NSString*)host
++ (bool)luxxle_isHostIPAddressFromHost:(NSString*)host
     NS_SWIFT_NAME(isHostIPAddress(host:));
 @end
 

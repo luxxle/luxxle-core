@@ -33,7 +33,7 @@ def ToChromiumPlatformName(target_os: str) -> str:
   raise RuntimeError('Platform is not supported')
 
 
-def ToBravePlatformName(target_os: str) -> str:
+def ToLuxxlePlatformName(target_os: str) -> str:
   if target_os == 'mac':
     return 'darwin-arm64' if platform.processor() == 'arm' else 'darwin-x64'
   if target_os == 'windows':
@@ -129,6 +129,6 @@ def DownloadFile(url: str, output: str, timeout_sec=3 * 60):
 def DownloadArchiveAndUnpack(output_directory: str, url: str):
   _, f = tempfile.mkstemp(dir=output_directory)
   DownloadFile(url, f)
-  with path_util.SysPath(path_util.GetBraveScriptDir(), 0):
+  with path_util.SysPath(path_util.GetLuxxleScriptDir(), 0):
     from lib.util import extract_zip  # pylint: disable=import-outside-toplevel
   extract_zip(f, output_directory)

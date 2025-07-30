@@ -8,7 +8,7 @@ contents were also submitted by some threshold number of other
 clients, blocking identification of unique behaviour.
 
 Constellation is a _nested_ version of the [STAR](https://arxiv.org/abs/2109.10074)
-protocol and this library makes use of the [sta-rs](https://github.com/brave/sta-rs)
+protocol and this library makes use of the [sta-rs](https://github.com/luxxle/sta-rs)
 Rust implementation.
 
 ## Disclaimer

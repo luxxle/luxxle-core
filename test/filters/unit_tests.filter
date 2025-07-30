@@ -23,7 +23,7 @@
 
 # These tests fail because:
 # 1. UPDATER_DEV_ENDPOINT is empty which leads to
-# 2. BraveExtensionsClient having webstore_update_url_ as an empty GURL;
+# 2. LuxxleExtensionsClient having webstore_update_url_ as an empty GURL;
 # 3. The tests load an extension with an empty update url which causes
 # 4. ChromeContentVerifierDelegate::IsFromWebstore return true and causes
 # 5. ChromeContentVerifierDelegate::GetVerifierSourceType to get VerifyInfo as
@@ -40,7 +40,7 @@
 -ExtensionSyncServiceCustomGalleryTest.ProcessSyncDataPermissionApproval
 -ExtensionSyncServiceTest.AccountExtensionTypeChangesWithSync
 
-# This test fails because BRAVE_FINGERPRINTING_V2 and BRAVE_HTTPS_UPGRADE don't
+# This test fails because LUXXLE_FINGERPRINTING_V2 and LUXXLE_HTTPS_UPGRADE don't
 # have readable names and aren't in the test's list of types that are expected
 # to have no name.
 -SafetyHubHandlerTest.RevokeAllContentSettingTypes
@@ -49,7 +49,7 @@
 # actions the test expects to find.
 -CustomizeToolbarHandlerTest.ListActions
 
-# This test fails because the message it checks has Brave intead of Google.
+# This test fails because the message it checks has Luxxle intead of Google.
 -CookieBrowsingDataCounterUtilsTest.CookieCounterResult
 -CookieBrowsingDataCounterUtilsTest.CookieCounterResultExplicitSigninDisabled
 -SaveCardBubbleControllerImplTestWithCvCStorageAndFilling.UploadCardSaveWithCvcDialogContent
@@ -61,10 +61,10 @@
 -TemplateURLServiceTest.TemplateURLCountsOnStartupHistogram/SearchEngineChoiceEnabled
 
 # These tests crash because pinned_toolbar_actions_container_ in
-# BraveToolbarView is set to nullptr
+# LuxxleToolbarView is set to nullptr
 -PinnedToolbarActionsContainerTest.*
 
-# Disabling signin promo tests as Brave does not support them.
+# Disabling signin promo tests as Luxxle does not support them.
 -ShowSigninPromoTestExplicitBrowserSignin.*
 -ShowSigninPromoTestWithFeatureFlags.*
 
@@ -74,7 +74,7 @@
 # // PrefChangeRegistrar might be subscribed to an OffTheRecordProfileImpl that
 # // has been destroyed. This should not happen any more but be warned.
 # The test creates an OTR profile and the invalid memory access happens in the
-# BraveRendererUpdater d'tor when destroying PrefChangeRegistrar for
+# LuxxleRendererUpdater d'tor when destroying PrefChangeRegistrar for
 # kWidevineEnabled. This needs further investigation.
 -ExtensionWebRequestTest.BrowserContextShutdown
 
@@ -121,7 +121,7 @@
 -RelatedWebsiteSetsSourceTest.SubsetsAreSorted
 
 # These tests fail because we override PrivacySandboxSettings, specifically
-# BravePrivacySandboxSettings::AreRelatedWebsiteSetsEnabled() returns false.
+# LuxxlePrivacySandboxSettings::AreRelatedWebsiteSetsEnabled() returns false.
 -All/FirstPartySetsPolicyServicePrefTest.FindEntry_*
 -All/FirstPartySetsPolicyServicePrefTest.ForEachEffectiveSetEntry_*
 -FirstPartySetsPolicyServiceFactoryTest.OffTheRecordProfile_DistinctAndDisabled
@@ -133,9 +133,9 @@
 -TopLevelStorageAccessPermissionContextAPIWithFirstPartySetsTest.ImplicitGrant_AutograntedWithinFPS
 -TopLevelStorageAccessPermissionContextAPIWithFirstPartySetsTest.ImplicitGrant_CrossSiteFrameQueryStillAsk
 
-# These tests fail because the error message contains "Brave" instead of
+# These tests fail because the error message contains "Luxxle" instead of
 # "Chrome" or "Chromium" (the string is hard-coded into the test)
-# https://github.com/brave/brave-browser/issues/25728
+# https://github.com/luxxle/luxxle-browser/issues/25728
 -All/SiteSettingsHandlerTest.ZoomLevels/*
 
 # These tests fail because we've disabled the commerce::kPriceAnnotations
@@ -144,10 +144,10 @@
 
 # This test fails because tab_next_close_button->GetBoundsInScreen().Contains(tab_center)
 # returns false instead of true
-# https://github.com/brave/brave-browser/issues/25729
+# https://github.com/luxxle/luxxle-browser/issues/25729
 -TabContainerTest.RemoveTabInGroupWithTabClosingMode
 
-# These tests fail because Brave overrides how underlines are drawn for tab
+# These tests fail because Luxxle overrides how underlines are drawn for tab
 # groups
 -TabContainerTest.GroupUnderlineBasics
 -TabGroupViewsTest.UnderlineBoundsWhenTabsAreNotVisible
@@ -155,7 +155,7 @@
 # This test is disabled as we have our own ink drop configs.
 -ToolbarInkDropUtilTest.ConfigureInkDropForToolbarTest
 
-# The following tests are disabled for BraveRenderViewContextMenu::InitMenu
+# The following tests are disabled for LuxxleRenderViewContextMenu::InitMenu
 # attempting to check Tor statuses, which dereferences an uninitialised
 # g_browser_process->local_state().
 -PasswordsPrivateDelegateImplTest.ShowAddShortcutDialog
@@ -175,12 +175,12 @@
 -PrerenderManagerTest.StartSameSuggestionPrerender
 -PrerenderTest.*
 
-# This test fails due to Brave's disabling of header variation (e.g overrides
+# This test fails due to Luxxle's disabling of header variation (e.g overrides
 # for GetClientDataHeaders)
 -RealboxHandlerTest.RealboxLensVariationsContainsVariations
 
 # These tests fail because we intentionally disable DICE signin via
-# BraveAccountConsistencyModeManager::IsDiceSignInAllowed()
+# LuxxleAccountConsistencyModeManager::IsDiceSignInAllowed()
 -DiceResponseHandlerTest.Signin
 -DiceSigninUiUtilTest.*
 -DiceTabHelperPrerenderTest.SigninStatusAfterPrerendering
@@ -216,7 +216,7 @@
 # features::kEarlyHintsPreloadForNavigation
 -PreconnectManagerTest.*
 
-# This test is disabled because the Brave NTP doesn't support this feature
+# This test is disabled because the Luxxle NTP doesn't support this feature
 -NewTabPageModulesTest.HasModulesEnabled_SignedInAccount
 
 # Isolated Web Apps (IWAs) use web bundles which we don't support.
@@ -397,7 +397,7 @@
 -AppMenuModelTest.ModelHasIcons
 
 # This test fails because we override Chromium's "what's new" util functionality
-# see brave/chromium_src/chrome/browser/ui/webui/whats_new/whats_new_util.cc
+# see luxxle/chromium_src/chrome/browser/ui/webui/whats_new/whats_new_util.cc
 -WhatsNewUtilTests.ShouldShowForStateUsesChromeVersionForRefresh
 
 # This test fails because we disable page_image_service::kImageService feature.
@@ -428,18 +428,18 @@
 -NavigationPredictorUserInteractionsTest.MLModelMaxHoverTime
 -NavigationPredictorUserInteractionsTest.ProcessPointerEventUsingMLModel
 
-# These tests fail a CalledOnValidSequence check in brave_sync::Prefs::GetSeed
+# These tests fail a CalledOnValidSequence check in luxxle_sync::Prefs::GetSeed
 -PeopleHandlerWithExplicitBrowserSigninTest.*
 
 # These tests fail because we do not record permissions UKM, see
-# brave/chromium_src/components/permissions/permission_uma_util.cc
+# luxxle/chromium_src/components/permissions/permission_uma_util.cc
 # GetUkmSourceId override.
 -All/RevokedPermissionsServiceTest.RevokedPermissionsServiceTest/*
 -All/UnusedSitePermissionsServiceTest.UnusedSitePermissionsServiceTest/1
 -All/UnusedSitePermissionsServiceTest.UnusedSitePermissionsServiceTest/3
 -SiteSettingsHandlerTest.NotificationPermissionRevokeUkm
 
-# This test fails because we replace WebUI chrome:// scheme with brave://
+# This test fails because we replace WebUI chrome:// scheme with luxxle://
 -ChromeURLsTest.ContainsConfigURLs
 
 # These tests fail because we changed idle detection content setting to BLOCK
@@ -453,7 +453,7 @@
 -All/ChromeBrowsingDataRemoverDelegateRelatedWebsiteSetsTest.RemoveRelatedWebsiteSetsPermissions/*
 
 # These tests fail because our search engine keywords use a shorter syntax than
-# is expected (:b vs search.brave.com)
+# is expected (:b vs search.luxxle.com)
 -IconUtilsTest.GetSearchEngineGeneratedIconPath
 -TemplateURLServiceEnterpriseSearchTest.NonFeaturedEnterpriseSearchPolicyConflictWithDSP/SearchEngineChoiceDisabled_SearchAggregator
 -TemplateURLServiceEnterpriseSearchTest.NonFeaturedEnterpriseSearchPolicyConflictWithDSP/SearchEngineChoiceDisabled_SiteSearch
@@ -469,7 +469,7 @@
 
 # These tests fail because of the following failed expectation in prerender_test_util.cc:
 # Expected: (host_id) != (RenderFrameHost::kNoFrameTreeNodeId), actual: -1 vs -1
-# kPrerender2 feature is disabled in Brave.
+# kPrerender2 feature is disabled in Luxxle.
 -All/HistoryTabHelperMPArchTest.DoNotAffectToLimitTitleUpdates/1
 -AuthenticatorRequestSchedulerPrerenderTest.SingleWebContents_OneRequestInPrerendering
 -CapabilitiesPreconnectParamTest/DiceTabHelperPrerenderTest.SigninStatusAfterPrerendering/*
@@ -516,7 +516,7 @@
 -PKIMetadataComponentInstallerTest.InstallComponentUpdatesPinningConfig
 
 # These tests are disabled because we hide the password card in
-# brave://settings/safetyCheck which also involves always returning a "safe"
+# luxxle://settings/safetyCheck which also involves always returning a "safe"
 # password card state
 -All/PasswordStatusCheckServiceParameterizedCardTest.PasswordCardState/*
 -PasswordStatusCheckServiceBaseTest.PasswordCardCheckTime
@@ -527,7 +527,7 @@
 -SafetyHubHandlerTest.HandleGetSafetyHubEntryPointData_Subheader_OneModule
 -SafetyHubHandlerTest.HandleGetSafetyHubEntryPointData_Subheader_TwoModulesWithPassword
 
-# This test fails because zoom_level.display_name is "(Brave error pages)"
+# This test fails because zoom_level.display_name is "(Luxxle error pages)"
 -SiteSettingsHandlerTest.ZoomLevels
 
 # These tests fail because we disable features::kControlledFrame
@@ -674,7 +674,7 @@
 -OmniboxViewViewsSteadyStateElisionsTest.*
 -OmniboxViewViewsTest.*
 -PageInfoBubbleViewTest.*
--PageInfoTest.IncognitoPermissionsDontShowAsk # Change upstream logic for incognito windows. https://github.com/brave/brave-browser/issues/24720
+-PageInfoTest.IncognitoPermissionsDontShowAsk # Change upstream logic for incognito windows. https://github.com/luxxle/luxxle-browser/issues/24720
 -PdfPrinterHandlerPosixTest.*
 -PeriodicBackgroundSyncPermissionContextWithPermissionTest.DefaultSearchEngine
 -PermissionDashboardUnitTest.DisplayLHSIndicatorForCamera*

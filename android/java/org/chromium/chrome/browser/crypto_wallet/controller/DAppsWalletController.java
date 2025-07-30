@@ -5,7 +5,7 @@
 
 package org.chromium.chrome.browser.crypto_wallet.controller;
 
-import static org.chromium.chrome.browser.app.BraveActivity.BRAVE_WALLET_HOST;
+import static org.chromium.chrome.browser.app.LuxxleActivity.LUXXLE_WALLET_HOST;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,14 +19,14 @@ import androidx.lifecycle.LifecycleOwner;
 
 import org.chromium.base.Log;
 import org.chromium.base.supplier.ObservableSupplier;
-import org.chromium.brave_wallet.mojom.AssetRatioService;
-import org.chromium.brave_wallet.mojom.BraveWalletService;
-import org.chromium.brave_wallet.mojom.JsonRpcService;
-import org.chromium.brave_wallet.mojom.KeyringService;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.luxxle_wallet.mojom.AssetRatioService;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletService;
+import org.chromium.luxxle_wallet.mojom.JsonRpcService;
+import org.chromium.luxxle_wallet.mojom.KeyringService;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.crypto_wallet.AssetRatioServiceFactory;
-import org.chromium.chrome.browser.crypto_wallet.BraveWalletServiceFactory;
-import org.chromium.chrome.browser.crypto_wallet.modal.BraveWalletPanel;
+import org.chromium.chrome.browser.crypto_wallet.LuxxleWalletServiceFactory;
+import org.chromium.chrome.browser.crypto_wallet.modal.LuxxleWalletPanel;
 import org.chromium.chrome.browser.crypto_wallet.modal.DAppsDialog;
 import org.chromium.chrome.browser.crypto_wallet.util.Utils;
 import org.chromium.chrome.browser.fullscreen.BrowserControlsManager;
@@ -45,11 +45,11 @@ public class DAppsWalletController implements ConnectionErrorHandler {
     private final View mAnchorViewHost;
     private AssetRatioService mAssetRatioService;
     private KeyringService mKeyringService;
-    private BraveWalletService mBraveWalletService;
+    private LuxxleWalletService mLuxxleWalletService;
     protected JsonRpcService mJsonRpcService;
     private boolean mHasStateInitialise;
     private DAppsDialog mDAppsDialog;
-    private BraveWalletPanel mBraveWalletPanel;
+    private LuxxleWalletPanel mLuxxleWalletPanel;
     private DialogInterface.OnDismissListener mOnDismissListener;
     private final AppCompatActivity mActivity;
     @Nullable private final GURL mVisibleUrl;
@@ -61,21 +61,21 @@ public class DAppsWalletController implements ConnectionErrorHandler {
     public DAppsWalletController(Context mContext, View mAnchorViewHost) {
         this.mContext = mContext;
         this.mAnchorViewHost = mAnchorViewHost;
-        this.mActivity = BraveActivity.getChromeTabbedActivity();
+        this.mActivity = LuxxleActivity.getChromeTabbedActivity();
         WebContents webContents = null;
         mDefaultLifecycleObserver =
                 new DefaultLifecycleObserver() {
                     @Override
                     public void onResume(@NonNull LifecycleOwner owner) {
-                        if (mBraveWalletPanel != null) {
-                            mBraveWalletPanel.resume();
+                        if (mLuxxleWalletPanel != null) {
+                            mLuxxleWalletPanel.resume();
                         }
                     }
 
                     @Override
                     public void onPause(@NonNull LifecycleOwner owner) {
-                        if (mBraveWalletPanel != null) {
-                            mBraveWalletPanel.pause();
+                        if (mLuxxleWalletPanel != null) {
+                            mLuxxleWalletPanel.pause();
                         }
                     }
                 };
@@ -87,13 +87,13 @@ public class DAppsWalletController implements ConnectionErrorHandler {
                     DAppsWalletController.this.cleanUp();
                 };
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             webContents = activity.getCurrentWebContents();
 
             ObservableSupplier<BrowserControlsManager> managerSupplier =
                     activity.getBrowserControlsManagerSupplier();
             mFullscreenManager = managerSupplier.get().getFullscreenManager();
-        } catch (BraveActivity.BraveActivityNotFoundException | NullPointerException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException | NullPointerException e) {
             Log.e(TAG, "Constructor", e);
         }
 
@@ -116,7 +116,7 @@ public class DAppsWalletController implements ConnectionErrorHandler {
         initAssetRatioService();
         initKeyringService();
         initJsonRpcService();
-        initBraveWalletService();
+        initLuxxleWalletService();
         if (Utils.shouldShowCryptoOnboarding()) {
             showOnBoardingOrUnlock();
         } else {
@@ -138,11 +138,11 @@ public class DAppsWalletController implements ConnectionErrorHandler {
 
     private void createAndShowWalletPanel() {
         boolean showExpandButton =
-                mVisibleUrl != null && !mVisibleUrl.getHost().equals(BRAVE_WALLET_HOST);
-        mBraveWalletPanel =
-                new BraveWalletPanel(
+                mVisibleUrl != null && !mVisibleUrl.getHost().equals(LUXXLE_WALLET_HOST);
+        mLuxxleWalletPanel =
+                new LuxxleWalletPanel(
                         mAnchorViewHost, mDialogOrPanelDismissListener, showExpandButton);
-        mBraveWalletPanel.showLikePopDownMenu();
+        mLuxxleWalletPanel.showLikePopDownMenu();
         setupLifeCycleUpdater();
     }
 
@@ -171,9 +171,9 @@ public class DAppsWalletController implements ConnectionErrorHandler {
             mJsonRpcService.close();
             mJsonRpcService = null;
         }
-        if (mBraveWalletService != null) {
-            mBraveWalletService.close();
-            mBraveWalletService = null;
+        if (mLuxxleWalletService != null) {
+            mLuxxleWalletService.close();
+            mLuxxleWalletService = null;
         }
         if (mAssetRatioService != null) {
             mAssetRatioService.close();
@@ -182,24 +182,24 @@ public class DAppsWalletController implements ConnectionErrorHandler {
         initAssetRatioService();
         initKeyringService();
         initJsonRpcService();
-        initBraveWalletService();
+        initLuxxleWalletService();
         updateState();
     }
 
     public void dismiss() {
         if (isShowingPanel()) {
-            mBraveWalletPanel.dismiss();
+            mLuxxleWalletPanel.dismiss();
         }
         if (isShowingDialog()) {
             mDAppsDialog.dismiss();
         }
-        mBraveWalletPanel = null;
+        mLuxxleWalletPanel = null;
         mDAppsDialog = null;
         cleanUp();
     }
 
     public boolean isShowingPanel() {
-        return mBraveWalletPanel != null && mBraveWalletPanel.isShowing();
+        return mLuxxleWalletPanel != null && mLuxxleWalletPanel.isShowing();
     }
 
     public boolean isShowingDialog() {
@@ -216,21 +216,21 @@ public class DAppsWalletController implements ConnectionErrorHandler {
         if (mKeyringService != null) {
             return;
         }
-        mKeyringService = BraveWalletServiceFactory.getInstance().getKeyringService(this);
+        mKeyringService = LuxxleWalletServiceFactory.getInstance().getKeyringService(this);
     }
 
     private void initJsonRpcService() {
         if (mJsonRpcService != null) {
             return;
         }
-        mJsonRpcService = BraveWalletServiceFactory.getInstance().getJsonRpcService(this);
+        mJsonRpcService = LuxxleWalletServiceFactory.getInstance().getJsonRpcService(this);
     }
 
-    private void initBraveWalletService() {
-        if (mBraveWalletService != null) {
+    private void initLuxxleWalletService() {
+        if (mLuxxleWalletService != null) {
             return;
         }
-        mBraveWalletService = BraveWalletServiceFactory.getInstance().getBraveWalletService(this);
+        mLuxxleWalletService = LuxxleWalletServiceFactory.getInstance().getLuxxleWalletService(this);
     }
 
     private void initAssetRatioService() {
@@ -249,9 +249,9 @@ public class DAppsWalletController implements ConnectionErrorHandler {
             mJsonRpcService.close();
             mJsonRpcService = null;
         }
-        if (mBraveWalletService != null) {
-            mBraveWalletService.close();
-            mBraveWalletService = null;
+        if (mLuxxleWalletService != null) {
+            mLuxxleWalletService.close();
+            mLuxxleWalletService = null;
         }
         if (mAssetRatioService != null) {
             mAssetRatioService.close();
@@ -264,6 +264,6 @@ public class DAppsWalletController implements ConnectionErrorHandler {
 
     private boolean shouldShowNotificationAtTop(Context context) {
         return ConfigurationUtils.isTablet(context)
-                || !BottomToolbarConfiguration.isBraveBottomControlsEnabled();
+                || !BottomToolbarConfiguration.isLuxxleBottomControlsEnabled();
     }
 }

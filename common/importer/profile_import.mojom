@@ -1,9 +1,9 @@
-// Copyright 2020 The Brave Authors. All rights reserved.
+// Copyright 2020 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-module brave.mojom;
+module luxxle.mojom;
 
 import "chrome/common/importer/profile_import.mojom";
 import "mojo/public/mojom/base/string16.mojom";
@@ -34,7 +34,7 @@ interface ProfileImport {
       uint16 items,
       map<uint32, string> localized_strings,
       pending_remote<chrome.mojom.ProfileImportObserver> observer,
-      pending_remote<ProfileImportObserver> brave_observer);
+      pending_remote<ProfileImportObserver> luxxle_observer);
 
   // Stop the importer.
   CancelImport();

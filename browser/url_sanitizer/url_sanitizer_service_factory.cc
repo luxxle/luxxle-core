@@ -10,7 +10,7 @@
 
 #include "base/feature_list.h"
 #include "base/no_destructor.h"
-#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/luxxle_browser_process.h"
 #include "luxxle/components/url_sanitizer/browser/url_sanitizer_component_installer.h"
 #include "luxxle/components/url_sanitizer/browser/url_sanitizer_service.h"
 #include "chrome/browser/profiles/incognito_helpers.h"
@@ -57,9 +57,9 @@ std::unique_ptr<KeyedService>
 URLSanitizerServiceFactory::BuildServiceInstanceForBrowserContext(
     content::BrowserContext* context) const {
   auto service = std::make_unique<URLSanitizerService>();
-  if (g_brave_browser_process &&
-      g_brave_browser_process->URLSanitizerComponentInstaller()) {
-    g_brave_browser_process->URLSanitizerComponentInstaller()->AddObserver(
+  if (g_luxxle_browser_process &&
+      g_luxxle_browser_process->URLSanitizerComponentInstaller()) {
+    g_luxxle_browser_process->URLSanitizerComponentInstaller()->AddObserver(
         service.get());
   }
   return service;
@@ -74,4 +74,4 @@ content::BrowserContext* URLSanitizerServiceFactory::GetBrowserContextToUse(
   return GetBrowserContextRedirectedInIncognito(context);
 }
 
-}  // namespace brave
+}  // namespace luxxle

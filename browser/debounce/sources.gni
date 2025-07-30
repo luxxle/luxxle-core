@@ -3,12 +3,12 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-brave_browser_debounce_sources = [
+luxxle_browser_debounce_sources = [
   "//luxxle/browser/debounce/debounce_service_factory.cc",
   "//luxxle/browser/debounce/debounce_service_factory.h",
 ]
 
-brave_browser_debounce_deps = [
+luxxle_browser_debounce_deps = [
   "//base",
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/debounce/core/browser",

@@ -4,5 +4,5 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 source_set("side_panel") {
-  sources = [ "brave_side_panel_utils.h" ]
+  sources = [ "luxxle_side_panel_utils.h" ]
 }

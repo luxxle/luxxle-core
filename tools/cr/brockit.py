@@ -22,8 +22,8 @@
 ```
 
 ### `brockit.py lift`
-This is *🚀Brockit!* (Brave Rocket? Brave Rock it? Broke it?): a tool to help
-upgrade Brave to a newer Chromium base version. The main goal is to produce
+This is *🚀Brockit!* (Luxxle Rocket? Luxxle Rock it? Broke it?): a tool to help
+upgrade Luxxle to a newer Chromium base version. The main goal is to produce
 use it to commit the following changes:
 
  * Update from Chromium [from] to [to].
@@ -198,7 +198,7 @@ GOOGLESOURCE_COMMIT_LINK = f'{versioning.GOOGLESOURCE_LINK}' '/+/{commit}'
 
 # A basic url to the rust toolchain that can be used to check for the toolchain
 # availability for a given version.
-RUST_TOOLCHAIN_URL = 'https://brave-build-deps-public.s3.brave.com/rust-toolchain-aux/linux-x64-rust-toolchain-{revision}.tar.xz'
+RUST_TOOLCHAIN_URL = 'https://luxxle-build-deps-public.s3.luxxle.com/rust-toolchain-aux/linux-x64-rust-toolchain-{revision}.tar.xz'
 
 # Google dash link used to check the latest version for a given channel
 CHROMIUMDASH_LATEST_RELEASE = 'https://chromiumdash.appspot.com/fetch_releases?channel={channel}&platform={platform}&num=1'
@@ -219,7 +219,7 @@ MINOR_VERSION_BUMP_ISSUE_TEMPLATE = """### Minor Chromium bump
 
 ### Minor Chromium bump
 
-- No specific code changes in Brave (only line number changes in patches)
+- No specific code changes in Luxxle (only line number changes in patches)
 """
 
 
@@ -227,7 +227,7 @@ def _get_current_branch_upstream_name() -> Optional[str]:
     """Retrieves the name of the current branch's upstream.
     """
     try:
-        return repository.brave.run_git('rev-parse', '--abbrev-ref',
+        return repository.luxxle.run_git('rev-parse', '--abbrev-ref',
                                         '--symbolic-full-name', '@{upstream}')
     except subprocess.CalledProcessError:
         return None
@@ -240,7 +240,7 @@ def _update_pinslist_timestamp() -> str:
     Returns:
         The readable timestamp of the update into the file.
     """
-    content = repository.brave.read_file(PINSLIST_TIMESTAMP_FILE)
+    content = repository.luxxle.read_file(PINSLIST_TIMESTAMP_FILE)
 
     pattern = r"# Last updated:.*\nPinsListTimestamp\n[0-9]{10}\n"
     match = re.search(pattern, content, flags=re.DOTALL)
@@ -265,7 +265,7 @@ def _update_pinslist_timestamp() -> str:
     with open(PINSLIST_TIMESTAMP_FILE, "w", encoding="utf-8") as file:
         file.write(updated_content)
 
-    updated = repository.brave.run_git('diff', PINSLIST_TIMESTAMP_FILE)
+    updated = repository.luxxle.run_git('diff', PINSLIST_TIMESTAMP_FILE)
     if updated == '':
         raise ValueError('Pinslist timestamp failed to update.')
 
@@ -347,7 +347,7 @@ class ApplyPatchesRecord:
                     # Skip deleted files.
                     continue
 
-                repository.brave.run_git('add', patch.path)
+                repository.luxxle.run_git('add', patch.path)
 
 
 @dataclass(frozen=True)
@@ -355,7 +355,7 @@ class ContinuationFile:
     """A class to hold the continuation data for the upgrade process.
     """
 
-    # The target version that brockit is aiming to upgrade brave to.
+    # The target version that brockit is aiming to upgrade luxxle to.
     target_version: Version
 
     # The version that was in the branch when the upgrade started (which can be
@@ -528,9 +528,9 @@ class Versioned(Task):
     all patches that might have been changed or deleted. Untracked patches are
     excluded from addition at this stage.
     """
-        repository.brave.run_git('add', '-u', '*.patch')
+        repository.luxxle.run_git('add', '-u', '*.patch')
 
-        repository.brave.git_commit(
+        repository.luxxle.git_commit(
             f'Update patches from Chromium {self.base_version} '
             f'to Chromium {self.target_version}.')
 
@@ -540,8 +540,8 @@ class Versioned(Task):
     This function stages, and commits, all changed, updated, or deleted files
     resulting from running npm run chromium_rebase_l10n.
     """
-        repository.brave.run_git('add', '*.grd', '*.grdp', '*.xtb')
-        repository.brave.git_commit(
+        repository.luxxle.run_git('add', '*.grd', '*.grdp', '*.xtb')
+        repository.luxxle.git_commit(
             f'Updated strings for Chromium {self.target_version}.')
 
     def status_message(self) -> str:
@@ -609,7 +609,7 @@ class GitHubIssue(Versioned):
         """
         results = json.loads(
             terminal.run([
-                'gh', 'issue', 'list', '--repo', 'brave/brave-browser',
+                'gh', 'issue', 'list', '--repo', 'luxxle/luxxle-browser',
                 '--search', title, '--state', 'open', '--json',
                 'number,title,url,body'
             ]).stdout.strip())
@@ -621,7 +621,7 @@ class GitHubIssue(Versioned):
 
         This function creates a push request for the upgrade.
         """
-        current_branch = repository.brave.current_branch()
+        current_branch = repository.luxxle.current_branch()
         if current_branch == 'HEAD':
             raise InvalidInputException(
                 'Cannot create a push request: Not in a branch')
@@ -691,12 +691,12 @@ class GitHubIssue(Versioned):
             # Only uplift branches set milestones.
             results = json.loads(
                 terminal.run([
-                    'gh', 'api', 'repos/luxxle/brave-core/milestones', '--jq',
+                    'gh', 'api', 'repos/luxxle/luxxle-core/milestones', '--jq',
                     '[.[] | {number, title}]'
                 ]).stdout)
             if not results:
                 raise BadOutcomeException(
-                    'No milestones returned for brave-core')
+                    'No milestones returned for luxxle-core')
 
             milestone = next(
                 (entry["number"] for entry in results
@@ -708,7 +708,7 @@ class GitHubIssue(Versioned):
             pr_number = pr_url.rsplit('/', 1)[-1]
             terminal.run([
                 'gh', 'api', '-X', 'PATCH',
-                f'repos/luxxle/brave-core/issues/{pr_number}', '-F',
+                f'repos/luxxle/luxxle-core/issues/{pr_number}', '-F',
                 f'milestone={milestone}'
             ])
 
@@ -734,7 +734,7 @@ class GitHubIssue(Versioned):
             else:
                 terminal.run([
                     'gh', 'issue', 'edit',
-                    str(issue['number']), '--repo', 'brave/brave-browser',
+                    str(issue['number']), '--repo', 'luxxle/luxxle-browser',
                     '--body', f'{body}'
                 ])
                 terminal.log_task(f'GitHub issue updated {str(issue["url"])}.')
@@ -745,7 +745,7 @@ class GitHubIssue(Versioned):
         body = MINOR_VERSION_BUMP_ISSUE_TEMPLATE.format(
             googlesource_log_link=link)
         issue_url = terminal.run([
-            'gh', 'issue', 'create', '--repo', 'brave/brave-browser',
+            'gh', 'issue', 'create', '--repo', 'luxxle/luxxle-browser',
             '--title', title, '--body', f'{body}', '--label',
             '"Chromium/upgrade minor"', '--label', '"OS/Android"', '--label',
             '"OS/Desktop"', '--label', '"QA/Test-Plan-Specified"', '--label',
@@ -794,9 +794,9 @@ class ReUpgrade(Task):
                 f'match the current version. {self.target_version} '
                 f'vs {working_version}')
 
-        starting_change = repository.brave.last_changed(
+        starting_change = repository.luxxle.last_changed(
             PINSLIST_TIMESTAMP_FILE)
-        commit_message = repository.brave.get_commit_short_description(
+        commit_message = repository.luxxle.get_commit_short_description(
             starting_change)
         if not commit_message.startswith(
                 'Update from Chromium ') or not commit_message.endswith(
@@ -808,12 +808,12 @@ class ReUpgrade(Task):
         console.log('Discarding the following changes:')
         console.log(
             Padding(
-                '[dim]%s' % repository.brave.run_git(
+                '[dim]%s' % repository.luxxle.run_git(
                     'log', '--pretty=%h %s', f'HEAD...{starting_change}~1'),
                 (0, 4)))
 
         ContinuationFile.clear()
-        repository.brave.run_git('reset', '--hard', f'{starting_change}~1')
+        repository.luxxle.run_git('reset', '--hard', f'{starting_change}~1')
 
 
 class Upgrade(Versioned):
@@ -936,7 +936,7 @@ class Upgrade(Versioned):
             for patch in patches:
                 apply_result = patch.apply()
                 if apply_result.status == Patchfile.ApplyStatus.CONFLICT:
-                    source = patch.source_from_brave()
+                    source = patch.source_from_luxxle()
                     files_with_conflicts.append(source)
                 elif apply_result.status == Patchfile.ApplyStatus.BROKEN:
                     broken_patches.append(patch)
@@ -979,11 +979,11 @@ class Upgrade(Versioned):
                                     (0, 4)))
                         vscode_args.append(patch.path)
                     elif status.status == 'R':
-                        renamed_to = patch.repository.from_brave(
+                        renamed_to = patch.repository.from_luxxle(
                         ) / status.renamed_to
                         console.log(
                             Padding(
-                                f'✘ {patch.source_from_brave()}\n    '
+                                f'✘ {patch.source_from_luxxle()}\n    '
                                 f'([yellow bold]renamed to[/] {renamed_to})',
                                 (0, 4)))
                         vscode_args += [patch.path, renamed_to]
@@ -1000,7 +1000,7 @@ class Upgrade(Versioned):
                 f'{ACTION_NEEDED_DECORATOR}:[/]')
 
             for patch in broken_patches:
-                source = patch.source_from_brave()
+                source = patch.source_from_luxxle()
                 console.log(Padding(f'✘ {patch.path} ➜ {source}', (0, 4)))
                 vscode_args += [patch.path, source]
 
@@ -1046,17 +1046,17 @@ class Upgrade(Versioned):
             json.dump(package, package_file, indent=2)
             package_file.write("\n")
 
-        repository.brave.run_git('add', versioning.PACKAGE_FILE)
+        repository.luxxle.run_git('add', versioning.PACKAGE_FILE)
 
         # Pinlist timestamp update occurs with the package version update.
         _update_pinslist_timestamp()
-        repository.brave.run_git('add', PINSLIST_TIMESTAMP_FILE)
-        repository.brave.git_commit(
+        repository.luxxle.run_git('add', PINSLIST_TIMESTAMP_FILE)
+        repository.luxxle.git_commit(
             f'Update from Chromium {self.base_version} '
             f'to Chromium {self.target_version}.')
 
     def _save_conflict_resolved_patches(self):
-        repository.brave.git_commit(
+        repository.luxxle.git_commit(
             f'Conflict-resolved patches from Chromium {self.base_version} to '
             f'Chromium {self.target_version}.')
 
@@ -1265,7 +1265,7 @@ class Upgrade(Versioned):
             'current': get_rust_clang_revision(self.working_version),
             'target': updated_version,
             'description': 'The rust toolchain has been updated.',
-            'advice': 'Run the jobs in https://ci.brave.com/view/rust to generate a new Rust toolchain.',
+            'advice': 'Run the jobs in https://ci.luxxle.com/view/rust to generate a new Rust toolchain.',
             'commit': {
                 'hash': commit_hash,
                 'message': commit_message
@@ -1283,7 +1283,7 @@ class Upgrade(Versioned):
         * The rust toolchain has been updated.
             CL: Roll clang+rust llvmorg-21-init-1655-g7b473dfe-1 : llvmorg-2...
                 https://chromium.googlesource.com/chromium/src/+/f9fada98083846
-            Run the jobs in https://ci.brave.com/view/rust to generate a new...
+            Run the jobs in https://ci.luxxle.com/view/rust to generate a new...
 
     Returns:
         True if all checks pass, and False otherwise.
@@ -1354,7 +1354,7 @@ class Upgrade(Versioned):
         self._run_update_patches_with_no_deletions()
 
         apply_record.stage_all_patches(ignore_deleted_files=True)
-        has_changes = repository.brave.has_staged_changed()
+        has_changes = repository.luxxle.has_staged_changed()
 
         if not has_changes and not no_conflict_continuation:
             raise InvalidInputException(
@@ -1399,12 +1399,12 @@ class Upgrade(Versioned):
                 and self.target_version != self.chromium_src_version):
             logging.warning(
                 'Chrommium seems to be synced to a version entirely '
-                'unrelated. Brave %s ➜ Chromium %s', self.working_version,
+                'unrelated. Luxxle %s ➜ Chromium %s', self.working_version,
                 self.chromium_src_version)
         elif self.working_version != self.chromium_src_version:
             logging.warning(
                 'Chromium is checked out with the target version. '
-                'Brave %s ➜ Chromium %s', self.working_version,
+                'Luxxle %s ➜ Chromium %s', self.working_version,
                 self.chromium_src_version)
 
         if self.working_version != self.base_version:
@@ -1522,7 +1522,7 @@ class Upgrade(Versioned):
             if self.target_version != self.chromium_src_version:
                 raise InvalidInputException(
                     'To run with [bold cyan]--continue[/] the Chromium '
-                    'version has to be in Sync with Brave. Brave '
+                    'version has to be in Sync with Luxxle. Luxxle '
                     f'{self.target_version} ➜ '
                     f'Chromium {self.chromium_src_version}')
 
@@ -1556,7 +1556,7 @@ def solve_git_ref(from_ref: str) -> str:
     """
     if from_ref and from_ref[0] != '@':
         # No special handling needed
-        if not repository.brave.is_valid_git_reference(from_ref):
+        if not repository.luxxle.is_valid_git_reference(from_ref):
             raise InvalidInputException(
                 'Value provided to [bold cyan]--from-ref[/] is not a valid '
                 f'git ref: {from_ref}')
@@ -1573,7 +1573,7 @@ def solve_git_ref(from_ref: str) -> str:
     def find_previous_version_hash(is_major: bool = False) -> str:
         starting_version = Version.from_git('HEAD')
         base_version = starting_version
-        last_changed = repository.brave.last_changed(versioning.PACKAGE_FILE)
+        last_changed = repository.luxxle.last_changed(versioning.PACKAGE_FILE)
         while True:
             base_version = Version.from_git(f'{last_changed}~1')
             if (is_major and base_version.major != starting_version.major):
@@ -1583,7 +1583,7 @@ def solve_git_ref(from_ref: str) -> str:
             # Prefer to look for the PACKAGE_FILE here, because this has to
             # resolve even when the upgrade was done manually, so don't assume
             # the presence of pinslist timestamp changes.
-            last_changed = repository.brave.last_changed(
+            last_changed = repository.luxxle.last_changed(
                 versioning.PACKAGE_FILE, f'{last_changed}~1')
 
         return f'{last_changed}~1'
@@ -1751,7 +1751,7 @@ class Rebase(Task):
 
         from_ref = solve_git_ref(from_ref)
 
-        current_branch = repository.brave.current_branch()
+        current_branch = repository.luxxle.current_branch()
         terminal.log_task(
             f'Rebasing {current_branch} onto {to_ref} starting from {from_ref}'
         )
@@ -1789,8 +1789,8 @@ class Rebase(Task):
             ],
                          env=env)
             if recommit:
-                repository.brave.run_git('commit', '--amend', '--no-edit')
-                repository.brave.run_git('rebase', '--continue')
+                repository.luxxle.run_git('commit', '--amend', '--no-edit')
+                repository.luxxle.run_git('rebase', '--continue')
         except subprocess.CalledProcessError as e:
             raise InvalidInputException(f'Rebase failed. {e.stderr}') from e
 
@@ -1829,10 +1829,10 @@ def fetch_lastest_canary_version(channel) -> Version:
 
 
 def show(args: argparse.Namespace):
-    """Prints various insights about brave-core.
+    """Prints various insights about luxxle-core.
 
     This is a helper command line that allows us to inspect a few things about
-    brave-core and how brockit process things.
+    luxxle-core and how brockit process things.
     """
     if args.package_version:
         console.print(f'upstream version: {Version.from_git("HEAD")}')
@@ -1959,7 +1959,7 @@ def main():
         help='Creates or updates the GitHub issue for the corrent branch.')
 
     show_parser = subparsers.add_parser(
-        'show', help='Prints various insights about brave-core.')
+        'show', help='Prints various insights about luxxle-core.')
     show_parser.add_argument(
         '--package-version',
         action='store_true',

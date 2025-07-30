@@ -7,16 +7,16 @@
 
 #include <string>
 
-#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/app/luxxle_command_ids.h"
 #include "luxxle/browser/speedreader/speedreader_tab_helper.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/components/speedreader/common/features.h"
 #include "luxxle/components/vector_icons/vector_icons.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/ui/views/location_bar/location_bar_bubble_delegate_view.h"
 #include "chrome/browser/ui/views/page_action/page_action_icon_view.h"
 #include "chrome/grit/generated_resources.h"
-#include "components/grit/brave_components_strings.h"
+#include "components/grit/luxxle_components_strings.h"
 #include "ui/base/l10n/l10n_util.h"
 #include "ui/base/metadata/metadata_impl_macros.h"
 #include "ui/views/animation/ink_drop.h"

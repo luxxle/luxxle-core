@@ -55,7 +55,7 @@
 // DownloadDisplayControllerTest.UpdateToolbarButtonState_DangerousDownload
 // passed. That test assumes download button is visible even danger file is
 // in-progress. But it's not shown in the real world.
-// W/o brave's DownloadDisplayController::UpdateToolbarButtonState() overriding,
+// W/o luxxle's DownloadDisplayController::UpdateToolbarButtonState() overriding,
 // below
 // DownloadDisplayControllerTest.UpdateToolbarButtonState_DangerousDownload test
 // case is failed.

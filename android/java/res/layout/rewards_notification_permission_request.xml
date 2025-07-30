@@ -42,7 +42,7 @@
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif"
-        android:text="@string/brave_rewards_may_not_work_while_notifications_are_disabled"
+        android:text="@string/luxxle_rewards_may_not_work_while_notifications_are_disabled"
         android:textAlignment="center"
         android:textColor="@color/rewards_panel_notification_secondary_text_color"
         android:textSize="14sp"

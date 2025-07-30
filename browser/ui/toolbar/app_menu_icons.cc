@@ -8,7 +8,7 @@
 #include <map>
 
 #include "base/no_destructor.h"
-#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/app/luxxle_command_ids.h"
 #include "luxxle/components/vector_icons/vector_icons.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "ui/base/models/image_model.h"
@@ -29,10 +29,10 @@ const std::map<int, const gfx::VectorIcon&>& GetCommandIcons() {
           {IDC_NEW_INCOGNITO_WINDOW, kLeoWindowTabPrivateIcon},
           {IDC_NEW_TOR_CONNECTION_FOR_SITE, kLeoWindowTabTorIcon},
           {IDC_NEW_OFFTHERECORD_WINDOW_TOR, kLeoWindowTabTorIcon},
-          {IDC_SHOW_BRAVE_REWARDS, kLeoProductBatOutlineIcon},
-          {IDC_SHOW_BRAVE_WALLET, kLeoProductBraveWalletIcon},
-          {IDC_TOGGLE_AI_CHAT, kLeoProductBraveLeoIcon},
-          {IDC_BRAVE_VPN_MENU, kLeoProductVpnIcon},
+          {IDC_SHOW_LUXXLE_REWARDS, kLeoProductBatOutlineIcon},
+          {IDC_SHOW_LUXXLE_WALLET, kLeoProductLuxxleWalletIcon},
+          {IDC_TOGGLE_AI_CHAT, kLeoProductLuxxleLeoIcon},
+          {IDC_LUXXLE_VPN_MENU, kLeoProductVpnIcon},
           {IDC_PASSWORDS_AND_AUTOFILL_MENU, kLeoKeyIcon},
           {IDC_RECENT_TABS_MENU, kLeoHistoryIcon},
           {IDC_BOOKMARKS_MENU, kLeoProductBookmarksIcon},
@@ -50,17 +50,17 @@ const std::map<int, const gfx::VectorIcon&>& GetCommandIcons() {
           {IDC_EXIT, kLeoCloseIcon},
 
           // The `VPN` submenu
-          {IDC_TOGGLE_BRAVE_VPN, kLeoProductVpnIcon},
-          {IDC_TOGGLE_BRAVE_VPN_TOOLBAR_BUTTON, kLeoEyeOnIcon},
-          {IDC_SHOW_BRAVE_VPN_PANEL, kLeoProductVpnIcon},
-          {IDC_SEND_BRAVE_VPN_FEEDBACK, kLeoMessageBubbleHeartIcon},
-          {IDC_MANAGE_BRAVE_VPN_PLAN, kLeoLaunchIcon},
-          {IDC_ABOUT_BRAVE_VPN, kLeoInfoOutlineIcon},
+          {IDC_TOGGLE_LUXXLE_VPN, kLeoProductVpnIcon},
+          {IDC_TOGGLE_LUXXLE_VPN_TOOLBAR_BUTTON, kLeoEyeOnIcon},
+          {IDC_SHOW_LUXXLE_VPN_PANEL, kLeoProductVpnIcon},
+          {IDC_SEND_LUXXLE_VPN_FEEDBACK, kLeoMessageBubbleHeartIcon},
+          {IDC_MANAGE_LUXXLE_VPN_PLAN, kLeoLaunchIcon},
+          {IDC_ABOUT_LUXXLE_VPN, kLeoInfoOutlineIcon},
 
           // The `Bookmarks` submenu
           {IDC_BOOKMARK_THIS_TAB, kLeoBrowserBookmarkAddIcon},
           {IDC_BOOKMARK_ALL_TABS, kLeoBrowserBookmarkPluralIcon},
-          {IDC_BRAVE_BOOKMARK_BAR_SUBMENU, kLeoProductBookmarksIcon},
+          {IDC_LUXXLE_BOOKMARK_BAR_SUBMENU, kLeoProductBookmarksIcon},
           {IDC_SHOW_BOOKMARK_MANAGER, kLeoWindowBookmarkIcon},
           {IDC_SHOW_BOOKMARK_SIDE_PANEL, kLeoProductBookmarksIcon},
           {IDC_IMPORT_SETTINGS, kLeoImportArrowIcon},
@@ -72,9 +72,9 @@ const std::map<int, const gfx::VectorIcon&>& GetCommandIcons() {
           {IDC_RECENT_TABS_NO_DEVICE_TABS, kLeoSmartphoneLaptopIcon},
 
           // The `Help` submenu
-          {IDC_ABOUT, kLeoBraveIconMonochromeIcon},
+          {IDC_ABOUT, kLeoLuxxleIconMonochromeIcon},
           {IDC_HELP_PAGE_VIA_MENU, kLeoHelpOutlineIcon},
-          {IDC_SHOW_BRAVE_WEBCOMPAT_REPORTER, kLeoWarningTriangleOutlineIcon},
+          {IDC_SHOW_LUXXLE_WEBCOMPAT_REPORTER, kLeoWarningTriangleOutlineIcon},
 
           // The `Passwords and autofill` submenu
           {IDC_SHOW_PASSWORD_MANAGER, kLeoKeyIcon},
@@ -111,7 +111,7 @@ const std::map<int, const gfx::VectorIcon&>& GetCommandIcons() {
           {IDC_PERFORMANCE, kLeoNetworkSpeedFastIcon},
           {IDC_DEV_TOOLS, kLeoCodeIcon},
           {IDC_TASK_MANAGER_APP_MENU, kLeoWindowBinaryCodeIcon},
-          {IDC_SHOW_BRAVE_SYNC, kLeoProductSyncIcon},
+          {IDC_SHOW_LUXXLE_SYNC, kLeoProductSyncIcon},
           {IDC_ROUTE_MEDIA, kLeoChromeCastIcon},
           {IDC_SIDEBAR_SHOW_OPTION_MENU, kLeoBrowserSidebarRightIcon},
       });

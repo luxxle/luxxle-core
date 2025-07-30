@@ -11,8 +11,8 @@
 namespace preferences {
 namespace features {
 
-BASE_DECLARE_FEATURE(kBraveBackgroundVideoPlayback);
-BASE_DECLARE_FEATURE(kBravePictureInPictureForYouTubeVideos);
+BASE_DECLARE_FEATURE(kLuxxleBackgroundVideoPlayback);
+BASE_DECLARE_FEATURE(kLuxxlePictureInPictureForYouTubeVideos);
 
 }  // namespace features
 }  // namespace preferences

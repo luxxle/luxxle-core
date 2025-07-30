@@ -32,18 +32,18 @@ class JsSkusBrowserTest : public content::RenderViewTest {
 TEST_F(JsSkusBrowserTest, AttachSkus) {
   SkusRenderFrameObserver observer(GetMainRenderFrame());
   std::u16string command =
-      u"Number((window.chrome !== undefined) && (window.chrome.braveSkus !== "
+      u"Number((window.chrome !== undefined) && (window.chrome.luxxleSkus !== "
       u"undefined) && "
-      u"(window.chrome.braveSkus.refresh_order !== undefined))";
+      u"(window.chrome.luxxleSkus.refresh_order !== undefined))";
   LoadHTMLWithUrlOverride(R"(<html><body> </body></html>)",
                           "https://account.some.other");
   EXPECT_FALSE(ExecuteJavascript(command));
-  GURL url("https://account.brave.software");
+  GURL url("https://account.luxxle.software");
   LoadHTMLWithUrlOverride(R"(<html><body> </body></html>)", url.spec().c_str());
   EXPECT_TRUE(ExecuteJavascript(command));
   std::u16string overwrite =
-      u"Number((window.chrome.braveSkus = ['test']) && "
-      u"(window.chrome.braveSkus[0] === 'test'))";
+      u"Number((window.chrome.luxxleSkus = ['test']) && "
+      u"(window.chrome.luxxleSkus[0] === 'test'))";
   EXPECT_FALSE(ExecuteJavascript(overwrite));
   EXPECT_TRUE(ExecuteJavascript(command));
 }

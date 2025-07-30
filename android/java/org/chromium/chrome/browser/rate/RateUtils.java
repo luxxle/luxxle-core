@@ -12,11 +12,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 
-import org.chromium.base.BravePreferenceKeys;
+import org.chromium.base.LuxxlePreferenceKeys;
 import org.chromium.base.ContextUtils;
 import org.chromium.chrome.browser.preferences.ChromeSharedPreferences;
-import org.chromium.chrome.browser.set_default_browser.BraveSetDefaultBrowserUtils;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnPrefUtils;
+import org.chromium.chrome.browser.set_default_browser.LuxxleSetDefaultBrowserUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnPrefUtils;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -123,7 +123,7 @@ public class RateUtils {
      * 3. Last 7 days 4 days used not to be consecutive
      * 4. Any one of the following true
      *      i.  User has added at least 5 bookmarks.
-     *      ii. User has set Brave as default.
+     *      ii. User has set Luxxle as default.
      *      iii.User has paid for the VPN subscription.
      * */
     public boolean shouldShowRateDialog(Context context) {
@@ -133,15 +133,15 @@ public class RateUtils {
     private boolean mainCriteria() {
         int appOpenCount =
                 ChromeSharedPreferences.getInstance()
-                        .readInt(BravePreferenceKeys.BRAVE_APP_OPEN_COUNT);
+                        .readInt(LuxxlePreferenceKeys.LUXXLE_APP_OPEN_COUNT);
 
         return (System.currentTimeMillis() > getPrefNextRateDate() && appOpenCount >= APP_OPEN_5
                 && getPrefRateEnabled() && is4DaysUsedLast7Days());
     }
 
     private boolean anyOneSubCriteria(Context context) {
-        return BraveVpnPrefUtils.isSubscriptionPurchase()
-                || BraveSetDefaultBrowserUtils.isBraveSetAsDefaultBrowser(context)
+        return LuxxleVpnPrefUtils.isSubscriptionPurchase()
+                || LuxxleSetDefaultBrowserUtils.isLuxxleSetAsDefaultBrowser(context)
                 || getPrefAddedBookmarkCount() >= BOOKMARKS_COUNT;
     }
 

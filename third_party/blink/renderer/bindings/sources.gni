@@ -4,7 +4,7 @@
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
 # Commented out: removed components dependency - using Chromium defaults instead
-# brave_third_party_blink_renderer_bindings_generate_bindings_deps = [ "//luxxle/components/brave_page_graph/common:buildflags" ]
+# luxxle_third_party_blink_renderer_bindings_generate_bindings_deps = [ "//luxxle/components/luxxle_page_graph/common:buildflags" ]
 
 # Define empty bindings variables to use Chromium defaults
-brave_third_party_blink_renderer_bindings_generate_bindings_deps = []
+luxxle_third_party_blink_renderer_bindings_generate_bindings_deps = []

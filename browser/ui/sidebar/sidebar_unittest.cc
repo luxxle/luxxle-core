@@ -100,7 +100,7 @@ TEST_F(SidebarModelTest, ItemsChangedTest) {
 
   // Add one more item to test with 5 items.
   SidebarItem new_item = SidebarItem::Create(
-      GURL("https://www.brave.com/"), u"brave software",
+      GURL("https://www.luxxle.com/"), u"luxxle software",
       SidebarItem::Type::kTypeWeb, SidebarItem::BuiltInItemType::kNone, false);
 
   service()->AddItem(new_item);
@@ -110,17 +110,17 @@ TEST_F(SidebarModelTest, ItemsChangedTest) {
   // Update last item w/ url change.
   SidebarItemUpdate expected_update{(items_count - 1), false, true};
   EXPECT_CALL(observer_, OnItemUpdated(testing::_, expected_update)).Times(1);
-  service()->UpdateItem(GURL("https://www.brave.com/"),
-                        GURL("https://brave.com/"), u"brave software",
-                        u"brave software");
+  service()->UpdateItem(GURL("https://www.luxxle.com/"),
+                        GURL("https://luxxle.com/"), u"luxxle software",
+                        u"luxxle software");
   testing::Mock::VerifyAndClearExpectations(&observer_);
 
   // Update last item w/o url change.
   expected_update.url_updated = false;
   expected_update.title_updated = true;
   EXPECT_CALL(observer_, OnItemUpdated(testing::_, expected_update)).Times(1);
-  service()->UpdateItem(GURL("https://brave.com/"), GURL("https://brave.com/"),
-                        u"brave software", u"luxxle");
+  service()->UpdateItem(GURL("https://luxxle.com/"), GURL("https://luxxle.com/"),
+                        u"luxxle software", u"luxxle");
   testing::Mock::VerifyAndClearExpectations(&observer_);
 
   // Move item at 1 to at index 2.
@@ -173,7 +173,7 @@ TEST_F(SidebarModelTest, ItemsChangedTest) {
 }
 
 TEST_F(SidebarModelTest, CanUseNotAddedBuiltInItemInsteadOfTest) {
-  GURL talk("https://talk.brave.com/1Ar1vHfLBWX2sAdi");
+  GURL talk("https://talk.luxxle.com/1Ar1vHfLBWX2sAdi");
   // False because builtin talk item is already added.
   EXPECT_FALSE(HiddenDefaultSidebarItemsContains(service(), talk));
 
@@ -181,7 +181,7 @@ TEST_F(SidebarModelTest, CanUseNotAddedBuiltInItemInsteadOfTest) {
   // instead of adding |talk| url.
   const auto items = service()->items();
   const auto talk_iter =
-      std::ranges::find(items, SidebarItem::BuiltInItemType::kBraveTalk,
+      std::ranges::find(items, SidebarItem::BuiltInItemType::kLuxxleTalk,
                         &SidebarItem::built_in_item_type);
   ASSERT_NE(talk_iter, items.cend());
   service()->RemoveItemAt(std::distance(items.cbegin(), talk_iter));
@@ -193,7 +193,7 @@ TEST_F(SidebarModelTest, ActiveIndexChangedAfterItemAdded) {
   EXPECT_THAT(model()->active_index(), Optional(1u));
 
   SidebarItem item_1 = SidebarItem::Create(
-      GURL("https://www.brave.com/"), u"brave software",
+      GURL("https://www.luxxle.com/"), u"luxxle software",
       SidebarItem::Type::kTypeWeb, SidebarItem::BuiltInItemType::kNone, false);
 
   // Check active index is still 1 when new item is added at 2.
@@ -201,7 +201,7 @@ TEST_F(SidebarModelTest, ActiveIndexChangedAfterItemAdded) {
   EXPECT_THAT(model()->active_index(), Optional(1u));
 
   SidebarItem item_2 = SidebarItem::Create(
-      GURL("https://www.braves.com/"), u"brave software",
+      GURL("https://www.luxxles.com/"), u"luxxle software",
       SidebarItem::Type::kTypeWeb, SidebarItem::BuiltInItemType::kNone, false);
 
   // Check active index is changed to 2 when new item is added at 1.
@@ -226,18 +226,18 @@ TEST(SidebarUtilTest, SidebarShowOptionsDefaultTest) {
 }
 
 TEST(SidebarUtilTest, ConvertURLToBuiltInItemURLTest) {
-  EXPECT_EQ(GURL(kBraveTalkURL),
-            ConvertURLToBuiltInItemURL(GURL("https://talk.brave.com")));
-  EXPECT_EQ(GURL(kBraveTalkURL),
+  EXPECT_EQ(GURL(kLuxxleTalkURL),
+            ConvertURLToBuiltInItemURL(GURL("https://talk.luxxle.com")));
+  EXPECT_EQ(GURL(kLuxxleTalkURL),
             ConvertURLToBuiltInItemURL(
-                GURL("https://talk.brave.com/1Ar1vHfLBWX2sAdi")));
+                GURL("https://talk.luxxle.com/1Ar1vHfLBWX2sAdi")));
   EXPECT_EQ(
-      GURL(kBraveUIWalletPageURL),
+      GURL(kLuxxleUIWalletPageURL),
       ConvertURLToBuiltInItemURL(GURL("chrome://wallet/crypto/onboarding")));
 
   // Not converted for url that doesn't relavant builtin item.
-  GURL brave_com("https://www.brave.com/");
-  EXPECT_EQ(brave_com, ConvertURLToBuiltInItemURL(brave_com));
+  GURL luxxle_com("https://www.luxxle.com/");
+  EXPECT_EQ(luxxle_com, ConvertURLToBuiltInItemURL(luxxle_com));
 }
 
 }  // namespace sidebar

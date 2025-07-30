@@ -9,32 +9,32 @@ assert(is_android)
 
 source_set("android_browser_process") {
   sources = [
-    "brave_feature_util.cc",
-    "brave_local_state_android.cc",
-    "brave_relaunch_utils.cc",
-    "brave_sync_worker.cc",
-    "brave_sync_worker.h",
+    "luxxle_feature_util.cc",
+    "luxxle_local_state_android.cc",
+    "luxxle_relaunch_utils.cc",
+    "luxxle_sync_worker.cc",
+    "luxxle_sync_worker.h",
   ]
 
   deps = [
     "//base",
     "//luxxle/browser/android/preferences",
     "//luxxle/browser/android/safe_browsing",
-    # REMOVED: "//luxxle/browser/brave_ads/android:jni_headers",
+    # REMOVED: "//luxxle/browser/luxxle_ads/android:jni_headers",
     "//luxxle/build/android:jni_headers",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_ads/browser",
+    # "//luxxle/components/luxxle_ads/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync",
+    # "//luxxle/components/luxxle_sync",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:crypto",
+    # "//luxxle/components/luxxle_sync:crypto",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:prefs",
+    # "//luxxle/components/luxxle_sync:prefs",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:sync_service_impl_helper",
+    # "//luxxle/components/luxxle_sync:sync_service_impl_helper",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:time_limited_codes",
+    # "//luxxle/components/luxxle_sync:time_limited_codes",
     "//chrome/android:jni_headers",
     "//chrome/browser:browser_process",
     "//chrome/browser:browser_public_dependencies",

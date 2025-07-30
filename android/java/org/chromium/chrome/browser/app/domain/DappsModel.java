@@ -9,18 +9,18 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import org.chromium.base.Callbacks;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.BraveWalletService;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.JsonRpcService;
-import org.chromium.brave_wallet.mojom.KeyringService;
-import org.chromium.brave_wallet.mojom.KeyringServiceObserver;
-import org.chromium.brave_wallet.mojom.SignMessageRequest;
-import org.chromium.brave_wallet.mojom.SignSolTransactionsRequest;
-import org.chromium.brave_wallet.mojom.SolanaSignature;
-import org.chromium.brave_wallet.mojom.TransactionInfo;
-import org.chromium.brave_wallet.mojom.TransactionStatus;
-import org.chromium.chrome.browser.crypto_wallet.activities.BraveWalletDAppsActivity;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletService;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.JsonRpcService;
+import org.chromium.luxxle_wallet.mojom.KeyringService;
+import org.chromium.luxxle_wallet.mojom.KeyringServiceObserver;
+import org.chromium.luxxle_wallet.mojom.SignMessageRequest;
+import org.chromium.luxxle_wallet.mojom.SignSolTransactionsRequest;
+import org.chromium.luxxle_wallet.mojom.SolanaSignature;
+import org.chromium.luxxle_wallet.mojom.TransactionInfo;
+import org.chromium.luxxle_wallet.mojom.TransactionStatus;
+import org.chromium.chrome.browser.crypto_wallet.activities.LuxxleWalletDAppsActivity;
 import org.chromium.chrome.browser.crypto_wallet.model.WalletAccountCreationRequest;
 import org.chromium.chrome.browser.crypto_wallet.util.PendingTxHelper;
 import org.chromium.chrome.browser.crypto_wallet.util.Utils;
@@ -35,12 +35,12 @@ import java.util.List;
 public class DappsModel implements KeyringServiceObserver {
     private JsonRpcService mJsonRpcService;
     private KeyringService mKeyringService;
-    private BraveWalletService mBraveWalletService;
+    private LuxxleWalletService mLuxxleWalletService;
     private PendingTxHelper mPendingTxHelper;
     private final MutableLiveData<Boolean> _mWalletIconNotificationVisible =
             new MutableLiveData<>(false);
     private final Object mLock = new Object();
-    private final MutableLiveData<BraveWalletDAppsActivity.ActivityType> _mProcessNextDAppsRequest =
+    private final MutableLiveData<LuxxleWalletDAppsActivity.ActivityType> _mProcessNextDAppsRequest =
             new MutableLiveData<>();
     private final MutableLiveData<List<SignSolTransactionsRequest>> _mSignSolTransactionsRequests;
     private final LiveData<List<SignSolTransactionsRequest>> mSignSolTransactionsRequests;
@@ -48,12 +48,12 @@ public class DappsModel implements KeyringServiceObserver {
     private MutableLiveData<WalletAccountCreationRequest> _mPendingWalletAccountCreationRequest;
     public LiveData<WalletAccountCreationRequest> mPendingWalletAccountCreationRequest;
     public final LiveData<Boolean> mWalletIconNotificationVisible = _mWalletIconNotificationVisible;
-    public final LiveData<BraveWalletDAppsActivity.ActivityType> mProcessNextDAppsRequest =
+    public final LiveData<LuxxleWalletDAppsActivity.ActivityType> mProcessNextDAppsRequest =
             _mProcessNextDAppsRequest;
 
-    public DappsModel(JsonRpcService jsonRpcService, BraveWalletService braveWalletService,
+    public DappsModel(JsonRpcService jsonRpcService, LuxxleWalletService luxxleWalletService,
             KeyringService keyringService, PendingTxHelper pendingTxHelper) {
-        mBraveWalletService = braveWalletService;
+        mLuxxleWalletService = luxxleWalletService;
         mJsonRpcService = jsonRpcService;
         mKeyringService = keyringService;
         mPendingTxHelper = pendingTxHelper;
@@ -81,7 +81,7 @@ public class DappsModel implements KeyringServiceObserver {
     }
 
     public LiveData<List<SignSolTransactionsRequest>> fetchSignSolTransactionsRequests() {
-        mBraveWalletService.getPendingSignSolTransactionsRequests(
+        mLuxxleWalletService.getPendingSignSolTransactionsRequests(
                 requests -> {
                     _mSignSolTransactionsRequests.postValue(
                             new ArrayList<>(Arrays.asList(requests)));
@@ -91,13 +91,13 @@ public class DappsModel implements KeyringServiceObserver {
 
     public void notifySignSolTransactionsRequestProcessed(
             boolean isApproved, SignSolTransactionsRequest request) {
-        mBraveWalletService.notifySignSolTransactionsRequestProcessed(
+        mLuxxleWalletService.notifySignSolTransactionsRequestProcessed(
                 isApproved, request.id, new SolanaSignature[0], null);
-        mBraveWalletService.getPendingSignSolTransactionsRequests(
+        mLuxxleWalletService.getPendingSignSolTransactionsRequests(
                 requests -> {
                     if (requests.length == 0) {
                         _mProcessNextDAppsRequest.postValue(
-                                BraveWalletDAppsActivity.ActivityType.FINISH);
+                                LuxxleWalletDAppsActivity.ActivityType.FINISH);
                     } else {
                         _mSignSolTransactionsRequests.postValue(
                                 new ArrayList<>(Arrays.asList(requests)));
@@ -107,10 +107,10 @@ public class DappsModel implements KeyringServiceObserver {
 
     public void resetServices(
             JsonRpcService jsonRpcService,
-            BraveWalletService braveWalletService,
+            LuxxleWalletService luxxleWalletService,
             PendingTxHelper pendingTxHelper) {
         synchronized (mLock) {
-            mBraveWalletService = braveWalletService;
+            mLuxxleWalletService = luxxleWalletService;
             mJsonRpcService = jsonRpcService;
             mPendingTxHelper = pendingTxHelper;
         }
@@ -128,17 +128,17 @@ public class DappsModel implements KeyringServiceObserver {
 
     public void processPublicEncryptionKey(String requestId, boolean isApproved) {
         synchronized (mLock) {
-            if (mBraveWalletService == null) {
+            if (mLuxxleWalletService == null) {
                 return;
             }
-            mBraveWalletService.notifyGetPublicKeyRequestProcessed(requestId, isApproved);
-            mBraveWalletService.getPendingGetEncryptionPublicKeyRequests(requests -> {
+            mLuxxleWalletService.notifyGetPublicKeyRequestProcessed(requestId, isApproved);
+            mLuxxleWalletService.getPendingGetEncryptionPublicKeyRequests(requests -> {
                 if (requests != null && requests.length > 0) {
-                    _mProcessNextDAppsRequest.postValue(BraveWalletDAppsActivity.ActivityType
+                    _mProcessNextDAppsRequest.postValue(LuxxleWalletDAppsActivity.ActivityType
                                                                 .GET_ENCRYPTION_PUBLIC_KEY_REQUEST);
                 } else {
                     _mProcessNextDAppsRequest.postValue(
-                            BraveWalletDAppsActivity.ActivityType.FINISH);
+                            LuxxleWalletDAppsActivity.ActivityType.FINISH);
                 }
             });
         }
@@ -146,17 +146,17 @@ public class DappsModel implements KeyringServiceObserver {
 
     public void processDecryptRequest(String requestId, boolean isApproved) {
         synchronized (mLock) {
-            if (mBraveWalletService == null) {
+            if (mLuxxleWalletService == null) {
                 return;
             }
-            mBraveWalletService.notifyDecryptRequestProcessed(requestId, isApproved);
-            mBraveWalletService.getPendingDecryptRequests(requests -> {
+            mLuxxleWalletService.notifyDecryptRequestProcessed(requestId, isApproved);
+            mLuxxleWalletService.getPendingDecryptRequests(requests -> {
                 if (requests != null && requests.length > 0) {
                     _mProcessNextDAppsRequest.postValue(
-                            BraveWalletDAppsActivity.ActivityType.DECRYPT_REQUEST);
+                            LuxxleWalletDAppsActivity.ActivityType.DECRYPT_REQUEST);
                 } else {
                     _mProcessNextDAppsRequest.postValue(
-                            BraveWalletDAppsActivity.ActivityType.FINISH);
+                            LuxxleWalletDAppsActivity.ActivityType.FINISH);
                 }
             });
         }
@@ -200,33 +200,33 @@ public class DappsModel implements KeyringServiceObserver {
     }
 
     public void notifySignMessageRequestProcessed(boolean isApproved, int id, String error) {
-        mBraveWalletService.notifySignMessageRequestProcessed(isApproved, id, null, error);
+        mLuxxleWalletService.notifySignMessageRequestProcessed(isApproved, id, null, error);
     }
 
     public void getPendingSignMessageRequests(Callbacks.Callback1<SignMessageRequest[]> callback) {
-        mBraveWalletService.getPendingSignMessageRequests(callback::call);
+        mLuxxleWalletService.getPendingSignMessageRequests(callback::call);
     }
 
     private void updateWalletBadgeVisibilityInternal() {
-        if (mBraveWalletService == null || mJsonRpcService == null || mPendingTxHelper == null) {
+        if (mLuxxleWalletService == null || mJsonRpcService == null || mPendingTxHelper == null) {
             return;
         }
 
         _mWalletIconNotificationVisible.setValue(false);
 
-        mBraveWalletService.getPendingSignMessageRequests(
+        mLuxxleWalletService.getPendingSignMessageRequests(
                 requests -> {
                     if (requests != null && requests.length > 0) {
                         setWalletBadgeVisible();
                     }
                 });
-        mBraveWalletService.getPendingAddSuggestTokenRequests(
+        mLuxxleWalletService.getPendingAddSuggestTokenRequests(
                 requests -> {
                     if (requests != null && requests.length > 0) {
                         setWalletBadgeVisible();
                     }
                 });
-        mBraveWalletService.getPendingGetEncryptionPublicKeyRequests(
+        mLuxxleWalletService.getPendingGetEncryptionPublicKeyRequests(
                 requests -> {
                     if (requests != null && requests.length > 0) {
                         setWalletBadgeVisible();
@@ -244,13 +244,13 @@ public class DappsModel implements KeyringServiceObserver {
                         setWalletBadgeVisible();
                     }
                 });
-        mBraveWalletService.getPendingDecryptRequests(
+        mLuxxleWalletService.getPendingDecryptRequests(
                 requests -> {
                     if (requests != null && requests.length > 0) {
                         setWalletBadgeVisible();
                     }
                 });
-        mBraveWalletService.getPendingSignSolTransactionsRequests(
+        mLuxxleWalletService.getPendingSignSolTransactionsRequests(
                 requests -> {
                     if (requests != null && requests.length > 0) {
                         setWalletBadgeVisible();

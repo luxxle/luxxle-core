@@ -8,15 +8,15 @@ import("//ios/build/config.gni")
 
 source_set("application_context") {
   sources = [
-    "brave_application_context_impl.h",
-    "brave_application_context_impl.mm",
+    "luxxle_application_context_impl.h",
+    "luxxle_application_context_impl.mm",
   ]
   deps = [
     "//base",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_component_updater/browser",
+    # "//luxxle/components/luxxle_component_updater/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:network_time_helper",
+    # "//luxxle/components/luxxle_sync:network_time_helper",
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/debounce/core/browser",

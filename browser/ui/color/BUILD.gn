@@ -6,7 +6,7 @@
 source_set("unit_tests") {
   testonly = true
 
-  sources = [ "brave_color_mixers_unittest.cc" ]
+  sources = [ "luxxle_color_mixers_unittest.cc" ]
 
   deps = [
     "//chrome/browser/ui/color:color_headers",

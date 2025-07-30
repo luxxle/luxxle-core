@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
-import org.chromium.brave_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.crypto_wallet.util.Utils;
 

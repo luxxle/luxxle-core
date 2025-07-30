@@ -1,0 +1,10 @@
+# Copyright (c) 2022 The Luxxle Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at https://mozilla.org/MPL/2.0/.
+
+luxxle_public_tab_management_java_sources = [
+  "//luxxle/android/features/tab_ui/java/src/org/chromium/chrome/browser/tasks/tab_management/LuxxleIncognitoTabSwitcherPane.java",
+  "//luxxle/android/features/tab_ui/java/src/org/chromium/chrome/browser/tasks/tab_management/LuxxleTabSwitcherPaneBase.java",
+  "//luxxle/android/features/tab_ui/java/src/org/chromium/chrome/browser/tasks/tab_management/LuxxleTabUiFeatureUtilities.java",
+]

@@ -11,10 +11,10 @@
 #include <utility>
 
 #include "base/feature_list.h"
-#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/luxxle_tab_prefs.h"
 #include "luxxle/browser/ui/tabs/features.h"
 #include "luxxle/browser/ui/tabs/split_view_browser_data.h"
-#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_view.h"
 #include "luxxle/browser/ui/views/frame/vertical_tab_strip_region_view.h"
 #include "luxxle/browser/ui/views/frame/vertical_tab_strip_widget_delegate_view.h"
 #include "luxxle/browser/ui/views/tabs/vertical_tab_utils.h"
@@ -43,7 +43,7 @@ int GetXCoordinateAdjustmentForMultiSelectedTabs(
   // tabs(See TabStrip::GetSizeNeededForViews() and its call sites). But we
   // don't want this behavior. With this adjustment selecting multiple tabs
   // without dragging make tabs or the window jump around by the amount of the
-  // width of other tabs. https://github.com/luxxle/brave-browser/issues/29465
+  // width of other tabs. https://github.com/luxxle/luxxle-browser/issues/29465
   return TabStrip::GetSizeNeededForViews(std::vector(
       dragged_views.begin(), dragged_views.begin() + source_view_index));
 }
@@ -77,9 +77,9 @@ TabDragController::Liveness TabDragController::Init(
       BrowserView::GetBrowserViewForNativeWindow(widget->GetNativeWindow())
           ->browser();
 
-  if (base::FeatureList::IsEnabled(tabs::features::kBraveSharedPinnedTabs) &&
+  if (base::FeatureList::IsEnabled(tabs::features::kLuxxleSharedPinnedTabs) &&
       browser->profile()->GetPrefs()->GetBoolean(
-          brave_tabs::kSharedPinnedTab)) {
+          luxxle_tabs::kSharedPinnedTab)) {
     if (std::ranges::any_of(dragging_views, [](TabSlotView* slot_view) {
           // We don't allow sharable pinned tabs to be detached.
           return slot_view->GetTabSlotViewType() ==
@@ -215,7 +215,7 @@ void TabDragController::DetachAndAttachToNewContext(
   }
 
   auto get_region_view = [this] {
-    auto* browser_view = static_cast<BraveBrowserView*>(
+    auto* browser_view = static_cast<LuxxleBrowserView*>(
         BrowserView::GetBrowserViewForNativeWindow(
             GetAttachedBrowserWidget()->GetNativeWindow()));
     DCHECK(browser_view);
@@ -312,7 +312,7 @@ gfx::Vector2d TabDragController::GetVerticalTabStripWidgetOffset() {
   auto browser_widget_bounds = browser_widget->GetWindowBoundsInScreen();
 
   auto* browser_view =
-      static_cast<BraveBrowserView*>(BrowserView::GetBrowserViewForNativeWindow(
+      static_cast<LuxxleBrowserView*>(BrowserView::GetBrowserViewForNativeWindow(
           browser_widget->GetNativeWindow()));
   DCHECK(browser_view);
 

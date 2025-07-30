@@ -10,24 +10,24 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NSInteger BraveCoreVersionInfoChannel
-    NS_TYPED_ENUM NS_SWIFT_NAME(BraveCoreVersionInfo.Channel);
+typedef NSInteger LuxxleCoreVersionInfoChannel
+    NS_TYPED_ENUM NS_SWIFT_NAME(LuxxleCoreVersionInfo.Channel);
 
-OBJC_EXPORT BraveCoreVersionInfoChannel const BraveCoreVersionInfoChannelStable;
-OBJC_EXPORT BraveCoreVersionInfoChannel const BraveCoreVersionInfoChannelBeta;
-OBJC_EXPORT BraveCoreVersionInfoChannel const
-    BraveCoreVersionInfoChannelDevelopment;
-OBJC_EXPORT BraveCoreVersionInfoChannel const
-    BraveCoreVersionInfoChannelNightly;
-OBJC_EXPORT BraveCoreVersionInfoChannel const
-    BraveCoreVersionInfoChannelUnknown;
+OBJC_EXPORT LuxxleCoreVersionInfoChannel const LuxxleCoreVersionInfoChannelStable;
+OBJC_EXPORT LuxxleCoreVersionInfoChannel const LuxxleCoreVersionInfoChannelBeta;
+OBJC_EXPORT LuxxleCoreVersionInfoChannel const
+    LuxxleCoreVersionInfoChannelDevelopment;
+OBJC_EXPORT LuxxleCoreVersionInfoChannel const
+    LuxxleCoreVersionInfoChannelNightly;
+OBJC_EXPORT LuxxleCoreVersionInfoChannel const
+    LuxxleCoreVersionInfoChannelUnknown;
 
 OBJC_EXPORT
-@interface BraveCoreVersionInfo : NSObject
-@property(class, readonly) NSString* braveCoreVersion;
+@interface LuxxleCoreVersionInfo : NSObject
+@property(class, readonly) NSString* luxxleCoreVersion;
 @property(class, readonly) NSString* chromiumVersion;
 @property(class, readonly) NSString* channelString;
-@property(class, readonly) BraveCoreVersionInfoChannel channel;
+@property(class, readonly) LuxxleCoreVersionInfoChannel channel;
 
 - (instancetype)init NS_UNAVAILABLE;
 @end

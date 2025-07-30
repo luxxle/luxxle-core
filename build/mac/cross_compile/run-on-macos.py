@@ -14,9 +14,9 @@ PATH. You also have a remote macOS machine that you can SSH into via the command
 `ssh ventura`. On that remote machine, your Chromium src/ directory is mounted
 at /MyMount.
 
-When you now execute `codesign --sign out/Brave.app`, then this script runs and
-executes, essentially, `ssh ventura "codesign --sign /MyMount/out/Brave.app"`.
-The net effect is that src/out/Brave.app on your local machine gets codesigned.
+When you now execute `codesign --sign out/Luxxle.app`, then this script runs and
+executes, essentially, `ssh ventura "codesign --sign /MyMount/out/Luxxle.app"`.
+The net effect is that src/out/Luxxle.app on your local machine gets codesigned.
 """
 
 from os.path import basename, exists, dirname, relpath, join

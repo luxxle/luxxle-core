@@ -1,9 +1,9 @@
-/* Copyright (c) 2021 The Brave Authors. All rights reserved.
+/* Copyright (c) 2021 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#import "brave/ios/browser/api/net/certificate_utility.h"
+#import "luxxle/ios/browser/api/net/certificate_utility.h"
 
 #import <Security/Security.h>
 #import <XCTest/XCTest.h>
@@ -27,8 +27,8 @@ namespace {
 
 // AmazonRootCA1
 // From:
-// https://github.com/luxxle/brave-core/blob/master/chromium_src/net/tools/transport_security_state_generator/input_file_parsers.cc
-static const char* brave_test_cert = R"(
+// https://github.com/luxxle/luxxle-core/blob/master/chromium_src/net/tools/transport_security_state_generator/input_file_parsers.cc
+static const char* luxxle_test_cert = R"(
     MIIDQTCCAimgAwIBAgITBmyfz5m/jAo54vB4ikPmljZbyjANBgkqhkiG9w0BAQsF
     ADA5MQswCQYDVQQGEwJVUzEPMA0GA1UEChMGQW1hem9uMRkwFwYDVQQDExBBbWF6
     b24gUm9vdCBDQSAxMB4XDTE1MDUyNjAwMDAwMFoXDTM4MDExNzAwMDAwMFowOTEL
@@ -50,7 +50,7 @@ static const char* brave_test_cert = R"(
 )";
 
 + (nullable SecCertificateRef)getCertificate {
-  NSString* cert_string = [NSString stringWithFormat:@"%s", brave_test_cert];
+  NSString* cert_string = [NSString stringWithFormat:@"%s", luxxle_test_cert];
   cert_string = [cert_string stringByReplacingOccurrencesOfString:@"\t"
                                                        withString:@""];
   cert_string = [cert_string stringByReplacingOccurrencesOfString:@"\r"
@@ -74,16 +74,16 @@ static const char* brave_test_cert = R"(
 
 - (void)testAcceptableCertificates {
   std::size_t acceptable_certs_count =
-      sizeof(net::kBraveAcceptableCerts) /
-          sizeof(net::kBraveAcceptableCerts[0]) -
+      sizeof(net::kLuxxleAcceptableCerts) /
+          sizeof(net::kLuxxleAcceptableCerts[0]) -
       1;
 
-  NSArray<NSData*>* certs = [BraveCertificateUtility acceptableSPKIHashes];
+  NSArray<NSData*>* certs = [LuxxleCertificateUtility acceptableSPKIHashes];
 
   XCTAssertTrue([certs count] > 3);
   XCTAssertTrue([certs count] == acceptable_certs_count);
 
-  std::string test_cert = std::string(net::kBraveAcceptableCerts[0]);
+  std::string test_cert = std::string(net::kLuxxleAcceptableCerts[0]);
   if (test_cert.size() > 0) {
     NSData* data = [NSData dataWithBytes:&test_cert[0] length:test_cert.size()];
     XCTAssertNotNil(data);
@@ -104,7 +104,7 @@ static const char* brave_test_cert = R"(
   XCTAssertTrue([amzn_spki_hash_data length] > 0);
 
   NSData* spki_hash =
-      [BraveCertificateUtility hashCertificateSPKI:[NetTest getCertificate]];
+      [LuxxleCertificateUtility hashCertificateSPKI:[NetTest getCertificate]];
   XCTAssertNotNil(spki_hash);
   XCTAssertTrue([spki_hash length] > 0);
 

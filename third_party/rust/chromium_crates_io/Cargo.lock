@@ -93,7 +93,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 name = "anonymous-credentials"
 version = "0.1.4"
 dependencies = [
- "brave-miracl",
+ "luxxle-miracl",
  "cxx",
  "lazy_static",
  "rand 0.8.5",
@@ -238,12 +238,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "brave-miracl"
+name = "luxxle-miracl"
 version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
-name = "brave-news-cxx"
+name = "luxxle-news-cxx"
 version = "1.0.0"
 dependencies = [
  "cxx",
@@ -254,7 +254,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "brave_wallet"
+name = "luxxle_wallet"
 version = "1.0.0"
 dependencies = [
  "bech32",
@@ -351,8 +351,8 @@ version = "0.1.0"
 dependencies = [
  "adblock-cxx",
  "anonymous-credentials",
- "brave-news-cxx",
- "brave_wallet",
+ "luxxle-news-cxx",
+ "luxxle_wallet",
  "challenge-bypass-ristretto-cxx",
  "constellation-cxx",
  "document-extractor",
@@ -2383,7 +2383,7 @@ dependencies = [
 name = "zcash"
 version = "1.0.0"
 dependencies = [
- "brave_wallet",
+ "luxxle_wallet",
  "cxx",
  "orchard",
  "rand 0.8.5",

@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <details><summary>view details</summary>
 
  * **Uncategorized**
-    - Merge pull request #275 from brave/adss-0.2.1 (f2300de)
+    - Merge pull request #275 from luxxle/adss-0.2.1 (f2300de)
     - Bump version number for adss-0.2.1 (0124edc)
     - Update crate metadata (8ad7543)
     - Rename adss-rs to plain adss (29fbd42)

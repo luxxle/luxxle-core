@@ -11,9 +11,9 @@
 class Browser;
 class Profile;
 
-namespace brave_sync {
+namespace luxxle_sync {
 class Prefs;
-}  // namespace brave_sync
+}  // namespace luxxle_sync
 
 namespace infobars {
 class ContentInfoBarManager;

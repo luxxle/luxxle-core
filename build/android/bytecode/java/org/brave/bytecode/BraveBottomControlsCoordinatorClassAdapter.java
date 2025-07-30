@@ -3,20 +3,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveBottomControlsCoordinatorClassAdapter extends BraveClassVisitor {
+public class LuxxleBottomControlsCoordinatorClassAdapter extends LuxxleClassVisitor {
     static String sBottomControlsCoordinatorClassName =
             "org/chromium/chrome/browser/toolbar/bottom/BottomControlsCoordinator";
-    static String sBraveBottomControlsCoordinatorClassName =
-            "org/chromium/chrome/browser/toolbar/bottom/BraveBottomControlsCoordinator";
+    static String sLuxxleBottomControlsCoordinatorClassName =
+            "org/chromium/chrome/browser/toolbar/bottom/LuxxleBottomControlsCoordinator";
 
-    public BraveBottomControlsCoordinatorClassAdapter(ClassVisitor visitor) {
+    public LuxxleBottomControlsCoordinatorClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        deleteField(sBraveBottomControlsCoordinatorClassName, "mMediator");
+        deleteField(sLuxxleBottomControlsCoordinatorClassName, "mMediator");
         makeProtectedField(sBottomControlsCoordinatorClassName, "mMediator");
     }
 }

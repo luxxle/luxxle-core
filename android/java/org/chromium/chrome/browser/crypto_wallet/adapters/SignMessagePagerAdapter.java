@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import org.chromium.brave_wallet.mojom.SignMessageRequest;
+import org.chromium.luxxle_wallet.mojom.SignMessageRequest;
 import org.chromium.chrome.browser.crypto_wallet.fragments.dapps.DAppsMessageFragment;
 
 import java.util.List;

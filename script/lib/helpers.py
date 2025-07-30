@@ -10,8 +10,8 @@ import sys
 import urllib.request
 from .config import get_raw_version, get_env_var
 
-BRAVE_REPO = "brave/brave-browser"
-BRAVE_CORE_REPO = "brave/brave-core"
+LUXXLE_REPO = "luxxle/luxxle-browser"
+LUXXLE_CORE_REPO = "luxxle/luxxle-core"
 
 
 def channels():

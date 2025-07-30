@@ -3,19 +3,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveHomepageManagerClassAdapter extends BraveClassVisitor {
+public class LuxxleHomepageManagerClassAdapter extends LuxxleClassVisitor {
     static String sHomepageManagerClassName =
             "org/chromium/chrome/browser/homepage/HomepageManager";
-    static String sBraveHomepageManagerClassName =
-            "org/chromium/chrome/browser/homepage/BraveHomepageManager";
+    static String sLuxxleHomepageManagerClassName =
+            "org/chromium/chrome/browser/homepage/LuxxleHomepageManager";
 
-    public BraveHomepageManagerClassAdapter(ClassVisitor visitor) {
+    public LuxxleHomepageManagerClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sHomepageManagerClassName, sBraveHomepageManagerClassName);
+        redirectConstructor(sHomepageManagerClassName, sLuxxleHomepageManagerClassName);
     }
 }

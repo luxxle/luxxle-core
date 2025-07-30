@@ -25,8 +25,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.checkbox.MaterialCheckBox;
 
-import org.chromium.brave_wallet.mojom.BraveWalletConstants;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletConstants;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.app.domain.NetworkModel;
 import org.chromium.chrome.browser.crypto_wallet.fragments.onboarding.OnboardingNetworkSelectionFragment;
@@ -64,7 +64,7 @@ public class OnboardingNetworkSelectorGridAdapter
 
     private static final List<String> ALWAYS_SELECTED_CHAIN_IDS =
             Arrays.asList(
-                    BraveWalletConstants.MAINNET_CHAIN_ID, BraveWalletConstants.SOLANA_MAINNET);
+                    LuxxleWalletConstants.MAINNET_CHAIN_ID, LuxxleWalletConstants.SOLANA_MAINNET);
 
     private final List<NetworkInfo> mPrimaryNetworks;
     private final List<NetworkInfo> mSecondaryNetworks;
@@ -138,7 +138,7 @@ public class OnboardingNetworkSelectorGridAdapter
 
         mFeaturedNetworks = context.getString(R.string.wallet_featured);
         mPopularNetworks = context.getString(R.string.wallet_popular);
-        mSelectAll = context.getString(R.string.brave_wallet_select_all);
+        mSelectAll = context.getString(R.string.luxxle_wallet_select_all);
 
         mHandler = new Handler(Looper.getMainLooper());
     }

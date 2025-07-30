@@ -3,22 +3,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveOmniboxResourceProviderClassAdapter extends BraveClassVisitor {
+public class LuxxleOmniboxResourceProviderClassAdapter extends LuxxleClassVisitor {
     static String sOmniboxResourceProviderClassName =
             "org/chromium/chrome/browser/omnibox/styles/OmniboxResourceProvider";
-    static String sBraveOmniboxResourceProviderClassName =
-            "org/chromium/chrome/browser/omnibox/styles/BraveOmniboxResourceProvider";
+    static String sLuxxleOmniboxResourceProviderClassName =
+            "org/chromium/chrome/browser/omnibox/styles/LuxxleOmniboxResourceProvider";
 
-    BraveOmniboxResourceProviderClassAdapter(ClassVisitor visitor) {
+    LuxxleOmniboxResourceProviderClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         changeMethodOwner(
                 sOmniboxResourceProviderClassName,
                 "getToolbarSidePaddingForNtp",
-                sBraveOmniboxResourceProviderClassName);
+                sLuxxleOmniboxResourceProviderClassName);
     }
 }

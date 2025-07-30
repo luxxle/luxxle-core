@@ -10,9 +10,9 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.chromium.brave_wallet.mojom.BraveWalletConstants;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletConstants;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -50,7 +50,7 @@ public class NetworkUtils {
         }
 
         public static boolean isLocalNetwork(NetworkInfo network) {
-            return network.chainId.equals(BraveWalletConstants.LOCALHOST_CHAIN_ID);
+            return network.chainId.equals(LuxxleWalletConstants.LOCALHOST_CHAIN_ID);
         }
     }
 

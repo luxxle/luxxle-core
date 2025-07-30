@@ -8,12 +8,12 @@
 #include <utility>
 
 #include "base/types/to_address.h"
-#include "luxxle/browser/ui/brave_browser.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/luxxle_browser.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/browser/ui/tabs/features.h"
-#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
-#include "luxxle/browser/ui/views/frame/brave_contents_layout_manager.h"
-#include "luxxle/browser/ui/views/frame/brave_contents_view_util.h"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_view.h"
+#include "luxxle/browser/ui/views/frame/luxxle_contents_layout_manager.h"
+#include "luxxle/browser/ui/views/frame/luxxle_contents_view_util.h"
 #include "luxxle/browser/ui/views/split_view/split_view_layout_manager.h"
 #include "luxxle/browser/ui/views/split_view/split_view_location_bar.h"
 #include "luxxle/browser/ui/views/split_view/split_view_separator.h"
@@ -87,7 +87,7 @@ SplitView::SplitView(Browser& browser,
     : browser_(browser),
       contents_container_(contents_container),
       contents_web_view_(contents_web_view) {
-  CHECK(tabs::features::IsBraveSplitViewEnabled());
+  CHECK(tabs::features::IsLuxxleSplitViewEnabled());
 
   // Re-parent the |contents_container| to this view.
   AddChildView(
@@ -117,13 +117,13 @@ SplitView::SplitView(Browser& browser,
   secondary_reader_mode_toolbar_ = secondary_contents_container_->AddChildView(
       std::make_unique<ReaderModeToolbarView>(
           browser_->profile(),
-          BraveBrowser::ShouldUseBraveWebViewRoundedCorners(
+          LuxxleBrowser::ShouldUseLuxxleWebViewRoundedCorners(
               base::to_address(browser_))));
 
   secondary_reader_mode_toolbar_->SetDelegate(this);
 
   secondary_contents_container_->SetLayoutManager(
-      std::make_unique<BraveContentsLayoutManager>(
+      std::make_unique<LuxxleContentsLayoutManager>(
           secondary_devtools_web_view_, secondary_contents_scrim_view_,
           secondary_contents_web_view_, secondary_lens_overlay_view_,
           secondary_contents_scrim_view_, /*border_view*/ nullptr,
@@ -247,7 +247,7 @@ void SplitView::SetSecondaryContentsResizingStrategy(
 void SplitView::Layout(PassKey key) {
   LayoutSuperclass<views::View>(this);
 
-  auto* browser_view = static_cast<BraveBrowserView*>(browser_->window());
+  auto* browser_view = static_cast<LuxxleBrowserView*>(browser_->window());
   if (!browser_view) {
     // This can happen on start up
     return;
@@ -279,7 +279,7 @@ void SplitView::OnTileTabs(const TabTile& tile) {
 
   // Update separator visibility first before starting split view layout
   // to give their final position.
-  static_cast<BraveBrowserView*>(browser_->window())
+  static_cast<LuxxleBrowserView*>(browser_->window())
       ->UpdateContentsSeparatorVisibility();
 
   UpdateContentsWebViewVisual();
@@ -292,7 +292,7 @@ void SplitView::OnDidBreakTile(const TabTile& tile) {
 
   // Update separator visibility first before starting split view layout
   // to give their final position.
-  static_cast<BraveBrowserView*>(browser_->window())
+  static_cast<LuxxleBrowserView*>(browser_->window())
       ->UpdateContentsSeparatorVisibility();
 
   UpdateContentsWebViewVisual();
@@ -412,34 +412,34 @@ void SplitView::UpdateContentsWebViewBorder() {
   if (split_view_browser_data->GetTile(GetActiveTabHandle()) &&
       !ShouldHideSecondaryContentsByTabFullscreen()) {
     const auto kRadius =
-        BraveBrowser::ShouldUseBraveWebViewRoundedCorners(
+        LuxxleBrowser::ShouldUseLuxxleWebViewRoundedCorners(
             base::to_address(browser_))
-            ? BraveContentsViewUtil::kBorderRadius + kBorderThickness
+            ? LuxxleContentsViewUtil::kBorderRadius + kBorderThickness
             : 0;
     // Use same color for active focus border.
     contents_container_->SetBorder(views::CreateRoundedRectBorder(
-        kBorderThickness, kRadius, kColorBraveSplitViewActiveWebViewBorder));
+        kBorderThickness, kRadius, kColorLuxxleSplitViewActiveWebViewBorder));
 
-    BraveContentsLayoutManager::GetLayoutManagerForView(contents_container_)
+    LuxxleContentsLayoutManager::GetLayoutManagerForView(contents_container_)
         ->SetWebContentsBorderInsets(gfx::Insets(kBorderThickness));
 
     secondary_contents_container_->SetBorder(views::CreateBorderPainter(
         views::Painter::CreateRoundRectWith1PxBorderPainter(
-            cp->GetColor(kColorBraveSplitViewInactiveWebViewBorder),
+            cp->GetColor(kColorLuxxleSplitViewInactiveWebViewBorder),
             cp->GetColor(kColorToolbar), kRadius, SkBlendMode::kSrc,
             /*anti_alias*/ true,
             /*should_border_scale*/ true),
         gfx::Insets(kBorderThickness)));
-    BraveContentsLayoutManager::GetLayoutManagerForView(
+    LuxxleContentsLayoutManager::GetLayoutManagerForView(
         secondary_contents_container_)
         ->SetWebContentsBorderInsets(gfx::Insets(kBorderThickness));
   } else {
     contents_container_->SetBorder(nullptr);
-    BraveContentsLayoutManager::GetLayoutManagerForView(contents_container_)
+    LuxxleContentsLayoutManager::GetLayoutManagerForView(contents_container_)
         ->SetWebContentsBorderInsets({});
 
     secondary_contents_container_->SetBorder(nullptr);
-    BraveContentsLayoutManager::GetLayoutManagerForView(
+    LuxxleContentsLayoutManager::GetLayoutManagerForView(
         secondary_contents_container_)
         ->SetWebContentsBorderInsets({});
   }
@@ -551,7 +551,7 @@ void SplitView::UpdateSecondaryReaderModeToolbarVisibility() {
 }
 
 void SplitView::UpdateSecondaryReaderModeToolbar() {
-  auto* browser_view = static_cast<BraveBrowserView*>(browser_->window());
+  auto* browser_view = static_cast<LuxxleBrowserView*>(browser_->window());
   if (!browser_view) {
     return;
   }

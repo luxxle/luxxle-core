@@ -10,10 +10,10 @@ import android.text.TextUtils;
 import androidx.media3.common.util.UriUtil;
 import androidx.media3.exoplayer.hls.playlist.HlsMediaPlaylist.Segment;
 
-import com.brave.playlist.playback_service.VideoPlaybackService;
-import com.brave.playlist.util.HLSParsingUtil;
-import com.brave.playlist.util.MediaUtils;
-import com.brave.playlist.util.PlaylistUtils;
+import com.luxxle.playlist.playback_service.VideoPlaybackService;
+import com.luxxle.playlist.util.HLSParsingUtil;
+import com.luxxle.playlist.util.MediaUtils;
+import com.luxxle.playlist.util.PlaylistUtils;
 
 import org.chromium.base.ContextUtils;
 import org.chromium.base.Log;
@@ -178,7 +178,7 @@ public class HlsUtils {
         String playlistId = "Default";
         if (playlistItem != null && playlistItem.cached) {
             // For i.e.
-            // "file:///data/user/0/com.brave.browser_nightly/app_chrome/Default/playlist/399C40F34AF31E593D0C48B9ECEEB4CA/media_file.m3u8"
+            // "file:///data/user/0/com.luxxle.browser_nightly/app_chrome/Default/playlist/399C40F34AF31E593D0C48B9ECEEB4CA/media_file.m3u8"
             String[] paths = playlistItem.mediaPath.url.split(File.separator);
             if (paths.length - 4 > 0) {
                 String playlistItemIdFromPath = paths[paths.length - 2];

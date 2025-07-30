@@ -61,8 +61,8 @@ def GetHermeticXcodeVersion(binaries_root):
 def InstallXcodeBinaries():
     """Installs the Xcode binaries and accepts the license."""
 
-    if os.environ.get('USE_BRAVE_HERMETIC_TOOLCHAIN') != '1':
-        print("Brave hermetic toolchain is not configured")
+    if os.environ.get('USE_LUXXLE_HERMETIC_TOOLCHAIN') != '1':
+        print("Luxxle hermetic toolchain is not configured")
         return 0
 
     binaries_root = os.path.join(MAC_TOOLCHAIN_ROOT, 'xcode_binaries')

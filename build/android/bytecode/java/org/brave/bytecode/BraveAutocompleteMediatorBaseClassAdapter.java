@@ -3,24 +3,24 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveAutocompleteMediatorBaseClassAdapter extends BraveClassVisitor {
+public class LuxxleAutocompleteMediatorBaseClassAdapter extends LuxxleClassVisitor {
     static String sAutocompleteMediator =
             "org/chromium/chrome/browser/omnibox/suggestions/AutocompleteMediator";
-    static String sBraveAutocompleteMediatorBase =
-            "org/chromium/chrome/browser/omnibox/suggestions/BraveAutocompleteMediatorBase";
+    static String sLuxxleAutocompleteMediatorBase =
+            "org/chromium/chrome/browser/omnibox/suggestions/LuxxleAutocompleteMediatorBase";
 
-    public BraveAutocompleteMediatorBaseClassAdapter(ClassVisitor visitor) {
+    public LuxxleAutocompleteMediatorBaseClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        changeSuperName(sAutocompleteMediator, sBraveAutocompleteMediatorBase);
+        changeSuperName(sAutocompleteMediator, sLuxxleAutocompleteMediatorBase);
 
         makeProtectedField(sAutocompleteMediator, "mContext");
         makeProtectedField(sAutocompleteMediator, "mDataProvider");
         changeMethodOwner(
-                sAutocompleteMediator, "loadUrlForOmniboxMatch", sBraveAutocompleteMediatorBase);
+                sAutocompleteMediator, "loadUrlForOmniboxMatch", sLuxxleAutocompleteMediatorBase);
     }
 }

@@ -11,12 +11,12 @@
 #include <vector>
 
 #include "luxxle/app/vector_icons/vector_icons.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/browser/ui/views/infobars/custom_styled_label.h"
 #include "luxxle/browser/web_discovery/web_discovery_infobar_delegate.h"
 #include "luxxle/components/constants/url_constants.h"
-#include "brave/grit/brave_generated_resources.h"
-#include "brave/grit/brave_theme_resources.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
+#include "luxxle/grit/luxxle_theme_resources.h"
 #include "chrome/browser/ui/browser_list.h"
 #include "chrome/browser/ui/singleton_tabs.h"
 #include "ui/base/l10n/l10n_util.h"
@@ -176,8 +176,8 @@ class WebDiscoveryInfoBarContentViewBackground : public views::Background {
         gfx::ImageSkiaOperations::CreateResizedImage(
             *rb.GetImageSkiaNamed(
                 ui::NativeTheme::GetInstanceForNativeUi()->ShouldUseDarkColors()
-                    ? /* REMOVED: IDR_BRAVE_WEB_DISCOVERY_INFOBAR_BG_GRAPHIC_DARK */ 0
-                    : /* REMOVED: IDR_BRAVE_WEB_DISCOVERY_INFOBAR_BG_GRAPHIC */ 0),
+                    ? /* REMOVED: IDR_LUXXLE_WEB_DISCOVERY_INFOBAR_BG_GRAPHIC_DARK */ 0
+                    : /* REMOVED: IDR_LUXXLE_WEB_DISCOVERY_INFOBAR_BG_GRAPHIC */ 0),
             skia::ImageOperations::RESIZE_BEST, view->size()),
         0, 0);
   }
@@ -211,7 +211,7 @@ void WebDiscoveryInfoBarContentView::OnThemeChanged() {
 
 void WebDiscoveryInfoBarContentView::AddedToWidget() {
   // When active tab is changed to others, infobar is also hidden.
-  // And it's added to widget again when brave search tab is activated.
+  // And it's added to widget again when luxxle search tab is activated.
   // When activated, infobar should be switched to proper layout again.
   SwitchChildLayout();
 }
@@ -377,25 +377,25 @@ void WebDiscoveryInfoBarContentView::InitChildrenForNarrowLayout() {
 std::unique_ptr<views::View> WebDiscoveryInfoBarContentView::GetMessage(
     int order,
     int line_height) {
-  const std::u16string brave_search_text =
-      l10n_util::GetStringUTF16(IDS_WEB_DISCOVERY_INFOBAR_MESSAGE_BRAVE_SEARCH);
+  const std::u16string luxxle_search_text =
+      l10n_util::GetStringUTF16(IDS_WEB_DISCOVERY_INFOBAR_MESSAGE_LUXXLE_SEARCH);
   const std::u16string more_info_text =
       l10n_util::GetStringUTF16(IDS_WEB_DISCOVERY_INFOBAR_MESSAGE_MORE_INFO);
   std::vector<size_t> offsets;
   const std::u16string message_text =
       l10n_util::GetStringFUTF16(IDS_WEB_DISCOVERY_INFOBAR_MESSAGE,
-                                 brave_search_text, more_info_text, &offsets);
+                                 luxxle_search_text, more_info_text, &offsets);
   auto message_label = std::make_unique<InfoBarStyledLabel>();
   message_label->SetLineHeight(line_height);
   message_label->SetText(message_text);
 
-  views::StyledLabel::RangeStyleInfo brave_search_style;
-  brave_search_style.custom_font = gfx::FontList("Poppins, Semi-Bold 14px");
-  brave_search_style.override_color =
+  views::StyledLabel::RangeStyleInfo luxxle_search_style;
+  luxxle_search_style.custom_font = gfx::FontList("Poppins, Semi-Bold 14px");
+  luxxle_search_style.override_color =
       GetColorProvider()->GetColor(kColorWebDiscoveryInfoBarMessage);
   message_label->AddStyleRange(
-      gfx::Range(offsets[0], offsets[0] + brave_search_text.length()),
-      brave_search_style);
+      gfx::Range(offsets[0], offsets[0] + luxxle_search_text.length()),
+      luxxle_search_style);
 
   views::StyledLabel::RangeStyleInfo more_info_style =
       views::StyledLabel::RangeStyleInfo::CreateForLink(
@@ -413,7 +413,7 @@ std::unique_ptr<views::View> WebDiscoveryInfoBarContentView::GetMessage(
       GetColorProvider()->GetColor(kColorWebDiscoveryInfoBarMessage);
   message_label->AddStyleRange(gfx::Range(0, offsets[0]), default_style);
   message_label->AddStyleRange(
-      gfx::Range(offsets[0] + brave_search_text.length(),
+      gfx::Range(offsets[0] + luxxle_search_text.length(),
                  message_text.length() - more_info_text.length()),
       default_style);
   message_label->SetProperty(
@@ -428,7 +428,7 @@ std::unique_ptr<views::View> WebDiscoveryInfoBarContentView::GetIcon(
     int order) {
   ui::ResourceBundle& rb = ui::ResourceBundle::GetSharedInstance();
   auto icon = std::make_unique<views::ImageView>(ui::ImageModel::FromImageSkia(
-      *rb.GetImageSkiaNamed(/* REMOVED: IDR_BRAVE_WEB_DISCOVERY_INFOBAR_ICON */ 0)));
+      *rb.GetImageSkiaNamed(/* REMOVED: IDR_LUXXLE_WEB_DISCOVERY_INFOBAR_ICON */ 0)));
   icon->SetProperty(
       views::kFlexBehaviorKey,
       views::FlexSpecification(views::MinimumFlexSizeRule::kPreferred,

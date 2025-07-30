@@ -5,18 +5,18 @@
 
 # Commented out: removed components dependency - using Chromium defaults instead
 
-brave_browser_perf_sources = [
-  "//luxxle/browser/perf/brave_perf_features_processor.cc",
-  "//luxxle/browser/perf/brave_perf_features_processor.h",
-  "//luxxle/browser/perf/brave_perf_switches.h",
+luxxle_browser_perf_sources = [
+  "//luxxle/browser/perf/luxxle_perf_features_processor.cc",
+  "//luxxle/browser/perf/luxxle_perf_features_processor.h",
+  "//luxxle/browser/perf/luxxle_perf_switches.h",
 ]
 
-brave_browser_perf_deps = [
+luxxle_browser_perf_deps = [
   "//base",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_ads/core",
+  # "//luxxle/components/luxxle_ads/core",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_rewards/content",
+  # "//luxxle/components/luxxle_rewards/content",
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead

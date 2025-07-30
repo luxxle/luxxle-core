@@ -7,8 +7,8 @@ import("//ui/webui/resources/tools/generate_grd.gni")
 import("sources.gni")
 
 generate_grd("static_files") {
-  grd_prefix = "brave_extras"
-  out_grd = brave_tab_search_extras_grdp
-  input_files = brave_tab_search_static_files
+  grd_prefix = "luxxle_extras"
+  out_grd = luxxle_tab_search_extras_grdp
+  input_files = luxxle_tab_search_static_files
   input_files_base_dir = rebase_path(".", "//")
 }

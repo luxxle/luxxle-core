@@ -8,7 +8,7 @@
 
 #include <memory>
 
-class BraveVPNController;
+class LuxxleVPNController;
 class SplitViewBrowserData;
 
 namespace sidebar {
@@ -35,7 +35,7 @@ class BrowserWindowFeatures : public BrowserWindowFeatures_ChromiumImpl {
   sidebar::SidebarController* sidebar_controller() {
     return sidebar_controller_.get();
   }
-  BraveVPNController* brave_vpn_controller();
+  LuxxleVPNController* luxxle_vpn_controller();
   SplitViewBrowserData* split_view_browser_data() {
     return split_view_browser_data_.get();
   }
@@ -45,7 +45,7 @@ class BrowserWindowFeatures : public BrowserWindowFeatures_ChromiumImpl {
 
  private:
   std::unique_ptr<sidebar::SidebarController> sidebar_controller_;
-  std::unique_ptr<BraveVPNController> brave_vpn_controller_;
+  std::unique_ptr<LuxxleVPNController> luxxle_vpn_controller_;
   std::unique_ptr<SplitViewBrowserData> split_view_browser_data_;
 };
 

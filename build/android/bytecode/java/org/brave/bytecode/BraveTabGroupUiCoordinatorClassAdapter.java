@@ -3,22 +3,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveTabGroupUiCoordinatorClassAdapter extends BraveClassVisitor {
+public class LuxxleTabGroupUiCoordinatorClassAdapter extends LuxxleClassVisitor {
     static String sTabGroupUiCoordinatorClassName =
             "org/chromium/chrome/browser/tasks/tab_management/TabGroupUiCoordinator";
-    static String sBraveTabGroupUiCoordinatorClassName =
-            "org/chromium/chrome/browser/tasks/tab_management/BraveTabGroupUiCoordinator";
+    static String sLuxxleTabGroupUiCoordinatorClassName =
+            "org/chromium/chrome/browser/tasks/tab_management/LuxxleTabGroupUiCoordinator";
 
-    public BraveTabGroupUiCoordinatorClassAdapter(ClassVisitor visitor) {
+    public LuxxleTabGroupUiCoordinatorClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sTabGroupUiCoordinatorClassName, sBraveTabGroupUiCoordinatorClassName);
+        redirectConstructor(sTabGroupUiCoordinatorClassName, sLuxxleTabGroupUiCoordinatorClassName);
 
-        deleteField(sBraveTabGroupUiCoordinatorClassName, "mToolbarView");
+        deleteField(sLuxxleTabGroupUiCoordinatorClassName, "mToolbarView");
         makeProtectedField(sTabGroupUiCoordinatorClassName, "mToolbarView");
     }
 }

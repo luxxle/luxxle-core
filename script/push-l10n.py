@@ -18,8 +18,8 @@ from lib.l10n.grd_utils import (get_grd_languages, get_original_grd,
                                 get_override_file_path)
 
 
-BRAVE_SOURCE_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-SOURCE_ROOT = os.path.dirname(BRAVE_SOURCE_ROOT)
+LUXXLE_SOURCE_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+SOURCE_ROOT = os.path.dirname(LUXXLE_SOURCE_ROOT)
 
 
 def parse_args():
@@ -51,7 +51,7 @@ def main():
     channel = args.channel
     print(f'[push-l10n] Channel: {channel}')
 
-    source_string_path = os.path.join(BRAVE_SOURCE_ROOT,
+    source_string_path = os.path.join(LUXXLE_SOURCE_ROOT,
                                       args.source_string_path[0])
     filename = os.path.basename(source_string_path).split('.')[0]
 
@@ -120,22 +120,22 @@ def upload_grd_translations(channel,
 
 
 def check_for_chromium_upgrade_extra_langs(src_root, grd_file_path):
-    """Checks the Brave GRD file vs the Chromium GRD file for extra
+    """Checks the Luxxle GRD file vs the Chromium GRD file for extra
        languages."""
     chromium_grd_file_path = get_original_grd(src_root, grd_file_path)
     if not chromium_grd_file_path:
         return
-    brave_langs = get_grd_languages(grd_file_path)
+    luxxle_langs = get_grd_languages(grd_file_path)
     chromium_langs = get_grd_languages(chromium_grd_file_path)
-    x_brave_extra_langs = brave_langs - chromium_langs
-    assert len(x_brave_extra_langs) == 0, \
-        f'Brave GRD {grd_file_path} has extra languages ' \
-            f'{list(x_brave_extra_langs)} over Chromium GRD ' \
+    x_luxxle_extra_langs = luxxle_langs - chromium_langs
+    assert len(x_luxxle_extra_langs) == 0, \
+        f'Luxxle GRD {grd_file_path} has extra languages ' \
+            f'{list(x_luxxle_extra_langs)} over Chromium GRD ' \
             f'{chromium_grd_file_path}'
-    x_chromium_extra_langs = chromium_langs - brave_langs
+    x_chromium_extra_langs = chromium_langs - luxxle_langs
     assert len(x_chromium_extra_langs) == 0, \
         f'Chromium GRD {chromium_grd_file_path} has extra languages ' \
-            f'{list(x_chromium_extra_langs)} over Brave GRD {grd_file_path}'
+            f'{list(x_chromium_extra_langs)} over Luxxle GRD {grd_file_path}'
 
 
 if __name__ == '__main__':

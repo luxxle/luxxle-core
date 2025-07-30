@@ -3,23 +3,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveFeedSurfaceCoordinatorClassAdapter extends BraveClassVisitor {
+public class LuxxleFeedSurfaceCoordinatorClassAdapter extends LuxxleClassVisitor {
     static String sFeedSurfaceCoordinatorClassName =
             "org/chromium/chrome/browser/feed/FeedSurfaceCoordinator";
-    static String sBraveFeedSurfaceCoordinatorClassName =
-            "org/chromium/chrome/browser/feed/BraveFeedSurfaceCoordinator";
+    static String sLuxxleFeedSurfaceCoordinatorClassName =
+            "org/chromium/chrome/browser/feed/LuxxleFeedSurfaceCoordinator";
 
-    public BraveFeedSurfaceCoordinatorClassAdapter(ClassVisitor visitor) {
+    public LuxxleFeedSurfaceCoordinatorClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        deleteField(sBraveFeedSurfaceCoordinatorClassName, "mNtpHeader");
+        deleteField(sLuxxleFeedSurfaceCoordinatorClassName, "mNtpHeader");
         makeProtectedField(sFeedSurfaceCoordinatorClassName, "mNtpHeader");
 
-        deleteField(sBraveFeedSurfaceCoordinatorClassName, "mRootView");
+        deleteField(sLuxxleFeedSurfaceCoordinatorClassName, "mRootView");
         makeProtectedField(sFeedSurfaceCoordinatorClassName, "mRootView");
     }
 }

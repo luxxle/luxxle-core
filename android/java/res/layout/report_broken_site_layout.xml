@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (c) 2020 The Brave Authors. All rights reserved.
+<!-- Copyright (c) 2020 The Luxxle Authors. All rights reserved.
      This Source Code Form is subject to the terms of the Mozilla Public
      License, v. 2.0. If a copy of the MPL was not distributed with this file,
      You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -66,7 +66,7 @@
         android:textSize="14sp"
         android:inputType="textMultiLine"
         android:textColor="@color/wallet_text_color"
-        android:textColorHint="@color/brave_theme_hint_text" />
+        android:textColorHint="@color/luxxle_theme_hint_text" />
 
     <TextView
         android:id="@+id/contact_info_label"
@@ -87,7 +87,7 @@
         android:textSize="14sp"
         android:inputType="text"
         android:textColor="@color/wallet_text_color"
-        android:textColorHint="@color/brave_theme_hint_text" />
+        android:textColorHint="@color/luxxle_theme_hint_text" />
     
     <TextView
         android:id="@+id/contact_info_apopup_label"
@@ -106,7 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textSize="14sp"
-        android:button="@drawable/brave_checkbox"
+        android:button="@drawable/luxxle_checkbox"
         android:paddingStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/report_broken_site_text_attach_screenshot_label"

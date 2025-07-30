@@ -7,12 +7,12 @@ import("//build/buildflag_header.gni")
 import("//build/config/android/rules.gni")
 
 declare_args() {
-  brave_safebrowsing_api_key = ""
+  luxxle_safebrowsing_api_key = ""
 }
 
 buildflag_header("buildflags") {
   header = "buildflags.h"
-  flags = [ "SAFEBROWSING_API_KEY=\"$brave_safebrowsing_api_key\"" ]
+  flags = [ "SAFEBROWSING_API_KEY=\"$luxxle_safebrowsing_api_key\"" ]
 }
 
 source_set("safe_browsing") {

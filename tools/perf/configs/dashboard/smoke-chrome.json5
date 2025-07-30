@@ -14,7 +14,7 @@
   }],
   "benchmarks": [
     {
-      "name": "loading.desktop.brave.startup",
+      "name": "loading.desktop.luxxle.startup",
       "pageset-repeat": 1,
       "stories": [
         "example.com_cold",
@@ -29,7 +29,7 @@
         "load:site:example:2023",
         "load:site:twitter:2023",
         "load:site:imdb:2024",
-        "load:ntp:brave_news:2024",
+        "load:ntp:luxxle_news:2024",
       ]
     },
     {
@@ -39,7 +39,7 @@
         "load:site:example:2023",
         "load:site:twitter:2023",
         "load:site:imdb:2024",
-        "load:ntp:brave_news:2024",
+        "load:ntp:luxxle_news:2024",
         "multitab_load:site:example.com:2024",
       ]
     },

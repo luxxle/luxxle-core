@@ -40,7 +40,7 @@ class CommandUtilsBrowserTest : public InProcessBrowserTest {
   ~CommandUtilsBrowserTest() override = default;
 
   void SetUp() override {
-    features_.InitAndEnableFeature(commands::features::kBraveCommands);
+    features_.InitAndEnableFeature(commands::features::kLuxxleCommands);
     InProcessBrowserTest::SetUp();
   }
 

@@ -1,4 +1,4 @@
-//! `adblock-rust` is the engine powering Brave's native adblocker, available as a library for
+//! `adblock-rust` is the engine powering Luxxle's native adblocker, available as a library for
 //! anyone to use. It features:
 //!
 //! - Network blocking

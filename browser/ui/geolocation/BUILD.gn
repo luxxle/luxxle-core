@@ -9,7 +9,7 @@ source_set("browser_tests") {
   testonly = true
   defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]
 
-  sources = [ "brave_geolocation_browsertest.cc" ]
+  sources = [ "luxxle_geolocation_browsertest.cc" ]
   deps = [
     "//base",
     # Commented out: removed components dependency - using Chromium defaults instead

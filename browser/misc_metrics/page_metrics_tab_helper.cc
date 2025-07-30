@@ -18,7 +18,7 @@ namespace misc_metrics {
 
 namespace {
 constexpr char kLuxxleSearchHost[] = "search.luxxle.com";
-constexpr char kBraveSearchPath[] = "/search";
+constexpr char kLuxxleSearchPath[] = "/search";
 }  // namespace
 
 PageMetricsTabHelper::PageMetricsTabHelper(content::WebContents* web_contents)
@@ -54,8 +54,8 @@ void PageMetricsTabHelper::DidFinishNavigation(
   }
   page_metrics_->IncrementPagesLoadedCount(is_reload);
   if (navigation_handle->GetURL().host_piece() == kLuxxleSearchHost &&
-      navigation_handle->GetURL().path_piece() == kBraveSearchPath) {
-    page_metrics_->OnBraveQuery();
+      navigation_handle->GetURL().path_piece() == kLuxxleSearchPath) {
+    page_metrics_->OnLuxxleQuery();
   }
 }
 

@@ -23,11 +23,11 @@
 namespace whats_new {
 
 // Set current version 1.52 and whats-new target is 1.52.
-class BraveWhatsNewBrowserTest : public InProcessBrowserTest {
+class LuxxleWhatsNewBrowserTest : public InProcessBrowserTest {
  public:
-  BraveWhatsNewBrowserTest() {
+  LuxxleWhatsNewBrowserTest() {
     scoped_default_locale_ =
-        std::make_unique<brave_l10n::test::ScopedDefaultLocale>("en_US");
+        std::make_unique<luxxle_l10n::test::ScopedDefaultLocale>("en_US");
     PrepareValidFieldTrialParams();
     SetCurrentVersionForTesting(1.52);
 
@@ -36,7 +36,7 @@ class BraveWhatsNewBrowserTest : public InProcessBrowserTest {
     set_open_about_blank_on_browser_launch(false);
   }
 
-  ~BraveWhatsNewBrowserTest() override = default;
+  ~LuxxleWhatsNewBrowserTest() override = default;
 
   void SetUpDefaultCommandLine(base::CommandLine* command_line) override {
     InProcessBrowserTest::SetUpDefaultCommandLine(command_line);
@@ -57,10 +57,10 @@ class BraveWhatsNewBrowserTest : public InProcessBrowserTest {
   TabStripModel* tab_model() const { return browser()->tab_strip_model(); }
   PrefService* local_state() const { return g_browser_process->local_state(); }
 
-  std::unique_ptr<brave_l10n::test::ScopedDefaultLocale> scoped_default_locale_;
+  std::unique_ptr<luxxle_l10n::test::ScopedDefaultLocale> scoped_default_locale_;
 };
 
-IN_PROC_BROWSER_TEST_F(BraveWhatsNewBrowserTest,
+IN_PROC_BROWSER_TEST_F(LuxxleWhatsNewBrowserTest,
                        PRE_WhatsNewPageLaunchTestWithUpdatedUser) {
   // Whats-new page is not shown with onboarding page together.
   // It's upstream logic - see the comments of
@@ -80,16 +80,16 @@ IN_PROC_BROWSER_TEST_F(BraveWhatsNewBrowserTest,
                                    "112.1.51.12");
 }
 
-IN_PROC_BROWSER_TEST_F(BraveWhatsNewBrowserTest,
+IN_PROC_BROWSER_TEST_F(LuxxleWhatsNewBrowserTest,
                        WhatsNewPageLaunchTestWithUpdatedUser) {
   // Two tabs - first one is whats-new and another one is welcome
   EXPECT_EQ(2, tab_model()->count());
-  EXPECT_EQ(GURL("https://brave.com/whats-new/"),
+  EXPECT_EQ(GURL("https://luxxle.com/whats-new/"),
             tab_model()->GetActiveWebContents()->GetVisibleURL());
   EXPECT_EQ(1.52, local_state()->GetDouble(prefs::kWhatsNewLastVersion));
 }
 
-IN_PROC_BROWSER_TEST_F(BraveWhatsNewBrowserTest,
+IN_PROC_BROWSER_TEST_F(LuxxleWhatsNewBrowserTest,
                        PRE_WhatsNewPageLaunchTestWithFreshUser) {
   // Whats-new page is not shown with onboarding page together.
   // It's upstream logic - see the comments of
@@ -103,12 +103,12 @@ IN_PROC_BROWSER_TEST_F(BraveWhatsNewBrowserTest,
                                    "112.1.52.12");
 }
 
-IN_PROC_BROWSER_TEST_F(BraveWhatsNewBrowserTest,
+IN_PROC_BROWSER_TEST_F(LuxxleWhatsNewBrowserTest,
                        WhatsNewPageLaunchTestWithFreshUser) {
   // One tabs - it's is welcome page. whats-new tab is only added to updated
   // user.
   EXPECT_EQ(1, tab_model()->count());
-  EXPECT_NE(GURL("https://brave.com/whats-new/"),
+  EXPECT_NE(GURL("https://luxxle.com/whats-new/"),
             tab_model()->GetActiveWebContents()->GetVisibleURL());
 }
 

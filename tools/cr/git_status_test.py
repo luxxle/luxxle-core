@@ -26,13 +26,13 @@ class GitStatusTest(unittest.TestCase):
         # Create a patch file and commit it
         patch_file = 'patches/test.patch'
         self.fake_chromium_src.write_and_stage_file(
-            patch_file, 'Patch content', self.fake_chromium_src.brave)
+            patch_file, 'Patch content', self.fake_chromium_src.luxxle)
         self.fake_chromium_src.commit('Add test.patch',
-                                      self.fake_chromium_src.brave)
+                                      self.fake_chromium_src.luxxle)
 
         # Delete the patch file
         self.fake_chromium_src.delete_file(patch_file,
-                                           self.fake_chromium_src.brave)
+                                           self.fake_chromium_src.luxxle)
 
         # Run GitStatus and verify the deleted patch file is detected
         self.assertTrue(GitStatus().has_deleted_patch_files())
@@ -42,7 +42,7 @@ class GitStatusTest(unittest.TestCase):
         self.assertFalse(GitStatus().has_untracked_patch_files())
 
         # Create a patch file but do not stage it
-        Path(self.fake_chromium_src.brave /
+        Path(self.fake_chromium_src.luxxle /
              'test_untracked.patch').write_text('Untracked patch content')
 
         # Run GitStatus and verify the untracked patch file is detected

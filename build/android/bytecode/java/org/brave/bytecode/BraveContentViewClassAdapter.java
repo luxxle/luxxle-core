@@ -3,19 +3,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveContentViewClassAdapter extends BraveClassVisitor {
+public class LuxxleContentViewClassAdapter extends LuxxleClassVisitor {
     static String sContentViewClassName =
             "org/chromium/components/embedder_support/view/ContentView";
-    static String sBraveContentViewClassName =
-            "org/chromium/components/embedder_support/view/BraveContentView";
+    static String sLuxxleContentViewClassName =
+            "org/chromium/components/embedder_support/view/LuxxleContentView";
 
-    public BraveContentViewClassAdapter(ClassVisitor visitor) {
+    public LuxxleContentViewClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sContentViewClassName, sBraveContentViewClassName);
+        redirectConstructor(sContentViewClassName, sLuxxleContentViewClassName);
     }
 }

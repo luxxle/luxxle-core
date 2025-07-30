@@ -11,19 +11,19 @@ const l10nUtil = require('./l10nUtil')
 const pushL10n = (options) => {
   const runOptions = { cwd: config.srcDir }
   const cmdOptions = config.defaultOptions
-  cmdOptions.cwd = config.braveCoreDir
+  cmdOptions.cwd = config.luxxleCoreDir
   const extraScriptOptions = options.with_translations
     ? '--with_translations'
     : options.with_missing_translations
       ? '--with_missing_translations'
       : ''
-  // Get rid of the copied from //brave xtb and grd changes.
+  // Get rid of the copied from //luxxle xtb and grd changes.
   let args = ['checkout', '--', '*.xtb']
   util.run('git', args, runOptions)
   args = ['checkout', '--', '*.grd*']
   util.run('git', args, runOptions)
 
-  l10nUtil.getBraveTopLevelPaths().forEach((sourceStringPath) => {
+  l10nUtil.getLuxxleTopLevelPaths().forEach((sourceStringPath) => {
     if (
       !options.grd_path
       || sourceStringPath.endsWith(path.sep + options.grd_path)

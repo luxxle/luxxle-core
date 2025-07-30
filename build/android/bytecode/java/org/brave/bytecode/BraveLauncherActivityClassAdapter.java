@@ -3,19 +3,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveLauncherActivityClassAdapter extends BraveClassVisitor {
+public class LuxxleLauncherActivityClassAdapter extends LuxxleClassVisitor {
     static String sChromeLauncherActivityClassName =
             "org/chromium/chrome/browser/document/ChromeLauncherActivity";
-    static String sBraveLauncherActivityClassName =
-            "org/chromium/chrome/browser/document/BraveLauncherActivity";
+    static String sLuxxleLauncherActivityClassName =
+            "org/chromium/chrome/browser/document/LuxxleLauncherActivity";
 
-    public BraveLauncherActivityClassAdapter(ClassVisitor visitor) {
+    public LuxxleLauncherActivityClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        changeSuperName(sChromeLauncherActivityClassName, sBraveLauncherActivityClassName);
+        changeSuperName(sChromeLauncherActivityClassName, sLuxxleLauncherActivityClassName);
     }
 }

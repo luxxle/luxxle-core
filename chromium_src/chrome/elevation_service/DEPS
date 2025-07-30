@@ -1,0 +1,10 @@
+include_rules = [
+  "+luxxle/browser/luxxle_vpn/win/luxxle_vpn_helper",
+  "+luxxle/browser/luxxle_vpn/win/luxxle_vpn_wireguard_service",
+  "+luxxle/browser/luxxle_vpn/win/wireguard_utils_win.h",
+  "+luxxle/components/luxxle_vpn/browser/connection/ikev2/win",
+  "+luxxle/components/luxxle_vpn/common/buildflags",
+  "+luxxle/elevation_service",
+  "+luxxle/installer/setup/luxxle_vpn",
+  "+chrome/installer/util",
+]

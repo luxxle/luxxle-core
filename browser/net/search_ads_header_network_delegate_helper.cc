@@ -5,9 +5,9 @@
 
 #include "luxxle/browser/net/search_ads_header_network_delegate_helper.h"
 
-// REMOVED: #include "luxxle/components/brave_ads/.*"
-// REMOVED: #include "luxxle/components/brave_rewards/.*"
-#include "luxxle/components/brave_search/common/brave_search_utils.h"
+// REMOVED: #include "luxxle/components/luxxle_ads/.*"
+// REMOVED: #include "luxxle/components/luxxle_rewards/.*"
+#include "luxxle/components/luxxle_search/common/luxxle_search_utils.h"
 #include "chrome/browser/profiles/profile.h"
 #include "components/prefs/pref_service.h"
 #include "content/public/browser/browser_context.h"
@@ -20,10 +20,10 @@ bool SearchAdsEnabledForProfile(Profile* profile) {
     return true;
   }
   const auto* prefs = profile->GetPrefs();
-  if (!prefs->GetBoolean(brave_rewards::prefs::kEnabled)) {
+  if (!prefs->GetBoolean(luxxle_rewards::prefs::kEnabled)) {
     return true;
   }
-  return prefs->GetBoolean(brave_ads::prefs::kOptedInToSearchResultAds);
+  return prefs->GetBoolean(luxxle_ads::prefs::kOptedInToSearchResultAds);
 }
 
 }  // namespace
@@ -33,20 +33,20 @@ namespace luxxle {
 int OnBeforeStartTransaction_SearchAdsHeader(
     net::HttpRequestHeaders* headers,
     const ResponseCallback& next_callback,
-    std::shared_ptr<BraveRequestInfo> ctx) {
+    std::shared_ptr<LuxxleRequestInfo> ctx) {
   Profile* profile = Profile::FromBrowserContext(ctx->browser_context);
 
-  // The Brave-Search-Ads header should be added with a negative value when all
+  // The Luxxle-Search-Ads header should be added with a negative value when all
   // of the following conditions are met:
   //   - The current tab is not in a Private browser window.
-  //   - Brave Rewards is enabled for the profile.
+  //   - Luxxle Rewards is enabled for the profile.
   //   - The "Search Ads" option is not enabled for the profile.
-  //   - The requested URL host is one of the Brave Search domains.
-  //   - The request originates from one of the Brave Search domains.
+  //   - The requested URL host is one of the Luxxle Search domains.
+  //   - The request originates from one of the Luxxle Search domains.
   if (SearchAdsEnabledForProfile(profile) ||
-      !brave_search::IsAllowedHost(ctx->request_url) ||
-      (!brave_search::IsAllowedHost(ctx->tab_origin) &&
-       !brave_search::IsAllowedHost(ctx->initiator_url))) {
+      !luxxle_search::IsAllowedHost(ctx->request_url) ||
+      (!luxxle_search::IsAllowedHost(ctx->tab_origin) &&
+       !luxxle_search::IsAllowedHost(ctx->initiator_url))) {
     return net::OK;
   }
 
@@ -56,4 +56,4 @@ int OnBeforeStartTransaction_SearchAdsHeader(
   return net::OK;
 }
 
-}  // namespace brave
+}  // namespace luxxle

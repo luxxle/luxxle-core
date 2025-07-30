@@ -26,7 +26,7 @@ TEST(MetricsUtilTest, DefaultValueTest) {
   EXPECT_EQ(version_info::Channel::DEV, chrome::GetChannel());
   EXPECT_TRUE(GetDefaultPrefValueForMetricsReporting());
 
-  env->SetVar("CHROME_VERSION_EXTRA", BRAVE_LINUX_CHANNEL_NIGHTLY);
+  env->SetVar("CHROME_VERSION_EXTRA", LUXXLE_LINUX_CHANNEL_NIGHTLY);
   EXPECT_EQ(version_info::Channel::CANARY, chrome::GetChannel());
   EXPECT_TRUE(GetDefaultPrefValueForMetricsReporting());
 #else  // OFFICIAL_BUILD

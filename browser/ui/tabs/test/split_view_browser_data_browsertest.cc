@@ -20,7 +20,7 @@
 class SplitViewBrowserDataBrowserTest : public InProcessBrowserTest {
  public:
   SplitViewBrowserDataBrowserTest()
-      : feature_list_(tabs::features::kBraveSplitView) {}
+      : feature_list_(tabs::features::kLuxxleSplitView) {}
   ~SplitViewBrowserDataBrowserTest() override = default;
 
   SplitViewBrowserData& data() {

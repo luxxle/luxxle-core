@@ -38,6 +38,6 @@ class ImageDownloader {
  private:
   image_fetcher::IOSImageDataFetcherWrapper image_fetcher_;
 };
-}  // namespace brave
+}  // namespace luxxle
 
 #endif  // LUXXLE_IOS_BROWSER_API_WEB_IMAGE_IMAGE_DOWNLOADER_H_

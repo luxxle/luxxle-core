@@ -27,11 +27,11 @@ class ExtensionRegistry;
 namespace misc_metrics {
 
 inline constexpr char kAdblockExtensionsHistogramName[] =
-    "Brave.Extensions.AdBlock";
+    "Luxxle.Extensions.AdBlock";
 inline constexpr char kManifestV2ExtensionsHistogramName[] =
-    "Brave.Extensions.ManifestV2";
+    "Luxxle.Extensions.ManifestV2";
 inline constexpr char kSelectManifestV2ExtensionsHistogramName[] =
-    "Brave.Extensions.SelectManifestV2";
+    "Luxxle.Extensions.SelectManifestV2";
 
 // Monitors installation/uninstallation of third-party extensions
 // and reports relevant metrics via P3A.

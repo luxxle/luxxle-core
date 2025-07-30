@@ -24,11 +24,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.chromium.base.supplier.ObservableSupplier;
 import org.chromium.base.supplier.ObservableSupplierImpl;
-import org.chromium.brave_shields.mojom.FilterListAndroidHandler;
-import org.chromium.brave_shields.mojom.SubscriptionInfo;
+import org.chromium.luxxle_shields.mojom.FilterListAndroidHandler;
+import org.chromium.luxxle_shields.mojom.SubscriptionInfo;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.settings.BravePreferenceFragment;
-import org.chromium.chrome.browser.settings.BraveSettingsActivity;
+import org.chromium.chrome.browser.settings.LuxxlePreferenceFragment;
+import org.chromium.chrome.browser.settings.LuxxleSettingsActivity;
 import org.chromium.components.browser_ui.settings.FragmentSettingsNavigation;
 import org.chromium.components.browser_ui.settings.SettingsNavigation;
 import org.chromium.mojo_base.mojom.Value;
@@ -37,8 +37,8 @@ import org.chromium.ui.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ContentFilteringFragment extends BravePreferenceFragment
-        implements FragmentSettingsNavigation, BraveContentFilteringListener {
+public class ContentFilteringFragment extends LuxxlePreferenceFragment
+        implements FragmentSettingsNavigation, LuxxleContentFilteringListener {
     private RecyclerView mRecyclerView;
 
     private ContentFilteringAdapter mAdapter;
@@ -81,7 +81,7 @@ public class ContentFilteringFragment extends BravePreferenceFragment
         mAddCustomFilterResultLauncher =
                 registerForActivityResult(
                         new ActivityResultContracts.StartActivityForResult(),
-                        ((BraveSettingsActivity) requireActivity()).getActivityResultRegistry(),
+                        ((LuxxleSettingsActivity) requireActivity()).getActivityResultRegistry(),
                         result -> {
                             if (result.getResultCode() == Activity.RESULT_OK) {
                                 getSubscriptionFilters();

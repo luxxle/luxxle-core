@@ -18,7 +18,7 @@ void AddBaseline(ColorProvider* provider) {
   // These baseline colors come from Nala. We override the baseline from Chrome
   // because they use a warmer palette, while we have a more blue one.
   // There's a tool for generating these here:
-  // https://github.com/fallaciousreasoning/brave-material-base
+  // https://github.com/fallaciousreasoning/luxxle-material-base
   mixer[kColorRefNeutral0] = {SkColorSetRGB(0x00, 0x00, 0x00)};
   mixer[kColorRefNeutral4] = {SkColorSetRGB(0x0d, 0x0e, 0x11)};
   mixer[kColorRefNeutral5] = {SkColorSetRGB(0x11, 0x11, 0x14)};

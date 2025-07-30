@@ -15,7 +15,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import org.chromium.chrome.browser.vpn.utils.BraveVpnPrefUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnPrefUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +56,7 @@ public class ApplicationViewModel extends ViewModel {
             List<ApplicationDataModel> applicationDataModels = new ArrayList<>();
             List<ApplicationDataModel> systemApplicationDataModels = new ArrayList<>();
 
-            Set<String> excludedPackages = BraveVpnPrefUtils.getExcludedPackages();
+            Set<String> excludedPackages = LuxxleVpnPrefUtils.getExcludedPackages();
             PackageManager pm = activity.getPackageManager();
             List<PackageInfo> packageInfos =
                     activity.getPackageManager().getPackagesHoldingPermissions(

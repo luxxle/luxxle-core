@@ -105,7 +105,7 @@ TEST_F(DownloadBubbleTest, ContextMenuCompletedItemTest) {
   DownloadShelfContextMenuView ctx_menu(model_.GetWeakPtr());
   auto* menu_model = ctx_menu.GetMenuModel();
   EXPECT_TRUE(menu_model->GetIndexOfCommandId(
-      static_cast<int>(BraveDownloadCommands::REMOVE_FROM_LIST)));
+      static_cast<int>(LuxxleDownloadCommands::REMOVE_FROM_LIST)));
 }
 
 TEST_F(DownloadBubbleTest, ContextMenuInProgressItemTest) {
@@ -116,7 +116,7 @@ TEST_F(DownloadBubbleTest, ContextMenuInProgressItemTest) {
   DownloadShelfContextMenuView ctx_menu(model_.GetWeakPtr());
   auto* menu_model = ctx_menu.GetMenuModel();
   EXPECT_FALSE(menu_model->GetIndexOfCommandId(
-      static_cast<int>(BraveDownloadCommands::REMOVE_FROM_LIST)));
+      static_cast<int>(LuxxleDownloadCommands::REMOVE_FROM_LIST)));
 }
 
 TEST_F(DownloadBubbleTest, ContextMenuCancelledItemTest) {
@@ -127,5 +127,5 @@ TEST_F(DownloadBubbleTest, ContextMenuCancelledItemTest) {
   DownloadShelfContextMenuView ctx_menu(model_.GetWeakPtr());
   auto* menu_model = ctx_menu.GetMenuModel();
   EXPECT_TRUE(menu_model->GetIndexOfCommandId(
-      static_cast<int>(BraveDownloadCommands::REMOVE_FROM_LIST)));
+      static_cast<int>(LuxxleDownloadCommands::REMOVE_FROM_LIST)));
 }

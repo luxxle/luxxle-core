@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 #import "test_foo.h"
-#import "brave/build/ios/mojom/cpp_transformations.h"
+#import "luxxle/build/ios/mojom/cpp_transformations.h"
 
 CppFoo::CppFoo(const CppFoo& foo)
     : boolean(foo.boolean),

@@ -16,8 +16,8 @@ import android.widget.TextView;
 
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.InternetConnection;
-import org.chromium.chrome.browser.vpn.BraveVpnNativeWorker;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnUtils;
+import org.chromium.chrome.browser.vpn.LuxxleVpnNativeWorker;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnUtils;
 import org.chromium.components.content_settings.CookieControlsEnforcement;
 import org.chromium.ui.base.ViewUtils;
 import org.chromium.ui.widget.Toast;
@@ -94,15 +94,15 @@ public class IncognitoNewTabPageView extends FrameLayout {
         mScrollView.setDescendantFocusability(FOCUS_BEFORE_DESCENDANTS);
 
         mVpnCta = findViewById(R.id.tv_try_vpn);
-        if (BraveVpnUtils.isVpnFeatureSupported(getContext())
-                && !BraveVpnNativeWorker.getInstance().isPurchasedUser()) {
+        if (LuxxleVpnUtils.isVpnFeatureSupported(getContext())
+                && !LuxxleVpnNativeWorker.getInstance().isPurchasedUser()) {
             mVpnCta.setOnClickListener(
                     v -> {
                         if (!InternetConnection.isNetworkAvailable(getContext())) {
                             Toast.makeText(getContext(), R.string.no_internet, Toast.LENGTH_SHORT)
                                     .show();
                         } else {
-                            BraveVpnUtils.openBraveVpnPlansActivity(getContext());
+                            LuxxleVpnUtils.openLuxxleVpnPlansActivity(getContext());
                         }
                     });
         } else {

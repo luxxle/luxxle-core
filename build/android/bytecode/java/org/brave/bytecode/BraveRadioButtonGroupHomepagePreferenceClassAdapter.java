@@ -3,23 +3,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveRadioButtonGroupHomepagePreferenceClassAdapter extends BraveClassVisitor {
+public class LuxxleRadioButtonGroupHomepagePreferenceClassAdapter extends LuxxleClassVisitor {
     static String sRadioButtonGroupHomepagePreferenceClassName =
             "org/chromium/chrome/browser/homepage/settings/RadioButtonGroupHomepagePreference";
-    static String sBraveRadioButtonGroupHomepagePreferenceClassName =
-            "org/chromium/chrome/browser/homepage/settings/BraveRadioButtonGroupHomepagePreference";
+    static String sLuxxleRadioButtonGroupHomepagePreferenceClassName =
+            "org/chromium/chrome/browser/homepage/settings/LuxxleRadioButtonGroupHomepagePreference";
 
-    public BraveRadioButtonGroupHomepagePreferenceClassAdapter(ClassVisitor visitor) {
+    public LuxxleRadioButtonGroupHomepagePreferenceClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         makeNonFinalClass(sRadioButtonGroupHomepagePreferenceClassName);
 
         changeSuperName(
-                sBraveRadioButtonGroupHomepagePreferenceClassName,
+                sLuxxleRadioButtonGroupHomepagePreferenceClassName,
                 sRadioButtonGroupHomepagePreferenceClassName);
     }
 }

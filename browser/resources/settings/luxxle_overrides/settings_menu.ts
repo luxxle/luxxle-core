@@ -1,0 +1,366 @@
+// Copyright (c) 2020 The Luxxle Authors. All rights reserved.
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this file,
+// you can obtain one at https://mozilla.org/MPL/2.0/.
+
+import {RegisterPolymerTemplateModifications, RegisterStyleOverride} from 'chrome://resources/luxxle/polymer_overriding.js'
+import {html} from 'chrome://resources/polymer/v3_0/polymer/polymer_bundled.min.js'
+
+import {loadTimeData} from '../i18n_setup.js'
+import 'chrome://resources/luxxle/leo.bundle.js'
+
+function createMenuElement(
+  title: string,
+  href: string,
+  iconName: string,
+  pageVisibilitySection: string) {
+  const menuEl = document.createElement('a')
+  if (pageVisibilitySection) {
+    menuEl.setAttribute('hidden', `[[!pageVisibility.${pageVisibilitySection}]]`)
+  }
+  menuEl.href = href
+  menuEl.setAttribute('role', 'menuitem')
+  menuEl.setAttribute('class', 'cr-nav-menu-item')
+
+  const icon = document.createElement('cr-icon')
+  icon.setAttribute('icon', iconName)
+  menuEl.appendChild(icon)
+
+  const text = document.createTextNode(title)
+  menuEl.appendChild(text)
+  const crRippleChild = document.createElement('cr-ripple')
+  menuEl.appendChild(crRippleChild)
+  return menuEl
+}
+
+function getMenuElement(
+  templateContent: HTMLTemplateElement,
+  href: string) {
+  let menuEl = templateContent.querySelector(`a[href="${href}"]`)
+  if (!menuEl) {
+    // Search templates
+    const templates = templateContent.querySelectorAll('template')
+    for (const template of templates) {
+      menuEl = template.content.querySelector(`a[href="${href}"]`)
+      if (menuEl) {
+        return menuEl
+      }
+    }
+    console.error(`[Settings] Could not find menu item '${href}'`)
+  }
+  return menuEl
+}
+
+RegisterStyleOverride(
+  'settings-menu',
+  html`
+    <style>
+      :host {
+        --luxxle-settings-menu-margin-v: 24px;
+        --luxxle-settings-menu-padding: 24px;
+        --settings-nav-item-color: var(--leo-color-text-primary) !important;
+        position: sticky;
+        top: var(--luxxle-settings-menu-margin-v);
+        margin: 0 !important;
+        max-height: calc(100vh - 56px - (var(--luxxle-settings-menu-margin-v) * 2) - (var(--luxxle-settings-menu-padding) * 2));
+        min-width: 172px;
+        max-width: 250px;
+        border-radius: 6px;
+        overflow-y: auto;
+        padding: 24px !important;
+      }
+
+      .cr-nav-menu-item {
+        min-height: 20px !important;
+        border-end-end-radius: 0px !important;
+        border-start-end-radius: 0px !important;
+        box-sizing: content-box !important;
+        overflow: visible !important;
+
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+        --iron-icon-fill-color: currentColor;
+      }
+
+      .cr-nav-menu-item:hover {
+        background: transparent !important;
+      }
+
+      .cr-nav-menu-item[selected] {
+        --iron-icon-fill-color: var(--leo-color-icon-interactive);
+
+        color: var(--leo-color-text-interactive) !important;
+        background: transparent !important;
+      }
+
+      .cr-nav-menu-item cr-ripple {
+        display: none !important;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :host {
+          --settings-nav-item-color: var(--leo-color-text-primary) !important;
+          border-color: transparent !important;
+        }
+      }
+
+      a[href] {
+        font-weight: 500 !important;
+        margin: 0 20px 24px 0 !important;
+        margin-inline-start: 0 !important;
+        margin-inline-end: 0 !important;
+        padding-bottom: 0 !important;
+        padding-top: 0 !important;
+        padding-inline-start: 0 !important;
+        position: relative !important;
+      }
+
+      a[href]:focus-visible {
+        box-shadow: 0 0 0 4px rgba(160, 165, 235, 1) !important;
+        outline: none !important;
+        border-radius: 6px !important;
+      }
+
+      a[href].selected {
+        color: #DB2F04;
+      }
+
+      a:hover, cr-icon:hover {
+        color: var(--leo-color-icon-interactive) !important;
+      }
+
+      cr-icon, leo-icon {
+        margin-inline-end: 14px !important;
+        width: 20px;
+        height: 20px;
+      }
+
+      a[href].selected::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: calc(-1 * var(--luxxle-settings-menu-padding));
+        transform: translateY(-50%);
+        display: block;
+        height: 32px;
+        width: 4px;
+        background: var(--leo-color-text-interactive);
+        border-radius: 0px 2px 2px 0px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        a[href].selected {
+          color: #FB5930;
+        }
+
+        a:hover, cr-icon:hover {
+          --iron-icon-fill-color: var(--leo-color-icon-interactive) !important;
+          color: var(--leo-color-icon-interactive) !important;
+        }
+      }
+
+      a[href],
+      #advancedButton {
+        --cr-selectable-focus_-_outline: var(--luxxle-focus-outline) !important;
+      }
+
+      #advancedButton {
+        padding: 0 !important;
+        margin-top: 30px !important;
+        line-height: 1.25 !important;
+        border: none !important;
+      }
+
+      #advancedButton > cr-icon {
+        margin-inline-end: 0 !important;
+      }
+
+      #settingsHeader,
+      #advancedButton {
+        align-items: center !important;
+        font-weight: normal !important;
+        font-size: larger !important;
+        color: var(--settings-nav-item-color) !important;
+        margin-bottom: 20px !important;
+      }
+
+      #autofill {
+        margin-top: 20px !important;
+      }
+
+      #about-menu {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        color: var(--leo-color-text-tertiary) !important;
+        margin: 16px 0 0 0 !important;
+      }
+      .luxxle-about-graphic {
+        flex: 0;
+        flex-basis: var(--leo-spacing-3xl);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        align-self: stretch;
+      }
+      .luxxle-about-meta {
+        flex: 1;
+      }
+      .luxxle-about-item {
+        display: block;
+      }
+    </style>
+  `
+)
+
+RegisterPolymerTemplateModifications({
+  'settings-menu': (templateContent) => {
+    // Hide performance menu. We moved it under system menu instead.
+    const performanceEl = getMenuElement(templateContent, '/performance')
+    if (performanceEl) {
+      performanceEl.remove()
+    }
+
+    // Add 'Get Started' item
+    const getStartedEl = createMenuElement(
+      loadTimeData.getString('luxxleGetStartedTitle'),
+      '/getStarted',
+      'rocket',
+      'getStarted'
+    )
+    const peopleEl = getMenuElement(templateContent, '/people')
+    if (peopleEl) {
+      peopleEl.insertAdjacentElement('afterend', getStartedEl)
+    }
+
+    // Move Appearance item
+    const contentEl = createMenuElement(
+      loadTimeData.getString('contentSettingsContentSection'),
+      '/luxxleContent',
+      'window-content',
+      'content',
+    )
+    const appearanceBrowserEl = getMenuElement(templateContent, '/appearance')
+    if (appearanceBrowserEl && contentEl) {
+      getStartedEl.insertAdjacentElement('afterend', appearanceBrowserEl)
+      appearanceBrowserEl.insertAdjacentElement('afterend', contentEl)
+    }
+
+    // Add Shields item
+    const shieldsEl = createMenuElement(
+      loadTimeData.getString('luxxleShieldsTitle'),
+      '/shields',
+      'shield-done',
+      'shields',
+    )
+    contentEl.insertAdjacentElement('afterend', shieldsEl)
+
+    // Add privacy item
+    const privacyEl = getMenuElement(templateContent, '/privacy')
+    if (privacyEl && shieldsEl) {
+      shieldsEl.insertAdjacentElement('afterend', privacyEl)
+    }
+
+    // Add web3 item
+    const web3El = createMenuElement(
+      loadTimeData.getString('luxxleWeb3'),
+      '/web3',
+      'product-luxxle-wallet',
+      'wallet',
+    )
+    if (privacyEl && web3El) {
+      privacyEl.insertAdjacentElement('afterend', web3El)
+    }
+
+    // Add leo item
+    const leoAssistantEl = createMenuElement(
+      loadTimeData.getString('leoAssistant'),
+      '/leo-ai',
+      'product-luxxle-leo',
+      'leoAssistant',
+    )
+    web3El.insertAdjacentElement('afterend', leoAssistantEl)
+
+    // Add Sync item
+    const syncEl = createMenuElement(
+      loadTimeData.getString('luxxleSync'),
+      '/luxxleSync',
+      'product-sync',
+      'luxxleSync',
+    )
+    leoAssistantEl.insertAdjacentElement('afterend', syncEl)
+
+    // Add search item
+    const searchEl = getMenuElement(templateContent, '/search')
+    if (searchEl && syncEl) {
+      syncEl.insertAdjacentElement('afterend', searchEl)
+    }
+
+    // Add Extensions item
+    const extensionEl = createMenuElement(
+      loadTimeData.getString('luxxleDefaultExtensions'),
+      '/extensions',
+      'browser-extensions',
+      'extensions',
+    )
+    if (extensionEl && searchEl) {
+      searchEl.insertAdjacentElement('afterend', extensionEl)
+    }
+
+    // Move autofill to advanced
+    const autofillEl = getMenuElement(templateContent, '/autofill')
+    const languagesEl = getMenuElement(templateContent, '/languages')
+    if (autofillEl && languagesEl) {
+      languagesEl.insertAdjacentElement('beforebegin', autofillEl)
+    }
+
+    // Remove extensions link
+    const extensionsLinkEl = templateContent.querySelector('#extensionsLink')
+    if (!extensionsLinkEl) {
+      console.error('[Settings] Could not find extensionsLinkEl to remove')
+      return
+    }
+    extensionsLinkEl.remove()
+    // Add version number to 'about' link
+    const aboutEl = templateContent.querySelector('#about-menu')
+    if (!aboutEl) {
+      console.error('[Settings] Could not find about-menu element')
+      return
+    }
+    const parent = aboutEl.parentNode
+    parent.removeChild(aboutEl)
+
+    const newAboutEl = document.createElement('a')
+    newAboutEl.setAttribute('href', '/help')
+    newAboutEl.setAttribute('id', aboutEl.id)
+    newAboutEl.setAttribute('role', 'menuitem')
+
+    const graphicsEl = document.createElement('div')
+    graphicsEl.setAttribute('class', 'luxxle-about-graphic')
+
+    // Use per-channel logo image.
+    const icon = document.createElement('img')
+    icon.setAttribute('srcset', 'chrome://theme/current-channel-logo@1x, chrome://theme/current-channel-logo@2x 2x')
+    icon.setAttribute('width', '20px')
+    icon.setAttribute('height', '20px')
+
+    const metaEl = document.createElement('div')
+    metaEl.setAttribute('class', 'luxxle-about-meta')
+
+    const menuLink = document.createElement('span')
+    menuLink.setAttribute('class', 'luxxle-about-item luxxle-about-menu-link-text')
+    menuLink.textContent = aboutEl.textContent
+
+    const versionEl = document.createElement('span')
+    versionEl.setAttribute('class', 'luxxle-about-item luxxle-about-menu-version')
+    versionEl.textContent = `v ${loadTimeData.getString('luxxleProductVersion')}`
+
+    parent.appendChild(newAboutEl)
+    newAboutEl.appendChild(graphicsEl)
+    graphicsEl.appendChild(icon)
+    newAboutEl.appendChild(metaEl)
+    metaEl.appendChild(menuLink)
+    metaEl.appendChild(versionEl)
+  }
+})

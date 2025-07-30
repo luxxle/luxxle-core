@@ -8,10 +8,10 @@ package org.chromium.chrome.browser.crypto_wallet.util;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.TransactionInfo;
-import org.chromium.brave_wallet.mojom.TransactionStatus;
-import org.chromium.brave_wallet.mojom.TxService;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.TransactionInfo;
+import org.chromium.luxxle_wallet.mojom.TransactionStatus;
+import org.chromium.luxxle_wallet.mojom.TxService;
 import org.chromium.chrome.browser.crypto_wallet.observers.TxServiceObserverImpl;
 import org.chromium.chrome.browser.crypto_wallet.observers.TxServiceObserverImpl.TxServiceObserverImplDelegate;
 

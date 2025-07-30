@@ -25,7 +25,7 @@
 #include "chrome/browser/ui/location_bar/location_bar.h"
 #include "chrome/browser/ui/views/frame/browser_view.h"
 #include "chrome/test/base/in_process_browser_test.h"
-#include "components/grit/brave_components_strings.h"
+#include "components/grit/luxxle_components_strings.h"
 #include "components/omnibox/browser/omnibox_view.h"
 #include "content/public/test/browser_test.h"
 #include "testing/gmock/include/gmock/gmock.h"
@@ -34,7 +34,7 @@
 class CommanderServiceBrowserTest : public InProcessBrowserTest {
  public:
   CommanderServiceBrowserTest() {
-    features_.InitAndEnableFeature(features::kBraveCommander);
+    features_.InitAndEnableFeature(features::kLuxxleCommander);
   }
 
   ~CommanderServiceBrowserTest() override = default;

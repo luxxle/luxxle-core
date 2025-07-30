@@ -11,9 +11,9 @@
 #include "base/functional/bind.h"
 #include "base/task/sequenced_task_runner.h"
 #include "luxxle/app/vector_icons/vector_icons.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/components/constants/pref_names.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/metrics/metrics_reporting_state.h"
 #include "chrome/browser/ui/browser.h"
@@ -44,7 +44,7 @@ void ShowCrashReportPermissionAskDialog(Browser* browser) {
   CrashReportPermissionAskDialogView::Show(browser);
 }
 
-}  // namespace brave
+}  // namespace luxxle
 
 namespace {
 
@@ -127,7 +127,7 @@ void CrashReportPermissionAskDialogView::CreateChildViews(
     header_image_color = parent->GetColorProvider()->GetColor(kColorIconBase);
   }
   header_image->SetImage(ui::ImageModel::FromVectorIcon(
-      kBraveSadIcon, header_image_color, kIconSize));
+      kLuxxleSadIcon, header_image_color, kIconSize));
 
   const std::u16string header_browser_name = l10n_util::GetStringUTF16(
       IDS_CRASH_REPORT_PERMISSION_ASK_DIALOG_HEADER_TEXT_BROWSER_NAME_PART);

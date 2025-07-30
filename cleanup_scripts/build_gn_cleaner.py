@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 BUILD.gn File Cleaner - Phase 1.3 Implementation
-Removes brave-specific build targets and dependencies from BUILD.gn files
+Removes luxxle-specific build targets and dependencies from BUILD.gn files
 """
 
 import os
@@ -31,7 +31,7 @@ class BuildGnCleaner:
         return build_files
     
     def find_sources_gni_files(self):
-        """Find all sources.gni files that might contain brave references"""
+        """Find all sources.gni files that might contain luxxle references"""
         sources_files = []
         
         for root, dirs, files in os.walk(self.luxxle_root):
@@ -62,7 +62,7 @@ class BuildGnCleaner:
             return False
     
     def clean_build_file(self, build_file):
-        """Clean a single BUILD.gn or sources.gni file of brave references"""
+        """Clean a single BUILD.gn or sources.gni file of luxxle references"""
         print(f"🔧 Processing: {build_file.relative_to(self.luxxle_root)}")
         
         try:
@@ -77,40 +77,40 @@ class BuildGnCleaner:
         
         # Patterns to remove or modify
         patterns_to_remove = [
-            # Remove brave utility importer dependencies
-            r'^\s*luxxle_utility_sources\s*\+=\s*brave_utility_importer_sources.*$',
-            r'^\s*luxxle_utility_deps\s*\+=\s*brave_utility_importer_deps.*$', 
-            r'^\s*luxxle_utility_public_deps\s*\+=\s*brave_utility_importer_public_deps.*$',
+            # Remove luxxle utility importer dependencies
+            r'^\s*luxxle_utility_sources\s*\+=\s*luxxle_utility_importer_sources.*$',
+            r'^\s*luxxle_utility_deps\s*\+=\s*luxxle_utility_importer_deps.*$', 
+            r'^\s*luxxle_utility_public_deps\s*\+=\s*luxxle_utility_importer_public_deps.*$',
             
-            # Remove brave target dependencies
-            r'^\s*"//brave/[^"]*".*$',
-            r'^\s*deps\s*=\s*\[\s*"//brave/[^"]*"\s*\].*$',
+            # Remove luxxle target dependencies
+            r'^\s*"//luxxle/[^"]*".*$',
+            r'^\s*deps\s*=\s*\[\s*"//luxxle/[^"]*"\s*\].*$',
             
-            # Remove brave sources
-            r'^\s*sources\s*\+=?\s*brave_.*_sources.*$',
-            r'^\s*deps\s*\+=?\s*brave_.*_deps.*$',
-            r'^\s*public_deps\s*\+=?\s*brave_.*_public_deps.*$',
+            # Remove luxxle sources
+            r'^\s*sources\s*\+=?\s*luxxle_.*_sources.*$',
+            r'^\s*deps\s*\+=?\s*luxxle_.*_deps.*$',
+            r'^\s*public_deps\s*\+=?\s*luxxle_.*_public_deps.*$',
             
-            # Remove brave conditional blocks
-            r'^\s*if\s*\(\s*brave_.*\s*\)\s*\{[\s\S]*?\}',
+            # Remove luxxle conditional blocks
+            r'^\s*if\s*\(\s*luxxle_.*\s*\)\s*\{[\s\S]*?\}',
             
-            # Remove brave import statements
-            r'^\s*import\("//brave/[^"]*"\).*$',
+            # Remove luxxle import statements
+            r'^\s*import\("//luxxle/[^"]*"\).*$',
         ]
         
         # String replacements
         replacements = [
-            # Replace brave references with luxxle
-            (r'\bbrave_utility_', 'luxxle_utility_'),
-            (r'\bbrave_browser_', 'luxxle_browser_'),
-            (r'\bbrave_common_', 'luxxle_common_'),
-            (r'"//brave/', '"//luxxle/'),
+            # Replace luxxle references with luxxle
+            (r'\bluxxle_utility_', 'luxxle_utility_'),
+            (r'\bluxxle_browser_', 'luxxle_browser_'),
+            (r'\bluxxle_common_', 'luxxle_common_'),
+            (r'"//luxxle/', '"//luxxle/'),
             
             # Update import paths
-            (r'import\("//brave/', 'import("//luxxle/'),
+            (r'import\("//luxxle/', 'import("//luxxle/'),
             
-            # Remove brave-specific build flags
-            (r'brave_[a-zA-Z_]*_enabled\s*=\s*[^,\n]*[,\n]?', ''),
+            # Remove luxxle-specific build flags
+            (r'luxxle_[a-zA-Z_]*_enabled\s*=\s*[^,\n]*[,\n]?', ''),
         ]
         
         # Apply removals
@@ -129,8 +129,8 @@ class BuildGnCleaner:
                     line_removed = True
                     break
             
-            # Special handling for brave conditional blocks
-            if re.match(r'^\s*if\s*\(\s*brave_.*\s*\)\s*\{', line):
+            # Special handling for luxxle conditional blocks
+            if re.match(r'^\s*if\s*\(\s*luxxle_.*\s*\)\s*\{', line):
                 # Find the matching closing brace
                 brace_count = line.count('{') - line.count('}')
                 start_line = i
@@ -140,7 +140,7 @@ class BuildGnCleaner:
                     brace_count += lines[i].count('{') - lines[i].count('}')
                 
                 # Remove the entire block
-                modifications_made.append(f"Lines {start_line+1}-{i+1}: Removed brave conditional block")
+                modifications_made.append(f"Lines {start_line+1}-{i+1}: Removed luxxle conditional block")
                 line_removed = True
             
             if not line_removed:
@@ -199,12 +199,12 @@ class BuildGnCleaner:
                 print(f"  ✗ Failed to write file: {e}")
                 return False
         else:
-            print(f"  ✓ No brave references found")
+            print(f"  ✓ No luxxle references found")
             return True
     
     def verify_build_files(self):
-        """Verify that no problematic brave references remain"""
-        print("\n🔍 Verifying no problematic brave references remain...")
+        """Verify that no problematic luxxle references remain"""
+        print("\n🔍 Verifying no problematic luxxle references remain...")
         
         all_files = self.find_all_build_gn_files() + self.find_sources_gni_files()
         remaining_refs = []
@@ -214,13 +214,13 @@ class BuildGnCleaner:
                 with open(build_file, 'r', encoding='utf-8') as f:
                     content = f.read()
                 
-                # Check for problematic brave references
+                # Check for problematic luxxle references
                 problematic_patterns = [
-                    r'"//brave/',
-                    r'import\("//brave/',
-                    r'brave_utility_importer',
-                    r'brave_.*_sources',
-                    r'brave_.*_deps',
+                    r'"//luxxle/',
+                    r'import\("//luxxle/',
+                    r'luxxle_utility_importer',
+                    r'luxxle_.*_sources',
+                    r'luxxle_.*_deps',
                 ]
                 
                 for i, line in enumerate(content.split('\n')):
@@ -236,14 +236,14 @@ class BuildGnCleaner:
                 print(f"  ✗ Failed to verify {build_file}: {e}")
         
         if remaining_refs:
-            print(f"⚠️  Found {len(remaining_refs)} remaining problematic brave references:")
+            print(f"⚠️  Found {len(remaining_refs)} remaining problematic luxxle references:")
             for ref in remaining_refs[:10]:  # Show first 10
                 print(f"  • {ref['file']}:{ref['line']} - {ref['content']}")
             if len(remaining_refs) > 10:
                 print(f"  • ... and {len(remaining_refs) - 10} more references")
             return False
         else:
-            print("✅ No problematic brave references found in build files!")
+            print("✅ No problematic luxxle references found in build files!")
             return True
     
     def clean_all_build_files(self):

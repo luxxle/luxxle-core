@@ -7,9 +7,9 @@
 
 #include <memory>
 
-#include "luxxle/browser/infobars/brave_confirm_infobar_creator.h"
+#include "luxxle/browser/infobars/luxxle_confirm_infobar_creator.h"
 #include "luxxle/components/constants/url_constants.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "chrome/common/channel_info.h"
 #include "components/infobars/core/infobar.h"
 #include "components/strings/grit/components_strings.h"
@@ -21,7 +21,7 @@ void DevChannelDeprecationInfoBarDelegate::CreateIfNeeded(
     infobars::InfoBarManager* infobar_manager) {
   if (chrome::GetChannel() == version_info::Channel::DEV) {
     infobar_manager->AddInfoBar(
-        CreateBraveConfirmInfoBar(std::unique_ptr<BraveConfirmInfoBarDelegate>(
+        CreateLuxxleConfirmInfoBar(std::unique_ptr<LuxxleConfirmInfoBarDelegate>(
             new DevChannelDeprecationInfoBarDelegate())));
   }
 }

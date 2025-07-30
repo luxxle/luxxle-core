@@ -11,8 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.preference.PreferenceFragmentCompat;
 
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.BraveLocalState;
-import org.chromium.chrome.browser.preferences.BravePref;
+import org.chromium.chrome.browser.LuxxleLocalState;
+import org.chromium.chrome.browser.preferences.LuxxlePref;
 import org.chromium.components.browser_ui.settings.SettingsUtils;
 
 public class UnstoppableDomainsSettingsFragment extends PreferenceFragmentCompat {
@@ -29,13 +29,13 @@ public class UnstoppableDomainsSettingsFragment extends PreferenceFragmentCompat
                         PREF_UNSTOPPABLE_DOMAINS_RESOLVE_METHOD);
 
         radioButtonGroupDDnsResolveMethodPreference.initialize(
-                BraveLocalState.get().getInteger(BravePref.UNSTOPPABLE_DOMAINS_RESOLVE_METHOD));
+                LuxxleLocalState.get().getInteger(LuxxlePref.UNSTOPPABLE_DOMAINS_RESOLVE_METHOD));
 
         radioButtonGroupDDnsResolveMethodPreference.setOnPreferenceChangeListener(
                 (preference, newValue) -> {
                     int method = (int) newValue;
-                    BraveLocalState.get().setInteger(
-                            BravePref.UNSTOPPABLE_DOMAINS_RESOLVE_METHOD, method);
+                    LuxxleLocalState.get().setInteger(
+                            LuxxlePref.UNSTOPPABLE_DOMAINS_RESOLVE_METHOD, method);
                     return true;
                 });
     }

@@ -50,7 +50,7 @@ function loadChromiumPathFilter(filePath) {
 }
 
 chromiumPathFilter = loadChromiumPathFilter(
-  path.join(config.braveCoreDir, 'build', 'update_patches_exclusions.cfg'),
+  path.join(config.luxxleCoreDir, 'build', 'update_patches_exclusions.cfg'),
 )
 
 module.exports = function RunCommand(filePaths, options) {
@@ -71,7 +71,7 @@ module.exports = function RunCommand(filePaths, options) {
     'search_engines_data',
     'resources',
   )
-  const patchDir = path.join(config.braveCoreDir, 'patches')
+  const patchDir = path.join(config.luxxleCoreDir, 'patches')
   const v8PatchDir = path.join(patchDir, 'v8')
   const catapultPatchDir = path.join(patchDir, 'third_party', 'catapult')
   const devtoolsFrontendPatchDir = path.join(

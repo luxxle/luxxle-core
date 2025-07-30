@@ -19,12 +19,12 @@ import components.cloud_storage as cloud_storage
 
 from components.common_options import CommonOptions
 
-# Brave and Chromium update related-hosts.
+# Luxxle and Chromium update related-hosts.
 # Normally we don't need this in any WPR.
 _UPDATE_HOSTS = [
-    'brave-core-ext.s3.brave.com',
-    'go-updater.brave.com',
-    'componentupdater.brave.com',
+    'luxxle-core-ext.s3.luxxle.com',
+    'go-updater.luxxle.com',
+    'componentupdater.luxxle.com',
     'optimizationguide-pa.googleapis.com',
     'safebrowsingohttpgateway.googleapis.com',
     'edgedl.me.gvt1.com',
@@ -35,20 +35,20 @@ _UPDATE_HOSTS = [
 # representative. It makes sense to remove them some tests (i.e. jetstream)
 # and leave in others (i.e. system_health).
 _SERVICE_HOSTS = [
-    'redirector.brave.com',
-    'geo.ads.brave.com',
-    'static.ads.brave.com',
-    'mywallet.ads.brave.com',
-    'rewards.brave.com',
-    'api.rewards.brave.com',
-    'grant.rewards.brave.com',
-    'collector.bsg.brave.com',
-    'star-randsrv.bsg.brave.com',
-    'p3a-json.brave.com',
-    'brave-today-cdn.brave.com',
+    'redirector.luxxle.com',
+    'geo.ads.luxxle.com',
+    'static.ads.luxxle.com',
+    'mywallet.ads.luxxle.com',
+    'rewards.luxxle.com',
+    'api.rewards.luxxle.com',
+    'grant.rewards.luxxle.com',
+    'collector.bsg.luxxle.com',
+    'star-randsrv.bsg.luxxle.com',
+    'p3a-json.luxxle.com',
+    'luxxle-today-cdn.luxxle.com',
     'update.googleapis.com',
     'content-autofill.googleapis.com',
-    'usage-ping.brave.com',
+    'usage-ping.luxxle.com',
     'clients2.google.com',
 ]
 
@@ -125,7 +125,7 @@ def cleanup_archive(file: str, include_service_hosts: bool) -> None:
 def record_wpr(config: perf_config.PerfConfig, options: CommonOptions) -> bool:
   if len(config.runners) != 2:
     logging.warn('Normally you need specify two runners to record wpr: ' +
-                 'for Brave and Chromium')
+                 'for Luxxle and Chromium')
   options.do_report = False
   runable_configurations = perf_test_runner.PrepareBinariesAndDirectories(
       config.runners, config.benchmarks, options)

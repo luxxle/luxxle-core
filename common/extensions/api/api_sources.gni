@@ -3,17 +3,17 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-brave_extensions_api_uncompiled_sources = []
-brave_extensions_api_root_namespace = "extensions::api::%(namespace)s"
-brave_extensions_api_schema_include_rules = "//luxxle/common/extensions/api:extensions::api::%(namespace)s"
+luxxle_extensions_api_uncompiled_sources = []
+luxxle_extensions_api_root_namespace = "extensions::api::%(namespace)s"
+luxxle_extensions_api_schema_include_rules = "//luxxle/common/extensions/api:extensions::api::%(namespace)s"
 
 schema_sources_ = [
-  "brave_rewards.json",
-  "brave_talk.json",
-  "brave_theme.json",
+  "luxxle_rewards.json",
+  "luxxle_talk.json",
+  "luxxle_theme.json",
   "rewards_notifications.json",
   "web_discovery.json",
-  "brave_wallet.json",
+  "luxxle_wallet.json",
 ]
 
-brave_extensions_api_schema_sources = get_path_info(schema_sources_, "abspath")
+luxxle_extensions_api_schema_sources = get_path_info(schema_sources_, "abspath")

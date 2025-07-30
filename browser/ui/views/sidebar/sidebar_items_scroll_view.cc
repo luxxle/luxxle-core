@@ -11,15 +11,15 @@
 #include "base/functional/bind.h"
 #include "base/time/time.h"
 #include "luxxle/app/vector_icons/vector_icons.h"
-#include "luxxle/browser/ui/brave_browser.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/luxxle_browser.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/browser/ui/sidebar/sidebar_controller.h"
 #include "luxxle/browser/ui/sidebar/sidebar_service_factory.h"
 #include "luxxle/browser/ui/views/sidebar/sidebar_item_drag_context.h"
 #include "luxxle/browser/ui/views/sidebar/sidebar_item_view.h"
 #include "luxxle/browser/ui/views/sidebar/sidebar_items_contents_view.h"
 #include "luxxle/components/sidebar/browser/sidebar_service.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "cc/paint/paint_flags.h"
 #include "chrome/browser/ui/browser_list.h"
 #include "chrome/browser/ui/browser_window/public/browser_window_features.h"
@@ -42,7 +42,7 @@
 
 namespace {
 
-constexpr char kSidebarItemDragType[] = "brave/sidebar-item";
+constexpr char kSidebarItemDragType[] = "luxxle/sidebar-item";
 constexpr int kArrowHeight = 24;
 
 class SidebarItemsArrowView : public views::ImageButton {
@@ -52,7 +52,7 @@ class SidebarItemsArrowView : public views::ImageButton {
     SetImageHorizontalAlignment(views::ImageButton::ALIGN_CENTER);
     SetImageVerticalAlignment(views::ImageButton::ALIGN_MIDDLE);
     DCHECK(GetInstallFocusRingOnFocus());
-    views::FocusRing::Get(this)->SetColorId(gfx::kBraveBlurple300);
+    views::FocusRing::Get(this)->SetColorId(gfx::kLuxxleBlurple300);
     SetAccessibleName(accessible_name);
     SetPaintToLayer();
   }
@@ -96,7 +96,7 @@ END_METADATA
 
 }  // namespace
 
-SidebarItemsScrollView::SidebarItemsScrollView(BraveBrowser* browser)
+SidebarItemsScrollView::SidebarItemsScrollView(LuxxleBrowser* browser)
     : browser_(browser),
       drag_context_(std::make_unique<SidebarItemDragContext>()),
       scroll_animator_for_item_(std::make_unique<views::BoundsAnimator>(this)),

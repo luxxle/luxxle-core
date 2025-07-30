@@ -23,7 +23,7 @@ import androidx.fragment.app.FragmentActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-import org.chromium.brave_wallet.mojom.KeyringService;
+import org.chromium.luxxle_wallet.mojom.KeyringService;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.app.helpers.Api33AndPlusBackPressHelper;
 import org.chromium.chrome.browser.crypto_wallet.listeners.OnNextPage;

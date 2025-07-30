@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 
 import org.chromium.base.Log;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.ui.base.DeviceFormFactor;
 
 public class RewardsTippingSuccessContribution {
@@ -44,9 +44,9 @@ public class RewardsTippingSuccessContribution {
     private void dismissRewardsPanel() {
         if (mIsTablet) {
             try {
-                BraveActivity braveActivity = BraveActivity.getBraveActivity();
-                braveActivity.dismissRewardsPanel();
-            } catch (BraveActivity.BraveActivityNotFoundException e) {
+                LuxxleActivity luxxleActivity = LuxxleActivity.getLuxxleActivity();
+                luxxleActivity.dismissRewardsPanel();
+            } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
                 Log.e(TAG, "setShareYourSupportClickListener " + e);
             }
         } else {
@@ -74,7 +74,7 @@ public class RewardsTippingSuccessContribution {
                 .appendPath("intent")
                 .appendPath("tweet")
                 .appendQueryParameter("text",
-                        String.format(mActivity.getString(R.string.brave_rewards_tip_success_tweet),
+                        String.format(mActivity.getString(R.string.luxxle_rewards_tip_success_tweet),
                                 amount));
         return builder.build().toString();
     }

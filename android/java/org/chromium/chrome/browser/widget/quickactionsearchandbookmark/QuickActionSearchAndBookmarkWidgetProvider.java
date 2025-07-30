@@ -30,7 +30,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import org.chromium.base.BravePreferenceKeys;
+import org.chromium.base.LuxxlePreferenceKeys;
 import org.chromium.base.ContextUtils;
 import org.chromium.base.IntentUtils;
 import org.chromium.base.Log;
@@ -51,7 +51,7 @@ import org.chromium.chrome.browser.profiles.ProfileManager;
 import org.chromium.chrome.browser.searchwidget.SearchActivity;
 import org.chromium.chrome.browser.searchwidget.SearchActivityClientImpl;
 import org.chromium.chrome.browser.searchwidget.SearchWidgetProvider;
-import org.chromium.chrome.browser.settings.BraveSearchEngineUtils;
+import org.chromium.chrome.browser.settings.LuxxleSearchEngineUtils;
 import org.chromium.chrome.browser.suggestions.tile.Tile;
 import org.chromium.chrome.browser.ui.favicon.FaviconUtils;
 import org.chromium.chrome.browser.ui.searchactivityutils.SearchActivityClient;
@@ -59,7 +59,7 @@ import org.chromium.chrome.browser.ui.searchactivityutils.SearchActivityExtras.I
 import org.chromium.chrome.browser.ui.searchactivityutils.SearchActivityExtras.SearchType;
 import org.chromium.chrome.browser.ui.searchactivityutils.SearchActivityPreferencesManager;
 import org.chromium.chrome.browser.ui.searchactivityutils.SearchActivityPreferencesManager.SearchActivityPreferences;
-import org.chromium.chrome.browser.widget.quickactionsearchandbookmark.utils.BraveSearchWidgetUtils;
+import org.chromium.chrome.browser.widget.quickactionsearchandbookmark.utils.LuxxleSearchWidgetUtils;
 import org.chromium.components.browser_ui.widget.RoundedIconGenerator;
 import org.chromium.components.favicon.IconType;
 import org.chromium.components.favicon.LargeIconBridge;
@@ -185,7 +185,7 @@ public class QuickActionSearchAndBookmarkWidgetProvider extends AppWidgetProvide
         if (isComingFromSettings) {
             Toast.makeText(context, widgetAddedToHomeScreen, Toast.LENGTH_SHORT).show();
         }
-        BraveSearchWidgetUtils.setShouldShowWidgetPromo(false);
+        LuxxleSearchWidgetUtils.setShouldShowWidgetPromo(false);
     }
 
     @Override
@@ -243,7 +243,7 @@ public class QuickActionSearchAndBookmarkWidgetProvider extends AppWidgetProvide
             RemoteViews views = getBaseRemoteViews();
             String searchWithDefaultSearchEngine =
                     context.getString(R.string.search_with_search_engine, searchEngine);
-            views.setTextViewText(R.id.tvSearchWithBrave, searchWithDefaultSearchEngine);
+            views.setTextViewText(R.id.tvSearchWithLuxxle, searchWithDefaultSearchEngine);
             appWidgetManager.partiallyUpdateAppWidget(appWidgetId, views);
         }
     }
@@ -302,14 +302,14 @@ public class QuickActionSearchAndBookmarkWidgetProvider extends AppWidgetProvide
     private static void setDefaultSearchEngineString(RemoteViews views) {
         final Profile profile = ProfileManager.getLastUsedRegularProfile();
         TemplateUrl templateUrl =
-                BraveSearchEngineUtils.getTemplateUrlByShortName(
-                        profile, BraveSearchEngineUtils.getDSEShortName(profile, false));
+                LuxxleSearchEngineUtils.getTemplateUrlByShortName(
+                        profile, LuxxleSearchEngineUtils.getDSEShortName(profile, false));
         if (templateUrl != null) {
             String searchWithDefaultSearchEngine =
                     ContextUtils.getApplicationContext()
                             .getString(
                                     R.string.search_with_search_engine, templateUrl.getShortName());
-            views.setTextViewText(R.id.tvSearchWithBrave, searchWithDefaultSearchEngine);
+            views.setTextViewText(R.id.tvSearchWithLuxxle, searchWithDefaultSearchEngine);
         }
     }
 
@@ -391,7 +391,7 @@ public class QuickActionSearchAndBookmarkWidgetProvider extends AppWidgetProvide
 
     private static void setSearchBarPendingIntent(Context context, RemoteViews views) {
         views.setOnClickPendingIntent(R.id.ivIncognito, createIncognitoIntent(context));
-        views.setOnClickPendingIntent(R.id.layoutSearchWithBrave, createIntent(context, false));
+        views.setOnClickPendingIntent(R.id.layoutSearchWithLuxxle, createIntent(context, false));
         views.setOnClickPendingIntent(R.id.ivVoiceSearch, createIntent(context, true));
     }
 
@@ -492,7 +492,7 @@ public class QuickActionSearchAndBookmarkWidgetProvider extends AppWidgetProvide
             }
             ChromeSharedPreferences.getInstance()
                     .writeString(
-                            BravePreferenceKeys.BRAVE_QUICK_ACTION_SEARCH_AND_BOOKMARK_WIDGET_TILES,
+                            LuxxlePreferenceKeys.LUXXLE_QUICK_ACTION_SEARCH_AND_BOOKMARK_WIDGET_TILES,
                             widgetTilesJsonArray.toString());
             updateAppWidgets();
         }
@@ -501,8 +501,8 @@ public class QuickActionSearchAndBookmarkWidgetProvider extends AppWidgetProvide
             String widgetTilesJson =
                     ChromeSharedPreferences.getInstance()
                             .readString(
-                                    BravePreferenceKeys
-                                            .BRAVE_QUICK_ACTION_SEARCH_AND_BOOKMARK_WIDGET_TILES,
+                                    LuxxlePreferenceKeys
+                                            .LUXXLE_QUICK_ACTION_SEARCH_AND_BOOKMARK_WIDGET_TILES,
                                     null);
             List<WidgetTile> widgetTileList = new ArrayList();
             widgetTilesJson = "{\"widgetTiles\":" + widgetTilesJson + "}";

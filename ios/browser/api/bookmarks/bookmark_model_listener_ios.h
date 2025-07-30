@@ -11,7 +11,7 @@
 #include <set>
 
 #include "base/memory/raw_ptr.h"
-#include "brave/ios/browser/api/bookmarks/brave_bookmarks_observer.h"
+#include "luxxle/ios/browser/api/bookmarks/luxxle_bookmarks_observer.h"
 #include "components/bookmarks/browser/bookmark_model.h"
 #include "components/bookmarks/browser/bookmark_model_observer.h"
 
@@ -56,6 +56,6 @@ class BookmarkModelListener : public bookmarks::BookmarkModelObserver {
 };
 
 }  // namespace ios
-}  // namespace brave
+}  // namespace luxxle
 
 #endif  // LUXXLE_IOS_BROWSER_API_BOOKMARKS_BOOKMARK_MODEL_LISTENER_IOS_H_

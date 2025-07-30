@@ -315,9 +315,9 @@ class BaseDictionaryValueMojoTypemap(MojoTypemap):
     def DefaultObjCValue(self, default):
         return "@{}"
     def ObjCToCpp(self, accessor):
-        return "brave::BaseValueDictFromNSDictionary(%s)" % accessor
+        return "luxxle::BaseValueDictFromNSDictionary(%s)" % accessor
     def CppToObjC(self, accessor):
-        return "brave::NSDictionaryFromBaseValueDict(%s.Clone())" % accessor
+        return "luxxle::NSDictionaryFromBaseValueDict(%s.Clone())" % accessor
 
 class BaseListValueMojoTypemap(MojoTypemap):
     @staticmethod
@@ -335,10 +335,10 @@ class BaseListValueMojoTypemap(MojoTypemap):
         return "@[]"
 
     def ObjCToCpp(self, accessor):
-        return "brave::BaseValueListFromNSArray(%s)" % accessor
+        return "luxxle::BaseValueListFromNSArray(%s)" % accessor
 
     def CppToObjC(self, accessor):
-        return "brave::NSArrayFromBaseValue(%s.Clone())" % accessor
+        return "luxxle::NSArrayFromBaseValue(%s.Clone())" % accessor
 
 class PendingRemoteMojoTypemap(MojoTypemap):
     @staticmethod
@@ -690,16 +690,16 @@ class Generator(generator.Generator):
                         receivers.add(param.kind.kind)
 
         # We handle imports from mojo base types with custom typemaps, so only
-        # other Brave imports should only be included
-        brave_imports = [i for i in self.module.imports if
-                         i.path.startswith('brave/')]
+        # other Luxxle imports should only be included
+        luxxle_imports = [i for i in self.module.imports if
+                         i.path.startswith('luxxle/')]
 
         for interface in self.module.interfaces:
             all_enums.extend(interface.enums)
         return {
             "all_enums": all_enums,
             "enums": self.module.enums,
-            "imports": brave_imports,
+            "imports": luxxle_imports,
             "interfaces": all_interfaces,
             "interface_bridges": receivers,
             "kinds": self.module.kinds,

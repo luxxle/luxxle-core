@@ -15,7 +15,7 @@ from lib.util import scoped_cwd
 import components.path_util as path_util
 import components.perf_test_utils as perf_test_utils
 from components.browser_binary_fetcher import BrowserBinary, PrepareBinary
-from components.browser_type import BraveVersion
+from components.browser_type import LuxxleVersion
 from components.common_options import CommonOptions
 from components.field_trials import MaybeInjectSeedToLocalState
 from components.perf_config import (BenchmarkConfig, ParseTarget,
@@ -23,7 +23,7 @@ from components.perf_config import (BenchmarkConfig, ParseTarget,
 
 
 def ReportToDashboardImpl(
-    dashboard_bot_name: str, version: BraveVersion, griffin_rev: Optional[str],
+    dashboard_bot_name: str, version: LuxxleVersion, griffin_rev: Optional[str],
     output_dir: str) -> Tuple[bool, List[str], Optional[str]]:
 
   args = [
@@ -38,7 +38,7 @@ def ReportToDashboardImpl(
 
   build_properties = {}
   build_properties['bot_id'] = 'test_bot'
-  build_properties['perf_dashboard_machine_group'] = 'BravePerf'
+  build_properties['perf_dashboard_machine_group'] = 'LuxxlePerf'
 
   build_properties['recipe'] = 'chromium'
   build_properties['slavename'] = 'test_bot'
@@ -52,13 +52,13 @@ def ReportToDashboardImpl(
   build_properties['buildnumber'] = build_number
 
   chromium_version_str = version.chromium_version.to_string()
-  os.environ['DASHBOARD_EXTRA_DIAG_brave_chrome_version'] = chromium_version_str
-  os.environ['DASHBOARD_EXTRA_DIAG_brave_tag'] = version.to_string()
-  os.environ['DASHBOARD_EXTRA_DIAG_brave_job_name'] = job_name
-  os.environ['DASHBOARD_EXTRA_DIAG_brave_job_id'] = build_number
+  os.environ['DASHBOARD_EXTRA_DIAG_luxxle_chrome_version'] = chromium_version_str
+  os.environ['DASHBOARD_EXTRA_DIAG_luxxle_tag'] = version.to_string()
+  os.environ['DASHBOARD_EXTRA_DIAG_luxxle_job_name'] = job_name
+  os.environ['DASHBOARD_EXTRA_DIAG_luxxle_job_id'] = build_number
 
   if griffin_rev is not None:
-    os.environ['DASHBOARD_EXTRA_DIAG_brave_variations_revisions'] = griffin_rev
+    os.environ['DASHBOARD_EXTRA_DIAG_luxxle_variations_revisions'] = griffin_rev
 
   build_properties[
       'got_revision_cp'] = 'refs/heads/main@{#%s}' % version.revision_number
@@ -104,7 +104,7 @@ class RunableConfiguration:
     if self.common_options.is_android and self.binary.binary_path is not None:
       if self.config.version is not None:
         expected_version = None
-        if self.config.browser_type.is_brave:
+        if self.config.browser_type.is_luxxle:
           expected_version = self.config.version.last_tag[1:]
         else:
           expected_version = self.config.version.chromium_version.to_string()
@@ -121,8 +121,8 @@ class RunableConfiguration:
 
     online_rebase = self.config.profile_rebase == ProfileRebaseType.ONLINE
     rebase_benchmark = BenchmarkConfig()
-    rebase_benchmark.name = ('brave_utils.online'
-                             if online_rebase else 'brave_utils.offline')
+    rebase_benchmark.name = ('luxxle_utils.online'
+                             if online_rebase else 'luxxle_utils.offline')
     rebase_benchmark.stories = ['UpdateProfile']
     rebase_benchmark.stories_exclude = []
 

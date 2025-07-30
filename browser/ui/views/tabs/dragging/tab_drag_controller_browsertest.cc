@@ -18,7 +18,7 @@ class TabDragControllerTest : public InProcessBrowserTest {
   ~TabDragControllerTest() override = default;
 
   TabDragControllerTest() {
-    scoped_feature_list_.InitAndEnableFeature(tabs::features::kBraveSplitView);
+    scoped_feature_list_.InitAndEnableFeature(tabs::features::kLuxxleSplitView);
   }
 
  protected:
@@ -49,7 +49,7 @@ class TabDragControllerTest : public InProcessBrowserTest {
 #define MAYBE_DragGroupHeaderToSeparateWindow DragGroupHeaderToSeparateWindow
 #endif
 
-// Browser test for https://github.com/luxxle/brave-browser/issues/39486
+// Browser test for https://github.com/luxxle/luxxle-browser/issues/39486
 IN_PROC_BROWSER_TEST_F(TabDragControllerTest,
                        MAYBE_DragGroupHeaderToSeparateWindow) {
   ASSERT_TRUE(browser()->tab_strip_model()->SupportsTabGroups());

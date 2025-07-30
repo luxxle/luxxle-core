@@ -44,7 +44,7 @@
         android:minHeight="0dp"
         android:padding="0dp"
         android:textAllCaps="false"
-        android:textColor="@color/brave_action_color"
+        android:textColor="@color/luxxle_action_color"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/network_name"
@@ -134,7 +134,7 @@
         android:layout_marginTop="2dp"
         android:gravity="center"
         android:textColor="@color/wallet_text_color"
-        android:background="@color/brave_wallet_dn_error_text_bg_color"
+        android:background="@color/luxxle_wallet_dn_error_text_bg_color"
         android:textSize="16sp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -165,19 +165,19 @@
         android:visibility="gone">
 
         <TextView
-            style="@style/BraveWalletTextView"
+            style="@style/LuxxleWalletTextView"
             android:text="@string/wallet_change_ownership_warning"
-            android:textColor="@color/brave_theme_error_txt"
+            android:textColor="@color/luxxle_theme_error_txt"
             android:textStyle="bold"
             android:drawablePadding="6dp"
             app:drawableStartCompat="@drawable/ic_warning" />
 
         <TextView
             android:layout_marginTop="8dp"
-            style="@style/BraveWalletTextView"
+            style="@style/LuxxleWalletTextView"
             android:layout_width="match_parent"
             android:text="@string/wallet_change_ownership_description"
-            android:textColor="@color/brave_theme_error_txt" />
+            android:textColor="@color/luxxle_theme_error_txt" />
     </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
@@ -190,10 +190,10 @@
         app:layout_constraintTop_toBottomOf="@+id/warning_container"
         app:tabGravity="fill"
         app:tabIndicator="@drawable/tab_gradient_separator"
-        app:tabIndicatorHeight="@dimen/brave_wallet_tab_indicator_height"
+        app:tabIndicatorHeight="@dimen/luxxle_wallet_tab_indicator_height"
         app:tabIndicatorColor="@null"
         app:tabSelectedTextColor="@color/tab_color"
-        app:tabTextAppearance="@style/BraveWalletTabsTextAppearance"
+        app:tabTextAppearance="@style/LuxxleWalletTabsTextAppearance"
         app:tabTextColor="@color/wallet_text_color"
         app:layout_constraintBottom_toTopOf="@id/navigation_view_pager"/>
 
@@ -221,7 +221,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAllCaps="false"
-            android:textColor="@color/brave_action_color"
+            android:textColor="@color/luxxle_action_color"
             android:visibility="gone" />
 
         <LinearLayout
@@ -233,7 +233,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/reject"
-                style="@style/BraveWalletButtonHollow"
+                style="@style/LuxxleWalletButtonHollow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"

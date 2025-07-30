@@ -12,7 +12,7 @@
 
 #include "base/check_is_test.h"
 #include "base/functional/bind.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/browser/ui/views/split_view/split_view.h"
 #include "luxxle/browser/ui/views/split_view/split_view_location_bar_model_delegate.h"
 #include "luxxle/components/vector_icons/vector_icons.h"
@@ -58,7 +58,7 @@ SplitViewLocationBar::SplitViewLocationBar(PrefService* prefs)
                             .CopyAddressTo(&safety_icon_)
                             .SetImage(ui::ImageModel::FromVectorIcon(
                                 kLeoWarningTriangleOutlineIcon,
-                                kColorBraveSplitViewMenuItemIcon, 14)))
+                                kColorLuxxleSplitViewMenuItemIcon, 14)))
               .AddChild(
                   views::Builder<views::Label>()
                       .SetText(u"https")
@@ -67,10 +67,10 @@ SplitViewLocationBar::SplitViewLocationBar(PrefService* prefs)
               .AddChild(views::Builder<views::Label>()
                             .SetText(u"://")
                             .CopyAddressTo(&scheme_separator_)
-                            .SetEnabledColor(kColorBraveSplitViewUrl))
+                            .SetEnabledColor(kColorLuxxleSplitViewUrl))
               .AddChild(views::Builder<views::Label>()
                             .CopyAddressTo(&url_)
-                            .SetEnabledColor(kColorBraveSplitViewUrl)))
+                            .SetEnabledColor(kColorLuxxleSplitViewUrl)))
       .BuildChildren();
 
   for (auto url_part : {https_with_strike_, scheme_separator_, url_}) {
@@ -164,7 +164,7 @@ void SplitViewLocationBar::OnPaintBorder(gfx::Canvas* canvas) {
 
   auto path = GetBorderPath(/*close*/ false);
   cc::PaintFlags flags;
-  flags.setColor(cp->GetColor(kColorBraveSplitViewInactiveWebViewBorder));
+  flags.setColor(cp->GetColor(kColorLuxxleSplitViewInactiveWebViewBorder));
   flags.setAntiAlias(true);
   flags.setStyle(cc::PaintFlags::kStroke_Style);
   flags.setStrokeWidth(SplitView::kInactiveBorderThickness);

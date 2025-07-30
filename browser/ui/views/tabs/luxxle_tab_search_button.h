@@ -1,0 +1,31 @@
+/* Copyright (c) 2021 The Luxxle Authors. All rights reserved.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * you can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#ifndef LUXXLE_BROWSER_UI_VIEWS_TABS_LUXXLE_TAB_SEARCH_BUTTON_H_
+#define LUXXLE_BROWSER_UI_VIEWS_TABS_LUXXLE_TAB_SEARCH_BUTTON_H_
+
+#include "chrome/browser/ui/views/tabs/tab_search_button.h"
+#include "third_party/skia/include/core/SkPath.h"
+#include "ui/gfx/geometry/size.h"
+
+class LuxxleTabSearchButton : public TabSearchButton {
+  METADATA_HEADER(LuxxleTabSearchButton, TabSearchButton)
+ public:
+  explicit LuxxleTabSearchButton(
+      TabStripController* tab_strip_controller,
+      BrowserWindowInterface* browser_window_interface,
+      Edge fixed_flat_edge,
+      Edge animated_flat_edge,
+      TabStrip* tab_strip);
+  ~LuxxleTabSearchButton() override;
+  LuxxleTabSearchButton(const LuxxleTabSearchButton&) = delete;
+  LuxxleTabSearchButton& operator=(const LuxxleTabSearchButton&) = delete;
+
+  // TabSearchButton:
+  void UpdateColors() override;
+  int GetCornerRadius() const override;
+};
+
+#endif  // LUXXLE_BROWSER_UI_VIEWS_TABS_LUXXLE_TAB_SEARCH_BUTTON_H_

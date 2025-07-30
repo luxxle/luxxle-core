@@ -5,24 +5,24 @@
 
 import("//build/config/python.gni")
 
-brave_bytecode_jars = [
+luxxle_bytecode_jars = [
   "obj/base/base_cached_flags_java.javac.jar",
   "obj/base/base_shared_preferences_java.javac.jar",
-  "obj/brave/android/features/tab_ui/java.javac.jar",
-  "obj/brave/android/java/org/chromium/chrome/browser/search_engines/java.javac.jar",
-  "obj/brave/browser/notifications/java.javac.jar",
-  "obj/brave/browser/tabmodel/android/java.javac.jar",
-  "obj/brave/browser/ui/android/logo/java.javac.jar",
-  "obj/brave/browser/ui/android/omnibox/java.javac.jar",
-  "obj/brave/browser/ui/android/theme/java.javac.jar",
+  "obj/luxxle/android/features/tab_ui/java.javac.jar",
+  "obj/luxxle/android/java/org/chromium/chrome/browser/search_engines/java.javac.jar",
+  "obj/luxxle/browser/notifications/java.javac.jar",
+  "obj/luxxle/browser/tabmodel/android/java.javac.jar",
+  "obj/luxxle/browser/ui/android/logo/java.javac.jar",
+  "obj/luxxle/browser/ui/android/omnibox/java.javac.jar",
+  "obj/luxxle/browser/ui/android/theme/java.javac.jar",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "obj/brave/components/browser_ui/notifications/android/java.javac.jar",
+  # "obj/luxxle/components/browser_ui/notifications/android/java.javac.jar",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "obj/brave/components/browser_ui/media/android/java.javac.jar",
+  # "obj/luxxle/components/browser_ui/media/android/java.javac.jar",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "obj/brave/components/browser_ui/site_settings/android/java.javac.jar",
+  # "obj/luxxle/components/browser_ui/site_settings/android/java.javac.jar",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "obj/brave/components/variations/android/java.javac.jar",
+  # "obj/luxxle/components/variations/android/java.javac.jar",
   "obj/chrome/android/base_module_java.javac.jar",
   "obj/chrome/android/chrome_java.javac.jar",
   "obj/chrome/android/features/tab_ui/java.javac.jar",
@@ -71,14 +71,14 @@ brave_bytecode_jars = [
   "obj/chrome/browser/language/android/base_module_java.javac.jar",
 ]
 
-template("brave_bytecode_rewriter") {
+template("luxxle_bytecode_rewriter") {
   _rebased_build_config = rebase_path(invoker.build_config, root_build_dir)
   _java_bytecode_rewriter_input_jar = invoker._unprocessed_jar_path
 
   action_with_pydeps(target_name) {
-    script = "//brave/build/android/gyp/bytecode_processor.py"
+    script = "//luxxle/build/android/gyp/bytecode_processor.py"
 _bytecode_rewriter_script = "$root_build_dir/bin/helper/java_bytecode_rewriter"
-    deps = invoker._unprocessed_jar_deps + [ "//brave/build/android/bytecode:java_bytecode_rewriter($default_toolchain)" ]
+    deps = invoker._unprocessed_jar_deps + [ "//luxxle/build/android/bytecode:java_bytecode_rewriter($default_toolchain)" ]
     if (defined(invoker.deps)) {
       deps += invoker.deps
     }

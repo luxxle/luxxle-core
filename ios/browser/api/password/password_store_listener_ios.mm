@@ -1,14 +1,14 @@
-/* Copyright (c) 2021 The Brave Authors. All rights reserved.
+/* Copyright (c) 2021 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/ios/browser/api/password/password_store_listener_ios.h"
+#include "luxxle/ios/browser/api/password/password_store_listener_ios.h"
 
 #include "base/check.h"
 #include "base/strings/sys_string_conversions.h"
-#include "brave/ios/browser/api/password/brave_password_api.h"
-#include "brave/ios/browser/api/password/brave_password_observer.h"
+#include "luxxle/ios/browser/api/password/luxxle_password_api.h"
+#include "luxxle/ios/browser/api/password/luxxle_password_observer.h"
 #include "components/password_manager/core/browser/password_form.h"
 #include "components/password_manager/core/browser/password_store/password_store_interface.h"
 #include "net/base/apple/url_conversions.h"
@@ -91,7 +91,7 @@ void PasswordStoreListenerIOS::OnLoginsRetained(
 }
 
 }  // namespace ios
-}  // namespace brave
+}  // namespace luxxle
 
 @interface PasswordStoreListenerImpl () {
   std::unique_ptr<luxxle::ios::PasswordStoreListenerIOS> observer_;

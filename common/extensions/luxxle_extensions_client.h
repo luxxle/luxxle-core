@@ -1,0 +1,31 @@
+// Copyright (c) 2021 The Luxxle Authors. All rights reserved.
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this file,
+// you can obtain one at http://mozilla.org/MPL/2.0/.
+
+#ifndef LUXXLE_COMMON_EXTENSIONS_LUXXLE_EXTENSIONS_CLIENT_H_
+#define LUXXLE_COMMON_EXTENSIONS_LUXXLE_EXTENSIONS_CLIENT_H_
+
+#include <string>
+
+#include "chrome/common/extensions/chrome_extensions_client.h"
+
+namespace extensions {
+
+class LuxxleExtensionsClient : public ChromeExtensionsClient {
+ public:
+  LuxxleExtensionsClient();
+  LuxxleExtensionsClient(const LuxxleExtensionsClient&) = delete;
+  LuxxleExtensionsClient& operator=(const LuxxleExtensionsClient&) = delete;
+
+  void InitializeWebStoreUrls(base::CommandLine* command_line) override;
+  bool IsScriptableURL(const GURL& url, std::string* error) const override;
+  const GURL& GetWebstoreUpdateURL() const override;
+
+ private:
+  GURL webstore_update_url_;
+};
+
+}  // namespace extensions
+
+#endif  // LUXXLE_COMMON_EXTENSIONS_LUXXLE_EXTENSIONS_CLIENT_H_

@@ -27,7 +27,7 @@ class PrintPreviewExtractorTest : public ChromeRenderViewHostTestHarness {
  protected:
   void SetUp() override {
     ChromeRenderViewHostTestHarness::SetUp();
-    NavigateAndCommit(GURL("https://brave.com/"),
+    NavigateAndCommit(GURL("https://luxxle.com/"),
                       ui::PageTransition::PAGE_TRANSITION_FIRST);
     extractor_ = std::make_unique<PrintPreviewExtractor>(web_contents());
   }

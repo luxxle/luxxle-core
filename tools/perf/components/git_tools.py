@@ -13,16 +13,16 @@ import components.path_util as path_util
 
 from components.perf_test_utils import GetProcessOutput
 
-GH_BRAVE_CORE_GIT_URL = 'git@github.com:brave/brave-core.git'
-GH_BRAVE_VARIATIONS_GIT_URL = 'git@github.com:brave/brave-variations.git'
-GH_BRAVE_PERF_TEAM = 'brave/perf-team'
+GH_LUXXLE_CORE_GIT_URL = 'git@github.com:luxxle/luxxle-core.git'
+GH_LUXXLE_VARIATIONS_GIT_URL = 'git@github.com:luxxle/luxxle-variations.git'
+GH_LUXXLE_PERF_TEAM = 'luxxle/perf-team'
 
 
 def DoesPrOpen(branch: str, target: Optional[str] = None):
   args = ['gh', 'pr', 'list', '--head', branch, '--json', 'number']
   if target is not None:
     args.extend(['--base', target])
-  _, output = GetProcessOutput(args, cwd=path_util.GetBraveDir(), check=True)
+  _, output = GetProcessOutput(args, cwd=path_util.GetLuxxleDir(), check=True)
   pr_list = json.loads(output)
   assert isinstance(pr_list, list)
   return len(pr_list) > 0
@@ -38,18 +38,18 @@ def MakeGithubPR(branch: str, target: str, title: str, body: str,
     args.extend(['--reviewer', reviewer])
   for arg in extra_args:
     args.append(arg)
-  return GetProcessOutput(args, cwd=path_util.GetBraveDir())
+  return GetProcessOutput(args, cwd=path_util.GetLuxxleDir())
 
 
 def PushChangesToBranch(files: Dict[str, str],
                         branch: str,
                         commit_message: str,
-                        cwd=path_util.GetBraveDir()):
+                        cwd=path_util.GetLuxxleDir()):
   # Make a few attempts to rebase if non fast-forward
   for attempt in range(3):
     logging.info('Pushing changes to branch %s #%d', branch, attempt)
     branch_exists, _ = GetProcessOutput(
-        ['git', 'fetch', GH_BRAVE_CORE_GIT_URL, branch], cwd)
+        ['git', 'fetch', GH_LUXXLE_CORE_GIT_URL, branch], cwd)
     if branch_exists:
       GetProcessOutput(['git', 'checkout', '-f', 'FETCH_HEAD'], cwd, check=True)
 
@@ -63,7 +63,7 @@ def PushChangesToBranch(files: Dict[str, str],
                      cwd,
                      check=True)
     success, _ = GetProcessOutput(
-        ['git', 'push', GH_BRAVE_CORE_GIT_URL, f'{branch}:{branch}'], cwd)
+        ['git', 'push', GH_LUXXLE_CORE_GIT_URL, f'{branch}:{branch}'], cwd)
     if success:
       return
 
@@ -71,7 +71,7 @@ def PushChangesToBranch(files: Dict[str, str],
 
 
 def GetFileAtRevision(
-    filepath: str, revision: str, cwd=path_util.GetBraveDir()) -> Optional[str]:
+    filepath: str, revision: str, cwd=path_util.GetLuxxleDir()) -> Optional[str]:
   if os.path.isabs(filepath):
     filepath = os.path.relpath(filepath, cwd)
   normalized_path = filepath.replace('\\', '/')
@@ -86,7 +86,7 @@ def Clone(url: str, branch: Optional[str], target_dir: str) -> None:
   args = ['git', 'clone', url, target_dir]
   if branch:
     args.extend(['--branch', branch])
-  GetProcessOutput(args, path_util.GetBraveDir(), check=True)
+  GetProcessOutput(args, path_util.GetLuxxleDir(), check=True)
 
 
 def EnsureRepositoryUpdated(url: str, branch: str, directory: str) -> None:
@@ -98,7 +98,7 @@ def EnsureRepositoryUpdated(url: str, branch: str, directory: str) -> None:
   GetProcessOutput(['git', 'checkout', 'FETCH_HEAD'], directory, check=True)
 
 
-def EnsureRevision(revision: str, cwd=path_util.GetBraveDir()) -> None:
+def EnsureRevision(revision: str, cwd=path_util.GetLuxxleDir()) -> None:
   args = ['git', 'show', f'{revision}', '-q']
   ok, _ = GetProcessOutput(args, cwd)
   if ok:
@@ -108,15 +108,15 @@ def EnsureRevision(revision: str, cwd=path_util.GetBraveDir()) -> None:
                       cwd):
     return
 
-  if cwd == path_util.GetBraveDir():
+  if cwd == path_util.GetLuxxleDir():
     if GetProcessOutput(
-        ['git', 'fetch', GH_BRAVE_CORE_GIT_URL, f'{revision}:{revision}'], cwd):
+        ['git', 'fetch', GH_LUXXLE_CORE_GIT_URL, f'{revision}:{revision}'], cwd):
       return
 
   raise RuntimeError(f'Can\'t fetch revision {revision}')
 
 
-def GetCommitDate(revision: str, cwd=path_util.GetBraveDir()) -> str:
+def GetCommitDate(revision: str, cwd=path_util.GetLuxxleDir()) -> str:
   _, output = GetProcessOutput(['git', 'show', '-s', '--format=%ci', revision],
                                cwd,
                                check=True)
@@ -125,7 +125,7 @@ def GetCommitDate(revision: str, cwd=path_util.GetBraveDir()) -> str:
 
 
 def GetRevisionFromDate(date: str, branch: str,
-                        cwd=path_util.GetBraveDir()) -> str:
+                        cwd=path_util.GetLuxxleDir()) -> str:
   # fetch the branch:
   GetProcessOutput(['git', 'fetch', 'origin', branch], cwd, check=True)
 
@@ -136,13 +136,13 @@ def GetRevisionFromDate(date: str, branch: str,
   return output.rstrip()
 
 
-def GetGitHash(revision: str, cwd=path_util.GetBraveDir()) -> str:
+def GetGitHash(revision: str, cwd=path_util.GetLuxxleDir()) -> str:
   _, git_hash_output = GetProcessOutput(
       ['git', 'rev-list', '-n', '1', revision], cwd, check=True)
   return git_hash_output.rstrip()
 
 
-def GetRevisionNumber(revision: str, cwd=path_util.GetBraveDir()) -> str:
+def GetRevisionNumber(revision: str, cwd=path_util.GetLuxxleDir()) -> str:
   """Returns the number of "primary" commits from the begging to `revision`.
   Use this to get the commit from a revision number:
   git rev-list --topo-order --first-parent --reverse origin/master

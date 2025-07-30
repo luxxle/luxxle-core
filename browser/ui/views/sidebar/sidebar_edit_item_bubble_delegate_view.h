@@ -18,7 +18,7 @@ namespace views {
 class Textfield;
 }  // namespace views
 
-class BraveBrowser;
+class LuxxleBrowser;
 
 class SidebarEditItemBubbleDelegateView
     : public views::BubbleDialogDelegateView,
@@ -27,7 +27,7 @@ class SidebarEditItemBubbleDelegateView
                   views::BubbleDialogDelegateView)
  public:
 
-  static views::Widget* Create(BraveBrowser* browser,
+  static views::Widget* Create(LuxxleBrowser* browser,
                                const sidebar::SidebarItem& item,
                                views::View* anchor_view);
 
@@ -46,7 +46,7 @@ class SidebarEditItemBubbleDelegateView
                        const std::u16string& new_contents) override;
 
  private:
-  SidebarEditItemBubbleDelegateView(BraveBrowser* browser,
+  SidebarEditItemBubbleDelegateView(LuxxleBrowser* browser,
                                     const sidebar::SidebarItem& item,
                                     views::View* anchor_view);
 
@@ -55,7 +55,7 @@ class SidebarEditItemBubbleDelegateView
   void UpdateOKButtonEnabledState();
 
   sidebar::SidebarItem target_item_;
-  raw_ptr<BraveBrowser> browser_ = nullptr;
+  raw_ptr<LuxxleBrowser> browser_ = nullptr;
   raw_ptr<views::Textfield> title_tf_ = nullptr;
   raw_ptr<views::Textfield> url_tf_ = nullptr;
 };

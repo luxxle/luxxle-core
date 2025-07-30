@@ -9,7 +9,7 @@
 
 #include "luxxle/app/vector_icons/vector_icons.h"
 #include "luxxle/components/constants/pref_names.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_window/public/browser_window_features.h"

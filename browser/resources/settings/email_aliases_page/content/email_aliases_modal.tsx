@@ -1,19 +1,19 @@
-// Copyright (c) 2025 The Brave Authors. All rights reserved.
+// Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
 import { color, font, radius, spacing, typography } from
-  "@brave/leo/tokens/css/variables"
+  "@luxxle/leo/tokens/css/variables"
 import { formatLocale, getLocale } from '$web-common/locale'
 import { onEnterKeyForInput } from "./on_enter_key"
 import * as React from 'react'
-import Alert from "@brave/leo/react/alert"
-import Button from "@brave/leo/react/button"
+import Alert from "@luxxle/leo/react/alert"
+import Button from "@luxxle/leo/react/button"
 import Col from "./styles/Col"
-import Icon from "@brave/leo/react/icon"
-import Input from "@brave/leo/react/input"
-import ProgressRing from "@brave/leo/react/progressRing"
+import Icon from "@luxxle/leo/react/icon"
+import Input from "@luxxle/leo/react/input"
+import ProgressRing from "@luxxle/leo/react/progressRing"
 import Row from "./styles/Row"
 import styled from "styled-components"
 import { Alias, EmailAliasesServiceInterface, GenerateAliasResult, MAX_ALIASES }

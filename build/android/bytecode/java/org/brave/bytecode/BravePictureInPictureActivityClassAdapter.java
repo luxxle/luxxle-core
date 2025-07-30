@@ -3,20 +3,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BravePictureInPictureActivityClassAdapter extends BraveClassVisitor {
+public class LuxxlePictureInPictureActivityClassAdapter extends LuxxleClassVisitor {
     static String sPictureInPictureActivityClassName =
             "org/chromium/chrome/browser/media/PictureInPictureActivity";
-    static String sBravePictureInPictureActivityClassName =
-            "org/chromium/chrome/browser/media/BravePictureInPictureActivity";
+    static String sLuxxlePictureInPictureActivityClassName =
+            "org/chromium/chrome/browser/media/LuxxlePictureInPictureActivity";
 
-    public BravePictureInPictureActivityClassAdapter(ClassVisitor visitor) {
+    public LuxxlePictureInPictureActivityClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         changeSuperName(
-                sPictureInPictureActivityClassName, sBravePictureInPictureActivityClassName);
+                sPictureInPictureActivityClassName, sLuxxlePictureInPictureActivityClassName);
     }
 }

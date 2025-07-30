@@ -7,18 +7,18 @@
 
 #include <utility>
 
-#include "luxxle/browser/ui/webui/brave_webui_source.h"
-// REMOVED: #include "luxxle/components/brave_ads/.*"
-// REMOVED: #include "luxxle/components/brave_ads/.*"
+#include "luxxle/browser/ui/webui/luxxle_webui_source.h"
+// REMOVED: #include "luxxle/components/luxxle_ads/.*"
+// REMOVED: #include "luxxle/components/luxxle_ads/.*"
 #include "chrome/browser/profiles/profile.h"
-#include "components/grit/brave_components_resources.h"
+#include "components/grit/luxxle_components_resources.h"
 #include "components/prefs/pref_service.h"
 #include "content/public/browser/web_contents.h"
 #include "content/public/browser/web_ui.h"
 
 AdsInternalsUI::AdsInternalsUI(content::WebUI* const web_ui,
                                const std::string& name,
-                               brave_ads::AdsService* ads_service,
+                               luxxle_ads::AdsService* ads_service,
                                PrefService& prefs)
     : content::WebUIController(web_ui), handler_(ads_service, prefs) {
   CreateAndAddWebUIDataSource(web_ui, name, kAdsInternalsGenerated,

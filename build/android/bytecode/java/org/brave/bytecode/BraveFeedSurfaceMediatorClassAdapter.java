@@ -3,25 +3,25 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveFeedSurfaceMediatorClassAdapter extends BraveClassVisitor {
+public class LuxxleFeedSurfaceMediatorClassAdapter extends LuxxleClassVisitor {
     static String sFeedSurfaceMediatorClassName =
             "org/chromium/chrome/browser/feed/FeedSurfaceMediator";
-    static String sBraveFeedSurfaceMediatorClassName =
-            "org/chromium/chrome/browser/feed/BraveFeedSurfaceMediator";
+    static String sLuxxleFeedSurfaceMediatorClassName =
+            "org/chromium/chrome/browser/feed/LuxxleFeedSurfaceMediator";
 
-    public BraveFeedSurfaceMediatorClassAdapter(ClassVisitor visitor) {
+    public LuxxleFeedSurfaceMediatorClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sFeedSurfaceMediatorClassName, sBraveFeedSurfaceMediatorClassName);
+        redirectConstructor(sFeedSurfaceMediatorClassName, sLuxxleFeedSurfaceMediatorClassName);
 
-        deleteField(sBraveFeedSurfaceMediatorClassName, "mCoordinator");
+        deleteField(sLuxxleFeedSurfaceMediatorClassName, "mCoordinator");
         makeProtectedField(sFeedSurfaceMediatorClassName, "mCoordinator");
 
-        deleteField(sBraveFeedSurfaceMediatorClassName, "mSnapScrollHelper");
+        deleteField(sLuxxleFeedSurfaceMediatorClassName, "mSnapScrollHelper");
         makeProtectedField(sFeedSurfaceMediatorClassName, "mSnapScrollHelper");
     }
 }

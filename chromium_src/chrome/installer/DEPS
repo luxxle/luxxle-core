@@ -1,0 +1,9 @@
+from luxxle_chromium_utils import inline_file
+inline_file("//chrome/installer/DEPS", globals(), locals())
+
+include_rules += [
+  "+luxxle/browser/luxxle_vpn/win",
+  "+luxxle/components/luxxle_vpn/browser/connection/ikev2/win",
+  "+luxxle/components/luxxle_vpn/common/buildflags",
+  "+luxxle/installer",
+]

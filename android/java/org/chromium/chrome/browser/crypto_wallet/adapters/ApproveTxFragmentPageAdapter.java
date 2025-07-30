@@ -12,10 +12,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.BlockchainToken;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
-import org.chromium.brave_wallet.mojom.TransactionInfo;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.BlockchainToken;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.TransactionInfo;
 import org.chromium.build.annotations.NullMarked;
 import org.chromium.build.annotations.Nullable;
 import org.chromium.chrome.R;

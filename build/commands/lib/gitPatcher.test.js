@@ -9,7 +9,7 @@ const GitPatcher = require('./gitPatcher')
 const { runGitAsync } = require('./util')
 const os = require('os')
 
-const dirPrefixTmp = 'brave-browser-test-git-apply-'
+const dirPrefixTmp = 'luxxle-browser-test-git-apply-'
 
 const file1InitialContent = 'this is a test'
 const file1ModifiedContent = 'this is modified'

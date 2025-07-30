@@ -3,11 +3,11 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
-brave_entitlements_templates = []
+luxxle_entitlements_templates = []
 
 if (is_official_build) {
-  brave_entitlements_templates += [
-    "//luxxle/app/app-entitlements-brave.plist",
+  luxxle_entitlements_templates += [
+    "//luxxle/app/app-entitlements-luxxle.plist",
     "//chrome/app/app-entitlements-chrome.plist",
   ]
 }

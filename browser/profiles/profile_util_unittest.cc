@@ -8,7 +8,7 @@
 #include "base/files/file_path.h"
 #include "base/files/scoped_temp_dir.h"
 #include "luxxle/components/constants/pref_names.h"
-#include "luxxle/components/search_engines/brave_prepopulated_engines.h"
+#include "luxxle/components/search_engines/luxxle_prepopulated_engines.h"
 #include "chrome/browser/profiles/profile_manager.h"
 #include "chrome/test/base/testing_browser_process.h"
 #include "chrome/test/base/testing_profile.h"
@@ -18,11 +18,11 @@
 #include "content/public/test/browser_task_environment.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
-class BraveProfileUtilTest : public testing::Test {
+class LuxxleProfileUtilTest : public testing::Test {
  public:
-  BraveProfileUtilTest()
+  LuxxleProfileUtilTest()
       : testing_profile_manager_(TestingBrowserProcess::GetGlobal()) {}
-  ~BraveProfileUtilTest() override = default;
+  ~LuxxleProfileUtilTest() override = default;
 
  protected:
   void SetUp() override {
@@ -43,51 +43,51 @@ class BraveProfileUtilTest : public testing::Test {
 // #######################
 
 // No entry yet. Check initialized value
-TEST_F(BraveProfileUtilTest, SetDefaultSearchVersionExistingProfileNoEntryYet) {
+TEST_F(LuxxleProfileUtilTest, SetDefaultSearchVersionExistingProfileNoEntryYet) {
   const PrefService::Preference* pref =
-      GetPrefs()->FindPreference(prefs::kBraveDefaultSearchVersion);
+      GetPrefs()->FindPreference(prefs::kLuxxleDefaultSearchVersion);
   EXPECT_TRUE(pref->IsDefaultValue());
   luxxle::SetDefaultSearchVersion(GetProfile(), false);
-  ASSERT_EQ(GetPrefs()->GetInteger(prefs::kBraveDefaultSearchVersion),
-            TemplateURLPrepopulateData::kBraveFirstTrackedDataVersion);
+  ASSERT_EQ(GetPrefs()->GetInteger(prefs::kLuxxleDefaultSearchVersion),
+            TemplateURLPrepopulateData::kLuxxleFirstTrackedDataVersion);
 }
 
-TEST_F(BraveProfileUtilTest, SetDefaultSearchVersionNewProfileNoEntryYet) {
+TEST_F(LuxxleProfileUtilTest, SetDefaultSearchVersionNewProfileNoEntryYet) {
   const PrefService::Preference* pref =
-      GetPrefs()->FindPreference(prefs::kBraveDefaultSearchVersion);
+      GetPrefs()->FindPreference(prefs::kLuxxleDefaultSearchVersion);
   EXPECT_TRUE(pref->IsDefaultValue());
   luxxle::SetDefaultSearchVersion(GetProfile(), true);
-  ASSERT_EQ(GetPrefs()->GetInteger(prefs::kBraveDefaultSearchVersion),
-            TemplateURLPrepopulateData::kBraveCurrentDataVersion);
+  ASSERT_EQ(GetPrefs()->GetInteger(prefs::kLuxxleDefaultSearchVersion),
+            TemplateURLPrepopulateData::kLuxxleCurrentDataVersion);
 }
 
 // Entry there; ensure value is kept
-TEST_F(BraveProfileUtilTest,
+TEST_F(LuxxleProfileUtilTest,
        SetDefaultSearchVersionExistingProfileHasEntryKeepsValue) {
-  GetPrefs()->SetInteger(prefs::kBraveDefaultSearchVersion, 1);
+  GetPrefs()->SetInteger(prefs::kLuxxleDefaultSearchVersion, 1);
   const PrefService::Preference* pref =
-      GetPrefs()->FindPreference(prefs::kBraveDefaultSearchVersion);
+      GetPrefs()->FindPreference(prefs::kLuxxleDefaultSearchVersion);
   EXPECT_FALSE(pref->IsDefaultValue());
   luxxle::SetDefaultSearchVersion(GetProfile(), false);
-  ASSERT_EQ(GetPrefs()->GetInteger(prefs::kBraveDefaultSearchVersion), 1);
+  ASSERT_EQ(GetPrefs()->GetInteger(prefs::kLuxxleDefaultSearchVersion), 1);
 }
 
-TEST_F(BraveProfileUtilTest,
+TEST_F(LuxxleProfileUtilTest,
        SetDefaultSearchVersionNewProfileHasEntryKeepsValue) {
   // This is an anomaly case; new profile won't ever have a hard set value
-  GetPrefs()->SetInteger(prefs::kBraveDefaultSearchVersion, 1);
+  GetPrefs()->SetInteger(prefs::kLuxxleDefaultSearchVersion, 1);
   const PrefService::Preference* pref =
-      GetPrefs()->FindPreference(prefs::kBraveDefaultSearchVersion);
+      GetPrefs()->FindPreference(prefs::kLuxxleDefaultSearchVersion);
   EXPECT_FALSE(pref->IsDefaultValue());
   luxxle::SetDefaultSearchVersion(GetProfile(), true);
-  ASSERT_EQ(GetPrefs()->GetInteger(prefs::kBraveDefaultSearchVersion), 1);
+  ASSERT_EQ(GetPrefs()->GetInteger(prefs::kLuxxleDefaultSearchVersion), 1);
 }
 
 // SetWebTorrentEnabled
 // ####################
-#if BUILDFLAG(ENABLE_BRAVE_WEBTORRENT)
+#if BUILDFLAG(ENABLE_LUXXLE_WEBTORRENT)
 // No entry yet. Check initialized value
-TEST_F(BraveProfileUtilTest, SetWebTorrentEnabledExistingProfileNoEntryYet) {
+TEST_F(LuxxleProfileUtilTest, SetWebTorrentEnabledExistingProfileNoEntryYet) {
   const PrefService::Preference* pref =
       GetPrefs()->FindPreference(kWebTorrentEnabled);
   EXPECT_FALSE(pref->HasUserSetting());
@@ -95,7 +95,7 @@ TEST_F(BraveProfileUtilTest, SetWebTorrentEnabledExistingProfileNoEntryYet) {
   EXPECT_TRUE(GetPrefs()->GetBoolean(kWebTorrentEnabled));
 }
 
-TEST_F(BraveProfileUtilTest, SetWebTorrentEnabledNewProfileNoEntryYet) {
+TEST_F(LuxxleProfileUtilTest, SetWebTorrentEnabledNewProfileNoEntryYet) {
   const PrefService::Preference* pref =
       GetPrefs()->FindPreference(kWebTorrentEnabled);
   EXPECT_FALSE(pref->HasUserSetting());
@@ -104,7 +104,7 @@ TEST_F(BraveProfileUtilTest, SetWebTorrentEnabledNewProfileNoEntryYet) {
 }
 
 // Entry there; ensure value is kept
-TEST_F(BraveProfileUtilTest,
+TEST_F(LuxxleProfileUtilTest,
        SetWebTorrentEnabledExistingProfileHasEntryKeepsValue) {
   GetPrefs()->SetBoolean(kWebTorrentEnabled, true);
   const PrefService::Preference* pref =
@@ -114,7 +114,7 @@ TEST_F(BraveProfileUtilTest,
   EXPECT_TRUE(GetPrefs()->GetBoolean(kWebTorrentEnabled));
 }
 
-TEST_F(BraveProfileUtilTest, SetWebTorrentEnabledNewProfileHasEntryKeepsValue) {
+TEST_F(LuxxleProfileUtilTest, SetWebTorrentEnabledNewProfileHasEntryKeepsValue) {
   // This is an anomaly case; new profile won't ever have a hard set value
   GetPrefs()->SetBoolean(kWebTorrentEnabled, true);
   const PrefService::Preference* pref =
@@ -123,4 +123,4 @@ TEST_F(BraveProfileUtilTest, SetWebTorrentEnabledNewProfileHasEntryKeepsValue) {
   luxxle::SetWebTorrentEnabled(GetProfile(), true);
   EXPECT_TRUE(GetPrefs()->GetBoolean(kWebTorrentEnabled));
 }
-#endif  // ENABLE_BRAVE_WEBTORRENT
+#endif  // ENABLE_LUXXLE_WEBTORRENT

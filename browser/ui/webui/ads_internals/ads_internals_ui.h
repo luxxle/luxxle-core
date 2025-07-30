@@ -8,7 +8,7 @@
 
 #include <string>
 
-// REMOVED: #include "luxxle/components/brave_ads/.*"
+// REMOVED: #include "luxxle/components/luxxle_ads/.*"
 #include "luxxle/components/services/bat_ads/public/interfaces/bat_ads.mojom.h"
 #include "components/prefs/pref_change_registrar.h"
 #include "content/public/browser/web_ui_controller.h"
@@ -16,15 +16,15 @@
 
 class PrefService;
 
-namespace brave_ads {
+namespace luxxle_ads {
 class AdsService;
-}  // namespace brave_ads
+}  // namespace luxxle_ads
 
 class AdsInternalsUI : public content::WebUIController {
  public:
   AdsInternalsUI(content::WebUI* const web_ui,
                  const std::string& name,
-                 brave_ads::AdsService* ads_service,
+                 luxxle_ads::AdsService* ads_service,
                  PrefService& prefs);
 
   AdsInternalsUI(const AdsInternalsUI&) = delete;

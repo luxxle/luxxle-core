@@ -8,10 +8,10 @@
 
 #include <vector>
 
-#include "luxxle/components/infobars/core/brave_confirm_infobar_delegate.h"
+#include "luxxle/components/infobars/core/luxxle_confirm_infobar_delegate.h"
 
 class DevChannelDeprecationInfoBarDelegate
-    : public BraveConfirmInfoBarDelegate {
+    : public LuxxleConfirmInfoBarDelegate {
  public:
   static void CreateIfNeeded(infobars::InfoBarManager* infobar_manager);
 
@@ -25,7 +25,7 @@ class DevChannelDeprecationInfoBarDelegate
  private:
   DevChannelDeprecationInfoBarDelegate();
 
-  // BraveConfirmInfoBarDelegate overrides:
+  // LuxxleConfirmInfoBarDelegate overrides:
   infobars::InfoBarDelegate::InfoBarIdentifier GetIdentifier() const override;
   std::u16string GetMessageText() const override;
   int GetButtons() const override;

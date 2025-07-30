@@ -51,7 +51,7 @@ android_library("java") {
     "//url:url_java",
   ]
 
-  resources_package = "org.chromium.brave.browser.quick_search_engines"
+  resources_package = "org.chromium.luxxle.browser.quick_search_engines"
 }
 
 android_resources("java_resources") {

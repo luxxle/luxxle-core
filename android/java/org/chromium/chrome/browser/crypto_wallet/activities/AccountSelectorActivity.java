@@ -11,10 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.chromium.base.Log;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.AccountKind;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.AccountKind;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.app.domain.KeyringModel;
 import org.chromium.chrome.browser.crypto_wallet.adapters.AccountSelectorRecyclerView;
 import org.chromium.chrome.browser.crypto_wallet.listeners.AccountSelectorItemListener;
@@ -25,7 +25,7 @@ import org.chromium.chrome.browser.crypto_wallet.util.WalletUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AccountSelectorActivity extends BraveWalletBaseActivity
+public class AccountSelectorActivity extends LuxxleWalletBaseActivity
         implements AccountSelectorItemListener {
     private static final String TAG = "AccountSelector";
 
@@ -38,9 +38,9 @@ public class AccountSelectorActivity extends BraveWalletBaseActivity
     protected void triggerLayoutInflation() {
         setContentView(R.layout.activity_account_selector);
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             mKeyringModel = activity.getWalletModel().getKeyringModel();
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "triggerLayoutInflation " + e);
         }
         assert mKeyringModel != null;

@@ -6,7 +6,7 @@
     android:background="@android:color/transparent" >
 
         <ImageView
-            android:id="@+id/brave_shields_shadow"
+            android:id="@+id/luxxle_shields_shadow"
             android:src="@drawable/modern_toolbar_shadow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

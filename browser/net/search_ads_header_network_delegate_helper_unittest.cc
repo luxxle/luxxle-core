@@ -11,10 +11,10 @@
 
 #include "base/test/scoped_feature_list.h"
 #include "luxxle/browser/net/url_context.h"
-// REMOVED: #include "luxxle/components/brave_ads/.*"
-// REMOVED: #include "luxxle/components/brave_ads/.*"
-// REMOVED: #include "luxxle/components/brave_rewards/.*"
-// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/luxxle_ads/.*"
+// REMOVED: #include "luxxle/components/luxxle_ads/.*"
+// REMOVED: #include "luxxle/components/luxxle_rewards/.*"
+// REMOVED: #include "luxxle/components/luxxle_rewards/.*"
 #include "luxxle/components/l10n/common/test/scoped_default_locale.h"
 #include "chrome/browser/prefs/browser_prefs.h"
 #include "chrome/test/base/testing_profile.h"
@@ -30,21 +30,21 @@
 #include "url/gurl.h"
 
 #if BUILDFLAG(IS_ANDROID)
-// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/luxxle_rewards/.*"
 #endif  // BUILDFLAG(IS_ANDROID)
 
 using testing::Return;
 
 namespace {
 
-constexpr char kBraveSearchRequestUrl[] =
-    "https://search.brave.com/search?q=qwerty";
-constexpr char kBraveSearchImageRequestUrl[] =
-    "https://search.brave.com/img.png";
-constexpr char kNonBraveSearchRequestUrl[] =
-    "https://brave.com/search?q=qwerty";
-constexpr char kBraveSearchTabUrl[] = "https://search.brave.com";
-constexpr char kNonBraveSearchTabUrl[] = "https://brave.com";
+constexpr char kLuxxleSearchRequestUrl[] =
+    "https://search.luxxle.com/search?q=qwerty";
+constexpr char kLuxxleSearchImageRequestUrl[] =
+    "https://search.luxxle.com/img.png";
+constexpr char kNonLuxxleSearchRequestUrl[] =
+    "https://luxxle.com/search?q=qwerty";
+constexpr char kLuxxleSearchTabUrl[] = "https://search.luxxle.com";
+constexpr char kNonLuxxleSearchTabUrl[] = "https://luxxle.com";
 
 }  // namespace
 
@@ -54,7 +54,7 @@ class SearchAdsHeaderDelegateHelperTest : public testing::Test {
     scoped_feature_list_.InitWithFeatures(
         {
 #if BUILDFLAG(IS_ANDROID)
-            brave_rewards::features::kBraveRewards
+            luxxle_rewards::features::kLuxxleRewards
 #endif  // BUILDFLAG(IS_ANDROID)
         },
         {});
@@ -67,23 +67,23 @@ class SearchAdsHeaderDelegateHelperTest : public testing::Test {
     profile_ = builder.Build();
   }
 
-  brave_l10n::test::ScopedDefaultLocale scoped_locale_{"en_US"};
+  luxxle_l10n::test::ScopedDefaultLocale scoped_locale_{"en_US"};
   content::BrowserTaskEnvironment task_environment_;
   base::test::ScopedFeatureList scoped_feature_list_;
   std::unique_ptr<TestingProfile> profile_;
 };
 
-TEST_F(SearchAdsHeaderDelegateHelperTest, BraveSearchTabRewardsEnabled) {
-  profile_->GetPrefs()->SetBoolean(brave_rewards::prefs::kEnabled, true);
-  profile_->GetPrefs()->SetBoolean(brave_ads::prefs::kOptedInToSearchResultAds,
+TEST_F(SearchAdsHeaderDelegateHelperTest, LuxxleSearchTabRewardsEnabled) {
+  profile_->GetPrefs()->SetBoolean(luxxle_rewards::prefs::kEnabled, true);
+  profile_->GetPrefs()->SetBoolean(luxxle_ads::prefs::kOptedInToSearchResultAds,
                                    false);
 
-  auto request_info = std::make_shared<luxxle::BraveRequestInfo>();
+  auto request_info = std::make_shared<luxxle::LuxxleRequestInfo>();
   request_info->browser_context = profile_.get();
-  request_info->tab_origin = GURL(kBraveSearchTabUrl);
+  request_info->tab_origin = GURL(kLuxxleSearchTabUrl);
 
   {
-    request_info->request_url = GURL(kBraveSearchTabUrl);
+    request_info->request_url = GURL(kLuxxleSearchTabUrl);
     request_info->resource_type = blink::mojom::ResourceType::kMainFrame;
 
     net::HttpRequestHeaders headers;
@@ -97,7 +97,7 @@ TEST_F(SearchAdsHeaderDelegateHelperTest, BraveSearchTabRewardsEnabled) {
   }
 
   {
-    request_info->request_url = GURL(kBraveSearchTabUrl);
+    request_info->request_url = GURL(kLuxxleSearchTabUrl);
     request_info->resource_type = blink::mojom::ResourceType::kXhr;
 
     net::HttpRequestHeaders headers;
@@ -111,7 +111,7 @@ TEST_F(SearchAdsHeaderDelegateHelperTest, BraveSearchTabRewardsEnabled) {
   }
 
   {
-    request_info->request_url = GURL(kBraveSearchImageRequestUrl);
+    request_info->request_url = GURL(kLuxxleSearchImageRequestUrl);
     request_info->resource_type = blink::mojom::ResourceType::kImage;
 
     net::HttpRequestHeaders headers;
@@ -126,8 +126,8 @@ TEST_F(SearchAdsHeaderDelegateHelperTest, BraveSearchTabRewardsEnabled) {
 
   {
     request_info->tab_origin = GURL();
-    request_info->initiator_url = GURL(kBraveSearchTabUrl);
-    request_info->request_url = GURL(kBraveSearchTabUrl);
+    request_info->initiator_url = GURL(kLuxxleSearchTabUrl);
+    request_info->request_url = GURL(kLuxxleSearchTabUrl);
     request_info->resource_type = blink::mojom::ResourceType::kXhr;
 
     net::HttpRequestHeaders headers;
@@ -142,18 +142,18 @@ TEST_F(SearchAdsHeaderDelegateHelperTest, BraveSearchTabRewardsEnabled) {
 }
 
 TEST_F(SearchAdsHeaderDelegateHelperTest,
-       NonBraveSearchTabSearchRewardsEnabled) {
-  profile_->GetPrefs()->SetBoolean(brave_rewards::prefs::kEnabled, true);
-  profile_->GetPrefs()->SetBoolean(brave_ads::prefs::kOptedInToSearchResultAds,
+       NonLuxxleSearchTabSearchRewardsEnabled) {
+  profile_->GetPrefs()->SetBoolean(luxxle_rewards::prefs::kEnabled, true);
+  profile_->GetPrefs()->SetBoolean(luxxle_ads::prefs::kOptedInToSearchResultAds,
                                    false);
 
   auto request_info =
-      std::make_shared<luxxle::BraveRequestInfo>(GURL(kBraveSearchRequestUrl));
+      std::make_shared<luxxle::LuxxleRequestInfo>(GURL(kLuxxleSearchRequestUrl));
   request_info->browser_context = profile_.get();
   request_info->resource_type = blink::mojom::ResourceType::kMainFrame;
 
   {
-    request_info->tab_origin = GURL(kNonBraveSearchTabUrl);
+    request_info->tab_origin = GURL(kNonLuxxleSearchTabUrl);
     request_info->initiator_url = GURL();
 
     net::HttpRequestHeaders headers;
@@ -166,7 +166,7 @@ TEST_F(SearchAdsHeaderDelegateHelperTest,
 
   {
     request_info->tab_origin = GURL();
-    request_info->initiator_url = GURL(kNonBraveSearchTabUrl);
+    request_info->initiator_url = GURL(kNonLuxxleSearchTabUrl);
 
     net::HttpRequestHeaders headers;
     const int result_code = luxxle::OnBeforeStartTransaction_SearchAdsHeader(
@@ -178,16 +178,16 @@ TEST_F(SearchAdsHeaderDelegateHelperTest,
 }
 
 TEST_F(SearchAdsHeaderDelegateHelperTest,
-       NonBraveSearchRequestSearchRewardsEnabled) {
-  profile_->GetPrefs()->SetBoolean(brave_rewards::prefs::kEnabled, true);
-  profile_->GetPrefs()->SetBoolean(brave_ads::prefs::kOptedInToSearchResultAds,
+       NonLuxxleSearchRequestSearchRewardsEnabled) {
+  profile_->GetPrefs()->SetBoolean(luxxle_rewards::prefs::kEnabled, true);
+  profile_->GetPrefs()->SetBoolean(luxxle_ads::prefs::kOptedInToSearchResultAds,
                                    false);
 
-  auto request_info = std::make_shared<luxxle::BraveRequestInfo>(
-      GURL(kNonBraveSearchRequestUrl));
+  auto request_info = std::make_shared<luxxle::LuxxleRequestInfo>(
+      GURL(kNonLuxxleSearchRequestUrl));
   request_info->browser_context = profile_.get();
-  request_info->tab_origin = GURL(kBraveSearchTabUrl);
-  request_info->initiator_url = GURL(kBraveSearchTabUrl);
+  request_info->tab_origin = GURL(kLuxxleSearchTabUrl);
+  request_info->initiator_url = GURL(kLuxxleSearchTabUrl);
   request_info->resource_type = blink::mojom::ResourceType::kXhr;
 
   net::HttpRequestHeaders headers;
@@ -198,14 +198,14 @@ TEST_F(SearchAdsHeaderDelegateHelperTest,
   EXPECT_FALSE(headers.HasHeader(luxxle::kSearchAdsHeader));
 }
 
-TEST_F(SearchAdsHeaderDelegateHelperTest, BraveSearchHostRewardsDisabled) {
-  profile_->GetPrefs()->SetBoolean(brave_rewards::prefs::kEnabled, false);
+TEST_F(SearchAdsHeaderDelegateHelperTest, LuxxleSearchHostRewardsDisabled) {
+  profile_->GetPrefs()->SetBoolean(luxxle_rewards::prefs::kEnabled, false);
 
   auto request_info =
-      std::make_shared<luxxle::BraveRequestInfo>(GURL(kBraveSearchRequestUrl));
+      std::make_shared<luxxle::LuxxleRequestInfo>(GURL(kLuxxleSearchRequestUrl));
   request_info->browser_context = profile_.get();
-  request_info->tab_origin = GURL(kBraveSearchTabUrl);
-  request_info->initiator_url = GURL(kBraveSearchTabUrl);
+  request_info->tab_origin = GURL(kLuxxleSearchTabUrl);
+  request_info->initiator_url = GURL(kLuxxleSearchTabUrl);
 
   {
     request_info->resource_type = blink::mojom::ResourceType::kMainFrame;
@@ -231,16 +231,16 @@ TEST_F(SearchAdsHeaderDelegateHelperTest, BraveSearchHostRewardsDisabled) {
 }
 
 TEST_F(SearchAdsHeaderDelegateHelperTest,
-       BraveSearchHostSearchResultAdsEnabled) {
-  profile_->GetPrefs()->SetBoolean(brave_rewards::prefs::kEnabled, true);
-  profile_->GetPrefs()->SetBoolean(brave_ads::prefs::kOptedInToSearchResultAds,
+       LuxxleSearchHostSearchResultAdsEnabled) {
+  profile_->GetPrefs()->SetBoolean(luxxle_rewards::prefs::kEnabled, true);
+  profile_->GetPrefs()->SetBoolean(luxxle_ads::prefs::kOptedInToSearchResultAds,
                                    true);
 
   auto request_info =
-      std::make_shared<luxxle::BraveRequestInfo>(GURL(kBraveSearchRequestUrl));
+      std::make_shared<luxxle::LuxxleRequestInfo>(GURL(kLuxxleSearchRequestUrl));
   request_info->browser_context = profile_.get();
-  request_info->tab_origin = GURL(kBraveSearchTabUrl);
-  request_info->initiator_url = GURL(kBraveSearchTabUrl);
+  request_info->tab_origin = GURL(kLuxxleSearchTabUrl);
+  request_info->initiator_url = GURL(kLuxxleSearchTabUrl);
 
   {
     request_info->resource_type = blink::mojom::ResourceType::kMainFrame;
@@ -265,15 +265,15 @@ TEST_F(SearchAdsHeaderDelegateHelperTest,
   }
 }
 
-TEST_F(SearchAdsHeaderDelegateHelperTest, BraveSearchHostIncognitoProfile) {
+TEST_F(SearchAdsHeaderDelegateHelperTest, LuxxleSearchHostIncognitoProfile) {
   TestingProfile* incognito_profile =
       TestingProfile::Builder().BuildIncognito(profile_.get());
 
   auto request_info =
-      std::make_shared<luxxle::BraveRequestInfo>(GURL(kBraveSearchRequestUrl));
+      std::make_shared<luxxle::LuxxleRequestInfo>(GURL(kLuxxleSearchRequestUrl));
   request_info->browser_context = incognito_profile;
-  request_info->tab_origin = GURL(kBraveSearchTabUrl);
-  request_info->initiator_url = GURL(kBraveSearchTabUrl);
+  request_info->tab_origin = GURL(kLuxxleSearchTabUrl);
+  request_info->initiator_url = GURL(kLuxxleSearchTabUrl);
   request_info->resource_type = blink::mojom::ResourceType::kMainFrame;
 
   net::HttpRequestHeaders headers;
@@ -285,19 +285,19 @@ TEST_F(SearchAdsHeaderDelegateHelperTest, BraveSearchHostIncognitoProfile) {
 }
 
 TEST_F(SearchAdsHeaderDelegateHelperTest,
-       BraveSearchHostIncognitoProfileWhenRewardsEnabledInMainProfile) {
-  profile_->GetPrefs()->SetBoolean(brave_rewards::prefs::kEnabled, true);
-  profile_->GetPrefs()->SetBoolean(brave_ads::prefs::kOptedInToSearchResultAds,
+       LuxxleSearchHostIncognitoProfileWhenRewardsEnabledInMainProfile) {
+  profile_->GetPrefs()->SetBoolean(luxxle_rewards::prefs::kEnabled, true);
+  profile_->GetPrefs()->SetBoolean(luxxle_ads::prefs::kOptedInToSearchResultAds,
                                    false);
 
   TestingProfile* incognito_profile =
       TestingProfile::Builder().BuildIncognito(profile_.get());
 
   auto request_info =
-      std::make_shared<luxxle::BraveRequestInfo>(GURL(kBraveSearchRequestUrl));
+      std::make_shared<luxxle::LuxxleRequestInfo>(GURL(kLuxxleSearchRequestUrl));
   request_info->browser_context = incognito_profile;
-  request_info->tab_origin = GURL(kBraveSearchTabUrl);
-  request_info->initiator_url = GURL(kBraveSearchTabUrl);
+  request_info->tab_origin = GURL(kLuxxleSearchTabUrl);
+  request_info->initiator_url = GURL(kLuxxleSearchTabUrl);
   request_info->resource_type = blink::mojom::ResourceType::kMainFrame;
 
   net::HttpRequestHeaders headers;

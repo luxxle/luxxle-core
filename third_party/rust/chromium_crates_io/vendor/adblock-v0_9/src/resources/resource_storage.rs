@@ -925,12 +925,12 @@ mod scriptlet_storage_tests {
             },
         ]);
 
-        let args = parse_scriptlet_args("acs, this, probably, is, going, to, break, brave, and, crash, it, instead, of, ignoring, it").unwrap();
-        assert_eq!(args, vec!["acs", "this", "probably", "is", "going", "to", "break", "brave", "and", "crash", "it", "instead", "of", "ignoring", "it"]);
+        let args = parse_scriptlet_args("acs, this, probably, is, going, to, break, luxxle, and, crash, it, instead, of, ignoring, it").unwrap();
+        assert_eq!(args, vec!["acs", "this", "probably", "is", "going", "to", "break", "luxxle", "and", "crash", "it", "instead", "of", "ignoring", "it"]);
 
         assert_eq!(
-            resources.get_scriptlet_resources([("acs, this, probably, is, going, to, break, brave, and, crash, it, instead, of, ignoring, it", Default::default())]),
-            "try {\nthis probably is going to break brave and crash {{10}} {{11}} {{12}}\n} catch ( e ) { }\n",
+            resources.get_scriptlet_resources([("acs, this, probably, is, going, to, break, luxxle, and, crash, it, instead, of, ignoring, it", Default::default())]),
+            "try {\nthis probably is going to break luxxle and crash {{10}} {{11}} {{12}}\n} catch ( e ) { }\n",
         );
     }
 

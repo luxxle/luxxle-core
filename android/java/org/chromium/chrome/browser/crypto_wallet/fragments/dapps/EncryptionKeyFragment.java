@@ -19,16 +19,16 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import org.chromium.base.Log;
-import org.chromium.brave_wallet.mojom.AccountId;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.DecryptRequest;
-import org.chromium.brave_wallet.mojom.GetEncryptionPublicKeyRequest;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.AccountId;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.DecryptRequest;
+import org.chromium.luxxle_wallet.mojom.GetEncryptionPublicKeyRequest;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.app.domain.WalletModel;
-import org.chromium.chrome.browser.crypto_wallet.activities.BraveWalletDAppsActivity;
+import org.chromium.chrome.browser.crypto_wallet.activities.LuxxleWalletDAppsActivity;
 import org.chromium.chrome.browser.crypto_wallet.util.AndroidUtils;
 import org.chromium.chrome.browser.crypto_wallet.util.Utils;
 
@@ -52,7 +52,7 @@ public class EncryptionKeyFragment extends Fragment implements View.OnClickListe
     private Button mBtProvideAllow;
     private ExecutorService mExecutor;
     private Handler mHandler;
-    private BraveWalletDAppsActivity.ActivityType mActivityType;
+    private LuxxleWalletDAppsActivity.ActivityType mActivityType;
     private WalletModel mWalletModel;
     private GetEncryptionPublicKeyRequest mEncryptionPublicKeyRequest;
     private DecryptRequest mDecryptRequest;
@@ -64,7 +64,7 @@ public class EncryptionKeyFragment extends Fragment implements View.OnClickListe
      * @return A new instance of fragment EncryptionKeyFragment.
      */
     public static EncryptionKeyFragment newInstance(
-            BraveWalletDAppsActivity.ActivityType activityType) {
+            LuxxleWalletDAppsActivity.ActivityType activityType) {
         EncryptionKeyFragment fragment = new EncryptionKeyFragment();
         Bundle args = new Bundle();
         args.putSerializable(ACTIVITY_TYPE, activityType);
@@ -78,9 +78,9 @@ public class EncryptionKeyFragment extends Fragment implements View.OnClickListe
         mExecutor = Executors.newSingleThreadExecutor();
         mHandler = new Handler(Looper.getMainLooper());
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             mWalletModel = activity.getWalletModel();
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "onCreate " + e);
         }
     }
@@ -90,7 +90,7 @@ public class EncryptionKeyFragment extends Fragment implements View.OnClickListe
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         assert getArguments() != null;
         mActivityType =
-                (BraveWalletDAppsActivity.ActivityType)
+                (LuxxleWalletDAppsActivity.ActivityType)
                         getArguments().getSerializable(ACTIVITY_TYPE);
         View view = inflater.inflate(R.layout.fragment_encryption_key, container, false);
         mAccountImage = view.findViewById(R.id.fragment_encryption_msg_cv_iv_account);
@@ -153,7 +153,7 @@ public class EncryptionKeyFragment extends Fragment implements View.OnClickListe
                         });
 
         if (mActivityType
-                == BraveWalletDAppsActivity.ActivityType.GET_ENCRYPTION_PUBLIC_KEY_REQUEST) {
+                == LuxxleWalletDAppsActivity.ActivityType.GET_ENCRYPTION_PUBLIC_KEY_REQUEST) {
             mWalletModel
                     .getCryptoModel()
                     .getPublicEncryptionRequest(
@@ -165,13 +165,13 @@ public class EncryptionKeyFragment extends Fragment implements View.OnClickListe
                                             String.format(
                                                     getString(
                                                             R.string
-                                                                    .brave_wallet_provide_encryption_key_description),
+                                                                    .luxxle_wallet_provide_encryption_key_description),
                                                     Utils.geteTldHtmlString(
                                                             encryptionPublicKeyRequest.originInfo));
                                     mTvMessageDesc.setText(AndroidUtils.formatHTML(formattedeTLD));
                                 }
                             });
-        } else if (mActivityType == BraveWalletDAppsActivity.ActivityType.DECRYPT_REQUEST) {
+        } else if (mActivityType == LuxxleWalletDAppsActivity.ActivityType.DECRYPT_REQUEST) {
             mWalletModel
                     .getCryptoModel()
                     .getDecryptMessageRequest(
@@ -183,9 +183,9 @@ public class EncryptionKeyFragment extends Fragment implements View.OnClickListe
                                 mTveTldPlusOne.setText(
                                         Utils.geteTldSpanned(mDecryptRequest.originInfo));
                                 mTvMessage.setText(
-                                        R.string.brave_wallet_read_encrypted_message_title);
+                                        R.string.luxxle_wallet_read_encrypted_message_title);
                                 mBtProvideAllow.setText(
-                                        R.string.brave_wallet_read_encrypted_message_button);
+                                        R.string.luxxle_wallet_read_encrypted_message_button);
                                 mTvMessageDecrypt.setOnClickListener(
                                         v -> {
                                             mTvMessageDecrypt.setVisibility(View.GONE);
@@ -198,12 +198,12 @@ public class EncryptionKeyFragment extends Fragment implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (mActivityType
-                == BraveWalletDAppsActivity.ActivityType.GET_ENCRYPTION_PUBLIC_KEY_REQUEST) {
+                == LuxxleWalletDAppsActivity.ActivityType.GET_ENCRYPTION_PUBLIC_KEY_REQUEST) {
             mWalletModel
                     .getDappsModel()
                     .processPublicEncryptionKey(
                             mEncryptionPublicKeyRequest.requestId, isPositiveActionTriggered(v));
-        } else if (mActivityType == BraveWalletDAppsActivity.ActivityType.DECRYPT_REQUEST) {
+        } else if (mActivityType == LuxxleWalletDAppsActivity.ActivityType.DECRYPT_REQUEST) {
             mWalletModel
                     .getDappsModel()
                     .processDecryptRequest(mDecryptRequest.requestId, isPositiveActionTriggered(v));

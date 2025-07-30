@@ -3,22 +3,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveSiteSettingsCategoryClassAdapter extends BraveClassVisitor {
+public class LuxxleSiteSettingsCategoryClassAdapter extends LuxxleClassVisitor {
     static String sSiteSettingsCategoryClassName =
             "org/chromium/components/browser_ui/site_settings/SiteSettingsCategory";
-    static String sBraveSiteSettingsCategoryClassName =
-            "org/chromium/components/browser_ui/site_settings/BraveSiteSettingsCategory";
+    static String sLuxxleSiteSettingsCategoryClassName =
+            "org/chromium/components/browser_ui/site_settings/LuxxleSiteSettingsCategory";
 
-    public BraveSiteSettingsCategoryClassAdapter(ClassVisitor visitor) {
+    public LuxxleSiteSettingsCategoryClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         changeMethodOwner(sSiteSettingsCategoryClassName, "contentSettingsType",
-                sBraveSiteSettingsCategoryClassName);
+                sLuxxleSiteSettingsCategoryClassName);
         changeMethodOwner(sSiteSettingsCategoryClassName, "preferenceKey",
-                sBraveSiteSettingsCategoryClassName);
+                sLuxxleSiteSettingsCategoryClassName);
     }
 }

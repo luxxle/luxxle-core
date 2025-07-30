@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import static org.objectweb.asm.Opcodes.ACC_FINAL;
 import static org.objectweb.asm.Opcodes.ACC_PRIVATE;
@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-class BraveClassVisitor extends ClassVisitor {
+class LuxxleClassVisitor extends ClassVisitor {
 
     private ClassVisitor mTarget;
 
@@ -57,11 +57,11 @@ class BraveClassVisitor extends ClassVisitor {
         }
     }
 
-    class BraveMethodVisitor extends MethodVisitor {
+    class LuxxleMethodVisitor extends MethodVisitor {
 
         private Method mMethod;
 
-        public BraveMethodVisitor(Method method, MethodVisitor mv) {
+        public LuxxleMethodVisitor(Method method, MethodVisitor mv) {
             super(ASM7, mv);
             this.mMethod = method;
         }
@@ -130,7 +130,7 @@ class BraveClassVisitor extends ClassVisitor {
             new HashMap<String, Map<String, Map<String, String>>>();
     private ArrayList<String> mMakeNonFinalClasses = new ArrayList<String>();
 
-    public BraveClassVisitor(ClassVisitor visitor) {
+    public LuxxleClassVisitor(ClassVisitor visitor) {
         super(ASM7, null);
         mTarget = visitor;
     }
@@ -488,7 +488,7 @@ class BraveClassVisitor extends ClassVisitor {
     }
 
     protected MethodVisitor visitMethodImpl(Method method) {
-        return new BraveMethodVisitor(method, super.visitMethod(method.access,
+        return new LuxxleMethodVisitor(method, super.visitMethod(method.access,
                                                                 method.name,
                                                                 method.desc,
                                                                 method.signature,

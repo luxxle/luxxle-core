@@ -9,13 +9,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import org.chromium.chrome.browser.vpn.utils.BraveVpnProfileUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnProfileUtils;
 
 public class TimerVpnActionReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         try {
-            BraveVpnProfileUtils.getInstance().startVpn(context);
+            LuxxleVpnProfileUtils.getInstance().startVpn(context);
         } catch (Exception exc) {
             // There could be uninitialized parts on early stages. Just ignore it the exception,
             // it's better comparing to crashing

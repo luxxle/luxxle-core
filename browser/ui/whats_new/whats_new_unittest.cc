@@ -24,11 +24,11 @@ constexpr char kWhatsNewTrial[] = "WhatsNewStudy";
 
 }  // namespace
 
-class BraveWhatsNewTest : public testing::Test {
+class LuxxleWhatsNewTest : public testing::Test {
  public:
-  BraveWhatsNewTest()
+  LuxxleWhatsNewTest()
       : testing_profile_manager_(TestingBrowserProcess::GetGlobal()) {}
-  ~BraveWhatsNewTest() override = default;
+  ~LuxxleWhatsNewTest() override = default;
 
   void SetUp() override {
     RegisterLocalStatePrefs(local_state_.registry());
@@ -54,89 +54,89 @@ class BraveWhatsNewTest : public testing::Test {
   raw_ptr<TestingProfile> profile_ = nullptr;
 };
 
-TEST_F(BraveWhatsNewTest, SupportedLangTest) {
-  // Prepare all other factors to show brave whats-new except lang.
+TEST_F(LuxxleWhatsNewTest, SupportedLangTest) {
+  // Prepare all other factors to show luxxle whats-new except lang.
   // Set current version with field trial's target major version(1.51)
   SetCurrentVersionForTesting(1.51);
   base::FieldTrialList::CreateFieldTrial(kWhatsNewTrial, "Enabled");
 
   // Italy is not supported yet.
   {
-    const brave_l10n::test::ScopedDefaultLocale scoped_default_locale("it_IT");
-    EXPECT_FALSE(ShouldShowBraveWhatsNewForState(&local_state_));
+    const luxxle_l10n::test::ScopedDefaultLocale scoped_default_locale("it_IT");
+    EXPECT_FALSE(ShouldShowLuxxleWhatsNewForState(&local_state_));
   }
 
   // South korea is supported.
   {
-    const brave_l10n::test::ScopedDefaultLocale scoped_default_locale("ko_KR");
-    EXPECT_TRUE(ShouldShowBraveWhatsNewForState(&local_state_));
+    const luxxle_l10n::test::ScopedDefaultLocale scoped_default_locale("ko_KR");
+    EXPECT_TRUE(ShouldShowLuxxleWhatsNewForState(&local_state_));
   }
 }
 
 // Test when field trial is not available.
 // base::FieldTrialList::CreateFieldTrial(kWhatsNewTrial, "Enabled") is not
 // called.
-TEST_F(BraveWhatsNewTest, FieldTrialNotAvailableTest) {
+TEST_F(LuxxleWhatsNewTest, FieldTrialNotAvailableTest) {
   // Set supported lang.
-  const brave_l10n::test::ScopedDefaultLocale scoped_default_locale("en_US");
+  const luxxle_l10n::test::ScopedDefaultLocale scoped_default_locale("en_US");
 
   // Set current version with field trial's target major version(1.51)
   SetCurrentVersionForTesting(1.51);
 
-  EXPECT_FALSE(ShouldShowBraveWhatsNewForState(&local_state_));
+  EXPECT_FALSE(ShouldShowLuxxleWhatsNewForState(&local_state_));
 }
 
 // Test when profile created version and current version is same.
 // We treat these users as users who have never experienced updates.
 // For these users, we don't launch whats-new.
-TEST_F(BraveWhatsNewTest, NotUpdatedUserTest) {
+TEST_F(LuxxleWhatsNewTest, NotUpdatedUserTest) {
   // Make not updated user. Profile created version is 1.51 and
   // current version is set as 1.51 below.
   ChromeVersionService::SetVersion(profile_->GetPrefs(), "112.1.51.4");
 
   // Set supported lang.
-  const brave_l10n::test::ScopedDefaultLocale scoped_default_locale("en_US");
+  const luxxle_l10n::test::ScopedDefaultLocale scoped_default_locale("en_US");
 
   // Set current version with field trial's target major version(1.51)
   SetCurrentVersionForTesting(1.51);
   base::FieldTrialList::CreateFieldTrial(kWhatsNewTrial, "Enabled");
 
   EXPECT_EQ(0, local_state_.GetDouble(prefs::kWhatsNewLastVersion));
-  EXPECT_FALSE(ShouldShowBraveWhatsNewForState(&local_state_));
+  EXPECT_FALSE(ShouldShowLuxxleWhatsNewForState(&local_state_));
   EXPECT_EQ(0, local_state_.GetDouble(prefs::kWhatsNewLastVersion));
 }
 
 // Test when current version and target version is matched.
-TEST_F(BraveWhatsNewTest, MatchedCurrentVersionTest) {
+TEST_F(LuxxleWhatsNewTest, MatchedCurrentVersionTest) {
   // Set supported lang.
-  const brave_l10n::test::ScopedDefaultLocale scoped_default_locale("en_US");
+  const luxxle_l10n::test::ScopedDefaultLocale scoped_default_locale("en_US");
 
   // Set current version with field trial's target major version(1.51)
   SetCurrentVersionForTesting(1.51);
   base::FieldTrialList::CreateFieldTrial(kWhatsNewTrial, "Enabled");
 
   EXPECT_NE(1.51, local_state_.GetDouble(prefs::kWhatsNewLastVersion));
-  EXPECT_TRUE(ShouldShowBraveWhatsNewForState(&local_state_));
+  EXPECT_TRUE(ShouldShowLuxxleWhatsNewForState(&local_state_));
   EXPECT_EQ(1.51, local_state_.GetDouble(prefs::kWhatsNewLastVersion));
 }
 
 // Test when current version and target version is not matched.
-TEST_F(BraveWhatsNewTest, NotMatchedCurrentVersionTest) {
+TEST_F(LuxxleWhatsNewTest, NotMatchedCurrentVersionTest) {
   // Set supported lang.
-  const brave_l10n::test::ScopedDefaultLocale scoped_default_locale("en_US");
+  const luxxle_l10n::test::ScopedDefaultLocale scoped_default_locale("en_US");
 
   // Set different version as current version. field trial's target major
   // version is 1.51
   SetCurrentVersionForTesting(1.52);
   base::FieldTrialList::CreateFieldTrial(kWhatsNewTrial, "Enabled");
 
-  EXPECT_FALSE(ShouldShowBraveWhatsNewForState(&local_state_));
+  EXPECT_FALSE(ShouldShowLuxxleWhatsNewForState(&local_state_));
 }
 
 // Test whats-new is already shown by setting 1.51 to prefs in advance.
-TEST_F(BraveWhatsNewTest, NotWhatsNewIsAlreadyShown) {
+TEST_F(LuxxleWhatsNewTest, NotWhatsNewIsAlreadyShown) {
   // Set supported lang.
-  const brave_l10n::test::ScopedDefaultLocale scoped_default_locale("en_US");
+  const luxxle_l10n::test::ScopedDefaultLocale scoped_default_locale("en_US");
 
   // Set different version as current version. field trial's target major
   // version is 1.51
@@ -144,7 +144,7 @@ TEST_F(BraveWhatsNewTest, NotWhatsNewIsAlreadyShown) {
   base::FieldTrialList::CreateFieldTrial(kWhatsNewTrial, "Enabled");
 
   local_state_.SetDouble(prefs::kWhatsNewLastVersion, 1.51);
-  EXPECT_FALSE(ShouldShowBraveWhatsNewForState(&local_state_));
+  EXPECT_FALSE(ShouldShowLuxxleWhatsNewForState(&local_state_));
 }
 
 }  // namespace whats_new

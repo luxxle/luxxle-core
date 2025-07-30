@@ -1,9 +1,9 @@
-// Copyright (c) 2023 The Brave Authors. All rights reserved.
+// Copyright (c) 2023 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/ios/browser/ui/webui/skus/skus_internals_ui.h"
+#include "luxxle/ios/browser/ui/webui/skus/skus_internals_ui.h"
 
 #include <memory>
 #include <string_view>
@@ -20,8 +20,8 @@
 #include "luxxle/components/constants/webui_url_constants.h"
 #include "luxxle/components/skus/browser/pref_names.h"
 #include "luxxle/components/skus/browser/resources/grit/skus_internals_generated_map.h"
-#include "brave/ios/browser/skus/skus_service_factory.h"
-#include "components/grit/brave_components_resources.h"
+#include "luxxle/ios/browser/skus/skus_service_factory.h"
+#include "components/grit/luxxle_components_resources.h"
 #include "components/prefs/pref_service.h"
 #include "ios/chrome/browser/shared/model/application_context/application_context.h"
 #include "ios/chrome/browser/shared/model/profile/profile_ios.h"
@@ -78,7 +78,7 @@ UIViewController* GetParentControllerFromView(UIView* view) {
 SkusInternalsUI::SkusInternalsUI(web::WebUIIOS* web_ui, const GURL& url)
     : web::WebUIIOSController(web_ui, url.host()),
       local_state_(GetApplicationContext()->GetLocalState()) {
-  // Set up the brave://skus-internals/ source.
+  // Set up the luxxle://skus-internals/ source.
   CreateAndAddWebUIDataSource(web_ui, url.host(), kSkusInternalsGenerated,
                               IDR_SKUS_INTERNALS_HTML);
 

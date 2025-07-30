@@ -1,0 +1,6 @@
+include_rules = [
+  "+luxxle/components/sync/service",
+  "+luxxle/components/constants",
+  "+luxxle/components/tor",
+  "+luxxle/components/constants",
+]

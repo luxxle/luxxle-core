@@ -1,0 +1,5 @@
+include_rules = [
+  "+luxxle/components/tor",
+  "+luxxle/components/luxxle_vpn/common",
+  "+luxxle/services/network/public",
+]

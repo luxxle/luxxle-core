@@ -10,7 +10,7 @@ const util = require('../lib/util')
 args = [
   path.join(
     config.srcDir,
-    'brave',
+    'luxxle',
     'ui',
     'webui',
     'resources',

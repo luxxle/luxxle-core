@@ -5,7 +5,7 @@
 
 #include "base/path_service.h"
 #include "base/strings/stringprintf.h"
-#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/constants/luxxle_paths.h"
 #include "chrome/browser/extensions/extension_browsertest.h"
 #include "chrome/test/base/ui_test_utils.h"
 #include "content/public/test/browser_test.h"

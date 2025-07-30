@@ -1,16 +1,16 @@
-/* Copyright (c) 2022 The Brave Authors. All rights reserved.
+/* Copyright (c) 2022 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/ios/browser/api/favicon/favicon_loader.h"
+#include "luxxle/ios/browser/api/favicon/favicon_loader.h"
 
 #include <memory>
 
 #include "base/memory/raw_ptr.h"
 #include "base/strings/sys_string_conversions.h"
-#import "brave/ios/browser/favicon/brave_ios_favicon_loader.h"
-#import "brave/ios/browser/favicon/brave_ios_favicon_loader_factory.h"
+#import "luxxle/ios/browser/favicon/luxxle_ios_favicon_loader.h"
+#import "luxxle/ios/browser/favicon/luxxle_ios_favicon_loader_factory.h"
 #include "components/favicon_base/favicon_types.h"
 #include "ios/chrome/browser/shared/model/application_context/application_context.h"
 #include "ios/chrome/browser/shared/model/profile/profile_ios.h"
@@ -40,7 +40,7 @@ FaviconLoaderSize const FaviconLoaderSizeDesiredLargest =
 // MARK: - Implementation
 
 @interface FaviconLoader () {
-  base::raw_ptr<brave_favicon::BraveFaviconLoader> favicon_loader_;
+  base::raw_ptr<luxxle_favicon::LuxxleFaviconLoader> favicon_loader_;
 }
 @end
 
@@ -48,7 +48,7 @@ FaviconLoaderSize const FaviconLoaderSizeDesiredLargest =
 - (instancetype)initWithBrowserState:(ProfileIOS*)profile {
   if ((self = [super init])) {
     favicon_loader_ =
-        brave_favicon::BraveIOSFaviconLoaderFactory::GetForProfile(profile);
+        luxxle_favicon::LuxxleIOSFaviconLoaderFactory::GetForProfile(profile);
     DCHECK(favicon_loader_);
   }
   return self;

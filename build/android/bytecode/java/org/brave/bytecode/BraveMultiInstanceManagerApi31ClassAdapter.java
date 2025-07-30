@@ -3,22 +3,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveMultiInstanceManagerApi31ClassAdapter extends BraveClassVisitor {
+public class LuxxleMultiInstanceManagerApi31ClassAdapter extends LuxxleClassVisitor {
     static String sMultiInstanceManagerApi31 =
             "org/chromium/chrome/browser/multiwindow/MultiInstanceManagerApi31";
-    static String sBraveMultiInstanceManagerApi31 =
-            "org/chromium/chrome/browser/multiwindow/BraveMultiInstanceManagerApi31";
+    static String sLuxxleMultiInstanceManagerApi31 =
+            "org/chromium/chrome/browser/multiwindow/LuxxleMultiInstanceManagerApi31";
 
-    public BraveMultiInstanceManagerApi31ClassAdapter(ClassVisitor visitor) {
+    public LuxxleMultiInstanceManagerApi31ClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sMultiInstanceManagerApi31, sBraveMultiInstanceManagerApi31);
+        redirectConstructor(sMultiInstanceManagerApi31, sLuxxleMultiInstanceManagerApi31);
 
-        deleteField(sBraveMultiInstanceManagerApi31, "mInstanceId");
+        deleteField(sLuxxleMultiInstanceManagerApi31, "mInstanceId");
         makeProtectedField(sMultiInstanceManagerApi31, "mInstanceId");
     }
 }

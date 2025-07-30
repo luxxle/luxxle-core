@@ -124,6 +124,6 @@ std::vector<T> ns_to_vector(NSArray* array) {
   return vector;
 }
 
-}  // namespace brave
+}  // namespace luxxle
 
 #endif  // LUXXLE_BASE_MAC_CONVERSIONS_H_

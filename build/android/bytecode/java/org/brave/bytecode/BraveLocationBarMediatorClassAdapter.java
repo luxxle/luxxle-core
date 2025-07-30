@@ -3,42 +3,42 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveLocationBarMediatorClassAdapter extends BraveClassVisitor {
+public class LuxxleLocationBarMediatorClassAdapter extends LuxxleClassVisitor {
     static String sLocationBarMediator = "org/chromium/chrome/browser/omnibox/LocationBarMediator";
-    static String sBraveLocationBarMediator =
-            "org/chromium/chrome/browser/omnibox/BraveLocationBarMediator";
+    static String sLuxxleLocationBarMediator =
+            "org/chromium/chrome/browser/omnibox/LuxxleLocationBarMediator";
 
-    public BraveLocationBarMediatorClassAdapter(ClassVisitor visitor) {
+    public LuxxleLocationBarMediatorClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sLocationBarMediator, sBraveLocationBarMediator);
+        redirectConstructor(sLocationBarMediator, sLuxxleLocationBarMediator);
 
-        deleteMethod(sBraveLocationBarMediator, "shouldShowDeleteButton");
+        deleteMethod(sLuxxleLocationBarMediator, "shouldShowDeleteButton");
         makePublicMethod(sLocationBarMediator, "shouldShowDeleteButton");
 
-        deleteField(sBraveLocationBarMediator, "mNativeInitialized");
+        deleteField(sLuxxleLocationBarMediator, "mNativeInitialized");
         makeProtectedField(sLocationBarMediator, "mNativeInitialized");
-        deleteField(sBraveLocationBarMediator, "mWindowAndroid");
+        deleteField(sLuxxleLocationBarMediator, "mWindowAndroid");
         makeProtectedField(sLocationBarMediator, "mWindowAndroid");
-        deleteField(sBraveLocationBarMediator, "mLocationBarLayout");
+        deleteField(sLuxxleLocationBarMediator, "mLocationBarLayout");
         makeProtectedField(sLocationBarMediator, "mLocationBarLayout");
-        deleteField(sBraveLocationBarMediator, "mIsUrlFocusChangeInProgress");
+        deleteField(sLuxxleLocationBarMediator, "mIsUrlFocusChangeInProgress");
         makeProtectedField(sLocationBarMediator, "mIsUrlFocusChangeInProgress");
-        deleteField(sBraveLocationBarMediator, "mUrlHasFocus");
+        deleteField(sLuxxleLocationBarMediator, "mUrlHasFocus");
         makeProtectedField(sLocationBarMediator, "mUrlHasFocus");
-        deleteField(sBraveLocationBarMediator, "mIsTablet");
+        deleteField(sLuxxleLocationBarMediator, "mIsTablet");
         makeProtectedField(sLocationBarMediator, "mIsTablet");
-        deleteField(sBraveLocationBarMediator, "mIsLocationBarFocusedFromNtpScroll");
+        deleteField(sLuxxleLocationBarMediator, "mIsLocationBarFocusedFromNtpScroll");
         makeProtectedField(sLocationBarMediator, "mIsLocationBarFocusedFromNtpScroll");
-        deleteField(sBraveLocationBarMediator, "mContext");
+        deleteField(sLuxxleLocationBarMediator, "mContext");
         makeProtectedField(sLocationBarMediator, "mContext");
-        deleteField(sBraveLocationBarMediator, "mBrandedColorScheme");
+        deleteField(sLuxxleLocationBarMediator, "mBrandedColorScheme");
         makeProtectedField(sLocationBarMediator, "mBrandedColorScheme");
-        deleteField(sBraveLocationBarMediator, "mTemplateUrlServiceSupplier");
+        deleteField(sLuxxleLocationBarMediator, "mTemplateUrlServiceSupplier");
         makeProtectedField(sLocationBarMediator, "mTemplateUrlServiceSupplier");
     }
 }

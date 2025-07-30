@@ -10,10 +10,10 @@
 
 #include "base/functional/bind.h"
 #include "base/time/time.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/browser/ui/views/sidebar/sidebar_add_item_bubble_delegate_view.h"
 #include "luxxle/components/vector_icons/vector_icons.h"
-#include "brave/grit/brave_theme_resources.h"
+#include "luxxle/grit/luxxle_theme_resources.h"
 #include "ui/base/l10n/l10n_util.h"
 #include "ui/base/metadata/metadata_impl_macros.h"
 #include "ui/base/resource/resource_bundle.h"
@@ -21,7 +21,7 @@
 #include "ui/views/controls/button/menu_button_controller.h"
 
 SidebarItemAddButton::SidebarItemAddButton(
-    BraveBrowser* browser,
+    LuxxleBrowser* browser,
     const std::u16string& accessible_name)
     : SidebarButtonView(accessible_name), browser_(browser) {
   UpdateButtonImages();

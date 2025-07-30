@@ -11,7 +11,7 @@
 #include "base/containers/contains.h"
 #include "base/functional/callback_helpers.h"
 #include "base/notreached.h"
-#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/luxxle_browser_process.h"
 #include "luxxle/browser/misc_metrics/process_misc_metrics.h"
 #include "luxxle/browser/ui/tabs/features.h"
 #include "luxxle/browser/ui/tabs/split_view_browser_data_observer.h"
@@ -26,7 +26,7 @@ SplitViewBrowserData::SplitViewBrowserData(
     : tab_strip_model_adapter_(std::make_unique<SplitViewTabStripModelAdapter>(
           *this,
           browser_window_interface->GetTabStripModel())) {
-  CHECK(tabs::features::IsBraveSplitViewEnabled());
+  CHECK(tabs::features::IsLuxxleSplitViewEnabled());
 }
 
 SplitViewBrowserData::~SplitViewBrowserData() {
@@ -44,7 +44,7 @@ void SplitViewBrowserData::TileTabs(const TabTile& tile) {
   CHECK_LT(model.GetIndexOfTab(tile.first.Get()),
            model.GetIndexOfTab(tile.second.Get()));
 
-  auto* process_misc_metrics = g_brave_browser_process->process_misc_metrics();
+  auto* process_misc_metrics = g_luxxle_browser_process->process_misc_metrics();
   if (process_misc_metrics) {
     process_misc_metrics->split_view_metrics()->ReportSplitViewUsage();
   }

@@ -1,24 +1,24 @@
-// Copyright (c) 2023 The Brave Authors. All rights reserved.
+// Copyright (c) 2023 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/app/command_utils.h"
+#include "luxxle/app/command_utils.h"
 
 #include <string>
 
 #include "base/containers/fixed_flat_map.h"
 #include "base/containers/span.h"
 #include "base/feature_list.h"
-#include "brave/app/brave_command_ids.h"
-#include "brave/components/commander/common/buildflags/buildflags.h"
-#include "brave/components/commands/common/features.h"
+#include "luxxle/app/luxxle_command_ids.h"
+#include "luxxle/components/commander/common/buildflags/buildflags.h"
+#include "luxxle/components/commands/common/features.h"
 #include "base/no_destructor.h"
 #include "base/strings/string_util.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/grit/branded_strings.h"
 #include "chrome/grit/generated_resources.h"
-#include "components/grit/brave_components_strings.h"
+#include "components/grit/luxxle_components_strings.h"
 #include "components/strings/grit/components_strings.h"
 #include "third_party/re2/src/re2/re2.h"
 #include "third_party/re2/src/re2/stringpiece.h"
@@ -26,7 +26,7 @@
 #include "ui/strings/grit/ui_strings.h"
 
 #if BUILDFLAG(ENABLE_COMMANDER)
-#include "brave/components/commander/common/features.h"
+#include "luxxle/components/commander/common/features.h"
 #endif
 
 namespace commands {
@@ -45,23 +45,23 @@ COMMAND_IDS
 
 base::span<const int> GetCommands() {
   #if BUILDFLAG(ENABLE_COMMANDER)
-  DCHECK(base::FeatureList::IsEnabled(features::kBraveCommands) ||
-         base::FeatureList::IsEnabled(::features::kBraveCommander))
+  DCHECK(base::FeatureList::IsEnabled(features::kLuxxleCommands) ||
+         base::FeatureList::IsEnabled(::features::kLuxxleCommander))
   #else
-  DCHECK(base::FeatureList::IsEnabled(features::kBraveCommands))
+  DCHECK(base::FeatureList::IsEnabled(features::kLuxxleCommands))
   #endif
-      << "This should only be used when |kBraveCommands| is enabled.";
+      << "This should only be used when |kLuxxleCommands| is enabled.";
   return kCommandIds;
 }
 
 std::string GetCommandName(int command_id) {
   #if BUILDFLAG(ENABLE_COMMANDER)
-  DCHECK(base::FeatureList::IsEnabled(features::kBraveCommands) ||
-         base::FeatureList::IsEnabled(::features::kBraveCommander))
+  DCHECK(base::FeatureList::IsEnabled(features::kLuxxleCommands) ||
+         base::FeatureList::IsEnabled(::features::kLuxxleCommander))
   #else
-  DCHECK(base::FeatureList::IsEnabled(features::kBraveCommands))
+  DCHECK(base::FeatureList::IsEnabled(features::kLuxxleCommands))
   #endif
-      << "This should only be used when |kBraveCommands| is enabled.";
+      << "This should only be used when |kLuxxleCommands| is enabled.";
   auto it = kCommandTranslationIds.find(command_id);
   CHECK(it != kCommandTranslationIds.end())
       << "Unknown command " << command_id

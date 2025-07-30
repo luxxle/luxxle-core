@@ -15,10 +15,10 @@ via `./<filename>-chromium.<ext>` if you need to reexport something from it.
 replacing it.
 
 Similarly to C++ `chromium_src` overrides should be as minimal as possible to
-provide the hooks Brave needs. When you need to do something more substantial
+provide the hooks Luxxle needs. When you need to do something more substantial
 you should [add a new target](#adding-new-files) and make most of your changes
 there. This makes code easier to follow, and means you don't have to jump back
-and forward between `chromium_src` and `brave` files. As a bonus, it means you
+and forward between `chromium_src` and `luxxle` files. As a bonus, it means you
 won't need `chromium_src` approvals most of the time!
 
 ### Example Typescript
@@ -30,7 +30,7 @@ import { frob as frobChromium } from './file-chromium.js'
 // export everything from upstream
 export * from './file-chromium.js'
 
-// in Brave, all frobs are twice as good.
+// in Luxxle, all frobs are twice as good.
 export function frob() {
   return frobChromium() * 2
 }
@@ -68,7 +68,7 @@ Create a file in `chromium_src` for `path/to/your/file.html.ts` at `chromium_src
 import mangle from 'lit-mangler'
 
 mangle(element => {
-  element.textContent = element.textContent.replaceAll("Chrome", "Brave")
+  element.textContent = element.textContent.replaceAll("Chrome", "Luxxle")
 }, literal => literal.text.includes("id='thing-i-want-to-edit'"))
 ```
 
@@ -92,7 +92,7 @@ html`<div class="container">
 
 // in our mangler:
 // We'll make the following changes with a Lit Mangler:
-// 1. Add a `.brave` class to the `.container` element
+// 1. Add a `.luxxle` class to the `.container` element
 // 2. Add an `id` attribute to the `li` elements
 // 3. Wrap the child text in a span
 
@@ -146,7 +146,7 @@ with a `chromium_src` override (for the JS file) or more easily via the
 Often, you won't only be changing upstream elements but will also need to add
 new elements to the page to get things looking right.
 
-In this scenario, its best to add a new build target to Brave and patch it into
+In this scenario, its best to add a new build target to Luxxle and patch it into
 the upstream build for that WebUI.
 
 See `//luxxle/browser/resources/settings/BUILD.gn` and

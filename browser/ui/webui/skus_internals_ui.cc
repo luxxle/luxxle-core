@@ -16,30 +16,30 @@
 #include "base/notreached.h"
 #include "base/strings/utf_string_conversions.h"
 #include "base/task/thread_pool.h"
-#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/luxxle_browser_process.h"
 #include "luxxle/browser/skus/skus_service_factory.h"
-#include "luxxle/browser/ui/webui/brave_webui_source.h"
-// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#include "luxxle/browser/ui/webui/luxxle_webui_source.h"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
 #include "luxxle/components/skus/browser/pref_names.h"
 #include "luxxle/components/skus/browser/resources/grit/skus_internals_generated_map.h"
 #include "luxxle/components/skus/common/skus_sdk.mojom.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/chrome_select_file_policy.h"
-#include "components/grit/brave_components_resources.h"
+#include "components/grit/luxxle_components_resources.h"
 #include "components/prefs/pref_service.h"
 #include "content/public/browser/web_contents.h"
 #include "content/public/browser/web_ui.h"
 #include "ui/base/clipboard/scoped_clipboard_writer.h"
 #include "ui/shell_dialogs/selected_file_info.h"
 
-#if BUILDFLAG(ENABLE_BRAVE_VPN)
-// REMOVED: #include "luxxle/browser/brave_vpn/.*"
-// REMOVED: #include "luxxle/components/brave_vpn/.*"
-// REMOVED: #include "luxxle/components/brave_vpn/.*"
-// REMOVED: #include "luxxle/components/brave_vpn/.*"
-// REMOVED: #include "luxxle/components/brave_vpn/.*"
-// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
+// REMOVED: #include "luxxle/browser/luxxle_vpn/.*"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
 #endif
 
 namespace {
@@ -89,17 +89,17 @@ void SkusInternalsUI::GetSkusState(GetSkusStateCallback callback) {
 
 void SkusInternalsUI::GetVpnState(GetVpnStateCallback callback) {
   base::Value::Dict dict;
-#if BUILDFLAG(ENABLE_BRAVE_VPN)
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
 #if !BUILDFLAG(IS_ANDROID)
   dict.Set("Last connection error", GetLastVPNConnectionError());
 #endif
   auto* profile = Profile::FromWebUI(web_ui());
-  if (!brave_vpn::IsBraveVPNEnabled(profile->GetPrefs())) {
+  if (!luxxle_vpn::IsLuxxleVPNEnabled(profile->GetPrefs())) {
     dict.Set("Order", base::Value::Dict());
   } else {
     auto order_info = GetOrderInfo("vpn.");
     order_info.Set(
-        "env", local_state_->GetString(brave_vpn::prefs::kBraveVPNEnvironment));
+        "env", local_state_->GetString(luxxle_vpn::prefs::kLuxxleVPNEnvironment));
     dict.Set("Order", std::move(order_info));
   }
 #endif
@@ -163,15 +163,15 @@ base::Value::Dict SkusInternalsUI::GetOrderInfo(
 }
 
 void SkusInternalsUI::ResetSkusState() {
-#if BUILDFLAG(ENABLE_BRAVE_VPN)
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
   // VPN service caches credentials. It should be cleared also
   // when skus state is reset. Otherwise, vpn service is still
   // in purchased state.
   auto* profile = Profile::FromWebUI(web_ui());
-  if (brave_vpn::IsBraveVPNEnabled(profile->GetPrefs())) {
-    brave_vpn::ClearSubscriberCredential(local_state_);
+  if (luxxle_vpn::IsLuxxleVPNEnabled(profile->GetPrefs())) {
+    luxxle_vpn::ClearSubscriberCredential(local_state_);
     if (auto* service =
-            brave_vpn::BraveVpnServiceFactory::GetForProfile(profile)) {
+            luxxle_vpn::LuxxleVpnServiceFactory::GetForProfile(profile)) {
       service->ReloadPurchasedState();
     }
   }
@@ -227,8 +227,8 @@ void SkusInternalsUI::FileSelectionCanceled() {
 
 std::string SkusInternalsUI::GetLastVPNConnectionError() const {
   std::string error;
-#if BUILDFLAG(ENABLE_BRAVE_VPN)
-  auto* manager = g_brave_browser_process->brave_vpn_connection_manager();
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
+  auto* manager = g_luxxle_browser_process->luxxle_vpn_connection_manager();
   CHECK(manager);
   error = manager->GetLastConnectionError();
 #endif
@@ -239,11 +239,11 @@ std::string SkusInternalsUI::GetSkusStateAsString() const {
   const auto& skus_state = local_state_->GetDict(skus::prefs::kSkusState);
   base::Value::Dict dict;
 
-#if BUILDFLAG(ENABLE_BRAVE_VPN)
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
   auto* profile = Profile::FromWebUI(web_ui());
-  if (brave_vpn::IsBraveVPNEnabled(profile->GetPrefs())) {
+  if (luxxle_vpn::IsLuxxleVPNEnabled(profile->GetPrefs())) {
     dict.Set("env",
-             local_state_->GetString(brave_vpn::prefs::kBraveVPNEnvironment));
+             local_state_->GetString(luxxle_vpn::prefs::kLuxxleVPNEnvironment));
   }
 #endif
 

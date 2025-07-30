@@ -8,7 +8,7 @@
       "profile": "clean",
       "browser-type": "luxxle",
       "field-trials": "no-trials",
-      "extra-browser-args": ["--enable-features=BraveWalletSolana"],
+      "extra-browser-args": ["--enable-features=LuxxleWalletSolana"],
       "extra-benchmark-args": [],
     },
     {
@@ -17,13 +17,13 @@
       "field-trials": "no-trials",
       "profile": "clean",
       "browser-type": "luxxle",
-      "extra-browser-args": ["--disable-features=BraveWalletSolana"],
+      "extra-browser-args": ["--disable-features=LuxxleWalletSolana"],
       "extra-benchmark-args": [],
     },
   ],
   "benchmarks": [
     {
-      "name": "loading.desktop.brave",
+      "name": "loading.desktop.luxxle",
       "pageset-repeat": 5,
       "stories": [
         "example.com_cold",

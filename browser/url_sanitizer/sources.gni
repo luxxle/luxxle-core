@@ -1,9 +1,9 @@
-brave_browser_url_sanitizer_sources = [
+luxxle_browser_url_sanitizer_sources = [
   "//luxxle/browser/url_sanitizer/url_sanitizer_service_factory.cc",
   "//luxxle/browser/url_sanitizer/url_sanitizer_service_factory.h",
 ]
 
-brave_browser_url_sanitizer_deps = [
+luxxle_browser_url_sanitizer_deps = [
   "//base",
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/url_sanitizer/browser",
@@ -12,9 +12,9 @@ brave_browser_url_sanitizer_deps = [
 ]
 
 if (is_android) {
-  brave_browser_url_sanitizer_sources += [ "//luxxle/browser/url_sanitizer/android/url_sanitizer_service_factory_android.cc" ]
+  luxxle_browser_url_sanitizer_sources += [ "//luxxle/browser/url_sanitizer/android/url_sanitizer_service_factory_android.cc" ]
 
-  brave_browser_url_sanitizer_deps += [
+  luxxle_browser_url_sanitizer_deps += [
     "//luxxle/build/android:jni_headers",
     "//mojo/public/cpp/bindings",
   ]

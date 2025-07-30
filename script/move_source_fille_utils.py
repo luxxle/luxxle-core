@@ -7,19 +7,19 @@
 
 import os
 
-BRAVE_DIR_NAME = 'luxxle'
+LUXXLE_DIR_NAME = 'luxxle'
 
-def _is_in_brave_dir():
-  return BRAVE_DIR_NAME == os.path.basename(os.getcwd())
+def _is_in_luxxle_dir():
+  return LUXXLE_DIR_NAME == os.path.basename(os.getcwd())
 
 
 def to_src_relative_path(*args):
-  if _is_in_brave_dir():
-    return tuple(os.path.join(BRAVE_DIR_NAME, d) for d in args)
+  if _is_in_luxxle_dir():
+    return tuple(os.path.join(LUXXLE_DIR_NAME, d) for d in args)
   return args
 
 
 def to_cwd_relative_path(*args):
-  if _is_in_brave_dir():
-    return tuple(os.path.relpath(d, BRAVE_DIR_NAME) for d in args)
+  if _is_in_luxxle_dir():
+    return tuple(os.path.relpath(d, LUXXLE_DIR_NAME) for d in args)
   return args

@@ -7,13 +7,13 @@
 #include "base/path_service.h"
 #include "base/strings/strcat.h"
 #include "base/test/thread_test_helper.h"
-#include "luxxle/browser/brave_browser_process.h"
-#include "luxxle/components/brave_component_updater/browser/local_data_files_service.h"
-#include "luxxle/components/brave_shields/content/browser/ad_block_service.h"
-#include "luxxle/components/brave_shields/content/browser/brave_shields_util.h"
-#include "luxxle/components/brave_shields/content/test/test_filters_provider.h"
-#include "luxxle/components/brave_shields/core/common/features.h"
-#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/browser/luxxle_browser_process.h"
+#include "luxxle/components/luxxle_component_updater/browser/local_data_files_service.h"
+#include "luxxle/components/luxxle_shields/content/browser/ad_block_service.h"
+#include "luxxle/components/luxxle_shields/content/browser/luxxle_shields_util.h"
+#include "luxxle/components/luxxle_shields/content/test/test_filters_provider.h"
+#include "luxxle/components/luxxle_shields/core/common/features.h"
+#include "luxxle/components/constants/luxxle_paths.h"
 #include "luxxle/components/localhost_permission/localhost_permission_component.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/browser/profiles/profile.h"
@@ -53,7 +53,7 @@ class LocalhostAccessBrowserTest : public InProcessBrowserTest {
  public:
   LocalhostAccessBrowserTest() {
     feature_list_.InitAndEnableFeature(
-        brave_shields::features::kBraveLocalhostAccessPermission);
+        luxxle_shields::features::kLuxxleLocalhostAccessPermission);
   }
 
   void SetUpOnMainThread() override {
@@ -62,7 +62,7 @@ class LocalhostAccessBrowserTest : public InProcessBrowserTest {
     host_resolver()->AddRule("*", "127.0.0.1");
     current_browser_ = InProcessBrowserTest::browser();
     localhost_permission_component_ =
-        g_brave_browser_process->localhost_permission_component();
+        g_luxxle_browser_process->localhost_permission_component();
     if (localhost_permission_component_) {
       localhost_permission_component_->SetAllowedDomainsForTesting(
           {kTestEmbeddingDomain});
@@ -100,7 +100,7 @@ class LocalhostAccessBrowserTest : public InProcessBrowserTest {
 
   void WaitForAdBlockServiceThreads() {
     auto tr_helper = base::MakeRefCounted<base::ThreadTestHelper>(
-        g_brave_browser_process->local_data_files_service()->GetTaskRunner());
+        g_luxxle_browser_process->local_data_files_service()->GetTaskRunner());
     ASSERT_TRUE(tr_helper->Run());
   }
 
@@ -141,10 +141,10 @@ class LocalhostAccessBrowserTest : public InProcessBrowserTest {
 
   void AddAdblockRule(const std::string& rule) {
     source_provider_ =
-        std::make_unique<brave_shields::TestFiltersProvider>(rule);
+        std::make_unique<luxxle_shields::TestFiltersProvider>(rule);
 
-    brave_shields::AdBlockService* ad_block_service =
-        g_brave_browser_process->ad_block_service();
+    luxxle_shields::AdBlockService* ad_block_service =
+        g_luxxle_browser_process->ad_block_service();
     ad_block_service->UseSourceProviderForTest(source_provider_.get());
     WaitForAdBlockServiceThreads();
   }
@@ -174,14 +174,14 @@ class LocalhostAccessBrowserTest : public InProcessBrowserTest {
   void CheckCurrentStatusIs(ContentSetting content_setting) {
     EXPECT_EQ(content_settings()->GetContentSetting(
                   embedding_url_, embedding_url_,
-                  ContentSettingsType::BRAVE_LOCALHOST_ACCESS),
+                  ContentSettingsType::LUXXLE_LOCALHOST_ACCESS),
               content_setting);
   }
 
   void SetCurrentStatus(ContentSetting content_setting) {
     content_settings()->SetContentSettingDefaultScope(
         embedding_url_, embedding_url_,
-        ContentSettingsType::BRAVE_LOCALHOST_ACCESS, content_setting);
+        ContentSettingsType::LUXXLE_LOCALHOST_ACCESS, content_setting);
   }
 
   void CheckAskAndAcceptFlow(GURL localhost_url, int prompt_count = 0) {
@@ -266,7 +266,7 @@ class LocalhostAccessBrowserTest : public InProcessBrowserTest {
   std::unique_ptr<net::EmbeddedTestServer> localhost_server_;
   base::test::ScopedFeatureList feature_list_;
   raw_ptr<Browser, DanglingUntriaged> current_browser_;
-  std::unique_ptr<brave_shields::TestFiltersProvider> source_provider_;
+  std::unique_ptr<luxxle_shields::TestFiltersProvider> source_provider_;
   raw_ptr<localhost_permission::LocalhostPermissionComponent, DanglingUntriaged>
       localhost_permission_component_;
 
@@ -518,7 +518,7 @@ class LocalhostAccessBrowserTestFeatureDisabled
   LocalhostAccessBrowserTestFeatureDisabled() {
     feature_list_.Reset();
     feature_list_.InitAndDisableFeature(
-        brave_shields::features::kBraveLocalhostAccessPermission);
+        luxxle_shields::features::kLuxxleLocalhostAccessPermission);
   }
 };
 

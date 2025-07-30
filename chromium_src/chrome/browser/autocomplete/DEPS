@@ -1,0 +1,7 @@
+include_rules = [
+  "+luxxle/components/ai_chat/content/browser",
+  "+luxxle/components/ai_chat/core/browser",
+  "+luxxle/components/ai_chat/core/common",
+  "+luxxle/components/commander/common/buildflags",
+  "+luxxle/components/commander/browser",
+]

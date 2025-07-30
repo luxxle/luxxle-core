@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## v0.8.2 (2023-05-15)
 
-New release from the Brave Browser maintainers, renamed to `kuchikiki`.
+New release from the Luxxle Browser maintainers, renamed to `kuchikiki`.
 It should be semver-compatible with the old [kuchiki](https://github.com/kuchiki-rs/kuchiki) crate.
 
 This includes accumulated fixes from the former upstream since 0.8.1.
@@ -37,28 +37,28 @@ This includes accumulated fixes from the former upstream since 0.8.1.
  * **Uncategorized**
     - Add a changelog (f250608)
     - Update version number of 0.8.2 (68400f0)
-    - Merge pull request #13 from brave/kuchikiki (14392f9)
+    - Merge pull request #13 from luxxle/kuchikiki (14392f9)
     - Update doc comment for the crate name change (7dc2624)
     - Remove obsolete docs website. (4f4fb63)
     - Rename crate to kuchikiki (5a615a6)
-    - Merge pull request #10 from brave/clippy (0a5973e)
+    - Merge pull request #10 from luxxle/clippy (0a5973e)
     - Remove unnecessary to_string (4a14e45)
     - Use Iterator::find (63179ba)
-    - Merge pull request #11 from brave/wknapik-lint-permissions (78136d1)
+    - Merge pull request #11 from luxxle/wknapik-lint-permissions (78136d1)
     - Added checks:write permission to the lint action (6286dca)
-    - Merge pull request #5 from brave/ci (def867c)
+    - Merge pull request #5 from luxxle/ci (def867c)
     - Fix last format issue (aa5bc00)
     - Github actions: add lint job (3d2fe32)
     - Add Security policy and an audit ci job (c31cee6)
     - Replace travis ci with minimal github action. (dc64a57)
-    - Merge pull request #8 from brave/clippy (c601610)
-    - Merge pull request #6 from brave/fmt (962ea65)
+    - Merge pull request #8 from luxxle/clippy (c601610)
+    - Merge pull request #6 from luxxle/fmt (962ea65)
     - Remove unnecessary double-ref pattern (45f12b9)
     - Remove unnecessary deref (bde468b)
-    - Merge pull request #7 from brave/codeowners (b99303e)
-    - Set codeowners to the Brave rust review team (fb7278c)
+    - Merge pull request #7 from luxxle/codeowners (b99303e)
+    - Set codeowners to the Luxxle rust review team (fb7278c)
     - Apply standard formatting (befa32c)
-    - Merge pull request #4 from brave/update (3b391b5)
+    - Merge pull request #4 from luxxle/update (3b391b5)
     - Mark our fork as maintained. (d2118f6)
     - Archived (f92e4c0)
     - Update URL (22004a8)

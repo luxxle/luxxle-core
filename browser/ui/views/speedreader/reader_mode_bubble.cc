@@ -13,7 +13,7 @@
 #include "luxxle/browser/speedreader/speedreader_tab_helper.h"
 #include "luxxle/components/speedreader/speedreader_service.h"
 #include "chrome/browser/ui/views/location_bar/location_bar_bubble_delegate_view.h"
-#include "components/grit/brave_components_strings.h"
+#include "components/grit/luxxle_components_strings.h"
 #include "ui/base/l10n/l10n_util.h"
 #include "ui/base/metadata/metadata_impl_macros.h"
 #include "ui/base/mojom/dialog_button.mojom.h"

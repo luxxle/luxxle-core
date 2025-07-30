@@ -7,7 +7,7 @@ import("//build/config/android/rules.gni")
 
 android_library("java") {
   sources =
-      [ "java/src/org/chromium/chrome/browser/logo/BraveLogoMediator.java" ]
+      [ "java/src/org/chromium/chrome/browser/logo/LuxxleLogoMediator.java" ]
 
   deps = [
     "//base:base_java",

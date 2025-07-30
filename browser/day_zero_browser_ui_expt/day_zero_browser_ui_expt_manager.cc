@@ -8,8 +8,8 @@
 #include <optional>
 
 #include "base/functional/bind.h"
-#include "luxxle/browser/brave_browser_features.h"
-#include "luxxle/browser/brave_stats/first_run_util.h"
+#include "luxxle/browser/luxxle_browser_features.h"
+#include "luxxle/browser/luxxle_stats/first_run_util.h"
 #include "luxxle/browser/day_zero_browser_ui_expt/pref_names.h"
 #include "luxxle/components/constants/pref_names.h"
 #include "luxxle/components/p3a/pref_names.h"
@@ -24,7 +24,7 @@
 
 #include "base/android/jni_android.h"
 #include "base/android/jni_string.h"
-#include "brave/build/android/jni_headers/DayZeroHelper_jni.h"
+#include "luxxle/build/android/jni_headers/DayZeroHelper_jni.h"
 #endif  // #BUILDFLAG(IS_ANDROID)
 
 // static
@@ -35,8 +35,8 @@ void DayZeroBrowserUIExptManager::RegisterLocalStatePrefs(
 
 std::optional<std::string> DayZeroBrowserUIExptManager::GetDayZeroVariant() {
   std::optional<std::string> day_zero_variant;
-  if (base::FeatureList::IsEnabled(features::kBraveDayZeroExperiment)) {
-    day_zero_variant = features::kBraveDayZeroExperimentVariant.Get();
+  if (base::FeatureList::IsEnabled(features::kLuxxleDayZeroExperiment)) {
+    day_zero_variant = features::kLuxxleDayZeroExperimentVariant.Get();
   }
 
   return day_zero_variant;
@@ -45,7 +45,7 @@ std::optional<std::string> DayZeroBrowserUIExptManager::GetDayZeroVariant() {
 // static
 std::unique_ptr<DayZeroBrowserUIExptManager>
 DayZeroBrowserUIExptManager::Create(ProfileManager* profile_manager) {
-  if (!base::FeatureList::IsEnabled(features::kBraveDayZeroExperiment)) {
+  if (!base::FeatureList::IsEnabled(features::kLuxxleDayZeroExperiment)) {
     return nullptr;
   }
 
@@ -63,7 +63,7 @@ DayZeroBrowserUIExptManager::Create(ProfileManager* profile_manager) {
     return nullptr;
   }
 
-  if (brave_stats::IsFirstRun(local_state)) {
+  if (luxxle_stats::IsFirstRun(local_state)) {
     VLOG(2) << __func__ << ": Set Day zero experiment to this fresh user.";
     local_state->SetBoolean(kDayZeroExperimentTargetInstall, true);
   }

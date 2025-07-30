@@ -10,41 +10,41 @@
 namespace tabs::features {
 
 #if BUILDFLAG(IS_LINUX)
-BASE_FEATURE(kBraveChangeActiveTabOnScrollEvent,
-             "BraveChangeActiveTabOnScrollEvent",
+BASE_FEATURE(kLuxxleChangeActiveTabOnScrollEvent,
+             "LuxxleChangeActiveTabOnScrollEvent",
              base::FEATURE_ENABLED_BY_DEFAULT);
 #endif  // BUILDFLAG(IS_LINUX)
 
-BASE_FEATURE(kBraveSharedPinnedTabs,
-             "BraveSharedPinnedTabs",
+BASE_FEATURE(kLuxxleSharedPinnedTabs,
+             "LuxxleSharedPinnedTabs",
              base::FEATURE_DISABLED_BY_DEFAULT);
 
-BASE_FEATURE(kBraveHorizontalTabsUpdate,
-             "BraveHorizontalTabsUpdate",
+BASE_FEATURE(kLuxxleHorizontalTabsUpdate,
+             "LuxxleHorizontalTabsUpdate",
              base::FEATURE_ENABLED_BY_DEFAULT);
 
-BASE_FEATURE(kBraveCompactHorizontalTabs,
-             "BraveCompactHorizontalTabs",
+BASE_FEATURE(kLuxxleCompactHorizontalTabs,
+             "LuxxleCompactHorizontalTabs",
              base::FEATURE_DISABLED_BY_DEFAULT);
 
-BASE_FEATURE(kBraveVerticalTabScrollBar,
-             "BraveVerticalTabScrollBar",
+BASE_FEATURE(kLuxxleVerticalTabScrollBar,
+             "LuxxleVerticalTabScrollBar",
              base::FEATURE_DISABLED_BY_DEFAULT);
 
-BASE_FEATURE(kBraveSplitView,
-             "BraveSplitView",
+BASE_FEATURE(kLuxxleSplitView,
+             "LuxxleSplitView",
              base::FEATURE_ENABLED_BY_DEFAULT);
 
 bool HorizontalTabsUpdateEnabled() {
-  return base::FeatureList::IsEnabled(kBraveHorizontalTabsUpdate);
+  return base::FeatureList::IsEnabled(kLuxxleHorizontalTabsUpdate);
 }
 
-bool IsBraveSplitViewEnabled() {
-  if (!base::FeatureList::IsEnabled(tabs::features::kBraveSplitView)) {
+bool IsLuxxleSplitViewEnabled() {
+  if (!base::FeatureList::IsEnabled(tabs::features::kLuxxleSplitView)) {
     return false;
   }
 
-  // Brave can't use both features together.
+  // Luxxle can't use both features together.
   // We'll migrate our SplitView feature onto upstream's SideBySide
   // feature.
   return !base::FeatureList::IsEnabled(::features::kSideBySide);

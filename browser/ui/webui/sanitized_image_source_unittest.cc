@@ -13,7 +13,7 @@
 #include "base/memory/ref_counted_memory.h"
 #include "base/path_service.h"
 #include "base/test/bind.h"
-#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/constants/luxxle_paths.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/test/base/chrome_test_utils.h"
 #include "chrome/test/base/testing_profile.h"
@@ -49,7 +49,7 @@ class SanitizedImageSourceTest : public testing::Test {
             base::MakeRefCounted<network::WeakWrapperSharedURLLoaderFactory>(
                 &test_url_loader_factory_),
             std::make_unique<SanitizedImageSource::DataDecoderDelegate>()) {
-    source_.set_pcdn_domain_for_testing("pcdn.brave.com");
+    source_.set_pcdn_domain_for_testing("pcdn.luxxle.com");
   }
   ~SanitizedImageSourceTest() override = default;
 
@@ -87,7 +87,7 @@ TEST_F(SanitizedImageSourceTest, ImageIsDecoded) {
 }
 
 TEST_F(SanitizedImageSourceTest, PaddedImageIsDecoded) {
-  auto url = GURL("https://pcdn.brave.com/image.png.pad");
+  auto url = GURL("https://pcdn.luxxle.com/image.png.pad");
   EXPECT_TRUE(Decode(url, kPaddedImage));
 }
 
@@ -97,16 +97,16 @@ TEST_F(SanitizedImageSourceTest, InvalidPaddedImageIsNotDecoded) {
 }
 
 TEST_F(SanitizedImageSourceTest, PaddedImageWithoutDotPadIsNotDecoded) {
-  auto url = GURL("https://pcdn.brave.com/image.png");
+  auto url = GURL("https://pcdn.luxxle.com/image.png");
   EXPECT_FALSE(Decode(url, kPaddedImage));
 }
 
-TEST_F(SanitizedImageSourceTest, PaddedImageOnNonBraveCDNIsNotDecoded) {
+TEST_F(SanitizedImageSourceTest, PaddedImageOnNonLuxxleCDNIsNotDecoded) {
   auto url = GURL("https://example.com/image.png.pad");
   EXPECT_FALSE(Decode(url, kPaddedImage));
 }
 
-TEST_F(SanitizedImageSourceTest, DotPadOnNonBraveCDNButValidIsDecoded) {
+TEST_F(SanitizedImageSourceTest, DotPadOnNonLuxxleCDNButValidIsDecoded) {
   auto url = GURL("https://example.com/image.png.pad");
   EXPECT_TRUE(Decode(url, kValidImage));
 }

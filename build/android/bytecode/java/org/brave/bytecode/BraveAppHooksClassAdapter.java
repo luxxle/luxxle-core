@@ -3,17 +3,17 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveAppHooksClassAdapter extends BraveClassVisitor {
+public class LuxxleAppHooksClassAdapter extends LuxxleClassVisitor {
     static String sAppHooksClassName = "org/chromium/chrome/browser/AppHooks";
-    static String sBraveAppHooksClassName = "org/chromium/chrome/browser/BraveAppHooks";
+    static String sLuxxleAppHooksClassName = "org/chromium/chrome/browser/LuxxleAppHooks";
 
-    public BraveAppHooksClassAdapter(ClassVisitor visitor) {
+    public LuxxleAppHooksClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sAppHooksClassName, sBraveAppHooksClassName);
+        redirectConstructor(sAppHooksClassName, sLuxxleAppHooksClassName);
     }
 }

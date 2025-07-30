@@ -1,0 +1,14 @@
+include_rules = [
+  "+luxxle/luxxle_domains",
+  "+luxxle/components/webui",
+  "+luxxle/components/version_info",
+  "+luxxle/components/ai_chat/core/common",
+  "+luxxle/components/luxxle_vpn/common",
+  "+luxxle/components/playlist/common",
+  "+luxxle/components/luxxle_private_cdn",
+  "+luxxle/components/luxxle_vpn/common",
+  "+luxxle/components/playlist/common",
+  "+luxxle/components/ai_chat/core/browser",
+  "+luxxle/components/ai_chat/core/common",
+  "+luxxle/components/luxxle_education/buildflags.h",
+]

@@ -18,8 +18,8 @@ jobs:
 
       - name: Setup Git
         run: |
-          git config user.name brave-builds
-          git config user.email devops@brave.com
+          git config user.name luxxle-builds
+          git config user.email devops@luxxle.com
           git config push.default simple
 
       - name: Sync and rebase PR from fork

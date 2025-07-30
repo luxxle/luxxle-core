@@ -3,21 +3,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveDropdownItemViewInfoListBuilderClassAdapter extends BraveClassVisitor {
+public class LuxxleDropdownItemViewInfoListBuilderClassAdapter extends LuxxleClassVisitor {
     static String sDropdownItemViewInfoListBuilder =
             "org/chromium/chrome/browser/omnibox/suggestions/DropdownItemViewInfoListBuilder";
 
-    static String sBraveDropdownItemViewInfoListBuilder =
-            "org/chromium/chrome/browser/omnibox/suggestions/BraveDropdownItemViewInfoListBuilder";
+    static String sLuxxleDropdownItemViewInfoListBuilder =
+            "org/chromium/chrome/browser/omnibox/suggestions/LuxxleDropdownItemViewInfoListBuilder";
 
-    public BraveDropdownItemViewInfoListBuilderClassAdapter(ClassVisitor visitor) {
+    public LuxxleDropdownItemViewInfoListBuilderClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         redirectConstructor(
-                sDropdownItemViewInfoListBuilder, sBraveDropdownItemViewInfoListBuilder);
+                sDropdownItemViewInfoListBuilder, sLuxxleDropdownItemViewInfoListBuilder);
     }
 }

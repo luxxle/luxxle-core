@@ -47,7 +47,7 @@ def GetRequiredLibsPaths(args, extension):
     # Set of libs which were not created by us
     ignored_libs = {
         'libarcore_sdk_c.so', # Augmented reality lib from Android SDK
-        'libwg-go.so' # Wireguard lib for Brave VPN
+        'libwg-go.so' # Wireguard lib for Luxxle VPN
         }
 
     # Additional ABIs
@@ -58,9 +58,9 @@ def GetRequiredLibsPaths(args, extension):
     #   1) 'android_clang_arm64_with_system_allocator'
     #   2) 'android_clang_arm'
     # None of them contains the libs included into bundle.
-    # Since PR brave-core/pull/20849 we supply only one ABI per package,
+    # Since PR luxxle-core/pull/20849 we supply only one ABI per package,
     # So it looks like additional_abi_dirs can be skipped.
-    # TODO(alexeybarabash): https://github.com/luxxle/brave-browser/issues/40305
+    # TODO(alexeybarabash): https://github.com/luxxle/luxxle-browser/issues/40305
 
     libs_only_names = set() #lib_names
     for lib in libs_in_package:

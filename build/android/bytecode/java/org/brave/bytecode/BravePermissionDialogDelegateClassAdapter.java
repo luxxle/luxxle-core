@@ -3,20 +3,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BravePermissionDialogDelegateClassAdapter extends BraveClassVisitor {
+public class LuxxlePermissionDialogDelegateClassAdapter extends LuxxleClassVisitor {
     static String sPermissionDialogDelegateClassName =
             "org/chromium/components/permissions/PermissionDialogDelegate";
 
-    static String sBravePermissionDialogDelegateClassName =
-            "org/chromium/components/permissions/BravePermissionDialogDelegate";
+    static String sLuxxlePermissionDialogDelegateClassName =
+            "org/chromium/components/permissions/LuxxlePermissionDialogDelegate";
 
-    public BravePermissionDialogDelegateClassAdapter(ClassVisitor visitor) {
+    public LuxxlePermissionDialogDelegateClassAdapter(ClassVisitor visitor) {
         super(visitor);
         changeSuperName(
-                sPermissionDialogDelegateClassName, sBravePermissionDialogDelegateClassName);
+                sPermissionDialogDelegateClassName, sLuxxlePermissionDialogDelegateClassName);
     }
 }

@@ -1,9 +1,9 @@
-/* Copyright (c) 2022 The Brave Authors. All rights reserved.
+/* Copyright (c) 2022 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/ios/browser/api/url/url_formatter.h"
+#include "luxxle/ios/browser/api/url/url_formatter.h"
 
 #include "base/functional/bind.h"
 #include "base/functional/callback.h"
@@ -21,44 +21,44 @@
 #endif
 
 // MARK: - SchemeDisplay
-BraveURLSchemeDisplay const BraveURLSchemeDisplayShow =
+LuxxleURLSchemeDisplay const LuxxleURLSchemeDisplayShow =
     static_cast<NSInteger>(url_formatter::SchemeDisplay::SHOW);
-BraveURLSchemeDisplay const BraveURLSchemeDisplayOmitHttpAndHttps =
+LuxxleURLSchemeDisplay const LuxxleURLSchemeDisplayOmitHttpAndHttps =
     static_cast<NSInteger>(url_formatter::SchemeDisplay::OMIT_HTTP_AND_HTTPS);
 /// Omit cryptographic (i.e. https and wss).
-BraveURLSchemeDisplay const BraveURLSchemeDisplayOmitCryptographic =
+LuxxleURLSchemeDisplay const LuxxleURLSchemeDisplayOmitCryptographic =
     static_cast<NSInteger>(url_formatter::SchemeDisplay::OMIT_CRYPTOGRAPHIC);
 
 // MARK: - Implementation
 
 namespace {
 constexpr char16_t kChromeSchema16[] = u"chrome://";
-constexpr char16_t kBraveSchema16[] = u"brave://";
+constexpr char16_t kLuxxleSchema16[] = u"luxxle://";
 }  // namespace
 
-namespace brave_utils {
+namespace luxxle_utils {
 
-bool ReplaceChromeToBraveScheme(std::u16string& url_string) {
+bool ReplaceChromeToLuxxleScheme(std::u16string& url_string) {
   if (base::StartsWith(url_string, kChromeSchema16,
                        base::CompareCase::INSENSITIVE_ASCII)) {
     base::ReplaceFirstSubstringAfterOffset(&url_string, 0, kChromeSchema16,
-                                           kBraveSchema16);
+                                           kLuxxleSchema16);
     return true;
   }
 
   return false;
 }
 
-}  // namespace brave_utils
+}  // namespace luxxle_utils
 
-@implementation BraveURLFormatter
+@implementation LuxxleURLFormatter
 + (NSString*)formatURLOriginForSecurityDisplay:(NSString*)origin
                                  schemeDisplay:
-                                     (BraveURLSchemeDisplay)schemeDisplay {
+                                     (LuxxleURLSchemeDisplay)schemeDisplay {
   std::u16string result = url_formatter::FormatUrlForSecurityDisplay(
       GURL(base::SysNSStringToUTF8(origin)),
       static_cast<url_formatter::SchemeDisplay>(schemeDisplay));
-  brave_utils::ReplaceChromeToBraveScheme(result);
+  luxxle_utils::ReplaceChromeToLuxxleScheme(result);
   return base::SysUTF16ToNSString(result) ?: @"";
 }
 
@@ -67,19 +67,19 @@ bool ReplaceChromeToBraveScheme(std::u16string& url_string) {
   std::u16string result =
       url_formatter::FormatUrlForDisplayOmitSchemePathAndTrivialSubdomains(
           GURL(base::SysNSStringToUTF8(origin)));
-  brave_utils::ReplaceChromeToBraveScheme(result);
+  luxxle_utils::ReplaceChromeToLuxxleScheme(result);
   return base::SysUTF16ToNSString(result) ?: @"";
 }
 
 + (NSString*)formatURL:(NSString*)url
-           formatTypes:(BraveURLFormatterFormatType)formatTypes
-       unescapeOptions:(BraveURLFormatterUnescapeRule)unescapeOptions {
+           formatTypes:(LuxxleURLFormatterFormatType)formatTypes
+       unescapeOptions:(LuxxleURLFormatterUnescapeRule)unescapeOptions {
   std::u16string result = url_formatter::FormatUrl(
       GURL(base::SysNSStringToUTF8(url)),
       static_cast<url_formatter::FormatUrlType>(formatTypes),
       static_cast<base::UnescapeRule::Type>(unescapeOptions), nullptr, nullptr,
       nullptr);
-  brave_utils::ReplaceChromeToBraveScheme(result);
+  luxxle_utils::ReplaceChromeToLuxxleScheme(result);
   return base::SysUTF16ToNSString(result) ?: @"";
 }
 @end

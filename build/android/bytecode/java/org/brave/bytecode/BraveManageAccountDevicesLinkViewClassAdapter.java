@@ -3,24 +3,24 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveManageAccountDevicesLinkViewClassAdapter extends BraveClassVisitor {
+public class LuxxleManageAccountDevicesLinkViewClassAdapter extends LuxxleClassVisitor {
     static String sManageAccountDevicesLinkView =
             "org/chromium/chrome/browser/share/send_tab_to_self/ManageAccountDevicesLinkView";
-    static String sBraveManageAccountDevicesLinkView =
-            "org/chromium/chrome/browser/share/send_tab_to_self/BraveManageAccountDevicesLinkView";
+    static String sLuxxleManageAccountDevicesLinkView =
+            "org/chromium/chrome/browser/share/send_tab_to_self/LuxxleManageAccountDevicesLinkView";
 
-    public BraveManageAccountDevicesLinkViewClassAdapter(ClassVisitor visitor) {
+    public LuxxleManageAccountDevicesLinkViewClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        changeSuperName(sManageAccountDevicesLinkView, sBraveManageAccountDevicesLinkView);
+        changeSuperName(sManageAccountDevicesLinkView, sLuxxleManageAccountDevicesLinkView);
 
         changeMethodOwner(
                 sManageAccountDevicesLinkView,
                 "getSharingAccountInfo",
-                sBraveManageAccountDevicesLinkView);
+                sLuxxleManageAccountDevicesLinkView);
     }
 }

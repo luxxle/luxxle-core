@@ -69,7 +69,7 @@ function removeDepotTools() {
 }
 
 function installDepotTools(options = config.defaultOptions) {
-  options.cwd = config.braveCoreDir
+  options.cwd = config.luxxleCoreDir
 
   const enforcedDepotToolsRef = config.getProjectRef('depot_tools', null)
   if (enforcedDepotToolsRef && !isDepotToolsRefValid(enforcedDepotToolsRef)) {

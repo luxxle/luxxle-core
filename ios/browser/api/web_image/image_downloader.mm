@@ -1,10 +1,10 @@
-/* Copyright (c) 2023 The Brave Authors. All rights reserved.
+/* Copyright (c) 2023 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#import "brave/ios/browser/api/web_image/image_downloader.h"
-#import "brave/ios/browser/svg/svg_image.h"
+#import "luxxle/ios/browser/api/web_image/image_downloader.h"
+#import "luxxle/ios/browser/svg/svg_image.h"
 
 #include "services/network/public/cpp/shared_url_loader_factory.h"
 #include "skia/ext/skia_utils_ios.h"
@@ -73,4 +73,4 @@ int ImageDownloader::DownloadImage(const GURL& url,
 
   return downloaded_image_count;
 }
-}  // namespace brave
+}  // namespace luxxle

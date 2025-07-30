@@ -1,0 +1,24 @@
+from luxxle_chromium_utils import inline_file
+inline_file("//chrome/browser/DEPS", globals(), locals())
+
+include_rules += [
+  "+luxxle/app",
+  "+luxxle/browser",
+  "+luxxle/common",
+  "+luxxle/build/android/jni_headers",
+  "+luxxle/grit",
+  "+luxxle/components/constants",
+  "+luxxle/components/playlist/common/buildflags",
+  "+luxxle/components/version_info",
+  # Make sure renderer directories are not included for components with
+  # incorrect directory structures
+  "-luxxle/components/tor/renderer",
+  "-luxxle/components/speedreader/renderer",
+  "+chrome/browser",
+]
+
+specific_include_rules = {
+  '.*test\.cc': [
+    "+luxxle/test/base",
+  ],
+}

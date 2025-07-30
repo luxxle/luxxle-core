@@ -15,9 +15,9 @@ class Browser;
 namespace whats_new {
 
 // Returns true when we want to show whats-new page in foreground tab.
-bool ShouldShowBraveWhatsNewForState(PrefService* local_state);
+bool ShouldShowLuxxleWhatsNewForState(PrefService* local_state);
 void RegisterLocalStatePrefs(PrefRegistrySimple* registry);
-void StartBraveWhatsNew(Browser* browser);
+void StartLuxxleWhatsNew(Browser* browser);
 void SetCurrentVersionForTesting(double major_version);
 
 // Param name is different for each channels.

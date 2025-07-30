@@ -1,4 +1,4 @@
-// Copyright (c) 2025 The Brave Authors. All rights reserved.
+// Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -6,9 +6,9 @@
 [
   {
     "namespace": "webDiscovery",
-    "description": "Includes Web Discovery functions for the Brave extension",
+    "description": "Includes Web Discovery functions for the Luxxle extension",
     "compiler_options": {
-      "implemented_in": "brave/browser/extensions/api/web_discovery_api.h"
+      "implemented_in": "luxxle/browser/extensions/api/web_discovery_api.h"
     },
     "functions": [
       {

@@ -6,7 +6,7 @@
 #include <string>
 
 #include "base/path_service.h"
-#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/constants/luxxle_paths.h"
 #include "chrome/test/base/android/android_browser_test.h"
 #include "chrome/test/base/chrome_test_utils.h"
 #include "chrome/test/base/testing_browser_process.h"

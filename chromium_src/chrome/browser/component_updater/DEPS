@@ -1,0 +1,6 @@
+include_rules = [
+  "+luxxle/components/luxxle_component_updater/browser",
+  "+luxxle/components/ai_chat/core/browser",
+  "+luxxle/components/luxxle_wallet/browser",
+  "+luxxle/components/psst/browser/core",
+]

@@ -1,0 +1,45 @@
+<!-- Copyright (c) 2023 The Luxxle Authors. All rights reserved.
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this file,
+You can obtain one at https://mozilla.org/MPL/2.0/. -->
+
+<!DOCTYPE html>
+
+<link rel="import" href="/tracing/metrics/metric_registry.html">
+<link rel="import" href="/luxxle/tools/perf/metrics/luxxle_uma_utils.html">
+
+<script>
+  'use strict';
+
+  tr.exportTo('tr.metrics', function () {
+    const SUM_AND_COUNT_HISTOGRAM_LIST = [
+      'Luxxle.Adblock.MakeEngineWithRules.Default',
+      'Luxxle.Adblock.MakeEngineWithRules.Additional',
+
+      'Luxxle.CosmeticFilters.UrlCosmeticResourcesSync',
+      'Luxxle.CosmeticFilters.ApplyRules',
+
+      'Luxxle.Adblock.ShouldBlockRequest',
+
+      'Luxxle.ProxyingURLLoader.TotalRequestTime',
+
+      'Luxxle.APIRequestHelper.ProcessResultOnUI',
+
+      'ChildProcess.Launched.UtilityProcessHash',
+    ];
+
+    function luxxleGeneralUmaMetric(histograms, model) {
+      tr.metrics.luxxleExtendedUmaMetrics(histograms, model, {
+        sumAndCountHistograms: SUM_AND_COUNT_HISTOGRAM_LIST,
+      });
+    }
+
+    tr.metrics.MetricRegistry.register(luxxleGeneralUmaMetric, {
+      requiredCategories: ['benchmark'],
+    });
+
+    return {
+      luxxleGeneralUmaMetric,
+    };
+  });
+</script>

@@ -5,8 +5,8 @@
 
 source_set("certificate") {
   sources = [
-    "brave_certificate.h",
-    "brave_certificate.mm",
+    "luxxle_certificate.h",
+    "luxxle_certificate.mm",
   ]
 
   deps = [

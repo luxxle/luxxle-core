@@ -16,7 +16,7 @@
 class GURL;
 class Profile;
 
-namespace brave_ads {
+namespace luxxle_ads {
 
 class AdsNotificationHandler : public NotificationHandler {
  public:
@@ -50,6 +50,6 @@ class AdsNotificationHandler : public NotificationHandler {
   bool did_click_notification_ad_ = false;
 };
 
-}  // namespace brave_ads
+}  // namespace luxxle_ads
 
 #endif  // LUXXLE_BROWSER_NOTIFICATIONS_ADS_NOTIFICATION_HANDLER_H_

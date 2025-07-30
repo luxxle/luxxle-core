@@ -243,9 +243,9 @@ public class OnboardingRestoreWalletFragment extends BaseOnboardingWalletFragmen
 
     @NonNull
     private PasteEditText generatePasteEditText(final boolean lastItem, final int position) {
-        // Apply context wrapper to introduce Brave Wallet colors and styles.
+        // Apply context wrapper to introduce Luxxle Wallet colors and styles.
         ContextThemeWrapper contextThemeWrapper =
-                new ContextThemeWrapper(requireContext(), R.style.BraveWalletEditTextTheme);
+                new ContextThemeWrapper(requireContext(), R.style.LuxxleWalletEditTextTheme);
         PasteEditText pasteEditText = new PasteEditText(contextThemeWrapper);
         pasteEditText.setListener(this);
         pasteEditText.setInputType(InputType.TYPE_CLASS_TEXT);

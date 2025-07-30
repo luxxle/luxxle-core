@@ -28,55 +28,55 @@ class RepositoryTest(unittest.TestCase):
         self.assertEqual(repository.chromium.path,
                          PurePath(self.fake_chromium_src.chromium))
         self.assertTrue(repository.chromium.is_chromium)
-        self.assertFalse(repository.chromium.is_brave)
+        self.assertFalse(repository.chromium.is_luxxle)
 
-    def test_brave_repository(self):
-        self.assertEqual(repository.brave.path,
-                         PurePath(self.fake_chromium_src.brave))
-        self.assertTrue(repository.brave.is_brave)
-        self.assertFalse(repository.brave.is_chromium)
+    def test_luxxle_repository(self):
+        self.assertEqual(repository.luxxle.path,
+                         PurePath(self.fake_chromium_src.luxxle))
+        self.assertTrue(repository.luxxle.is_luxxle)
+        self.assertFalse(repository.luxxle.is_chromium)
 
-    def test_to_brave(self):
+    def test_to_luxxle(self):
         self.assertEqual(
-            Repository(self.fake_chromium_src.chromium).to_brave(),
+            Repository(self.fake_chromium_src.chromium).to_luxxle(),
             PurePath('luxxle'))
         self.assertEqual(
-            Repository(self.fake_chromium_src.brave).to_brave(),
-            PurePath('../brave'))
+            Repository(self.fake_chromium_src.luxxle).to_luxxle(),
+            PurePath('../luxxle'))
         self.assertEqual(
-            Repository(self.fake_chromium_src.chromium / 'v8').to_brave(),
-            PurePath('../brave'))
+            Repository(self.fake_chromium_src.chromium / 'v8').to_luxxle(),
+            PurePath('../luxxle'))
         self.assertEqual(
             Repository(self.fake_chromium_src.chromium /
-                       'third_party/test1').to_brave(),
-            PurePath('../../brave'))
+                       'third_party/test1').to_luxxle(),
+            PurePath('../../luxxle'))
 
-    def test_from_brave(self):
+    def test_from_luxxle(self):
         self.assertEqual(
-            Repository(self.fake_chromium_src.chromium).from_brave(),
+            Repository(self.fake_chromium_src.chromium).from_luxxle(),
             PurePath('../'))
         self.assertEqual(
-            Repository(self.fake_chromium_src.brave).from_brave(),
-            PurePath('../brave'))
+            Repository(self.fake_chromium_src.luxxle).from_luxxle(),
+            PurePath('../luxxle'))
         self.assertEqual(
-            Repository(self.fake_chromium_src.chromium / 'v8').from_brave(),
+            Repository(self.fake_chromium_src.chromium / 'v8').from_luxxle(),
             PurePath('../v8'))
         self.assertEqual(
             Repository(self.fake_chromium_src.chromium /
-                       'third_party/test1').from_brave(),
+                       'third_party/test1').from_luxxle(),
             PurePath('../third_party/test1'))
         self.assertEqual(
             Repository(self.fake_chromium_src.chromium /
-                       'third_party/test1').from_brave('test_file.txt'),
+                       'third_party/test1').from_luxxle('test_file.txt'),
             PurePath('../third_party/test1/test_file.txt'))
 
     def test_run_git(self):
         """Test Repository.run_git by verifying the hash of the last commit."""
         # Verify the hash of the last commit using Repository.run_git
         self.assertEqual(
-            self.fake_chromium_src.commit_empty("Empty commit in brave",
-                                                self.fake_chromium_src.brave),
-            repository.brave.run_git("rev-parse", "HEAD"),
+            self.fake_chromium_src.commit_empty("Empty commit in luxxle",
+                                                self.fake_chromium_src.luxxle),
+            repository.luxxle.run_git("rev-parse", "HEAD"),
         )
         self.assertEqual(
             self.fake_chromium_src.commit_empty(
@@ -100,13 +100,13 @@ class RepositoryTest(unittest.TestCase):
     def test_run_git_no_trim(self):
         """Test that no_trim is correctly passed to run_git."""
         with patch("terminal.terminal.run_git") as mock_run_git:
-            # Call run_git with no_trim=True for brave repository
-            repository.brave.run_git("log", no_trim=True)
+            # Call run_git with no_trim=True for luxxle repository
+            repository.luxxle.run_git("log", no_trim=True)
             mock_run_git.assert_called_once_with("log", no_trim=True)
 
             # Reset mock and call run_git with no_trim=False
             mock_run_git.reset_mock()
-            repository.brave.run_git("log", no_trim=False)
+            repository.luxxle.run_git("log", no_trim=False)
             mock_run_git.assert_called_once_with("log", no_trim=False)
 
     def test_unstage_all_changes(self):

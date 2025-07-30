@@ -12,24 +12,24 @@ import android.text.TextUtils;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.brave.playlist.PlaylistViewModel;
-import com.brave.playlist.enums.PlaylistOptionsEnum;
-import com.brave.playlist.fragment.AllPlaylistFragment;
-import com.brave.playlist.fragment.PlaylistFragment;
-import com.brave.playlist.listener.PlaylistOptionsListener;
-import com.brave.playlist.local_database.PlaylistRepository;
-import com.brave.playlist.model.HlsContentProgressModel;
-import com.brave.playlist.model.MoveOrCopyModel;
-import com.brave.playlist.model.PlaylistItemModel;
-import com.brave.playlist.model.PlaylistModel;
-import com.brave.playlist.model.PlaylistOptionsModel;
-import com.brave.playlist.playback_service.VideoPlaybackService;
-import com.brave.playlist.util.ConstantUtils;
-import com.brave.playlist.util.PlaylistUtils;
-import com.brave.playlist.view.bottomsheet.MoveOrCopyToPlaylistBottomSheet;
+import com.luxxle.playlist.PlaylistViewModel;
+import com.luxxle.playlist.enums.PlaylistOptionsEnum;
+import com.luxxle.playlist.fragment.AllPlaylistFragment;
+import com.luxxle.playlist.fragment.PlaylistFragment;
+import com.luxxle.playlist.listener.PlaylistOptionsListener;
+import com.luxxle.playlist.local_database.PlaylistRepository;
+import com.luxxle.playlist.model.HlsContentProgressModel;
+import com.luxxle.playlist.model.MoveOrCopyModel;
+import com.luxxle.playlist.model.PlaylistItemModel;
+import com.luxxle.playlist.model.PlaylistModel;
+import com.luxxle.playlist.model.PlaylistOptionsModel;
+import com.luxxle.playlist.playback_service.VideoPlaybackService;
+import com.luxxle.playlist.util.ConstantUtils;
+import com.luxxle.playlist.util.PlaylistUtils;
+import com.luxxle.playlist.view.bottomsheet.MoveOrCopyToPlaylistBottomSheet;
 
-import org.chromium.base.BraveFeatureList;
-import org.chromium.base.BravePreferenceKeys;
+import org.chromium.base.LuxxleFeatureList;
+import org.chromium.base.LuxxlePreferenceKeys;
 import org.chromium.base.Log;
 import org.chromium.base.supplier.OneshotSupplier;
 import org.chromium.base.task.PostTask;
@@ -68,9 +68,9 @@ public class PlaylistHostActivity extends AsyncInitializationActivity
             mPlaylistService.close();
             mPlaylistService = null;
         }
-        if (ChromeFeatureList.isEnabled(BraveFeatureList.BRAVE_PLAYLIST)
+        if (ChromeFeatureList.isEnabled(LuxxleFeatureList.LUXXLE_PLAYLIST)
                 && ChromeSharedPreferences.getInstance()
-                        .readBoolean(BravePreferenceKeys.PREF_ENABLE_PLAYLIST, true)) {
+                        .readBoolean(LuxxlePreferenceKeys.PREF_ENABLE_PLAYLIST, true)) {
             initPlaylistService();
         }
     }
@@ -100,7 +100,7 @@ public class PlaylistHostActivity extends AsyncInitializationActivity
     @Override
     public void finishNativeInitialization() {
         super.finishNativeInitialization();
-        if (ChromeFeatureList.isEnabled(BraveFeatureList.BRAVE_PLAYLIST)) {
+        if (ChromeFeatureList.isEnabled(LuxxleFeatureList.LUXXLE_PLAYLIST)) {
             initPlaylistService();
         }
         mPlaylistViewModel =

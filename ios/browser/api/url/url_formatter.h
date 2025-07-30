@@ -10,47 +10,47 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NSInteger BraveURLSchemeDisplay NS_TYPED_ENUM
+typedef NSInteger LuxxleURLSchemeDisplay NS_TYPED_ENUM
     NS_SWIFT_NAME(URLFormatter.SchemeDisplay);
 
-OBJC_EXPORT BraveURLSchemeDisplay const BraveURLSchemeDisplayShow;
-OBJC_EXPORT BraveURLSchemeDisplay const BraveURLSchemeDisplayOmitHttpAndHttps;
+OBJC_EXPORT LuxxleURLSchemeDisplay const LuxxleURLSchemeDisplayShow;
+OBJC_EXPORT LuxxleURLSchemeDisplay const LuxxleURLSchemeDisplayOmitHttpAndHttps;
 /// Omit cryptographic (i.e. https and wss).
-OBJC_EXPORT BraveURLSchemeDisplay const BraveURLSchemeDisplayOmitCryptographic;
+OBJC_EXPORT LuxxleURLSchemeDisplay const LuxxleURLSchemeDisplayOmitCryptographic;
 
 NS_SWIFT_NAME(URLFormatter.FormatType)
-typedef NS_OPTIONS(NSUInteger, BraveURLFormatterFormatType) {
-  BraveURLFormatterFormatTypeOmitNothing = 0,
-  BraveURLFormatterFormatTypeOmitUsernamePassword = 1 << 0,
-  BraveURLFormatterFormatTypeOmitHTTP = 1 << 1,
-  BraveURLFormatterFormatTypeOmitTrailingSlashOnBareHostname = 1 << 2,
-  BraveURLFormatterFormatTypeOmitHTTPS = 1 << 3,
-  BraveURLFormatterFormatTypeOmitTrivialSubdomains = 1 << 5,
-  BraveURLFormatterFormatTypeTrimAfterHost = 1 << 6,
-  BraveURLFormatterFormatTypeOmitFileScheme = 1 << 7,
-  BraveURLFormatterFormatTypeOmitMailToScheme = 1 << 8,
-  BraveURLFormatterFormatTypeOmitMobilePrefix = 1 << 9,
+typedef NS_OPTIONS(NSUInteger, LuxxleURLFormatterFormatType) {
+  LuxxleURLFormatterFormatTypeOmitNothing = 0,
+  LuxxleURLFormatterFormatTypeOmitUsernamePassword = 1 << 0,
+  LuxxleURLFormatterFormatTypeOmitHTTP = 1 << 1,
+  LuxxleURLFormatterFormatTypeOmitTrailingSlashOnBareHostname = 1 << 2,
+  LuxxleURLFormatterFormatTypeOmitHTTPS = 1 << 3,
+  LuxxleURLFormatterFormatTypeOmitTrivialSubdomains = 1 << 5,
+  LuxxleURLFormatterFormatTypeTrimAfterHost = 1 << 6,
+  LuxxleURLFormatterFormatTypeOmitFileScheme = 1 << 7,
+  LuxxleURLFormatterFormatTypeOmitMailToScheme = 1 << 8,
+  LuxxleURLFormatterFormatTypeOmitMobilePrefix = 1 << 9,
 
   /// Omits Username & Password, HTTP (not HTTPS), and Trailing Slash
-  BraveURLFormatterFormatTypeOmitDefaults =
-      BraveURLFormatterFormatTypeOmitUsernamePassword |
-      BraveURLFormatterFormatTypeOmitHTTP |
-      BraveURLFormatterFormatTypeOmitTrailingSlashOnBareHostname
+  LuxxleURLFormatterFormatTypeOmitDefaults =
+      LuxxleURLFormatterFormatTypeOmitUsernamePassword |
+      LuxxleURLFormatterFormatTypeOmitHTTP |
+      LuxxleURLFormatterFormatTypeOmitTrailingSlashOnBareHostname
 };
 
 NS_SWIFT_NAME(URLFormatter.UnescapeRule)
-typedef NS_OPTIONS(NSUInteger, BraveURLFormatterUnescapeRule) {
-  BraveURLFormatterUnescapeRuleNone = 0,
-  BraveURLFormatterUnescapeRuleNormal = 1 << 0,
-  BraveURLFormatterUnescapeRuleSpaces = 1 << 1,
-  BraveURLFormatterUnescapeRulePathSeparators = 1 << 2,
-  BraveURLFormatterUnescapeRuleSpecialCharsExceptPathSeparators = 1 << 3,
-  BraveURLFormatterUnescapeRuleReplacePlusWithSpace = 1 << 4
+typedef NS_OPTIONS(NSUInteger, LuxxleURLFormatterUnescapeRule) {
+  LuxxleURLFormatterUnescapeRuleNone = 0,
+  LuxxleURLFormatterUnescapeRuleNormal = 1 << 0,
+  LuxxleURLFormatterUnescapeRuleSpaces = 1 << 1,
+  LuxxleURLFormatterUnescapeRulePathSeparators = 1 << 2,
+  LuxxleURLFormatterUnescapeRuleSpecialCharsExceptPathSeparators = 1 << 3,
+  LuxxleURLFormatterUnescapeRuleReplacePlusWithSpace = 1 << 4
 };
 
 OBJC_EXPORT
 NS_SWIFT_NAME(URLFormatter)
-@interface BraveURLFormatter : NSObject
+@interface LuxxleURLFormatter : NSObject
 - (instancetype)init NS_UNAVAILABLE;
 
 /// Format a URL "origin/host" for Security Display
@@ -58,7 +58,7 @@ NS_SWIFT_NAME(URLFormatter)
 /// schemeDisplay - Determines whether or not to omit the scheme
 + (NSString*)formatURLOriginForSecurityDisplay:(NSString*)origin
                                  schemeDisplay:
-                                     (BraveURLSchemeDisplay)schemeDisplay;
+                                     (LuxxleURLSchemeDisplay)schemeDisplay;
 
 /// Format a URL "origin/host" omitting the scheme, path, and trivial
 /// sub-domains. origin - The origin to be formatted
@@ -71,8 +71,8 @@ NS_SWIFT_NAME(URLFormatter)
 /// omit certain parts of a URL unescapeOptions - Options passed to the
 /// formatter for UN-Escaping parts of a URL
 + (NSString*)formatURL:(NSString*)url
-           formatTypes:(BraveURLFormatterFormatType)formatTypes
-       unescapeOptions:(BraveURLFormatterUnescapeRule)unescapeOptions;
+           formatTypes:(LuxxleURLFormatterFormatType)formatTypes
+       unescapeOptions:(LuxxleURLFormatterUnescapeRule)unescapeOptions;
 @end
 
 NS_ASSUME_NONNULL_END

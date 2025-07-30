@@ -10,12 +10,12 @@ from typing import Optional
 
 from terminal import terminal
 
-# The path to the brave/ directory.
-BRAVE_CORE_PATH = next(brave for brave in PurePath(__file__).parents
-                       if brave.name == 'luxxle')
+# The path to the luxxle/ directory.
+LUXXLE_CORE_PATH = next(luxxle for luxxle in PurePath(__file__).parents
+                       if luxxle.name == 'luxxle')
 
 # The path to chromium's src/ directory.
-CHROMIUM_SRC_PATH = BRAVE_CORE_PATH.parent
+CHROMIUM_SRC_PATH = LUXXLE_CORE_PATH.parent
 
 
 @dataclass(frozen=True)
@@ -39,22 +39,22 @@ class Repository:
         return self.path == CHROMIUM_SRC_PATH
 
     @property
-    def is_brave(self) -> bool:
-        """If this repo is brave/.
+    def is_luxxle(self) -> bool:
+        """If this repo is luxxle/.
         """
-        return self.path == BRAVE_CORE_PATH
+        return self.path == LUXXLE_CORE_PATH
 
-    def to_brave(self) -> PurePath:
-        """ Returns the path from the repository to brave/.
+    def to_luxxle(self) -> PurePath:
+        """ Returns the path from the repository to luxxle/.
         """
         if self.is_chromium:
-            return BRAVE_CORE_PATH.relative_to(CHROMIUM_SRC_PATH)
+            return LUXXLE_CORE_PATH.relative_to(CHROMIUM_SRC_PATH)
         return PurePath(
             len(self.path.relative_to(CHROMIUM_SRC_PATH).parts) *
-            '../') / BRAVE_CORE_PATH.relative_to(CHROMIUM_SRC_PATH)
+            '../') / LUXXLE_CORE_PATH.relative_to(CHROMIUM_SRC_PATH)
 
-    def from_brave(self, source: Optional[PurePath] = None) -> PurePath:
-        """ Returns the path from brave/ to the repository.
+    def from_luxxle(self, source: Optional[PurePath] = None) -> PurePath:
+        """ Returns the path from luxxle/ to the repository.
         """
         if source:
             return PurePath('..') / self.path.relative_to(
@@ -65,10 +65,10 @@ class Repository:
     def run_git(self, *cmd, no_trim=False) -> str:
         """Runs a git command on the repository.
         """
-        if self.is_brave:
+        if self.is_luxxle:
             return terminal.run_git(*cmd, no_trim=no_trim)
 
-        return terminal.run_git('-C', self.from_brave(), *cmd, no_trim=no_trim)
+        return terminal.run_git('-C', self.from_luxxle(), *cmd, no_trim=no_trim)
 
     def unstage_all_changes(self):
         """Unstages all changes in the repository.
@@ -149,5 +149,5 @@ class Repository:
 # An instance to the chromium repository.
 chromium = Repository(PurePath(CHROMIUM_SRC_PATH))
 
-# An instance to the brave repository.
-brave = Repository(PurePath(BRAVE_CORE_PATH))
+# An instance to the luxxle repository.
+luxxle = Repository(PurePath(LUXXLE_CORE_PATH))

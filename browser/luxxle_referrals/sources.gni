@@ -1,0 +1,11 @@
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at https://mozilla.org/MPL/2.0/.
+
+# Minimal luxxle referrals sources for Luxxle - no referral system currently implemented
+# TODO: Implement Luxxle-specific referral system if needed
+
+# Define empty luxxle referrals variables (no Luxxle equivalent found)
+luxxle_browser_luxxle_referrals_sources = []
+luxxle_browser_luxxle_referrals_deps = [] 

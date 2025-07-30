@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
@@ -114,7 +114,7 @@ class ByteCodeProcessor {
         if (sShouldUseThreadAnnotations) {
             chain = new ThreadAssertionClassAdapter(chain);
         }
-        chain = org.brave.bytecode.BraveClassAdapter.createAdapter(chain);
+        chain = org.luxxle.bytecode.LuxxleClassAdapter.createAdapter(chain);
         reader.accept(chain, 0);
         byte[] patchedByteCode = writer.toByteArray();
         return EntryDataPair.create(entry.getName(), patchedByteCode);

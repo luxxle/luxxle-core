@@ -16,8 +16,8 @@ import android.util.Pair;
 
 import org.chromium.base.ContextUtils;
 import org.chromium.base.Log;
-import org.chromium.brave_news.mojom.DisplayAd;
-import org.chromium.brave_news.mojom.Image;
+import org.chromium.luxxle_news.mojom.DisplayAd;
+import org.chromium.luxxle_news.mojom.Image;
 import org.chromium.chrome.browser.ntp_background_images.model.TopSite;
 import org.chromium.chrome.browser.ntp_background_images.util.NTPImageUtil;
 import org.chromium.url.mojom.Url;
@@ -33,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 3;
 
     // Database Name
-    private static final String DATABASE_NAME = "brave_db";
+    private static final String DATABASE_NAME = "luxxle_db";
 
     public static DatabaseHelper getInstance() {
         synchronized (DatabaseHelper.class) {
@@ -55,7 +55,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // create notes table
         db.execSQL(TopSiteTable.CREATE_TABLE);
-        db.execSQL(BraveStatsTable.CREATE_TABLE);
+        db.execSQL(LuxxleStatsTable.CREATE_TABLE);
         db.execSQL(SavedBandwidthTable.CREATE_TABLE);
         db.execSQL(DisplayAdsTable.CREATE_TABLE);
     }
@@ -121,7 +121,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     DisplayAdsTable.COLUMN_TAB_ID + " = " + tabId,
                     null);
         } catch (SQLiteException exc) {
-            // There is a possible crash https://github.com/luxxle/brave-browser/issues/42024
+            // There is a possible crash https://github.com/luxxle/luxxle-browser/issues/42024
             // when the database can't be open. I don't think we can do anything in that
             // case, so just ignore.
             Log.e(TAG, "deleteDisplayAdsFromTab " + exc);
@@ -141,7 +141,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         cursor.moveToFirst();
 
-        DisplayAdsTable braveAd = new DisplayAdsTable(
+        DisplayAdsTable luxxleAd = new DisplayAdsTable(
                 cursor.getString(cursor.getColumnIndex(DisplayAdsTable.COLUMN_UUID)),
                 cursor.getString(
                         cursor.getColumnIndex(DisplayAdsTable.COLUMN_CREATIVE_INSTANCE_ID)),
@@ -155,7 +155,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         cursor.close();
 
-        return braveAd;
+        return luxxleAd;
     }
 
     private boolean isTopSiteAlreadyAdded(String destinationUrl) {
@@ -238,30 +238,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                   new String[] {destinationUrl});
     }
 
-    public long insertStats(BraveStatsTable braveStat) {
-        // if (!isAdsTrackerAlreadyAdded(braveStat)) {
+    public long insertStats(LuxxleStatsTable luxxleStat) {
+        // if (!isAdsTrackerAlreadyAdded(luxxleStat)) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(BraveStatsTable.COLUMN_URL, braveStat.getUrl());
-        values.put(BraveStatsTable.COLUMN_DOMAIN, braveStat.getDomain());
-        values.put(BraveStatsTable.COLUMN_STAT_TYPE, braveStat.getStatType());
-        values.put(BraveStatsTable.COLUMN_STAT_SITE, braveStat.getStatSite());
-        values.put(BraveStatsTable.COLUMN_STAT_SITE_DOMAIN, braveStat.getStatSiteDomain());
-        values.put(BraveStatsTable.COLUMN_TIMESTAMP, braveStat.getTimestamp());
+        values.put(LuxxleStatsTable.COLUMN_URL, luxxleStat.getUrl());
+        values.put(LuxxleStatsTable.COLUMN_DOMAIN, luxxleStat.getDomain());
+        values.put(LuxxleStatsTable.COLUMN_STAT_TYPE, luxxleStat.getStatType());
+        values.put(LuxxleStatsTable.COLUMN_STAT_SITE, luxxleStat.getStatSite());
+        values.put(LuxxleStatsTable.COLUMN_STAT_SITE_DOMAIN, luxxleStat.getStatSiteDomain());
+        values.put(LuxxleStatsTable.COLUMN_TIMESTAMP, luxxleStat.getTimestamp());
 
-        return  db.insert(BraveStatsTable.TABLE_NAME, null, values);
+        return  db.insert(LuxxleStatsTable.TABLE_NAME, null, values);
         // }
         // return -1;
     }
 
     @SuppressLint("Range")
-    public List<BraveStatsTable> getAllStats() {
-        List<BraveStatsTable> braveStats = new ArrayList<>();
+    public List<LuxxleStatsTable> getAllStats() {
+        List<LuxxleStatsTable> luxxleStats = new ArrayList<>();
 
         // Select All Query
         String selectQuery = "SELECT  * FROM "
-                             + BraveStatsTable.TABLE_NAME;
+                             + LuxxleStatsTable.TABLE_NAME;
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -269,32 +269,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                BraveStatsTable braveStat = new BraveStatsTable(
-                    cursor.getString(cursor.getColumnIndex(BraveStatsTable.COLUMN_URL)),
-                    cursor.getString(cursor.getColumnIndex(BraveStatsTable.COLUMN_DOMAIN)),
-                    cursor.getString(cursor.getColumnIndex(BraveStatsTable.COLUMN_STAT_TYPE)),
-                    cursor.getString(cursor.getColumnIndex(BraveStatsTable.COLUMN_STAT_SITE)),
-                    cursor.getString(cursor.getColumnIndex(BraveStatsTable.COLUMN_STAT_SITE_DOMAIN)),
-                    cursor.getString(cursor.getColumnIndex(BraveStatsTable.COLUMN_TIMESTAMP)));
+                LuxxleStatsTable luxxleStat = new LuxxleStatsTable(
+                    cursor.getString(cursor.getColumnIndex(LuxxleStatsTable.COLUMN_URL)),
+                    cursor.getString(cursor.getColumnIndex(LuxxleStatsTable.COLUMN_DOMAIN)),
+                    cursor.getString(cursor.getColumnIndex(LuxxleStatsTable.COLUMN_STAT_TYPE)),
+                    cursor.getString(cursor.getColumnIndex(LuxxleStatsTable.COLUMN_STAT_SITE)),
+                    cursor.getString(cursor.getColumnIndex(LuxxleStatsTable.COLUMN_STAT_SITE_DOMAIN)),
+                    cursor.getString(cursor.getColumnIndex(LuxxleStatsTable.COLUMN_TIMESTAMP)));
 
-                braveStats.add(braveStat);
+                luxxleStats.add(luxxleStat);
             } while (cursor.moveToNext());
         }
 
         cursor.close();
 
-        return braveStats;
+        return luxxleStats;
     }
 
     @SuppressLint("Range")
-    public List<BraveStatsTable> getAllStatsWithDate(String thresholdTime, String currentTime) {
-        List<BraveStatsTable> braveStats = new ArrayList<>();
+    public List<LuxxleStatsTable> getAllStatsWithDate(String thresholdTime, String currentTime) {
+        List<LuxxleStatsTable> luxxleStats = new ArrayList<>();
         // Select All Query
         String selectQuery =
                 "SELECT  * FROM "
-                        + BraveStatsTable.TABLE_NAME
+                        + LuxxleStatsTable.TABLE_NAME
                         + " WHERE "
-                        + BraveStatsTable.COLUMN_TIMESTAMP
+                        + LuxxleStatsTable.COLUMN_TIMESTAMP
                         + " BETWEEN date('"
                         + thresholdTime
                         + "') AND date('"
@@ -307,43 +307,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                BraveStatsTable braveStat = new BraveStatsTable(
-                    cursor.getString(cursor.getColumnIndex(BraveStatsTable.COLUMN_URL)),
-                    cursor.getString(cursor.getColumnIndex(BraveStatsTable.COLUMN_DOMAIN)),
-                    cursor.getString(cursor.getColumnIndex(BraveStatsTable.COLUMN_STAT_TYPE)),
-                    cursor.getString(cursor.getColumnIndex(BraveStatsTable.COLUMN_STAT_SITE)),
-                    cursor.getString(cursor.getColumnIndex(BraveStatsTable.COLUMN_STAT_SITE_DOMAIN)),
-                    cursor.getString(cursor.getColumnIndex(BraveStatsTable.COLUMN_TIMESTAMP)));
+                LuxxleStatsTable luxxleStat = new LuxxleStatsTable(
+                    cursor.getString(cursor.getColumnIndex(LuxxleStatsTable.COLUMN_URL)),
+                    cursor.getString(cursor.getColumnIndex(LuxxleStatsTable.COLUMN_DOMAIN)),
+                    cursor.getString(cursor.getColumnIndex(LuxxleStatsTable.COLUMN_STAT_TYPE)),
+                    cursor.getString(cursor.getColumnIndex(LuxxleStatsTable.COLUMN_STAT_SITE)),
+                    cursor.getString(cursor.getColumnIndex(LuxxleStatsTable.COLUMN_STAT_SITE_DOMAIN)),
+                    cursor.getString(cursor.getColumnIndex(LuxxleStatsTable.COLUMN_TIMESTAMP)));
 
-                braveStats.add(braveStat);
+                luxxleStats.add(luxxleStat);
             } while (cursor.moveToNext());
         }
 
         cursor.close();
 
-        return braveStats;
+        return luxxleStats;
     }
 
     @SuppressLint("Range")
     public List<Pair<String, Integer>> getStatsWithDate(String thresholdTime, String currentTime) {
-        List<Pair<String, Integer>> braveStats = new ArrayList<>();
+        List<Pair<String, Integer>> luxxleStats = new ArrayList<>();
 
         String selectQuery =
                 "SELECT  "
-                        + BraveStatsTable.COLUMN_DOMAIN
+                        + LuxxleStatsTable.COLUMN_DOMAIN
                         + ", "
-                        + BraveStatsTable.COLUMN_TIMESTAMP
+                        + LuxxleStatsTable.COLUMN_TIMESTAMP
                         + " , COUNT(*) as stat_count FROM "
-                        + BraveStatsTable.TABLE_NAME
+                        + LuxxleStatsTable.TABLE_NAME
                         + " WHERE "
-                        + BraveStatsTable.COLUMN_TIMESTAMP
+                        + LuxxleStatsTable.COLUMN_TIMESTAMP
                         + " BETWEEN date('"
                         + thresholdTime
                         + "') AND date('"
                         + currentTime
                         + "')"
                         + " GROUP BY "
-                        + BraveStatsTable.COLUMN_DOMAIN
+                        + LuxxleStatsTable.COLUMN_DOMAIN
                         + " ORDER BY stat_count DESC";
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -354,35 +354,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 Pair<String, Integer> statPair =
                         new Pair<>(
                                 cursor.getString(
-                                        cursor.getColumnIndex(BraveStatsTable.COLUMN_DOMAIN)),
+                                        cursor.getColumnIndex(LuxxleStatsTable.COLUMN_DOMAIN)),
                                 cursor.getInt(cursor.getColumnIndex("stat_count")));
-                braveStats.add(statPair);
+                luxxleStats.add(statPair);
             } while (cursor.moveToNext());
         }
 
         cursor.close();
 
-        return braveStats;
+        return luxxleStats;
     }
 
     @SuppressLint("Range")
     public List<Pair<String, Integer>> getSitesWithDate(String thresholdTime, String currentTime) {
-        List<Pair<String, Integer>> braveStats = new ArrayList<>();
+        List<Pair<String, Integer>> luxxleStats = new ArrayList<>();
         // Select All Query
         String selectQuery =
                 "SELECT  "
-                        + BraveStatsTable.COLUMN_STAT_SITE_DOMAIN
+                        + LuxxleStatsTable.COLUMN_STAT_SITE_DOMAIN
                         + ", COUNT(*) as site_count FROM "
-                        + BraveStatsTable.TABLE_NAME
+                        + LuxxleStatsTable.TABLE_NAME
                         + " WHERE "
-                        + BraveStatsTable.COLUMN_TIMESTAMP
+                        + LuxxleStatsTable.COLUMN_TIMESTAMP
                         + " BETWEEN date('"
                         + thresholdTime
                         + "') AND date('"
                         + currentTime
                         + "')"
                         + " GROUP BY "
-                        + BraveStatsTable.COLUMN_STAT_SITE_DOMAIN
+                        + LuxxleStatsTable.COLUMN_STAT_SITE_DOMAIN
                         + " ORDER BY site_count DESC";
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -395,19 +395,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         new Pair<>(
                                 cursor.getString(
                                         cursor.getColumnIndex(
-                                                BraveStatsTable.COLUMN_STAT_SITE_DOMAIN)),
+                                                LuxxleStatsTable.COLUMN_STAT_SITE_DOMAIN)),
                                 cursor.getInt(cursor.getColumnIndex("site_count")));
-                braveStats.add(statPair);
+                luxxleStats.add(statPair);
             } while (cursor.moveToNext());
         }
 
         cursor.close();
 
-        return braveStats;
+        return luxxleStats;
     }
 
     public void clearStatsTable() {
-        String selectQuery = "DELETE FROM " + BraveStatsTable.TABLE_NAME;
+        String selectQuery = "DELETE FROM " + LuxxleStatsTable.TABLE_NAME;
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL(selectQuery);
     }
@@ -433,7 +433,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         + ") as total FROM "
                         + SavedBandwidthTable.TABLE_NAME
                         + " WHERE "
-                        + BraveStatsTable.COLUMN_TIMESTAMP
+                        + LuxxleStatsTable.COLUMN_TIMESTAMP
                         + " BETWEEN date('"
                         + thresholdTime
                         + "') AND date('"

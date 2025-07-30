@@ -8,12 +8,12 @@
 #include <memory>
 #include <utility>
 
-#include "luxxle/browser/brave_browser_features.h"
+#include "luxxle/browser/luxxle_browser_features.h"
 #include "luxxle/browser/speedreader/speedreader_service_factory.h"
 #include "luxxle/browser/speedreader/speedreader_tab_helper.h"
-#include "luxxle/browser/ui/brave_browser.h"
-#include "luxxle/browser/ui/brave_browser_window.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/luxxle_browser.h"
+#include "luxxle/browser/ui/luxxle_browser_window.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/components/ai_chat/core/browser/utils.h"
 #include "luxxle/components/speedreader/tts_player.h"
 #include "build/build_config.h"
@@ -289,7 +289,7 @@ void SpeedreaderToolbarDataHandlerImpl::OnThemeChanged() {
   colors->foreground =
       color_provider->GetColor(kColorSpeedreaderToolbarForeground);
   colors->border = color_provider->GetColor(kColorSpeedreaderToolbarBorder);
-  if (BraveBrowser::ShouldUseBraveWebViewRoundedCorners(browser_)) {
+  if (LuxxleBrowser::ShouldUseLuxxleWebViewRoundedCorners(browser_)) {
     // The border is rendered in HTML. Hide the border by giving it the same
     // color as the background. When this feature flag is removed, consider
     // removing the border in HTML.

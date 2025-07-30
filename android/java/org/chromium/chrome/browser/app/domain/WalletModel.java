@@ -9,16 +9,16 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import org.chromium.brave_wallet.mojom.AssetRatioService;
-import org.chromium.brave_wallet.mojom.BlockchainRegistry;
-import org.chromium.brave_wallet.mojom.BraveWalletService;
-import org.chromium.brave_wallet.mojom.EthTxManagerProxy;
-import org.chromium.brave_wallet.mojom.JsonRpcService;
-import org.chromium.brave_wallet.mojom.KeyringService;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
-import org.chromium.brave_wallet.mojom.SolanaTxManagerProxy;
-import org.chromium.brave_wallet.mojom.SwapService;
-import org.chromium.brave_wallet.mojom.TxService;
+import org.chromium.luxxle_wallet.mojom.AssetRatioService;
+import org.chromium.luxxle_wallet.mojom.BlockchainRegistry;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletService;
+import org.chromium.luxxle_wallet.mojom.EthTxManagerProxy;
+import org.chromium.luxxle_wallet.mojom.JsonRpcService;
+import org.chromium.luxxle_wallet.mojom.KeyringService;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.SolanaTxManagerProxy;
+import org.chromium.luxxle_wallet.mojom.SwapService;
+import org.chromium.luxxle_wallet.mojom.TxService;
 
 // Under development, some parts not tested so use with caution
 // A container for all the native services and APIs
@@ -29,7 +29,7 @@ public class WalletModel {
     private TxService mTxService;
     private EthTxManagerProxy mEthTxManagerProxy;
     private SolanaTxManagerProxy mSolanaTxManagerProxy;
-    private BraveWalletService mBraveWalletService;
+    private LuxxleWalletService mLuxxleWalletService;
     private AssetRatioService mAssetRatioService;
     private SwapService mSwapService;
     private final CryptoModel mCryptoModel;
@@ -42,7 +42,7 @@ public class WalletModel {
             BlockchainRegistry blockchainRegistry, JsonRpcService jsonRpcService,
             TxService txService, EthTxManagerProxy ethTxManagerProxy,
             SolanaTxManagerProxy solanaTxManagerProxy, AssetRatioService assetRatioService,
-            BraveWalletService braveWalletService, SwapService swapService) {
+            LuxxleWalletService luxxleWalletService, SwapService swapService) {
         mContext = context;
         mKeyringService = keyringService;
         mBlockchainRegistry = blockchainRegistry;
@@ -51,7 +51,7 @@ public class WalletModel {
         mEthTxManagerProxy = ethTxManagerProxy;
         mSolanaTxManagerProxy = solanaTxManagerProxy;
         mAssetRatioService = assetRatioService;
-        mBraveWalletService = braveWalletService;
+        mLuxxleWalletService = luxxleWalletService;
         mSwapService = swapService;
         // Do not change the object initialisation order without discussion
         mCryptoActions = new CryptoActions();
@@ -64,17 +64,17 @@ public class WalletModel {
                         mJsonRpcService,
                         mEthTxManagerProxy,
                         mSolanaTxManagerProxy,
-                        mBraveWalletService,
+                        mLuxxleWalletService,
                         mAssetRatioService,
                         mCryptoActions,
                         mSwapService);
         mDappsModel =
                 new DappsModel(
                         mJsonRpcService,
-                        mBraveWalletService,
+                        mLuxxleWalletService,
                         mKeyringService,
                         mCryptoModel.getPendingTxHelper());
-        mKeyringModel = new KeyringModel(mKeyringService, mBraveWalletService, mCryptoActions);
+        mKeyringModel = new KeyringModel(mKeyringService, mLuxxleWalletService, mCryptoActions);
         // be careful with dependencies, must avoid cycles
         mCryptoModel.setAccountInfosFromKeyRingModel(mKeyringModel.mAccountInfos);
         init();
@@ -84,7 +84,7 @@ public class WalletModel {
             BlockchainRegistry blockchainRegistry, JsonRpcService jsonRpcService,
             TxService txService, EthTxManagerProxy ethTxManagerProxy,
             SolanaTxManagerProxy solanaTxManagerProxy, AssetRatioService assetRatioService,
-            BraveWalletService braveWalletService, SwapService swapService) {
+            LuxxleWalletService luxxleWalletService, SwapService swapService) {
         mContext = context;
         setKeyringService(keyringService);
         setBlockchainRegistry(blockchainRegistry);
@@ -93,14 +93,14 @@ public class WalletModel {
         setEthTxManagerProxy(ethTxManagerProxy);
         setSolanaTxManagerProxy(solanaTxManagerProxy);
         setAssetRatioService(assetRatioService);
-        setBraveWalletService(braveWalletService);
+        setLuxxleWalletService(luxxleWalletService);
         mSwapService = swapService;
         mCryptoModel.resetServices(mContext, mTxService, mKeyringService, mBlockchainRegistry,
-                mJsonRpcService, mEthTxManagerProxy, mSolanaTxManagerProxy, mBraveWalletService,
+                mJsonRpcService, mEthTxManagerProxy, mSolanaTxManagerProxy, mLuxxleWalletService,
                 mAssetRatioService);
         mDappsModel.resetServices(
-                mJsonRpcService, mBraveWalletService, mCryptoModel.getPendingTxHelper());
-        mKeyringModel.resetService(mKeyringService, braveWalletService);
+                mJsonRpcService, mLuxxleWalletService, mCryptoModel.getPendingTxHelper());
+        mKeyringModel.resetService(mKeyringService, luxxleWalletService);
         init();
     }
 
@@ -131,7 +131,7 @@ public class WalletModel {
         return getKeyringService() != null && getBlockchainRegistry() != null
                 && getJsonRpcService() != null && getTxService() != null
                 && getEthTxManagerProxy() != null && getSolanaTxManagerProxy() != null
-                && getAssetRatioService() != null && getBraveWalletService() != null;
+                && getAssetRatioService() != null && getLuxxleWalletService() != null;
     }
 
     public CryptoModel getCryptoModel() {
@@ -195,12 +195,12 @@ public class WalletModel {
         this.mSolanaTxManagerProxy = mSolanaTxManagerProxy;
     }
 
-    public BraveWalletService getBraveWalletService() {
-        return mBraveWalletService;
+    public LuxxleWalletService getLuxxleWalletService() {
+        return mLuxxleWalletService;
     }
 
-    public void setBraveWalletService(BraveWalletService mBraveWalletService) {
-        this.mBraveWalletService = mBraveWalletService;
+    public void setLuxxleWalletService(LuxxleWalletService mLuxxleWalletService) {
+        this.mLuxxleWalletService = mLuxxleWalletService;
     }
 
     public AssetRatioService getAssetRatioService() {

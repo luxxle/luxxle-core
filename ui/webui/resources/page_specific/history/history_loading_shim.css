@@ -1,5 +1,5 @@
 #loading-toolbar,
 html[dark] #loading-toolbar {
-  background: var(--brave-toolbar-gradient);
+  background: var(--luxxle-toolbar-gradient);
   color: transparent;
 }

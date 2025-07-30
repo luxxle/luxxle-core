@@ -5,12 +5,12 @@
 
 import("//extensions/buildflags/buildflags.gni")
 
-brave_browser_autocomplete_sources = [
-  "//luxxle/browser/autocomplete/brave_autocomplete_scheme_classifier.cc",
-  "//luxxle/browser/autocomplete/brave_autocomplete_scheme_classifier.h",
+luxxle_browser_autocomplete_sources = [
+  "//luxxle/browser/autocomplete/luxxle_autocomplete_scheme_classifier.cc",
+  "//luxxle/browser/autocomplete/luxxle_autocomplete_scheme_classifier.h",
 ]
 
-brave_browser_autocomplete_deps = [
+luxxle_browser_autocomplete_deps = [
   "//base",
   "//luxxle/common",
   # Commented out: removed components dependency - using Chromium defaults instead

@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 OBJC_EXPORT
 NS_SWIFT_NAME(Unzip)
-@interface BraveUnzip : NSObject
+@interface LuxxleUnzip : NSObject
 @property(nonatomic, readonly, class, nullable) NSString* jszipScriptPath;
 
 + (void)unzip:(NSString*)zipFile

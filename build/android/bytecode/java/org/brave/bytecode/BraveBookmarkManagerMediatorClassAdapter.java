@@ -3,25 +3,25 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveBookmarkManagerMediatorClassAdapter extends BraveClassVisitor {
+public class LuxxleBookmarkManagerMediatorClassAdapter extends LuxxleClassVisitor {
     static String sBookmarkManagerMediatorClassName =
             "org/chromium/chrome/browser/bookmarks/BookmarkManagerMediator";
-    static String sBraveBookmarkManagerMediatorClassName =
-            "org/chromium/chrome/browser/bookmarks/BraveBookmarkManagerMediator";
+    static String sLuxxleBookmarkManagerMediatorClassName =
+            "org/chromium/chrome/browser/bookmarks/LuxxleBookmarkManagerMediator";
 
-    public BraveBookmarkManagerMediatorClassAdapter(ClassVisitor visitor) {
+    public LuxxleBookmarkManagerMediatorClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         redirectConstructor(
-                sBookmarkManagerMediatorClassName, sBraveBookmarkManagerMediatorClassName);
+                sBookmarkManagerMediatorClassName, sLuxxleBookmarkManagerMediatorClassName);
 
-        deleteField(sBraveBookmarkManagerMediatorClassName, "mBookmarkModel");
+        deleteField(sLuxxleBookmarkManagerMediatorClassName, "mBookmarkModel");
         makeProtectedField(sBookmarkManagerMediatorClassName, "mBookmarkModel");
-        deleteField(sBraveBookmarkManagerMediatorClassName, "mContext");
+        deleteField(sLuxxleBookmarkManagerMediatorClassName, "mContext");
         makeProtectedField(sBookmarkManagerMediatorClassName, "mContext");
     }
 }

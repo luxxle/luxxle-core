@@ -14,7 +14,7 @@ import tempfile
 from typing import Optional
 
 from components.perf_test_utils import GetProcessOutput
-from components.version import BraveVersion
+from components.version import LuxxleVersion
 import components.git_tools as git_tools
 
 
@@ -43,7 +43,7 @@ def ParseFieldTrialsMode(string_type: str) -> FieldTrialsMode:
 
 
 def MakeFieldTrials(mode: FieldTrialsMode, artifacts_dir: str,
-                    version: Optional[BraveVersion],
+                    version: Optional[LuxxleVersion],
                     variations_repo_dir: Optional[str]) -> FieldTrialConfig:
   if mode != FieldTrialsMode.GRIFFIN:
     return FieldTrialConfig(mode, None, '')
@@ -53,8 +53,8 @@ def MakeFieldTrials(mode: FieldTrialsMode, artifacts_dir: str,
 
   if variations_repo_dir is None:
     variations_repo_dir = os.path.join(tempfile.gettempdir(),
-                                       'brave-variations')
-    git_tools.EnsureRepositoryUpdated(git_tools.GH_BRAVE_VARIATIONS_GIT_URL,
+                                       'luxxle-variations')
+    git_tools.EnsureRepositoryUpdated(git_tools.GH_LUXXLE_VARIATIONS_GIT_URL,
                                       'main', variations_repo_dir)
 
   sha1 = git_tools.GetRevisionFromDate(version.commit_date, 'main',

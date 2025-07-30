@@ -1,0 +1,36 @@
+/* Copyright (c) 2019 The Luxxle Authors. All rights reserved.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#ifndef LUXXLE_BROWSER_UI_VIEWS_PROFILES_LUXXLE_AVATAR_TOOLBAR_BUTTON_H_
+#define LUXXLE_BROWSER_UI_VIEWS_PROFILES_LUXXLE_AVATAR_TOOLBAR_BUTTON_H_
+
+#include <optional>
+
+#include "chrome/browser/ui/views/profiles/avatar_toolbar_button.h"
+#include "ui/base/metadata/metadata_header_macros.h"
+
+class BrowserView;
+
+class LuxxleAvatarToolbarButton : public AvatarToolbarButton {
+  METADATA_HEADER(LuxxleAvatarToolbarButton, AvatarToolbarButton)
+
+ public:
+  explicit LuxxleAvatarToolbarButton(BrowserView* browser_view);
+  LuxxleAvatarToolbarButton(const LuxxleAvatarToolbarButton&) = delete;
+  LuxxleAvatarToolbarButton& operator=(const LuxxleAvatarToolbarButton&) = delete;
+  ~LuxxleAvatarToolbarButton() override;
+
+  // ToolbarButton:
+  void SetHighlight(const std::u16string& highlight_text,
+                    std::optional<SkColor> highlight_color) override;
+  void UpdateColorsAndInsets() override;
+  void OnThemeChanged() override;
+
+ private:
+  // AvatarToolbarButton:
+  base::WeakPtrFactory<LuxxleAvatarToolbarButton> weak_ptr_factory_{this};
+};
+
+#endif  // LUXXLE_BROWSER_UI_VIEWS_PROFILES_LUXXLE_AVATAR_TOOLBAR_BUTTON_H_

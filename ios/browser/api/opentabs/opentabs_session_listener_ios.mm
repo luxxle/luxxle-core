@@ -1,14 +1,14 @@
-/* Copyright (c) 2022 The Brave Authors. All rights reserved.
+/* Copyright (c) 2022 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/ios/browser/api/opentabs/opentabs_session_listener_ios.h"
+#include "luxxle/ios/browser/api/opentabs/opentabs_session_listener_ios.h"
 
 #include "base/check.h"
 #include "base/memory/raw_ptr.h"
-#include "brave/ios/browser/api/opentabs/brave_opentabs_api.h"
-#include "brave/ios/browser/api/opentabs/brave_opentabs_observer.h"
+#include "luxxle/ios/browser/api/opentabs/luxxle_opentabs_api.h"
+#include "luxxle/ios/browser/api/opentabs/luxxle_opentabs_observer.h"
 #include "components/sync/service/sync_service.h"
 #include "components/sync/service/sync_service_observer.h"
 
@@ -53,7 +53,7 @@ void OpenTabsSessionListenerIOS::OnSyncShutdown(syncer::SyncService* sync) {
 }
 
 }  // namespace ios
-}  // namespace brave
+}  // namespace luxxle
 
 @interface OpenTabsSessionListenerImpl () {
   std::unique_ptr<luxxle::ios::OpenTabsSessionListenerIOS> observer_;

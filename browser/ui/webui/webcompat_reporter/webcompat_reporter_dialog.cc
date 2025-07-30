@@ -14,9 +14,9 @@
 
 #include "base/json/json_writer.h"
 #include "base/values.h"
-#include "luxxle/browser/brave_shields/brave_shields_tab_helper.h"
+#include "luxxle/browser/luxxle_shields/luxxle_shields_tab_helper.h"
 #include "luxxle/browser/webcompat_reporter/webcompat_reporter_service_factory.h"
-#include "luxxle/components/brave_shields/core/common/brave_shields_panel.mojom-shared.h"
+#include "luxxle/components/luxxle_shields/core/common/luxxle_shields_panel.mojom-shared.h"
 #include "luxxle/components/constants/webui_url_constants.h"
 #include "luxxle/components/webcompat_reporter/browser/fields.h"
 #include "luxxle/components/webcompat_reporter/browser/webcompat_reporter_service.h"
@@ -84,7 +84,7 @@ std::u16string WebcompatReporterDialogDelegate::GetDialogTitle() const {
 }
 
 GURL WebcompatReporterDialogDelegate::GetDialogContentURL() const {
-  return GURL(kBraveUIWebcompatReporterURL);
+  return GURL(kLuxxleUIWebcompatReporterURL);
 }
 
 void WebcompatReporterDialogDelegate::GetWebUIMessageHandlers(
@@ -144,14 +144,14 @@ void PrepareParamsAndShowDialog(content::WebContents* initiator,
 
 void OpenReporterDialog(content::WebContents* initiator, UISource source) {
   bool shields_enabled = false;
-  brave_shields::mojom::FingerprintMode fp_block_mode =
-      brave_shields::mojom::FingerprintMode::STANDARD_MODE;
-  brave_shields::mojom::AdBlockMode ad_block_mode =
-      brave_shields::mojom::AdBlockMode::STANDARD;
-  brave_shields::BraveShieldsTabHelper* shields_data_controller =
-      brave_shields::BraveShieldsTabHelper::FromWebContents(initiator);
+  luxxle_shields::mojom::FingerprintMode fp_block_mode =
+      luxxle_shields::mojom::FingerprintMode::STANDARD_MODE;
+  luxxle_shields::mojom::AdBlockMode ad_block_mode =
+      luxxle_shields::mojom::AdBlockMode::STANDARD;
+  luxxle_shields::LuxxleShieldsTabHelper* shields_data_controller =
+      luxxle_shields::LuxxleShieldsTabHelper::FromWebContents(initiator);
   if (shields_data_controller != nullptr) {
-    shields_enabled = shields_data_controller->GetBraveShieldsEnabled();
+    shields_enabled = shields_data_controller->GetLuxxleShieldsEnabled();
     fp_block_mode = shields_data_controller->GetFingerprintMode();
     ad_block_mode = shields_data_controller->GetAdBlockMode();
   }

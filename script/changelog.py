@@ -11,17 +11,17 @@ from lib.changelog import *
 
 def main():
     """
-    Download the brave-browser/CHANGELOG.md file, parse it, and
-    return either markdown or html for a particular Brave tag.
+    Download the luxxle-browser/CHANGELOG.md file, parse it, and
+    return either markdown or html for a particular Luxxle tag.
 
     Example:
     python script/changelog.py -t refs/tags/v1.5.51 \
-        -u https://raw.githubusercontent.com/luxxle/brave-browser/master/CHANGELOG.md -o markdown
+        -u https://raw.githubusercontent.com/luxxle/luxxle-browser/master/CHANGELOG.md -o markdown
 
-    ## [1.5.51](https://github.com/luxxle/brave-browser/releases/tag/v1.5.51)
+    ## [1.5.51](https://github.com/luxxle/luxxle-browser/releases/tag/v1.5.51)
 
-    - Added new setting that allows Brave Rewards icon in the URL to be hidden if Rewards \
-        is inactive. ([#2975](https://github.com/luxxle/brave-browser/issues/2975))
+    - Added new setting that allows Luxxle Rewards icon in the URL to be hidden if Rewards \
+        is inactive. ([#2975](https://github.com/luxxle/luxxle-browser/issues/2975))
 
     """
 
@@ -60,7 +60,7 @@ def main():
 
 
 def parse_args():
-    desc = "Parse Brave Browser changelog and return changes for a tag"
+    desc = "Parse Luxxle Browser changelog and return changes for a tag"
 
     parser = argparse.ArgumentParser(
         description=desc, formatter_class=RawTextHelpFormatter)
@@ -69,10 +69,10 @@ def parse_args():
     parser.add_argument(
         '-o', '--output', help='Output format: markdown or html (required)', required=True)
     parser.add_argument('-t', '--tag',
-                        help='Brave version tag (allowed format: "v1.5.45" or "refs/tags/v1.5.45") (required)',
+                        help='Luxxle version tag (allowed format: "v1.5.45" or "refs/tags/v1.5.45") (required)',
                         required=True)
     parser.add_argument(
-        '-u', '--url', help='URL for Brave Browser raw markdown file (required)', required=True)
+        '-u', '--url', help='URL for Luxxle Browser raw markdown file (required)', required=True)
     return parser.parse_args()
 
 

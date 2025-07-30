@@ -39,7 +39,7 @@
 #include "ui/base/page_transition_types.h"
 
 #if BUILDFLAG(IS_ANDROID)
-#include "luxxle/browser/ui/android/ai_chat/brave_leo_settings_launcher_helper.h"
+#include "luxxle/browser/ui/android/ai_chat/luxxle_leo_settings_launcher_helper.h"
 #include "chrome/browser/android/tab_android.h"
 #include "chrome/browser/ui/android/tab_model/tab_model.h"
 #include "chrome/browser/ui/android/tab_model/tab_model_list.h"
@@ -47,13 +47,13 @@
 
 namespace {
 constexpr char kURLRefreshPremiumSession[] =
-    "https://account.brave.com/?intent=recover&product=leo";
+    "https://account.luxxle.com/?intent=recover&product=leo";
 constexpr char kURLLearnMoreAboutStorage[] =
-    "https://support.brave.com/hc/en-us/articles/"
-    "32663367857549-How-do-I-use-Chat-History-in-Brave-Leo";
+    "https://support.luxxle.com/hc/en-us/articles/"
+    "32663367857549-How-do-I-use-Chat-History-in-Luxxle-Leo";
 
 #if !BUILDFLAG(IS_ANDROID)
-constexpr char kURLManagePremium[] = "https://account.brave.com/";
+constexpr char kURLManagePremium[] = "https://account.luxxle.com/";
 #endif
 }  // namespace
 
@@ -209,7 +209,7 @@ void AIChatUIPageHandler::OpenAIChatSettings() {
       (active_chat_tab_helper_) ? active_chat_tab_helper_->web_contents()
                                 : owner_web_contents_.get();
 #if !BUILDFLAG(IS_ANDROID)
-  const GURL url("brave://settings/leo-ai");
+  const GURL url("luxxle://settings/leo-ai");
   if (auto* browser = chrome::FindBrowserWithTab(contents_to_navigate)) {
     ShowSingletonTab(browser, url);
   } else {
@@ -219,7 +219,7 @@ void AIChatUIPageHandler::OpenAIChatSettings() {
         /*navigation_handle_callback=*/{});
   }
 #else
-  ai_chat::ShowBraveLeoSettings(contents_to_navigate);
+  ai_chat::ShowLuxxleLeoSettings(contents_to_navigate);
 #endif
 }
 

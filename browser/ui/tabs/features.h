@@ -12,21 +12,21 @@ namespace tabs::features {
 #if BUILDFLAG(IS_LINUX)
 // This flag controls the behavior of browser_default::kScrollEventChangesTab,
 // which is true only when it's Linux.
-BASE_DECLARE_FEATURE(kBraveChangeActiveTabOnScrollEvent);
+BASE_DECLARE_FEATURE(kLuxxleChangeActiveTabOnScrollEvent);
 #endif  // BUILDFLAG(IS_LINUX)
 
-BASE_DECLARE_FEATURE(kBraveSharedPinnedTabs);
+BASE_DECLARE_FEATURE(kLuxxleSharedPinnedTabs);
 
-BASE_DECLARE_FEATURE(kBraveHorizontalTabsUpdate);
+BASE_DECLARE_FEATURE(kLuxxleHorizontalTabsUpdate);
 
-BASE_DECLARE_FEATURE(kBraveCompactHorizontalTabs);
+BASE_DECLARE_FEATURE(kLuxxleCompactHorizontalTabs);
 
-BASE_DECLARE_FEATURE(kBraveVerticalTabScrollBar);
+BASE_DECLARE_FEATURE(kLuxxleVerticalTabScrollBar);
 
-BASE_DECLARE_FEATURE(kBraveSplitView);
+BASE_DECLARE_FEATURE(kLuxxleSplitView);
 
 bool HorizontalTabsUpdateEnabled();
-bool IsBraveSplitViewEnabled();
+bool IsLuxxleSplitViewEnabled();
 
 }  // namespace tabs::features
 

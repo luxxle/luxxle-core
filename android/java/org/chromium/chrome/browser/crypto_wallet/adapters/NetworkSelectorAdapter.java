@@ -20,7 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.chromium.brave_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.app.domain.NetworkModel;
 import org.chromium.chrome.browser.crypto_wallet.activities.NetworkSelectorActivity;
@@ -225,11 +225,11 @@ public class NetworkSelectorAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             mType = type;
             mNetworkInfo = null;
             if (mType == LABEL_PRIMARY_ITEM) {
-                mNetworkNameRes = R.string.brave_wallet_network_filter_primary;
+                mNetworkNameRes = R.string.luxxle_wallet_network_filter_primary;
             } else if (mType == LABEL_SECONDARY_ITEM) {
-                mNetworkNameRes = R.string.brave_wallet_network_filter_secondary;
+                mNetworkNameRes = R.string.luxxle_wallet_network_filter_secondary;
             } else if (mType == LABEL_TEST_ITEM) {
-                mNetworkNameRes = R.string.brave_wallet_network_filter_test;
+                mNetworkNameRes = R.string.luxxle_wallet_network_filter_test;
             } else {
                 throw new IllegalStateException(
                         String.format("Network name not found for label type %d.", mType));

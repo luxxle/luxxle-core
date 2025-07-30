@@ -44,14 +44,14 @@ group("browser") {
     "//luxxle:browser_dependencies",
     "//luxxle/browser/*",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/core/engine:headers",
+    # "//luxxle/components/luxxle_rewards/core/engine:headers",
     "//luxxle/test:*",
 
     # these are layering violation and need to be fixed
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/content:testutil",
+    # "//luxxle/components/luxxle_rewards/content:testutil",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/test:brave_rewards_unit_tests",
+    # "//luxxle/components/luxxle_rewards/test:luxxle_rewards_unit_tests",
   ]
 
   if (enable_sparkle) {
@@ -63,7 +63,7 @@ group("browser") {
   }
 
   # Group depending on upstream's counterpart to make it easier to manage
-  # dependencies in brave/ (//chrome/browser does not depend on this target
+  # dependencies in luxxle/ (//chrome/browser does not depend on this target
   # so //luxxle/browser becomes essentially an alias for //chrome/browser now).
   public_deps = [ "//chrome/browser" ]
 }

@@ -14,7 +14,7 @@ from enum import Enum
 
 from components.field_trials import FieldTrialsMode, ParseFieldTrialsMode
 from components.browser_type import BrowserType, ParseBrowserType
-from components.version import BraveVersion
+from components.version import LuxxleVersion
 
 
 class ProfileRebaseType(Enum):
@@ -34,7 +34,7 @@ def _ParseProfileRebaseType(rebase_type: str) -> ProfileRebaseType:
 
 class RunnerConfig:
   """A description of a browser configuration that is able to run tests."""
-  version: Optional[BraveVersion] = None
+  version: Optional[LuxxleVersion] = None
   location: Optional[str] = None
   label: Optional[str] = None
   profile = 'clean'
@@ -68,12 +68,12 @@ class RunnerConfig:
         raise RuntimeError(f'Unexpected {key} in configuration')
       setattr(self, key_, json[key])
 
-def ParseTarget(target: str) -> Tuple[Optional[BraveVersion], str]:
+def ParseTarget(target: str) -> Tuple[Optional[LuxxleVersion], str]:
   """
   Parse the version and location from the passed string `target`.
   target = [<version>:][<location>]
   <version> could be:
-  1. Brave tag (i.e. v1.62.1);
+  1. Luxxle tag (i.e. v1.62.1);
   2. Git hash;
   3. empty (for comparing builds when you don't need it).
   """
@@ -81,7 +81,7 @@ def ParseTarget(target: str) -> Tuple[Optional[BraveVersion], str]:
   m = re.match(r'^(v\d+\.\d+\.\d+|\w+)(?::(.+)|$)', target)
   if not m:
     return None, target
-  version = BraveVersion(m.group(1))
+  version = LuxxleVersion(m.group(1))
   location = m.group(2)
   logging.debug('Parsed version: %s, location : %s', version.to_string(),
                 location)

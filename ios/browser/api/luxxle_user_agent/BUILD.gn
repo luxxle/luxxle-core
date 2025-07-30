@@ -1,0 +1,24 @@
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at https://mozilla.org/MPL/2.0/.
+
+source_set("luxxle_user_agent") {
+  sources = [
+    "luxxle_user_agent_exceptions_ios+private.h",
+    "luxxle_user_agent_exceptions_ios.h",
+    "luxxle_user_agent_exceptions_ios.mm",
+  ]
+  deps = [
+    "//base",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/luxxle_user_agent/browser",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/luxxle_user_agent/common",
+    "//luxxle/ios/browser/application_context",
+    "//ios/chrome/browser/shared/model/application_context",
+    "//net",
+    "//url",
+  ]
+  frameworks = [ "Foundation.framework" ]
+}

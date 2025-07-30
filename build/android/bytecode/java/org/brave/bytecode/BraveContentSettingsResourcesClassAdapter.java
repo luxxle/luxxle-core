@@ -3,31 +3,31 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveContentSettingsResourcesClassAdapter extends BraveClassVisitor {
+public class LuxxleContentSettingsResourcesClassAdapter extends LuxxleClassVisitor {
     static String sContentSettingsResourcesClassName =
             "org/chromium/components/browser_ui/site_settings/ContentSettingsResources";
-    static String sBraveContentSettingsResourcesClassName =
-            "org/chromium/components/browser_ui/site_settings/BraveContentSettingsResources";
+    static String sLuxxleContentSettingsResourcesClassName =
+            "org/chromium/components/browser_ui/site_settings/LuxxleContentSettingsResources";
     static String sContentSettingsResourcesResourceItemClassName =
             "org/chromium/components/browser_ui/site_settings/ContentSettingsResources$ResourceItem";
-    static String sBraveContentSettingsResourcesResourceItemClassName =
-            "org/chromium/components/browser_ui/site_settings/BraveContentSettingsResources$ResourceItem";
+    static String sLuxxleContentSettingsResourcesResourceItemClassName =
+            "org/chromium/components/browser_ui/site_settings/LuxxleContentSettingsResources$ResourceItem";
 
-    public BraveContentSettingsResourcesClassAdapter(ClassVisitor visitor) {
+    public LuxxleContentSettingsResourcesClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         makePublicMethod(sContentSettingsResourcesClassName, "getResourceItem");
         changeMethodOwner(sContentSettingsResourcesClassName, "getResourceItem",
-                sBraveContentSettingsResourcesClassName);
+                sLuxxleContentSettingsResourcesClassName);
         makePublicInnerClass(sContentSettingsResourcesClassName, "ResourceItem");
-        redirectConstructor(sBraveContentSettingsResourcesResourceItemClassName,
+        redirectConstructor(sLuxxleContentSettingsResourcesResourceItemClassName,
                 sContentSettingsResourcesResourceItemClassName);
-        redirectTypeInMethod(sBraveContentSettingsResourcesClassName, "getResourceItem",
-                sBraveContentSettingsResourcesResourceItemClassName,
+        redirectTypeInMethod(sLuxxleContentSettingsResourcesClassName, "getResourceItem",
+                sLuxxleContentSettingsResourcesResourceItemClassName,
                 sContentSettingsResourcesResourceItemClassName);
     }
 }

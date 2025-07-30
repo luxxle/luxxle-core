@@ -1,0 +1,108 @@
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at https://mozilla.org/MPL/2.0/.
+
+# based on //chrome/browser/ui/webui/whats_new/BUILD.gn
+
+# Commented out: removed components dependency - using Chromium defaults instead
+# import("//luxxle/components/luxxle_education/buildflags.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+import("//mojo/public/tools/bindings/mojom.gni")
+
+# Commented out: Education functionality disabled for Luxxle
+# assert(enable_luxxle_education)
+
+mojom("mojo_bindings") {
+  sources = [ "luxxle_education.mojom" ]
+  webui_module_path = "/"
+
+  public_deps = [
+    "//mojo/public/mojom/base",
+    "//url/mojom:url_mojom_gurl",
+  ]
+}
+
+source_set("luxxle_education") {
+  sources = [
+    "luxxle_education_handler.cc",
+    "luxxle_education_handler.h",
+    "luxxle_education_page_delegate_desktop.cc",
+    "luxxle_education_page_delegate_desktop.h",
+    "luxxle_education_page_ui.cc",
+    "luxxle_education_page_ui.h",
+    "luxxle_education_server_checker.cc",
+    "luxxle_education_server_checker.h",
+  ]
+
+  deps = [
+    # Commented out: Education resources disabled for Luxxle
+    # "//luxxle/browser/resources/luxxle_education:resources",
+    "//luxxle/browser/ui/webui/luxxle_browser_command",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    "//chrome/browser:browser_public_dependencies",
+    "//chrome/browser/profiles:profile",
+    "//chrome/browser/ui/browser_window",
+    "//chrome/browser/ui/views/side_panel",
+    "//chrome/browser/ui/webui:webui_util",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/language/core/browser",
+    "//ui/webui",
+  ]
+
+  # Commented out: VPN functionality disabled for Luxxle
+  # }
+
+  public_deps = [
+    "//luxxle/browser/ui/webui/luxxle_education:mojo_bindings",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/luxxle_education",
+    "//luxxle/ui/webui/resources/js/luxxle_browser_command:mojo_bindings",
+  ]
+}
+
+source_set("browser_tests") {
+  testonly = true
+
+  sources = [ "luxxle_education_page_ui_browsertest.cc" ]
+
+  deps = [
+    ":luxxle_education",
+    "//base/test:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/luxxle_education",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
+    "//chrome/browser/ui",
+    "//chrome/test:test_support",
+    "//chrome/test:test_support_ui",
+    "//content/test:test_support",
+    "//testing/gtest",
+  ]
+
+  defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]
+}
+
+source_set("unit_tests") {
+  testonly = true
+
+  sources = [
+    "luxxle_education_page_handler_unittest.cc",
+    "luxxle_education_server_checker_unittest.cc",
+  ]
+
+  deps = [
+    ":luxxle_education",
+    "//base/test:test_support",
+    "//luxxle/browser/ui/webui/luxxle_browser_command",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/luxxle_education",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    "//chrome/browser/ui",
+    "//chrome/test:test_support",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/language/core/browser",
+    "//testing/gtest",
+  ]
+}

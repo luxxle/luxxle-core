@@ -26,7 +26,7 @@ def main():
       '--preseve-service-hosts',
       action='store_true',
       default=False,
-      help='Don\'t remove requests to the service hosts (i.e. rewards.brave.com)'
+      help='Don\'t remove requests to the service hosts (i.e. rewards.luxxle.com)'
   )
   subparsers.add_parser('wpr-ls', help='List the content of WPR file.')
   subparsers.add_parser(

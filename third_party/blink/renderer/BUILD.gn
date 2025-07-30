@@ -5,18 +5,18 @@
 
 component("renderer") {
   sources = [
-    "brave_farbling_constants.h",
-    "brave_font_whitelist.cc",
-    "brave_font_whitelist.h",
+    "luxxle_farbling_constants.h",
+    "luxxle_font_whitelist.cc",
+    "luxxle_font_whitelist.h",
   ]
 
   deps = [
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_drm:brave_drm_blink",
-    # Commented out: removed Brave components - using Chromium defaults instead
+    # "//luxxle/components/luxxle_drm:luxxle_drm_blink",
+    # Commented out: removed Luxxle components - using Chromium defaults instead
   ]
 
   defines = [ "BLINK_IMPLEMENTATION=1" ]
 
-  output_name = "brave_blink_renderer_addon"
+  output_name = "luxxle_blink_renderer_addon"
 }

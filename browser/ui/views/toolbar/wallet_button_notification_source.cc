@@ -5,12 +5,12 @@
 
 #include "luxxle/browser/ui/views/toolbar/wallet_button_notification_source.h"
 
-// REMOVED: #include "luxxle/browser/brave_wallet/.*"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/browser/luxxle_wallet/.*"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
 
-namespace brave_wallet {
+namespace luxxle_wallet {
 
 WalletButtonNotificationSource::WalletButtonNotificationSource(
     Profile* profile,
@@ -29,13 +29,13 @@ void WalletButtonNotificationSource::EnsureTxServiceConnected() {
   if (tx_observer_.is_bound()) {
     return;
   }
-  auto* brave_wallet_service =
-      BraveWalletServiceFactory::GetServiceForContext(profile_);
-  if (!brave_wallet_service) {
+  auto* luxxle_wallet_service =
+      LuxxleWalletServiceFactory::GetServiceForContext(profile_);
+  if (!luxxle_wallet_service) {
     return;
   }
 
-  tx_service_ = brave_wallet_service->tx_service();
+  tx_service_ = luxxle_wallet_service->tx_service();
   tx_service_->AddObserver(tx_observer_.BindNewPipeAndPassRemote());
   CheckTxStatus();
 }
@@ -46,13 +46,13 @@ void WalletButtonNotificationSource::EnsureKeyringServiceConnected() {
     return;
   }
 
-  auto* brave_wallet_service =
-      BraveWalletServiceFactory::GetServiceForContext(profile_);
-  if (!brave_wallet_service) {
+  auto* luxxle_wallet_service =
+      LuxxleWalletServiceFactory::GetServiceForContext(profile_);
+  if (!luxxle_wallet_service) {
     return;
   }
 
-  auto* keyring_service = brave_wallet_service->keyring_service();
+  auto* keyring_service = luxxle_wallet_service->keyring_service();
 
   keyring_service->AddObserver(
       keyring_service_observer_.BindNewPipeAndPassRemote());
@@ -114,4 +114,4 @@ void WalletButtonNotificationSource::NotifyObservers() {
   callback_.Run(show_suggestion_badge, pending_tx_count_);
 }
 
-}  // namespace brave_wallet
+}  // namespace luxxle_wallet

@@ -1,3 +1,3 @@
 html.loading::before {
-  background-image: var(--brave-toolbar-gradient);
+  background-image: var(--luxxle-toolbar-gradient);
 }

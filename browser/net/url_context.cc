@@ -8,9 +8,9 @@
 #include <memory>
 #include <string>
 
-#include "luxxle/browser/brave_shields/brave_shields_web_contents_observer.h"
-#include "luxxle/components/brave_shields/content/browser/brave_shields_util.h"
-#include "luxxle/components/brave_webtorrent/browser/buildflags/buildflags.h"
+#include "luxxle/browser/luxxle_shields/luxxle_shields_web_contents_observer.h"
+#include "luxxle/components/luxxle_shields/content/browser/luxxle_shields_util.h"
+#include "luxxle/components/luxxle_webtorrent/browser/buildflags/buildflags.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/browser/profiles/profile.h"
 #include "content/public/browser/browser_thread.h"
@@ -41,22 +41,22 @@ std::string GetUploadData(const network::ResourceRequest& request) {
 
 }  // namespace
 
-BraveRequestInfo::BraveRequestInfo() = default;
+LuxxleRequestInfo::LuxxleRequestInfo() = default;
 
-BraveRequestInfo::BraveRequestInfo(const GURL& url) : request_url(url) {}
+LuxxleRequestInfo::LuxxleRequestInfo(const GURL& url) : request_url(url) {}
 
-BraveRequestInfo::~BraveRequestInfo() = default;
+LuxxleRequestInfo::~LuxxleRequestInfo() = default;
 
 // static
-std::shared_ptr<luxxle::BraveRequestInfo> BraveRequestInfo::MakeCTX(
+std::shared_ptr<luxxle::LuxxleRequestInfo> LuxxleRequestInfo::MakeCTX(
     const network::ResourceRequest& request,
     content::FrameTreeNodeId frame_tree_node_id,
     uint64_t request_identifier,
     content::BrowserContext* browser_context,
-    std::shared_ptr<luxxle::BraveRequestInfo> old_ctx) {
+    std::shared_ptr<luxxle::LuxxleRequestInfo> old_ctx) {
   DCHECK_CURRENTLY_ON(content::BrowserThread::UI);
 
-  auto ctx = std::make_shared<luxxle::BraveRequestInfo>();
+  auto ctx = std::make_shared<luxxle::LuxxleRequestInfo>();
   ctx->request_identifier = request_identifier;
   ctx->method = request.method;
   ctx->request_url = request.url;
@@ -89,7 +89,7 @@ std::shared_ptr<luxxle::BraveRequestInfo> BraveRequestInfo::MakeCTX(
   }
   // TODO(iefremov): We still need this for WebSockets, currently
   // |AddChannelRequest| provides only old-fashioned |site_for_cookies|.
-  // (See |BraveProxyingWebSocket|).
+  // (See |LuxxleProxyingWebSocket|).
   if (ctx->tab_origin.is_empty()) {
     content::WebContents* contents =
         content::WebContents::FromFrameTreeNodeId(ctx->frame_tree_node_id);
@@ -106,25 +106,25 @@ std::shared_ptr<luxxle::BraveRequestInfo> BraveRequestInfo::MakeCTX(
 
   Profile* profile = Profile::FromBrowserContext(browser_context);
   auto* map = HostContentSettingsMapFactory::GetForProfile(profile);
-  ctx->allow_brave_shields =
-      map ? brave_shields::GetBraveShieldsEnabled(map, ctx->tab_origin) : true;
+  ctx->allow_luxxle_shields =
+      map ? luxxle_shields::GetLuxxleShieldsEnabled(map, ctx->tab_origin) : true;
   ctx->allow_ads =
-      map ? brave_shields::GetAdControlType(map, ctx->tab_origin) ==
-                brave_shields::ControlType::ALLOW
+      map ? luxxle_shields::GetAdControlType(map, ctx->tab_origin) ==
+                luxxle_shields::ControlType::ALLOW
           : false;
   // Currently, "aggressive" mode is registered as a cosmetic filtering control
   // type, even though it can also affect network blocking.
   ctx->aggressive_blocking =
-      map ? brave_shields::GetCosmeticFilteringControlType(
-                map, ctx->tab_origin) == brave_shields::ControlType::BLOCK
+      map ? luxxle_shields::GetCosmeticFilteringControlType(
+                map, ctx->tab_origin) == luxxle_shields::ControlType::BLOCK
           : false;
 
-  // HACK: after we fix multiple creations of BraveRequestInfo we should
-  // use only tab_origin. Since we recreate BraveRequestInfo during consequent
+  // HACK: after we fix multiple creations of LuxxleRequestInfo we should
+  // use only tab_origin. Since we recreate LuxxleRequestInfo during consequent
   // stages of navigation, |tab_origin| changes and so does |allow_referrers|
   // flag, which is not what we want for determining referrers.
   ctx->allow_referrers =
-      map ? brave_shields::AreReferrersAllowed(
+      map ? luxxle_shields::AreReferrersAllowed(
                 map, ctx->redirect_source.is_empty() ? ctx->tab_origin
                                                      : ctx->redirect_source)
           : false;
@@ -133,8 +133,8 @@ std::shared_ptr<luxxle::BraveRequestInfo> BraveRequestInfo::MakeCTX(
   ctx->browser_context = browser_context;
 
   // TODO(fmarier): remove this once the hacky code in
-  // brave_proxying_url_loader_factory.cc is refactored. See
-  // BraveProxyingURLLoaderFactory::InProgressRequest::UpdateRequestInfo().
+  // luxxle_proxying_url_loader_factory.cc is refactored. See
+  // LuxxleProxyingURLLoaderFactory::InProgressRequest::UpdateRequestInfo().
   if (old_ctx) {
     ctx->internal_redirect = old_ctx->internal_redirect;
     ctx->redirect_source = old_ctx->redirect_source;
@@ -145,4 +145,4 @@ std::shared_ptr<luxxle::BraveRequestInfo> BraveRequestInfo::MakeCTX(
   return ctx;
 }
 
-}  // namespace brave
+}  // namespace luxxle

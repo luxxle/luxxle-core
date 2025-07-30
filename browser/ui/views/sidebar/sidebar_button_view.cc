@@ -5,7 +5,7 @@
 
 #include "luxxle/browser/ui/views/sidebar/sidebar_button_view.h"
 
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "chrome/browser/ui/color/chrome_color_provider_utils.h"
 #include "chrome/browser/ui/views/chrome_layout_provider.h"
 #include "chrome/browser/ui/views/toolbar/toolbar_ink_drop_util.h"

@@ -19,7 +19,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import org.chromium.base.Log;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.app.domain.WalletModel;
 import org.chromium.chrome.browser.crypto_wallet.activities.AddAccountActivity;
 import org.chromium.chrome.browser.crypto_wallet.adapters.CreateAccountAdapter;
@@ -58,11 +58,11 @@ public class CreateAccountBottomSheetFragment extends BottomSheetDialogFragment
         super.onViewCreated(view, savedInstanceState);
         mSupportedCryptoAccounts.clear();
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             mWalletModel = activity.getWalletModel();
             mSupportedCryptoAccounts =
                     mWalletModel.getCryptoModel().getSupportedCryptoAccountTypes();
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "onViewCreated " + e);
         }
         mRvAccounts = view.findViewById(R.id.fragment_create_account_rv);

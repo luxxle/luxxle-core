@@ -477,11 +477,11 @@ SECURITY (19 patches):
   KEEP tools-metrics-histograms-metadata-permissions-histograms.xml.patch
   KEEP ui-webui-resources-cr_components-certificate_manager-certificate_manager_v2.ts.patch
 
-PATCHES TO REMOVE (Brave-specific)
+PATCHES TO REMOVE (Luxxle-specific)
 ========================================
 Total: 48 patches
 
-BRAVE_FEATURES (47 patches):
+LUXXLE_FEATURES (47 patches):
   REMOVE base-threading-thread_restrictions.h.patch
   REMOVE chrome-android-java-src-org-chromium-chrome-browser-contextmenu-ChromeContextMenuPopulator.java.patch
   REMOVE chrome-browser-enterprise-webstore-features.cc.patch
@@ -530,10 +530,10 @@ BRAVE_FEATURES (47 patches):
   REMOVE ui-base-accelerators-accelerator.cc.patch
   REMOVE ui-native_theme-native_theme_win.h.patch
 
-BRAVE_SERVICES (1 patches):
+LUXXLE_SERVICES (1 patches):
   REMOVE components-component_updater-component_updater_service.h.patch
 
-BRAVE_BRANDING (0 patches):
+LUXXLE_BRANDING (0 patches):
 
 PATCHES NEEDING MANUAL REVIEW
 ========================================

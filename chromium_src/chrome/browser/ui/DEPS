@@ -1,0 +1,9 @@
+from luxxle_chromium_utils import inline_file
+inline_file("//chrome/browser/ui/DEPS", globals(), locals())
+
+include_rules += [
+  "+luxxle/components/vector_icons",
+  "+luxxle/components/commander/common",
+  "+luxxle/components/constants",
+  "+luxxle/components/luxxle_webtorrent/browser",
+]

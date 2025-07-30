@@ -7,7 +7,7 @@
 #define LUXXLE_BROWSER_UI_BROWSER_DIALOGS_H_
 
 #include "base/functional/callback_forward.h"
-// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
 #include "luxxle/components/text_recognition/common/buildflags/buildflags.h"
 
 class Browser;
@@ -31,9 +31,9 @@ void ShowTextRecognitionDialog(content::WebContents* web_contents,
                                const SkBitmap& image);
 #endif
 
-#if BUILDFLAG(ENABLE_BRAVE_VPN)
-void ShowBraveVpnIKEv2FallbackDialog();
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
+void ShowLuxxleVpnIKEv2FallbackDialog();
 #endif
-}  // namespace brave
+}  // namespace luxxle
 
 #endif  // LUXXLE_BROWSER_UI_BROWSER_DIALOGS_H_

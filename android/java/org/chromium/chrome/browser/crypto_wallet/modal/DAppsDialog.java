@@ -23,10 +23,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.chromium.base.Log;
-import org.chromium.brave_wallet.mojom.KeyringService;
+import org.chromium.luxxle_wallet.mojom.KeyringService;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
-import org.chromium.chrome.browser.crypto_wallet.BraveWalletServiceFactory;
+import org.chromium.chrome.browser.app.LuxxleActivity;
+import org.chromium.chrome.browser.crypto_wallet.LuxxleWalletServiceFactory;
 import org.chromium.chrome.browser.crypto_wallet.util.AndroidUtils;
 import org.chromium.chrome.browser.crypto_wallet.util.WalletConstants;
 import org.chromium.chrome.browser.util.ConfigurationUtils;
@@ -114,9 +114,9 @@ public class DAppsDialog extends Dialog implements ConnectionErrorHandler {
 
     private void openWallet() {
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
-            activity.openBraveWallet(true, false, false);
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
+            activity.openLuxxleWallet(true, false, false);
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "openWallet " + e);
         }
     }
@@ -152,7 +152,7 @@ public class DAppsDialog extends Dialog implements ConnectionErrorHandler {
         if (mKeyringService != null) {
             return;
         }
-        mKeyringService = BraveWalletServiceFactory.getInstance().getKeyringService(this);
+        mKeyringService = LuxxleWalletServiceFactory.getInstance().getKeyringService(this);
     }
 
     private static int getDialogThemeGravity(@DAppsDialogStyle int mStyle) {
@@ -168,10 +168,10 @@ public class DAppsDialog extends Dialog implements ConnectionErrorHandler {
     private static int getDialogTheme(@DAppsDialogStyle int mStyle) {
         switch (mStyle) {
             case DAppsDialogStyle.TOP:
-                return R.style.BraveWalletDAppNotificationDialogTop;
+                return R.style.LuxxleWalletDAppNotificationDialogTop;
             case DAppsDialogStyle.BOTTOM:
             default:
-                return R.style.BraveWalletDAppNotificationDialogBottom;
+                return R.style.LuxxleWalletDAppNotificationDialogBottom;
         }
     }
 

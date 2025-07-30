@@ -3,9 +3,9 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # you can obtain one at http://mozilla.org/MPL/2.0/.
 
-brave_extensions_resources = [
+luxxle_extensions_resources = [
   "//luxxle/browser/extensions/api:generated_api_registration",
   "//luxxle/browser/extensions:resources",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_webtorrent/browser/buildflags",
+  # "//luxxle/components/luxxle_webtorrent/browser/buildflags",
 ]

@@ -23,7 +23,7 @@
 #include "luxxle/components/ai_chat/resources/grit/ai_chat_ui_generated_map.h"
 #include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/browser/profiles/profile.h"
-#include "components/grit/brave_components_resources.h"
+#include "components/grit/luxxle_components_resources.h"
 #include "content/public/browser/render_frame_host.h"
 #include "content/public/browser/url_data_source.h"
 #include "content/public/browser/web_contents.h"
@@ -35,14 +35,14 @@
 #include "url/url_constants.h"
 
 #if BUILDFLAG(IS_ANDROID)
-#include "luxxle/browser/ui/android/ai_chat/brave_leo_settings_launcher_helper.h"
+#include "luxxle/browser/ui/android/ai_chat/luxxle_leo_settings_launcher_helper.h"
 #else
 #include "chrome/browser/ui/browser.h"
 #endif
 
 namespace {
-constexpr char kURLLearnMoreBraveSearchLeo[] =
-    "https://support.brave.com/hc/en-us/articles/"
+constexpr char kURLLearnMoreLuxxleSearchLeo[] =
+    "https://support.luxxle.com/hc/en-us/articles/"
     "27586048343309-How-does-Leo-get-current-information";
 
 // Implments the interface to calls from the UI to the browser
@@ -57,18 +57,18 @@ class UIHandler : public ai_chat::mojom::UntrustedUIHandler {
   ~UIHandler() override = default;
 
   // ai_chat::mojom::UntrustedConversationUIHandler
-  void OpenLearnMoreAboutBraveSearchWithLeo() override {
+  void OpenLearnMoreAboutLuxxleSearchWithLeo() override {
     if (!web_ui_->GetRenderFrameHost()->HasTransientUserActivation()) {
       return;
     }
-    OpenURL(GURL(kURLLearnMoreBraveSearchLeo));
+    OpenURL(GURL(kURLLearnMoreLuxxleSearchLeo));
   }
 
   void OpenSearchURL(const std::string& search_query) override {
     if (!web_ui_->GetRenderFrameHost()->HasTransientUserActivation()) {
       return;
     }
-    OpenURL(GURL("https://search.brave.com/search?q=" +
+    OpenURL(GURL("https://search.luxxle.com/search?q=" +
                  base::EscapeQueryParamValue(search_query, true)));
   }
 

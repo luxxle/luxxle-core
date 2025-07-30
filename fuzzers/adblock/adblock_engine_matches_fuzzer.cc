@@ -10,9 +10,9 @@
 
 #include "base/files/file_path.h"
 #include "base/i18n/icu_util.h"
-#include "luxxle/components/brave_component_updater/browser/dat_file_util.h"
-#include "luxxle/components/brave_shields/core/browser/adblock/rs/src/lib.rs.h"
-#include "brave/fuzzers/adblock/adblock_fuzzer.pb.h"
+#include "luxxle/components/luxxle_component_updater/browser/dat_file_util.h"
+#include "luxxle/components/luxxle_shields/core/browser/adblock/rs/src/lib.rs.h"
+#include "luxxle/fuzzers/adblock/adblock_fuzzer.pb.h"
 #include "testing/libfuzzer/proto/lpm_interface.h"
 #include "testing/libfuzzer/proto/url_proto_converter.h"
 
@@ -66,7 +66,7 @@ std::string ResourceTypeToString(adblock_fuzzer::ResourceType resource_type) {
 struct Environment {
   Environment() : engine(adblock::new_engine()) {
     CHECK(base::i18n::InitializeICU());
-    auto result = engine->deserialize(brave_component_updater::ReadDATFileData(
+    auto result = engine->deserialize(luxxle_component_updater::ReadDATFileData(
         base::FilePath::FromASCII("rs-ABPFilterParserData.dat")));
     CHECK(result);
     CHECK(adblock::set_domain_resolver());

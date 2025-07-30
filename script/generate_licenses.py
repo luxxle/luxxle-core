@@ -144,7 +144,7 @@ def list_ntp_backgrounds(metadata_file):
         metadata = file_handle.readlines()[3:12]
         # Hack to turn this TypeScript file into valid JSON
         json_metadata = "".join(metadata) \
-            .replace("export const images: NewTab.BraveBackground[] = [",
+            .replace("export const images: NewTab.LuxxleBackground[] = [",
                      "[") \
             .replace('"', '"').replace("'", '"')
 
@@ -197,13 +197,13 @@ def main():
     components_dir = os.path.join(SOURCE_ROOT, 'components')
     third_party_dir = os.path.join(components_dir, 'third_party')
 
-    # Brave Ad Block component
+    # Luxxle Ad Block component
     adblock_dir = os.path.join(third_party_dir, 'adblock')
     adblock_lists_dir = os.path.join(adblock_dir, 'lists')
     adblock_preamble = 'These licenses do not apply to any of the code ' \
-        'shipped with the Brave Browser, but may apply to lists downloaded ' \
-        'after installation for use with the Brave Shields feature. The ' \
-        'Brave Browser and such lists are separate and independent works.'
+        'shipped with the Luxxle Browser, but may apply to lists downloaded ' \
+        'after installation for use with the Luxxle Shields feature. The ' \
+        'Luxxle Browser and such lists are separate and independent works.'
 
     adblock_components = list_sub_components(adblock_lists_dir)
     if write_license_file(adblock_dir, external_component_license_file(
@@ -211,13 +211,13 @@ def main():
         print(f'- {len(adblock_components)} sub-components added in ' \
               'adblock/LICENSE')
 
-    # Brave Local Data component
+    # Luxxle Local Data component
     local_data_dir = os.path.join(third_party_dir, 'local_data')
     local_data_lists_dir = os.path.join(local_data_dir, 'lists')
     local_data_preamble = 'These licenses do not apply to any of the code ' \
-        'shipped with the Brave Browser, but may apply to data files ' \
-        'downloaded after installation for use with various Brave features. ' \
-        'The Brave Browser and such data files are separate and independent ' \
+        'shipped with the Luxxle Browser, but may apply to data files ' \
+        'downloaded after installation for use with various Luxxle features. ' \
+        'The Luxxle Browser and such data files are separate and independent ' \
         'works.'
 
     local_data_components = list_sub_components(local_data_lists_dir)
@@ -226,11 +226,11 @@ def main():
         print(f'- {len(local_data_components)} sub-components added in ' \
               'local_data/LICENSE')
 
-    # Brave New Tab UI component
-    ntp_data_dir = os.path.join(components_dir, 'brave_new_tab_ui', 'data')
+    # Luxxle New Tab UI component
+    ntp_data_dir = os.path.join(components_dir, 'luxxle_new_tab_ui', 'data')
     ntp_backgrounds_preamble = 'These licenses do not apply to any of the ' \
-        'code shipped with the Brave Browser and instead apply to ' \
-        'background images used on the new tab page. The Brave Browser and ' \
+        'code shipped with the Luxxle Browser and instead apply to ' \
+        'background images used on the new tab page. The Luxxle Browser and ' \
         'such data files are separate and independent works.'
 
     ntp_backgrounds = list_ntp_backgrounds(
@@ -238,7 +238,7 @@ def main():
     if write_license_file(ntp_data_dir, generate_backgrounds_license(
             ntp_backgrounds_preamble, ntp_backgrounds)):
         print(f'- {len(ntp_backgrounds)} sub-components added in ' \
-              'brave_new_tab_ui/data/LICENSE')
+              'luxxle_new_tab_ui/data/LICENSE')
 
 
 if __name__ == '__main__':

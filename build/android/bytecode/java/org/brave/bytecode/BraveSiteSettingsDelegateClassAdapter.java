@@ -3,18 +3,18 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveSiteSettingsDelegateClassAdapter extends BraveClassVisitor {
+public class LuxxleSiteSettingsDelegateClassAdapter extends LuxxleClassVisitor {
 
     static String sChromeSiteSettingsDelegateClassName = "org/chromium/chrome/browser/site_settings/ChromeSiteSettingsDelegate";
-    static String sBraveSiteSettingsDelegateClassName = "org/chromium/chrome/browser/site_settings/BraveSiteSettingsDelegate";
+    static String sLuxxleSiteSettingsDelegateClassName = "org/chromium/chrome/browser/site_settings/LuxxleSiteSettingsDelegate";
 
-    public BraveSiteSettingsDelegateClassAdapter(ClassVisitor visitor) {
+    public LuxxleSiteSettingsDelegateClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sChromeSiteSettingsDelegateClassName, sBraveSiteSettingsDelegateClassName);
+        redirectConstructor(sChromeSiteSettingsDelegateClassName, sLuxxleSiteSettingsDelegateClassName);
     }
 }

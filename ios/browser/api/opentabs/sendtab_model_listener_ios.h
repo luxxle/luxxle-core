@@ -12,7 +12,7 @@
 #include <vector>
 
 #include "base/memory/raw_ptr.h"
-#include "brave/ios/browser/api/opentabs/brave_sendtab_observer.h"
+#include "luxxle/ios/browser/api/opentabs/luxxle_sendtab_observer.h"
 #include "components/send_tab_to_self/send_tab_to_self_entry.h"
 #include "components/send_tab_to_self/send_tab_to_self_model.h"
 #include "components/send_tab_to_self/send_tab_to_self_model_observer.h"
@@ -50,6 +50,6 @@ class SendTabToSelfModelListenerIOS
 };
 
 }  // namespace ios
-}  // namespace brave
+}  // namespace luxxle
 
 #endif  // LUXXLE_IOS_BROWSER_API_OPENTABS_SENDTAB_MODEL_LISTENER_IOS_H_

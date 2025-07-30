@@ -7,7 +7,7 @@
 #define LUXXLE_BUILD_IOS_MOJOM_PUBLIC_BASE_BASE_VALUES_PRIVATE_H_
 
 #include "base/values.h"
-#include "brave/build/ios/mojom/public/base/base_values.h"
+#include "luxxle/build/ios/mojom/public/base/base_values.h"
 
 @class MojoBaseValue;
 
@@ -40,7 +40,7 @@ NSDictionary<NSString*, MojoBaseValue*>* NSDictionaryFromBaseValueDict(
 base::Value::Dict BaseValueDictFromNSDictionary(
     NSDictionary<NSString*, MojoBaseValue*>*);
 
-}  // namespace brave
+}  // namespace luxxle
 
 @interface MojoBaseValue (Private)
 - (instancetype)initWithValue:(const base::Value)value;

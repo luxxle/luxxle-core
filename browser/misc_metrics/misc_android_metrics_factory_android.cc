@@ -4,7 +4,7 @@
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 #include "base/android/jni_android.h"
-#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/luxxle_browser_process.h"
 #include "luxxle/browser/misc_metrics/misc_android_metrics.h"
 #include "luxxle/browser/misc_metrics/profile_misc_metrics_service.h"
 #include "luxxle/browser/misc_metrics/profile_misc_metrics_service_factory.h"

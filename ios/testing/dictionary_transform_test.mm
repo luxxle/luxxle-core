@@ -5,7 +5,7 @@
 #import <XCTest/XCTest.h>
 
 #import "base/containers/flat_map.h"
-#import "brave/build/ios/mojom/cpp_transformations.h"
+#import "luxxle/build/ios/mojom/cpp_transformations.h"
 #import "test_foo.h"
 
 @interface DictionaryTransformTest : XCTestCase

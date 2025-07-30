@@ -15,9 +15,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import org.chromium.base.Log;
-import org.chromium.brave_wallet.mojom.SignMessageError;
+import org.chromium.luxxle_wallet.mojom.SignMessageError;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.app.domain.WalletModel;
 
 /** Fragment used by DApps for sign-in error message */
@@ -35,10 +35,10 @@ public class SignMessageErrorFragment extends BaseDAppsBottomSheetDialogFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             mWalletModel = activity.getWalletModel();
             registerKeyringObserver(mWalletModel.getKeyringModel());
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "onCreate ", e);
         }
     }
@@ -63,7 +63,7 @@ public class SignMessageErrorFragment extends BaseDAppsBottomSheetDialogFragment
     }
 
     private void fillSignMessageErrorInfo(boolean init) {
-        getBraveWalletService()
+        getLuxxleWalletService()
                 .getPendingSignMessageErrors(
                         errors -> {
                             if (errors == null || errors.length == 0) {
@@ -89,7 +89,7 @@ public class SignMessageErrorFragment extends BaseDAppsBottomSheetDialogFragment
     }
 
     private void notifySignMessageErrorProcessed() {
-        getBraveWalletService().notifySignMessageErrorProcessed(mCurrentSignMessageError.id);
+        getLuxxleWalletService().notifySignMessageErrorProcessed(mCurrentSignMessageError.id);
         fillSignMessageErrorInfo(false);
     }
 }

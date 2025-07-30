@@ -12,8 +12,8 @@
 
 #include "base/functional/bind.h"
 #include "base/time/time.h"
-#include "luxxle/browser/ui/brave_browser.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/luxxle_browser.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/browser/ui/sidebar/sidebar_controller.h"
 #include "luxxle/browser/ui/sidebar/sidebar_model.h"
 #include "luxxle/browser/ui/sidebar/sidebar_service_factory.h"
@@ -21,13 +21,13 @@
 #include "luxxle/browser/ui/tabs/features.h"
 #include "luxxle/browser/ui/tabs/shared_pinned_tab_service.h"
 #include "luxxle/browser/ui/tabs/shared_pinned_tab_service_factory.h"
-#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
-#include "luxxle/browser/ui/views/frame/brave_browser_view_layout.h"
-#include "luxxle/browser/ui/views/frame/brave_contents_view_util.h"
-#include "luxxle/browser/ui/views/side_panel/brave_side_panel.h"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_view.h"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_view_layout.h"
+#include "luxxle/browser/ui/views/frame/luxxle_contents_view_util.h"
+#include "luxxle/browser/ui/views/side_panel/luxxle_side_panel.h"
 #include "luxxle/browser/ui/views/side_panel/playlist/playlist_side_panel_coordinator.h"
 #include "luxxle/browser/ui/views/sidebar/sidebar_control_view.h"
-#include "luxxle/browser/ui/views/toolbar/brave_toolbar_view.h"
+#include "luxxle/browser/ui/views/toolbar/luxxle_toolbar_view.h"
 #include "luxxle/browser/ui/views/toolbar/side_panel_button.h"
 #include "luxxle/components/constants/pref_names.h"
 #include "luxxle/components/constants/webui_url_constants.h"
@@ -46,7 +46,7 @@
 #include "chrome/browser/ui/views/side_panel/side_panel_registry.h"
 #include "chrome/browser/ui/views/side_panel/side_panel_web_ui_view.h"
 #include "chrome/browser/ui/views/toolbar/toolbar_view.h"
-#include "components/grit/brave_components_strings.h"
+#include "components/grit/luxxle_components_strings.h"
 #include "components/input/native_web_keyboard_event.h"
 #include "content/public/browser/browser_context.h"
 #include "content/public/browser/web_contents.h"
@@ -67,12 +67,12 @@ namespace {
 
 using ShowSidebarOption = sidebar::SidebarService::ShowSidebarOption;
 
-sidebar::SidebarService* GetSidebarService(BraveBrowser* browser) {
+sidebar::SidebarService* GetSidebarService(LuxxleBrowser* browser) {
   return sidebar::SidebarServiceFactory::GetForProfile(browser->profile());
 }
 
 SharedPinnedTabService* GetSharedPinnedTabService(Profile* profile) {
-  if (base::FeatureList::IsEnabled(tabs::features::kBraveSharedPinnedTabs)) {
+  if (base::FeatureList::IsEnabled(tabs::features::kLuxxleSharedPinnedTabs)) {
     return SharedPinnedTabServiceFactory::GetForProfile(profile);
   }
 
@@ -117,7 +117,7 @@ class SidebarContainerView::BrowserWindowEventObserver
 SidebarContainerView::SidebarContainerView(
     Browser* browser,
     SidePanelCoordinator* side_panel_coordinator,
-    std::unique_ptr<BraveSidePanel> side_panel)
+    std::unique_ptr<LuxxleSidePanel> side_panel)
     : views::AnimationDelegateViews(this),
       browser_(browser),
       side_panel_coordinator_(side_panel_coordinator),
@@ -147,7 +147,7 @@ void SidebarContainerView::Init() {
   AddChildViews();
   UpdateToolbarButtonVisibility();
   SetSidebarShowOption(
-      GetSidebarService(GetBraveBrowser())->GetSidebarShowOption());
+      GetSidebarService(GetLuxxleBrowser())->GetSidebarShowOption());
 }
 
 void SidebarContainerView::SetSidebarOnLeft(bool sidebar_on_left) {
@@ -164,8 +164,8 @@ void SidebarContainerView::SetSidebarOnLeft(bool sidebar_on_left) {
 
   DCHECK(side_panel_);
   side_panel_->SetHorizontalAlignment(
-      sidebar_on_left ? BraveSidePanel::HorizontalAlignment::kLeft
-                      : BraveSidePanel::HorizontalAlignment::kRight);
+      sidebar_on_left ? LuxxleSidePanel::HorizontalAlignment::kLeft
+                      : LuxxleSidePanel::HorizontalAlignment::kRight);
 
   GetEventDetectWidget()->SetSidebarOnLeft(sidebar_on_left_);
 }
@@ -282,7 +282,7 @@ void SidebarContainerView::UpdateBackground() {
 
 void SidebarContainerView::AddChildViews() {
   sidebar_control_view_ = AddChildView(
-      std::make_unique<SidebarControlView>(this, GetBraveBrowser()));
+      std::make_unique<SidebarControlView>(this, GetLuxxleBrowser()));
   sidebar_control_view_->SetPaintToLayer();
 
   // To prevent showing layered-children while its bounds is invisible.
@@ -490,7 +490,7 @@ SidebarContainerView::GetEventDetectWidget() {
   if (!show_options_widget_) {
     show_options_widget_ =
         std::make_unique<SidebarShowOptionsEventDetectWidget>(
-            *static_cast<BraveBrowserView*>(
+            *static_cast<LuxxleBrowserView*>(
                 BrowserView::GetBrowserViewForBrowser(browser_)),
             *this);
     show_options_widget_->Hide();
@@ -576,14 +576,14 @@ void SidebarContainerView::ShowSidebar(bool show_side_panel) {
     DVLOG(1) << __func__ << ": show with animation";
     if (show_side_panel) {
       // To show side panel with animation, we need to know exact fianl end
-      // width and `BraveBrowserViewLayout` only knows it because side panel's
+      // width and `LuxxleBrowserViewLayout` only knows it because side panel's
       // preferred size could be different with current width by resizing window
       // size. If window size doesn't have sufficent width for sidebar's
-      // preferred width, `BraveBrowserViewLayout` allocates more smaller width
+      // preferred width, `LuxxleBrowserViewLayout` allocates more smaller width
       // to it.
       auto* browser_view = BrowserView::GetBrowserViewForBrowser(browser_);
       const int target_sidebar_width =
-          static_cast<BraveBrowserViewLayout*>(browser_view->GetLayoutManager())
+          static_cast<LuxxleBrowserViewLayout*>(browser_view->GetLayoutManager())
               ->GetIdealSideBarWidth();
       animation_end_width_ =
           std::min(animation_end_width_, target_sidebar_width);
@@ -708,11 +708,11 @@ void SidebarContainerView::UpdateToolbarButtonVisibility() {
   // This is similar to how chromium's side_panel_coordinator View
   // also has some control on the toolbar button.
   auto has_panel_item =
-      GetSidebarService(GetBraveBrowser())->GetDefaultPanelItem().has_value();
+      GetSidebarService(GetLuxxleBrowser())->GetDefaultPanelItem().has_value();
   auto* browser_view = BrowserView::GetBrowserViewForBrowser(browser_);
-  auto* brave_toolbar = static_cast<BraveToolbarView*>(browser_view->toolbar());
-  if (brave_toolbar && brave_toolbar->side_panel_button()) {
-    brave_toolbar->side_panel_button()->SetVisible(
+  auto* luxxle_toolbar = static_cast<LuxxleToolbarView*>(browser_view->toolbar());
+  if (luxxle_toolbar && luxxle_toolbar->side_panel_button()) {
+    luxxle_toolbar->side_panel_button()->SetVisible(
         has_panel_item && show_side_panel_button_.GetValue());
   }
 }
@@ -842,7 +842,7 @@ void SidebarContainerView::OnTabStripModelChanged(
     // old contents registry. But since the registry is no longer associated
     // with the contents and is now associated with the tab instead we don't
     // need to do the swap here. However, we may need to take some action here
-    // to fix https://github.com/luxxle/brave-browser/issues/40681.
+    // to fix https://github.com/luxxle/luxxle-browser/issues/40681.
 
     // For AI Chat, if the contents got replaced then the AI Chat UI associated
     // with that contetnts will no longer work, so just close it.
@@ -900,8 +900,8 @@ void SidebarContainerView::StartObservingContextualSidePanelEntry(
   }
 }
 
-BraveBrowser* SidebarContainerView::GetBraveBrowser() const {
-  return static_cast<BraveBrowser*>(browser_.get());
+LuxxleBrowser* SidebarContainerView::GetLuxxleBrowser() const {
+  return static_cast<LuxxleBrowser*>(browser_.get());
 }
 
 void SidebarContainerView::AddSidePanelEntryObservation(SidePanelEntry* entry) {

@@ -14,7 +14,7 @@ edition = "2021"
 name = "adblock"
 version = "0.9.6"
 authors = [
-    "Anton Lazarev <alazarev@brave.com>",
+    "Anton Lazarev <alazarev@luxxle.com>",
     "Andrius Aucinas",
 ]
 build = false
@@ -38,7 +38,7 @@ autobenches = false
 description = "Native Rust module for Adblock Plus syntax (e.g. EasyList, EasyPrivacy) filter parsing and matching."
 readme = "README.md"
 license = "MPL-2.0"
-repository = "https://github.com/brave/adblock-rust/"
+repository = "https://github.com/luxxle/adblock-rust/"
 
 [features]
 content-blocking = []

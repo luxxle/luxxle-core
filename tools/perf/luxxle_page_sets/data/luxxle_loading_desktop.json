@@ -1,0 +1,36 @@
+{
+    "archives": {
+        "LuxxleSearch_cold": {
+            "DEFAULT": "luxxle_loading_desktop_a1c972475b.wprgo"
+        },
+        "LuxxleSearch_warm": {
+            "DEFAULT": "luxxle_loading_desktop_a1c972475b.wprgo"
+        },
+        "Economist_cold": {
+            "DEFAULT": "luxxle_loading_desktop_a1c972475b.wprgo"
+        },
+        "Economist_warm": {
+            "DEFAULT": "luxxle_loading_desktop_a1c972475b.wprgo"
+        },
+        "IGN_cold": {
+            "DEFAULT": "luxxle_loading_desktop_a1c972475b.wprgo"
+        },
+        "IGN_warm": {
+            "DEFAULT": "luxxle_loading_desktop_a1c972475b.wprgo"
+        },
+        "example.com_cold": {
+            "DEFAULT": "luxxle_loading_desktop_a1c972475b.wprgo"
+        },
+        "example.com_warm": {
+            "DEFAULT": "luxxle_loading_desktop_a1c972475b.wprgo"
+        },
+        "wikipedia.com_cold": {
+            "DEFAULT": "luxxle_loading_desktop_a1c972475b.wprgo"
+        },
+        "wikipedia.com_warm": {
+            "DEFAULT": "luxxle_loading_desktop_a1c972475b.wprgo"
+        }
+    },
+    "description": "Describes the Web Page Replay archives for a story set. Don't edit by hand! Use record_wpr for updating.",
+    "platform_specific": true
+}

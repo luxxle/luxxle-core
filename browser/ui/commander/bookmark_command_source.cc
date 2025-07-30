@@ -22,7 +22,7 @@
 #include "chrome/browser/ui/browser_tabstrip.h"
 #include "components/bookmarks/browser/bookmark_model.h"
 #include "components/bookmarks/browser/url_and_title.h"
-#include "components/grit/brave_components_strings.h"
+#include "components/grit/luxxle_components_strings.h"
 #include "ui/base/l10n/l10n_util.h"
 
 namespace commander {

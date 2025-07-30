@@ -1,0 +1,18 @@
+include_rules = [
+  "+luxxle/components/ai_chat/core/common/features.h",
+  "+luxxle/components/luxxle_ads/core/public/ad_units/new_tab_page_ad/new_tab_page_ad_feature.h",
+  "+luxxle/components/luxxle_news/common/features.h",
+  "+luxxle/components/luxxle_rewards/core/features.h",
+  "+luxxle/components/luxxle_search_conversion/features.h",
+  "+luxxle/components/luxxle_shields/core/common/features.h",
+  "+luxxle/components/luxxle_vpn/common/features.h",
+  "+luxxle/components/luxxle_wallet/common/features.h",
+  "+luxxle/components/debounce/core/common/features.h",
+  "+luxxle/components/google_sign_in_permission/features.h",
+  "+luxxle/components/playlist/common/features.h",
+  "+luxxle/components/request_otr/common/features.h",
+  "+luxxle/components/speedreader/common/features.h",
+  "+luxxle/components/web_discovery/buildflags",
+  "+luxxle/components/web_discovery/common",
+  "+luxxle/components/webcompat/core/common/features.h",
+]

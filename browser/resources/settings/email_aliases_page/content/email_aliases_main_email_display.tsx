@@ -1,18 +1,18 @@
-// Copyright (c) 2025 The Brave Authors. All rights reserved.
+// Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
 import { EmailAliasesServiceInterface }
   from "gen/luxxle/components/email_aliases/email_aliases.mojom.m"
-import { font, spacing } from "@brave/leo/tokens/css/variables"
+import { font, spacing } from "@luxxle/leo/tokens/css/variables"
 import { getLocale } from '$web-common/locale'
 import * as React from 'react'
-import BraveIconCircle from "./styles/brave_icon_circle"
-import Button from '@brave/leo/react/button'
+import LuxxleIconCircle from "./styles/luxxle_icon_circle"
+import Button from '@luxxle/leo/react/button'
 import Card from "./styles/Card"
 import Col from "./styles/Col"
-import Icon from '@brave/leo/react/icon'
+import Icon from '@luxxle/leo/react/icon'
 import Row from "./styles/Row"
 import styled from "styled-components"
 
@@ -46,15 +46,15 @@ export const MainEmailDisplay = ({ email, emailAliasesService }:
   <Card>
     <AccountRow>
       <Row>
-        <BraveIconCircle name='social-brave-release-favicon-fullheight-color' />
+        <LuxxleIconCircle name='social-luxxle-release-favicon-fullheight-color' />
         <MainEmailTextContainer>
           <MainEmail>
             {email === ''
-              ? getLocale('emailAliasesConnectingToBraveAccount')
+              ? getLocale('emailAliasesConnectingToLuxxleAccount')
               : email}
           </MainEmail>
           <MainEmailDescription>
-            {getLocale('emailAliasesBraveAccount')}
+            {getLocale('emailAliasesLuxxleAccount')}
           </MainEmailDescription>
         </MainEmailTextContainer>
       </Row>

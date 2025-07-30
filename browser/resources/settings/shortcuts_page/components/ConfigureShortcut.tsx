@@ -1,4 +1,4 @@
-// Copyright (c) 2023 The Brave Authors. All rights reserved.
+// Copyright (c) 2023 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -7,11 +7,11 @@ import * as React from 'react'
 import styled from 'styled-components'
 import Keys from './Keys'
 import { keysToString } from '../utils/accelerator'
-import { color, font, spacing } from '@brave/leo/tokens/css/variables'
-import Button from '@brave/leo/react/button'
-import Alert from '@brave/leo/react/alert'
+import { color, font, spacing } from '@luxxle/leo/tokens/css/variables'
+import Button from '@luxxle/leo/react/button'
+import Alert from '@luxxle/leo/react/alert'
 import { useCommands } from '../commands'
-import Dialog from '@brave/leo/react/dialog'
+import Dialog from '@luxxle/leo/react/dialog'
 import { getLocale } from '$web-common/locale'
 import { Accelerator } from 'gen/luxxle/components/commands/common/commands.mojom.m'
 import { commandsCache } from '../commands'

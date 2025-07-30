@@ -1,4 +1,4 @@
-/* Copyright (c) 2020 The Brave Authors. All rights reserved.
+/* Copyright (c) 2020 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
@@ -6,11 +6,11 @@
 package org.chromium.chrome.browser;
 
 /**
- *  Brave configuration.
+ *  Luxxle configuration.
  */
-public class BraveConfig {
-  public static final String DEVELOPER_OPTIONS_CODE = BRAVE_ANDROID_DEVELOPER_OPTIONS_CODE;
-  public static final boolean P3A_ENABLED = BRAVE_ANDROID_P3A_ENABLED;
-  public static final String WEBCOMPAT_REPORT_ENDPOINT = BRAVE_ANDROID_WEBCOMPAT_REPORT_ENDPOINT;
-  public static final boolean WEB_DISCOVERY_ENABLED = BRAVE_ANDROID_WEB_DISCOVERY_ENABLED;
+public class LuxxleConfig {
+  public static final String DEVELOPER_OPTIONS_CODE = LUXXLE_ANDROID_DEVELOPER_OPTIONS_CODE;
+  public static final boolean P3A_ENABLED = LUXXLE_ANDROID_P3A_ENABLED;
+  public static final String WEBCOMPAT_REPORT_ENDPOINT = LUXXLE_ANDROID_WEBCOMPAT_REPORT_ENDPOINT;
+  public static final boolean WEB_DISCOVERY_ENABLED = LUXXLE_ANDROID_WEB_DISCOVERY_ENABLED;
 }

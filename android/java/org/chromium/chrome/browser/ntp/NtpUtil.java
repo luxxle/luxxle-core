@@ -21,19 +21,19 @@ public class NtpUtil {
                         BackgroundImagesPreferences.PREF_SHOW_TOP_SITES, shouldDisplayTopSites);
     }
 
-    public static boolean shouldDisplayBraveStats() {
+    public static boolean shouldDisplayLuxxleStats() {
         return ChromeSharedPreferences.getInstance()
-                .readBoolean(BackgroundImagesPreferences.PREF_SHOW_BRAVE_STATS, true);
+                .readBoolean(BackgroundImagesPreferences.PREF_SHOW_LUXXLE_STATS, true);
     }
 
-    public static void setDisplayBraveStats(boolean shouldDisplayBraveStats) {
+    public static void setDisplayLuxxleStats(boolean shouldDisplayLuxxleStats) {
         ChromeSharedPreferences.getInstance()
                 .writeBoolean(
-                        BackgroundImagesPreferences.PREF_SHOW_BRAVE_STATS, shouldDisplayBraveStats);
+                        BackgroundImagesPreferences.PREF_SHOW_LUXXLE_STATS, shouldDisplayLuxxleStats);
     }
 
     public static boolean shouldShowRewardsIcon() {
         return ChromeSharedPreferences.getInstance()
-                .readBoolean(AppearancePreferences.PREF_SHOW_BRAVE_REWARDS_ICON, true);
+                .readBoolean(AppearancePreferences.PREF_SHOW_LUXXLE_REWARDS_ICON, true);
     }
 }

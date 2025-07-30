@@ -30,11 +30,11 @@ import org.chromium.chrome.browser.billing.InAppPurchaseWrapper;
 import org.chromium.chrome.browser.billing.LinkSubscriptionUtils;
 import org.chromium.chrome.browser.util.LiveDataUtil;
 import org.chromium.chrome.browser.util.TabUtils;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnUtils;
 import org.chromium.ui.text.SpanApplier;
 import org.chromium.ui.text.SpanApplier.SpanInfo;
 
-public class VpnPaywallActivity extends BraveVpnParentActivity {
+public class VpnPaywallActivity extends LuxxleVpnParentActivity {
     private boolean mShouldShowRestoreMenu;
 
     private ProgressBar mMonthlyPlanProgress;
@@ -58,7 +58,7 @@ public class VpnPaywallActivity extends BraveVpnParentActivity {
     @Override
     public void onResumeWithNative() {
         super.onResumeWithNative();
-        BraveVpnUtils.dismissProgressDialog();
+        LuxxleVpnUtils.dismissProgressDialog();
     }
 
     private void initializeViews() {
@@ -70,7 +70,7 @@ public class VpnPaywallActivity extends BraveVpnParentActivity {
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_close_24);
-        actionBar.setTitle(getResources().getString(R.string.brave_vpn));
+        actionBar.setTitle(getResources().getString(R.string.luxxle_vpn));
 
         mMonthlyPlanProgress = findViewById(R.id.monthly_plan_progress);
 
@@ -121,8 +121,8 @@ public class VpnPaywallActivity extends BraveVpnParentActivity {
         TextView refreshCredentialsButton = findViewById(R.id.refresh_credentials_button);
         refreshCredentialsButton.setOnClickListener(
                 v -> {
-                    TabUtils.openURLWithBraveActivity(
-                            LinkSubscriptionUtils.getBraveAccountRecoverUrl(
+                    TabUtils.openURLWithLuxxleActivity(
+                            LinkSubscriptionUtils.getLuxxleAccountRecoverUrl(
                                     InAppPurchaseWrapper.SubscriptionProduct.VPN));
                 });
 
@@ -147,7 +147,7 @@ public class VpnPaywallActivity extends BraveVpnParentActivity {
     public void finishNativeInitialization() {
         super.finishNativeInitialization();
         // Check for an active subscription to show restore
-        BraveVpnUtils.showProgressDialog(
+        LuxxleVpnUtils.showProgressDialog(
                 VpnPaywallActivity.this, getResources().getString(R.string.vpn_connect_text));
         mIsVerification = true;
         verifySubscription();
@@ -269,7 +269,7 @@ public class VpnPaywallActivity extends BraveVpnParentActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_brave_vpn, menu);
+        getMenuInflater().inflate(R.menu.menu_luxxle_vpn, menu);
         MenuItem item = menu.findItem(R.id.restore);
         if (mShouldShowRestoreMenu) {
             mShouldShowRestoreMenu = false;
@@ -297,7 +297,7 @@ public class VpnPaywallActivity extends BraveVpnParentActivity {
         if (item.getItemId() == android.R.id.home) {
             finish();
         } else if (item.getItemId() == R.id.restore) {
-            BraveVpnUtils.openBraveVpnProfileActivity(VpnPaywallActivity.this);
+            LuxxleVpnUtils.openLuxxleVpnProfileActivity(VpnPaywallActivity.this);
         }
         return super.onOptionsItemSelected(item);
     }

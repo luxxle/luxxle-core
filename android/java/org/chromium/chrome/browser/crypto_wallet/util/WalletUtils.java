@@ -13,11 +13,11 @@ import androidx.annotation.Nullable;
 
 import org.chromium.base.ContextUtils;
 import org.chromium.base.Log;
-import org.chromium.brave_wallet.mojom.AccountId;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.AccountId;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.CoinType;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.util.TabUtils;
 import org.chromium.mojo_base.mojom.TimeDelta;
 
@@ -88,7 +88,7 @@ public class WalletUtils {
 
     public static boolean accountIdsEqual(@Nullable AccountInfo left, @Nullable AccountInfo right) {
         // Return false if either account is null since we can't compare null accounts
-        // This is a fix to avoid https://github.com/luxxle/brave-browser/issues/43261
+        // This is a fix to avoid https://github.com/luxxle/luxxle-browser/issues/43261
         if (left == null || right == null) {
             return false;
         }
@@ -117,30 +117,30 @@ public class WalletUtils {
      * Opens a web Wallet tab.
      *
      * @param forceNewTab when {@code true} it closes all Wallet tabs starting with {@link
-     *     BraveActivity#BRAVE_WALLET_BASE_URL} before opening a new tab. Otherwise, it tries to
-     *     refresh an old tab whose URL starts with @link BraveActivity#BRAVE_WALLET_BASE_URL}.
+     *     LuxxleActivity#LUXXLE_WALLET_BASE_URL} before opening a new tab. Otherwise, it tries to
+     *     refresh an old tab whose URL starts with @link LuxxleActivity#LUXXLE_WALLET_BASE_URL}.
      */
     public static void openWebWallet(final boolean forceNewTab) {
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             if (forceNewTab) {
-                activity.closeAllTabsByOrigin(BraveActivity.BRAVE_WALLET_ORIGIN);
+                activity.closeAllTabsByOrigin(LuxxleActivity.LUXXLE_WALLET_ORIGIN);
             }
 
             activity.openNewOrRefreshExistingTab(
-                    BraveActivity.BRAVE_WALLET_ORIGIN, BraveActivity.BRAVE_WALLET_URL);
+                    LuxxleActivity.LUXXLE_WALLET_ORIGIN, LuxxleActivity.LUXXLE_WALLET_URL);
             TabUtils.bringChromeTabbedActivityToTheTop(activity);
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "Error while opening wallet tab.", e);
         }
     }
 
-    /** Closes all Wallet tabs that contains the base URL `brave://wallet`. */
+    /** Closes all Wallet tabs that contains the base URL `luxxle://wallet`. */
     public static void closeWebWallet() {
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
-            activity.closeAllTabsByOrigin(BraveActivity.BRAVE_WALLET_ORIGIN);
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
+            activity.closeAllTabsByOrigin(LuxxleActivity.LUXXLE_WALLET_ORIGIN);
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "Error while closing the Wallet tab.", e);
         }
     }

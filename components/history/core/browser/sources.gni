@@ -4,5 +4,5 @@
 # This file provides variables for components/history/core/browser/BUILD.gn
 
 # Define empty history core browser variables to use Chromium defaults
-brave_components_history_core_browser_sources = []
-brave_components_history_core_browser_deps = [] 
+luxxle_components_history_core_browser_sources = []
+luxxle_components_history_core_browser_deps = [] 

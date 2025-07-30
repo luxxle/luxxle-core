@@ -15,8 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.chromium.brave_wallet.mojom.SignDataUnion;
-import org.chromium.brave_wallet.mojom.SignMessageRequest;
+import org.chromium.luxxle_wallet.mojom.SignDataUnion;
+import org.chromium.luxxle_wallet.mojom.SignMessageRequest;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.crypto_wallet.util.AndroidUtils;
 import org.chromium.chrome.browser.crypto_wallet.util.Validations;

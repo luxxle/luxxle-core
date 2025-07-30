@@ -7,6 +7,6 @@ declare_args() {
   # Original crash dialog setting (keep enabled for network tests)
   enable_crash_dialog = !is_android && is_official_build
   
-  # Enable Brave browser metrics (disabled for Luxxle)
-  enable_brave_browser_metrics = false
+  # Enable Luxxle browser metrics (disabled for Luxxle)
+  enable_luxxle_browser_metrics = false
 }

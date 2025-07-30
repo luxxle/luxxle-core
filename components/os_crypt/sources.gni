@@ -5,4 +5,4 @@
 # No Luxxle-specific equivalent found, using Chromium implementation
 
 # Define empty OS crypt variables to use Chromium defaults
-brave_components_os_crypt_deps = [] 
+luxxle_components_os_crypt_deps = [] 

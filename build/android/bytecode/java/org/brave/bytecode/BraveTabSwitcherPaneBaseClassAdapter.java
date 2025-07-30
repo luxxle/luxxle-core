@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveTabSwitcherPaneBaseClassAdapter extends BraveClassVisitor {
-    static String sBraveTabSwitcherPaneBaseClassName =
-            "org/chromium/chrome/browser/tasks/tab_management/BraveTabSwitcherPaneBase";
+public class LuxxleTabSwitcherPaneBaseClassAdapter extends LuxxleClassVisitor {
+    static String sLuxxleTabSwitcherPaneBaseClassName =
+            "org/chromium/chrome/browser/tasks/tab_management/LuxxleTabSwitcherPaneBase";
 
     static String sTabSwitcherPaneClassName =
             "org/chromium/chrome/browser/tasks/tab_management/TabSwitcherPane";
@@ -17,10 +17,10 @@ public class BraveTabSwitcherPaneBaseClassAdapter extends BraveClassVisitor {
     static String sIncognitoTabSwitcherPaneClassName =
             "org/chromium/chrome/browser/tasks/tab_management/IncognitoTabSwitcherPane";
 
-    public BraveTabSwitcherPaneBaseClassAdapter(ClassVisitor visitor) {
+    public LuxxleTabSwitcherPaneBaseClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        changeSuperName(sTabSwitcherPaneClassName, sBraveTabSwitcherPaneBaseClassName);
-        changeSuperName(sIncognitoTabSwitcherPaneClassName, sBraveTabSwitcherPaneBaseClassName);
+        changeSuperName(sTabSwitcherPaneClassName, sLuxxleTabSwitcherPaneBaseClassName);
+        changeSuperName(sIncognitoTabSwitcherPaneClassName, sLuxxleTabSwitcherPaneBaseClassName);
     }
 }

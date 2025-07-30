@@ -21,16 +21,16 @@ assert(toolkit_views)
 
 source_set("component_loader") {
   sources = [
-    "brave_component_loader.cc",
-    "brave_component_loader.h",
+    "luxxle_component_loader.cc",
+    "luxxle_component_loader.h",
   ]
 
   deps = [
     "//base",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_component_updater/browser",
+    # "//luxxle/components/luxxle_component_updater/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_extension:static_resources",
+    # "//luxxle/components/luxxle_extension:static_resources",
     # Commented out: removed components dependency - using Chromium defaults instead
     "//chrome/browser:browser_process",
     "//chrome/browser/extensions",
@@ -43,15 +43,15 @@ source_set("component_loader") {
   ]
 }
 
-# This is split out from extensions and the rest of brave_prefs_util because it
+# This is split out from extensions and the rest of luxxle_prefs_util because it
 # has circular dependencies on //chrome/browser.
-# https://github.com/luxxle/brave-browser/issues/41418
-source_set("brave_prefs_util_impl") {
+# https://github.com/luxxle/luxxle-browser/issues/41418
+source_set("luxxle_prefs_util_impl") {
   visibility = [
     ":*",
     "//chrome/browser",
   ]
-  sources = [ "api/settings_private/brave_prefs_util_impl.cc" ]
+  sources = [ "api/settings_private/luxxle_prefs_util_impl.cc" ]
 
   deps = [
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -70,71 +70,71 @@ source_set("brave_prefs_util_impl") {
 
 source_set("extensions") {
   sources = [
-    "api/brave_extensions_api_client.cc",
-    "api/brave_extensions_api_client.h",
-    "api/brave_rewards_api.cc",
-    "api/brave_rewards_api.h",
-    "api/brave_talk_api.cc",
-    "api/brave_talk_api.h",
-    "api/brave_theme_api.cc",
-    "api/brave_theme_api.h",
-    "api/identity/brave_web_auth_flow.cc",
-    "api/identity/brave_web_auth_flow.h",
+    "api/luxxle_extensions_api_client.cc",
+    "api/luxxle_extensions_api_client.h",
+    "api/luxxle_rewards_api.cc",
+    "api/luxxle_rewards_api.h",
+    "api/luxxle_talk_api.cc",
+    "api/luxxle_talk_api.h",
+    "api/luxxle_theme_api.cc",
+    "api/luxxle_theme_api.h",
+    "api/identity/luxxle_web_auth_flow.cc",
+    "api/identity/luxxle_web_auth_flow.h",
     "api/rewards_notifications_api.cc",
     "api/rewards_notifications_api.h",
-    "api/settings_private/brave_prefs_util.cc",
-    "api/settings_private/brave_prefs_util.h",
+    "api/settings_private/luxxle_prefs_util.cc",
+    "api/settings_private/luxxle_prefs_util.h",
     "api/web_discovery_api.cc",
     "api/web_discovery_api.h",
-    "brave_extension_management.cc",
-    "brave_extension_management.h",
-    "brave_extension_provider.cc",
-    "brave_extension_provider.h",
-    "brave_extensions_browser_api_provider.cc",
-    "brave_extensions_browser_api_provider.h",
-    "brave_extensions_browser_client_impl.cc",
-    "brave_extensions_browser_client_impl.h",
-    "brave_theme_event_router.cc",
-    "brave_theme_event_router.h",
-    "updater/brave_update_client_config.cc",
-    "updater/brave_update_client_config.h",
+    "luxxle_extension_management.cc",
+    "luxxle_extension_management.h",
+    "luxxle_extension_provider.cc",
+    "luxxle_extension_provider.h",
+    "luxxle_extensions_browser_api_provider.cc",
+    "luxxle_extensions_browser_api_provider.h",
+    "luxxle_extensions_browser_client_impl.cc",
+    "luxxle_extensions_browser_client_impl.h",
+    "luxxle_theme_event_router.cc",
+    "luxxle_theme_event_router.h",
+    "updater/luxxle_update_client_config.cc",
+    "updater/luxxle_update_client_config.h",
   ]
 
   deps = [
-    ":brave_prefs_util_impl",
+    ":luxxle_prefs_util_impl",
     ":resources",
     "//base",
     "//base",
-    "//luxxle/app:brave_generated_resources_grit",
+    "//luxxle/app:luxxle_generated_resources_grit",
     "//luxxle/browser:browser_process",
-    # REMOVED: "//luxxle/browser/brave_adaptive_captcha",
-    # REMOVED: "//luxxle/browser/brave_ads",
-    # REMOVED: "//luxxle/browser/brave_rewards",
-    # REMOVED: "//luxxle/browser/brave_rewards:util",
+    # REMOVED: "//luxxle/browser/luxxle_adaptive_captcha",
+    # REMOVED: "//luxxle/browser/luxxle_ads",
+    # REMOVED: "//luxxle/browser/luxxle_rewards",
+    # REMOVED: "//luxxle/browser/luxxle_rewards:util",
     "//luxxle/browser/component_updater",
     "//luxxle/browser/extensions/api:generated_api_registration",
     "//luxxle/browser/themes",
-    "//luxxle/browser/ui:brave_tab_prefs",
+    "//luxxle/browser/ui:luxxle_tab_prefs",
     "//luxxle/common",
     "//luxxle/common/extensions/api",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/ai_chat/core/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_adaptive_captcha",
+    # "//luxxle/components/luxxle_adaptive_captcha",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_ads/browser",
+    # "//luxxle/components/luxxle_ads/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_ads/core/public:headers",
+    # "//luxxle/components/luxxle_ads/core/public:headers",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_extension:static_resources",
+    # "//luxxle/components/luxxle_extension:static_resources",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_news/common",
+    # "//luxxle/components/luxxle_news/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/content",
+    # "//luxxle/components/luxxle_rewards/content",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/core",
+    # "//luxxle/components/luxxle_rewards/core",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/core/mojom",
+    # "//luxxle/components/luxxle_rewards/core/mojom",
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -186,9 +186,9 @@ source_set("extensions") {
   public_deps = [
     ":component_loader",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_ads/core/mojom",
+    # "//luxxle/components/luxxle_ads/core/mojom",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/core/mojom",
+    # "//luxxle/components/luxxle_rewards/core/mojom",
     "//extensions/browser",
   ]
 
@@ -242,15 +242,15 @@ source_set("extensions") {
   #   # Commented out: removed components dependency - using Chromium defaults instead
   # }
 
-  allow_circular_includes_from = [ ":brave_prefs_util_impl" ]
+  allow_circular_includes_from = [ ":luxxle_prefs_util_impl" ]
 }
 
 group("resources") {
   deps = [
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_extension:generated_resources",
+    # "//luxxle/components/luxxle_extension:generated_resources",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_extension:static_resources",
+    # "//luxxle/components/luxxle_extension:static_resources",
   ]
   # Commented out: webtorrent support removed
   #   deps += [
@@ -264,8 +264,8 @@ source_set("test_support") {
   testonly = true
 
   sources = [
-    "brave_base_local_data_files_browsertest.cc",
-    "brave_base_local_data_files_browsertest.h",
+    "luxxle_base_local_data_files_browsertest.cc",
+    "luxxle_base_local_data_files_browsertest.h",
   ]
 
   deps = [
@@ -273,7 +273,7 @@ source_set("test_support") {
     "//base/test:test_support",
     "//luxxle/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_component_updater/browser",
+    # "//luxxle/components/luxxle_component_updater/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/constants",
     "//chrome/browser/extensions",

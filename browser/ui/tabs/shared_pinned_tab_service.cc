@@ -11,8 +11,8 @@
 #include "base/functional/bind.h"
 #include "base/functional/callback_forward.h"
 #include "base/notreached.h"
-#include "luxxle/browser/ui/brave_browser_window.h"
-#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/luxxle_browser_window.h"
+#include "luxxle/browser/ui/tabs/luxxle_tab_prefs.h"
 #include "luxxle/browser/ui/tabs/features.h"
 #include "luxxle/browser/ui/tabs/shared_pinned_tab_dummy_view.h"
 #include "chrome/browser/profiles/profile.h"
@@ -198,11 +198,11 @@ WEB_CONTENTS_USER_DATA_KEY_IMPL(DummyContentsData);
 
 SharedPinnedTabService::SharedPinnedTabService(Profile* profile)
     : profile_(profile) {
-  DCHECK(base::FeatureList::IsEnabled(tabs::features::kBraveSharedPinnedTabs));
+  DCHECK(base::FeatureList::IsEnabled(tabs::features::kLuxxleSharedPinnedTabs));
   profile_observation_.Observe(profile_);
 
   shared_pinned_tab_enabled_.Init(
-      brave_tabs::kSharedPinnedTab, profile_->GetPrefs(),
+      luxxle_tabs::kSharedPinnedTab, profile_->GetPrefs(),
       base::BindRepeating(&SharedPinnedTabService::OnSharedPinnedTabPrefChanged,
                           weak_ptr_factory_.GetWeakPtr()));
 
@@ -930,5 +930,5 @@ SharedPinnedTabService::CreateDummyWebContents(
 
 bool SharedPinnedTabService::IsBrowserInTabDragging(Browser* browser) const {
   CHECK(browser);
-  return static_cast<BraveBrowserWindow*>(browser->window())->IsInTabDragging();
+  return static_cast<LuxxleBrowserWindow*>(browser->window())->IsInTabDragging();
 }

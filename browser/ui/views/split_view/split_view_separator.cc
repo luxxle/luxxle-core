@@ -10,10 +10,10 @@
 
 #include "base/functional/bind.h"
 #include "base/time/time.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/browser/ui/views/split_view/split_view_menu_bubble.h"
 #include "luxxle/components/vector_icons/vector_icons.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/color/chrome_color_id.h"
 #include "ui/base/l10n/l10n_util.h"
@@ -45,11 +45,11 @@ class MenuButtonDelegate : public views::WidgetDelegateView,
     constexpr auto kCornerRadius = 4;
     constexpr auto kBorderThickness = 1;
     SetBackground(views::CreateRoundedRectBackground(
-        kColorBraveSplitViewMenuButtonBackground, kCornerRadius,
+        kColorLuxxleSplitViewMenuButtonBackground, kCornerRadius,
         /*for_border_thickness*/ kBorderThickness));
     SetBorder(views::CreateRoundedRectBorder(
         /*thickness*/ kBorderThickness, kCornerRadius,
-        kColorBraveSplitViewMenuButtonBorder));
+        kColorLuxxleSplitViewMenuButtonBorder));
 
     auto* image_button = AddChildView(views::ImageButton::CreateIconButton(
         base::BindRepeating(&MenuButtonDelegate::OnMenuPressed,
@@ -58,7 +58,7 @@ class MenuButtonDelegate : public views::WidgetDelegateView,
         l10n_util::GetStringUTF16(IDS_SPLIT_VIEW_A11Y_SEPARATOR_MENU_BUTTON)));
 
     auto image_model = ui::ImageModel::FromVectorIcon(
-        kLeoMoreVerticalIcon, kColorBraveSplitViewMenuButtonIcon,
+        kLeoMoreVerticalIcon, kColorLuxxleSplitViewMenuButtonIcon,
         /*icon_size*/ 18);
     for (auto state : views::Button::kButtonStates) {
       image_button->SetImageModel(state, image_model);

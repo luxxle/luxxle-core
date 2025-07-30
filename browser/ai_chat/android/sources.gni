@@ -4,5 +4,5 @@
 # This file provides variables for browser/sources.gni
 
 # Define empty AI chat android variables to use Chromium defaults
-brave_browser_ai_chat_android_sources = []
-brave_browser_ai_chat_android_deps = [] 
+luxxle_browser_ai_chat_android_sources = []
+luxxle_browser_ai_chat_android_deps = [] 

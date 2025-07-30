@@ -28,9 +28,9 @@ import org.chromium.base.ContextUtils;
 import org.chromium.base.IntentUtils;
 import org.chromium.base.Log;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.vpn.DisconnectVpnBroadcastReceiver;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnPrefUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnPrefUtils;
 
 import java.util.Calendar;
 import java.util.Timer;
@@ -43,7 +43,7 @@ public class WireguardServiceImpl
     private final IBinder mBinder = new LocalBinder();
     private Timer mVpnStatisticsTimer;
     private Timer mVpnRecordStatisticsTimer;
-    private static final int BRAVE_VPN_NOTIFICATION_ID = 801;
+    private static final int LUXXLE_VPN_NOTIFICATION_ID = 801;
     private Context mContext = ContextUtils.getApplicationContext();
 
     class LocalBinder extends Binder {
@@ -84,7 +84,7 @@ public class WireguardServiceImpl
                 }
             }
         }.start();
-        getService().startForeground(BRAVE_VPN_NOTIFICATION_ID, getBraveVpnNotification(""));
+        getService().startForeground(LUXXLE_VPN_NOTIFICATION_ID, getLuxxleVpnNotification(""));
         return Service.START_NOT_STICKY;
     }
 
@@ -97,7 +97,7 @@ public class WireguardServiceImpl
         updateRecordSessionTimesTimer();
     }
 
-    private Notification getBraveVpnNotification(String notificationText) {
+    private Notification getLuxxleVpnNotification(String notificationText) {
         Intent disconnectVpnIntent = new Intent(mContext, DisconnectVpnBroadcastReceiver.class);
         disconnectVpnIntent.setAction(DisconnectVpnBroadcastReceiver.DISCONNECT_VPN_ACTION);
         PendingIntent disconnectVpnPendingIntent =
@@ -106,12 +106,12 @@ public class WireguardServiceImpl
                                 | IntentUtils.getPendingIntentMutabilityFlag(true));
 
         NotificationCompat.Builder notificationBuilder =
-                new NotificationCompat.Builder(mContext, BraveActivity.CHANNEL_ID);
+                new NotificationCompat.Builder(mContext, LuxxleActivity.CHANNEL_ID);
         notificationBuilder.setSmallIcon(R.drawable.ic_vpn)
                 .setAutoCancel(false)
                 .setContentTitle(
                         String.format(mContext.getResources().getString(R.string.connected_to_host),
-                                BraveVpnPrefUtils.getHostnameDisplay()))
+                                LuxxleVpnPrefUtils.getHostnameDisplay()))
                 .setContentText(notificationText)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(notificationText))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
@@ -124,15 +124,15 @@ public class WireguardServiceImpl
     }
 
     private void updateVpnNotification(String notificationText) {
-        Notification notification = getBraveVpnNotification(notificationText);
+        Notification notification = getLuxxleVpnNotification(notificationText);
         NotificationManager mNotificationManager =
                 (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.notify(BRAVE_VPN_NOTIFICATION_ID, notification);
+        mNotificationManager.notify(LUXXLE_VPN_NOTIFICATION_ID, notification);
     }
 
     private void recordSessionTimes() {
-        long sessionStartTimeMs = BraveVpnPrefUtils.getSessionStartTimeMs();
-        long sessionEndTimeMs = BraveVpnPrefUtils.getSessionEndTimeMs();
+        long sessionStartTimeMs = LuxxleVpnPrefUtils.getSessionStartTimeMs();
+        long sessionEndTimeMs = LuxxleVpnPrefUtils.getSessionEndTimeMs();
 
         Calendar sessionEndTimeCal = Calendar.getInstance();
         sessionEndTimeCal.setTimeInMillis(sessionEndTimeMs);
@@ -140,14 +140,14 @@ public class WireguardServiceImpl
 
         long currTimeMs = System.currentTimeMillis();
         if (sessionStartTimeMs < 0) {
-            BraveVpnPrefUtils.setSessionStartTimeMs(currTimeMs);
+            LuxxleVpnPrefUtils.setSessionStartTimeMs(currTimeMs);
         }
 
         if (currDate.get(Calendar.YEAR) != sessionEndTimeCal.get(Calendar.YEAR)
                 || currDate.get(Calendar.MONTH) != sessionEndTimeCal.get(Calendar.MONTH)
                 || currDate.get(Calendar.DAY_OF_MONTH)
                         != sessionEndTimeCal.get(Calendar.DAY_OF_MONTH)) {
-            BraveVpnPrefUtils.setSessionEndTimeMs(currTimeMs);
+            LuxxleVpnPrefUtils.setSessionEndTimeMs(currTimeMs);
         }
     }
 

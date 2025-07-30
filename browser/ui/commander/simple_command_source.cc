@@ -12,7 +12,7 @@
 
 #include "base/functional/bind.h"
 #include "base/strings/utf_string_conversions.h"
-#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/app/luxxle_command_ids.h"
 #include "luxxle/app/command_utils.h"
 #include "luxxle/browser/misc_metrics/profile_misc_metrics_service.h"
 #include "luxxle/browser/misc_metrics/profile_misc_metrics_service_factory.h"

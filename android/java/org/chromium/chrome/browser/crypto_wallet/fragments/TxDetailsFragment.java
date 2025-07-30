@@ -15,12 +15,12 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import org.chromium.brave_wallet.mojom.TransactionInfo;
-import org.chromium.brave_wallet.mojom.TxData1559;
-import org.chromium.brave_wallet.mojom.TxDataUnion;
-import org.chromium.brave_wallet.mojom.ZecTxData;
-import org.chromium.brave_wallet.mojom.ZecTxInput;
-import org.chromium.brave_wallet.mojom.ZecTxOutput;
+import org.chromium.luxxle_wallet.mojom.TransactionInfo;
+import org.chromium.luxxle_wallet.mojom.TxData1559;
+import org.chromium.luxxle_wallet.mojom.TxDataUnion;
+import org.chromium.luxxle_wallet.mojom.ZecTxData;
+import org.chromium.luxxle_wallet.mojom.ZecTxInput;
+import org.chromium.luxxle_wallet.mojom.ZecTxOutput;
 import org.chromium.build.annotations.NullMarked;
 import org.chromium.build.annotations.Nullable;
 import org.chromium.chrome.R;

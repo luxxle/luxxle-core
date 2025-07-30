@@ -53,25 +53,25 @@ import org.chromium.base.Log;
 import org.chromium.base.supplier.ObservableSupplier;
 import org.chromium.base.task.PostTask;
 import org.chromium.base.task.TaskTraits;
-import org.chromium.brave_wallet.mojom.AccountId;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.AssetRatioService;
-import org.chromium.brave_wallet.mojom.BlockchainRegistry;
-import org.chromium.brave_wallet.mojom.BlockchainToken;
-import org.chromium.brave_wallet.mojom.BraveWalletConstants;
-import org.chromium.brave_wallet.mojom.BraveWalletP3a;
-import org.chromium.brave_wallet.mojom.BraveWalletService;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.JsonRpcService;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
-import org.chromium.brave_wallet.mojom.OriginInfo;
-import org.chromium.brave_wallet.mojom.ProviderError;
+import org.chromium.luxxle_wallet.mojom.AccountId;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.AssetRatioService;
+import org.chromium.luxxle_wallet.mojom.BlockchainRegistry;
+import org.chromium.luxxle_wallet.mojom.BlockchainToken;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletConstants;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletP3a;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletService;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.JsonRpcService;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.OriginInfo;
+import org.chromium.luxxle_wallet.mojom.ProviderError;
 import org.chromium.build.annotations.NullMarked;
 import org.chromium.build.annotations.Nullable;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.app.ChromeActivity;
-import org.chromium.chrome.browser.crypto_wallet.activities.BraveWalletBaseActivity;
+import org.chromium.chrome.browser.crypto_wallet.activities.LuxxleWalletBaseActivity;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.chrome.browser.profiles.ProfileManager;
 import org.chromium.chrome.browser.tabmodel.TabModelSelector;
@@ -106,8 +106,8 @@ public class Utils {
     public static final int SOL_DEFAULT_DECIMALS = 9;
 
     private static final String PREF_CRYPTO_ONBOARDING = "crypto_onboarding";
-    public static final String BRAVE_SUPPORT_URL = "https://support.brave.com";
-    public static final String BRAVE_TERMS_OF_USE_URL = "https://brave.com/terms-of-use/";
+    public static final String LUXXLE_SUPPORT_URL = "https://support.luxxle.com";
+    public static final String LUXXLE_TERMS_OF_USE_URL = "https://luxxle.com/terms-of-use/";
     public static final String NAME = "name";
     public static final String COIN_TYPE = "coinType";
     public static final String SWAP_EXCHANGE_PROXY = "0xdef1c0ded9bec7f1a1670819833240f027b25eff";
@@ -801,7 +801,7 @@ public class Utils {
     }
 
     /*
-     * Java port of the same function in components/brave_wallet_ui/options/asset-options.ts.
+     * Java port of the same function in components/luxxle_wallet_ui/options/asset-options.ts.
      */
     public static BlockchainToken makeNetworkAsset(NetworkInfo network) {
         BlockchainToken asset = new BlockchainToken();
@@ -824,61 +824,61 @@ public class Utils {
             final String chainId, @CoinType.EnumType final int coin) {
         @DrawableRes int logo;
         switch (chainId) {
-            case BraveWalletConstants.MAINNET_CHAIN_ID:
-            case BraveWalletConstants.SEPOLIA_CHAIN_ID:
+            case LuxxleWalletConstants.MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.SEPOLIA_CHAIN_ID:
                 logo = R.drawable.ic_eth_color;
                 break;
-            case BraveWalletConstants.POLYGON_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.POLYGON_MAINNET_CHAIN_ID:
                 logo = R.drawable.ic_matic_color;
                 break;
-            case BraveWalletConstants.BNB_SMART_CHAIN_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.BNB_SMART_CHAIN_MAINNET_CHAIN_ID:
                 logo = R.drawable.ic_bnbchain_color;
                 break;
-            case BraveWalletConstants.SOLANA_MAINNET:
-            case BraveWalletConstants.SOLANA_TESTNET:
-            case BraveWalletConstants.SOLANA_DEVNET:
+            case LuxxleWalletConstants.SOLANA_MAINNET:
+            case LuxxleWalletConstants.SOLANA_TESTNET:
+            case LuxxleWalletConstants.SOLANA_DEVNET:
                 logo = R.drawable.ic_sol_color;
                 break;
-            case BraveWalletConstants.AURORA_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.AURORA_MAINNET_CHAIN_ID:
                 logo = R.drawable.ic_aurora_color;
                 break;
-            case BraveWalletConstants.ARBITRUM_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.ARBITRUM_MAINNET_CHAIN_ID:
                 logo = R.drawable.ic_arb_color;
                 break;
-            case BraveWalletConstants.AVALANCHE_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.AVALANCHE_MAINNET_CHAIN_ID:
                 logo = R.drawable.ic_avax_color;
                 break;
-            case BraveWalletConstants.CELO_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.CELO_MAINNET_CHAIN_ID:
                 logo = R.drawable.ic_celo_color;
                 break;
-            case BraveWalletConstants.OPTIMISM_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.OPTIMISM_MAINNET_CHAIN_ID:
                 logo = R.drawable.ic_op_color;
                 break;
-            case BraveWalletConstants.FANTOM_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.FANTOM_MAINNET_CHAIN_ID:
                 logo = R.drawable.ic_ftm_color;
                 break;
-            case BraveWalletConstants.FILECOIN_MAINNET:
-            case BraveWalletConstants.FILECOIN_TESTNET:
-            case BraveWalletConstants.FILECOIN_ETHEREUM_MAINNET_CHAIN_ID:
-            case BraveWalletConstants.FILECOIN_ETHEREUM_TESTNET_CHAIN_ID:
+            case LuxxleWalletConstants.FILECOIN_MAINNET:
+            case LuxxleWalletConstants.FILECOIN_TESTNET:
+            case LuxxleWalletConstants.FILECOIN_ETHEREUM_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.FILECOIN_ETHEREUM_TESTNET_CHAIN_ID:
                 logo = R.drawable.ic_filecoin_color;
                 break;
-            case BraveWalletConstants.BITCOIN_MAINNET:
-            case BraveWalletConstants.BITCOIN_TESTNET:
+            case LuxxleWalletConstants.BITCOIN_MAINNET:
+            case LuxxleWalletConstants.BITCOIN_TESTNET:
                 logo = R.drawable.ic_btc_color;
                 break;
-            case BraveWalletConstants.NEON_EVM_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.NEON_EVM_MAINNET_CHAIN_ID:
                 logo = R.drawable.ic_neon_color;
                 break;
-            case BraveWalletConstants.Z_CASH_MAINNET:
-            case BraveWalletConstants.Z_CASH_TESTNET:
+            case LuxxleWalletConstants.Z_CASH_MAINNET:
+            case LuxxleWalletConstants.Z_CASH_TESTNET:
                 logo = R.drawable.ic_zec_color;
                 break;
             default:
                 logo = -1;
         }
         // Local host chain is not unique per network
-        if (logo == -1 && chainId.equals(BraveWalletConstants.LOCALHOST_CHAIN_ID)) {
+        if (logo == -1 && chainId.equals(LuxxleWalletConstants.LOCALHOST_CHAIN_ID)) {
             switch (coin) {
                 case CoinType.SOL:
                     logo = R.drawable.ic_sol_color;
@@ -901,61 +901,61 @@ public class Utils {
 
         String logo;
         switch (chainId) {
-            case BraveWalletConstants.MAINNET_CHAIN_ID:
-            case BraveWalletConstants.SEPOLIA_CHAIN_ID:
+            case LuxxleWalletConstants.MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.SEPOLIA_CHAIN_ID:
                 logo = "eth.png";
                 break;
-            case BraveWalletConstants.POLYGON_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.POLYGON_MAINNET_CHAIN_ID:
                 logo = "matic.png";
                 break;
-            case BraveWalletConstants.BNB_SMART_CHAIN_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.BNB_SMART_CHAIN_MAINNET_CHAIN_ID:
                 logo = "bnb.png";
                 break;
-            case BraveWalletConstants.SOLANA_MAINNET:
-            case BraveWalletConstants.SOLANA_TESTNET:
-            case BraveWalletConstants.SOLANA_DEVNET:
+            case LuxxleWalletConstants.SOLANA_MAINNET:
+            case LuxxleWalletConstants.SOLANA_TESTNET:
+            case LuxxleWalletConstants.SOLANA_DEVNET:
                 logo = "sol.png";
                 break;
-            case BraveWalletConstants.AURORA_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.AURORA_MAINNET_CHAIN_ID:
                 logo = "aurora.png";
                 break;
-            case BraveWalletConstants.ARBITRUM_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.ARBITRUM_MAINNET_CHAIN_ID:
                 logo = "arb.png";
                 break;
-            case BraveWalletConstants.AVALANCHE_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.AVALANCHE_MAINNET_CHAIN_ID:
                 logo = "avax.png";
                 break;
-            case BraveWalletConstants.CELO_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.CELO_MAINNET_CHAIN_ID:
                 logo = "celo.png";
                 break;
-            case BraveWalletConstants.OPTIMISM_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.OPTIMISM_MAINNET_CHAIN_ID:
                 logo = "op.png";
                 break;
-            case BraveWalletConstants.FANTOM_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.FANTOM_MAINNET_CHAIN_ID:
                 logo = "ftm.png";
                 break;
-            case BraveWalletConstants.FILECOIN_MAINNET:
-            case BraveWalletConstants.FILECOIN_TESTNET:
-            case BraveWalletConstants.FILECOIN_ETHEREUM_MAINNET_CHAIN_ID:
-            case BraveWalletConstants.FILECOIN_ETHEREUM_TESTNET_CHAIN_ID:
+            case LuxxleWalletConstants.FILECOIN_MAINNET:
+            case LuxxleWalletConstants.FILECOIN_TESTNET:
+            case LuxxleWalletConstants.FILECOIN_ETHEREUM_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.FILECOIN_ETHEREUM_TESTNET_CHAIN_ID:
                 logo = "fil.png";
                 break;
-            case BraveWalletConstants.BITCOIN_MAINNET:
-            case BraveWalletConstants.BITCOIN_TESTNET:
+            case LuxxleWalletConstants.BITCOIN_MAINNET:
+            case LuxxleWalletConstants.BITCOIN_TESTNET:
                 logo = "btc.png";
                 break;
-            case BraveWalletConstants.NEON_EVM_MAINNET_CHAIN_ID:
+            case LuxxleWalletConstants.NEON_EVM_MAINNET_CHAIN_ID:
                 logo = "neon.png";
                 break;
-            case BraveWalletConstants.Z_CASH_MAINNET:
-            case BraveWalletConstants.Z_CASH_TESTNET:
+            case LuxxleWalletConstants.Z_CASH_MAINNET:
+            case LuxxleWalletConstants.Z_CASH_TESTNET:
                 logo = "zec.png";
                 break;
             default:
                 logo = "";
         }
         // Local host chain is not unique per network
-        if (logo.isEmpty() && chainId.equals(BraveWalletConstants.LOCALHOST_CHAIN_ID)) {
+        if (logo.isEmpty() && chainId.equals(LuxxleWalletConstants.LOCALHOST_CHAIN_ID)) {
             switch (coin) {
                 case CoinType.SOL:
                     logo = "sol.png";
@@ -1043,7 +1043,7 @@ public class Utils {
         for (URLSpan urlSpan : spans) {
             ChromeClickableSpan linkSpan =
                     new ChromeClickableSpan(
-                            context.getColor(R.color.brave_link), onClickListener::onClick);
+                            context.getColor(R.color.luxxle_link), onClickListener::onClick);
             int spanStart = spannable.getSpanStart(urlSpan);
             int spanEnd = spannable.getSpanEnd(urlSpan);
             spannable.setSpan(linkSpan, spanStart, spanEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -1108,12 +1108,12 @@ public class Utils {
     public static Profile getProfile(boolean isIncognito) {
         ChromeActivity chromeActivity = null;
         try {
-            chromeActivity = BraveActivity.getBraveActivity();
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+            chromeActivity = LuxxleActivity.getLuxxleActivity();
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "getProfile " + e);
         }
         if (chromeActivity == null) {
-            chromeActivity = BraveActivity.getChromeTabbedActivity();
+            chromeActivity = LuxxleActivity.getChromeTabbedActivity();
         }
         if (chromeActivity == null) {
             return getLastUsedProfile(isIncognito); // Last resort
@@ -1164,7 +1164,7 @@ public class Utils {
      * Gets tokens, prices and balances, all at the same time for a given token type. See {@link
      * TokenUtils.TokenType}.
      *
-     * @param activityRef Weak reference to Brave Wallet base activity.
+     * @param activityRef Weak reference to Luxxle Wallet base activity.
      * @param tokenType Token type used for filtering (e.g. {@code TokenType.NON_NFTS}).
      * @param allNetworks List of all networks, used to log P3A records.
      * @param selectedNetwork Currently selected network.
@@ -1180,7 +1180,7 @@ public class Utils {
      *     needed at the same time.
      */
     public static void getTxExtraInfo(
-            WeakReference<BraveWalletBaseActivity> activityRef,
+            WeakReference<LuxxleWalletBaseActivity> activityRef,
             TokenUtils.TokenType tokenType,
             List<NetworkInfo> allNetworks,
             NetworkInfo selectedNetwork,
@@ -1193,29 +1193,29 @@ public class Utils {
                             HashMap<String, Double>,
                             HashMap<String, HashMap<String, Double>>>
                     callback) {
-        BraveWalletBaseActivity activity = activityRef.get();
+        LuxxleWalletBaseActivity activity = activityRef.get();
         if (activity == null || activity.isFinishing()) {
             return;
         }
-        BraveWalletService braveWalletService = activity.getBraveWalletService();
+        LuxxleWalletService luxxleWalletService = activity.getLuxxleWalletService();
         BlockchainRegistry blockchainRegistry = activity.getBlockchainRegistry();
         AssetRatioService assetRatioService = activity.getAssetRatioService();
         JsonRpcService jsonRpcService = activity.getJsonRpcService();
-        assert braveWalletService != null
+        assert luxxleWalletService != null
                         && blockchainRegistry != null
                         && assetRatioService != null
                         && jsonRpcService != null
                 : "Invalid service initialization";
 
         if (JavaUtils.anyNull(
-                braveWalletService, blockchainRegistry, assetRatioService, jsonRpcService)) {
+                luxxleWalletService, blockchainRegistry, assetRatioService, jsonRpcService)) {
             return;
         }
 
         AsyncUtils.MultiResponseHandler multiResponse = new AsyncUtils.MultiResponseHandler(3);
 
         TokenUtils.getUserOrAllTokensFiltered(
-                braveWalletService,
+                luxxleWalletService,
                 blockchainRegistry,
                 selectedNetwork,
                 selectedNetwork.coin,
@@ -1289,7 +1289,7 @@ public class Utils {
         ArrayList<NetworkInfo> relevantNetworks = new ArrayList<NetworkInfo>();
         boolean countTestNetworks =
                 CommandLine.getInstance()
-                        .hasSwitch(BraveWalletConstants.P3A_COUNT_TEST_NETWORKS_SWITCH);
+                        .hasSwitch(LuxxleWalletConstants.P3A_COUNT_TEST_NETWORKS_SWITCH);
         for (NetworkInfo network : allNetworks) {
             // Exclude testnet chain data by default.
             // Testnet chain counting can be enabled via the
@@ -1363,16 +1363,16 @@ public class Utils {
             AsyncUtils.GetNativeAssetsBalancesResponseContext[] nativeAssetsBalancesResponses,
             AsyncUtils.GetBlockchainTokensBalancesResponseContext[]
                     blockchainTokensBalancesResponses,
-            WeakReference<BraveWalletBaseActivity> activityRef,
+            WeakReference<LuxxleWalletBaseActivity> activityRef,
             List<NetworkInfo> allNetworks,
             NetworkInfo selectedNetwork) {
-        BraveWalletBaseActivity activity = activityRef.get();
+        LuxxleWalletBaseActivity activity = activityRef.get();
         if (activity == null
                 || activity.isFinishing()
-                || JavaUtils.anyNull(activity.getBraveWalletP3A())) {
+                || JavaUtils.anyNull(activity.getLuxxleWalletP3A())) {
             return;
         }
-        BraveWalletP3a braveWalletP3A = activity.getBraveWalletP3A();
+        LuxxleWalletP3a luxxleWalletP3A = activity.getLuxxleWalletP3A();
 
         AsyncUtils.MultiResponseHandler multiResponse = new AsyncUtils.MultiResponseHandler(1);
 
@@ -1393,7 +1393,7 @@ public class Utils {
                     for (int coinType : P3ACoinTypes) {
                         HashSet<String> active = activeAddresses.get(coinType);
                         if (active != null) {
-                            braveWalletP3A.recordActiveWalletCount(active.size(), coinType);
+                            luxxleWalletP3A.recordActiveWalletCount(active.size(), coinType);
                         }
                     }
                 });

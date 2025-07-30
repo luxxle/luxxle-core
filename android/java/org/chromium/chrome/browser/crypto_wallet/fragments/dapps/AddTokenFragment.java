@@ -19,14 +19,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.chromium.base.Log;
-import org.chromium.brave_wallet.mojom.AddSuggestTokenRequest;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
-import org.chromium.brave_wallet.mojom.OriginInfo;
+import org.chromium.luxxle_wallet.mojom.AddSuggestTokenRequest;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.OriginInfo;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.app.domain.WalletModel;
 import org.chromium.chrome.browser.crypto_wallet.BlockchainRegistryFactory;
-import org.chromium.chrome.browser.crypto_wallet.activities.BraveWalletBaseActivity;
+import org.chromium.chrome.browser.crypto_wallet.activities.LuxxleWalletBaseActivity;
 import org.chromium.chrome.browser.crypto_wallet.util.JavaUtils;
 import org.chromium.chrome.browser.crypto_wallet.util.Utils;
 
@@ -62,9 +62,9 @@ public class AddTokenFragment extends BaseDAppsFragment {
         mTokenName = view.findViewById(R.id.fragment_add_token_tv_token);
         mTokenAddress = view.findViewById(R.id.fragment_add_token_tv_address);
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             mWalletModel = activity.getWalletModel();
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "onCreate ", e);
         }
         initComponents(true);
@@ -78,13 +78,13 @@ public class AddTokenFragment extends BaseDAppsFragment {
 
     private void notifyAddSuggestTokenRequestProcessed(boolean approved) {
         String[] addresses = new String[] {mCurrentAddSuggestTokenRequest.token.contractAddress};
-        getBraveWalletService().notifyAddSuggestTokenRequestsProcessed(approved, addresses);
+        getLuxxleWalletService().notifyAddSuggestTokenRequestsProcessed(approved, addresses);
         initComponents(false);
     }
 
     private void fillAddSuggestTokenRequest(boolean init) {
         if (mWalletModel == null) return;
-        getBraveWalletService()
+        getLuxxleWalletService()
                 .getPendingAddSuggestTokenRequests(
                         requests -> {
                             if (requests == null || requests.length == 0) {
@@ -112,14 +112,14 @@ public class AddTokenFragment extends BaseDAppsFragment {
                                 mTokenAddress.setOnClickListener(
                                         v -> {
                                             Activity activity = getActivity();
-                                            if (activity instanceof BraveWalletBaseActivity
+                                            if (activity instanceof LuxxleWalletBaseActivity
                                                     && selectedNetwork != null) {
                                                 Utils.openAddress(
                                                         "/token/"
                                                                 + mCurrentAddSuggestTokenRequest
                                                                         .token
                                                                         .contractAddress,
-                                                        (BraveWalletBaseActivity) activity,
+                                                        (LuxxleWalletBaseActivity) activity,
                                                         mCurrentAddSuggestTokenRequest.token.coin,
                                                         selectedNetwork);
                                             }

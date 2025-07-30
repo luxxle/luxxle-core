@@ -1,21 +1,21 @@
-// Copyright (c) 2025 The Brave Authors. All rights reserved.
+// Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
 import { Alias } from "gen/luxxle/components/email_aliases/email_aliases.mojom.m"
-import { color, font, spacing } from '@brave/leo/tokens/css/variables'
+import { color, font, spacing } from '@luxxle/leo/tokens/css/variables'
 import { formatLocale } from '$web-common/locale'
 import { getLocale } from '$web-common/locale'
 import { onEnterKeyForDiv } from './on_enter_key'
 import * as React from 'react'
-import Button from '@brave/leo/react/button'
-import ButtonMenu from '@brave/leo/react/buttonMenu'
+import Button from '@luxxle/leo/react/button'
+import ButtonMenu from '@luxxle/leo/react/buttonMenu'
 import Col from './styles/Col'
-import Icon from '@brave/leo/react/icon'
+import Icon from '@luxxle/leo/react/icon'
 import Row from './styles/Row'
 import styled from 'styled-components'
-import Tooltip from '@brave/leo/react/tooltip'
+import Tooltip from '@luxxle/leo/react/tooltip'
 
 const AliasItemRow = styled(Row)`
   font: ${font.default.regular};

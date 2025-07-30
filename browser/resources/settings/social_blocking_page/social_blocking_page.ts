@@ -7,7 +7,7 @@ import {PolymerElement} from 'chrome://resources/polymer/v3_0/polymer/polymer_bu
 import {getTemplate} from './social_blocking_page.html.js'
 import {loadTimeData} from '../i18n_setup.js';
 
-export class BraveSettingsSocialBlockingPage extends PolymerElement {
+export class LuxxleSettingsSocialBlockingPage extends PolymerElement {
   static get is() {
     return 'settings-social-blocking-page'
   }
@@ -31,4 +31,4 @@ export class BraveSettingsSocialBlockingPage extends PolymerElement {
   private declare isGoogleSignInFeatureEnabled_: boolean
 }
 
-customElements.define(BraveSettingsSocialBlockingPage.is, BraveSettingsSocialBlockingPage);
+customElements.define(LuxxleSettingsSocialBlockingPage.is, LuxxleSettingsSocialBlockingPage);

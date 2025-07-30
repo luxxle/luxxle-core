@@ -39,10 +39,10 @@ program
   .option('--nohooks', 'Do not run hooks after updating')
   .option(
     '--with_issue_44921',
-    'Do not pass --revision to gclient to avoid process hanging on jenkins. https://github.com/brave/brave-browser/issues/44921',
+    'Do not pass --revision to gclient to avoid process hanging on jenkins. https://github.com/luxxle/luxxle-browser/issues/44921',
   )
 
-function syncBrave(program) {
+function syncLuxxle(program) {
   let args = ['sync', '--nohooks']
   const syncWithForce = program.init || program.force
   if (syncWithForce) {
@@ -55,8 +55,8 @@ function syncBrave(program) {
 
   util.runGClient(
     args,
-    { cwd: config.braveCoreDir },
-    path.join(config.braveCoreDir, '.brave_gclient'),
+    { cwd: config.luxxleCoreDir },
+    path.join(config.luxxleCoreDir, '.luxxle_gclient'),
   )
 }
 
@@ -95,8 +95,8 @@ async function RunCommand() {
   Log.progressScope('gclient sync', () => {
     const didSyncChromium = syncUtil.syncChromium(program)
     if (!didSyncChromium || program.delete_unused_deps) {
-      // If no Chromium sync was done, run sync inside `brave` to sync Brave DEPS.
-      syncBrave(program)
+      // If no Chromium sync was done, run sync inside `luxxle` to sync Luxxle DEPS.
+      syncLuxxle(program)
     }
   })
 
@@ -110,7 +110,7 @@ async function RunCommand() {
         'The internal dependencies endpoint is unreachable, which may block toolchain downloads. Please check your VPN connection.',
       )
     }
-    // Run hooks for the root .gclient, this will include Chromium and Brave
+    // Run hooks for the root .gclient, this will include Chromium and Luxxle
     // hooks. Don't cache the result, just always rerun this step, because it's
     // pretty quick in a no-op scenario.
     Log.progressScope('gclient runhooks', () => {
@@ -120,7 +120,7 @@ async function RunCommand() {
 }
 
 RunCommand().catch((err) => {
-  Log.error('Brave Browser Sync ERROR:')
+  Log.error('Luxxle Browser Sync ERROR:')
   console.error(err)
   process.exit(1)
 })

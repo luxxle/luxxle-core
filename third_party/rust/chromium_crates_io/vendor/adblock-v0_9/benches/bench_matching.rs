@@ -353,8 +353,8 @@ fn rule_match_browserlike_comparable(c: &mut Criterion) {
         let engine = Engine::from_rules_parametrised(rules, Default::default(), false, true);
         b.iter(|| bench_rule_matching_browserlike(&engine, &requests))
     });
-    group.bench_function("brave-list", |b| {
-      let rules = rules_from_lists(&["data/brave/brave-main-list.txt"]);
+    group.bench_function("luxxle-list", |b| {
+      let rules = rules_from_lists(&["data/luxxle/luxxle-main-list.txt"]);
       let engine = Engine::from_rules_parametrised(rules, Default::default(), false, true);
       b.iter(|| bench_rule_matching_browserlike(&engine, &requests))
   });
@@ -375,12 +375,12 @@ fn rule_match_first_request(c: &mut Criterion) {
         false,
     )];
 
-    group.bench_function("brave-list", |b| {
+    group.bench_function("luxxle-list", |b| {
         b.iter_custom(
             |iters| {
                 let mut total_time = std::time::Duration::ZERO;
                 for _ in 0..iters {
-                  let rules = rules_from_lists(&["data/brave/brave-main-list.txt"]);
+                  let rules = rules_from_lists(&["data/luxxle/luxxle-main-list.txt"]);
                   let engine = Engine::from_rules_parametrised(rules, Default::default(), false, true);
 
                   // Measure only the matching time, skip setup and destruction

@@ -5,7 +5,7 @@
 
 package org.chromium.chrome.browser.crypto_wallet.model;
 
-import org.chromium.brave_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.CoinType;
 
 public class WalletAccountCreationRequest {
     private @CoinType.EnumType int mCoinType;

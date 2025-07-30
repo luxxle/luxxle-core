@@ -13,7 +13,7 @@ import com.wireguard.config.Config;
 import org.chromium.base.Log;
 
 public class TunnelModel implements Tunnel {
-    public static final String TUNNEL_NAME = "Brave";
+    public static final String TUNNEL_NAME = "Luxxle";
     private final String name;
 
     @SuppressWarnings("UnusedVariable")

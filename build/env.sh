@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Copyright (c) 2023 The Brave Authors. All rights reserved.
+# Copyright (c) 2023 The Luxxle Authors. All rights reserved.
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-brave_env::set_brave_env() {
+luxxle_env::set_luxxle_env() {
   # Helper to check if the script is sourced or not.
-  brave_env::is_script_sourced() {
+  luxxle_env::is_script_sourced() {
     if [[ -n "$ZSH_VERSION" ]]; then
       case $ZSH_EVAL_CONTEXT in
       *:file:*)
@@ -29,11 +29,11 @@ brave_env::set_brave_env() {
   }
 
   # Do nothing if the script wasn't sourced.
-  if ! brave_env::is_script_sourced; then
+  if ! luxxle_env::is_script_sourced; then
     echo Please source the script: . $0 $@
     return
   fi
-  unset -f brave_env::is_script_sourced
+  unset -f luxxle_env::is_script_sourced
 
   # Get script dir. Supports bash and zsh syntax.
   local script_dir=$(dirname "${BASH_SOURCE[0]:-${(%):-%x}}")
@@ -62,5 +62,5 @@ brave_env::set_brave_env() {
   done <<<$gen_env_output
 }
 
-brave_env::set_brave_env "$@"
-unset -f brave_env::set_brave_env
+luxxle_env::set_luxxle_env "$@"
+unset -f luxxle_env::set_luxxle_env

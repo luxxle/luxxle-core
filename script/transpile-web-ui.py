@@ -128,7 +128,7 @@ def transpile_web_uis(options):
     # points. As webpack-cli no longer supports named entries, we provide them
     # via in a custom variable, comma-separated and with
     # "[name]=[path]" syntax.
-    args.append("--env=brave_entries=" + ",".join(options['entry_points']))
+    args.append("--env=luxxle_entries=" + ",".join(options['entry_points']))
 
     if options['sync_wasm']:
         args.append("--env=sync_wasm")

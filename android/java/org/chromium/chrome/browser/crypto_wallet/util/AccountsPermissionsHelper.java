@@ -5,24 +5,24 @@
 
 package org.chromium.chrome.browser.crypto_wallet.util;
 
-import org.chromium.brave_wallet.mojom.AccountId;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.BraveWalletService;
+import org.chromium.luxxle_wallet.mojom.AccountId;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletService;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.stream.Collectors;
 
 public class AccountsPermissionsHelper {
-    private BraveWalletService mBraveWalletService;
+    private LuxxleWalletService mLuxxleWalletService;
     private AccountInfo[] mAccounts;
     private HashSet<AccountInfo> mAccountsWithPermissions;
 
     public AccountsPermissionsHelper(
-            BraveWalletService braveWalletService, AccountInfo[] accounts) {
-        assert braveWalletService != null;
+            LuxxleWalletService luxxleWalletService, AccountInfo[] accounts) {
+        assert luxxleWalletService != null;
         assert accounts != null;
-        mBraveWalletService = braveWalletService;
+        mLuxxleWalletService = luxxleWalletService;
         mAccounts = accounts;
         mAccountsWithPermissions = new HashSet<AccountInfo>();
     }
@@ -44,7 +44,7 @@ public class AccountsPermissionsHelper {
     public void checkAccounts(Runnable runWhenDone) {
         AccountId[] allAccountIds =
                 Arrays.stream(mAccounts).map(acc -> acc.accountId).toArray(AccountId[]::new);
-        mBraveWalletService.hasPermission(
+        mLuxxleWalletService.hasPermission(
                 allAccountIds,
                 (success, filteredAccounts) -> {
                     mAccountsWithPermissions =

@@ -1,4 +1,4 @@
-/* Copyright (c) 2021 The Brave Authors. All rights reserved.
+/* Copyright (c) 2021 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
@@ -18,11 +18,11 @@ struct TestParams {
 constexpr TestParams kTestVectors[] = {
     {
         nullptr,
-        "Brave Safe Storage",
-        "Brave",
+        "Luxxle Safe Storage",
+        "Luxxle",
     },
     {
-        "import-brave",
+        "import-luxxle",
         "Chromium Safe Storage",
         "Chromium",
     },
@@ -39,20 +39,20 @@ constexpr TestParams kTestVectors[] = {
 };
 }  // namespace
 
-class BraveKeychainPasswordTest
+class LuxxleKeychainPasswordTest
     : public InProcessBrowserTest,
       public ::testing::WithParamInterface<TestParams> {
  public:
-  BraveKeychainPasswordTest() = default;
-  BraveKeychainPasswordTest(const BraveKeychainPasswordTest&) = delete;
-  BraveKeychainPasswordTest& operator=(const BraveKeychainPasswordTest&) =
+  LuxxleKeychainPasswordTest() = default;
+  LuxxleKeychainPasswordTest(const LuxxleKeychainPasswordTest&) = delete;
+  LuxxleKeychainPasswordTest& operator=(const LuxxleKeychainPasswordTest&) =
       delete;
 };
 
 // It has to be browser test instead of unit test becasue GetServiceName() and
 // GetAccountName() uses a static variable inside the function, only browser
 // test can exit program for each test suite
-IN_PROC_BROWSER_TEST_P(BraveKeychainPasswordTest, ServiceAndAccountName) {
+IN_PROC_BROWSER_TEST_P(LuxxleKeychainPasswordTest, ServiceAndAccountName) {
   TestParams test_data(GetParam());
   if (test_data.switch_to_append) {
     base::CommandLine::ForCurrentProcess()->AppendSwitch(
@@ -65,5 +65,5 @@ IN_PROC_BROWSER_TEST_P(BraveKeychainPasswordTest, ServiceAndAccountName) {
 }
 
 INSTANTIATE_TEST_SUITE_P(/*no prefix*/,
-                         BraveKeychainPasswordTest,
+                         LuxxleKeychainPasswordTest,
                          testing::ValuesIn(kTestVectors));

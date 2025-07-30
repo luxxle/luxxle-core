@@ -1,4 +1,4 @@
-/* Copyright (c) 2022 The Brave Authors. All rights reserved.
+/* Copyright (c) 2022 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * you can obtain one at http://mozilla.org/MPL/2.0/. */
@@ -20,8 +20,8 @@ html {
   --disabled-color: rgb(241, 243, 244);
   --cr-focus-outline-color: var(--leo-color-primary-50) !important;
   --flat-focus-shadow-color: var(--leo-color-divider-interactive) !important;
-  --brave-focus-outline: auto 3px var(--flat-focus-shadow-color);
-  --cr-selectable-focus_-_outline: var(--brave-focus-outline) !important;
+  --luxxle-focus-outline: auto 3px var(--flat-focus-shadow-color);
+  --cr-selectable-focus_-_outline: var(--luxxle-focus-outline) !important;
   --cr-primary-text-color: #343546 !important;
   --cr-primary-text_-_font-weight: 600 !important;
   --cr-secondary-text_-_color: #A0A1B2 !important;

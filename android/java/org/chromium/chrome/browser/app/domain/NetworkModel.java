@@ -14,13 +14,13 @@ import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import org.chromium.base.Callbacks;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.BraveWalletConstants;
-import org.chromium.brave_wallet.mojom.BraveWalletService;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.JsonRpcService;
-import org.chromium.brave_wallet.mojom.JsonRpcServiceObserver;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletConstants;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletService;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.JsonRpcService;
+import org.chromium.luxxle_wallet.mojom.JsonRpcServiceObserver;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
 import org.chromium.chrome.browser.crypto_wallet.util.AndroidUtils;
 import org.chromium.chrome.browser.crypto_wallet.util.JavaUtils;
 import org.chromium.chrome.browser.crypto_wallet.util.NetworkUtils;
@@ -36,7 +36,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class NetworkModel implements JsonRpcServiceObserver {
-    private BraveWalletService mBraveWalletService;
+    private LuxxleWalletService mLuxxleWalletService;
     private JsonRpcService mJsonRpcService;
     private final Object mLock = new Object();
     private Mode mMode = Mode.WALLET_MODE;
@@ -67,17 +67,17 @@ public class NetworkModel implements JsonRpcServiceObserver {
 
     @SuppressWarnings("NoStreams")
     public NetworkModel(
-            BraveWalletService braveWalletService,
+            LuxxleWalletService luxxleWalletService,
             @NonNull JsonRpcService jsonRpcService,
             CryptoSharedData sharedData,
             CryptoSharedActions cryptoSharedActions) {
-        mBraveWalletService = braveWalletService;
+        mLuxxleWalletService = luxxleWalletService;
         mJsonRpcService = jsonRpcService;
         mSharedData = sharedData;
         mCryptoActions = cryptoSharedActions;
 
         _mChainId = new MediatorLiveData<>();
-        _mChainId.setValue(BraveWalletConstants.MAINNET_CHAIN_ID);
+        _mChainId.setValue(LuxxleWalletConstants.MAINNET_CHAIN_ID);
         mChainId = _mChainId;
         _mDefaultCoinCryptoNetworks = new MediatorLiveData<>();
         mDefaultCoinCryptoNetworks = _mDefaultCoinCryptoNetworks;
@@ -184,10 +184,10 @@ public class NetworkModel implements JsonRpcServiceObserver {
                 }
             });
         } else if (mMode == Mode.PANEL_MODE) {
-            if (mBraveWalletService == null) {
+            if (mLuxxleWalletService == null) {
                 return;
             }
-            mBraveWalletService.getNetworkForSelectedAccountOnActiveOrigin(networkInfo -> {
+            mLuxxleWalletService.getNetworkForSelectedAccountOnActiveOrigin(networkInfo -> {
                 if (networkInfo != null) {
                     _mChainId.postValue(networkInfo.chainId);
                 }
@@ -217,9 +217,9 @@ public class NetworkModel implements JsonRpcServiceObserver {
     }
 
     public void resetServices(
-            BraveWalletService braveWalletService, JsonRpcService jsonRpcService) {
+            LuxxleWalletService luxxleWalletService, JsonRpcService jsonRpcService) {
         synchronized (mLock) {
-            mBraveWalletService = braveWalletService;
+            mLuxxleWalletService = luxxleWalletService;
             mJsonRpcService = jsonRpcService;
         }
         init();
@@ -265,7 +265,7 @@ public class NetworkModel implements JsonRpcServiceObserver {
             for (Map.Entry<String, Integer> entry :
                     WalletConstants.KNOWN_TEST_CHAINS_MAP.entrySet()) {
                 if (!AndroidUtils.isDebugBuild()
-                        && entry.getKey().equals(BraveWalletConstants.LOCALHOST_CHAIN_ID)) {
+                        && entry.getKey().equals(LuxxleWalletConstants.LOCALHOST_CHAIN_ID)) {
                     // Hide local host for non-debug builds.
                     mJsonRpcService.addHiddenNetwork(
                             entry.getValue(), entry.getKey(), result -> {/* No-op. */});
@@ -305,7 +305,7 @@ public class NetworkModel implements JsonRpcServiceObserver {
         NetworkInfo selectedNetwork = _mDefaultNetwork.getValue();
         if (isSameNetwork(networkToBeSetAsSelected, selectedNetwork)) return;
 
-        mBraveWalletService.ensureSelectedAccountForChain(
+        mLuxxleWalletService.ensureSelectedAccountForChain(
                 networkToBeSetAsSelected.coin, networkToBeSetAsSelected.chainId, accountId -> {
                     if (accountId == null) {
                         _mNeedToCreateAccountForNetwork.postValue(networkToBeSetAsSelected);
@@ -323,7 +323,7 @@ public class NetworkModel implements JsonRpcServiceObserver {
 
     public void setNetworkForSelectedAccountOnActiveOrigin(
             NetworkInfo networkToBeSetAsSelected, Callbacks.Callback1<Boolean> callback) {
-        mBraveWalletService.setNetworkForSelectedAccountOnActiveOrigin(
+        mLuxxleWalletService.setNetworkForSelectedAccountOnActiveOrigin(
                 networkToBeSetAsSelected.chainId, success -> {
                     callback.call(success);
                     mCryptoActions.updateCoinType();

@@ -1,0 +1,11 @@
+include_rules = [
+  "+luxxle/components/ai_rewriter/common",
+  "+luxxle/components/tor/buildflags",
+  "+luxxle/components/ai_chat/content/browser",
+  "+luxxle/components/ai_chat/core/browser",
+  "+luxxle/components/ai_chat/core/common",
+  "+luxxle/components/luxxle_shields/core/common",
+  "+luxxle/components/ai_rewriter/common/features.h",
+  "+luxxle/components/ai_chat/core/browser",
+  "+luxxle/components/text_recognition/common",
+]

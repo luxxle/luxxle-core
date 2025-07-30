@@ -11,23 +11,23 @@
 #include <vector>
 
 #include "base/memory/raw_ptr.h"
-#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_view.h"
 #include "luxxle/browser/ui/views/wallet_bubble_focus_observer.h"
-#include "luxxle/browser/ui/webui/brave_wallet/wallet_common_ui.h"
+#include "luxxle/browser/ui/webui/luxxle_wallet/wallet_common_ui.h"
 #include "chrome/browser/file_select_helper.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_finder.h"
 #include "chrome/browser/ui/views/bubble/webui_bubble_manager.h"
 #include "chrome/browser/ui/views/frame/top_container_view.h"
-#include "components/grit/brave_components_strings.h"
+#include "components/grit/luxxle_components_strings.h"
 #include "content/public/browser/web_contents.h"
 #include "ui/base/metadata/metadata_header_macros.h"
 #include "ui/base/metadata/metadata_impl_macros.h"
 #include "ui/views/widget/widget.h"
 #include "url/gurl.h"
 
-namespace brave_wallet {
+namespace luxxle_wallet {
 
 class WalletWebUIBubbleDialogView : public WebUIBubbleDialogView {
   METADATA_HEADER(WalletWebUIBubbleDialogView, WebUIBubbleDialogView)
@@ -92,7 +92,7 @@ class WalletWebUIBubbleManager : public WebUIBubbleManagerImpl<WalletPanelUI>,
     bubble_view_ = bubble_view->GetWeakPtr();
     views::BubbleDialogDelegateView::CreateBubble(std::move(bubble_view));
 
-    brave_observer_ =
+    luxxle_observer_ =
         WalletBubbleFocusObserver::CreateForView(bubble_view_.get(), browser_);
     // Checking if we create WalletPanelUI instance of WebUI and
     // extracting WebUIContentsWrapper class to pass real browser delegate
@@ -131,11 +131,11 @@ class WalletWebUIBubbleManager : public WebUIBubbleManagerImpl<WalletPanelUI>,
     if (!contents_wrapper) {
       return;
     }
-    brave_observer_.reset();
+    luxxle_observer_.reset();
     for (auto tab_id : contents_wrapper->popup_ids()) {
       Browser* popup_browser = nullptr;
       content::WebContents* popup_contents =
-          brave_wallet::GetWebContentsFromTabId(&popup_browser, tab_id);
+          luxxle_wallet::GetWebContentsFromTabId(&popup_browser, tab_id);
       if (!popup_contents || !popup_browser) {
         continue;
       }
@@ -162,8 +162,8 @@ class WalletWebUIBubbleManager : public WebUIBubbleManagerImpl<WalletPanelUI>,
   void SetCloseOnDeactivate(bool close) {
     if (bubble_view_) {
       bubble_view_->set_close_on_deactivate(close);
-      if (brave_observer_) {
-        brave_observer_->UpdateBubbleDeactivationState(close);
+      if (luxxle_observer_) {
+        luxxle_observer_->UpdateBubbleDeactivationState(close);
       }
     }
   }
@@ -178,7 +178,7 @@ class WalletWebUIBubbleManager : public WebUIBubbleManagerImpl<WalletPanelUI>,
  private:
   const raw_ptr<Browser> browser_;
   const raw_ptr<views::View> anchor_view_;
-  std::unique_ptr<WalletBubbleFocusObserver> brave_observer_;
+  std::unique_ptr<WalletBubbleFocusObserver> luxxle_observer_;
   base::WeakPtr<WebUIBubbleDialogView> bubble_view_ = nullptr;
   base::WeakPtrFactory<WalletWebUIBubbleManager> weak_factory_{this};
 };
@@ -200,7 +200,7 @@ WalletBubbleManagerDelegateImpl::WalletBubbleManagerDelegateImpl(
 
   views::View* anchor_view;
   if (browser->is_type_normal()) {
-    anchor_view = static_cast<BraveBrowserView*>(browser->window())
+    anchor_view = static_cast<LuxxleBrowserView*>(browser->window())
                       ->GetWalletButtonAnchorView();
   } else {
     anchor_view = static_cast<BrowserView*>(browser->window())->top_container();
@@ -208,7 +208,7 @@ WalletBubbleManagerDelegateImpl::WalletBubbleManagerDelegateImpl(
 
   DCHECK(anchor_view);
   webui_bubble_manager_ = std::make_unique<WalletWebUIBubbleManager>(
-      anchor_view, browser, webui_url_, IDS_ACCNAME_BRAVE_WALLET_BUTTON,
+      anchor_view, browser, webui_url_, IDS_ACCNAME_LUXXLE_WALLET_BUTTON,
       /*force_load_on_create=*/false);
 }
 
@@ -251,4 +251,4 @@ bool WalletBubbleManagerDelegateImpl::IsBubbleClosedForTesting() {
          webui_bubble_manager_->GetBubbleWidget()->IsClosed();
 }
 
-}  // namespace brave_wallet
+}  // namespace luxxle_wallet

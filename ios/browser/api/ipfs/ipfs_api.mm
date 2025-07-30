@@ -1,14 +1,14 @@
-/* Copyright (c) 2023 The Brave Authors. All rights reserved.
+/* Copyright (c) 2023 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/ios/browser/api/ipfs/ipfs_api.h"
+#include "luxxle/ios/browser/api/ipfs/ipfs_api.h"
 
 #include "base/memory/raw_ptr.h"
-#import "brave/base/mac/conversions.h"
+#import "luxxle/base/mac/conversions.h"
 #include "luxxle/components/ipfs/ipfs_utils.h"
-#include "brave/ios/browser/api/ipfs/ipfs_api+private.h"
+#include "luxxle/ios/browser/api/ipfs/ipfs_api+private.h"
 #include "components/user_prefs/user_prefs.h"
 #include "ios/chrome/browser/shared/model/profile/profile_ios.h"
 #include "ios/chrome/browser/shared/model/profile/profile_manager_ios.h"

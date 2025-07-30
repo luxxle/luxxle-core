@@ -13,7 +13,7 @@
 #include "base/functional/bind.h"
 #include "base/functional/callback.h"
 #include "base/memory/weak_ptr.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/browser/ui/views/playlist/playlist_action_dialogs.h"
 #include "luxxle/browser/ui/views/playlist/playlist_action_icon_view.h"
 #include "luxxle/browser/ui/views/playlist/playlist_add_bubble_view.h"
@@ -118,7 +118,7 @@ void PlaylistEditBubbleView::ResetChildViews() {
   AddChildView(std::make_unique<Row>(
       l10n_util::GetStringUTF16(IDS_PLAYLIST_ADDED_TO_PLAYLIST),
       ui::ImageModel::FromVectorIcon(kLeoCheckCircleFilledIcon,
-                                     kColorBravePlaylistAddedIcon, kIconSize)));
+                                     kColorLuxxlePlaylistAddedIcon, kIconSize)));
   bool added_separator = false;
   auto add_separator_if_needed = [&added_separator, this] {
     if (added_separator) {

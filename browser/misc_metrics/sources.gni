@@ -4,13 +4,13 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 # These files needs access to some files in chrome/browser target.
-brave_browser_misc_metrics_sources = [
+luxxle_browser_misc_metrics_sources = [
   "//luxxle/browser/misc_metrics/profile_misc_metrics_service.cc",
   "//luxxle/browser/misc_metrics/profile_misc_metrics_service_factory.cc",
   "//luxxle/browser/misc_metrics/uptime_monitor_impl.cc",
 ]
 
-brave_browser_misc_metrics_deps = [
+luxxle_browser_misc_metrics_deps = [
   "//luxxle/browser:browser_process",
   "//luxxle/browser/profiles:util",
   # Commented out: removed components dependency - using Chromium defaults instead
@@ -27,16 +27,16 @@ brave_browser_misc_metrics_deps = [
 ]
 
 if (!is_android) {
-  brave_browser_misc_metrics_sources += [
+  luxxle_browser_misc_metrics_sources += [
     "//luxxle/browser/misc_metrics/profile_new_tab_metrics.cc",
     "//luxxle/browser/misc_metrics/profile_new_tab_metrics.h",
   ]
 
-  brave_browser_misc_metrics_deps +=
+  luxxle_browser_misc_metrics_deps +=
       [ "//luxxle/browser/misc_metrics:usage_clock" ]
 }
 
-brave_browser_misc_metrics_android_sources = [
+luxxle_browser_misc_metrics_android_sources = [
   "//luxxle/browser/misc_metrics/misc_android_metrics.cc",
   "//luxxle/browser/misc_metrics/misc_android_metrics_factory_android.cc",
 ]

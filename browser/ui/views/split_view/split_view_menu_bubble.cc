@@ -8,12 +8,12 @@
 #include <memory>
 
 #include "base/functional/bind.h"
-#include "luxxle/app/brave_command_ids.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/app/luxxle_command_ids.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/components/vector_icons/vector_icons.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_commands.h"
-#include "components/grit/brave_components_strings.h"
+#include "components/grit/luxxle_components_strings.h"
 #include "ui/base/l10n/l10n_util.h"
 #include "ui/base/metadata/metadata_header_macros.h"
 #include "ui/base/metadata/metadata_impl_macros.h"
@@ -93,7 +93,7 @@ SplitViewMenuBubble::SplitViewMenuBubble(Browser* browser, views::View* anchor)
 
   auto get_image_model = [](const gfx::VectorIcon& icon) {
     return ui::ImageModel::FromVectorIcon(icon,
-                                          kColorBraveSplitViewMenuItemIcon, 16);
+                                          kColorLuxxleSplitViewMenuItemIcon, 16);
   };
 
   views::Builder<SplitViewMenuBubble>(this)

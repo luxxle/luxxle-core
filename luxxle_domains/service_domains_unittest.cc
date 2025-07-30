@@ -3,7 +3,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/luxxle_domains/service_domains.h"
+#include "luxxle/luxxle_domains/service_domains.h"
 
 #include <cstring>
 
@@ -12,7 +12,7 @@
 #include "base/files/file_path.h"
 #include "base/strings/strcat.h"
 #include "base/strings/utf_string_conversions.h"
-#include "brave/luxxle_domains/buildflags.h"
+#include "luxxle/luxxle_domains/buildflags.h"
 #include "build/build_config.h"
 #include "testing/gmock/include/gmock/gmock.h"
 #include "testing/gtest/include/gtest/gtest.h"
@@ -28,7 +28,7 @@ constexpr char kDevValue[] = BUILDFLAG(LUXXLE_SERVICES_DEV_DOMAIN);
 
 }  // namespace
 
-TEST(BraveServiceDomains, TestValuesPresent) {
+TEST(LuxxleServiceDomains, TestValuesPresent) {
   // These tests don't work if the values are the same, or empty
   EXPECT_GT(strlen(kProductionValue), 0u);
   EXPECT_GT(strlen(kStagingValue), 0u);
@@ -38,7 +38,7 @@ TEST(BraveServiceDomains, TestValuesPresent) {
   EXPECT_NE(kStagingValue, kDevValue);
 }
 
-TEST(BraveServiceDomains, ProductionWhenEmpty) {
+TEST(LuxxleServiceDomains, ProductionWhenEmpty) {
   base::CommandLine cl(base::CommandLine::NO_PROGRAM);
 
   EXPECT_EQ(
@@ -46,29 +46,29 @@ TEST(BraveServiceDomains, ProductionWhenEmpty) {
       kProductionValue);
 }
 
-TEST(BraveServiceDomains, GlobalStaging) {
+TEST(LuxxleServiceDomains, GlobalStaging) {
   base::CommandLine cl(base::CommandLine::NO_PROGRAM);
-  cl.AppendSwitchASCII("brave-services-env", "staging");
+  cl.AppendSwitchASCII("luxxle-services-env", "staging");
 
   EXPECT_EQ(
       GetServicesDomain("", luxxle_domains::ServicesEnvironment::PROD, &cl),
       kStagingValue);
 }
 
-TEST(BraveServiceDomains, GlobalDev) {
+TEST(LuxxleServiceDomains, GlobalDev) {
   base::CommandLine cl(base::CommandLine::NO_PROGRAM);
-  cl.AppendSwitchASCII("brave-services-env", "dev");
+  cl.AppendSwitchASCII("luxxle-services-env", "dev");
 
   EXPECT_EQ(
       GetServicesDomain("", luxxle_domains::ServicesEnvironment::PROD, &cl),
       kDevValue);
 }
 
-TEST(BraveServiceDomains, PrefixOverride) {
+TEST(LuxxleServiceDomains, PrefixOverride) {
   std::string prefix = "my.sub.domain";
 
   base::CommandLine cl(base::CommandLine::NO_PROGRAM);
-  cl.AppendSwitchASCII("brave-services-env", "dev");
+  cl.AppendSwitchASCII("luxxle-services-env", "dev");
   cl.AppendSwitchASCII("env-my.sub.domain", "prod");
 
   auto prefixed_domain =
@@ -91,7 +91,7 @@ TEST(BraveServiceDomains, PrefixOverride) {
   EXPECT_TRUE(other_prefixed_domain.starts_with(other_prefix));
 }
 
-TEST(BraveServiceDomains, DefaultEnvValue) {
+TEST(LuxxleServiceDomains, DefaultEnvValue) {
   std::string prefix = "test_prefix";
 
   base::CommandLine cl(base::CommandLine::NO_PROGRAM);
@@ -122,7 +122,7 @@ TEST(BraveServiceDomains, DefaultEnvValue) {
   // When an global env is present from the command line switch, the default is
   // ignored.
   base::CommandLine cl2(base::CommandLine::NO_PROGRAM);
-  cl2.AppendSwitchASCII("brave-services-env", "dev");
+  cl2.AppendSwitchASCII("luxxle-services-env", "dev");
   result = GetServicesDomain(prefix, luxxle_domains::STAGING, &cl2);
   EXPECT_EQ(result, base::StrCat({prefix, ".", kDevValue}));
 }

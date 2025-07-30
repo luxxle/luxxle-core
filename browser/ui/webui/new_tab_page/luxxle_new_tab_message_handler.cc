@@ -1,0 +1,583 @@
+// Copyright (c) 2019 The Luxxle Authors. All rights reserved.
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this file,
+// you can obtain one at http://mozilla.org/MPL/2.0/.
+
+#include "luxxle/browser/ui/webui/new_tab_page/luxxle_new_tab_message_handler.h"
+
+#include <memory>
+#include <optional>
+#include <string>
+#include <utility>
+
+#include "base/functional/bind.h"
+#include "base/json/values_util.h"
+#include "base/memory/weak_ptr.h"
+#include "base/threading/thread_restrictions.h"
+#include "base/values.h"
+// REMOVED: #include "luxxle/browser/luxxle_ads/.*"
+#include "luxxle/browser/ntp_background/new_tab_takeover_infobar_delegate.h"
+#include "luxxle/browser/ntp_background/view_counter_service_factory.h"
+#include "luxxle/browser/profiles/profile_util.h"
+// REMOVED: #include "luxxle/components/luxxle_ads/.*"
+#include "luxxle/components/luxxle_news/common/pref_names.h"
+#include "luxxle/components/luxxle_perf_predictor/common/pref_names.h"
+#include "luxxle/components/luxxle_search_conversion/pref_names.h"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/ntp_background_images/browser/url_constants.h"
+#include "luxxle/components/ntp_background_images/browser/view_counter_service.h"
+#include "luxxle/components/ntp_background_images/common/pref_names.h"
+#include "luxxle/components/p3a/utils.h"
+#include "luxxle/components/time_period_storage/weekly_storage.h"
+#include "chrome/browser/browser_process.h"
+#include "chrome/browser/first_run/first_run.h"
+#include "chrome/browser/profiles/profile.h"
+#include "chrome/browser/ui/webui/plural_string_handler.h"
+#include "chrome/common/pref_names.h"
+#include "components/grit/luxxle_components_strings.h"
+#include "components/prefs/pref_change_registrar.h"
+#include "components/prefs/pref_registry_simple.h"
+#include "components/prefs/pref_service.h"
+#include "content/public/browser/web_ui_data_source.h"
+
+using ntp_background_images::ViewCounterServiceFactory;
+using ntp_background_images::prefs::kBrandedWallpaperNotificationDismissed;
+using ntp_background_images::prefs::kNewTabPageShowBackgroundImage;
+using ntp_background_images::prefs::
+    kNewTabPageShowSponsoredImagesBackgroundImage;  // NOLINT
+
+namespace {
+
+bool IsPrivateNewTab(Profile* profile) {
+  return profile->IsIncognitoProfile() || profile->IsGuestSession();
+}
+
+base::Value::Dict GetStatsDictionary(PrefService* prefs) {
+  base::Value::Dict stats_data;
+  stats_data.Set("adsBlockedStat",
+                 base::Int64ToValue(prefs->GetUint64(kAdsBlocked) +
+                                    prefs->GetUint64(kTrackersBlocked)));
+  stats_data.Set("javascriptBlockedStat",
+                 base::Int64ToValue(prefs->GetUint64(kJavascriptBlocked)));
+  stats_data.Set("fingerprintingBlockedStat",
+                 base::Int64ToValue(prefs->GetUint64(kFingerprintingBlocked)));
+  stats_data.Set("bandwidthSavedStat",
+                 base::Int64ToValue(prefs->GetUint64(
+                     luxxle_perf_predictor::prefs::kBandwidthSavedBytes)));
+  return stats_data;
+}
+
+base::Value::Dict GetPreferencesDictionary(PrefService* prefs) {
+  base::Value::Dict pref_data;
+  pref_data.Set("showBackgroundImage",
+                prefs->GetBoolean(kNewTabPageShowBackgroundImage));
+  pref_data.Set(
+      "brandedWallpaperOptIn",
+      prefs->GetBoolean(kNewTabPageShowSponsoredImagesBackgroundImage));
+  pref_data.Set("showClock", prefs->GetBoolean(kNewTabPageShowClock));
+  pref_data.Set("clockFormat", prefs->GetString(kNewTabPageClockFormat));
+  pref_data.Set("showStats", prefs->GetBoolean(kNewTabPageShowStats));
+  pref_data.Set("showToday",
+                prefs->GetBoolean(luxxle_news::prefs::kNewTabPageShowToday));
+  pref_data.Set("showRewards", prefs->GetBoolean(kNewTabPageShowRewards));
+  pref_data.Set("isBrandedWallpaperNotificationDismissed",
+                prefs->GetBoolean(kBrandedWallpaperNotificationDismissed));
+  pref_data.Set("isLuxxleNewsOptedIn",
+                prefs->GetBoolean(luxxle_news::prefs::kLuxxleNewsOptedIn));
+  pref_data.Set("hideAllWidgets", prefs->GetBoolean(kNewTabPageHideAllWidgets));
+  pref_data.Set("showLuxxleTalk", prefs->GetBoolean(kNewTabPageShowLuxxleTalk));
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
+  pref_data.Set("showLuxxleVPN", prefs->GetBoolean(kNewTabPageShowLuxxleVPN));
+#endif
+  pref_data.Set(
+      "showSearchBox",
+      prefs->GetBoolean(luxxle_search_conversion::prefs::kShowNTPSearchBox));
+  pref_data.Set("lastUsedNtpSearchEngine",
+                prefs->GetString(
+                    luxxle_search_conversion::prefs::kLastUsedNTPSearchEngine));
+  pref_data.Set("promptEnableSearchSuggestions",
+                prefs->GetBoolean(
+                    luxxle_search_conversion::prefs::kPromptEnableSuggestions));
+  pref_data.Set("searchSuggestionsEnabled",
+                prefs->GetBoolean(prefs::kSearchSuggestEnabled));
+  return pref_data;
+}
+
+// TODO(petemill): Move p3a to own NTP component so it can
+// be used by other platforms.
+
+enum class NTPCustomizeUsage { kNeverOpened, kOpened, kOpenedAndEdited, kSize };
+
+constexpr char kNTPCustomizeUsageStatus[] =
+    "luxxle.new_tab_page.customize_p3a_usage";
+constexpr char kCustomizeUsageHistogramName[] =
+    "Luxxle.NTP.CustomizeUsageStatus.2";
+
+constexpr char kNeedsBrowserUpgradeToServeAds[] =
+    "needsBrowserUpgradeToServeAds";
+
+}  // namespace
+
+// static
+void LuxxleNewTabMessageHandler::RegisterLocalStatePrefs(
+    PrefRegistrySimple* local_state) {
+  local_state->RegisterIntegerPref(kNTPCustomizeUsageStatus, -1);
+}
+
+void LuxxleNewTabMessageHandler::RecordInitialP3AValues(
+    PrefService* local_state) {
+  p3a::RecordValueIfGreater<NTPCustomizeUsage>(
+      NTPCustomizeUsage::kNeverOpened, kCustomizeUsageHistogramName,
+      kNTPCustomizeUsageStatus, local_state);
+}
+
+// static
+LuxxleNewTabMessageHandler* LuxxleNewTabMessageHandler::Create(
+    content::WebUIDataSource* source,
+    Profile* profile,
+    bool was_restored) {
+  //
+  // Initial Values
+  // Should only contain data that is static
+  //
+  auto* ads_service = luxxle_ads::AdsServiceFactory::GetForProfile(profile);
+  // For safety, default |is_ads_supported_locale_| to true. Better to have
+  // false positive than falsen egative,
+  // in which case we would not show "opt out" toggle.
+  bool is_ads_supported_locale = true;
+  if (!ads_service) {
+    LOG(ERROR) << "Ads service is not initialized!";
+  } else {
+    is_ads_supported_locale = luxxle_ads::IsSupportedRegion();
+  }
+
+  source->AddBoolean("featureFlagLuxxleNTPSponsoredImagesWallpaper",
+                     is_ads_supported_locale);
+
+  // Private Tab info
+  if (IsPrivateNewTab(profile)) {
+    source->AddBoolean("isTor", profile->IsTor());
+  }
+  return new LuxxleNewTabMessageHandler(profile, was_restored);
+}
+
+LuxxleNewTabMessageHandler::LuxxleNewTabMessageHandler(Profile* profile,
+                                                     bool was_restored)
+    : profile_(profile), was_restored_(was_restored), weak_ptr_factory_(this) {
+  ads_service_ = luxxle_ads::AdsServiceFactory::GetForProfile(profile_);
+}
+
+LuxxleNewTabMessageHandler::~LuxxleNewTabMessageHandler() = default;
+
+void LuxxleNewTabMessageHandler::RegisterMessages() {
+  // TODO(petemill): This MessageHandler can be split up to
+  // individual MessageHandlers for each individual topic area,
+  // should other WebUI pages wish to consume the APIs:
+  // - Stats
+  // - Preferences
+  // - PrivatePage properties
+  auto plural_string_handler = std::make_unique<PluralStringHandler>();
+  plural_string_handler->AddLocalizedString("luxxleNewsSourceCount",
+                                            IDS_LUXXLE_NEWS_SOURCE_COUNT);
+  plural_string_handler->AddLocalizedString("rewardsPublisherCountText",
+                                            IDS_REWARDS_PUBLISHER_COUNT_TEXT);
+  web_ui()->AddMessageHandler(std::move(plural_string_handler));
+
+  web_ui()->RegisterMessageCallback(
+      "getNewTabPagePreferences",
+      base::BindRepeating(&LuxxleNewTabMessageHandler::HandleGetPreferences,
+                          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "getNewTabPageStats",
+      base::BindRepeating(&LuxxleNewTabMessageHandler::HandleGetStats,
+                          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "getNewTabAdsData",
+      base::BindRepeating(&LuxxleNewTabMessageHandler::HandleGetNewTabAdsData,
+                          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "saveNewTabPagePref",
+      base::BindRepeating(&LuxxleNewTabMessageHandler::HandleSaveNewTabPagePref,
+                          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "registerNewTabPageView",
+      base::BindRepeating(
+          &LuxxleNewTabMessageHandler::HandleRegisterNewTabPageView,
+          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "brandedWallpaperLogoClicked",
+      base::BindRepeating(
+          &LuxxleNewTabMessageHandler::HandleBrandedWallpaperLogoClicked,
+          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "getWallpaperData",
+      base::BindRepeating(&LuxxleNewTabMessageHandler::HandleGetWallpaperData,
+                          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "customizeClicked",
+      base::BindRepeating(&LuxxleNewTabMessageHandler::HandleCustomizeClicked,
+                          base::Unretained(this)));
+}
+
+void LuxxleNewTabMessageHandler::OnJavascriptAllowed() {
+  // Observe relevant preferences
+  PrefService* prefs = profile_->GetPrefs();
+  pref_change_registrar_.Init(prefs);
+  // Stats
+  pref_change_registrar_.Add(
+      kAdsBlocked,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnStatsChanged,
+                          base::Unretained(this)));
+  pref_change_registrar_.Add(
+      kTrackersBlocked,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnStatsChanged,
+                          base::Unretained(this)));
+  pref_change_registrar_.Add(
+      kJavascriptBlocked,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnStatsChanged,
+                          base::Unretained(this)));
+  pref_change_registrar_.Add(
+      kHttpsUpgrades,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnStatsChanged,
+                          base::Unretained(this)));
+  pref_change_registrar_.Add(
+      kFingerprintingBlocked,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnStatsChanged,
+                          base::Unretained(this)));
+  // News
+  pref_change_registrar_.Add(
+      luxxle_news::prefs::kLuxxleNewsOptedIn,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnPreferencesChanged,
+                          base::Unretained(this)));
+  // New Tab Page preferences
+  pref_change_registrar_.Add(
+      kNewTabPageShowBackgroundImage,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnPreferencesChanged,
+                          base::Unretained(this)));
+  pref_change_registrar_.Add(
+      kNewTabPageShowSponsoredImagesBackgroundImage,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnPreferencesChanged,
+                          base::Unretained(this)));
+  pref_change_registrar_.Add(
+      luxxle_search_conversion::prefs::kShowNTPSearchBox,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnPreferencesChanged,
+                          base::Unretained(this)));
+  pref_change_registrar_.Add(
+      luxxle_search_conversion::prefs::kLastUsedNTPSearchEngine,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnPreferencesChanged,
+                          base::Unretained(this)));
+  pref_change_registrar_.Add(
+      luxxle_search_conversion::prefs::kPromptEnableSuggestions,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnPreferencesChanged,
+                          base::Unretained(this)));
+  pref_change_registrar_.Add(
+      prefs::kSearchSuggestEnabled,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnPreferencesChanged,
+                          base::Unretained(this)));
+  pref_change_registrar_.Add(
+      kNewTabPageShowClock,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnPreferencesChanged,
+                          base::Unretained(this)));
+  pref_change_registrar_.Add(
+      kNewTabPageClockFormat,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnPreferencesChanged,
+                          base::Unretained(this)));
+  pref_change_registrar_.Add(
+      kNewTabPageShowStats,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnPreferencesChanged,
+                          base::Unretained(this)));
+  pref_change_registrar_.Add(
+      luxxle_news::prefs::kNewTabPageShowToday,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnPreferencesChanged,
+                          base::Unretained(this)));
+  pref_change_registrar_.Add(
+      kNewTabPageShowRewards,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnPreferencesChanged,
+                          base::Unretained(this)));
+  pref_change_registrar_.Add(
+      kBrandedWallpaperNotificationDismissed,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnPreferencesChanged,
+                          base::Unretained(this)));
+  pref_change_registrar_.Add(
+      kNewTabPageShowLuxxleTalk,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnPreferencesChanged,
+                          base::Unretained(this)));
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
+  pref_change_registrar_.Add(
+      kNewTabPageShowLuxxleVPN,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnPreferencesChanged,
+                          base::Unretained(this)));
+#endif
+  pref_change_registrar_.Add(
+      kNewTabPageHideAllWidgets,
+      base::BindRepeating(&LuxxleNewTabMessageHandler::OnPreferencesChanged,
+                          base::Unretained(this)));
+
+  bat_ads_observer_receiver_.reset();
+  if (ads_service_) {
+    ads_service_->AddBatAdsObserver(
+        bat_ads_observer_receiver_.BindNewPipeAndPassRemote());
+  }
+}
+
+void LuxxleNewTabMessageHandler::OnJavascriptDisallowed() {
+  pref_change_registrar_.RemoveAll();
+  bat_ads_observer_receiver_.reset();
+  weak_ptr_factory_.InvalidateWeakPtrs();
+}
+
+void LuxxleNewTabMessageHandler::HandleGetPreferences(
+    const base::Value::List& args) {
+  AllowJavascript();
+  PrefService* prefs = profile_->GetPrefs();
+  auto data = GetPreferencesDictionary(prefs);
+  ResolveJavascriptCallback(args[0], data);
+}
+
+void LuxxleNewTabMessageHandler::HandleGetStats(const base::Value::List& args) {
+  AllowJavascript();
+  PrefService* prefs = profile_->GetPrefs();
+  auto data = GetStatsDictionary(prefs);
+  ResolveJavascriptCallback(args[0], data);
+}
+
+void LuxxleNewTabMessageHandler::HandleGetNewTabAdsData(
+    const base::Value::List& args) {
+  AllowJavascript();
+
+  ResolveJavascriptCallback(args[0], GetAdsDataDictionary());
+}
+
+void LuxxleNewTabMessageHandler::HandleSaveNewTabPagePref(
+    const base::Value::List& args) {
+  if (args.size() != 2) {
+    LOG(ERROR) << "Invalid input";
+    return;
+  }
+  PrefService* prefs = profile_->GetPrefs();
+  // Collect args
+  std::string settings_key_input = args[0].GetString();
+  auto settings_value = args[1].Clone();
+  std::string settings_key;
+
+  // Prevent News onboarding below NTP and sponsored NTP notification
+  // state from triggering the "shown & changed" answer for the
+  // customize dialog metric.
+  if (settings_key_input != "showToday" &&
+      settings_key_input != "isLuxxleNewsOptedIn" &&
+      settings_key_input != "isBrandedWallpaperNotificationDismissed") {
+    p3a::RecordValueIfGreater<NTPCustomizeUsage>(
+        NTPCustomizeUsage::kOpenedAndEdited, kCustomizeUsageHistogramName,
+        kNTPCustomizeUsageStatus, g_browser_process->local_state());
+  }
+
+  // Handle string settings
+  if (settings_value.is_string()) {
+    const auto settings_value_string = settings_value.GetString();
+    if (settings_key_input == "clockFormat") {
+      settings_key = kNewTabPageClockFormat;
+    } else if (settings_key_input == "lastUsedNtpSearchEngine") {
+      settings_key = luxxle_search_conversion::prefs::kLastUsedNTPSearchEngine;
+    } else {
+      LOG(ERROR) << "Invalid setting key";
+      return;
+    }
+    prefs->SetString(settings_key, settings_value_string);
+    return;
+  }
+
+  // Handle bool settings
+  if (!settings_value.is_bool()) {
+    LOG(ERROR) << "Invalid value type";
+    return;
+  }
+  const auto settings_value_bool = settings_value.GetBool();
+  if (settings_key_input == "showBackgroundImage") {
+    settings_key = kNewTabPageShowBackgroundImage;
+  } else if (settings_key_input == "brandedWallpaperOptIn") {
+    // TODO(simonhong): I think above |brandedWallpaperOptIn| should be changed
+    // to |sponsoredImagesWallpaperOptIn|.
+    settings_key = kNewTabPageShowSponsoredImagesBackgroundImage;
+  } else if (settings_key_input == "showClock") {
+    settings_key = kNewTabPageShowClock;
+  } else if (settings_key_input == "showStats") {
+    settings_key = kNewTabPageShowStats;
+  } else if (settings_key_input == "showToday") {
+    settings_key = luxxle_news::prefs::kNewTabPageShowToday;
+  } else if (settings_key_input == "isLuxxleNewsOptedIn") {
+    settings_key = luxxle_news::prefs::kLuxxleNewsOptedIn;
+  } else if (settings_key_input == "showRewards") {
+    settings_key = kNewTabPageShowRewards;
+  } else if (settings_key_input == "isBrandedWallpaperNotificationDismissed") {
+    settings_key = kBrandedWallpaperNotificationDismissed;
+  } else if (settings_key_input == "hideAllWidgets") {
+    settings_key = kNewTabPageHideAllWidgets;
+  } else if (settings_key_input == "showLuxxleTalk") {
+    settings_key = kNewTabPageShowLuxxleTalk;
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
+  } else if (settings_key_input == "showLuxxleVPN") {
+    settings_key = kNewTabPageShowLuxxleVPN;
+#endif
+  } else if (settings_key_input == "showSearchBox") {
+    settings_key = luxxle_search_conversion::prefs::kShowNTPSearchBox;
+  } else if (settings_key_input == "promptEnableSearchSuggestions") {
+    settings_key = luxxle_search_conversion::prefs::kPromptEnableSuggestions;
+  } else if (settings_key_input == "searchSuggestionsEnabled") {
+    settings_key = prefs::kSearchSuggestEnabled;
+  } else {
+    LOG(ERROR) << "Invalid setting key";
+    return;
+  }
+  prefs->SetBoolean(settings_key, settings_value_bool);
+}
+
+void LuxxleNewTabMessageHandler::HandleRegisterNewTabPageView(
+    const base::Value::List& args) {
+  AllowJavascript();
+
+  // Decrement original value only if there's actual branded content and we are
+  // not restoring browser tabs.
+  if (was_restored_) {
+    was_restored_ = false;
+    return;
+  }
+
+  if (auto* service = ViewCounterServiceFactory::GetForProfile(profile_)) {
+    service->RegisterPageView();
+  }
+}
+
+void LuxxleNewTabMessageHandler::HandleBrandedWallpaperLogoClicked(
+    const base::Value::List& args) {
+  AllowJavascript();
+  if (args.size() != 1) {
+    LOG(ERROR) << "Invalid input";
+    return;
+  }
+
+  const base::Value::Dict* const dict = args[0].GetIfDict();
+  CHECK(dict);
+
+  ntp_background_images::ViewCounterService* const service =
+      ViewCounterServiceFactory::GetForProfile(profile_);
+  if (!service) {
+    return;
+  }
+
+  const std::string* placement_id =
+      dict->FindString(ntp_background_images::kWallpaperIDKey);
+  const std::string* creative_instance_id =
+      dict->FindString(ntp_background_images::kCreativeInstanceIDKey);
+  const std::string* target_url = dict->FindStringByDottedPath(
+      ntp_background_images::kLogoDestinationURLPath);
+  const bool should_metrics_fallback_to_p3a =
+      dict->FindBool(
+              ntp_background_images::kWallpaperShouldMetricsFallbackToP3aKey)
+          .value_or(false);
+
+  service->BrandedWallpaperLogoClicked(
+      placement_id ? *placement_id : "",
+      creative_instance_id ? *creative_instance_id : "",
+      target_url ? *target_url : "", should_metrics_fallback_to_p3a);
+}
+
+void LuxxleNewTabMessageHandler::HandleGetWallpaperData(
+    const base::Value::List& args) {
+  AllowJavascript();
+
+  auto* service = ViewCounterServiceFactory::GetForProfile(profile_);
+  base::Value::Dict wallpaper;
+
+  if (!service) {
+    ResolveJavascriptCallback(args[0], wallpaper);
+    return;
+  }
+
+  std::optional<base::Value::Dict> data =
+      was_restored_ ? service->GetNextWallpaperForDisplay()
+                    : service->GetCurrentWallpaperForDisplay();
+
+  if (!data) {
+    ResolveJavascriptCallback(args[0], wallpaper);
+    return;
+  }
+
+  const auto is_background =
+      data->FindBool(ntp_background_images::kIsBackgroundKey);
+  DCHECK(is_background);
+
+  constexpr char kBackgroundWallpaperKey[] = "backgroundWallpaper";
+  if (is_background.value()) {
+    wallpaper.Set(kBackgroundWallpaperKey, std::move(*data));
+    ResolveJavascriptCallback(args[0], wallpaper);
+    return;
+  }
+
+  // Even though we show sponsored image, we should pass "Background wallpaper"
+  // data so that NTP customization menu can know which wallpaper is selected by
+  // users.
+  auto background_wallpaper = service->GetCurrentWallpaper();
+  wallpaper.Set(kBackgroundWallpaperKey,
+                background_wallpaper
+                    ? base::Value(std::move(*background_wallpaper))
+                    : base::Value());
+
+  const std::string* placement_id =
+      data->FindString(ntp_background_images::kWallpaperIDKey);
+  const std::string* creative_instance_id =
+      data->FindString(ntp_background_images::kCreativeInstanceIDKey);
+  const std::string* campaign_id =
+      data->FindString(ntp_background_images::kCampaignIdKey);
+  const bool should_metrics_fallback_to_p3a =
+      data->FindBool(
+              ntp_background_images::kWallpaperShouldMetricsFallbackToP3aKey)
+          .value_or(false);
+
+  service->BrandedWallpaperWillBeDisplayed(
+      placement_id ? *placement_id : "", campaign_id ? *campaign_id : "",
+      creative_instance_id ? *creative_instance_id : "",
+      should_metrics_fallback_to_p3a);
+
+  ntp_background_images::NewTabTakeoverInfoBarDelegate::
+      MaybeDisplayAndIncrementCounter(web_ui()->GetWebContents(),
+                                      profile_->GetPrefs());
+
+  constexpr char kBrandedWallpaperKey[] = "brandedWallpaper";
+  wallpaper.Set(kBrandedWallpaperKey, std::move(*data));
+  ResolveJavascriptCallback(args[0], wallpaper);
+}
+
+void LuxxleNewTabMessageHandler::HandleCustomizeClicked(
+    const base::Value::List& args) {
+  AllowJavascript();
+  p3a::RecordValueIfGreater<NTPCustomizeUsage>(
+      NTPCustomizeUsage::kOpened, kCustomizeUsageHistogramName,
+      kNTPCustomizeUsageStatus, g_browser_process->local_state());
+}
+
+void LuxxleNewTabMessageHandler::OnStatsChanged() {
+  PrefService* prefs = profile_->GetPrefs();
+  auto data = GetStatsDictionary(prefs);
+  FireWebUIListener("stats-updated", data);
+}
+
+void LuxxleNewTabMessageHandler::OnPreferencesChanged() {
+  PrefService* prefs = profile_->GetPrefs();
+  auto data = GetPreferencesDictionary(prefs);
+  FireWebUIListener("preferences-changed", data);
+}
+
+base::Value::Dict LuxxleNewTabMessageHandler::GetAdsDataDictionary() const {
+  if (!ads_service_) {
+    return {};
+  }
+
+  return base::Value::Dict().Set(
+      kNeedsBrowserUpgradeToServeAds,
+      ads_service_->IsBrowserUpgradeRequiredToServeAds());
+}
+
+void LuxxleNewTabMessageHandler::OnBrowserUpgradeRequiredToServeAds() {
+  FireWebUIListener("new-tab-ads-data-updated", GetAdsDataDictionary());
+}

@@ -3,18 +3,18 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveHubManagerImplClassAdapter extends BraveClassVisitor {
+public class LuxxleHubManagerImplClassAdapter extends LuxxleClassVisitor {
     static String sHubManagerImplClassName = "org/chromium/chrome/browser/hub/HubManagerImpl";
-    static String sBraveHubManagerImplClassName =
-            "org/chromium/chrome/browser/hub/BraveHubManagerImpl";
+    static String sLuxxleHubManagerImplClassName =
+            "org/chromium/chrome/browser/hub/LuxxleHubManagerImpl";
 
-    public BraveHubManagerImplClassAdapter(ClassVisitor visitor) {
+    public LuxxleHubManagerImplClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sHubManagerImplClassName, sBraveHubManagerImplClassName);
+        redirectConstructor(sHubManagerImplClassName, sLuxxleHubManagerImplClassName);
     }
 }

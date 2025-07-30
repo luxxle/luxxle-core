@@ -3,17 +3,17 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveClearBrowsingDataFragmentAdapter extends BraveClassVisitor {
+public class LuxxleClearBrowsingDataFragmentAdapter extends LuxxleClassVisitor {
     static String sFragment = "org/chromium/chrome/browser/browsing_data/ClearBrowsingDataFragment";
-    static String sBraveFragment =
-            "org/chromium/chrome/browser/browsing_data/BraveClearBrowsingDataFragment";
+    static String sLuxxleFragment =
+            "org/chromium/chrome/browser/browsing_data/LuxxleClearBrowsingDataFragment";
 
-    public BraveClearBrowsingDataFragmentAdapter(ClassVisitor visitor) {
+    public LuxxleClearBrowsingDataFragmentAdapter(ClassVisitor visitor) {
         super(visitor);
-        redirectConstructor(sFragment, sBraveFragment);
+        redirectConstructor(sFragment, sLuxxleFragment);
     }
 }

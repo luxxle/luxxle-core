@@ -43,16 +43,16 @@ def _RemoveKeys(plist, *keys):
             pass
 
 
-def _OverrideVersionKey(plist, brave_version):
+def _OverrideVersionKey(plist, luxxle_version):
     """ `minor.build` version string is used for update.
-    When we begin to use the Major version component, Brave version string will
+    When we begin to use the Major version component, Luxxle version string will
     be `1.0.0` for example and `Minor.Build` (`0.0`) would be used for update
     check. Without modifying these numbers, update will fail as `0.0` is lower
     than `70.121` for example.
 
     To ensure minor version is higher than existing minor versions, we can
     multiply the major version by 100 and set it to `CFBundleVersion`."""
-    version_values = brave_version.split('.')
+    version_values = luxxle_version.split('.')
     if int(version_values[0]) >= 1:
         adjusted_minor = int(version_values[1]) + (100 * int(version_values[0]))
         plist['CFBundleVersion'] = str(adjusted_minor) + '.' + version_values[2]
@@ -65,20 +65,20 @@ def Main():
     parser.add_argument('--output', dest='plist_output', action='store',
         default=None, help='If specified, the path to output ' + \
         'the tweaked plist, rather than overwriting the input.')
-    parser.add_argument('--brave_channel', dest='brave_channel', action='store',
+    parser.add_argument('--luxxle_channel', dest='luxxle_channel', action='store',
         default=None, help='Channel (beta, dev, nightly)')
-    parser.add_argument('--brave_product_dir_name',
-                        dest='brave_product_dir_name',
+    parser.add_argument('--luxxle_product_dir_name',
+                        dest='luxxle_product_dir_name',
                         action='store',
                         default=None,
                         help='Product directory name')
-    parser.add_argument('--brave_eddsa_key',
-                        dest='brave_eddsa_key',
+    parser.add_argument('--luxxle_eddsa_key',
+                        dest='luxxle_eddsa_key',
                         action='store',
                         default=None,
                         help='Public EdDSA key for update')
-    parser.add_argument('--brave_version', dest='brave_version', action='store',
-        default=None, help='brave version string')
+    parser.add_argument('--luxxle_version', dest='luxxle_version', action='store',
+        default=None, help='luxxle version string')
     parser.add_argument('--format', choices=('binary1', 'xml1', 'json'),
         default='xml1', help='Format to use when writing property list '
             '(default: %(default)s)')
@@ -107,20 +107,20 @@ def Main():
     if args.plist_output is not None:
         output_path = args.plist_output
 
-    if args.skip_signing and args.brave_channel != "":
-        plist['KSChannelID'] = args.brave_channel
+    if args.skip_signing and args.luxxle_channel != "":
+        plist['KSChannelID'] = args.luxxle_channel
     elif 'KSChannelID' in plist:
         # 'KSChannelID' is set at _modify_plists() of modification.py only
         # during signing
         del plist['KSChannelID']
 
-    if args.brave_product_dir_name:
-        plist['CrProductDirName'] = args.brave_product_dir_name
+    if args.luxxle_product_dir_name:
+        plist['CrProductDirName'] = args.luxxle_product_dir_name
 
-    if args.brave_eddsa_key:
-        plist['SUPublicEDKey'] = args.brave_eddsa_key
+    if args.luxxle_eddsa_key:
+        plist['SUPublicEDKey'] = args.luxxle_eddsa_key
 
-    _OverrideVersionKey(plist, args.brave_version)
+    _OverrideVersionKey(plist, args.luxxle_version)
 
     # Explicitly disable profiling
     plist['SUEnableSystemProfiling'] = False

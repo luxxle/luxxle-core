@@ -1,0 +1,33 @@
+/* Copyright (c) 2021 The Luxxle Authors. All rights reserved.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#include "luxxle/ios/browser/api/luxxle_wallet/token_registry_utils.h"
+
+#include <optional>
+
+#include "base/files/file_path.h"
+#include "base/path_service.h"
+#include "base/strings/sys_string_conversions.h"
+#include "base/version.h"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
+#include "ios/chrome/browser/shared/model/paths/paths.h"
+
+@implementation LuxxleWalletTokenRegistryUtils
+
++ (nullable NSURL*)tokenLogoBaseURL {
+  base::FilePath path;
+  std::optional<base::Version> version =
+      luxxle_wallet::GetLastInstalledWalletVersion();
+  if (base::PathService::Get(ios::DIR_USER_DATA, &path) && version) {
+    path = path.AppendASCII(luxxle_wallet::kWalletBaseDirectory);
+    path = path.AppendASCII(version->GetString());
+    path = path.AppendASCII("images");
+    return [NSURL fileURLWithPath:base::SysUTF8ToNSString(path.value())];
+  }
+  return nil;
+}
+
+@end

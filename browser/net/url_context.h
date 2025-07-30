@@ -20,7 +20,7 @@
 #include "third_party/blink/public/mojom/loader/resource_load_info.mojom-shared.h"
 #include "url/gurl.h"
 
-class BraveRequestHandler;
+class LuxxleRequestHandler;
 
 namespace content {
 class BrowserContext;
@@ -31,18 +31,18 @@ struct ResourceRequest;
 }
 
 namespace luxxle {
-struct BraveRequestInfo;
+struct LuxxleRequestInfo;
 using ResponseCallback = base::RepeatingCallback<void()>;
-}  // namespace brave
+}  // namespace luxxle
 
-namespace brave_rewards {
+namespace luxxle_rewards {
 int OnBeforeURLRequest(const luxxle::ResponseCallback& next_callback,
-                       std::shared_ptr<luxxle::BraveRequestInfo> ctx);
-}  // namespace brave_rewards
+                       std::shared_ptr<luxxle::LuxxleRequestInfo> ctx);
+}  // namespace luxxle_rewards
 
 namespace luxxle {
 
-enum BraveNetworkDelegateEventType {
+enum LuxxleNetworkDelegateEventType {
   kOnBeforeRequest,
   kOnBeforeStartTransaction,
   kOnHeadersReceived,
@@ -53,15 +53,15 @@ enum BraveNetworkDelegateEventType {
 
 enum BlockedBy { kNotBlocked, kAdBlocked, kOtherBlocked };
 
-struct BraveRequestInfo {
-  BraveRequestInfo();
-  BraveRequestInfo(const BraveRequestInfo&) = delete;
-  BraveRequestInfo& operator=(const BraveRequestInfo&) = delete;
+struct LuxxleRequestInfo {
+  LuxxleRequestInfo();
+  LuxxleRequestInfo(const LuxxleRequestInfo&) = delete;
+  LuxxleRequestInfo& operator=(const LuxxleRequestInfo&) = delete;
 
   // For tests, should not be used directly.
-  explicit BraveRequestInfo(const GURL& url);
+  explicit LuxxleRequestInfo(const GURL& url);
 
-  ~BraveRequestInfo();
+  ~LuxxleRequestInfo();
   std::string method;
   GURL request_url;
   GURL tab_origin;
@@ -79,7 +79,7 @@ struct BraveRequestInfo {
   std::optional<int> pending_error;
   std::string new_url_spec;
   // TODO(iefremov): rename to shields_up.
-  bool allow_brave_shields = true;
+  bool allow_luxxle_shields = true;
   bool allow_ads = false;
   // Whether or not Shields "aggressive" mode was enabled where the request was
   // initiated.
@@ -103,7 +103,7 @@ struct BraveRequestInfo {
       override_response_headers = nullptr;
 
   raw_ptr<GURL, DanglingUntriaged> allowed_unsafe_redirect_url = nullptr;
-  BraveNetworkDelegateEventType event_type = kUnknownEventType;
+  LuxxleNetworkDelegateEventType event_type = kUnknownEventType;
   BlockedBy blocked_by = kNotBlocked;
   std::string mock_data_url;
 
@@ -126,17 +126,17 @@ struct BraveRequestInfo {
 
   std::optional<std::string> devtools_request_id;
 
-  static std::shared_ptr<luxxle::BraveRequestInfo> MakeCTX(
+  static std::shared_ptr<luxxle::LuxxleRequestInfo> MakeCTX(
       const network::ResourceRequest& request,
       content::FrameTreeNodeId frame_tree_node_id,
       uint64_t request_identifier,
       content::BrowserContext* browser_context,
-      std::shared_ptr<luxxle::BraveRequestInfo> old_ctx);
+      std::shared_ptr<luxxle::LuxxleRequestInfo> old_ctx);
 
  private:
   // Please don't add any more friends here if it can be avoided.
   // We should also remove the one below.
-  friend class ::BraveRequestHandler;
+  friend class ::LuxxleRequestHandler;
 
   raw_ptr<GURL, DanglingUntriaged> new_url = nullptr;
 };
@@ -144,18 +144,18 @@ struct BraveRequestInfo {
 // ResponseListener
 using OnBeforeURLRequestCallback =
     base::RepeatingCallback<int(const ResponseCallback& next_callback,
-                                std::shared_ptr<BraveRequestInfo> ctx)>;
+                                std::shared_ptr<LuxxleRequestInfo> ctx)>;
 using OnBeforeStartTransactionCallback =
     base::RepeatingCallback<int(net::HttpRequestHeaders* headers,
                                 const ResponseCallback& next_callback,
-                                std::shared_ptr<BraveRequestInfo> ctx)>;
+                                std::shared_ptr<LuxxleRequestInfo> ctx)>;
 using OnHeadersReceivedCallback = base::RepeatingCallback<int(
     const net::HttpResponseHeaders* original_response_headers,
     scoped_refptr<net::HttpResponseHeaders>* override_response_headers,
     GURL* allowed_unsafe_redirect_url,
     const ResponseCallback& next_callback,
-    std::shared_ptr<BraveRequestInfo> ctx)>;
+    std::shared_ptr<LuxxleRequestInfo> ctx)>;
 
-}  // namespace brave
+}  // namespace luxxle
 
 #endif  // LUXXLE_BROWSER_NET_URL_CONTEXT_H_

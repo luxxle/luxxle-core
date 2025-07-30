@@ -53,6 +53,6 @@ class URLSanitizerServiceFactory : public BrowserContextKeyedServiceFactory {
       delete;
 };
 
-}  // namespace brave
+}  // namespace luxxle
 
 #endif  // LUXXLE_BROWSER_URL_SANITIZER_URL_SANITIZER_SERVICE_FACTORY_H_

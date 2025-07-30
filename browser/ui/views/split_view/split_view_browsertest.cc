@@ -8,14 +8,14 @@
 #include <utility>
 
 #include "base/test/run_until.h"
-#include "luxxle/browser/brave_browser_features.h"
+#include "luxxle/browser/luxxle_browser_features.h"
 #include "luxxle/browser/ui/browser_commands.h"
-#include "luxxle/browser/ui/tabs/brave_tab_layout_constants.h"
+#include "luxxle/browser/ui/tabs/luxxle_tab_layout_constants.h"
 #include "luxxle/browser/ui/tabs/features.h"
 #include "luxxle/browser/ui/tabs/split_view_browser_data.h"
-#include "luxxle/browser/ui/views/brave_javascript_tab_modal_dialog_view_views.h"
-#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
-#include "luxxle/browser/ui/views/frame/split_view/brave_multi_contents_view.h"
+#include "luxxle/browser/ui/views/luxxle_javascript_tab_modal_dialog_view_views.h"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_view.h"
+#include "luxxle/browser/ui/views/frame/split_view/luxxle_multi_contents_view.h"
 #include "luxxle/browser/ui/views/split_view/split_view_layout_manager.h"
 #include "luxxle/browser/ui/views/split_view/split_view_separator.h"
 #include "chrome/browser/ui/browser_commands.h"
@@ -52,7 +52,7 @@ ui::MouseEvent GetDummyEvent() {
 class SplitViewDisabledBrowserTest : public InProcessBrowserTest {
  public:
   SplitViewDisabledBrowserTest() {
-    scoped_features_.InitAndDisableFeature(tabs::features::kBraveSplitView);
+    scoped_features_.InitAndDisableFeature(tabs::features::kLuxxleSplitView);
   }
   ~SplitViewDisabledBrowserTest() override = default;
 
@@ -71,7 +71,7 @@ class SideBySideEnabledBrowserTest : public InProcessBrowserTest {
   SideBySideEnabledBrowserTest() {
     scoped_features_.InitWithFeatures(
         /*enabled_features*/ {features::kSideBySide},
-        /*disabled_features*/ {features::kBraveWebViewRoundedCorners});
+        /*disabled_features*/ {features::kLuxxleWebViewRoundedCorners});
   }
   ~SideBySideEnabledBrowserTest() override = default;
 
@@ -79,19 +79,19 @@ class SideBySideEnabledBrowserTest : public InProcessBrowserTest {
     return BrowserView::GetBrowserViewForBrowser(browser())->tabstrip();
   }
 
-  BraveBrowserView* brave_browser_view() const {
-    return BraveBrowserView::From(
+  LuxxleBrowserView* luxxle_browser_view() const {
+    return LuxxleBrowserView::From(
         BrowserView::GetBrowserViewForBrowser(browser()));
   }
 
   SplitViewSeparator* split_view_separator() const {
     return views::AsViewClass<SplitViewSeparator>(
-        brave_multi_contents_view()->resize_area_for_testing());
+        luxxle_multi_contents_view()->resize_area_for_testing());
   }
 
-  BraveMultiContentsView* brave_multi_contents_view() const {
-    return static_cast<BraveMultiContentsView*>(
-        brave_browser_view()->multi_contents_view_for_testing());
+  LuxxleMultiContentsView* luxxle_multi_contents_view() const {
+    return static_cast<LuxxleMultiContentsView*>(
+        luxxle_browser_view()->multi_contents_view_for_testing());
   }
 
  private:
@@ -99,9 +99,9 @@ class SideBySideEnabledBrowserTest : public InProcessBrowserTest {
 };
 
 IN_PROC_BROWSER_TEST_F(SideBySideEnabledBrowserTest,
-                       BraveMultiContentsViewTest) {
+                       LuxxleMultiContentsViewTest) {
   // Check SplitView feature is not enabled.
-  EXPECT_FALSE(tabs::features::IsBraveSplitViewEnabled());
+  EXPECT_FALSE(tabs::features::IsLuxxleSplitViewEnabled());
   auto* split_view_data = browser()->GetFeatures().split_view_browser_data();
   EXPECT_FALSE(!!split_view_data);
 
@@ -110,7 +110,7 @@ IN_PROC_BROWSER_TEST_F(SideBySideEnabledBrowserTest,
   EXPECT_FALSE(split_view_separator()->menu_button_widget_->IsVisible());
 
   // separator should not be empty when split view is closed.
-  auto* browser_view = brave_browser_view();
+  auto* browser_view = luxxle_browser_view();
   EXPECT_NE(gfx::Size(),
             browser_view->contents_separator_for_testing()->GetPreferredSize());
 
@@ -123,7 +123,7 @@ IN_PROC_BROWSER_TEST_F(SideBySideEnabledBrowserTest,
   EXPECT_TRUE(split_view_separator()->menu_button_widget_->IsVisible());
 
   // Check corner radius.
-  auto* multi_contents_view = brave_multi_contents_view();
+  auto* multi_contents_view = luxxle_multi_contents_view();
   ASSERT_TRUE(multi_contents_view);
 
   auto* start_contents_web_view =
@@ -142,9 +142,9 @@ IN_PROC_BROWSER_TEST_F(SideBySideEnabledBrowserTest,
       multi_contents_view->contents_container_views_for_testing()[0];
   auto end_contents_container_view =
       multi_contents_view->contents_container_views_for_testing()[1];
-  EXPECT_EQ(gfx::Insets(BraveMultiContentsView::kBorderThickness),
+  EXPECT_EQ(gfx::Insets(LuxxleMultiContentsView::kBorderThickness),
             start_contents_container_view->GetBorder()->GetInsets());
-  EXPECT_EQ(gfx::Insets(BraveMultiContentsView::kBorderThickness),
+  EXPECT_EQ(gfx::Insets(LuxxleMultiContentsView::kBorderThickness),
             end_contents_container_view->GetBorder()->GetInsets());
 
   ASSERT_TRUE(base::test::RunUntil([&]() {
@@ -209,8 +209,8 @@ class SplitViewBrowserTest : public InProcessBrowserTest {
   SplitViewBrowserTest() = default;
   ~SplitViewBrowserTest() override = default;
 
-  BraveBrowserView& browser_view() {
-    return *static_cast<BraveBrowserView*>(
+  LuxxleBrowserView& browser_view() {
+    return *static_cast<LuxxleBrowserView*>(
         BrowserView::GetBrowserViewForBrowser(browser()));
   }
 
@@ -246,7 +246,7 @@ IN_PROC_BROWSER_TEST_F(SplitViewBrowserTest,
                        SplitViewContainsContentsContainer) {
   EXPECT_EQ(browser_view().contents_container()->parent(), &split_view());
   EXPECT_EQ(
-      static_cast<BraveBrowserViewLayout*>(browser_view().GetLayoutManager())
+      static_cast<LuxxleBrowserViewLayout*>(browser_view().GetLayoutManager())
           ->contents_container(),
       &split_view());
 
@@ -473,7 +473,7 @@ IN_PROC_BROWSER_TEST_F(
   luxxle::NewSplitViewForTab(browser());
   auto* active_contents = chrome_test_utils::GetActiveWebContents(this);
 
-  auto* dialog = new BraveJavaScriptTabModalDialogViewViews(
+  auto* dialog = new LuxxleJavaScriptTabModalDialogViewViews(
       active_contents, active_contents, u"title",
       content::JAVASCRIPT_DIALOG_TYPE_ALERT, u"message", u"default prompt",
       base::DoNothing(), base::DoNothing());
@@ -506,7 +506,7 @@ IN_PROC_BROWSER_TEST_F(
   luxxle::NewSplitViewForTab(browser());
   auto* active_contents = chrome_test_utils::GetActiveWebContents(this);
 
-  auto* dialog = new BraveJavaScriptTabModalDialogViewViews(
+  auto* dialog = new LuxxleJavaScriptTabModalDialogViewViews(
       active_contents, active_contents, u"title",
       content::JAVASCRIPT_DIALOG_TYPE_ALERT, u"message", u"default prompt",
       base::DoNothing(), base::DoNothing());
@@ -539,12 +539,12 @@ IN_PROC_BROWSER_TEST_F(SplitViewBrowserTest, SplitViewTabPathTest) {
   SkRegion mask_region;
   ASSERT_TRUE(mask_region.setPath(mask, clip_region));
 
-  EXPECT_EQ(brave_tabs::kHorizontalSplitViewTabVerticalSpacing,
+  EXPECT_EQ(luxxle_tabs::kHorizontalSplitViewTabVerticalSpacing,
             mask_region.getBounds().top());
-  EXPECT_EQ(brave_tabs::kHorizontalTabInset, mask_region.getBounds().left());
+  EXPECT_EQ(luxxle_tabs::kHorizontalTabInset, mask_region.getBounds().left());
   EXPECT_EQ(GetLayoutConstant(TAB_STRIP_HEIGHT) -
                 GetLayoutConstant(TABSTRIP_TOOLBAR_OVERLAP) -
-                (brave_tabs::kHorizontalSplitViewTabVerticalSpacing * 2),
+                (luxxle_tabs::kHorizontalSplitViewTabVerticalSpacing * 2),
             mask_region.getBounds().height());
 }
 

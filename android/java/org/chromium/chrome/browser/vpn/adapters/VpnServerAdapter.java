@@ -17,11 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.radiobutton.MaterialRadioButton;
 
-import org.chromium.brave_vpn.mojom.BraveVpnConstants;
-import org.chromium.brave_vpn.mojom.Region;
+import org.chromium.luxxle_vpn.mojom.LuxxleVpnConstants;
+import org.chromium.luxxle_vpn.mojom.Region;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.vpn.activities.VpnServerActivity.OnCitySelection;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnPrefUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnPrefUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,18 +56,18 @@ public class VpnServerAdapter extends RecyclerView.Adapter<VpnServerAdapter.View
             holder.cityServerText.setText((position == 0) ? city.name : cityServerText);
 
             boolean isCountryPrecision =
-                    BraveVpnPrefUtils.getRegionPrecision()
-                            .equals(BraveVpnConstants.REGION_PRECISION_COUNTRY);
+                    LuxxleVpnPrefUtils.getRegionPrecision()
+                            .equals(LuxxleVpnConstants.REGION_PRECISION_COUNTRY);
             boolean isCityPrecision =
-                    BraveVpnPrefUtils.getRegionPrecision()
-                            .equals(BraveVpnConstants.REGION_PRECISION_CITY);
-            boolean regionMatches = BraveVpnPrefUtils.getRegionName().equals(mRegion.name);
-            boolean cityMatches = BraveVpnPrefUtils.getRegionName().equals(city.name);
+                    LuxxleVpnPrefUtils.getRegionPrecision()
+                            .equals(LuxxleVpnConstants.REGION_PRECISION_CITY);
+            boolean regionMatches = LuxxleVpnPrefUtils.getRegionName().equals(mRegion.name);
+            boolean cityMatches = LuxxleVpnPrefUtils.getRegionName().equals(city.name);
             boolean isoCodeMatches =
                     isCountryPrecision
                             && !regionMatches
                             && !cityMatches
-                            && BraveVpnPrefUtils.getRegionIsoCode().equals(mRegion.countryIsoCode)
+                            && LuxxleVpnPrefUtils.getRegionIsoCode().equals(mRegion.countryIsoCode)
                             && position == 0;
 
             boolean isEnabled =

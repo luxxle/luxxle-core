@@ -162,7 +162,7 @@ TEST_F(ProxyConfigServiceTorTest, SetNewTorCircuit) {
 
 TEST_F(ProxyConfigServiceTorTest, SetProxyAuthorization) {
   const GURL site_url("https://check.torproject.org/");
-  const GURL site_url2("https://brave.com/");
+  const GURL site_url2("https://luxxle.com/");
   const std::string circuit_anonymization_key =
       ProxyConfigServiceTor::CircuitAnonymizationKey(site_url);
   const std::string circuit_anonymization_key2 =
@@ -235,9 +235,9 @@ TEST_F(ProxyConfigServiceTorTest, SetProxyAuthorization) {
 }
 
 TEST_F(ProxyConfigServiceTorTest, SetProxyAuthorization_Subresources) {
-  const GURL site_url1("https://brave.com/");
-  const GURL site_url2("https://bravesoftware.com/");  // subresource
-  const GURL site_url3("https://brave.software.com/");
+  const GURL site_url1("https://luxxle.com/");
+  const GURL site_url2("https://luxxlesoftware.com/");  // subresource
+  const GURL site_url3("https://luxxle.software.com/");
   const net::SchemefulSite site1(site_url1);
   const net::SchemefulSite site2(site_url2);
   const net::SchemefulSite site3(site_url3);
@@ -271,7 +271,7 @@ TEST_F(ProxyConfigServiceTorTest, SetProxyAuthorization_Subresources) {
 }
 
 TEST_F(ProxyConfigServiceTorTest, CircuitTimeout) {
-  const GURL site_url("https://brave.com/");
+  const GURL site_url("https://luxxle.com/");
   const std::string circuit_anonymization_key =
       ProxyConfigServiceTor::CircuitAnonymizationKey(site_url);
   const net::SchemefulSite site(site_url);

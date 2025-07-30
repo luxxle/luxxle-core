@@ -11,10 +11,10 @@
 import("//build/config/android/rules.gni")
 
 declare_args() {
-  brave_android_developer_options_code = ""
+  luxxle_android_developer_options_code = ""
 }
 
-java_cpp_enum("brave_android_java_enums_srcjar") {
+java_cpp_enum("luxxle_android_java_enums_srcjar") {
   sources = [
     "//luxxle/chromium_src/chrome/browser/notifications/notification_handler_impl.h",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -22,11 +22,11 @@ java_cpp_enum("brave_android_java_enums_srcjar") {
   ]
 }
 
-java_cpp_template("brave_config_java") {
-  sources = [ "//luxxle/build/android/java/templates/BraveConfig.template" ]
+java_cpp_template("luxxle_config_java") {
+  sources = [ "//luxxle/build/android/java/templates/LuxxleConfig.template" ]
   defines = [
-    "BRAVE_ANDROID_DEVELOPER_OPTIONS_CODE=\"$brave_android_developer_options_code\"",
-    "BRAVE_ANDROID_WEBCOMPAT_REPORT_ENDPOINT=\"$webcompat_report_api_endpoint\"",
-    "BRAVE_ANDROID_WEB_DISCOVERY_ENABLED=$enable_web_discovery_native",
+    "LUXXLE_ANDROID_DEVELOPER_OPTIONS_CODE=\"$luxxle_android_developer_options_code\"",
+    "LUXXLE_ANDROID_WEBCOMPAT_REPORT_ENDPOINT=\"$webcompat_report_api_endpoint\"",
+    "LUXXLE_ANDROID_WEB_DISCOVERY_ENABLED=$enable_web_discovery_native",
   ]
 }

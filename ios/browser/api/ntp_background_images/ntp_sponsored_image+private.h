@@ -6,7 +6,7 @@
 #ifndef LUXXLE_IOS_BROWSER_API_NTP_BACKGROUND_IMAGES_NTP_SPONSORED_IMAGE_PRIVATE_H_
 #define LUXXLE_IOS_BROWSER_API_NTP_BACKGROUND_IMAGES_NTP_SPONSORED_IMAGE_PRIVATE_H_
 
-#include "brave/ios/browser/api/ntp_background_images/ntp_sponsored_image.h"
+#include "luxxle/ios/browser/api/ntp_background_images/ntp_sponsored_image.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -41,7 +41,7 @@ def get_github_tags(branch):
         'Accept': 'application/vnd.github+json',
         'Authorization': 'token ' + os.environ.get('GITHUB_TOKEN')
     }
-    tag_url = GITHUB_URL + "/repos/luxxle/brave-core/tags" + '?page=1&per_page=100'
+    tag_url = GITHUB_URL + "/repos/luxxle/luxxle-core/tags" + '?page=1&per_page=100'
 
     r = call_github_api(tag_url, headers=headers)
     next_request = ""

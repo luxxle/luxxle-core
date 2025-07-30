@@ -17,16 +17,16 @@ import androidx.lifecycle.Observer;
 
 import org.chromium.base.Callbacks;
 import org.chromium.base.Log;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.AllAccountsInfo;
-import org.chromium.brave_wallet.mojom.BraveWalletConstants;
-import org.chromium.brave_wallet.mojom.BraveWalletService;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.JsonRpcService;
-import org.chromium.brave_wallet.mojom.KeyringId;
-import org.chromium.brave_wallet.mojom.KeyringService;
-import org.chromium.brave_wallet.mojom.KeyringServiceObserver;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.AllAccountsInfo;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletConstants;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletService;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.JsonRpcService;
+import org.chromium.luxxle_wallet.mojom.KeyringId;
+import org.chromium.luxxle_wallet.mojom.KeyringService;
+import org.chromium.luxxle_wallet.mojom.KeyringServiceObserver;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
 import org.chromium.chrome.browser.crypto_wallet.observers.KeyringServiceObserverImpl;
 import org.chromium.chrome.browser.crypto_wallet.util.AssetUtils;
 import org.chromium.chrome.browser.crypto_wallet.util.WalletUtils;
@@ -45,7 +45,7 @@ public class KeyringModel implements KeyringServiceObserver {
     private final Object mLock = new Object();
 
     private KeyringService mKeyringService;
-    private BraveWalletService mBraveWalletService;
+    private LuxxleWalletService mLuxxleWalletService;
     private final MutableLiveData<AccountInfo> _mSelectedAccount;
     private final MutableLiveData<AllAccountsInfo> _mAllAccountsInfo;
     private final MutableLiveData<List<AccountInfo>> _mAccountInfos;
@@ -56,10 +56,10 @@ public class KeyringModel implements KeyringServiceObserver {
 
     public KeyringModel(
             KeyringService keyringService,
-            BraveWalletService braveWalletService,
+            LuxxleWalletService luxxleWalletService,
             CryptoSharedActions cryptoSharedActions) {
         mKeyringService = keyringService;
-        mBraveWalletService = braveWalletService;
+        mLuxxleWalletService = luxxleWalletService;
         mCryptoSharedActions = cryptoSharedActions;
 
         _mSelectedAccount = new MutableLiveData<>();
@@ -108,12 +108,12 @@ public class KeyringModel implements KeyringServiceObserver {
         }
     }
 
-    public void resetService(KeyringService keyringService, BraveWalletService braveWalletService) {
+    public void resetService(KeyringService keyringService, LuxxleWalletService luxxleWalletService) {
         synchronized (mLock) {
             mKeyringService = keyringService;
-            mBraveWalletService = braveWalletService;
+            mLuxxleWalletService = luxxleWalletService;
         }
-        if (mKeyringService != null && mBraveWalletService != null) {
+        if (mKeyringService != null && mLuxxleWalletService != null) {
             init();
         }
     }
@@ -191,15 +191,15 @@ public class KeyringModel implements KeyringServiceObserver {
     }
 
     /**
-     * Restore a Brave Wallet with a given password, showing only the collection of selected
+     * Restore a Luxxle Wallet with a given password, showing only the collection of selected
      * networks. Ethereum and Solana accounts will be restored using the recovery phrase; Bitcoin
      * account and Filecoin account will be created only if selected among available networks. Once
      * the restoration process finishes the callback is notified with a boolean.
      *
      * <p><b>Note:</b> This method must be always called from main UI thread.
      *
-     * @param password Given password used to restore the Brave Wallet.
-     * @param recoveryPhrase Recovery phrase used to restore the Brave Wallet.
+     * @param password Given password used to restore the Luxxle Wallet.
+     * @param recoveryPhrase Recovery phrase used to restore the Luxxle Wallet.
      * @param legacyRestoreEnabled boolean flag to restore legacy Wallet.
      * @param availableNetworks All available networks.
      * @param selectedNetworks Collection of selected networks that will be shown.
@@ -229,14 +229,14 @@ public class KeyringModel implements KeyringServiceObserver {
     }
 
     /**
-     * Creates a new Brave Wallet with a given password, showing only the collection of selected
+     * Creates a new Luxxle Wallet with a given password, showing only the collection of selected
      * networks. One Ethereum and one Solana account will be created by default; Bitcoin account and
      * Filecoin account will be created only if selected among available networks. Once the creation
      * finishes the callback is notified with a string containing the recovery phrases.
      *
      * <p><b>Note:</b> This method must be always called from main UI thread.
      *
-     * @param password Given password used to create the new Brave Wallet.
+     * @param password Given password used to create the new Luxxle Wallet.
      * @param availableNetworks All available networks.
      * @param selectedNetworks Collection of selected networks that will be shown.
      * @param jsonRpcService JSON RPC service used to add and hide the networks.
@@ -526,6 +526,6 @@ public class KeyringModel implements KeyringServiceObserver {
     @Override
     public void close() {}
 
-    @StringDef({BraveWalletConstants.FILECOIN_MAINNET, BraveWalletConstants.FILECOIN_TESTNET})
+    @StringDef({LuxxleWalletConstants.FILECOIN_MAINNET, LuxxleWalletConstants.FILECOIN_TESTNET})
     public @interface FilecoinNetworkType {}
 }

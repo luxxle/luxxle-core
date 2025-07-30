@@ -9,20 +9,20 @@ import static org.chromium.chrome.browser.crypto_wallet.util.WalletConstants.SOL
 
 import android.text.TextUtils;
 
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.BlockchainToken;
-import org.chromium.brave_wallet.mojom.BtcTxData;
-import org.chromium.brave_wallet.mojom.FilTxData;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
-import org.chromium.brave_wallet.mojom.SolanaInstruction;
-import org.chromium.brave_wallet.mojom.SolanaSystemInstruction;
-import org.chromium.brave_wallet.mojom.SolanaTokenInstruction;
-import org.chromium.brave_wallet.mojom.SolanaTxData;
-import org.chromium.brave_wallet.mojom.TransactionInfo;
-import org.chromium.brave_wallet.mojom.TransactionType;
-import org.chromium.brave_wallet.mojom.TxData1559;
-import org.chromium.brave_wallet.mojom.TxDataUnion;
-import org.chromium.brave_wallet.mojom.ZecTxData;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.BlockchainToken;
+import org.chromium.luxxle_wallet.mojom.BtcTxData;
+import org.chromium.luxxle_wallet.mojom.FilTxData;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.SolanaInstruction;
+import org.chromium.luxxle_wallet.mojom.SolanaSystemInstruction;
+import org.chromium.luxxle_wallet.mojom.SolanaTokenInstruction;
+import org.chromium.luxxle_wallet.mojom.SolanaTxData;
+import org.chromium.luxxle_wallet.mojom.TransactionInfo;
+import org.chromium.luxxle_wallet.mojom.TransactionType;
+import org.chromium.luxxle_wallet.mojom.TxData1559;
+import org.chromium.luxxle_wallet.mojom.TxDataUnion;
+import org.chromium.luxxle_wallet.mojom.ZecTxData;
 import org.chromium.build.annotations.NullMarked;
 import org.chromium.build.annotations.Nullable;
 import org.chromium.chrome.browser.crypto_wallet.presenters.SolanaInstructionPresenter;
@@ -38,7 +38,7 @@ import java.util.regex.Pattern;
 
 /*
  * Transaction parser. Java version of
- * components/brave_wallet_ui/common/hooks/transaction-parser.ts.
+ * components/luxxle_wallet_ui/common/hooks/transaction-parser.ts.
  */
 @NullMarked
 public class ParsedTransaction extends ParsedTransactionFees {

@@ -5,7 +5,7 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 # This script has several convenience features when committing changes to
-# brave-core.
+# luxxle-core.
 #
 # 1. Chromium upgrade branches automatically added as tags
 #
@@ -46,7 +46,7 @@
 #    If the branch name contains "issue-" followed by a number, the script will
 #    add a "Resolves" link to the commit message. For example, if the branch
 #    name is "codehealth+fix-issue-123", the commit message will include a link
-#    to "Resolves https://github.com/luxxle/brave-browser/issues/123".
+#    to "Resolves https://github.com/luxxle/luxxle-browser/issues/123".
 #
 # This script can be set up either as a commit-msg hook, or as a
 # prepare-commit-msg hook. The difference is that the commit-msg hook will run
@@ -165,9 +165,9 @@ def main():
 
     if issues:
         commit_message += '\n\n' + '\n'.join([
-            f"Resolves https://github.com/luxxle/brave-browser/issues/{issue}"
+            f"Resolves https://github.com/luxxle/luxxle-browser/issues/{issue}"
             for issue in issues
-            if f'brave-browser/issues/{issue}' not in commit_message
+            if f'luxxle-browser/issues/{issue}' not in commit_message
         ])
 
     if culprit_output:

@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/build/env_config.gni")
+import("//luxxle/build/env_config.gni")
 import("//build/buildflag_header.gni")
 
 # Similar to buildflag_header(), but supports flags defined in a .env file.

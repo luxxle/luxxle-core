@@ -1,4 +1,4 @@
-<!-- Copyright (c) 2022 The Brave Authors. All rights reserved.
+<!-- Copyright (c) 2022 The Luxxle Authors. All rights reserved.
      This Source Code Form is subject to the terms of the Mozilla Public
      License, v. 2.0. If a copy of the MPL was not distributed with this file,
      You can obtain one at https://mozilla.org/MPL/2.0/. -->
@@ -13,5 +13,5 @@ android:viewportHeight="20">
     android:strokeLineJoin="round"
     android:strokeWidth="1.75"
     android:fillColor="#00000000"
-    android:strokeColor="@color/brave_wallet_day_night_toolbar_icon_color"/>
+    android:strokeColor="@color/luxxle_wallet_day_night_toolbar_icon_color"/>
 </vector>

@@ -16,14 +16,14 @@ import argparse
 import os.path
 import sys
 import glob
-from lib.l10n.grd_utils import (braveify_grd_in_place, braveify_grd_tree,
+from lib.l10n.grd_utils import (luxxleify_grd_in_place, luxxleify_grd_tree,
                                 GOOGLE_CHROME_STRINGS_MIGRATION_MAP,
                                 get_override_file_path, textify,
                                 write_xml_file_from_tree)
 from lxml import etree  # pylint: disable=import-error
 
-BRAVE_SOURCE_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-SRC_SOURCE_ROOT = os.path.abspath(os.path.dirname(BRAVE_SOURCE_ROOT))
+LUXXLE_SOURCE_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+SRC_SOURCE_ROOT = os.path.abspath(os.path.dirname(LUXXLE_SOURCE_ROOT))
 
 sys.path.insert(1, os.path.join(SRC_SOURCE_ROOT, 'tools/grit'))
 
@@ -44,16 +44,16 @@ def write_xtb_content(xtb_tree, source_string_path):
 
 def write_new_translations_to_xtb(xtb_path, messages):
     parser = etree.XMLParser(remove_blank_text=True, resolve_entities=False)
-    brave_xtb_xml_tree = etree.parse(xtb_path, parser)
-    bundle_element = brave_xtb_xml_tree.xpath('//translationbundle')[0]
+    luxxle_xtb_xml_tree = etree.parse(xtb_path, parser)
+    bundle_element = luxxle_xtb_xml_tree.xpath('//translationbundle')[0]
     for message in messages:
-        google_elem = brave_xtb_xml_tree.xpath('//translation[@id="{}"]'.format(
+        google_elem = luxxle_xtb_xml_tree.xpath('//translation[@id="{}"]'.format(
             message[0]))
         element = google_elem[0] if google_elem else etree.SubElement(
             bundle_element, 'translation')
         element.set('id', message[0])
         element.text = message[1]
-    write_xtb_content(brave_xtb_xml_tree, xtb_path)
+    write_xtb_content(luxxle_xtb_xml_tree, xtb_path)
 
 
 def migrate_google_chrome_xtb_translations_for_messages(message_ids):
@@ -70,24 +70,24 @@ def migrate_google_chrome_xtb_translations_for_messages(message_ids):
                 'Skipping file {} because unable to determine language'.format(
                     google_xtb_path))
             continue
-        brave_xtb_path = os.path.join(
-            BRAVE_SOURCE_ROOT,
-            'app/resources/brave_strings_{}.xtb'.format(lang))
-        if not os.path.exists(brave_xtb_path):
-            print('Unable to find brave translation file {}'.format(
-                brave_xtb_path))
+        luxxle_xtb_path = os.path.join(
+            LUXXLE_SOURCE_ROOT,
+            'app/resources/luxxle_strings_{}.xtb'.format(lang))
+        if not os.path.exists(luxxle_xtb_path):
+            print('Unable to find luxxle translation file {}'.format(
+                luxxle_xtb_path))
             return False
         messages = [(message_id,
                      google_xtb_xml_tree.xpath('//translation[@id="' +
                                                message_id + '"]')[0].text)
                     for message_id in message_ids]
 
-        write_new_translations_to_xtb(brave_xtb_path, messages)
+        write_new_translations_to_xtb(luxxle_xtb_path, messages)
 
     return True
 
 
-def migrate_google_chrome_strings(brave_strings_xml_tree,
+def migrate_google_chrome_strings(luxxle_strings_xml_tree,
                                   google_chrome_strings_map):
     print('Migrating Chrome strings...')
     google_chrome_string_path = os.path.join(
@@ -100,7 +100,7 @@ def migrate_google_chrome_strings(brave_strings_xml_tree,
             '//message[@name="{}"]'.format(item))[0]
         message_text = google_message_elem.text.lstrip().rstrip()
         message_ids.append(tclib.GenerateMessageId(message_text))
-        messages_element = brave_strings_xml_tree.xpath('//messages')[0]
+        messages_element = luxxle_strings_xml_tree.xpath('//messages')[0]
         new_element = etree.SubElement(messages_element, 'message')
         new_element.set('name', google_chrome_strings_map[item])
         new_element.text = google_message_elem.text
@@ -118,11 +118,11 @@ def parse_args():
 def generate_overrides_and_replace_strings(source_string_path):
     # pylint: disable=too-many-locals
     # Read the clean GRD and apply only branding replacements (e.g. Chrome ->
-    # Brave).
+    # Luxxle).
     original_xml_tree_with_branding_fixes = etree.parse(source_string_path)
-    braveify_grd_tree(original_xml_tree_with_branding_fixes, True)
+    luxxleify_grd_tree(original_xml_tree_with_branding_fixes, True)
     # Apply all replacements the the clean GRD.
-    braveify_grd_in_place(source_string_path)
+    luxxleify_grd_in_place(source_string_path)
     # This tree has all replacements whereas the
     # original_xml_tree_with_branding_fixes only has branding replacements. We
     # don't need to write branding-only replacements to the _override file
@@ -152,10 +152,10 @@ def generate_overrides_and_replace_strings(source_string_path):
     parts = modified_xml_tree.xpath('//part')
     for part in parts:
         override_file = get_override_file_path(part.attrib['file'])
-        # Check for the special case of brave_stings.grd:
-        if (os.path.basename(source_string_path) == 'brave_strings.grd'
+        # Check for the special case of luxxle_stings.grd:
+        if (os.path.basename(source_string_path) == 'luxxle_strings.grd'
                 and override_file == 'settings_chromium_strings_override.grdp'):
-            override_file = 'settings_brave_strings_override.grdp'
+            override_file = 'settings_luxxle_strings_override.grdp'
 
         if os.path.exists(os.path.join(os.path.dirname(source_string_path),
                                        override_file)):
@@ -174,13 +174,13 @@ def generate_overrides_and_replace_strings(source_string_path):
     modified_parts = modified_xml_tree.xpath('//part')
     if len(modified_messages) > 0 or len(modified_parts) > 0:
         # Fix output filenames to generate "luxxle" files instead of "chromium".
-        if os.path.basename(source_string_path) == 'brave_strings.grd':
+        if os.path.basename(source_string_path) == 'luxxle_strings.grd':
             for xtb_filename in modified_xml_tree.xpath(
                     "//file[re:test(@path, '.*\\.xtb')]",
                     namespaces={"re": "http://exslt.org/regular-expressions"}):
                 xtb_filename.attrib['path'] = \
                     xtb_filename.attrib['path'].replace('chromium_strings',
-                                                        'brave_strings')
+                                                        'luxxle_strings')
         print(f'Writing override {override_string_path}')
         write_xml_file_from_tree(override_string_path, modified_xml_tree)
 
@@ -210,9 +210,9 @@ def update_locale_settings_grd(xml_tree):
 def main():
     # pylint: disable=too-many-statements
     args = parse_args()
-    # This file path is a string path inside brave/ but just recently copied
+    # This file path is a string path inside luxxle/ but just recently copied
     # in from chromium files which need replacements.
-    source_string_path = os.path.join(BRAVE_SOURCE_ROOT,
+    source_string_path = os.path.join(LUXXLE_SOURCE_ROOT,
                                       args.source_string_path[0])
     filename = os.path.basename(source_string_path)
     extension = os.path.splitext(source_string_path)[1]
@@ -226,48 +226,48 @@ def main():
     generate_overrides_and_replace_strings(source_string_path)
 
     # If you modify the translateable attribute then also update
-    # is_translateable_string function in brave/script/lib/l10n/grd_utils.py.
+    # is_translateable_string function in luxxle/script/lib/l10n/grd_utils.py.
     xml_tree = etree.parse(source_string_path)
     (basename, _) = filename.split('.')
-    if basename == 'brave_strings':
+    if basename == 'luxxle_strings':
         if not migrate_google_chrome_strings(
                 xml_tree, GOOGLE_CHROME_STRINGS_MIGRATION_MAP):
             return 1
         elem1 = xml_tree.xpath('//message[@name="IDS_SXS_SHORTCUT_NAME"]')[0]
-        elem1.text = 'Brave Nightly'
+        elem1.text = 'Luxxle Nightly'
         elem1.attrib.pop('desc')
         elem1.attrib.pop('translateable')
         elem1 = xml_tree.xpath('//message[@name="IDS_SHORTCUT_NAME_BETA"]')[0]
-        elem1.text = 'Brave Beta'
+        elem1.text = 'Luxxle Beta'
         elem1.attrib.pop('desc')
         elem1.attrib.pop('translateable')
         elem1 = xml_tree.xpath('//message[@name="IDS_SHORTCUT_NAME_DEV"]')[0]
-        elem1.text = 'Brave Dev'
+        elem1.text = 'Luxxle Dev'
         elem1.attrib.pop('desc')
         elem1.attrib.pop('translateable')
         elem1 = xml_tree.xpath(
             '//message[@name="IDS_APP_SHORTCUTS_SUBDIR_NAME_BETA"]')[0]
-        elem1.text = 'Brave Apps'
+        elem1.text = 'Luxxle Apps'
         elem1.attrib.pop('desc')
         elem1.attrib.pop('translateable')
         elem1 = xml_tree.xpath(
             '//message[@name="IDS_APP_SHORTCUTS_SUBDIR_NAME_DEV"]')[0]
-        elem1.text = 'Brave Apps'
+        elem1.text = 'Luxxle Apps'
         elem1.attrib.pop('desc')
         elem1.attrib.pop('translateable')
         elem1 = xml_tree.xpath(
             '//message[@name="IDS_INBOUND_MDNS_RULE_NAME_BETA"]')[0]
-        elem1.text = 'Brave Beta (mDNS-In)'
+        elem1.text = 'Luxxle Beta (mDNS-In)'
         elem1.attrib.pop('desc')
         elem1.attrib.pop('translateable')
         elem1 = xml_tree.xpath(
             '//message[@name="IDS_INBOUND_MDNS_RULE_NAME_CANARY"]')[0]
-        elem1.text = 'Brave Nightly (mDNS-In)'
+        elem1.text = 'Luxxle Nightly (mDNS-In)'
         elem1.attrib.pop('desc')
         elem1.attrib.pop('translateable')
         elem1 = xml_tree.xpath(
             '//message[@name="IDS_INBOUND_MDNS_RULE_NAME_DEV"]')[0]
-        elem1.text = 'Brave Dev (mDNS-In)'
+        elem1.text = 'Luxxle Dev (mDNS-In)'
         elem1.attrib.pop('desc')
         elem1.attrib.pop('translateable')
         elem1 = xml_tree.xpath(
@@ -275,22 +275,22 @@ def main():
         elem1.attrib.pop('desc')
         elem1 = xml_tree.xpath(
             '//message[@name="IDS_INBOUND_MDNS_RULE_DESCRIPTION_BETA"]')[0]
-        elem1.text = 'Inbound rule for Brave Beta to allow mDNS traffic.'
+        elem1.text = 'Inbound rule for Luxxle Beta to allow mDNS traffic.'
         elem1.attrib.pop('desc')
         elem1.attrib.pop('translateable')
         elem1 = xml_tree.xpath(
             '//message[@name="IDS_INBOUND_MDNS_RULE_DESCRIPTION_CANARY"]')[0]
-        elem1.text = 'Inbound rule for Brave Nightly to allow mDNS traffic.'
+        elem1.text = 'Inbound rule for Luxxle Nightly to allow mDNS traffic.'
         elem1.attrib.pop('desc')
         elem1.attrib.pop('translateable')
         elem1 = xml_tree.xpath(
             '//message[@name="IDS_INBOUND_MDNS_RULE_DESCRIPTION_DEV"]')[0]
-        elem1.text = 'Inbound rule for Brave Dev to allow mDNS traffic.'
+        elem1.text = 'Inbound rule for Luxxle Dev to allow mDNS traffic.'
         elem1.attrib.pop('desc')
         elem1.attrib.pop('translateable')
         elem1 = xml_tree.xpath(
             '//part[@file="settings_chromium_strings.grdp"]')[0]
-        elem1.set('file', 'settings_brave_strings.grdp')
+        elem1.set('file', 'settings_luxxle_strings.grdp')
         elem1 = xml_tree.xpath(
             '//message[@name="IDS_INSTALL_OS_NOT_SUPPORTED"]')[0]
         elem1.text = elem1.text.replace('Windows 7', 'Windows 10')
@@ -305,18 +305,18 @@ def main():
         grit_root.addprevious(comment)
 
     # Fix output filenames to generate "luxxle" files instead of "chromium".
-    if basename in ('brave_strings', 'components_brave_strings'):
+    if basename in ('luxxle_strings', 'components_luxxle_strings'):
         for pak_filename in xml_tree.xpath(
                 "//output[re:test(@filename, '.*\\.(pak|xml)')]",
                 namespaces={"re": "http://exslt.org/regular-expressions"}):
             pak_filename.attrib['filename'] = pak_filename.attrib[
-                'filename'].replace('chromium_strings', 'brave_strings')
-    if basename in ('brave_strings'):
+                'filename'].replace('chromium_strings', 'luxxle_strings')
+    if basename in ('luxxle_strings'):
         for xtb_filename in xml_tree.xpath(
                 "//file[re:test(@path, '.*\\.xtb')]",
                 namespaces={"re": "http://exslt.org/regular-expressions"}):
             xtb_filename.attrib['path'] = xtb_filename.attrib['path'].replace(
-                'chromium_strings', 'brave_strings')
+                'chromium_strings', 'luxxle_strings')
 
     # Insert additional languages we support into locale_settings_*.grd files.
     if basename in ('locale_settings_linux', 'locale_settings_mac',

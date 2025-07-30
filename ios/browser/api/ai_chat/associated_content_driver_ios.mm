@@ -1,19 +1,19 @@
-// Copyright (c) 2023 The Brave Authors. All rights reserved.
+// Copyright (c) 2023 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/ios/browser/api/ai_chat/associated_content_driver_ios.h"
+#include "luxxle/ios/browser/api/ai_chat/associated_content_driver_ios.h"
 
 #import "ai_chat.mojom.objc+private.h"
 #include "base/strings/sys_string_conversions.h"
-#include "brave/base/mac/conversions.h"
+#include "luxxle/base/mac/conversions.h"
 #include "luxxle/components/ai_chat/core/browser/associated_content_driver.h"
 #include "luxxle/components/ai_chat/core/browser/conversation_handler.h"
 #include "luxxle/components/ai_chat/core/common/mojom/ai_chat.mojom-shared.h"
 #include "luxxle/components/ai_chat/core/common/mojom/ai_chat.mojom.h"
 #include "luxxle/components/ai_chat/core/common/mojom/page_content_extractor.mojom.h"
-#include "brave/ios/browser/api/ai_chat/ai_chat_delegate.h"
+#include "luxxle/ios/browser/api/ai_chat/ai_chat_delegate.h"
 #include "components/user_prefs/user_prefs.h"
 #include "ios/chrome/browser/shared/model/application_context/application_context.h"
 #include "ios/chrome/browser/shared/model/profile/profile_ios.h"

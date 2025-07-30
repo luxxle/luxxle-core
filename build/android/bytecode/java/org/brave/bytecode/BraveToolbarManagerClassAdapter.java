@@ -3,116 +3,116 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveToolbarManagerClassAdapter extends BraveClassVisitor {
+public class LuxxleToolbarManagerClassAdapter extends LuxxleClassVisitor {
     static String sToolbarManagerClassName = "org/chromium/chrome/browser/toolbar/ToolbarManager";
-    static String sBraveToolbarManagerClassName =
-            "org/chromium/chrome/browser/toolbar/BraveToolbarManager";
+    static String sLuxxleToolbarManagerClassName =
+            "org/chromium/chrome/browser/toolbar/LuxxleToolbarManager";
 
-    public BraveToolbarManagerClassAdapter(ClassVisitor visitor) {
+    public LuxxleToolbarManagerClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sToolbarManagerClassName, sBraveToolbarManagerClassName);
+        redirectConstructor(sToolbarManagerClassName, sLuxxleToolbarManagerClassName);
 
-        deleteField(sBraveToolbarManagerClassName, "mBottomControlsCoordinatorSupplier");
+        deleteField(sLuxxleToolbarManagerClassName, "mBottomControlsCoordinatorSupplier");
         makeProtectedField(sToolbarManagerClassName, "mBottomControlsCoordinatorSupplier");
 
-        deleteField(sBraveToolbarManagerClassName, "mCallbackController");
+        deleteField(sLuxxleToolbarManagerClassName, "mCallbackController");
         makeProtectedField(sToolbarManagerClassName, "mCallbackController");
 
-        deleteField(sBraveToolbarManagerClassName, "mBottomControlsStacker");
+        deleteField(sLuxxleToolbarManagerClassName, "mBottomControlsStacker");
         makeProtectedField(sToolbarManagerClassName, "mBottomControlsStacker");
 
-        deleteField(sBraveToolbarManagerClassName, "mFullscreenManager");
+        deleteField(sLuxxleToolbarManagerClassName, "mFullscreenManager");
         makeProtectedField(sToolbarManagerClassName, "mFullscreenManager");
 
-        deleteField(sBraveToolbarManagerClassName, "mActivityTabProvider");
+        deleteField(sLuxxleToolbarManagerClassName, "mActivityTabProvider");
         makeProtectedField(sToolbarManagerClassName, "mActivityTabProvider");
 
-        deleteField(sBraveToolbarManagerClassName, "mAppThemeColorProvider");
+        deleteField(sLuxxleToolbarManagerClassName, "mAppThemeColorProvider");
         makeProtectedField(sToolbarManagerClassName, "mAppThemeColorProvider");
 
-        deleteField(sBraveToolbarManagerClassName, "mScrimManager");
+        deleteField(sLuxxleToolbarManagerClassName, "mScrimManager");
         makeProtectedField(sToolbarManagerClassName, "mScrimManager");
 
-        deleteField(sBraveToolbarManagerClassName, "mMenuButtonCoordinator");
+        deleteField(sLuxxleToolbarManagerClassName, "mMenuButtonCoordinator");
         makeProtectedField(sToolbarManagerClassName, "mMenuButtonCoordinator");
 
-        deleteField(sBraveToolbarManagerClassName, "mToolbarTabController");
+        deleteField(sLuxxleToolbarManagerClassName, "mToolbarTabController");
         makeProtectedField(sToolbarManagerClassName, "mToolbarTabController");
 
-        deleteField(sBraveToolbarManagerClassName, "mLocationBar");
+        deleteField(sLuxxleToolbarManagerClassName, "mLocationBar");
         makeProtectedField(sToolbarManagerClassName, "mLocationBar");
 
-        deleteField(sBraveToolbarManagerClassName, "mActionModeController");
+        deleteField(sLuxxleToolbarManagerClassName, "mActionModeController");
         makeProtectedField(sToolbarManagerClassName, "mActionModeController");
 
-        deleteField(sBraveToolbarManagerClassName, "mLocationBarModel");
+        deleteField(sLuxxleToolbarManagerClassName, "mLocationBarModel");
         makeProtectedField(sToolbarManagerClassName, "mLocationBarModel");
 
-        deleteField(sBraveToolbarManagerClassName, "mToolbar");
+        deleteField(sLuxxleToolbarManagerClassName, "mToolbar");
         makeProtectedField(sToolbarManagerClassName, "mToolbar");
 
-        deleteField(sBraveToolbarManagerClassName, "mBookmarkModelSupplier");
+        deleteField(sLuxxleToolbarManagerClassName, "mBookmarkModelSupplier");
         makeProtectedField(sToolbarManagerClassName, "mBookmarkModelSupplier");
 
-        deleteField(sBraveToolbarManagerClassName, "mLayoutManager");
+        deleteField(sLuxxleToolbarManagerClassName, "mLayoutManager");
         makeProtectedField(sToolbarManagerClassName, "mLayoutManager");
 
-        deleteField(sBraveToolbarManagerClassName, "mOverlayPanelVisibilitySupplier");
+        deleteField(sLuxxleToolbarManagerClassName, "mOverlayPanelVisibilitySupplier");
         makeProtectedField(sToolbarManagerClassName, "mOverlayPanelVisibilitySupplier");
 
-        deleteField(sBraveToolbarManagerClassName, "mTabModelSelector");
+        deleteField(sLuxxleToolbarManagerClassName, "mTabModelSelector");
         makeProtectedField(sToolbarManagerClassName, "mTabModelSelector");
 
-        deleteField(sBraveToolbarManagerClassName, "mIncognitoStateProvider");
+        deleteField(sLuxxleToolbarManagerClassName, "mIncognitoStateProvider");
         makeProtectedField(sToolbarManagerClassName, "mIncognitoStateProvider");
 
-        deleteField(sBraveToolbarManagerClassName, "mBottomSheetController");
+        deleteField(sLuxxleToolbarManagerClassName, "mBottomSheetController");
         makeProtectedField(sToolbarManagerClassName, "mBottomSheetController");
 
-        deleteField(sBraveToolbarManagerClassName, "mTabContentManager");
+        deleteField(sLuxxleToolbarManagerClassName, "mTabContentManager");
         makeProtectedField(sToolbarManagerClassName, "mTabContentManager");
 
-        deleteField(sBraveToolbarManagerClassName, "mTabCreatorManager");
+        deleteField(sLuxxleToolbarManagerClassName, "mTabCreatorManager");
         makeProtectedField(sToolbarManagerClassName, "mTabCreatorManager");
 
-        deleteField(sBraveToolbarManagerClassName, "mModalDialogManagerSupplier");
+        deleteField(sLuxxleToolbarManagerClassName, "mModalDialogManagerSupplier");
         makeProtectedField(sToolbarManagerClassName, "mModalDialogManagerSupplier");
 
-        deleteField(sBraveToolbarManagerClassName, "mTabObscuringHandler");
+        deleteField(sLuxxleToolbarManagerClassName, "mTabObscuringHandler");
         makeProtectedField(sToolbarManagerClassName, "mTabObscuringHandler");
 
-        deleteField(sBraveToolbarManagerClassName, "mReadAloudControllerSupplier");
+        deleteField(sLuxxleToolbarManagerClassName, "mReadAloudControllerSupplier");
         makeProtectedField(sToolbarManagerClassName, "mReadAloudControllerSupplier");
 
-        deleteField(sBraveToolbarManagerClassName, "mTopUiThemeColorProvider");
+        deleteField(sLuxxleToolbarManagerClassName, "mTopUiThemeColorProvider");
         makeProtectedField(sToolbarManagerClassName, "mTopUiThemeColorProvider");
 
-        deleteField(sBraveToolbarManagerClassName, "mCurrentOrientation");
+        deleteField(sLuxxleToolbarManagerClassName, "mCurrentOrientation");
         makeProtectedField(sToolbarManagerClassName, "mCurrentOrientation");
 
-        deleteField(sBraveToolbarManagerClassName, "mInitializedWithNative");
+        deleteField(sLuxxleToolbarManagerClassName, "mInitializedWithNative");
         makeProtectedField(sToolbarManagerClassName, "mInitializedWithNative");
 
-        deleteField(sBraveToolbarManagerClassName, "mTabGroupUiOneshotSupplier");
+        deleteField(sLuxxleToolbarManagerClassName, "mTabGroupUiOneshotSupplier");
         makeProtectedField(sToolbarManagerClassName, "mTabGroupUiOneshotSupplier");
 
-        deleteField(sBraveToolbarManagerClassName, "mUndoBarThrottle");
+        deleteField(sLuxxleToolbarManagerClassName, "mUndoBarThrottle");
         makeProtectedField(sToolbarManagerClassName, "mUndoBarThrottle");
 
         makePublicMethod(sToolbarManagerClassName, "onOrientationChange");
         addMethodAnnotation(
-                sBraveToolbarManagerClassName, "onOrientationChange", "Ljava/lang/Override;");
+                sLuxxleToolbarManagerClassName, "onOrientationChange", "Ljava/lang/Override;");
 
         makePublicMethod(sToolbarManagerClassName, "updateBookmarkButtonStatus");
-        addMethodAnnotation(sBraveToolbarManagerClassName, "updateBookmarkButtonStatus",
+        addMethodAnnotation(sLuxxleToolbarManagerClassName, "updateBookmarkButtonStatus",
                 "Ljava/lang/Override;");
 
         makePublicMethod(sToolbarManagerClassName, "updateReloadState");
-        deleteMethod(sBraveToolbarManagerClassName, "updateReloadState");
+        deleteMethod(sLuxxleToolbarManagerClassName, "updateReloadState");
     }
 }

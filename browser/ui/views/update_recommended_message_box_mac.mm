@@ -4,7 +4,7 @@
 
 #include "luxxle/browser/ui/views/update_recommended_message_box_mac.h"
 
-#import "brave/browser/mac/sparkle_glue.h"
+#import "luxxle/browser/mac/sparkle_glue.h"
 #include "components/constrained_window/constrained_window_views.h"
 
 // static

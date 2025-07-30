@@ -14,9 +14,9 @@ import generatePathMap from '../components/webpack/path-map'
 import { genPath } from '../build/commands/lib/guessConfig'
 
 if (!fs.existsSync(genPath)) {
-  throw new Error("Failed to find build output 'gen' folder! Have you run a brave-core build yet with the specified (or default) configuration?")
+  throw new Error("Failed to find build output 'gen' folder! Have you run a luxxle-core build yet with the specified (or default) configuration?")
 }
-console.log(`Using brave-core generated dependency path of '${genPath}'`)
+console.log(`Using luxxle-core generated dependency path of '${genPath}'`)
 
 const basePathMap = generatePathMap(genPath)
 
@@ -154,7 +154,7 @@ export default async ({ config, mode }) => {
 
   config.plugins.push(
     provideNodeGlobals,
-    useMockedModules(['bridge', 'brave_rewards_api_proxy']),
+    useMockedModules(['bridge', 'luxxle_rewards_api_proxy']),
     ...Object.keys(pathMap)
       .filter((prefix) => prefix.startsWith('chrome://'))
       .map((prefix) => prefixReplacer(prefix, pathMap[prefix]))

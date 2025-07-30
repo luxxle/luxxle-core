@@ -3,20 +3,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveFreIntentCreatorClassAdapter extends BraveClassVisitor {
+public class LuxxleFreIntentCreatorClassAdapter extends LuxxleClassVisitor {
     static String sFreIntentCreatorClassName =
             "org/chromium/chrome/browser/firstrun/FreIntentCreator";
 
-    static String sBraveFreIntentCreatorClassName =
-            "org/chromium/chrome/browser/firstrun/BraveFreIntentCreator";
+    static String sLuxxleFreIntentCreatorClassName =
+            "org/chromium/chrome/browser/firstrun/LuxxleFreIntentCreator";
 
-    public BraveFreIntentCreatorClassAdapter(ClassVisitor visitor) {
+    public LuxxleFreIntentCreatorClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sFreIntentCreatorClassName, sBraveFreIntentCreatorClassName);
+        redirectConstructor(sFreIntentCreatorClassName, sLuxxleFreIntentCreatorClassName);
     }
 }

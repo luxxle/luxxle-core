@@ -35,7 +35,7 @@ mojom("interfaces") {
 
 source_set("importer") {
   sources = [
-    "brave_importer_bridge.h",
+    "luxxle_importer_bridge.h",
     "chrome_importer_utils.cc",
     "chrome_importer_utils.h",
     "importer_constants.h",

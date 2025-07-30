@@ -1,4 +1,4 @@
-// Copyright (c) 2023 The Brave Authors. All rights reserved.
+// Copyright (c) 2023 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -12,10 +12,10 @@ import { CommandsCache } from './utils/commandsCache'
 import { match } from './utils/match'
 import { getLocale } from '$web-common/locale'
 
-import Icon, { setIconBasePath } from '@brave/leo/react/icon'
-import { color, font, radius, spacing } from '@brave/leo/tokens/css/variables'
-import Button from '@brave/leo/react/button'
-setIconBasePath('chrome://resources/brave-icons')
+import Icon, { setIconBasePath } from '@luxxle/leo/react/icon'
+import { color, font, radius, spacing } from '@luxxle/leo/tokens/css/variables'
+import Button from '@luxxle/leo/react/button'
+setIconBasePath('chrome://resources/luxxle-icons')
 
 const Container = styled.div`
   padding: ${spacing['2Xl']};

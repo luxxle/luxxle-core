@@ -3,23 +3,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveEditUrlSuggestionProcessorClassAdapter extends BraveClassVisitor {
+public class LuxxleEditUrlSuggestionProcessorClassAdapter extends LuxxleClassVisitor {
     static String sEditUrlSuggestionProcessorName =
             "org/chromium/chrome/browser/omnibox/suggestions/editurl/EditUrlSuggestionProcessor";
-    static String sBraveEditUrlSuggestionProcessorName =
-            "org/chromium/chrome/browser/omnibox/suggestions/editurl/BraveEditUrlSuggestionProcessor";
+    static String sLuxxleEditUrlSuggestionProcessorName =
+            "org/chromium/chrome/browser/omnibox/suggestions/editurl/LuxxleEditUrlSuggestionProcessor";
 
-    public BraveEditUrlSuggestionProcessorClassAdapter(ClassVisitor visitor) {
+    public LuxxleEditUrlSuggestionProcessorClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sEditUrlSuggestionProcessorName, sBraveEditUrlSuggestionProcessorName);
+        redirectConstructor(sEditUrlSuggestionProcessorName, sLuxxleEditUrlSuggestionProcessorName);
 
         addMethodAnnotation(
-                sBraveEditUrlSuggestionProcessorName,
+                sLuxxleEditUrlSuggestionProcessorName,
                 "maybeUpdateSuggestionForCopyLink",
                 "Ljava/lang/Override;");
     }

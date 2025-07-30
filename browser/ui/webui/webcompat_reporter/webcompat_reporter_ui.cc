@@ -19,17 +19,17 @@
 #include "base/task/sequenced_task_runner.h"
 #include "base/task/thread_pool.h"
 #include "base/values.h"
-#include "luxxle/browser/brave_browser_process.h"
-#include "luxxle/browser/ui/brave_browser_window.h"
-#include "luxxle/browser/ui/webui/brave_webui_source.h"
+#include "luxxle/browser/luxxle_browser_process.h"
+#include "luxxle/browser/ui/luxxle_browser_window.h"
+#include "luxxle/browser/ui/webui/luxxle_webui_source.h"
 #include "luxxle/browser/ui/webui/webcompat_reporter/webcompat_reporter_dialog.h"
 #include "luxxle/browser/webcompat_reporter/webcompat_reporter_service_factory.h"
-#include "luxxle/common/brave_channel_info.h"
-#include "luxxle/components/brave_shields/content/browser/ad_block_service.h"
-#include "luxxle/components/brave_shields/core/browser/ad_block_component_service_manager.h"
-#include "luxxle/components/brave_shields/core/browser/filter_list_catalog_entry.h"
-#include "luxxle/components/brave_shields/core/common/pref_names.h"
-// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#include "luxxle/common/luxxle_channel_info.h"
+#include "luxxle/components/luxxle_shields/content/browser/ad_block_service.h"
+#include "luxxle/components/luxxle_shields/core/browser/ad_block_component_service_manager.h"
+#include "luxxle/components/luxxle_shields/core/browser/filter_list_catalog_entry.h"
+#include "luxxle/components/luxxle_shields/core/common/pref_names.h"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
 #include "luxxle/components/webcompat_reporter/browser/fields.h"
 #include "luxxle/components/webcompat_reporter/browser/webcompat_reporter_service.h"
 #include "luxxle/components/webcompat_reporter/browser/webcompat_reporter_utils.h"
@@ -37,7 +37,7 @@
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_finder.h"
 #include "chrome/browser/ui/browser_list.h"
-#include "components/grit/brave_components_resources.h"
+#include "components/grit/luxxle_components_resources.h"
 #include "components/language/core/browser/pref_names.h"
 #include "components/prefs/pref_service.h"
 #include "content/public/browser/browser_thread.h"
@@ -51,16 +51,16 @@
 #include "ui/gfx/geometry/rect.h"
 #include "ui/gfx/geometry/size.h"
 
-#if BUILDFLAG(ENABLE_BRAVE_VPN)
-// REMOVED: #include "luxxle/browser/brave_vpn/.*"
-// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
+// REMOVED: #include "luxxle/browser/luxxle_vpn/.*"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
 #endif
 
 namespace webcompat_reporter {
 
 namespace {
 
-constexpr char kUISourceHistogramName[] = "Brave.Webcompat.UISource";
+constexpr char kUISourceHistogramName[] = "Luxxle.Webcompat.UISource";
 constexpr int kMaxScreenshotPixelCount = 1280 * 720;
 constexpr char kGetViewPortSizeParamName[] = "height";
 constexpr char kOnViewPortSizeChangedEventName[] = "onViewPortSizeChanged";
@@ -159,11 +159,11 @@ WebcompatReporterDOMHandler::WebcompatReporterDOMHandler(Profile* profile)
 }
 
 void WebcompatReporterDOMHandler::InitAdditionalParameters(Profile* profile) {
-#if BUILDFLAG(ENABLE_BRAVE_VPN)
-  brave_vpn::BraveVpnService* vpn_service =
-      brave_vpn::BraveVpnServiceFactory::GetForProfile(profile);
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
+  luxxle_vpn::LuxxleVpnService* vpn_service =
+      luxxle_vpn::LuxxleVpnServiceFactory::GetForProfile(profile);
   if (vpn_service != nullptr) {
-    pending_report_->brave_vpn_connected =
+    pending_report_->luxxle_vpn_connected =
         BoolToString(vpn_service->IsConnected());
   }
 #endif
@@ -172,7 +172,7 @@ void WebcompatReporterDOMHandler::InitAdditionalParameters(Profile* profile) {
   pending_report_->languages =
       profile_prefs->GetString(language::prefs::kAcceptLanguages);
   pending_report_->language_farbling = BoolToString(
-      profile_prefs->GetBoolean(brave_shields::prefs::kReduceLanguageEnabled));
+      profile_prefs->GetBoolean(luxxle_shields::prefs::kReduceLanguageEnabled));
   pending_report_->channel = luxxle::GetChannelName();
 }
 

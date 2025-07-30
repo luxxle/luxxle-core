@@ -3,12 +3,12 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
-brave_browser_download_sources = [
-  "//luxxle/browser/download/brave_download_item_model.cc",
-  "//luxxle/browser/download/brave_download_item_model.h",
+luxxle_browser_download_sources = [
+  "//luxxle/browser/download/luxxle_download_item_model.cc",
+  "//luxxle/browser/download/luxxle_download_item_model.h",
 ]
 
-brave_browser_download_deps = [
+luxxle_browser_download_deps = [
   "//base",
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//components/download/public/common:public",

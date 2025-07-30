@@ -4,7 +4,7 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 #include "base/path_service.h"
-#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/constants/luxxle_paths.h"
 #include "build/build_config.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/tabs/tab_strip_model.h"
@@ -67,7 +67,7 @@ class DigitalGoodsAPIBrowserTest : public InProcessBrowserTest,
 };
 
 // The API is unavailable in /1 variation even though it should be available.
-// Disabling for now. TODO(https://github.com/brave/brave-browser/issues/37883)
+// Disabling for now. TODO(https://github.com/luxxle/luxxle-browser/issues/37883)
 IN_PROC_BROWSER_TEST_P(DigitalGoodsAPIBrowserTest, DISABLED_DigitalGoods) {
   const GURL url = https_server_.GetURL("/simple.html");
   ASSERT_TRUE(ui_test_utils::NavigateToURL(browser(), url));

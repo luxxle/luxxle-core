@@ -16,8 +16,8 @@ def _ProcessXML(root):
 
     node_str = '<item xmlns:android='\
     '"http://schemas.android.com/apk/res/android" '\
-      'android:id="@+id/brave_wallet_id" ' \
-      'android:title="@string/menu_brave_wallet" ' \
+      'android:id="@+id/luxxle_wallet_id" ' \
+      'android:title="@string/menu_luxxle_wallet" ' \
       'android:visibility="gone" />'
     node = ET.fromstring(node_str, parser=ET.XMLParser(encoding="utf-8"))
 
@@ -29,13 +29,13 @@ def _ProcessXML(root):
 
     playlist_node_str = '<item xmlns:android='\
     '"http://schemas.android.com/apk/res/android" '\
-      'android:id="@+id/brave_playlist_id" ' \
-      'android:title="@string/brave_playlist" />'
+      'android:id="@+id/luxxle_playlist_id" ' \
+      'android:title="@string/luxxle_playlist" />'
     playlist_node = ET.fromstring(playlist_node_str,
                                   parser=ET.XMLParser(encoding="utf-8"))
 
     parent = root.find('group/[@android:id="@+id/PAGE_MENU"]', namespaces=ns)
-    playlist_child = parent.find('item/[@android:id="@+id/brave_wallet_id"]',
+    playlist_child = parent.find('item/[@android:id="@+id/luxxle_wallet_id"]',
                                  namespaces=ns)
     idx = list(parent).index(playlist_child)
     parent.insert(idx + 1, playlist_node)
@@ -48,22 +48,22 @@ def _ProcessXML(root):
                                          parser=ET.XMLParser(encoding="utf-8"))
     parent = root.find('group/[@android:id="@+id/PAGE_MENU"]', namespaces=ns)
     add_to_playlist_child = parent.find(
-        'item/[@android:id="@+id/brave_playlist_id"]', namespaces=ns)
+        'item/[@android:id="@+id/luxxle_playlist_id"]', namespaces=ns)
     idx = list(parent).index(add_to_playlist_child)
     parent.insert(idx + 1, add_to_playlist_node)
 
-    brave_leo_node_str = '<item xmlns:android='\
+    luxxle_leo_node_str = '<item xmlns:android='\
         '"http://schemas.android.com/apk/res/android" '\
-          'android:id="@+id/brave_leo_id" ' \
-          'android:title="@string/menu_brave_leo" />'
-    brave_leo_node = ET.fromstring(brave_leo_node_str,
+          'android:id="@+id/luxxle_leo_id" ' \
+          'android:title="@string/menu_luxxle_leo" />'
+    luxxle_leo_node = ET.fromstring(luxxle_leo_node_str,
                                    parser=ET.XMLParser(encoding="utf-8"))
 
     parent = root.find('group/[@android:id="@+id/PAGE_MENU"]', namespaces=ns)
     leo_child = parent.find('item/[@android:id="@+id/add_to_playlist_id"]',
                             namespaces=ns)
     idx = list(parent).index(leo_child)
-    parent.insert(idx + 1, brave_leo_node)
+    parent.insert(idx + 1, luxxle_leo_node)
 
     set_as_default_node_str = '<item xmlns:android='\
     '"http://schemas.android.com/apk/res/android" '\
@@ -78,13 +78,13 @@ def _ProcessXML(root):
 
     vpn_node_str = '<item xmlns:android='\
     '"http://schemas.android.com/apk/res/android" '\
-            'android:id="@+id/request_brave_vpn_row_menu_id" '\
+            'android:id="@+id/request_luxxle_vpn_row_menu_id" '\
             'android:title="@null"> '\
             '<menu> '\
-                '<item android:id="@+id/request_brave_vpn_id" '\
-                  'android:title="@string/brave_vpn" '\
+                '<item android:id="@+id/request_luxxle_vpn_id" '\
+                  'android:title="@string/luxxle_vpn" '\
                   'android:icon="@drawable/ic_vpn" /> '\
-                '<item android:id="@+id/request_brave_vpn_check_id" '\
+                '<item android:id="@+id/request_luxxle_vpn_check_id" '\
                   'android:title="@null" '\
                   'android:checkable="true" /> '\
             '</menu> '\
@@ -112,15 +112,15 @@ def _ProcessXML(root):
     vpn_location_node = ET.fromstring(vpn_location_node_str,
                                       parser=ET.XMLParser(encoding="utf-8"))
     vpn_location_child = parent.find(
-        'item/[@android:id="@+id/request_brave_vpn_row_menu_id"]',
+        'item/[@android:id="@+id/request_luxxle_vpn_row_menu_id"]',
         namespaces=ns)
     vpn_location_idx = list(parent).index(vpn_location_child)
     parent.insert(vpn_location_idx + 1, vpn_location_node)
 
     speedreader_node_str = '<item xmlns:android='\
             '"http://schemas.android.com/apk/res/android" '\
-            'android:id="@+id/brave_speedreader_id" '\
-            'android:title="@string/brave_speedreader_title" '\
+            'android:id="@+id/luxxle_speedreader_id" '\
+            'android:title="@string/luxxle_speedreader_title" '\
             'android:icon="@drawable/ic_readermode"/>'
     speedreader_node = ET.fromstring(speedreader_node_str,
                                      parser=ET.XMLParser(encoding="utf-8"))

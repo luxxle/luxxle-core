@@ -7,11 +7,11 @@
 
 #include <utility>
 
-#include "luxxle/browser/ui/webui/brave_webui_source.h"
+#include "luxxle/browser/ui/webui/luxxle_webui_source.h"
 #include "luxxle/components/tor/resources/grit/tor_internals_generated_map.h"
 #include "luxxle/components/tor/resources/grit/tor_resources.h"
 #include "luxxle/components/tor/tor_launcher_factory.h"
-#include "components/grit/brave_components_resources.h"
+#include "components/grit/luxxle_components_resources.h"
 #include "content/public/browser/web_ui.h"
 
 TorInternalsDOMHandler::TorInternalsDOMHandler()

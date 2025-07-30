@@ -19,18 +19,18 @@ from lib.l10n.grd_string_replacements import (branding_replacements,
                                               main_text_only_replacements)
 from lib.l10n.validation import validate_tags_in_one_string
 
-# Map of google_chrome_strings.grd resources ids to migrate to brave_strings.grd
+# Map of google_chrome_strings.grd resources ids to migrate to luxxle_strings.grd
 # The resources and all translations will be migrated to grd and xtb files.
 # key - id in google_chrome_strings.
-# value - new id in brave_stirngs.
+# value - new id in luxxle_stirngs.
 GOOGLE_CHROME_STRINGS_MIGRATION_MAP = {
     'IDS_SHORTCUT_NAME_BETA': 'IDS_CHROME_SHORTCUT_NAME_BETA',
     'IDS_SHORTCUT_NAME_DEV': 'IDS_CHROME_SHORTCUT_NAME_DEV'
 }
 
 
-def braveify_grd_text(text, is_main_text, branding_replacements_only):
-    """Replaces text string to Brave wording"""
+def luxxleify_grd_text(text, is_main_text, branding_replacements_only):
+    """Replaces text string to Luxxle wording"""
     for (pattern, to) in branding_replacements:
         text = re.sub(pattern, to, text)
     if not branding_replacements_only:
@@ -44,21 +44,21 @@ def braveify_grd_text(text, is_main_text, branding_replacements_only):
     return text
 
 
-def generate_braveified_node(elem, is_comment, branding_replacements_only):
-    """Replaces a node and attributes to Brave wording"""
+def generate_luxxleified_node(elem, is_comment, branding_replacements_only):
+    """Replaces a node and attributes to Luxxle wording"""
     if elem.text:
-        elem.text = braveify_grd_text(
+        elem.text = luxxleify_grd_text(
             elem.text, not is_comment, branding_replacements_only)
 
     if elem.tail:
-        elem.tail = braveify_grd_text(
+        elem.tail = luxxleify_grd_text(
             elem.tail, not is_comment, branding_replacements_only)
 
     if 'desc' in elem.keys():
-        elem.attrib['desc'] = braveify_grd_text(
+        elem.attrib['desc'] = luxxleify_grd_text(
             elem.attrib['desc'], False, branding_replacements_only)
     for child in elem:
-        generate_braveified_node(child, is_comment, branding_replacements_only)
+        generate_luxxleified_node(child, is_comment, branding_replacements_only)
 
 
 def escape_element_text(elem):
@@ -109,20 +109,20 @@ def write_xml_file_from_tree(string_path, xml_tree):
         f.write(transformed_content)
 
 
-def braveify_grd_tree(source_xml_tree, branding_replacements_only):
-    """Takes in a grd(p) tree and replaces all messages and comments with Brave
+def luxxleify_grd_tree(source_xml_tree, branding_replacements_only):
+    """Takes in a grd(p) tree and replaces all messages and comments with Luxxle
        wording"""
     for elem in source_xml_tree.xpath('//message'):
-        generate_braveified_node(elem, False, branding_replacements_only)
+        generate_luxxleified_node(elem, False, branding_replacements_only)
     for elem in source_xml_tree.xpath('//comment()'):
-        generate_braveified_node(elem, True, branding_replacements_only)
+        generate_luxxleified_node(elem, True, branding_replacements_only)
 
 
-def braveify_grd_in_place(source_string_path):
-    """Takes in a grd file and replaces all messages and comments with Brave
+def luxxleify_grd_in_place(source_string_path):
+    """Takes in a grd file and replaces all messages and comments with Luxxle
        wording"""
     source_xml_tree = lxml.etree.parse(source_string_path)
-    braveify_grd_tree(source_xml_tree, False)
+    luxxleify_grd_tree(source_xml_tree, False)
     print(f'Applying branding to {source_string_path}')
     write_xml_file_from_tree(source_string_path, source_xml_tree)
 
@@ -146,11 +146,11 @@ def get_override_file_path(source_string_path):
     return override_string_path
 
 
-def update_xtbs_locally(grd_file_path, brave_source_root):
+def update_xtbs_locally(grd_file_path, luxxle_source_root):
     """Updates XTBs from the local Chromium files"""
     xtb_files = get_xtb_files(grd_file_path)
     chromium_grd_file_path = get_chromium_grd_src_with_fallback(grd_file_path,
-        brave_source_root)
+        luxxle_source_root)
     chromium_xtb_files = get_xtb_files(chromium_grd_file_path)
     if len(xtb_files) != len(chromium_xtb_files):
         assert False, (f'XTB files counts in {grd_file_path} and ' +
@@ -164,12 +164,12 @@ def update_xtbs_locally(grd_file_path, brave_source_root):
     grd_strings = get_grd_strings(grd_file_path, validate_tags=False)
     chromium_grd_strings = get_grd_strings(
         chromium_grd_file_path, validate_tags=False)
-    # Special treatment for brave_strings.grd
-    brave_strings_string_ids = []
-    if os.path.basename(grd_file_path) == 'brave_strings.grd':
+    # Special treatment for luxxle_strings.grd
+    luxxle_strings_string_ids = []
+    if os.path.basename(grd_file_path) == 'luxxle_strings.grd':
         assert len(grd_strings) == len(chromium_grd_strings) + \
             len(GOOGLE_CHROME_STRINGS_MIGRATION_MAP)
-        brave_strings_string_ids = remove_google_chrome_strings(
+        luxxle_strings_string_ids = remove_google_chrome_strings(
             grd_strings, GOOGLE_CHROME_STRINGS_MIGRATION_MAP)
     assert len(grd_strings) == len(chromium_grd_strings), (
         f'String count in {grd_file_path} and in {chromium_grd_file_path} do' +
@@ -199,7 +199,7 @@ def update_xtbs_locally(grd_file_path, brave_source_root):
         xml_tree = lxml.etree.parse(chromium_xtb_file)
 
         for node in xml_tree.xpath('//translation'):
-            generate_braveified_node(node, False, True)
+            generate_luxxleified_node(node, False, True)
             # Use our fp, when exists.
             old_fp = node.attrib['id']
             # It's possible for an xtb string to not be in our GRD.
@@ -211,10 +211,10 @@ def update_xtbs_locally(grd_file_path, brave_source_root):
                     node.attrib['id'] = new_fp
                     # print(f'fp: {old_fp} -> {new_fp}')
 
-        # Special treatment for brave_strings.grd
-        if os.path.basename(grd_file_path) == 'brave_strings.grd':
+        # Special treatment for luxxle_strings.grd
+        if os.path.basename(grd_file_path) == 'luxxle_strings.grd':
             add_google_chrome_translations(xtb_file, xml_tree,
-                                           brave_strings_string_ids)
+                                           luxxle_strings_string_ids)
 
         transformed_content = (b'<?xml version="1.0" ?>\n' +
             lxml.etree.tostring(xml_tree, pretty_print=True,
@@ -292,24 +292,24 @@ def get_grd_languages(grd_file_path):
     return {lang for (lang, _) in xtb_files}
 
 
-def get_chromium_grd_src_with_fallback(grd_file_path, brave_source_root):
-    source_root = os.path.dirname(brave_source_root)
+def get_chromium_grd_src_with_fallback(grd_file_path, luxxle_source_root):
+    source_root = os.path.dirname(luxxle_source_root)
     chromium_grd_file_path = get_original_grd(source_root, grd_file_path)
     if not chromium_grd_file_path:
-        rel_path = os.path.relpath(grd_file_path, brave_source_root)
+        rel_path = os.path.relpath(grd_file_path, luxxle_source_root)
         chromium_grd_file_path = os.path.join(source_root, rel_path)
     return chromium_grd_file_path
 
 
 def get_original_grd(src_root, grd_file_path):
-    """Obtains the Chromium GRD file for a specified Brave GRD file."""
+    """Obtains the Chromium GRD file for a specified Luxxle GRD file."""
     # pylint: disable=fixme
     # TODO: consider passing this mapping into the script from l10nUtil.js
     grd_file_name = os.path.basename(grd_file_path)
-    if grd_file_name == 'components_brave_strings.grd':
+    if grd_file_name == 'components_luxxle_strings.grd':
         return os.path.join(src_root, 'components',
                             'components_chromium_strings.grd')
-    if grd_file_name == 'brave_strings.grd':
+    if grd_file_name == 'luxxle_strings.grd':
         return os.path.join(src_root, 'chrome', 'app', 'chromium_strings.grd')
     if grd_file_name == 'generated_resources.grd':
         return os.path.join(src_root, 'chrome', 'app',
@@ -379,31 +379,31 @@ def get_grd_strings(grd_file_path, validate_tags=True):
     return strings
 
 
-def remove_google_chrome_strings(brave_grd_strings, google_chrome_strings_map):
+def remove_google_chrome_strings(luxxle_grd_strings, google_chrome_strings_map):
     string_ids = []
     string_names = [
         string_name[4:].lower()
         for string_name in google_chrome_strings_map.values()
     ]
     to_remove = []
-    for string_tuple in brave_grd_strings:
+    for string_tuple in luxxle_grd_strings:
         if string_tuple[0] in string_names:
             to_remove.append(string_tuple)
             string_ids.append(string_tuple[2])
     assert len(to_remove) == len(google_chrome_strings_map)
 
     for string_tuple in to_remove:
-        brave_grd_strings.remove(string_tuple)
+        luxxle_grd_strings.remove(string_tuple)
 
     return string_ids
 
 
-def add_google_chrome_translations(brave_strings_xtb_file, xml_tree,
+def add_google_chrome_translations(luxxle_strings_xtb_file, xml_tree,
                                    string_ids):
-    brave_xtb_tree = lxml.etree.parse(brave_strings_xtb_file)
+    luxxle_xtb_tree = lxml.etree.parse(luxxle_strings_xtb_file)
     translationbundle = xml_tree.xpath('//translationbundle')[0]
     for string_id in string_ids:
-        translation = brave_xtb_tree.xpath(
+        translation = luxxle_xtb_tree.xpath(
             '//translation[@id="{}"]'.format(string_id))[0]
         translationbundle.append(translation)
 
@@ -437,8 +437,8 @@ def is_translateable_string(grd_file_path, message_tag):
     if message_tag.get('translateable') != 'false':
         return True
     # Check for exceptions that aren't translateable in Chromium, but are made
-    # to be translateable in Brave. These can be found in the main function in
-    # brave/script/chromium-rebase-l10n.py
+    # to be translateable in Luxxle. These can be found in the main function in
+    # luxxle/script/chromium-rebase-l10n.py
     grd_file_name = os.path.basename(grd_file_path)
     if grd_file_name == 'chromium_strings.grd':
         exceptions = {'IDS_SXS_SHORTCUT_NAME',

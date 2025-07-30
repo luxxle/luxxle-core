@@ -1,4 +1,4 @@
-// Copyright (c) 2024 The Brave Authors. All rights reserved.
+// Copyright (c) 2024 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -201,20 +201,20 @@ describe('TeamcityReporter', () => {
     it('should generate the correct test prefix for a test file', () => {
       const testCases = [
         {
-          testFilePath: 'components/test/brave_new_tab_ui/state/gridSitesState_test.ts',
-          expectedPrefix: 'components.test.brave_new_tab_ui.state.gridSitesState_test.ts.Test'
+          testFilePath: 'components/test/luxxle_new_tab_ui/state/gridSitesState_test.ts',
+          expectedPrefix: 'components.test.luxxle_new_tab_ui.state.gridSitesState_test.ts.Test'
         },
         {
-          testFilePath: 'components/test/brave_new_tab_ui/state/gridSitesState_test@#$%...ts',
-          expectedPrefix: 'components.test.brave_new_tab_ui.state.gridSitesState_test__$_.ts.Test'
+          testFilePath: 'components/test/luxxle_new_tab_ui/state/gridSitesState_test@#$%...ts',
+          expectedPrefix: 'components.test.luxxle_new_tab_ui.state.gridSitesState_test__$_.ts.Test'
         },
         {
-          testFilePath: '0components/test/brave_new_tab_ui/state/gridSitesState_test.ts',
-          expectedPrefix: '_0components.test.brave_new_tab_ui.state.gridSitesState_test.ts.Test'
+          testFilePath: '0components/test/luxxle_new_tab_ui/state/gridSitesState_test.ts',
+          expectedPrefix: '_0components.test.luxxle_new_tab_ui.state.gridSitesState_test.ts.Test'
         },
         {
-          testFilePath: 'components\\test\\brave_new_tab_ui\\state\\gridSitesState_test.ts',
-          expectedPrefix: 'components.test.brave_new_tab_ui.state.gridSitesState_test.ts.Test'
+          testFilePath: 'components\\test\\luxxle_new_tab_ui\\state\\gridSitesState_test.ts',
+          expectedPrefix: 'components.test.luxxle_new_tab_ui.state.gridSitesState_test.ts.Test'
         }
       ]
       for (const testCase of testCases) {

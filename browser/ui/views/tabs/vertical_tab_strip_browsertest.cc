@@ -10,18 +10,18 @@
 #include "base/test/run_until.h"
 #include "base/test/scoped_feature_list.h"
 #include "luxxle/browser/ui/browser_commands.h"
-#include "luxxle/browser/ui/tabs/brave_tab_menu_model.h"
-#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/luxxle_tab_menu_model.h"
+#include "luxxle/browser/ui/tabs/luxxle_tab_prefs.h"
 #include "luxxle/browser/ui/tabs/features.h"
-#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_view.h"
 #include "luxxle/browser/ui/views/frame/vertical_tab_strip_region_view.h"
 #include "luxxle/browser/ui/views/frame/vertical_tab_strip_widget_delegate_view.h"
-#include "luxxle/browser/ui/views/tabs/brave_browser_tab_strip_controller.h"
-#include "luxxle/browser/ui/views/tabs/brave_compound_tab_container.h"
-#include "luxxle/browser/ui/views/tabs/brave_new_tab_button.h"
-#include "luxxle/browser/ui/views/tabs/brave_tab_context_menu_contents.h"
-#include "luxxle/browser/ui/views/tabs/brave_tab_strip.h"
-#include "luxxle/browser/ui/views/tabs/brave_tab_strip_layout_helper.h"
+#include "luxxle/browser/ui/views/tabs/luxxle_browser_tab_strip_controller.h"
+#include "luxxle/browser/ui/views/tabs/luxxle_compound_tab_container.h"
+#include "luxxle/browser/ui/views/tabs/luxxle_new_tab_button.h"
+#include "luxxle/browser/ui/views/tabs/luxxle_tab_context_menu_contents.h"
+#include "luxxle/browser/ui/views/tabs/luxxle_tab_strip.h"
+#include "luxxle/browser/ui/views/tabs/luxxle_tab_strip_layout_helper.h"
 #include "luxxle/browser/ui/views/tabs/switches.h"
 #include "luxxle/browser/ui/views/tabs/vertical_tab_utils.h"
 #include "luxxle/components/constants/pref_names.h"
@@ -127,11 +127,11 @@ class VerticalTabStripBrowserTest : public InProcessBrowserTest {
   VerticalTabStripBrowserTest() = default;
   ~VerticalTabStripBrowserTest() override = default;
 
-  const BraveBrowserView* browser_view() const {
-    return static_cast<BraveBrowserView*>(browser()->window());
+  const LuxxleBrowserView* browser_view() const {
+    return static_cast<LuxxleBrowserView*>(browser()->window());
   }
-  BraveBrowserView* browser_view() {
-    return static_cast<BraveBrowserView*>(browser()->window());
+  LuxxleBrowserView* browser_view() {
+    return static_cast<LuxxleBrowserView*>(browser()->window());
   }
   BrowserNonClientFrameView* browser_non_client_frame_view() {
     return browser_view()->frame()->GetFrameView();
@@ -360,11 +360,11 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripBrowserTest, VisualState) {
 
   // Try Expanding / collapsing
   auto* prefs = browser()->profile()->GetOriginalProfile()->GetPrefs();
-  prefs->SetBoolean(brave_tabs::kVerticalTabsCollapsed, true);
+  prefs->SetBoolean(luxxle_tabs::kVerticalTabsCollapsed, true);
   EXPECT_EQ(State::kCollapsed, region_view->state());
-  prefs->SetBoolean(brave_tabs::kVerticalTabsCollapsed, false);
+  prefs->SetBoolean(luxxle_tabs::kVerticalTabsCollapsed, false);
   EXPECT_EQ(State::kExpanded, region_view->state());
-  prefs->SetBoolean(brave_tabs::kVerticalTabsCollapsed, true);
+  prefs->SetBoolean(luxxle_tabs::kVerticalTabsCollapsed, true);
 
   // Check if mouse hover triggers floating mode.
   {
@@ -385,7 +385,7 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripBrowserTest, VisualState) {
   }
 
   // When floating mode is disabled, it shouldn't be triggered.
-  prefs->SetBoolean(brave_tabs::kVerticalTabsFloatingEnabled, false);
+  prefs->SetBoolean(luxxle_tabs::kVerticalTabsFloatingEnabled, false);
   {
     base::AutoReset resetter(&region_view->mouse_events_for_test_, true);
     ui::MouseEvent event(ui::EventType::kMouseEntered, gfx::PointF(),
@@ -502,7 +502,7 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripBrowserTest, LayoutSanity) {
 
   // Test if every tabs are laid out inside tab strip region -------------------
   // This is a regression test for
-  // https://github.com/luxxle/brave-browser/issues/28084
+  // https://github.com/luxxle/luxxle-browser/issues/28084
   for (int i = 0; i < model->count(); i++) {
     auto* tab = GetTabAt(browser(), i);
     EXPECT_TRUE(GetBoundsInScreen(region_view, region_view->GetLocalBounds())
@@ -556,47 +556,47 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripBrowserTest, ScrollBarVisibility) {
   ToggleVerticalTabStrip();
 
   auto* prefs = browser()->profile()->GetPrefs();
-  auto* pref = prefs->FindPreference(brave_tabs::kVerticalTabsShowScrollbar);
+  auto* pref = prefs->FindPreference(luxxle_tabs::kVerticalTabsShowScrollbar);
 
   // Check if the default value is false
   EXPECT_TRUE(pref && pref->IsDefaultValue());
-  EXPECT_FALSE(prefs->GetBoolean(brave_tabs::kVerticalTabsShowScrollbar));
+  EXPECT_FALSE(prefs->GetBoolean(luxxle_tabs::kVerticalTabsShowScrollbar));
 
   auto get_tab_container = [&]() {
-    return views::AsViewClass<BraveTabStrip>(browser_view()->tabstrip())
+    return views::AsViewClass<LuxxleTabStrip>(browser_view()->tabstrip())
         ->GetTabContainerForTesting();
   };
 
-  auto* brave_tab_container =
-      views::AsViewClass<BraveCompoundTabContainer>(get_tab_container());
-  EXPECT_TRUE(brave_tab_container);
+  auto* luxxle_tab_container =
+      views::AsViewClass<LuxxleCompoundTabContainer>(get_tab_container());
+  EXPECT_TRUE(luxxle_tab_container);
   EXPECT_EQ(views::ScrollView::ScrollBarMode::kHiddenButEnabled,
-            brave_tab_container->scroll_view_->GetVerticalScrollBarMode());
+            luxxle_tab_container->scroll_view_->GetVerticalScrollBarMode());
 
   // Turn on the prefs and checks if scrollbar becomes visible
-  prefs->SetBoolean(brave_tabs::kVerticalTabsShowScrollbar, true);
+  prefs->SetBoolean(luxxle_tabs::kVerticalTabsShowScrollbar, true);
   EXPECT_EQ(views::ScrollView::ScrollBarMode::kEnabled,
-            brave_tab_container->scroll_view_->GetVerticalScrollBarMode());
+            luxxle_tab_container->scroll_view_->GetVerticalScrollBarMode());
 
   // Turning off and on vertical tabs and see if the visibility persists.
   ToggleVerticalTabStrip();
   ToggleVerticalTabStrip();
-  brave_tab_container =
-      views::AsViewClass<BraveCompoundTabContainer>(get_tab_container());
+  luxxle_tab_container =
+      views::AsViewClass<LuxxleCompoundTabContainer>(get_tab_container());
   EXPECT_EQ(views::ScrollView::ScrollBarMode::kEnabled,
-            brave_tab_container->scroll_view_->GetVerticalScrollBarMode());
+            luxxle_tab_container->scroll_view_->GetVerticalScrollBarMode());
 
   // Checks if scrollbar is hidden when the pref is turned off.
-  prefs->SetBoolean(brave_tabs::kVerticalTabsShowScrollbar, false);
+  prefs->SetBoolean(luxxle_tabs::kVerticalTabsShowScrollbar, false);
   EXPECT_EQ(views::ScrollView::ScrollBarMode::kHiddenButEnabled,
-            brave_tab_container->scroll_view_->GetVerticalScrollBarMode());
+            luxxle_tab_container->scroll_view_->GetVerticalScrollBarMode());
 }
 
 IN_PROC_BROWSER_TEST_F(VerticalTabStripBrowserTest, ExpandedState) {
   // Given that kVerticalTabsExpandedStatePerWindow is false,
   auto* prefs = browser()->profile()->GetPrefs();
   ASSERT_FALSE(
-      prefs->GetBoolean(brave_tabs::kVerticalTabsExpandedStatePerWindow));
+      prefs->GetBoolean(luxxle_tabs::kVerticalTabsExpandedStatePerWindow));
 
   // When clicking the toggle button,
   using State = VerticalTabStripRegionView::State;
@@ -608,11 +608,11 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripBrowserTest, ExpandedState) {
 
   region_view_1->GetToggleButtonForTesting().button_controller()->NotifyClick();
   EXPECT_EQ(State::kCollapsed, region_view_1->state());
-  EXPECT_TRUE(prefs->GetBoolean(brave_tabs::kVerticalTabsCollapsed));
+  EXPECT_TRUE(prefs->GetBoolean(luxxle_tabs::kVerticalTabsCollapsed));
 
   // it affects all browsers.
   auto* region_view_2 =
-      static_cast<BraveBrowserView*>(
+      static_cast<LuxxleBrowserView*>(
           Browser::Create(Browser::CreateParams(browser()->profile(), true))
               ->window())
           ->vertical_tab_strip_widget_delegate_view_
@@ -620,14 +620,14 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripBrowserTest, ExpandedState) {
   EXPECT_EQ(State::kCollapsed, region_view_2->state());
 
   // Given that kVerticalTabsExpandedStatePerWindow is true,
-  prefs->SetBoolean(brave_tabs::kVerticalTabsExpandedStatePerWindow, true);
+  prefs->SetBoolean(luxxle_tabs::kVerticalTabsExpandedStatePerWindow, true);
 
   // When clicking the toggle button,
   region_view_1->GetToggleButtonForTesting().button_controller()->NotifyClick();
 
   // it affects only the browser
   EXPECT_EQ(State::kExpanded, region_view_1->state());
-  EXPECT_FALSE(prefs->GetBoolean(brave_tabs::kVerticalTabsCollapsed));
+  EXPECT_FALSE(prefs->GetBoolean(luxxle_tabs::kVerticalTabsCollapsed));
   EXPECT_EQ(State::kCollapsed, region_view_2->state());
 
   // Check expanded state is toggled via command.
@@ -637,9 +637,9 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripBrowserTest, ExpandedState) {
   EXPECT_EQ(State::kCollapsed, region_view_1->state());
 
   // And new browser should follow the preference.
-  prefs->SetBoolean(brave_tabs::kVerticalTabsCollapsed, true);
+  prefs->SetBoolean(luxxle_tabs::kVerticalTabsCollapsed, true);
   auto* region_view_3 =
-      static_cast<BraveBrowserView*>(
+      static_cast<LuxxleBrowserView*>(
           Browser::Create(Browser::CreateParams(browser()->profile(), true))
               ->window())
           ->vertical_tab_strip_widget_delegate_view_
@@ -651,7 +651,7 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripBrowserTest, ExpandedWidth) {
   // Given that kVerticalTabsExpandedStatePerWindow is false,
   auto* prefs = browser()->profile()->GetPrefs();
   ASSERT_FALSE(
-      prefs->GetBoolean(brave_tabs::kVerticalTabsExpandedStatePerWindow));
+      prefs->GetBoolean(luxxle_tabs::kVerticalTabsExpandedStatePerWindow));
 
   // When setting the expanded width,
   using State = VerticalTabStripRegionView::State;
@@ -663,11 +663,11 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripBrowserTest, ExpandedWidth) {
 
   region_view_1->SetExpandedWidth(100);
   EXPECT_EQ(100, region_view_1->expanded_width_);
-  EXPECT_EQ(100, prefs->GetValue(brave_tabs::kVerticalTabsExpandedWidth));
+  EXPECT_EQ(100, prefs->GetValue(luxxle_tabs::kVerticalTabsExpandedWidth));
 
   // it affects all browsers.
   auto* region_view_2 =
-      static_cast<BraveBrowserView*>(
+      static_cast<LuxxleBrowserView*>(
           Browser::Create(Browser::CreateParams(browser()->profile(), true))
               ->window())
           ->vertical_tab_strip_widget_delegate_view_
@@ -675,20 +675,20 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripBrowserTest, ExpandedWidth) {
   EXPECT_EQ(100, region_view_2->expanded_width_);
 
   // Given that kVerticalTabsExpandedStatePerWindow is true,
-  prefs->SetBoolean(brave_tabs::kVerticalTabsExpandedStatePerWindow, true);
+  prefs->SetBoolean(luxxle_tabs::kVerticalTabsExpandedStatePerWindow, true);
 
   // When clicking the toggle button,
   region_view_1->SetExpandedWidth(200);
 
   // it affects only the browser
   EXPECT_EQ(200, region_view_1->expanded_width_);
-  EXPECT_EQ(200, prefs->GetValue(brave_tabs::kVerticalTabsExpandedWidth));
+  EXPECT_EQ(200, prefs->GetValue(luxxle_tabs::kVerticalTabsExpandedWidth));
   EXPECT_EQ(100, region_view_2->expanded_width_);
 
   // And new browser should follow the preference.
-  prefs->SetBoolean(brave_tabs::kVerticalTabsCollapsed, true);
+  prefs->SetBoolean(luxxle_tabs::kVerticalTabsCollapsed, true);
   auto* region_view_3 =
-      static_cast<BraveBrowserView*>(
+      static_cast<LuxxleBrowserView*>(
           Browser::Create(Browser::CreateParams(browser()->profile(), true))
               ->window())
           ->vertical_tab_strip_widget_delegate_view_
@@ -711,9 +711,9 @@ class VerticalTabStripStringBrowserTest : public VerticalTabStripBrowserTest {
 IN_PROC_BROWSER_TEST_F(VerticalTabStripStringBrowserTest, ContextMenuString) {
   // Pre-conditions ------------------------------------------------------------
   auto create_tab_context_menu_contents = [&]() {
-    return std::make_unique<BraveTabContextMenuContents>(
+    return std::make_unique<LuxxleTabContextMenuContents>(
         GetTabAt(browser(), 0),
-        static_cast<BraveBrowserTabStripController*>(
+        static_cast<LuxxleBrowserTabStripController*>(
             browser_view()->tabstrip()->controller()),
         /* index= */ 0);
   };
@@ -750,7 +750,7 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripStringBrowserTest, ContextMenuString) {
   {
     // Check if there's no "Right" or "Left" in context menu labels when it's
     // vertical tab strip. When this fails, we should revisit
-    // BraveTabMenuModel::GetLabelAt().
+    // LuxxleTabMenuModel::GetLabelAt().
     auto context_menu_contents = create_tab_context_menu_contents();
     EXPECT_TRUE(std::ranges::none_of(get_all_labels(), [](const auto& label) {
 #if BUILDFLAG(IS_MAC)
@@ -802,7 +802,7 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripBrowserTest, OriginalTabSearchButton) {
 }
 
 IN_PROC_BROWSER_TEST_F(VerticalTabStripBrowserTest, PinningGroupedTab) {
-  // Regression check for https://github.com/luxxle/brave-browser/issues/40201
+  // Regression check for https://github.com/luxxle/luxxle-browser/issues/40201
   ToggleVerticalTabStrip();
 
   AppendTab(browser());
@@ -952,7 +952,7 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripDragAndDropBrowserTest,
   GetTabStrip(browser())->StopAnimating(
       true);  // Drag-and-drop doesn't start when animation is running.
   {
-    // Regression test for https://github.com/luxxle/brave-browser/issues/28488
+    // Regression test for https://github.com/luxxle/luxxle-browser/issues/28488
     // Check if the tab is positioned properly after drag-and-drop.
     auto* moved_tab = GetTabAt(browser(), 1);
     EXPECT_TRUE(GetBoundsInScreen(region_view, region_view->GetLocalBounds())
@@ -1042,11 +1042,11 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripDragAndDropBrowserTest, MAYBE_DragURL) {
   };
 
   ASSERT_TRUE(
-      ui_test_utils::NavigateToURL(browser(), GURL("https://brave.com/")));
+      ui_test_utils::NavigateToURL(browser(), GURL("https://luxxle.com/")));
 
   // Test if dragging a URL on browser cause a crash. When this happens, the
   // browser root view could try inserting a new tab with the given URL.
-  // https://github.com/luxxle/brave-browser/issues/28592
+  // https://github.com/luxxle/luxxle-browser/issues/28592
   auto* location_icon_view =
       browser_view()->GetLocationBarView()->location_icon_view();
   press_view(location_icon_view);
@@ -1072,7 +1072,7 @@ class VerticalTabStripWithScrollableTabBrowserTest
 
 IN_PROC_BROWSER_TEST_F(VerticalTabStripWithScrollableTabBrowserTest, Sanity) {
   // Make sure browser works with both vertical tab and scrollable tab strip
-  // https://github.com/luxxle/brave-browser/issues/28877
+  // https://github.com/luxxle/luxxle-browser/issues/28877
   ToggleVerticalTabStrip();
   Browser::Create(Browser::CreateParams(browser()->profile(), true));
 }
@@ -1100,14 +1100,14 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripWithScrollableTabBrowserTest, Sanity) {
     /* Manipulate size and state */                                       \
     auto* prefs = browser()->profile()->GetOriginalProfile()->GetPrefs(); \
     browser_view()->Maximize();                                           \
-    prefs->SetBoolean(brave_tabs::kVerticalTabsCollapsed, true);          \
-    prefs->SetBoolean(brave_tabs::kVerticalTabsCollapsed, false);         \
-    prefs->SetBoolean(brave_tabs::kVerticalTabsCollapsed, true);          \
+    prefs->SetBoolean(luxxle_tabs::kVerticalTabsCollapsed, true);          \
+    prefs->SetBoolean(luxxle_tabs::kVerticalTabsCollapsed, false);         \
+    prefs->SetBoolean(luxxle_tabs::kVerticalTabsCollapsed, true);          \
                                                                           \
     browser_view()->Restore();                                            \
-    prefs->SetBoolean(brave_tabs::kVerticalTabsCollapsed, true);          \
-    prefs->SetBoolean(brave_tabs::kVerticalTabsCollapsed, false);         \
-    prefs->SetBoolean(brave_tabs::kVerticalTabsCollapsed, true);          \
+    prefs->SetBoolean(luxxle_tabs::kVerticalTabsCollapsed, true);          \
+    prefs->SetBoolean(luxxle_tabs::kVerticalTabsCollapsed, false);         \
+    prefs->SetBoolean(luxxle_tabs::kVerticalTabsCollapsed, true);          \
                                                                           \
     /* Get back to horizontal tab strip - there shouldn't be crash */     \
     ToggleVerticalTabStrip();                                             \
@@ -1151,7 +1151,7 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripSwitchTest, DisableSwitch) {
 class VerticalTabStripScrollBarFlagTest : public VerticalTabStripBrowserTest {
  public:
   VerticalTabStripScrollBarFlagTest()
-      : feature_list_(tabs::features::kBraveVerticalTabScrollBar) {}
+      : feature_list_(tabs::features::kLuxxleVerticalTabScrollBar) {}
 
   ~VerticalTabStripScrollBarFlagTest() override = default;
 
@@ -1161,10 +1161,10 @@ class VerticalTabStripScrollBarFlagTest : public VerticalTabStripBrowserTest {
 
 IN_PROC_BROWSER_TEST_F(VerticalTabStripScrollBarFlagTest, MigrationTest) {
   auto* prefs = browser()->profile()->GetPrefs();
-  auto* pref = prefs->FindPreference(brave_tabs::kVerticalTabsShowScrollbar);
+  auto* pref = prefs->FindPreference(luxxle_tabs::kVerticalTabsShowScrollbar);
   ASSERT_TRUE(pref);
 
   // Check if pref is set to true when user turned on the feature flag.
   EXPECT_FALSE(pref->IsDefaultValue());
-  EXPECT_TRUE(prefs->GetBoolean(brave_tabs::kVerticalTabsShowScrollbar));
+  EXPECT_TRUE(prefs->GetBoolean(luxxle_tabs::kVerticalTabsShowScrollbar));
 }

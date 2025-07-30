@@ -4,5 +4,5 @@
 # This file provides variables for components/visited_url_ranking/internal/BUILD.gn
 
 # Define empty sync device info variables to use Chromium defaults
-brave_components_sync_device_info_sources = []
-brave_components_sync_device_info_deps = [] 
+luxxle_components_sync_device_info_sources = []
+luxxle_components_sync_device_info_deps = [] 

@@ -11,7 +11,7 @@
   }],
   "benchmarks": [
     {
-      "name": "loading.desktop.brave",
+      "name": "loading.desktop.luxxle",
       "pageset-repeat": 20,
       "stories": [
         "example.com_cold",
@@ -20,7 +20,7 @@
       ]
     },
     {
-      "name": "loading.desktop.brave.startup",
+      "name": "loading.desktop.luxxle.startup",
       "pageset-repeat": 10,
       "stories": [
         "example.com_cold",

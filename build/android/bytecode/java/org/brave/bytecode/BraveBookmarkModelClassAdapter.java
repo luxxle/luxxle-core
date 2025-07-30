@@ -3,23 +3,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveBookmarkModelClassAdapter extends BraveClassVisitor {
-    static String sBraveBookmarkBridgeClassName =
-            "org/chromium/chrome/browser/bookmarks/BraveBookmarkBridge";
+public class LuxxleBookmarkModelClassAdapter extends LuxxleClassVisitor {
+    static String sLuxxleBookmarkBridgeClassName =
+            "org/chromium/chrome/browser/bookmarks/LuxxleBookmarkBridge";
     static String sBookmarkModelClassName = "org/chromium/chrome/browser/bookmarks/BookmarkModel";
-    static String sBraveBookmarkModelClassName =
-            "org/chromium/chrome/browser/bookmarks/BraveBookmarkModel";
+    static String sLuxxleBookmarkModelClassName =
+            "org/chromium/chrome/browser/bookmarks/LuxxleBookmarkModel";
 
-    public BraveBookmarkModelClassAdapter(ClassVisitor visitor) {
+    public LuxxleBookmarkModelClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        changeSuperName(sBookmarkModelClassName, sBraveBookmarkBridgeClassName);
-        redirectConstructor(sBookmarkModelClassName, sBraveBookmarkModelClassName);
-        deleteMethod(sBraveBookmarkModelClassName, "importBookmarks");
-        deleteMethod(sBraveBookmarkModelClassName, "exportBookmarks");
+        changeSuperName(sBookmarkModelClassName, sLuxxleBookmarkBridgeClassName);
+        redirectConstructor(sBookmarkModelClassName, sLuxxleBookmarkModelClassName);
+        deleteMethod(sLuxxleBookmarkModelClassName, "importBookmarks");
+        deleteMethod(sLuxxleBookmarkModelClassName, "exportBookmarks");
     }
 }

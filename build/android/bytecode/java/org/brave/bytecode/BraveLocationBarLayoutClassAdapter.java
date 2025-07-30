@@ -3,23 +3,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveLocationBarLayoutClassAdapter extends BraveClassVisitor {
-    static String sBraveLocationBarLayout =
-            "org/chromium/chrome/browser/omnibox/BraveLocationBarLayout";
+public class LuxxleLocationBarLayoutClassAdapter extends LuxxleClassVisitor {
+    static String sLuxxleLocationBarLayout =
+            "org/chromium/chrome/browser/omnibox/LuxxleLocationBarLayout";
     static String sLocationBarPhone = "org/chromium/chrome/browser/omnibox/LocationBarPhone";
     static String sLocationBarTablet = "org/chromium/chrome/browser/omnibox/LocationBarTablet";
     static String sSearchActivityLocationBarLayout =
             "org/chromium/chrome/browser/searchwidget/SearchActivityLocationBarLayout";
 
-    public BraveLocationBarLayoutClassAdapter(ClassVisitor visitor) {
+    public LuxxleLocationBarLayoutClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        changeSuperName(sLocationBarPhone, sBraveLocationBarLayout);
-        changeSuperName(sLocationBarTablet, sBraveLocationBarLayout);
-        changeSuperName(sSearchActivityLocationBarLayout, sBraveLocationBarLayout);
+        changeSuperName(sLocationBarPhone, sLuxxleLocationBarLayout);
+        changeSuperName(sLocationBarTablet, sLuxxleLocationBarLayout);
+        changeSuperName(sSearchActivityLocationBarLayout, sLuxxleLocationBarLayout);
     }
 }

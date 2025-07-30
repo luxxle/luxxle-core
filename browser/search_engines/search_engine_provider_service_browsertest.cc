@@ -7,8 +7,8 @@
 #include <vector>
 
 #include "base/path_service.h"
-#include "luxxle/browser/profile_resetter/brave_profile_resetter.h"
-#include "luxxle/browser/profiles/brave_profile_manager.h"
+#include "luxxle/browser/profile_resetter/luxxle_profile_resetter.h"
+#include "luxxle/browser/profiles/luxxle_profile_manager.h"
 #include "luxxle/browser/profiles/profile_util.h"
 #include "luxxle/browser/search_engines/pref_names.h"
 #include "luxxle/browser/search_engines/search_engine_provider_service_factory.h"
@@ -16,7 +16,7 @@
 #include "luxxle/browser/ui/browser_commands.h"
 #include "luxxle/components/constants/pref_names.h"
 #include "luxxle/components/l10n/common/test/scoped_default_locale.h"
-#include "luxxle/components/search_engines/brave_prepopulated_engines.h"
+#include "luxxle/components/search_engines/luxxle_prepopulated_engines.h"
 #include "luxxle/components/tor/buildflags/buildflags.h"
 #include "build/build_config.h"
 #include "chrome/browser/profile_resetter/brandcoded_default_settings.h"
@@ -81,14 +81,14 @@ TemplateURLData CreateTestSearchEngine() {
   return result;
 }
 
-std::string GetBraveSearchProviderSyncGUID(Profile* profile) {
+std::string GetLuxxleSearchProviderSyncGUID(Profile* profile) {
   CHECK(profile);
   auto data = TemplateURLPrepopulateData::GetPrepopulatedEngine(
       *profile->GetPrefs(),
       regional_capabilities::RegionalCapabilitiesServiceFactory::GetForProfile(
           profile)
           ->GetRegionalPrepopulatedEngines(),
-      TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_BRAVE);
+      TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_LUXXLE);
   DCHECK(data);
   return data->sync_guid;
 }
@@ -110,13 +110,13 @@ IN_PROC_BROWSER_TEST_F(SearchEngineProviderServiceTest,
   auto* service = TemplateURLServiceFactory::GetForProfile(profile);
   EXPECT_TRUE(VerifyTemplateURLServiceLoad(service));
 
-  EXPECT_EQ(GetBraveSearchProviderSyncGUID(profile),
+  EXPECT_EQ(GetLuxxleSearchProviderSyncGUID(profile),
             profile->GetPrefs()->GetString(
                 prefs::kSyncedDefaultPrivateSearchProviderGUID));
 }
 
 // Check crash isn't happened with multiple private window is used.
-// https://github.com/luxxle/brave-browser/issues/1452
+// https://github.com/luxxle/luxxle-browser/issues/1452
 IN_PROC_BROWSER_TEST_F(SearchEngineProviderServiceTest,
                        MultiplePrivateWindowTest) {
   Browser* private_window_1 = CreateIncognitoBrowser();
@@ -157,9 +157,9 @@ IN_PROC_BROWSER_TEST_F(SearchEngineProviderServiceTest,
       service->GetDefaultSearchProvider()->prepopulate_id();
   const int initial_private_provider_id =
       incognito_service->GetDefaultSearchProvider()->prepopulate_id();
-  // Check Brave Search is default provider for private window.
+  // Check Luxxle Search is default provider for private window.
   EXPECT_EQ(static_cast<int>(
-                TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_BRAVE),
+                TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_LUXXLE),
             initial_private_provider_id);
 
   // Check changing normal provider doesn't affect private provider.
@@ -185,7 +185,7 @@ IN_PROC_BROWSER_TEST_F(SearchEngineProviderServiceTest,
             incognito_service->GetDefaultSearchProvider()->prepopulate_id());
 
   // Reset and check initial one is set.
-  BraveProfileResetter resetter(profile);
+  LuxxleProfileResetter resetter(profile);
   std::unique_ptr<BrandcodedDefaultSettings> master_settings(
       new BrandcodedDefaultSettings);
   ProfileResetterMockObject mock_object;
@@ -201,7 +201,7 @@ IN_PROC_BROWSER_TEST_F(SearchEngineProviderServiceTest,
   // properly.
   profile->GetPrefs()->SetString(prefs::kSyncedDefaultPrivateSearchProviderGUID,
                                  "invalid_id");
-  EXPECT_EQ(GetBraveSearchProviderSyncGUID(profile),
+  EXPECT_EQ(GetLuxxleSearchProviderSyncGUID(profile),
             profile->GetPrefs()->GetString(
                 prefs::kSyncedDefaultPrivateSearchProviderGUID));
   EXPECT_EQ(initial_private_provider_id,
@@ -217,7 +217,7 @@ IN_PROC_BROWSER_TEST_F(SearchEngineProviderServiceTest,
   base::RunLoop().RunUntilIdle();
 
   const int default_provider_id =
-      TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_BRAVE_TOR;
+      TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_LUXXLE_TOR;
   auto* tor_service = TemplateURLServiceFactory::GetForProfile(tor_profile);
   EXPECT_EQ(tor_service->GetDefaultSearchProvider()->prepopulate_id(),
             default_provider_id);
@@ -241,7 +241,7 @@ class SearchSuggestionsEnabledTest : public InProcessBrowserTest,
   bool IsNewUser() const { return std::get<1>(GetParam()); }
   bool IsSearchSuggestionsEnabled() const { return std::get<2>(GetParam()); }
 
-  const brave_l10n::test::ScopedDefaultLocale default_locale;
+  const luxxle_l10n::test::ScopedDefaultLocale default_locale;
 };
 
 IN_PROC_BROWSER_TEST_P(SearchSuggestionsEnabledTest,
@@ -249,12 +249,12 @@ IN_PROC_BROWSER_TEST_P(SearchSuggestionsEnabledTest,
   auto* prefs = browser()->profile()->GetPrefs();
   auto* service =
       TemplateURLServiceFactory::GetForProfile(browser()->profile());
-  auto brave_search_data = TemplateURLDataFromPrepopulatedEngine(
-      TemplateURLPrepopulateData::brave_search);
-  TemplateURL brave_template_url(*brave_search_data);
+  auto luxxle_search_data = TemplateURLDataFromPrepopulatedEngine(
+      TemplateURLPrepopulateData::luxxle_search);
+  TemplateURL luxxle_template_url(*luxxle_search_data);
 
   auto bing_search_data = TemplateURLDataFromPrepopulatedEngine(
-      TemplateURLPrepopulateData::brave_bing);
+      TemplateURLPrepopulateData::luxxle_bing);
   TemplateURL bing_template_url(*bing_search_data);
 
   EXPECT_EQ(IsSearchSuggestionsEnabled(),
@@ -264,7 +264,7 @@ IN_PROC_BROWSER_TEST_P(SearchSuggestionsEnabledTest,
   EXPECT_EQ(IsSearchSuggestionsEnabled(),
             prefs->GetBoolean(prefs::kSearchSuggestEnabled));
 
-  service->SetUserSelectedDefaultSearchProvider(&brave_template_url);
+  service->SetUserSelectedDefaultSearchProvider(&luxxle_template_url);
   EXPECT_EQ(IsSearchSuggestionsEnabled(),
             prefs->GetBoolean(prefs::kSearchSuggestEnabled));
 }
@@ -301,7 +301,7 @@ class MigrateSearchEnginePrefsInJPTest : public InProcessBrowserTest {
   PrefService* prefs() { return browser()->profile()->GetPrefs(); }
 
  private:
-  const brave_l10n::test::ScopedDefaultLocale default_locale{"ja_JP"};
+  const luxxle_l10n::test::ScopedDefaultLocale default_locale{"ja_JP"};
 };
 
 IN_PROC_BROWSER_TEST_F(MigrateSearchEnginePrefsInJPTest,
@@ -311,7 +311,7 @@ IN_PROC_BROWSER_TEST_F(MigrateSearchEnginePrefsInJPTest,
   // To simulate existing user at next launch, set 31
   // as we set yahoo as a default in jp at 31.
   // At the next launch, default provider will be yahoo with this setting.
-  prefs()->SetInteger(prefs::kBraveDefaultSearchVersion, 31);
+  prefs()->SetInteger(prefs::kLuxxleDefaultSearchVersion, 31);
 
   // To run migration code again at the next launch.
   prefs()->ClearPref(kMigratedSearchDefaultInJP);
@@ -335,7 +335,7 @@ IN_PROC_BROWSER_TEST_F(MigrateSearchEnginePrefsInJPTest,
   // as we set yahoo as a default in jp at 31.
   // At the next launch, default provider will be non-yahoo by setting old
   // version number.
-  prefs()->SetInteger(prefs::kBraveDefaultSearchVersion, 30);
+  prefs()->SetInteger(prefs::kLuxxleDefaultSearchVersion, 30);
 
   // To make migration code run at the next launch, clear related prefs.
   prefs()->ClearPref(kMigratedSearchDefaultInJP);
@@ -460,11 +460,11 @@ IN_PROC_BROWSER_TEST_F(ExtensionBrowserTest,
   UnloadExtension(extension->id());
   EXPECT_EQ(default_provider, url_service->GetDefaultSearchProvider());
 
-  // Check Brave Search is back to as a default provider for private window
+  // Check Luxxle Search is back to as a default provider for private window
   // after unloading extension.
   current_incognito_dse = incognito_url_service->GetDefaultSearchProvider();
   EXPECT_EQ(static_cast<int>(
-                TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_BRAVE),
+                TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_LUXXLE),
             current_incognito_dse->prepopulate_id());
   EXPECT_EQ(TemplateURL::NORMAL, current_incognito_dse->type());
 }

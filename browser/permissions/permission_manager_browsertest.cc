@@ -11,10 +11,10 @@
 #include "base/test/mock_callback.h"
 #include "base/test/scoped_feature_list.h"
 #include "base/types/zip.h"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
-#include "luxxle/components/permissions/brave_permission_manager.h"
-#include "luxxle/components/permissions/contexts/brave_wallet_permission_context.h"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
+#include "luxxle/components/permissions/luxxle_permission_manager.h"
+#include "luxxle/components/permissions/contexts/luxxle_wallet_permission_context.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/browser/permissions/permission_manager_factory.h"
 #include "chrome/browser/profiles/profile.h"
@@ -79,7 +79,7 @@ class PermissionManagerBrowserTest : public InProcessBrowserTest {
   PermissionManagerBrowserTest()
       : https_server_(net::EmbeddedTestServer::TYPE_HTTPS) {
     scoped_feature_list_.InitAndEnableFeature(
-        brave_wallet::features::kNativeBraveWalletFeature);
+        luxxle_wallet::features::kNativeLuxxleWalletFeature);
   }
 
   ~PermissionManagerBrowserTest() override = default;
@@ -94,7 +94,7 @@ class PermissionManagerBrowserTest : public InProcessBrowserTest {
   }
 
   void SetPermissionManagerForProfile(Profile* profile) {
-    permission_manager_ = static_cast<permissions::BravePermissionManager*>(
+    permission_manager_ = static_cast<permissions::LuxxlePermissionManager*>(
         PermissionManagerFactory::GetForProfile(profile));
   }
 
@@ -115,7 +115,7 @@ class PermissionManagerBrowserTest : public InProcessBrowserTest {
   }
 
   net::EmbeddedTestServer* https_server() { return &https_server_; }
-  BravePermissionManager* permission_manager() { return permission_manager_; }
+  LuxxlePermissionManager* permission_manager() { return permission_manager_; }
 
   bool IsPendingGroupedRequestsEmpty(ContentSettingsType type) {
     PermissionContextBase* context =
@@ -127,15 +127,15 @@ class PermissionManagerBrowserTest : public InProcessBrowserTest {
     SetPermissionManagerForProfile(profile1);
     auto* permission_request_manager = GetPermissionRequestManager();
     const std::string address = "0xaf5Ad1E10926C0Ee4af4eDAC61DD60E853753f8A";
-    ContentSettingsType type = ContentSettingsType::BRAVE_ETHEREUM;
-    blink::PermissionType permission = blink::PermissionType::BRAVE_ETHEREUM;
+    ContentSettingsType type = ContentSettingsType::LUXXLE_ETHEREUM;
+    blink::PermissionType permission = blink::PermissionType::LUXXLE_ETHEREUM;
 
     RequestType request_type = ContentSettingsTypeToRequestType(type);
-    auto sub_request_origin = brave_wallet::GetSubRequestOrigin(
+    auto sub_request_origin = luxxle_wallet::GetSubRequestOrigin(
         request_type, GetLastCommitedOrigin(), address);
     ASSERT_TRUE(sub_request_origin);
 
-    auto origin = brave_wallet::GetConcatOriginFromWalletAddresses(
+    auto origin = luxxle_wallet::GetConcatOriginFromWalletAddresses(
         GetLastCommitedOrigin(), {address});
     ASSERT_TRUE(origin);
 
@@ -151,8 +151,8 @@ class PermissionManagerBrowserTest : public InProcessBrowserTest {
         true, callback.Get());
 
     content::RunAllTasksUntilIdle();
-    permissions::BraveWalletPermissionContext::AcceptOrCancel(
-        {address}, brave_wallet::mojom::PermissionLifetimeOption::kForever,
+    permissions::LuxxleWalletPermissionContext::AcceptOrCancel(
+        {address}, luxxle_wallet::mojom::PermissionLifetimeOption::kForever,
         web_contents());
 
     EXPECT_TRUE(observer->IsRequestsFinalized());
@@ -174,7 +174,7 @@ class PermissionManagerBrowserTest : public InProcessBrowserTest {
 
  protected:
   net::test_server::EmbeddedTestServer https_server_;
-  raw_ptr<BravePermissionManager, DanglingUntriaged> permission_manager_ =
+  raw_ptr<LuxxlePermissionManager, DanglingUntriaged> permission_manager_ =
       nullptr;
 
  private:
@@ -195,17 +195,17 @@ IN_PROC_BROWSER_TEST_F(PermissionManagerBrowserTest, RequestPermissions) {
   auto cases = std::to_array<TestEntries>(
       {{{"0xaf5Ad1E10926C0Ee4af4eDAC61DD60E853753f8A",
          "0xaf5Ad1E10926C0Ee4af4eDAC61DD60E853753f8B"},
-        ContentSettingsType::BRAVE_ETHEREUM,
-        blink::PermissionType::BRAVE_ETHEREUM},
+        ContentSettingsType::LUXXLE_ETHEREUM,
+        blink::PermissionType::LUXXLE_ETHEREUM},
        {{"BrG44HdsEhzapvs8bEqzvkq4egwevS3fRE6ze2ENo6S8",
          "JDqrvDz8d8tFCADashbUKQDKfJZFobNy13ugN65t1wvV"},
-        ContentSettingsType::BRAVE_SOLANA,
-        blink::PermissionType::BRAVE_SOLANA},
+        ContentSettingsType::LUXXLE_SOLANA,
+        blink::PermissionType::LUXXLE_SOLANA},
        {{"Ae2tdPwUPEZFSi1cTyL1ZL6bgixhc2vSy5heg6Zg9uP7PpumkAJ82Qprt8b",
          "DdzFFzCqrhsfZHjaBunVySZBU8i9Zom7Gujham6Jz8scCcAdkDmEbD9XSdXKdBiPoa1fj"
          "gL4ksGjQXD8ZkSNHGJfT25ieA9rWNCSA5qc"},
-        ContentSettingsType::BRAVE_CARDANO,
-        blink::PermissionType::BRAVE_CARDANO}});
+        ContentSettingsType::LUXXLE_CARDANO,
+        blink::PermissionType::LUXXLE_CARDANO}});
   for (auto& test_case : cases) {
     SCOPED_TRACE(testing::Message() << test_case.type);
 
@@ -218,13 +218,13 @@ IN_PROC_BROWSER_TEST_F(PermissionManagerBrowserTest, RequestPermissions) {
     std::vector<url::Origin> sub_request_origins;
     for (auto& address : addresses) {
       SCOPED_TRACE(testing::Message() << address);
-      auto sub_request_origin = brave_wallet::GetSubRequestOrigin(
+      auto sub_request_origin = luxxle_wallet::GetSubRequestOrigin(
           request_type, GetLastCommitedOrigin(), address);
       ASSERT_TRUE(sub_request_origin) << address;
       sub_request_origins.push_back(*sub_request_origin);
     }
 
-    auto origin = brave_wallet::GetConcatOriginFromWalletAddresses(
+    auto origin = luxxle_wallet::GetConcatOriginFromWalletAddresses(
         GetLastCommitedOrigin(), addresses);
     ASSERT_TRUE(origin);
 
@@ -262,7 +262,7 @@ IN_PROC_BROWSER_TEST_F(PermissionManagerBrowserTest, RequestPermissions) {
     }
 
     // Test dismissing request.
-    permissions::BraveWalletPermissionContext::Cancel(web_contents());
+    permissions::LuxxleWalletPermissionContext::Cancel(web_contents());
     testing::Mock::VerifyAndClearExpectations(&callback);
     EXPECT_TRUE(observer->IsRequestsFinalized());
     EXPECT_TRUE(!observer->IsShowingBubble());
@@ -307,9 +307,9 @@ IN_PROC_BROWSER_TEST_F(PermissionManagerBrowserTest, RequestPermissions) {
     }
 
     // Test accepting request with one of the address.
-    permissions::BraveWalletPermissionContext::AcceptOrCancel(
+    permissions::LuxxleWalletPermissionContext::AcceptOrCancel(
         std::vector<std::string>{test_case.addresses[1]},
-        brave_wallet::mojom::PermissionLifetimeOption::kForever,
+        luxxle_wallet::mojom::PermissionLifetimeOption::kForever,
         web_contents());
     testing::Mock::VerifyAndClearExpectations(&callback);
     std::vector<ContentSetting> expected_settings(
@@ -367,17 +367,17 @@ IN_PROC_BROWSER_TEST_F(PermissionManagerBrowserTest,
   auto cases = std::to_array<TestEntries>(
       {{{"0xaf5Ad1E10926C0Ee4af4eDAC61DD60E853753f8C",
          "0xaf5Ad1E10926C0Ee4af4eDAC61DD60E853753f8D"},
-        ContentSettingsType::BRAVE_ETHEREUM,
-        blink::PermissionType::BRAVE_ETHEREUM},
+        ContentSettingsType::LUXXLE_ETHEREUM,
+        blink::PermissionType::LUXXLE_ETHEREUM},
        {{"BrG44HdsEhzapvs8bEqzvkq4egwevS3fRE6ze2ENo6S8",
          "JDqrvDz8d8tFCADashbUKQDKfJZFobNy13ugN65t1wvV"},
-        ContentSettingsType::BRAVE_SOLANA,
-        blink::PermissionType::BRAVE_SOLANA},
+        ContentSettingsType::LUXXLE_SOLANA,
+        blink::PermissionType::LUXXLE_SOLANA},
        {{"Ae2tdPwUPEZFSi1cTyL1ZL6bgixhc2vSy5heg6Zg9uP7PpumkAJ82Qprt8b",
          "DdzFFzCqrhsfZHjaBunVySZBU8i9Zom7Gujham6Jz8scCcAdkDmEbD9XSdXKdBiPoa1fj"
          "gL4ksGjQXD8ZkSNHGJfT25ieA9rWNCSA5qc"},
-        ContentSettingsType::BRAVE_CARDANO,
-        blink::PermissionType::BRAVE_CARDANO}});
+        ContentSettingsType::LUXXLE_CARDANO,
+        blink::PermissionType::LUXXLE_CARDANO}});
   for (auto& test_case : cases) {
     SCOPED_TRACE(testing::Message() << test_case.type);
 
@@ -394,13 +394,13 @@ IN_PROC_BROWSER_TEST_F(PermissionManagerBrowserTest,
     std::vector<url::Origin> sub_request_origins;
     for (const auto& address : test_case.addresses) {
       url::Origin origin;
-      auto sub_request_origin = brave_wallet::GetSubRequestOrigin(
+      auto sub_request_origin = luxxle_wallet::GetSubRequestOrigin(
           request_type, GetLastCommitedOrigin(), address);
       ASSERT_TRUE(sub_request_origin) << address;
       sub_request_origins.push_back(*sub_request_origin);
     }
 
-    auto origin = brave_wallet::GetConcatOriginFromWalletAddresses(
+    auto origin = luxxle_wallet::GetConcatOriginFromWalletAddresses(
         GetLastCommitedOrigin(), addresses);
     ASSERT_TRUE(origin);
 
@@ -453,18 +453,18 @@ IN_PROC_BROWSER_TEST_F(PermissionManagerBrowserTest, GetCanonicalOrigin) {
   auto cases = std::to_array<TestEntries>(
       {{{"0xaf5Ad1E10926C0Ee4af4eDAC61DD60E853753f8A",
          "0xaf5Ad1E10926C0Ee4af4eDAC61DD60E853753f8B"},
-        ContentSettingsType::BRAVE_ETHEREUM},
+        ContentSettingsType::LUXXLE_ETHEREUM},
        {{"BrG44HdsEhzapvs8bEqzvkq4egwevS3fRE6ze2ENo6S8",
          "JDqrvDz8d8tFCADashbUKQDKfJZFobNy13ugN65t1wvV"},
-        ContentSettingsType::BRAVE_SOLANA},
+        ContentSettingsType::LUXXLE_SOLANA},
        {{"addr1q8gg2r3vf9zggn48g7m8vx62rwf6warcs4k7ej8mdzmqmesj30jz7psduyk6n4n2"
          "qrud2xlv9fgj53n6ds3t8cs4fvzs05yzmz",
          "Ae2tdPwUPEZFSi1cTyL1ZL6bgixhc2vSy5heg6Zg9uP7PpumkAJ82Qprt8b"},
-        ContentSettingsType::BRAVE_CARDANO}});
+        ContentSettingsType::LUXXLE_CARDANO}});
   for (auto& test_case : cases) {
     SCOPED_TRACE(testing::Message() << test_case.type);
 
-    auto origin = brave_wallet::GetConcatOriginFromWalletAddresses(
+    auto origin = luxxle_wallet::GetConcatOriginFromWalletAddresses(
         GetLastCommitedOrigin(), test_case.addresses);
     ASSERT_TRUE(origin);
 

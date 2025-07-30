@@ -1,4 +1,4 @@
-# challenge-bypass-ristretto [![](https://img.shields.io/crates/v/challenge-bypass-ristretto.svg)](https://crates.io/crates/challenge-bypass-ristretto) [![](https://docs.rs/challenge-bypass-ristretto/badge.svg)](https://docs.rs/challenge-bypass-ristretto) [![Build Status](https://github.com/brave-intl/challenge-bypass-ristretto/workflows/CI/badge.svg)](https://github.com/brave-intl/challenge-bypass-ristretto/actions)
+# challenge-bypass-ristretto [![](https://img.shields.io/crates/v/challenge-bypass-ristretto.svg)](https://crates.io/crates/challenge-bypass-ristretto) [![](https://docs.rs/challenge-bypass-ristretto/badge.svg)](https://docs.rs/challenge-bypass-ristretto) [![Build Status](https://github.com/luxxle-intl/challenge-bypass-ristretto/workflows/CI/badge.svg)](https://github.com/luxxle-intl/challenge-bypass-ristretto/actions)
 
 **A rust implemention of the
 [privacy pass cryptographic protocol](https://www.petsymposium.org/2018/files/papers/issue3/popets-2018-0026.pdf)
@@ -17,7 +17,7 @@ it does not provide a service or FFI for use by other languages.
 This library exposes some functions intended to assist FFI creation but does
 not implement a FFI itself.
 
-For FFI see [challenge-bypass-ristretto-ffi](https://github.com/brave-intl/challenge-bypass-ristretto-ffi).
+For FFI see [challenge-bypass-ristretto-ffi](https://github.com/luxxle-intl/challenge-bypass-ristretto-ffi).
 
 # Blinded Tokens
 

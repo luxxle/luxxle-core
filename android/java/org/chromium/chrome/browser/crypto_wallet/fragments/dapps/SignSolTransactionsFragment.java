@@ -27,16 +27,16 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.chromium.base.Log;
-import org.chromium.brave_wallet.mojom.AccountId;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
-import org.chromium.brave_wallet.mojom.OriginInfo;
-import org.chromium.brave_wallet.mojom.SignSolTransactionsRequest;
-import org.chromium.brave_wallet.mojom.SolanaInstruction;
-import org.chromium.brave_wallet.mojom.SolanaTxData;
+import org.chromium.luxxle_wallet.mojom.AccountId;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.OriginInfo;
+import org.chromium.luxxle_wallet.mojom.SignSolTransactionsRequest;
+import org.chromium.luxxle_wallet.mojom.SolanaInstruction;
+import org.chromium.luxxle_wallet.mojom.SolanaTxData;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.app.domain.WalletModel;
 import org.chromium.chrome.browser.crypto_wallet.adapters.FragmentNavigationItemAdapter;
 import org.chromium.chrome.browser.crypto_wallet.adapters.TwoLineItemRecyclerViewAdapter;
@@ -97,9 +97,9 @@ public class SignSolTransactionsFragment extends BaseDAppsBottomSheetDialogFragm
                 new NavigationItem(getString(R.string.details), new TwoLineItemFragment(mDetails)));
         mSignSolTransactionRequests = Collections.emptyList();
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             mWalletModel = activity.getWalletModel();
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "onCreate " + e);
         }
     }
@@ -186,7 +186,7 @@ public class SignSolTransactionsFragment extends BaseDAppsBottomSheetDialogFragm
         }
         mTvTxCounter.setText(
                 getString(
-                        R.string.brave_wallet_queue_of,
+                        R.string.luxxle_wallet_queue_of,
                         (mTxRequestNumber + 1),
                         mSignSolTransactionRequests.size()));
         updateActionState(mTxRequestNumber == 0);
@@ -238,7 +238,7 @@ public class SignSolTransactionsFragment extends BaseDAppsBottomSheetDialogFragm
         if (isEnabled) {
             mBtSign.setBackgroundTintList(
                     ColorStateList.valueOf(
-                            ContextCompat.getColor(requireContext(), R.color.brave_action_color)));
+                            ContextCompat.getColor(requireContext(), R.color.luxxle_action_color)));
 
         } else {
             mBtSign.setBackgroundTintList(
@@ -268,7 +268,7 @@ public class SignSolTransactionsFragment extends BaseDAppsBottomSheetDialogFragm
             mWarningLl.setVisibility(View.VISIBLE);
             mBtSign.setBackgroundTintList(
                     ColorStateList.valueOf(
-                            ContextCompat.getColor(requireContext(), R.color.brave_theme_error)));
+                            ContextCompat.getColor(requireContext(), R.color.luxxle_theme_error)));
             mBtSign.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
             mBtSign.setText(R.string.continue_text);
         } else if (mSignTxStep == SignTx.SIGN_TX) {
@@ -276,9 +276,9 @@ public class SignSolTransactionsFragment extends BaseDAppsBottomSheetDialogFragm
             mViewPager.setVisibility(View.VISIBLE);
             mBtSign.setBackgroundTintList(
                     ColorStateList.valueOf(
-                            ContextCompat.getColor(requireContext(), R.color.brave_action_color)));
+                            ContextCompat.getColor(requireContext(), R.color.luxxle_action_color)));
             mBtSign.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_key, 0, 0, 0);
-            mBtSign.setText(R.string.brave_wallet_sign_message_positive_button_action);
+            mBtSign.setText(R.string.luxxle_wallet_sign_message_positive_button_action);
         }
     }
 
@@ -302,7 +302,7 @@ public class SignSolTransactionsFragment extends BaseDAppsBottomSheetDialogFragm
         }
         assert (fromAccountId.coin == CoinType.SOL);
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             activity.getWalletModel()
                     .getKeyringModel()
                     .getAccounts(
@@ -319,7 +319,7 @@ public class SignSolTransactionsFragment extends BaseDAppsBottomSheetDialogFragm
                                 String accountText = accountInfo.name + "\n" + accountInfo.address;
                                 mAccountName.setText(accountText);
                             });
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "updateAccount " + e);
         }
     }

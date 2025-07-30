@@ -1,0 +1,8 @@
+include_rules = [
+  "+luxxle/components/sync/service",
+  "+luxxle/components/luxxle_vpn/common/buildflags",
+  "+luxxle/net/dns",
+  "+luxxle/components/luxxle_vpn/common",
+  "+luxxle/components/luxxle_shields/core/common",
+  "+luxxle/components/content_settings/core/browser",
+]

@@ -10,8 +10,8 @@ const path = require('path')
 const Log = require('./logging')
 
 function updateChromeVersion() {
-  const braveVersionParts = config.braveVersion.split('.')
-  assert(braveVersionParts.length === 3)
+  const luxxleVersionParts = config.luxxleVersion.split('.')
+  assert(luxxleVersionParts.length === 3)
 
   const versionFilePath = path.join(config.srcDir, 'chrome', 'VERSION')
   const versionFileContent = fs.readFileSync(versionFilePath).toString()
@@ -32,10 +32,10 @@ function updateChromeVersion() {
       // Keep MAJOR.
       assert(versionLines[line].startsWith('MAJOR='))
     } else {
-      // Set MINOR, BUILD, PATCH to Brave version.
+      // Set MINOR, BUILD, PATCH to Luxxle version.
       versionLines[line] = versionLines[line].replace(
         versionLineRegex,
-        `$1=${braveVersionParts[line - 1]}`,
+        `$1=${luxxleVersionParts[line - 1]}`,
       )
     }
   }

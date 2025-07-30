@@ -40,7 +40,7 @@ import org.xmlpull.v1.XmlSerializer;
 
 import org.chromium.base.Callbacks;
 import org.chromium.base.ContextUtils;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.content.WebContentsFactory;
 import org.chromium.chrome.browser.crypto_wallet.util.Utils;
 import org.chromium.chrome.browser.crypto_wallet.util.WalletConstants;
@@ -432,7 +432,7 @@ public class ImageLoader {
     public static void fetchFavIcon(String originSpecUrl, WeakReference<Context> context,
             Callbacks.Callback1<Bitmap> callback) {
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             FaviconHelper.FaviconImageCallback imageCallback = (bitmap, iconUrl) -> {
                 if (context.get() != null) {
                     if (bitmap == null) {

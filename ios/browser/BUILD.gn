@@ -13,7 +13,7 @@ group("browser") {
     "api/bookmarks/exporter",
     "api/bookmarks/importer",
     "api/luxxle_domains",
-    "api/brave_services_key",
+    "api/luxxle_services_key",
     "api/certificate",
     "api/content_settings",
     "api/credential_provider",

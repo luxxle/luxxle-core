@@ -7,7 +7,7 @@
 
 #include "base/containers/fixed_flat_set.h"
 #include "base/metrics/histogram_macros.h"
-#include "luxxle/browser/ui/webui/settings/brave_extensions_manifest_v2_handler.h"
+#include "luxxle/browser/ui/webui/settings/luxxle_extensions_manifest_v2_handler.h"
 #include "extensions/browser/extension_registry.h"
 
 namespace misc_metrics {
@@ -33,7 +33,7 @@ constexpr auto kManifestV2ExtensionIDExceptions =
         {
             // PDF Viewer
             "mhjfbmdgcfjbbpaeojofohoefgiehjai",
-            // Brave
+            // Luxxle
             "mnojpmjdmbbfmejpflffifhffcmidifd",
         });
 constexpr base::TimeDelta kReportDebounceTime = base::Seconds(10);

@@ -15,7 +15,7 @@
 class SplitViewLayoutManagerUnitTest : public testing::Test {
  public:
   SplitViewLayoutManagerUnitTest()
-      : scoped_feature_(tabs::features::kBraveSplitView) {}
+      : scoped_feature_(tabs::features::kLuxxleSplitView) {}
   ~SplitViewLayoutManagerUnitTest() override = default;
 
   void Layout() { layout_manager_->Layout(split_view_.get()); }

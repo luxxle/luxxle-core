@@ -3,31 +3,31 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveSingleCategorySettingsClassAdapter extends BraveClassVisitor {
+public class LuxxleSingleCategorySettingsClassAdapter extends LuxxleClassVisitor {
     static String sSingleCategorySettingsClassName =
             "org/chromium/components/browser_ui/site_settings/SingleCategorySettings";
-    static String sBraveSingleCategorySettingsClassName =
-            "org/chromium/components/browser_ui/site_settings/BraveSingleCategorySettings";
+    static String sLuxxleSingleCategorySettingsClassName =
+            "org/chromium/components/browser_ui/site_settings/LuxxleSingleCategorySettings";
 
-    public BraveSingleCategorySettingsClassAdapter(ClassVisitor visitor) {
+    public LuxxleSingleCategorySettingsClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        changeSuperName(sSingleCategorySettingsClassName, sBraveSingleCategorySettingsClassName);
+        changeSuperName(sSingleCategorySettingsClassName, sLuxxleSingleCategorySettingsClassName);
         changeMethodOwner(
                 sSingleCategorySettingsClassName,
                 "onOptionsItemSelected",
-                sBraveSingleCategorySettingsClassName);
+                sLuxxleSingleCategorySettingsClassName);
         changeMethodOwner(
                 sSingleCategorySettingsClassName,
                 "getAddExceptionDialogMessageResourceId",
-                sBraveSingleCategorySettingsClassName);
+                sLuxxleSingleCategorySettingsClassName);
         changeMethodOwner(
                 sSingleCategorySettingsClassName,
                 "resetList",
-                sBraveSingleCategorySettingsClassName);
+                sLuxxleSingleCategorySettingsClassName);
     }
 }

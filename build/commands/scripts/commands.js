@@ -34,7 +34,7 @@ const collect = (value, accumulator) => {
 // Use this wrapper function instead of JavaScript's parseInt() with option()
 // when defining integer optional parameters, or the default value might get
 // passed as well into the radix parameter of parseInt(), causing wrong results.
-// https://github.com/brave/brave-browser/issues/13724
+// https://github.com/luxxle/luxxle-browser/issues/13724
 function parseInteger(string) {
   // As per the spec [1], not passing the optional radix parameter to parseInt()
   // will make parsing to interpret the string passed as a decimal number unless
@@ -225,7 +225,7 @@ program
   .command('build_chromium_release')
   .description(
     'Produces a chromium release build for performance testing.\n'
-      + 'Uses the same /src directory; all brave patches are reverted.\n'
+      + 'Uses the same /src directory; all luxxle patches are reverted.\n'
       + 'The default build_dir is `chromium_Release(_target_arch)`.\n'
       + 'Intended for use on CI, use locally with care.',
   )
@@ -258,10 +258,10 @@ program
     'set user data directory base name to [base_name]',
   )
   .option('--no_sandbox', 'disable the sandbox')
-  .option('--disable_brave_extension', 'disable loading the Brave extension')
+  .option('--disable_luxxle_extension', 'disable loading the Luxxle extension')
   .option(
-    '--disable_brave_rewards_extension',
-    'disable loading the Brave Rewards extension',
+    '--disable_luxxle_rewards_extension',
+    'disable loading the Luxxle Rewards extension',
   )
   .option('--disable_pdfjs_extension', 'disable loading the PDFJS extension')
   .option(
@@ -277,7 +277,7 @@ program
     '--show_component_extensions',
     'show component extensions in chrome://extensions',
   )
-  .option('--enable_brave_update', 'enable brave update')
+  .option('--enable_luxxle_update', 'enable luxxle update')
   .option(
     '--channel <target_channel>',
     'target channel to start',
@@ -285,17 +285,17 @@ program
     'release',
   )
   .option('--official_build <official_build>', 'force official build settings')
-  // See https://github.com/brave/brave-browser/wiki/Rewards#flags for more information
+  // See https://github.com/luxxle/luxxle-browser/wiki/Rewards#flags for more information
   .option('--rewards [options]', 'options for rewards')
-  .option('--brave_ads_testing', 'ads testing')
-  .option('--brave_ads_production', 'ads production')
-  .option('--brave_ads_staging', 'ads staging')
-  .option('--brave_ads_debug', 'ads debug')
+  .option('--luxxle_ads_testing', 'ads testing')
+  .option('--luxxle_ads_production', 'ads production')
+  .option('--luxxle_ads_staging', 'ads staging')
+  .option('--luxxle_ads_debug', 'ads debug')
   .option('--single_process', 'use a single process')
   .option('--use_real_keychain', "don't add --use-mock-keychain in macOS")
   .option(
     '--output_path [pathname]',
-    'use the Brave binary located at [pathname]',
+    'use the Luxxle binary located at [pathname]',
   )
   .arguments('[build_config]')
   .action(start.bind(null, parsedArgs.unknown))
@@ -336,7 +336,7 @@ program
   .command('update_patches')
   .arguments('[filePaths...]')
   .description(
-    'Updates all patches in the brave-core repo. If a filePath is provider, only that specific file will be updated.',
+    'Updates all patches in the luxxle-core repo. If a filePath is provider, only that specific file will be updated.',
   )
   .action(updatePatches)
 
@@ -355,7 +355,7 @@ program
   .option('--vmodule [modules]', 'verbose log from specific modules')
   .option('--filter <filter>', 'set test filter')
   .option('--output <output>', 'set test output (results) file path')
-  .option('--disable_brave_extension', 'disable loading the Brave extension')
+  .option('--disable_luxxle_extension', 'disable loading the Luxxle extension')
   .option(
     '--single_process',
     'uses a single process to run tests to help with debugging',

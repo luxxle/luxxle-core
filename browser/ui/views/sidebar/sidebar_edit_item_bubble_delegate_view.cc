@@ -9,11 +9,11 @@
 
 #include "base/functional/bind.h"
 #include "base/strings/utf_string_conversions.h"
-#include "luxxle/browser/ui/brave_browser.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/luxxle_browser.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/browser/ui/sidebar/sidebar_service_factory.h"
 #include "luxxle/components/sidebar/browser/sidebar_service.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "chrome/browser/ui/views/chrome_layout_provider.h"
 #include "chrome/browser/ui/views/frame/browser_view.h"
 #include "ui/base/l10n/l10n_util.h"
@@ -39,7 +39,7 @@ gfx::FontList GetFont(int font_size, gfx::Font::Weight weight) {
 
 // static
 views::Widget* SidebarEditItemBubbleDelegateView::Create(
-    BraveBrowser* browser,
+    LuxxleBrowser* browser,
     const sidebar::SidebarItem& item,
     views::View* anchor_view) {
   auto* delegate =
@@ -58,7 +58,7 @@ views::Widget* SidebarEditItemBubbleDelegateView::Create(
 }
 
 SidebarEditItemBubbleDelegateView::SidebarEditItemBubbleDelegateView(
-    BraveBrowser* browser,
+    LuxxleBrowser* browser,
     const sidebar::SidebarItem& item,
     views::View* anchor_view)
     : BubbleDialogDelegateView(anchor_view,

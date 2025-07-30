@@ -5,9 +5,9 @@
 
 #include "base/memory/raw_ptr.h"
 #include "base/path_service.h"
-#include "luxxle/components/brave_shields/content/browser/brave_shields_util.h"
-#include "luxxle/components/brave_shields/core/common/brave_shield_constants.h"
-#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/luxxle_shields/content/browser/luxxle_shields_util.h"
+#include "luxxle/components/luxxle_shields/core/common/luxxle_shield_constants.h"
+#include "luxxle/components/constants/luxxle_paths.h"
 #include "luxxle/components/constants/pref_names.h"
 #include "luxxle/components/google_sign_in_permission/features.h"
 #include "chrome/browser/content_settings/cookie_settings_factory.h"
@@ -62,7 +62,7 @@ class GoogleSignInBrowserTest : public InProcessBrowserTest {
  public:
   GoogleSignInBrowserTest() {
     feature_list_.InitAndEnableFeature(
-        google_sign_in_permission::features::kBraveGoogleSignInPermission);
+        google_sign_in_permission::features::kLuxxleGoogleSignInPermission);
   }
 
   void SetUpOnMainThread() override {
@@ -143,33 +143,33 @@ class GoogleSignInBrowserTest : public InProcessBrowserTest {
   }
 
   void DefaultBlockAllCookies() {
-    brave_shields::SetCookieControlType(
+    luxxle_shields::SetCookieControlType(
         content_settings(), browser()->profile()->GetPrefs(),
-        brave_shields::ControlType::BLOCK, GURL());
+        luxxle_shields::ControlType::BLOCK, GURL());
   }
 
   void DefaultAllowAllCookies() {
-    brave_shields::SetCookieControlType(
+    luxxle_shields::SetCookieControlType(
         content_settings(), browser()->profile()->GetPrefs(),
-        brave_shields::ControlType::ALLOW, GURL());
+        luxxle_shields::ControlType::ALLOW, GURL());
   }
 
   void AllowCookies(const GURL& url) {
-    brave_shields::SetCookieControlType(content_settings(),
+    luxxle_shields::SetCookieControlType(content_settings(),
                                         browser()->profile()->GetPrefs(),
-                                        brave_shields::ControlType::ALLOW, url);
+                                        luxxle_shields::ControlType::ALLOW, url);
   }
 
   void BlockThirdPartyCookies(const GURL& url) {
-    brave_shields::SetCookieControlType(
+    luxxle_shields::SetCookieControlType(
         content_settings(), browser()->profile()->GetPrefs(),
-        brave_shields::ControlType::BLOCK_THIRD_PARTY, url);
+        luxxle_shields::ControlType::BLOCK_THIRD_PARTY, url);
   }
 
   void BlockCookies(const GURL& url) {
-    brave_shields::SetCookieControlType(content_settings(),
+    luxxle_shields::SetCookieControlType(content_settings(),
                                         browser()->profile()->GetPrefs(),
-                                        brave_shields::ControlType::BLOCK, url);
+                                        luxxle_shields::ControlType::BLOCK, url);
   }
 
   void NavigateToPageWithFrame(const GURL& url) {
@@ -216,7 +216,7 @@ class GoogleSignInBrowserTest : public InProcessBrowserTest {
                                      ContentSetting cookie_setting) {
     EXPECT_EQ(content_settings()->GetContentSetting(
                   embedding_url_, embedding_url_,
-                  ContentSettingsType::BRAVE_GOOGLE_SIGN_IN),
+                  ContentSettingsType::LUXXLE_GOOGLE_SIGN_IN),
               content_setting);
     EXPECT_EQ(cookie_settings()->GetCookieSetting(
                   GURL(kAccountsGoogleUrl), net::SiteForCookies(),
@@ -486,9 +486,9 @@ class GoogleSignInFlagDisabledTest : public GoogleSignInBrowserTest {
   GoogleSignInFlagDisabledTest() {
     // With feature flag for new Google Sign-In behaviour turned off,
     // behave like before. These tests are copied over from
-    // browser/net/brave_network_delegate_browsertest.cc
+    // browser/net/luxxle_network_delegate_browsertest.cc
     feature_list_.InitAndDisableFeature(
-        google_sign_in_permission::features::kBraveGoogleSignInPermission);
+        google_sign_in_permission::features::kLuxxleGoogleSignInPermission);
   }
 
  private:

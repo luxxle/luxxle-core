@@ -1,9 +1,9 @@
-/* Copyright (c) 2021 The Brave Authors. All rights reserved.
+/* Copyright (c) 2021 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/ios/browser/api/url/url_utils.h"
+#include "luxxle/ios/browser/api/url/url_utils.h"
 
 #include "base/strings/sys_string_conversions.h"
 #import "net/base/apple/url_conversions.h"
@@ -40,47 +40,47 @@ std::string GetRegistry(const GURL& url) {
   return net::NSURLWithGURL(GURL(base::SysNSStringToUTF8(idnString)));
 }
 
-- (NSString*)brave_registry {
+- (NSString*)luxxle_registry {
   return base::SysUTF8ToNSString(GetRegistry(net::GURLWithNSURL(self)));
 }
 
-- (NSString*)brave_domainAndRegistry {
+- (NSString*)luxxle_domainAndRegistry {
   std::string domain = net::registry_controlled_domains::GetDomainAndRegistry(
       net::GURLWithNSURL(self),
       net::registry_controlled_domains::INCLUDE_PRIVATE_REGISTRIES);
   return base::SysUTF8ToNSString(domain);
 }
 
-- (NSString*)brave_domainAndRegistryExcludingPrivateRegistries {
+- (NSString*)luxxle_domainAndRegistryExcludingPrivateRegistries {
   std::string domain = net::registry_controlled_domains::GetDomainAndRegistry(
       net::GURLWithNSURL(self),
       net::registry_controlled_domains::EXCLUDE_PRIVATE_REGISTRIES);
   return base::SysUTF8ToNSString(domain);
 }
 
-- (bool)brave_isHostIPAddress {
+- (bool)luxxle_isHostIPAddress {
   return net::GURLWithNSURL(self).HostIsIPAddress();
 }
 
-- (NSString*)brave_spec {
+- (NSString*)luxxle_spec {
   return base::SysUTF8ToNSString(net::GURLWithNSURL(self).spec());
 }
 
-- (NSURL*)brave_addingQueryParameter:(NSString*)key value:(NSString*)value {
+- (NSURL*)luxxle_addingQueryParameter:(NSString*)key value:(NSString*)value {
   GURL gurl_ = net::AppendQueryParameter(net::GURLWithNSURL(self),
                                          base::SysNSStringToUTF8(key),
                                          base::SysNSStringToUTF8(value));
   return net::NSURLWithGURL(gurl_);
 }
 
-- (NSURL*)brave_replacingQueryParameter:(NSString*)key value:(NSString*)value {
+- (NSURL*)luxxle_replacingQueryParameter:(NSString*)key value:(NSString*)value {
   GURL gurl_ = net::AppendOrReplaceQueryParameter(
       net::GURLWithNSURL(self), base::SysNSStringToUTF8(key),
       base::SysNSStringToUTF8(value));
   return net::NSURLWithGURL(gurl_);
 }
 
-- (nullable NSString*)brave_valueForQueryParameter:(NSString*)key {
+- (nullable NSString*)luxxle_valueForQueryParameter:(NSString*)key {
   std::string result;
   bool success = net::GetValueForKeyInQuery(
       net::GURLWithNSURL(self), base::SysNSStringToUTF8(key), &result);
@@ -90,7 +90,7 @@ std::string GetRegistry(const GURL& url) {
   return nullptr;
 }
 
-- (bool)brave_hasScheme:(NSString*)scheme {
+- (bool)luxxle_hasScheme:(NSString*)scheme {
   return net::GURLWithNSURL(self).SchemeIs(
       base::SysNSStringToUTF8([scheme lowercaseString]));
 }
@@ -117,19 +117,19 @@ std::string GetRegistryFromHost(const std::string& host) {
   return std::string(host, host.length() - registry_length, registry_length);
 }
 
-+ (NSString*)brave_registryFromHost:(NSString*)host {
++ (NSString*)luxxle_registryFromHost:(NSString*)host {
   return base::SysUTF8ToNSString(
       GetRegistryFromHost(base::SysNSStringToUTF8(host)));
 }
 
-+ (NSString*)brave_domainAndRegistryFromHost:(NSString*)host {
++ (NSString*)luxxle_domainAndRegistryFromHost:(NSString*)host {
   std::string domain = net::registry_controlled_domains::GetDomainAndRegistry(
       base::SysNSStringToUTF8(host),
       net::registry_controlled_domains::INCLUDE_PRIVATE_REGISTRIES);
   return base::SysUTF8ToNSString(domain);
 }
 
-+ (NSString*)brave_domainAndRegistryExcludingPrivateRegistriesFromHost:
++ (NSString*)luxxle_domainAndRegistryExcludingPrivateRegistriesFromHost:
     (NSString*)host {
   std::string domain = net::registry_controlled_domains::GetDomainAndRegistry(
       base::SysNSStringToUTF8(host),
@@ -137,7 +137,7 @@ std::string GetRegistryFromHost(const std::string& host) {
   return base::SysUTF8ToNSString(domain);
 }
 
-+ (bool)brave_isHostIPAddressFromHost:(NSString*)host {
++ (bool)luxxle_isHostIPAddressFromHost:(NSString*)host {
   return url::HostIsIPAddress(base::SysNSStringToUTF8(host));
 }
 @end

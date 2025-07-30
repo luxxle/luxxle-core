@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--* Copyright (c) 2020 The Brave Authors. All rights reserved.
+<!--* Copyright (c) 2020 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
@@ -39,8 +39,8 @@
             android:summaryOff="@string/text_off" />
 
         <org.chromium.components.browser_ui.settings.ChromeSwitchPreference
-            android:key="show_brave_stats"
-            android:title="@string/show_brave_stats"
+            android:key="show_luxxle_stats"
+            android:title="@string/show_luxxle_stats"
             android:summaryOn="@string/text_on"
             android:summaryOff="@string/text_off" />
 

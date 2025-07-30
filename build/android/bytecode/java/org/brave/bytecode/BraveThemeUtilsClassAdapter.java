@@ -3,18 +3,18 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveThemeUtilsClassAdapter extends BraveClassVisitor {
+public class LuxxleThemeUtilsClassAdapter extends LuxxleClassVisitor {
     static String sThemeUtilsClassName = "org/chromium/chrome/browser/theme/ThemeUtils";
-    static String sBraveThemeUtilsClassName = "org/chromium/chrome/browser/theme/BraveThemeUtils";
+    static String sLuxxleThemeUtilsClassName = "org/chromium/chrome/browser/theme/LuxxleThemeUtils";
 
-    public BraveThemeUtilsClassAdapter(ClassVisitor visitor) {
+    public LuxxleThemeUtilsClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         changeMethodOwner(sThemeUtilsClassName,
-                "getTextBoxColorForToolbarBackgroundInNonNativePage", sBraveThemeUtilsClassName);
+                "getTextBoxColorForToolbarBackgroundInNonNativePage", sLuxxleThemeUtilsClassName);
     }
 }

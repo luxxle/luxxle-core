@@ -3,4 +3,4 @@
 # Placeholder sources.gni for webapps/browser component
 # This file is empty as the webapps functionality has been stripped from Luxxle
 
-brave_components_webapps_browser_deps = [] 
+luxxle_components_webapps_browser_deps = [] 

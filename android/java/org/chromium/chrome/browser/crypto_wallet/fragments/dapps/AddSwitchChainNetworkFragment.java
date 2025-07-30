@@ -5,8 +5,8 @@
 
 package org.chromium.chrome.browser.crypto_wallet.fragments.dapps;
 
-import static org.chromium.chrome.browser.crypto_wallet.activities.BraveWalletDAppsActivity.ActivityType.ADD_ETHEREUM_CHAIN;
-import static org.chromium.chrome.browser.crypto_wallet.activities.BraveWalletDAppsActivity.ActivityType.SWITCH_ETHEREUM_CHAIN;
+import static org.chromium.chrome.browser.crypto_wallet.activities.LuxxleWalletDAppsActivity.ActivityType.ADD_ETHEREUM_CHAIN;
+import static org.chromium.chrome.browser.crypto_wallet.activities.LuxxleWalletDAppsActivity.ActivityType.SWITCH_ETHEREUM_CHAIN;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -27,15 +27,15 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import org.chromium.brave_wallet.mojom.AddChainRequest;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
-import org.chromium.brave_wallet.mojom.OriginInfo;
-import org.chromium.brave_wallet.mojom.SwitchChainRequest;
+import org.chromium.luxxle_wallet.mojom.AddChainRequest;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.OriginInfo;
+import org.chromium.luxxle_wallet.mojom.SwitchChainRequest;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
-import org.chromium.chrome.browser.crypto_wallet.activities.BraveWalletBaseActivity;
-import org.chromium.chrome.browser.crypto_wallet.activities.BraveWalletDAppsActivity.ActivityType;
+import org.chromium.chrome.browser.app.LuxxleActivity;
+import org.chromium.chrome.browser.crypto_wallet.activities.LuxxleWalletBaseActivity;
+import org.chromium.chrome.browser.crypto_wallet.activities.LuxxleWalletDAppsActivity.ActivityType;
 import org.chromium.chrome.browser.crypto_wallet.adapters.FragmentNavigationItemAdapter;
 import org.chromium.chrome.browser.crypto_wallet.adapters.TwoLineItemRecyclerViewAdapter.TwoLineItem;
 import org.chromium.chrome.browser.crypto_wallet.adapters.TwoLineItemRecyclerViewAdapter.TwoLineItemText;
@@ -55,7 +55,7 @@ public class AddSwitchChainNetworkFragment extends BaseDAppsFragment {
     private final List<NavigationItem> mTabTitles;
     private final ActivityType mPanelType;
     private NetworkInfo mNetworkInfo;
-    private BraveWalletBaseActivity mBraveWalletBaseActivity;
+    private LuxxleWalletBaseActivity mLuxxleWalletBaseActivity;
     private SwitchChainRequest mSwitchChainRequest;
     private AddChainRequest mAddChainRequest;
     private AddSwitchRequestProcessListener mAddSwitchRequestProcessListener;
@@ -110,21 +110,21 @@ public class AddSwitchChainNetworkFragment extends BaseDAppsFragment {
         if (mPanelType == ADD_ETHEREUM_CHAIN) {
             btnAddSwitchNetwork.setText(R.string.approve);
             TextView tvAddChainTitle = view.findViewById(R.id.fragment_add_switch_chain_tv_title);
-            tvAddChainTitle.setText(R.string.brave_wallet_allow_add_network_heading);
+            tvAddChainTitle.setText(R.string.luxxle_wallet_allow_add_network_heading);
             TextView addChainDesc = view.findViewById(R.id.fragment_add_switch_chain_tv_text);
             Spanned spannedDescriptionText =
                     Utils.createSpanForSurroundedPhrase(
                             requireContext(),
-                            R.string.brave_wallet_allow_add_network_description,
+                            R.string.luxxle_wallet_allow_add_network_description,
                             (v) -> {
-                                TabUtils.openUrlInNewTab(false, Utils.BRAVE_SUPPORT_URL);
+                                TabUtils.openUrlInNewTab(false, Utils.LUXXLE_SUPPORT_URL);
                                 TabUtils.bringChromeTabbedActivityToTheTop(getActivity());
                             });
             addChainDesc.setMovementMethod(LinkMovementMethod.getInstance());
             addChainDesc.setText(spannedDescriptionText);
 
         } else if (mPanelType == SWITCH_ETHEREUM_CHAIN) {
-            btnAddSwitchNetwork.setText(R.string.brave_wallet_allow_change_network_button);
+            btnAddSwitchNetwork.setText(R.string.luxxle_wallet_allow_change_network_button);
         }
         btnAddSwitchNetwork.setOnClickListener(
                 v -> {
@@ -157,7 +157,7 @@ public class AddSwitchChainNetworkFragment extends BaseDAppsFragment {
     private void showFavIcon(GURL url) {
         mFaviconHelper = new FaviconHelper();
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             FaviconImageCallback imageCallback =
                     (bitmap, iconUrl) -> setBitmapOnImageView(url, bitmap);
             // 0 is a max bitmap size for download
@@ -186,10 +186,10 @@ public class AddSwitchChainNetworkFragment extends BaseDAppsFragment {
     }
 
     private void fetchNetworkInfo() {
-        assert getActivity() instanceof BraveWalletBaseActivity;
-        mBraveWalletBaseActivity = (BraveWalletBaseActivity) getActivity();
+        assert getActivity() instanceof LuxxleWalletBaseActivity;
+        mLuxxleWalletBaseActivity = (LuxxleWalletBaseActivity) getActivity();
         if (mPanelType == ADD_ETHEREUM_CHAIN) {
-            mBraveWalletBaseActivity
+            mLuxxleWalletBaseActivity
                     .getJsonRpcService()
                     .getPendingAddChainRequests(
                             addChainRequests -> {
@@ -203,13 +203,13 @@ public class AddSwitchChainNetworkFragment extends BaseDAppsFragment {
                                 fillOriginInfo(mAddChainRequest.originInfo);
                             });
         } else if (mPanelType == SWITCH_ETHEREUM_CHAIN) {
-            mBraveWalletBaseActivity
+            mLuxxleWalletBaseActivity
                     .getJsonRpcService()
                     .getPendingSwitchChainRequests(
                             switchChainRequests -> {
                                 mSwitchChainRequest = switchChainRequests[0];
                                 mHasMultipleAddSwitchChainRequest = switchChainRequests.length > 1;
-                                mBraveWalletBaseActivity
+                                mLuxxleWalletBaseActivity
                                         .getJsonRpcService()
                                         .getAllNetworks(
                                                 chains -> {
@@ -261,13 +261,13 @@ public class AddSwitchChainNetworkFragment extends BaseDAppsFragment {
 
     private void processSwitchChainRequest(
             SwitchChainRequest switchChainRequest, boolean isApproved) {
-        mBraveWalletBaseActivity
+        mLuxxleWalletBaseActivity
                 .getJsonRpcService()
                 .notifySwitchChainRequestProcessed(switchChainRequest.requestId, isApproved);
     }
 
     private void processAddChainRequest(NetworkInfo networkInfo, boolean isApproved) {
-        mBraveWalletBaseActivity
+        mLuxxleWalletBaseActivity
                 .getJsonRpcService()
                 .addEthereumChainRequestCompleted(networkInfo.chainId, isApproved);
     }
@@ -290,11 +290,11 @@ public class AddSwitchChainNetworkFragment extends BaseDAppsFragment {
         mNetworks.clear();
         mNetworks.add(
                 new TwoLineItemText(
-                        getString(R.string.brave_wallet_allow_add_network_name),
+                        getString(R.string.luxxle_wallet_allow_add_network_name),
                         networkInfo.chainName));
         mNetworks.add(
                 new TwoLineItemText(
-                        getString(R.string.brave_wallet_allow_add_network_url),
+                        getString(R.string.luxxle_wallet_allow_add_network_url),
                         getActiveRpcEndpointUrl(networkInfo)));
     }
 
@@ -302,18 +302,18 @@ public class AddSwitchChainNetworkFragment extends BaseDAppsFragment {
         mDetails.clear();
         mDetails.add(
                 new TwoLineItemText(
-                        getString(R.string.brave_wallet_allow_add_network_name),
+                        getString(R.string.luxxle_wallet_allow_add_network_name),
                         networkInfo.chainName));
         mDetails.add(
                 new TwoLineItemText(
-                        getString(R.string.brave_wallet_allow_add_network_url),
+                        getString(R.string.luxxle_wallet_allow_add_network_url),
                         getActiveRpcEndpointUrl(networkInfo)));
         mDetails.add(
                 new TwoLineItemText(
-                        getString(R.string.brave_wallet_chain_id), networkInfo.chainId));
+                        getString(R.string.luxxle_wallet_chain_id), networkInfo.chainId));
         mDetails.add(
                 new TwoLineItemText(
-                        getString(R.string.brave_wallet_allow_add_network_currency_symbol),
+                        getString(R.string.luxxle_wallet_allow_add_network_currency_symbol),
                         networkInfo.symbol));
         mDetails.add(
                 new TwoLineItemText(
@@ -321,7 +321,7 @@ public class AddSwitchChainNetworkFragment extends BaseDAppsFragment {
                         String.valueOf(networkInfo.decimals)));
         mDetails.add(
                 new TwoLineItemText(
-                        getString(R.string.brave_wallet_add_network_block_explorer_urls),
+                        getString(R.string.luxxle_wallet_add_network_block_explorer_urls),
                         networkInfo.blockExplorerUrls.length > 0
                                 ? networkInfo.blockExplorerUrls[0]
                                 : ""));

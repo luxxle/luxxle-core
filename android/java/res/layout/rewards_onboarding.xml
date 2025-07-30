@@ -14,7 +14,7 @@
             android:id="@+id/rewards_onboarding_layout_id">
 
             <ImageView
-                android:id="@+id/brave_rewards_private_ads_icon"
+                android:id="@+id/luxxle_rewards_private_ads_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -23,7 +23,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/brave_rewards_private_ads_icon" />
+                app:srcCompat="@drawable/luxxle_rewards_private_ads_icon" />
 
             <TextView
                 android:id="@+id/earn_tokens_for_private_ads_title"
@@ -39,7 +39,7 @@
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/brave_rewards_private_ads_icon" />
+                app:layout_constraintTop_toBottomOf="@+id/luxxle_rewards_private_ads_icon" />
 
             <TextView
                 android:id="@+id/earn_tokens_for_private_ads_description"
@@ -84,7 +84,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/how_does_it_work"
                 android:textAllCaps="false"
-                android:textColor="@color/brave_rating_not_now_text_color"
+                android:textColor="@color/luxxle_rating_not_now_text_color"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_chainStyle="packed"

@@ -91,7 +91,7 @@
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/legacy_import"
-                style="@style/BraveWalletCheckBox"
+                style="@style/LuxxleWalletCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -126,7 +126,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/continue_button"
-                style="@style/BraveWalletOnboardingButton"
+                style="@style/LuxxleWalletOnboardingButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"

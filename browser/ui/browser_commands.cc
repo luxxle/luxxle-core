@@ -19,20 +19,20 @@
 #include "base/i18n/time_formatting.h"
 #include "base/path_service.h"
 #include "base/strings/utf_string_conversions.h"
-#include "luxxle/app/brave_command_ids.h"
-#include "luxxle/browser/brave_shields/brave_shields_tab_helper.h"
+#include "luxxle/app/luxxle_command_ids.h"
+#include "luxxle/browser/luxxle_shields/luxxle_shields_tab_helper.h"
 #include "luxxle/browser/debounce/debounce_service_factory.h"
-#include "luxxle/browser/ui/bookmark/brave_bookmark_prefs.h"
-#include "luxxle/browser/ui/brave_browser.h"
+#include "luxxle/browser/ui/bookmark/luxxle_bookmark_prefs.h"
+#include "luxxle/browser/ui/luxxle_browser.h"
 #include "luxxle/browser/ui/sidebar/sidebar_service_factory.h"
-#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
-#include "luxxle/browser/ui/tabs/brave_tab_strip_model.h"
+#include "luxxle/browser/ui/tabs/luxxle_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/luxxle_tab_strip_model.h"
 #include "luxxle/browser/ui/tabs/features.h"
 #include "luxxle/browser/ui/tabs/split_view_browser_data.h"
 #include "luxxle/browser/ui/views/frame/vertical_tab_strip_region_view.h"
 #include "luxxle/browser/ui/views/frame/vertical_tab_strip_widget_delegate_view.h"
 #include "luxxle/browser/url_sanitizer/url_sanitizer_service_factory.h"
-// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
 #include "luxxle/components/constants/pref_names.h"
 #include "luxxle/components/debounce/core/browser/debounce_service.h"
 #include "luxxle/components/query_filter/utils.h"
@@ -73,7 +73,7 @@
 #include "url/origin.h"
 
 #if defined(TOOLKIT_VIEWS)
-#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_view.h"
 #include "chrome/browser/ui/views/side_panel/side_panel_entry.h"
 #include "chrome/browser/ui/views/side_panel/side_panel_entry_id.h"
 #include "chrome/browser/ui/views/side_panel/side_panel_enums.h"
@@ -92,20 +92,20 @@
 #include "luxxle/components/tor/tor_profile_service.h"
 #endif
 
-#if BUILDFLAG(ENABLE_BRAVE_VPN)
-// REMOVED: #include "luxxle/browser/brave_vpn/.*"
-#include "luxxle/browser/ui/brave_vpn/brave_vpn_controller.h"
-// REMOVED: #include "luxxle/components/brave_vpn/.*"
-// REMOVED: #include "luxxle/components/brave_vpn/.*"
-// REMOVED: #include "luxxle/components/brave_vpn/.*"
-// REMOVED: #include "luxxle/components/brave_vpn/.*"
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
+// REMOVED: #include "luxxle/browser/luxxle_vpn/.*"
+#include "luxxle/browser/ui/luxxle_vpn/luxxle_vpn_controller.h"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
 
 #if BUILDFLAG(IS_WIN)
-// REMOVED: #include "luxxle/browser/brave_vpn/.*"
-// REMOVED: #include "luxxle/browser/brave_vpn/.*"
-#endif  // BUILDFLAG(ENABLE_BRAVE_VPN)
+// REMOVED: #include "luxxle/browser/luxxle_vpn/.*"
+// REMOVED: #include "luxxle/browser/luxxle_vpn/.*"
+#endif  // BUILDFLAG(ENABLE_LUXXLE_VPN)
 
-#endif  // BUILDFLAG(ENABLE_BRAVE_VPN)
+#endif  // BUILDFLAG(ENABLE_LUXXLE_VPN)
 
 #if BUILDFLAG(ENABLE_COMMANDER)
 #include "luxxle/browser/ui/commander/commander_service.h"
@@ -253,45 +253,45 @@ void MaybeDistillAndShowSpeedreaderBubble(Browser* browser) {
 #endif  // BUILDFLAG(ENABLE_SPEEDREADER)
 }
 
-void ShowBraveVPNBubble(Browser* browser) {
-#if BUILDFLAG(ENABLE_BRAVE_VPN)
-  browser->GetFeatures().brave_vpn_controller()->ShowBraveVPNBubble();
+void ShowLuxxleVPNBubble(Browser* browser) {
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
+  browser->GetFeatures().luxxle_vpn_controller()->ShowLuxxleVPNBubble();
 #endif
 }
 
-void ToggleBraveVPNTrayIcon() {
-#if BUILDFLAG(ENABLE_BRAVE_VPN) && BUILDFLAG(IS_WIN)
-  brave_vpn::EnableVPNTrayIcon(!brave_vpn::IsVPNTrayIconEnabled());
-  if (brave_vpn::IsVPNTrayIconEnabled()) {
-    brave_vpn::wireguard::ShowBraveVpnStatusTrayIcon();
+void ToggleLuxxleVPNTrayIcon() {
+#if BUILDFLAG(ENABLE_LUXXLE_VPN) && BUILDFLAG(IS_WIN)
+  luxxle_vpn::EnableVPNTrayIcon(!luxxle_vpn::IsVPNTrayIconEnabled());
+  if (luxxle_vpn::IsVPNTrayIconEnabled()) {
+    luxxle_vpn::wireguard::ShowLuxxleVpnStatusTrayIcon();
   }
 #endif
 }
 
-void ToggleBraveVPNButton(Browser* browser) {
-#if BUILDFLAG(ENABLE_BRAVE_VPN)
+void ToggleLuxxleVPNButton(Browser* browser) {
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
   auto* prefs = browser->profile()->GetPrefs();
-  const bool show = prefs->GetBoolean(brave_vpn::prefs::kBraveVPNShowButton);
-  prefs->SetBoolean(brave_vpn::prefs::kBraveVPNShowButton, !show);
+  const bool show = prefs->GetBoolean(luxxle_vpn::prefs::kLuxxleVPNShowButton);
+  prefs->SetBoolean(luxxle_vpn::prefs::kLuxxleVPNShowButton, !show);
 #endif
 }
 
-void OpenBraveVPNUrls(Browser* browser, int command_id) {
-#if BUILDFLAG(ENABLE_BRAVE_VPN)
-  brave_vpn::BraveVpnService* vpn_service =
-      brave_vpn::BraveVpnServiceFactory::GetForProfile(browser->profile());
+void OpenLuxxleVPNUrls(Browser* browser, int command_id) {
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
+  luxxle_vpn::LuxxleVpnService* vpn_service =
+      luxxle_vpn::LuxxleVpnServiceFactory::GetForProfile(browser->profile());
   CHECK(vpn_service);
   std::string target_url;
   switch (command_id) {
-    case IDC_SEND_BRAVE_VPN_FEEDBACK:
-      target_url = brave_vpn::kFeedbackUrl;
+    case IDC_SEND_LUXXLE_VPN_FEEDBACK:
+      target_url = luxxle_vpn::kFeedbackUrl;
       break;
-    case IDC_ABOUT_BRAVE_VPN:
-      target_url = brave_vpn::kAboutUrl;
+    case IDC_ABOUT_LUXXLE_VPN:
+      target_url = luxxle_vpn::kAboutUrl;
       break;
-    case IDC_MANAGE_BRAVE_VPN_PLAN:
+    case IDC_MANAGE_LUXXLE_VPN_PLAN:
       target_url =
-          brave_vpn::GetManageUrl(vpn_service->GetCurrentEnvironment());
+          luxxle_vpn::GetManageUrl(vpn_service->GetCurrentEnvironment());
       break;
     default:
       NOTREACHED() << "This should only be called with one of the above VPN "
@@ -313,20 +313,20 @@ void ToggleAIChat(Browser* browser) {
 
 void ShowWalletBubble(Browser* browser) {
 #if defined(TOOLKIT_VIEWS)
-  static_cast<BraveBrowserView*>(browser->window())->CreateWalletBubble();
+  static_cast<LuxxleBrowserView*>(browser->window())->CreateWalletBubble();
 #endif
 }
 
 void ShowApproveWalletBubble(Browser* browser) {
 #if defined(TOOLKIT_VIEWS)
-  static_cast<BraveBrowserView*>(browser->window())
+  static_cast<LuxxleBrowserView*>(browser->window())
       ->CreateApproveWalletBubble();
 #endif
 }
 
 void CloseWalletBubble(Browser* browser) {
 #if defined(TOOLKIT_VIEWS)
-  static_cast<BraveBrowserView*>(browser->window())->CloseWalletBubble();
+  static_cast<LuxxleBrowserView*>(browser->window())->CloseWalletBubble();
 #endif
 }
 
@@ -377,38 +377,38 @@ void CopyLinkWithStrictCleaning(Browser* browser, const GURL& url) {
 void ToggleWindowTitleVisibilityForVerticalTabs(Browser* browser) {
   auto* prefs = browser->profile()->GetOriginalProfile()->GetPrefs();
   prefs->SetBoolean(
-      brave_tabs::kVerticalTabsShowTitleOnWindow,
-      !prefs->GetBoolean(brave_tabs::kVerticalTabsShowTitleOnWindow));
+      luxxle_tabs::kVerticalTabsShowTitleOnWindow,
+      !prefs->GetBoolean(luxxle_tabs::kVerticalTabsShowTitleOnWindow));
 }
 
 void ToggleVerticalTabStrip(Browser* browser) {
   auto* profile = browser->profile()->GetOriginalProfile();
   auto* prefs = profile->GetPrefs();
   const bool was_using_vertical_tab_strip =
-      prefs->GetBoolean(brave_tabs::kVerticalTabsEnabled);
-  prefs->SetBoolean(brave_tabs::kVerticalTabsEnabled,
+      prefs->GetBoolean(luxxle_tabs::kVerticalTabsEnabled);
+  prefs->SetBoolean(luxxle_tabs::kVerticalTabsEnabled,
                     !was_using_vertical_tab_strip);
 }
 
 void ToggleVerticalTabStripFloatingMode(Browser* browser) {
   auto* prefs = browser->profile()->GetOriginalProfile()->GetPrefs();
   prefs->SetBoolean(
-      brave_tabs::kVerticalTabsFloatingEnabled,
-      !prefs->GetBoolean(brave_tabs::kVerticalTabsFloatingEnabled));
+      luxxle_tabs::kVerticalTabsFloatingEnabled,
+      !prefs->GetBoolean(luxxle_tabs::kVerticalTabsFloatingEnabled));
 }
 
 void ToggleVerticalTabStripExpanded(Browser* browser) {
   auto* prefs = browser->profile()->GetPrefs();
   bool expanded_state_per_window =
-      prefs->GetBoolean(brave_tabs::kVerticalTabsExpandedStatePerWindow);
+      prefs->GetBoolean(luxxle_tabs::kVerticalTabsExpandedStatePerWindow);
   // Toggle preference if all tabs share the same state (derived from prefs)
   if (!expanded_state_per_window) {
-    prefs->SetBoolean(brave_tabs::kVerticalTabsCollapsed,
-                      !prefs->GetBoolean(brave_tabs::kVerticalTabsCollapsed));
+    prefs->SetBoolean(luxxle_tabs::kVerticalTabsCollapsed,
+                      !prefs->GetBoolean(luxxle_tabs::kVerticalTabsCollapsed));
     return;
   }
   // Otherwise, retrieve current vertical tab strip region view
-  auto* browser_view = static_cast<BraveBrowserView*>(browser->window());
+  auto* browser_view = static_cast<LuxxleBrowserView*>(browser->window());
   if (!browser_view) {
     return;
   }
@@ -443,9 +443,9 @@ void ToggleSidebar(Browser* browser) {
     return;
   }
 
-  if (auto* brave_browser_window =
-          BraveBrowserWindow::From(browser->window())) {
-    brave_browser_window->ToggleSidebar();
+  if (auto* luxxle_browser_window =
+          LuxxleBrowserWindow::From(browser->window())) {
+    luxxle_browser_window->ToggleSidebar();
   }
 }
 
@@ -453,17 +453,17 @@ bool HasSelectedURL(Browser* browser) {
   if (!browser) {
     return false;
   }
-  auto* brave_browser_window = BraveBrowserWindow::From(browser->window());
-  return brave_browser_window && brave_browser_window->HasSelectedURL();
+  auto* luxxle_browser_window = LuxxleBrowserWindow::From(browser->window());
+  return luxxle_browser_window && luxxle_browser_window->HasSelectedURL();
 }
 
 void CleanAndCopySelectedURL(Browser* browser) {
   if (!browser) {
     return;
   }
-  auto* brave_browser_window = BraveBrowserWindow::From(browser->window());
-  if (brave_browser_window) {
-    brave_browser_window->CleanAndCopySelectedURL();
+  auto* luxxle_browser_window = LuxxleBrowserWindow::From(browser->window());
+  if (luxxle_browser_window) {
+    luxxle_browser_window->CleanAndCopySelectedURL();
   }
 }
 
@@ -477,12 +477,12 @@ void ToggleShieldsEnabled(Browser* browser) {
     return;
   }
   auto* shields =
-      brave_shields::BraveShieldsTabHelper::FromWebContents(contents);
+      luxxle_shields::LuxxleShieldsTabHelper::FromWebContents(contents);
   if (!shields) {
     return;
   }
 
-  shields->SetBraveShieldsEnabled(!shields->GetBraveShieldsEnabled());
+  shields->SetLuxxleShieldsEnabled(!shields->GetLuxxleShieldsEnabled());
 }
 
 void ToggleJavascriptEnabled(Browser* browser) {
@@ -495,7 +495,7 @@ void ToggleJavascriptEnabled(Browser* browser) {
     return;
   }
   auto* shields =
-      brave_shields::BraveShieldsTabHelper::FromWebContents(contents);
+      luxxle_shields::LuxxleShieldsTabHelper::FromWebContents(contents);
   if (!shields) {
     return;
   }
@@ -515,13 +515,13 @@ void ToggleCommander(Browser* browser) {
 
 #if BUILDFLAG(ENABLE_PLAYLIST_WEBUI)
 void ShowPlaylistBubble(Browser* browser) {
-  BraveBrowserWindow::From(browser->window())->ShowPlaylistBubble();
+  LuxxleBrowserWindow::From(browser->window())->ShowPlaylistBubble();
 }
 #endif
 
-#if BUILDFLAG(ENABLE_BRAVE_WAYBACK_MACHINE)
+#if BUILDFLAG(ENABLE_LUXXLE_WAYBACK_MACHINE)
 void ShowWaybackMachineBubble(Browser* browser) {
-  BraveBrowserWindow::From(browser->window())->ShowWaybackMachineBubble();
+  LuxxleBrowserWindow::From(browser->window())->ShowWaybackMachineBubble();
 }
 #endif
 
@@ -700,7 +700,7 @@ void CloseUngroupedTabs(Browser* browser) {
   if (!browser) {
     return;
   }
-  auto* tsm = static_cast<BraveTabStripModel*>(browser->tab_strip_model());
+  auto* tsm = static_cast<LuxxleTabStripModel*>(browser->tab_strip_model());
   CHECK(tsm);
 
   std::vector<int> indices;
@@ -723,7 +723,7 @@ void CloseTabsNotInCurrentGroup(Browser* browser) {
     return;
   }
 
-  auto* tsm = static_cast<BraveTabStripModel*>(browser->tab_strip_model());
+  auto* tsm = static_cast<LuxxleTabStripModel*>(browser->tab_strip_model());
   CHECK(tsm);
 
   auto group_id = tsm->GetTabGroupForTab(tsm->active_index());
@@ -785,13 +785,13 @@ void BringAllTabs(Browser* browser) {
   std::stack<std::unique_ptr<tabs::TabModel>> detached_unpinned_tabs;
 
   const bool shared_pinned_tab_enabled =
-      base::FeatureList::IsEnabled(tabs::features::kBraveSharedPinnedTabs) &&
-      browser->profile()->GetPrefs()->GetBoolean(brave_tabs::kSharedPinnedTab);
+      base::FeatureList::IsEnabled(tabs::features::kLuxxleSharedPinnedTabs) &&
+      browser->profile()->GetPrefs()->GetBoolean(luxxle_tabs::kSharedPinnedTab);
 
   std::ranges::for_each(browsers, [&detached_pinned_tabs,
                                    &detached_unpinned_tabs, &browsers_to_close,
                                    shared_pinned_tab_enabled](auto* other) {
-    static_cast<BraveBrowser*>(other)
+    static_cast<LuxxleBrowser*>(other)
         ->set_ignore_enable_closing_last_tab_pref();
 
     auto* tab_strip_model = other->tab_strip_model();
@@ -1182,4 +1182,4 @@ void SwapTabsInTile(Browser* browser) {
                            /*select_after_move*/ false);
 }
 
-}  // namespace brave
+}  // namespace luxxle

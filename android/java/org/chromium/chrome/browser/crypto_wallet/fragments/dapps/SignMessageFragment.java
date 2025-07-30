@@ -24,12 +24,12 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.chromium.base.Log;
-import org.chromium.brave_wallet.mojom.AccountId;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.SignMessageRequest;
+import org.chromium.luxxle_wallet.mojom.AccountId;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.SignMessageRequest;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.app.domain.WalletModel;
 import org.chromium.chrome.browser.crypto_wallet.adapters.SignMessagePagerAdapter;
 import org.chromium.chrome.browser.crypto_wallet.util.JavaUtils;
@@ -67,10 +67,10 @@ public class SignMessageFragment extends BaseDAppsBottomSheetDialogFragment {
         mTabTitles = new ArrayList<>();
         mTabTitles.add(getString(R.string.details));
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             mWalletModel = activity.getWalletModel();
             registerKeyringObserver(mWalletModel.getKeyringModel());
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "onCreate ", e);
         }
     }
@@ -95,7 +95,7 @@ public class SignMessageFragment extends BaseDAppsBottomSheetDialogFragment {
     }
 
     private void notifySignMessageRequestProcessed(boolean approved) {
-        getBraveWalletService()
+        getLuxxleWalletService()
                 .notifySignMessageRequestProcessed(
                         approved, mCurrentSignMessageRequest.id, null, null);
         fillSignMessageInfo(false);
@@ -106,7 +106,7 @@ public class SignMessageFragment extends BaseDAppsBottomSheetDialogFragment {
     }
 
     private void fillSignMessageInfo(boolean init) {
-        getBraveWalletService()
+        getLuxxleWalletService()
                 .getPendingSignMessageRequests(
                         requests -> {
                             if (requests == null || requests.length == 0) {
@@ -158,7 +158,7 @@ public class SignMessageFragment extends BaseDAppsBottomSheetDialogFragment {
         assert (accountId.coin == CoinType.ETH || accountId.coin == CoinType.SOL);
 
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             activity.getWalletModel()
                     .getKeyringModel()
                     .getAccounts(
@@ -175,7 +175,7 @@ public class SignMessageFragment extends BaseDAppsBottomSheetDialogFragment {
                                 String accountText = accountInfo.name + "\n" + accountInfo.address;
                                 mAccountName.setText(accountText);
                             });
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "updateAccount " + e);
         }
     }

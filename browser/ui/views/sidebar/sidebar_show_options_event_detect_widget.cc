@@ -9,8 +9,8 @@
 
 #include "base/memory/raw_ref.h"
 #include "luxxle/app/vector_icons/vector_icons.h"
-#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_view.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "ui/base/l10n/l10n_util.h"
 #include "ui/gfx/canvas.h"
 #include "ui/gfx/geometry/rect.h"
@@ -41,7 +41,7 @@ class SidebarShowOptionsEventDetectWidget::ContentsView : public views::View {
 };
 
 SidebarShowOptionsEventDetectWidget::SidebarShowOptionsEventDetectWidget(
-    BraveBrowserView& browser_view,
+    LuxxleBrowserView& browser_view,
     Delegate& delegate)
     : browser_view_(browser_view), delegate_(delegate) {
   observation_.Observe(browser_view_->contents_container());

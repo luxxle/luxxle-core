@@ -6,7 +6,7 @@
 ##
 
 # These tests fail because we disable adding Open Search engines by default.
-# See https://github.com/brave/brave-browser/issues/14496
+# See https://github.com/luxxle/luxxle-browser/issues/14496
 # We short circuit the SearchEngineTabHelper::PageHasOpenSearchDescriptionDocument
 # via SearchEngineTabHelper::IsFormSubmit in chromium_src override.
 -PersistentBackground/ExtensionWebRequestApiTestWithContextType.WebRequestTestOSDD/0

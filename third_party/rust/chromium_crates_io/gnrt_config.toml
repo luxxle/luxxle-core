@@ -282,7 +282,7 @@ license_files = ['../../../../../common/licenses/Apache-2.0']
 license_files = ['LICENSE-APACHE']
 
 [crate.readability]
-license_files = ['../../../../../../brave/components/speedreader/rust/lib/src/readability/LICENSE']
+license_files = ['../../../../../../luxxle/components/speedreader/rust/lib/src/readability/LICENSE']
 
 [crate.reddsa]
 extra_input_roots = [ "../README.md" ]

@@ -3,27 +3,27 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveChromeContextMenuPopulatorAdapter extends BraveClassVisitor {
+public class LuxxleChromeContextMenuPopulatorAdapter extends LuxxleClassVisitor {
     static String sController =
             "org/chromium/chrome/browser/contextmenu/ChromeContextMenuPopulator";
-    static String sBraveController =
-            "org/chromium/chrome/browser/contextmenu/BraveChromeContextMenuPopulator";
+    static String sLuxxleController =
+            "org/chromium/chrome/browser/contextmenu/LuxxleChromeContextMenuPopulator";
 
-    public BraveChromeContextMenuPopulatorAdapter(ClassVisitor visitor) {
+    public LuxxleChromeContextMenuPopulatorAdapter(ClassVisitor visitor) {
         super(visitor);
-        redirectConstructor(sController, sBraveController);
+        redirectConstructor(sController, sLuxxleController);
 
-        deleteMethod(sBraveController, "getProfile");
+        deleteMethod(sLuxxleController, "getProfile");
         makePublicMethod(sController, "getProfile");
 
-        deleteField(sBraveController, "mItemDelegate");
+        deleteField(sLuxxleController, "mItemDelegate");
         makeProtectedField(sController, "mItemDelegate");
 
-        deleteField(sBraveController, "mParams");
+        deleteField(sLuxxleController, "mParams");
         makeProtectedField(sController, "mParams");
     }
 }

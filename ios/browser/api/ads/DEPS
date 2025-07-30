@@ -2,6 +2,6 @@ include_rules = [
 ]
 
 specific_include_rules = {
-  "brave_ads\.mm": [
+  "luxxle_ads\.mm": [
   ],
 }

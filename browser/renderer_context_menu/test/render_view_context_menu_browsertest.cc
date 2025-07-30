@@ -3,9 +3,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/app/luxxle_command_ids.h"
 #include "luxxle/browser/ui/browser_commands.h"
-#include "luxxle/browser/ui/tabs/brave_tab_strip_model.h"
+#include "luxxle/browser/ui/tabs/luxxle_tab_strip_model.h"
 #include "luxxle/browser/ui/tabs/features.h"
 #include "luxxle/browser/ui/tabs/split_view_browser_data.h"
 #include "chrome/browser/renderer_context_menu/render_view_context_menu_browsertest_util.h"
@@ -17,10 +17,10 @@
 #include "content/public/test/browser_test_utils.h"
 #include "third_party/blink/public/mojom/context_menu/context_menu.mojom.h"
 
-class BraveContextMenuBrowserTest : public InProcessBrowserTest {
+class LuxxleContextMenuBrowserTest : public InProcessBrowserTest {
  protected:
-  BraveContextMenuBrowserTest() {
-    scoped_feature_list_.InitAndEnableFeature(tabs::features::kBraveSplitView);
+  LuxxleContextMenuBrowserTest() {
+    scoped_feature_list_.InitAndEnableFeature(tabs::features::kLuxxleSplitView);
   }
 
   std::unique_ptr<TestRenderViewContextMenu> CreateContextMenuInWebContents(
@@ -72,17 +72,17 @@ class BraveContextMenuBrowserTest : public InProcessBrowserTest {
   base::test::ScopedFeatureList scoped_feature_list_;
 };
 
-IN_PROC_BROWSER_TEST_F(BraveContextMenuBrowserTest, OpenLinkInSplitView) {
+IN_PROC_BROWSER_TEST_F(LuxxleContextMenuBrowserTest, OpenLinkInSplitView) {
   std::unique_ptr<TestRenderViewContextMenu> menu(
-      CreateContextMenuMediaTypeNone(GURL("https://brave.com/"),
-                                     GURL("https://brave.com/")));
+      CreateContextMenuMediaTypeNone(GURL("https://luxxle.com/"),
+                                     GURL("https://luxxle.com/")));
 
   EXPECT_TRUE(
       menu->IsCommandIdEnabled(IDC_CONTENT_CONTEXT_OPENLINK_SPLIT_VIEW));
 
   menu->ExecuteCommand(IDC_CONTENT_CONTEXT_OPENLINK_SPLIT_VIEW, 0);
 
-  auto* model = static_cast<BraveTabStripModel*>(browser()->tab_strip_model());
+  auto* model = static_cast<LuxxleTabStripModel*>(browser()->tab_strip_model());
   auto indices = model->GetTabIndicesForCommandAt(
       browser()->tab_strip_model()->active_index());
 

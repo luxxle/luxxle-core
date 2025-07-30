@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-# TODO(sszaloki): https://github.com/luxxle/brave-browser/issues/46286
+# TODO(sszaloki): https://github.com/luxxle/luxxle-browser/issues/46286
 # Try to componentize zxcvbn_data_component_installer.{h,cc}, and upstream the change.
 source_set("zxcvbn_data_component_installer") {
   sources = [

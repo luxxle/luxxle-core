@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// A wrapper to obtain a Brave or Chromium keyed service based on the current
+/// A wrapper to obtain a Luxxle or Chromium keyed service based on the current
 /// browser state.
 ///
 /// Create a subclass of this class for each factory you want to expose to Swift

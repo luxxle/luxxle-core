@@ -16,15 +16,15 @@ source_set("app") {
   ]
 
   sources = [
-    "brave_core_main.h",
-    "brave_core_main.mm",
-    "brave_core_switches.h",
-    "brave_core_switches.mm",
-    "brave_main_delegate.h",
-    "brave_main_delegate.mm",
-    "brave_profile_controller+private.h",
-    "brave_profile_controller.h",
-    "brave_profile_controller.mm",
+    "luxxle_core_main.h",
+    "luxxle_core_main.mm",
+    "luxxle_core_switches.h",
+    "luxxle_core_switches.mm",
+    "luxxle_main_delegate.h",
+    "luxxle_main_delegate.mm",
+    "luxxle_profile_controller+private.h",
+    "luxxle_profile_controller.h",
+    "luxxle_profile_controller.mm",
   ]
 
   deps = [
@@ -32,11 +32,11 @@ source_set("app") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/ai_chat/core/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_component_updater/browser",
+    # "//luxxle/components/luxxle_component_updater/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:constants",
+    # "//luxxle/components/luxxle_sync:constants",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_user_agent/browser",
+    # "//luxxle/components/luxxle_user_agent/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/constants",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -57,8 +57,8 @@ source_set("app") {
     "//luxxle/ios/browser/api/ai_chat",
     "//luxxle/ios/browser/api/ai_chat:ai_chat_mojom_wrappers",
     "//luxxle/ios/browser/api/bookmarks",
-    "//luxxle/ios/browser/api/brave_rewards",
-    "//luxxle/ios/browser/api/brave_user_agent",
+    "//luxxle/ios/browser/api/luxxle_rewards",
+    "//luxxle/ios/browser/api/luxxle_user_agent",
     "//luxxle/ios/browser/api/content_settings",
     "//luxxle/ios/browser/api/de_amp",
     "//luxxle/ios/browser/api/history",
@@ -75,7 +75,7 @@ source_set("app") {
     "//luxxle/ios/browser/api/webcompat_reporter",
     "//luxxle/ios/browser/api/webcompat_reporter:webcompat_reporter_mojom_wrappers",
     "//luxxle/ios/browser/application_context",
-    "//luxxle/ios/browser/brave_ads",
+    "//luxxle/ios/browser/luxxle_ads",
     "//luxxle/ios/browser/skus",
     "//luxxle/ios/browser/ui/webui",
     "//luxxle/ios/browser/web",

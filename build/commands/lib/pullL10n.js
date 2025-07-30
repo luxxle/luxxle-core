@@ -10,17 +10,17 @@ const l10nUtil = require('./l10nUtil')
 
 const pullL10n = (options) => {
   const cmdOptions = config.defaultOptions
-  cmdOptions.cwd = config.braveCoreDir
+  cmdOptions.cwd = config.luxxleCoreDir
 
   // Revert to originals before string replacement because original grd(p)s are
-  // overwritten with modified versions from ./src/brave during build.
+  // overwritten with modified versions from ./src/luxxle during build.
   const srcDir = config.srcDir
   const targetFilesForReset = ['*.grd', '*.grdp', '*.xtb']
   targetFilesForReset.forEach((targetFile) => {
     util.run('git', ['checkout', '--', targetFile], { cwd: srcDir })
   })
 
-  l10nUtil.getBraveTopLevelPaths().forEach((sourceStringPath) => {
+  l10nUtil.getLuxxleTopLevelPaths().forEach((sourceStringPath) => {
     if (
       !options.grd_path
       || sourceStringPath.endsWith(path.sep + options.grd_path)

@@ -9,7 +9,7 @@
 #include "base/functional/callback_helpers.h"
 #include "base/run_loop.h"
 #include "base/test/bind.h"
-#include "luxxle/components/sync/service/brave_sync_service_impl.h"
+#include "luxxle/components/sync/service/luxxle_sync_service_impl.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/keep_alive/profile_keep_alive_waiter.h"
 #include "chrome/browser/profiles/profile_attributes_storage.h"
@@ -57,17 +57,17 @@ IN_PROC_BROWSER_TEST_F(DeleteProfileHelperBrowserTest,
   ProfileKeepAliveAddedWaiter keep_alive_added_waiter(
       &profile_to_delete, ProfileKeepAliveOrigin::kProfileDeletionProcess);
 
-  syncer::BraveSyncServiceImpl* brave_sync_service =
-      static_cast<syncer::BraveSyncServiceImpl*>(
+  syncer::LuxxleSyncServiceImpl* luxxle_sync_service =
+      static_cast<syncer::LuxxleSyncServiceImpl*>(
           SyncServiceFactory::GetAsSyncServiceImplForProfileForTesting(
               &profile_to_delete));
 
   // Set the sync code to ensure it will be cleared on profile deletion
-  EXPECT_TRUE(brave_sync_service->SetSyncCode(kValidSyncCode));
+  EXPECT_TRUE(luxxle_sync_service->SetSyncCode(kValidSyncCode));
 
-  brave_sync::Prefs brave_sync_prefs(profile_to_delete.GetPrefs());
+  luxxle_sync::Prefs luxxle_sync_prefs(profile_to_delete.GetPrefs());
   bool failed_to_decrypt;
-  std::string seed = brave_sync_prefs.GetSeed(&failed_to_decrypt);
+  std::string seed = luxxle_sync_prefs.GetSeed(&failed_to_decrypt);
   ASSERT_FALSE(failed_to_decrypt);
   EXPECT_FALSE(seed.empty());
 
@@ -80,10 +80,10 @@ IN_PROC_BROWSER_TEST_F(DeleteProfileHelperBrowserTest,
   keep_alive_added_waiter.Wait();
   loop.Run();
 
-  // Ensure that we've invoked BraveSyncServiceImpl::StopAndClear() from
+  // Ensure that we've invoked LuxxleSyncServiceImpl::StopAndClear() from
   // DisableSyncForProfileDeletion at delete_profile_helper.cc, so
   // now seed should be empty
-  seed = brave_sync_prefs.GetSeed(&failed_to_decrypt);
+  seed = luxxle_sync_prefs.GetSeed(&failed_to_decrypt);
   ASSERT_FALSE(failed_to_decrypt);
   EXPECT_TRUE(seed.empty());
 }

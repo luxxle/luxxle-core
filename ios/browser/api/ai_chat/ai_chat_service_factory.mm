@@ -1,9 +1,9 @@
-// Copyright (c) 2024 The Brave Authors. All rights reserved.
+// Copyright (c) 2024 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/ios/browser/api/ai_chat/ai_chat_service_factory.h"
+#include "luxxle/ios/browser/api/ai_chat/ai_chat_service_factory.h"
 
 #include "base/no_destructor.h"
 #include "luxxle/components/ai_chat/core/browser/ai_chat_credential_manager.h"
@@ -11,8 +11,8 @@
 #include "luxxle/components/ai_chat/core/browser/ai_chat_metrics.h"
 #include "luxxle/components/ai_chat/core/browser/ai_chat_service.h"
 #include "luxxle/components/ai_chat/core/common/features.h"
-#include "brave/ios/browser/api/ai_chat/model_service_factory.h"
-#include "brave/ios/browser/skus/skus_service_factory.h"
+#include "luxxle/ios/browser/api/ai_chat/model_service_factory.h"
+#include "luxxle/ios/browser/skus/skus_service_factory.h"
 #include "components/user_prefs/user_prefs.h"
 #include "components/version_info/channel.h"
 #include "components/version_info/version_info.h"
@@ -42,7 +42,7 @@ AIChatServiceFactory::AIChatServiceFactory()
       // prefs, so passing nullptr is acceptable here.
       // If this constraint changes, the following issue
       // must be addressed first:
-      // https://github.com/luxxle/brave-browser/issues/45459
+      // https://github.com/luxxle/luxxle-browser/issues/45459
       ai_chat_metrics_(std::make_unique<AIChatMetrics>(
           GetApplicationContext()->GetLocalState(),
           nullptr)) {}

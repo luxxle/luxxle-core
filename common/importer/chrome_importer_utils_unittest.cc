@@ -11,20 +11,20 @@
 #include "base/path_service.h"
 #include "base/test/values_test_util.h"
 #include "luxxle/common/importer/importer_constants.h"
-#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/constants/luxxle_paths.h"
 #include "chrome/common/importer/importer_data_types.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
-class BraveChromeImporterUtilsTest : public testing::Test {
+class LuxxleChromeImporterUtilsTest : public testing::Test {
  public:
-  BraveChromeImporterUtilsTest() {}
+  LuxxleChromeImporterUtilsTest() {}
 
   void SetUp() override {
-    EXPECT_TRUE(brave_profile_dir_.CreateUniqueTempDir());
+    EXPECT_TRUE(luxxle_profile_dir_.CreateUniqueTempDir());
     base::CreateDirectory(GetTestProfilePath());
   }
   base::FilePath GetTestProfilePath() {
-    return brave_profile_dir_.GetPath().AppendASCII("Chrome").AppendASCII(
+    return luxxle_profile_dir_.GetPath().AppendASCII("Chrome").AppendASCII(
         "Default");
   }
   void CopyTestFileToProfile(const std::string& source,
@@ -39,10 +39,10 @@ class BraveChromeImporterUtilsTest : public testing::Test {
   }
 
  private:
-  base::ScopedTempDir brave_profile_dir_;
+  base::ScopedTempDir luxxle_profile_dir_;
 };
 
-TEST_F(BraveChromeImporterUtilsTest, GetChromeExtensionsListPreferences) {
+TEST_F(LuxxleChromeImporterUtilsTest, GetChromeExtensionsListPreferences) {
   CopyTestFileToProfile(kChromePreferencesFile, kChromePreferencesFile);
   auto extensions_list =
       GetImportableChromeExtensionsList(GetTestProfilePath());
@@ -53,7 +53,7 @@ TEST_F(BraveChromeImporterUtilsTest, GetChromeExtensionsListPreferences) {
                                       "mefhakmgclhhfbdadeojlkbllmecialg"}));
 }
 
-TEST_F(BraveChromeImporterUtilsTest, GetChromeExtensionsListSecurePreferences) {
+TEST_F(LuxxleChromeImporterUtilsTest, GetChromeExtensionsListSecurePreferences) {
   CopyTestFileToProfile("Secure_Preferences_for_extension_import",
                         kChromeSecurePreferencesFile);
   auto extensions_list =
@@ -64,7 +64,7 @@ TEST_F(BraveChromeImporterUtilsTest, GetChromeExtensionsListSecurePreferences) {
             std::vector<std::string>({"aeblfdkhhhdcdjpifhhbdiojplfjncoa"}));
 }
 
-TEST_F(BraveChromeImporterUtilsTest, ExtensionImportTest) {
+TEST_F(LuxxleChromeImporterUtilsTest, ExtensionImportTest) {
   CopyTestFileToProfile("Secure_Preferences_for_extension_import",
                         kChromeSecurePreferencesFile);
   CopyTestFileToProfile("Preferences", "Preferences");
@@ -81,7 +81,7 @@ TEST_F(BraveChromeImporterUtilsTest, ExtensionImportTest) {
                                       "mefhakmgclhhfbdadeojlkbllmecialg"}));
 }
 
-TEST_F(BraveChromeImporterUtilsTest, GetChromeUserDataFolder) {
+TEST_F(LuxxleChromeImporterUtilsTest, GetChromeUserDataFolder) {
   CopyTestFileToProfile("Local State", "Local State");
 
   EXPECT_EQ(GetChromeSourceProfiles(base::FilePath(FILE_PATH_LITERAL("fake"))),
@@ -119,7 +119,7 @@ TEST_F(BraveChromeImporterUtilsTest, GetChromeUserDataFolder) {
       ])"));
 }
 
-TEST_F(BraveChromeImporterUtilsTest, ChromeImporterCanImport) {
+TEST_F(LuxxleChromeImporterUtilsTest, ChromeImporterCanImport) {
   CopyTestFileToProfile("Secure_Preferences_for_extension_import",
                         kChromeSecurePreferencesFile);
   CopyTestFileToProfile(kChromePreferencesFile, kChromePreferencesFile);
@@ -129,7 +129,7 @@ TEST_F(BraveChromeImporterUtilsTest, ChromeImporterCanImport) {
   EXPECT_EQ(services_supported, importer::EXTENSIONS);
 }
 
-TEST_F(BraveChromeImporterUtilsTest, BadFiles) {
+TEST_F(LuxxleChromeImporterUtilsTest, BadFiles) {
   CopyTestFileToProfile("non_json_preferences", kChromeSecurePreferencesFile);
   CopyTestFileToProfile("non_json_preferences", kChromePreferencesFile);
   uint16_t services_supported = importer::NONE;

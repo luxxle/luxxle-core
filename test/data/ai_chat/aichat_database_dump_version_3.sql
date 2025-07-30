@@ -17,7 +17,7 @@ CREATE TABLE conversation_entry_event_completion(conversation_entry_uuid INTEGER
 INSERT INTO conversation_entry_event_completion VALUES('f761af26-4491-4787-ad53-82238b42f534',0,X'76313080a3088aa5874d731e9b5042cb565dab897e3af6560681aad24ef9c9379de805096188372c73372de010da70dd9231cfd70490087fd074004e3c826852cb400903a589baf91e4b3ad75acfe8b40b2bc6846b9c00edd6a3d32359c98614383d35');
 CREATE TABLE conversation_entry_event_search_queries(conversation_entry_uuid INTEGER NOT NULL,event_order INTEGER NOT NULL,queries BLOB NOT NULL,PRIMARY KEY(conversation_entry_uuid, event_order));
 CREATE TABLE conversation_entry_uploaded_files(conversation_entry_uuid INTEGER NOT NULL,file_order INTEGER NOT NULL,filename BLOB NOT NULL,filesize INTEGER NOT NULL,data BLOB NOT NULL,PRIMARY KEY(conversation_entry_uuid, file_order));
-INSERT INTO conversation_entry_uploaded_files VALUES('5616a89c-7f56-4e7d-8e74-f882b76623a7', 0, 'brave_logo.png', 4, X'deadbeef');
+INSERT INTO conversation_entry_uploaded_files VALUES('5616a89c-7f56-4e7d-8e74-f882b76623a7', 0, 'luxxle_logo.png', 4, X'deadbeef');
 INSERT INTO conversation_entry_uploaded_files VALUES('5616a89c-7f56-4e7d-8e74-f882b76623a7', 1, 'lion.png', 4, X'deadbeef');
 INSERT INTO conversation_entry_uploaded_files VALUES('f761af26-4491-4787-ad53-82238b42f534', 0, 'dragon.png', 4, X'deadbeef');
 COMMIT;

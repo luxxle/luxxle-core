@@ -1,0 +1,93 @@
+// Copyright (c) 2021 The Luxxle Authors. All rights reserved.
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this file,
+// you can obtain one at http://mozilla.org/MPL/2.0/.
+
+#include "luxxle/browser/ui/webui/luxxle_vpn/vpn_panel_handler.h"
+#include "luxxle/browser/ui/webui/luxxle_vpn/vpn_panel_ui.h"
+
+#include <utility>
+
+// REMOVED: #include "luxxle/browser/luxxle_vpn/.*"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
+#include "chrome/browser/ui/browser.h"
+#include "chrome/browser/ui/browser_finder.h"
+#include "chrome/browser/ui/browser_tabstrip.h"
+#include "chrome/browser/ui/singleton_tabs.h"
+#include "chrome/browser/ui/tabs/tab_strip_model.h"
+
+namespace {
+
+bool ShouldOpenSingletonTab(luxxle_vpn::mojom::ManageURLType type) {
+  return type == luxxle_vpn::mojom::ManageURLType::MANAGE ||
+         type == luxxle_vpn::mojom::ManageURLType::PRIVACY ||
+         type == luxxle_vpn::mojom::ManageURLType::ABOUT;
+}
+
+void ShowSingletonVPNTab(Browser* browser, const GURL& url) {
+  for (auto i = 0; i < browser->tab_strip_model()->GetTabCount(); i++) {
+    auto* web_contents = browser->tab_strip_model()->GetWebContentsAt(i);
+    const GURL& contents_url = web_contents->GetVisibleURL();
+    bool is_equal = contents_url.SchemeIs(url.scheme()) &&
+                    contents_url.DomainIs(url.host()) &&
+                    contents_url.path() == url.path();
+    if (is_equal) {
+      browser->tab_strip_model()->ActivateTabAt(i);
+      return;
+    }
+  }
+  chrome::AddTabAt(browser, url, -1, true);
+}
+
+}  // namespace
+
+VPNPanelHandler::VPNPanelHandler(
+    mojo::PendingReceiver<luxxle_vpn::mojom::PanelHandler> receiver,
+    VPNPanelUI* panel_controller,
+    Profile* profile)
+    : receiver_(this, std::move(receiver)),
+      panel_controller_(panel_controller),
+      profile_(profile) {}
+
+VPNPanelHandler::~VPNPanelHandler() = default;
+
+void VPNPanelHandler::ShowUI() {
+  auto embedder = panel_controller_->embedder();
+  luxxle_vpn::LuxxleVpnService* vpn_service =
+      luxxle_vpn::LuxxleVpnServiceFactory::GetForProfile(profile_);
+  CHECK(vpn_service);
+  if (embedder) {
+    embedder->ShowUI();
+    vpn_service->ReloadPurchasedState();
+  }
+}
+
+void VPNPanelHandler::CloseUI() {
+  auto embedder = panel_controller_->embedder();
+  if (embedder) {
+    embedder->CloseUI();
+  }
+}
+
+void VPNPanelHandler::OpenVpnUIUrl(
+    luxxle_vpn::mojom::ManageURLType type,
+    luxxle_vpn::mojom::ProductUrlsPtr product_urls) {
+  auto* browser = chrome::FindLastActiveWithProfile(profile_);
+  const auto url =
+      luxxle_vpn::GetManageURLForUIType(type, GURL(product_urls->manage));
+  if (ShouldOpenSingletonTab(type)) {
+    ShowSingletonVPNTab(browser, url);
+  } else {
+    chrome::AddTabAt(browser, url, -1, true);
+  }
+}
+
+void VPNPanelHandler::OpenVpnUI(luxxle_vpn::mojom::ManageURLType type) {
+  luxxle_vpn::LuxxleVpnService* vpn_service =
+      luxxle_vpn::LuxxleVpnServiceFactory::GetForProfile(profile_);
+  CHECK(vpn_service);
+  vpn_service->GetProductUrls(base::BindOnce(&VPNPanelHandler::OpenVpnUIUrl,
+                                             base::Unretained(this), type));
+}

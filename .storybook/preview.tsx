@@ -1,4 +1,4 @@
-// Copyright (c) 2021 The Brave Authors. All rights reserved.
+// Copyright (c) 2021 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -6,10 +6,10 @@
 import 'emptykit.css'
 import * as React from 'react'
 import { withKnobs, boolean } from '@storybook/addon-knobs'
-import { setIconBasePath } from '@brave/leo/react/icon'
+import { setIconBasePath } from '@luxxle/leo/react/icon'
 import '../components/web-components/app.global.scss'
 import { getString } from './locale'
-import ThemeProvider from '../components/common/BraveCoreThemeProvider'
+import ThemeProvider from '../components/common/LuxxleCoreThemeProvider'
 
 // Fonts
 import '../ui/webui/resources/fonts/poppins.css'

@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-#include "brave/ios/browser/api/https_upgrades/https_upgrade_service.h"
+#include "luxxle/ios/browser/api/https_upgrades/https_upgrade_service.h"
 
 class HttpsUpgradeService;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BraveHttpsUpgradeService ()
+@interface LuxxleHttpsUpgradeService ()
 - (instancetype)initWithHttpsUpgradeService:(HttpsUpgradeService*)service
     NS_DESIGNATED_INITIALIZER;
 @end

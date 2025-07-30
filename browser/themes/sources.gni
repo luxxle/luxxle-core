@@ -3,22 +3,22 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
-brave_browser_themes_sources = []
+luxxle_browser_themes_sources = []
 
-brave_browser_themes_deps = []
+luxxle_browser_themes_deps = []
 
 if (!is_android) {
-  brave_browser_themes_sources += [
-    "//luxxle/browser/themes/brave_dark_mode_utils.cc",
-    "//luxxle/browser/themes/brave_private_window_theme_supplier.cc",
-    "//luxxle/browser/themes/brave_private_window_theme_supplier.h",
-    "//luxxle/browser/themes/brave_theme_service.cc",
-    "//luxxle/browser/themes/brave_theme_service.h",
+  luxxle_browser_themes_sources += [
+    "//luxxle/browser/themes/luxxle_dark_mode_utils.cc",
+    "//luxxle/browser/themes/luxxle_private_window_theme_supplier.cc",
+    "//luxxle/browser/themes/luxxle_private_window_theme_supplier.h",
+    "//luxxle/browser/themes/luxxle_theme_service.cc",
+    "//luxxle/browser/themes/luxxle_theme_service.h",
   ]
 
-  brave_browser_themes_deps += [
+  luxxle_browser_themes_deps += [
     "//base",
-    "//luxxle/app:brave_generated_resources_grit",
+    "//luxxle/app:luxxle_generated_resources_grit",
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/constants",

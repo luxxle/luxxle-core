@@ -3,22 +3,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveToolbarPositionControllerClassAdapter extends BraveClassVisitor {
+public class LuxxleToolbarPositionControllerClassAdapter extends LuxxleClassVisitor {
     static String sToolbarPositionControllerClassName =
             "org/chromium/chrome/browser/toolbar/ToolbarPositionController";
-    static String sBraveToolbarPositionControllerClassName =
-            "org/chromium/chrome/browser/toolbar/BraveToolbarPositionController";
+    static String sLuxxleToolbarPositionControllerClassName =
+            "org/chromium/chrome/browser/toolbar/LuxxleToolbarPositionController";
 
-    public BraveToolbarPositionControllerClassAdapter(ClassVisitor visitor) {
+    public LuxxleToolbarPositionControllerClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         changeMethodOwner(
                 sToolbarPositionControllerClassName,
                 "calculateStateTransition",
-                sBraveToolbarPositionControllerClassName);
+                sLuxxleToolbarPositionControllerClassName);
     }
 }

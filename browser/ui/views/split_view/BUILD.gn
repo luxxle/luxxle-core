@@ -13,7 +13,7 @@ source_set("split_view") {
 
   deps = [
     "//base",
-    "//luxxle/browser/ui:brave_tab_features",
+    "//luxxle/browser/ui:luxxle_tab_features",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/vector_icons",
     "//cc",

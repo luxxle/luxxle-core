@@ -21,7 +21,7 @@ from uuid import uuid4
 
 def main():
     for channel in ('', 'Nightly', 'Beta', 'Release'):
-        app_name = 'Brave Browser' + (f' {channel}' if channel else '')
+        app_name = 'Luxxle Browser' + (f' {channel}' if channel else '')
         ds_store = 'DS_Store' + (f'.{channel.lower()}' if channel else '')
         create_ds_store(app_name, '../dmg-background.png', f'{ds_store}')
 

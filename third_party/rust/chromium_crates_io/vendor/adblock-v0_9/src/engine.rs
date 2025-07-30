@@ -264,13 +264,13 @@ mod tests {
             "adv$tag=stuff",
             "somelongpath/test$tag=stuff",
             "||brianbondy.com/$tag=brian",
-            "||brave.com$tag=brian",
+            "||luxxle.com$tag=brian",
         ];
         let url_results = [
             ("http://example.com/advert.html", true),
             ("http://example.com/somelongpath/test/2.html", true),
             ("https://brianbondy.com/about", true),
-            ("https://brave.com/about", true),
+            ("https://luxxle.com/about", true),
         ];
 
         let mut engine = Engine::from_rules(&filters, Default::default());
@@ -294,13 +294,13 @@ mod tests {
             "adv$tag=stuff",
             "somelongpath/test$tag=stuff",
             "||brianbondy.com/$tag=brian",
-            "||brave.com$tag=brian",
+            "||luxxle.com$tag=brian",
         ];
         let url_results = [
             ("http://example.com/advert.html", false),
             ("http://example.com/somelongpath/test/2.html", false),
             ("https://brianbondy.com/about", true),
-            ("https://brave.com/about", true),
+            ("https://luxxle.com/about", true),
         ];
 
         let mut engine = Engine::from_rules(&filters, Default::default());
@@ -377,13 +377,13 @@ mod tests {
             "adv$tag=stuff",
             "somelongpath/test$tag=stuff",
             "||brianbondy.com/$tag=brian",
-            "||brave.com$tag=brian",
+            "||luxxle.com$tag=brian",
         ];
         let url_results = [
             ("http://example.com/advert.html", true),
             ("http://example.com/somelongpath/test/2.html", true),
             ("https://brianbondy.com/about", false),
-            ("https://brave.com/about", false),
+            ("https://luxxle.com/about", false),
         ];
 
         let mut engine = Engine::from_rules(&filters, Default::default());
@@ -791,7 +791,7 @@ mod tests {
     fn scriptlet_permissions() {
         use crate::resources::{PermissionMask, ResourceType};
         const UBO_PERM: PermissionMask = PermissionMask::from_bits(0b00000001);
-        const BRAVE_PERM: PermissionMask = PermissionMask::from_bits(0b00000011);
+        const LUXXLE_PERM: PermissionMask = PermissionMask::from_bits(0b00000011);
 
         let resources = [
             Resource::simple("refresh-defuser.js", MimeType::ApplicationJavascript, "refresh-defuser"),
@@ -804,12 +804,12 @@ mod tests {
                 permission: UBO_PERM,
             },
             Resource {
-                name: "brave-fix.js".to_string(),
+                name: "luxxle-fix.js".to_string(),
                 aliases: vec![],
                 kind: ResourceType::Mime(MimeType::ApplicationJavascript),
-                content: BASE64_STANDARD.encode("brave-fix"),
+                content: BASE64_STANDARD.encode("luxxle-fix"),
                 dependencies: vec![],
-                permission: BRAVE_PERM,
+                permission: LUXXLE_PERM,
             },
         ];
 
@@ -817,12 +817,12 @@ mod tests {
         filter_set.add_filters([
             "sub1.example.com##+js(refresh-defuser)",
             "sub2.example.com##+js(trusted-set-cookie)",
-            "sub3.example.com##+js(brave-fix)"
+            "sub3.example.com##+js(luxxle-fix)"
         ], Default::default());
         filter_set.add_filters([
             "sub4.example.com##+js(refresh-defuser)",
             "sub5.example.com##+js(trusted-set-cookie)",
-            "sub6.example.com##+js(brave-fix)"
+            "sub6.example.com##+js(luxxle-fix)"
         ], ParseOptions {
             permissions: UBO_PERM,
             ..Default::default()
@@ -830,9 +830,9 @@ mod tests {
         filter_set.add_filters([
             "sub7.example.com##+js(refresh-defuser)",
             "sub8.example.com##+js(trusted-set-cookie)",
-            "sub9.example.com##+js(brave-fix)"
+            "sub9.example.com##+js(luxxle-fix)"
         ], ParseOptions {
-            permissions: BRAVE_PERM,
+            permissions: LUXXLE_PERM,
             ..Default::default()
         });
 
@@ -853,7 +853,7 @@ mod tests {
 
         assert_eq!(engine.url_cosmetic_resources("https://sub7.example.com").injected_script, wrap_try("refresh-defuser"));
         assert_eq!(engine.url_cosmetic_resources("https://sub8.example.com").injected_script, wrap_try("trusted-set-cookie"));
-        assert_eq!(engine.url_cosmetic_resources("https://sub9.example.com").injected_script, wrap_try("brave-fix"));
+        assert_eq!(engine.url_cosmetic_resources("https://sub9.example.com").injected_script, wrap_try("luxxle-fix"));
     }
 
     #[test]

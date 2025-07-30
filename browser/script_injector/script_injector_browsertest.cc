@@ -9,7 +9,7 @@
 #include "base/strings/utf_string_conversions.h"
 #include "base/test/bind.h"
 #include "base/test/mock_callback.h"
-#include "luxxle/browser/brave_content_browser_client.h"
+#include "luxxle/browser/luxxle_content_browser_client.h"
 #include "luxxle/components/script_injector/common/mojom/script_injector.mojom.h"
 #include "chrome/common/chrome_isolated_world_ids.h"
 #include "chrome/test/base/chrome_test_utils.h"
@@ -97,7 +97,7 @@ class ScriptInjectorBrowserTest : public PlatformBrowserTest {
   net::EmbeddedTestServer https_server_;
 
  private:
-  BraveContentBrowserClient client_;
+  LuxxleContentBrowserClient client_;
   content::ContentMockCertVerifier mock_cert_verifier_;
 };
 
@@ -113,7 +113,7 @@ IN_PROC_BROWSER_TEST_F(ScriptInjectorBrowserTest, InjectScriptAwaitPromise) {
   ASSERT_TRUE(content::NavigateToURL(web_contents(), url));
   auto remote = GetRemote(web_contents()->GetPrimaryMainFrame());
   remote->RequestAsyncExecuteScript(
-      ISOLATED_WORLD_ID_BRAVE_INTERNAL, base::UTF8ToUTF16(std::string(script)),
+      ISOLATED_WORLD_ID_LUXXLE_INTERNAL, base::UTF8ToUTF16(std::string(script)),
       blink::mojom::UserActivationOption::kDoNotActivate,
       blink::mojom::PromiseResultOption::kAwait, std::move(callback));
   // Wait until the callback is called.
@@ -137,7 +137,7 @@ IN_PROC_BROWSER_TEST_F(ScriptInjectorBrowserTest, InjectedScriptReturnsDict) {
   ASSERT_TRUE(content::NavigateToURL(web_contents(), url));
   auto remote = GetRemote(web_contents()->GetPrimaryMainFrame());
   remote->RequestAsyncExecuteScript(
-      ISOLATED_WORLD_ID_BRAVE_INTERNAL, base::UTF8ToUTF16(std::string(script)),
+      ISOLATED_WORLD_ID_LUXXLE_INTERNAL, base::UTF8ToUTF16(std::string(script)),
       blink::mojom::UserActivationOption::kDoNotActivate,
       blink::mojom::PromiseResultOption::kAwait, std::move(cb));
   run_loop.Run();
@@ -154,7 +154,7 @@ IN_PROC_BROWSER_TEST_F(ScriptInjectorBrowserTest,
   ASSERT_TRUE(content::NavigateToURL(web_contents(), url));
   auto remote = GetRemote(web_contents()->GetPrimaryMainFrame());
   remote->RequestAsyncExecuteScript(
-      ISOLATED_WORLD_ID_BRAVE_INTERNAL, base::UTF8ToUTF16(std::string(script)),
+      ISOLATED_WORLD_ID_LUXXLE_INTERNAL, base::UTF8ToUTF16(std::string(script)),
       blink::mojom::UserActivationOption::kDoNotActivate,
       blink::mojom::PromiseResultOption::kDoNotWait, std::move(cb));
   // Test will not wait for the promise.

@@ -1,0 +1,12 @@
+/* Copyright (c) 2019 The Luxxle Authors. All rights reserved.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#include "chrome/browser/ntp_tiles/chrome_popular_sites_factory.h"
+
+#include "luxxle/components/ntp_tiles/luxxle_popular_sites_impl.h"
+
+#define PopularSitesImpl LuxxlePopularSitesImpl
+#include "src/chrome/browser/ntp_tiles/chrome_popular_sites_factory.cc"
+#undef PopularSitesImpl

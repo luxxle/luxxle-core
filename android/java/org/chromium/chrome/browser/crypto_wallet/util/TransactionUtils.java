@@ -11,14 +11,14 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.SignSolTransactionsRequest;
-import org.chromium.brave_wallet.mojom.SolanaSystemInstruction;
-import org.chromium.brave_wallet.mojom.SolanaTokenInstruction;
-import org.chromium.brave_wallet.mojom.SolanaTxData;
-import org.chromium.brave_wallet.mojom.TransactionInfo;
-import org.chromium.brave_wallet.mojom.TransactionType;
-import org.chromium.brave_wallet.mojom.TxDataUnion;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.SignSolTransactionsRequest;
+import org.chromium.luxxle_wallet.mojom.SolanaSystemInstruction;
+import org.chromium.luxxle_wallet.mojom.SolanaTokenInstruction;
+import org.chromium.luxxle_wallet.mojom.SolanaTxData;
+import org.chromium.luxxle_wallet.mojom.TransactionInfo;
+import org.chromium.luxxle_wallet.mojom.TransactionType;
+import org.chromium.luxxle_wallet.mojom.TxDataUnion;
 import org.chromium.chrome.R;
 
 import java.util.ArrayList;
@@ -78,28 +78,28 @@ public class TransactionUtils {
         if (TextUtils.isEmpty(programId)) return "";
         switch (programId) {
             case WalletConstants.SOL_INS_SYSTEM:
-                return context.getString(R.string.brave_wallet_solana_system_program);
+                return context.getString(R.string.luxxle_wallet_solana_system_program);
             case WalletConstants.SOL_INS_CONFIG:
-                return context.getString(R.string.brave_wallet_solana_config_program);
+                return context.getString(R.string.luxxle_wallet_solana_config_program);
             case WalletConstants.SOL_INS_STAKE:
-                return context.getString(R.string.brave_wallet_solana_stake_program);
+                return context.getString(R.string.luxxle_wallet_solana_stake_program);
             case WalletConstants.SOL_INS_VOTE:
-                return context.getString(R.string.brave_wallet_solana_vote_program);
+                return context.getString(R.string.luxxle_wallet_solana_vote_program);
             case WalletConstants.SOL_INS_BPF:
-                return context.getString(R.string.brave_wallet_solana_bp_floader);
+                return context.getString(R.string.luxxle_wallet_solana_bp_floader);
             case WalletConstants.SOL_INS_SIG_VERIFY:
-                return context.getString(R.string.brave_wallet_solana_ed25519_program);
+                return context.getString(R.string.luxxle_wallet_solana_ed25519_program);
             case WalletConstants.SOL_INS_TOKEN:
-                return context.getString(R.string.brave_wallet_solana_token_program);
+                return context.getString(R.string.luxxle_wallet_solana_token_program);
             case WalletConstants.SOL_INS_SECP:
-                return context.getString(R.string.brave_wallet_solana_secp256k1_program);
+                return context.getString(R.string.luxxle_wallet_solana_secp256k1_program);
             default:
                 return programId;
         }
     }
 
     public static int getSolTxSubType(String programId, int instructionType) {
-        if (TextUtils.isEmpty(programId)) return R.string.brave_wallet_unknown;
+        if (TextUtils.isEmpty(programId)) return R.string.luxxle_wallet_unknown;
 
         switch (programId) {
             case WalletConstants.SOL_INS_SYSTEM:
@@ -107,7 +107,7 @@ public class TransactionUtils {
             case WalletConstants.SOL_INS_TOKEN:
                 return getSolInsTokenName(instructionType);
             default:
-                return R.string.brave_wallet_unknown;
+                return R.string.luxxle_wallet_unknown;
         }
     }
 
@@ -145,82 +145,82 @@ public class TransactionUtils {
     public static @StringRes int getSolInsSysName(int type) {
         switch (type) {
             case SolanaSystemInstruction.CREATE_ACCOUNT:
-                return R.string.brave_wallet_tx_create_account;
+                return R.string.luxxle_wallet_tx_create_account;
             case SolanaSystemInstruction.ASSIGN:
-                return R.string.brave_wallet_tx_assign;
+                return R.string.luxxle_wallet_tx_assign;
             case SolanaSystemInstruction.TRANSFER:
-                return R.string.brave_wallet_tx_transfer;
+                return R.string.luxxle_wallet_tx_transfer;
             case SolanaSystemInstruction.CREATE_ACCOUNT_WITH_SEED:
-                return R.string.brave_wallet_tx_create_account_with_seed;
+                return R.string.luxxle_wallet_tx_create_account_with_seed;
             case SolanaSystemInstruction.ADVANCE_NONCE_ACCOUNT:
-                return R.string.brave_wallet_tx_advance_nonce_account;
+                return R.string.luxxle_wallet_tx_advance_nonce_account;
             case SolanaSystemInstruction.WITHDRAW_NONCE_ACCOUNT:
-                return R.string.brave_wallet_tx_withdraw_nonce_account;
+                return R.string.luxxle_wallet_tx_withdraw_nonce_account;
             case SolanaSystemInstruction.INITIALIZE_NONCE_ACCOUNT:
-                return R.string.brave_wallet_tx_initialize_nonce_account;
+                return R.string.luxxle_wallet_tx_initialize_nonce_account;
             case SolanaSystemInstruction.AUTHORIZE_NONCE_ACCOUNT:
-                return R.string.brave_wallet_tx_authorize_nonce_account;
+                return R.string.luxxle_wallet_tx_authorize_nonce_account;
             case SolanaSystemInstruction.ALLOCATE:
-                return R.string.brave_wallet_tx_allocate;
+                return R.string.luxxle_wallet_tx_allocate;
             case SolanaSystemInstruction.ALLOCATE_WITH_SEED:
-                return R.string.brave_wallet_tx_allocate_with_seed;
+                return R.string.luxxle_wallet_tx_allocate_with_seed;
             case SolanaSystemInstruction.ASSIGN_WITH_SEED:
-                return R.string.brave_wallet_tx_assign_with_seed;
+                return R.string.luxxle_wallet_tx_assign_with_seed;
             case SolanaSystemInstruction.TRANSFER_WITH_SEED:
-                return R.string.brave_wallet_tx_transfer_with_seed;
+                return R.string.luxxle_wallet_tx_transfer_with_seed;
             case SolanaSystemInstruction.UPGRADE_NONCE_ACCOUNT:
-                return R.string.brave_wallet_tx_upgrade_nonce_account;
+                return R.string.luxxle_wallet_tx_upgrade_nonce_account;
             default:
-                return R.string.brave_wallet_unknown;
+                return R.string.luxxle_wallet_unknown;
         }
     }
 
     public static @StringRes int getSolInsTokenName(int type) {
         switch (type) {
             case SolanaTokenInstruction.INITIALIZE_MINT:
-                return R.string.brave_wallet_tx_initialize_mint;
+                return R.string.luxxle_wallet_tx_initialize_mint;
             case SolanaTokenInstruction.INITIALIZE_ACCOUNT:
-                return R.string.brave_wallet_tx_initialize_account;
+                return R.string.luxxle_wallet_tx_initialize_account;
             case SolanaTokenInstruction.INITIALIZE_MULTISIG:
-                return R.string.brave_wallet_tx_initialize_multisig;
+                return R.string.luxxle_wallet_tx_initialize_multisig;
             case SolanaTokenInstruction.TRANSFER:
-                return R.string.brave_wallet_tx_transfer;
+                return R.string.luxxle_wallet_tx_transfer;
             case SolanaTokenInstruction.APPROVE:
-                return R.string.brave_wallet_tx_approve;
+                return R.string.luxxle_wallet_tx_approve;
             case SolanaTokenInstruction.REVOKE:
-                return R.string.brave_wallet_tx_revoke;
+                return R.string.luxxle_wallet_tx_revoke;
             case SolanaTokenInstruction.SET_AUTHORITY:
-                return R.string.brave_wallet_tx_set_authority;
+                return R.string.luxxle_wallet_tx_set_authority;
             case SolanaTokenInstruction.MINT_TO:
-                return R.string.brave_wallet_tx_mint_to;
+                return R.string.luxxle_wallet_tx_mint_to;
             case SolanaTokenInstruction.BURN:
-                return R.string.brave_wallet_tx_burn;
+                return R.string.luxxle_wallet_tx_burn;
             case SolanaTokenInstruction.CLOSE_ACCOUNT:
-                return R.string.brave_wallet_tx_close_account;
+                return R.string.luxxle_wallet_tx_close_account;
             case SolanaTokenInstruction.FREEZE_ACCOUNT:
-                return R.string.brave_wallet_tx_freeze_account;
+                return R.string.luxxle_wallet_tx_freeze_account;
             case SolanaTokenInstruction.THAW_ACCOUNT:
-                return R.string.brave_wallet_tx_thaw_account;
+                return R.string.luxxle_wallet_tx_thaw_account;
             case SolanaTokenInstruction.TRANSFER_CHECKED:
-                return R.string.brave_wallet_tx_transfer_checked;
+                return R.string.luxxle_wallet_tx_transfer_checked;
             case SolanaTokenInstruction.APPROVE_CHECKED:
-                return R.string.brave_wallet_tx_approve_checked;
+                return R.string.luxxle_wallet_tx_approve_checked;
             case SolanaTokenInstruction.MINT_TO_CHECKED:
-                return R.string.brave_wallet_tx_mint_to_checked;
+                return R.string.luxxle_wallet_tx_mint_to_checked;
             case SolanaTokenInstruction.BURN_CHECKED:
-                return R.string.brave_wallet_tx_burn_checked;
+                return R.string.luxxle_wallet_tx_burn_checked;
             case SolanaTokenInstruction.INITIALIZE_ACCOUNT2:
-                return R.string.brave_wallet_tx_initialize_account2;
+                return R.string.luxxle_wallet_tx_initialize_account2;
             case SolanaTokenInstruction.SYNC_NATIVE:
-                return R.string.brave_wallet_tx_sync_native;
+                return R.string.luxxle_wallet_tx_sync_native;
             case SolanaTokenInstruction.INITIALIZE_ACCOUNT3:
-                return R.string.brave_wallet_tx_initialize_account3;
+                return R.string.luxxle_wallet_tx_initialize_account3;
             case SolanaTokenInstruction.INITIALIZE_MULTISIG2:
-                return R.string.brave_wallet_tx_initialize_multisig2;
+                return R.string.luxxle_wallet_tx_initialize_multisig2;
             case SolanaTokenInstruction.INITIALIZE_MINT2:
-                return R.string.brave_wallet_tx_initialize_mint2;
+                return R.string.luxxle_wallet_tx_initialize_mint2;
             default:
-                return R.string.brave_wallet_unknown;
+                return R.string.luxxle_wallet_unknown;
         }
     }
     // ---------- Solana ----------

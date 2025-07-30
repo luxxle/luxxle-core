@@ -6,12 +6,12 @@
 #include "luxxle/browser/android/cosmetic_filters/cosmetic_filters_utils.h"
 
 #include "luxxle/browser/cosmetic_filters/cosmetic_filters_tab_helper.h"
-#include "chrome/android/chrome_jni_headers/BraveCosmeticFiltersUtils_jni.h"
+#include "chrome/android/chrome_jni_headers/LuxxleCosmeticFiltersUtils_jni.h"
 #include "chrome/browser/android/tab_android.h"
 
 namespace cosmetic_filters {
 
-static jboolean JNI_BraveCosmeticFiltersUtils_LaunchContentPickerForWebContent(
+static jboolean JNI_LuxxleCosmeticFiltersUtils_LaunchContentPickerForWebContent(
     JNIEnv* env,
     const base::android::JavaParamRef<jobject>& tab) {
   TabAndroid* tab_android = TabAndroid::GetNativeTab(env, tab);
@@ -27,12 +27,12 @@ static jboolean JNI_BraveCosmeticFiltersUtils_LaunchContentPickerForWebContent(
 
 void ShowCustomFilterSettings() {
   JNIEnv* env = base::android::AttachCurrentThread();
-  Java_BraveCosmeticFiltersUtils_showCustomFilterSettings(env);
+  Java_LuxxleCosmeticFiltersUtils_showCustomFilterSettings(env);
 }
 
 int32_t GetThemeBackgroundColor() {
   JNIEnv* env = base::android::AttachCurrentThread();
-  return Java_BraveCosmeticFiltersUtils_getThemeBackgroundColor(env);
+  return Java_LuxxleCosmeticFiltersUtils_getThemeBackgroundColor(env);
 }
 
 }  // namespace cosmetic_filters

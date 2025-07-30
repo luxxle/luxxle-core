@@ -5,14 +5,14 @@
 
 import("//build/config/features.gni")
 
-brave_browser_infobar_sources = []
-brave_browser_infobar_deps = []
+luxxle_browser_infobar_sources = []
+luxxle_browser_infobar_deps = []
 
 if (!is_android) {
-  brave_browser_infobar_sources += [
-    "//luxxle/browser/infobars/brave_confirm_infobar_creator.h",
-    "//luxxle/browser/infobars/brave_sync_account_deleted_infobar_delegate.cc",
-    "//luxxle/browser/infobars/brave_sync_account_deleted_infobar_delegate.h",
+  luxxle_browser_infobar_sources += [
+    "//luxxle/browser/infobars/luxxle_confirm_infobar_creator.h",
+    "//luxxle/browser/infobars/luxxle_sync_account_deleted_infobar_delegate.cc",
+    "//luxxle/browser/infobars/luxxle_sync_account_deleted_infobar_delegate.h",
     "//luxxle/browser/infobars/dev_channel_deprecation_infobar_delegate.cc",
     "//luxxle/browser/infobars/dev_channel_deprecation_infobar_delegate.h",
     "//luxxle/browser/infobars/request_otr_infobar_delegate.cc",
@@ -21,14 +21,14 @@ if (!is_android) {
     "//luxxle/browser/infobars/sync_cannot_run_infobar_delegate.h",
   ]
 
-  brave_browser_infobar_deps += [
+  luxxle_browser_infobar_deps += [
     "//base",
-    "//luxxle/app:brave_generated_resources_grit",
+    "//luxxle/app:luxxle_generated_resources_grit",
     "//luxxle/common:common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:features",
+    # "//luxxle/components/luxxle_sync:features",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:prefs",
+    # "//luxxle/components/luxxle_sync:prefs",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/constants",
     # Commented out: removed components dependency - using Chromium defaults instead

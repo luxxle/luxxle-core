@@ -10,7 +10,7 @@ Use npm run perf_tests to call this script.
 The tool:
 1. Downloads browser binaries.
 2. Runs the set of telemetry perftests from the provided config.
-3. Reports the results to brave-perf-dashboard.appspot.com or stores them as
+3. Reports the results to luxxle-perf-dashboard.appspot.com or stores them as
    local .html files.
 
 The tool gives more stable results on prepared hardware/OS to minimize jitter.
@@ -57,12 +57,12 @@ def load_config(config: str, options: CommonOptions) -> dict:
     config = (f'{prefix}-{options.target_os}-' +
               f'{options.target_arch}-{options.machine_id}.json5')
     logging.info('Using %s as config=auto', config)
-    config_path = os.path.join(path_util.GetBravePerfConfigDir(), 'ci', config)
+    config_path = os.path.join(path_util.GetLuxxlePerfConfigDir(), 'ci', config)
 
     if not os.path.isfile(config_path):
       raise RuntimeError(f'No config file {config_path}')
   else:  # config is a relative path
-    config_path = os.path.join(path_util.GetBravePerfConfigDir(), config)
+    config_path = os.path.join(path_util.GetLuxxlePerfConfigDir(), config)
     if not os.path.isfile(config_path):
       raise RuntimeError(f'Can\'t find matching config {config}')
 
@@ -80,7 +80,7 @@ To some launch tests locally:
 npm run perf_tests -- compare/compare_with_on_off_feature.json5
 
 On CI:
-npm run perf_tests -- smoke-brave.json5 v1.58.45
+npm run perf_tests -- smoke-luxxle.json5 v1.58.45
      --working-directory=e:\work\luxxle\src\out\100
      --ci-mode
 ''')
@@ -128,9 +128,9 @@ npm run perf_tests -- smoke-brave.json5 v1.58.45
     chromium_config = perf_config.PerfConfig(load_config(args.config, options))
     chromium_config.runners[0].label = 'chromium-rebase'
     options.chromium = False
-    brave_config = perf_config.PerfConfig(load_config(args.config, options))
-    brave_config.runners[0].label = 'brave-rebase'
-    return 0 if profile_tools.RunUpdateProfile(brave_config, chromium_config,
+    luxxle_config = perf_config.PerfConfig(load_config(args.config, options))
+    luxxle_config.runners[0].label = 'luxxle-rebase'
+    return 0 if profile_tools.RunUpdateProfile(luxxle_config, chromium_config,
                                                options) else 1
 
   if options.mode == PerfMode.RECORD_WPR:

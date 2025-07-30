@@ -5,19 +5,19 @@
 
 source_set("web") {
   sources = [
-    "brave_web_client.h",
-    "brave_web_client.mm",
-    "brave_web_main_parts.h",
-    "brave_web_main_parts.mm",
+    "luxxle_web_client.h",
+    "luxxle_web_client.mm",
+    "luxxle_web_main_parts.h",
+    "luxxle_web_main_parts.mm",
   ]
   deps = [
     "//base",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/ai_chat/core/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_component_updater/browser",
+    # "//luxxle/components/luxxle_component_updater/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_user_agent/browser",
+    # "//luxxle/components/luxxle_user_agent/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/constants",

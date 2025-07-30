@@ -12,7 +12,7 @@
 #include <vector>
 
 #include "luxxle/browser/net/url_context.h"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
 #include "net/base/completion_once_callback.h"
 
 namespace decentralized_dns {
@@ -21,28 +21,28 @@ namespace decentralized_dns {
 // decentralized DNS records, and redirect URL requests based on them.
 int OnBeforeURLRequest_DecentralizedDnsPreRedirectWork(
     const luxxle::ResponseCallback& next_callback,
-    std::shared_ptr<luxxle::BraveRequestInfo> ctx);
+    std::shared_ptr<luxxle::LuxxleRequestInfo> ctx);
 
 void OnBeforeURLRequest_UnstoppableDomainsRedirectWork(
     const luxxle::ResponseCallback& next_callback,
-    std::shared_ptr<luxxle::BraveRequestInfo> ctx,
+    std::shared_ptr<luxxle::LuxxleRequestInfo> ctx,
     const std::optional<GURL>& url,
-    brave_wallet::mojom::ProviderError error,
+    luxxle_wallet::mojom::ProviderError error,
     const std::string& error_message);
 
 void OnBeforeURLRequest_EnsRedirectWork(
     const luxxle::ResponseCallback& next_callback,
-    std::shared_ptr<luxxle::BraveRequestInfo> ctx,
+    std::shared_ptr<luxxle::LuxxleRequestInfo> ctx,
     const std::vector<uint8_t>& content_hash,
     bool require_offchain_consent,
-    brave_wallet::mojom::ProviderError error,
+    luxxle_wallet::mojom::ProviderError error,
     const std::string& error_message);
 
 void OnBeforeURLRequest_SnsRedirectWork(
     const luxxle::ResponseCallback& next_callback,
-    std::shared_ptr<luxxle::BraveRequestInfo> ctx,
+    std::shared_ptr<luxxle::LuxxleRequestInfo> ctx,
     const std::optional<GURL>& url,
-    brave_wallet::mojom::SolanaProviderError error,
+    luxxle_wallet::mojom::SolanaProviderError error,
     const std::string& error_message);
 
 }  // namespace decentralized_dns

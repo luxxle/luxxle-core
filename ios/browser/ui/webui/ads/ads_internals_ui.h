@@ -7,13 +7,13 @@
 #define LUXXLE_IOS_BROWSER_UI_WEBUI_ADS_ADS_INTERNALS_UI_H_
 
 #include "base/memory/weak_ptr.h"
-// REMOVED: #include "luxxle/components/brave_ads/.*"
+// REMOVED: #include "luxxle/components/luxxle_ads/.*"
 #include "luxxle/components/services/bat_ads/public/interfaces/bat_ads.mojom.h"
 #include "ios/web/public/webui/web_ui_ios_controller.h"
 #include "mojo/public/cpp/bindings/pending_receiver.h"
 #include "url/gurl.h"
 
-// MARK: - BASED ON: brave/browser/ui/webui/ads_internals/ads_internals_ui.h
+// MARK: - BASED ON: luxxle/browser/ui/webui/ads_internals/ads_internals_ui.h
 
 namespace web {
 class WebUIIOS;

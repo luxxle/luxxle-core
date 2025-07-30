@@ -16,8 +16,8 @@ const gnCheck = (buildConfig = config.defaultBuildConfig, options = {}) => {
     'python3',
     [
       'buildtools/checkdeps/checkdeps.py',
-      'brave',
-      '--extra-repos=brave',
+      'luxxle',
+      '--extra-repos=luxxle',
       '--no-resolve-dotdot',
     ],
     config.defaultOptions,

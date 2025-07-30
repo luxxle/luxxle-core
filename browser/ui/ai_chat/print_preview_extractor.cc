@@ -21,7 +21,7 @@
 #include "luxxle/components/ai_chat/core/browser/constants.h"
 #include "luxxle/components/ai_chat/core/browser/utils.h"
 #include "luxxle/components/text_recognition/common/buildflags/buildflags.h"
-#include "brave/services/printing/public/mojom/pdf_to_bitmap_converter.mojom.h"
+#include "luxxle/services/printing/public/mojom/pdf_to_bitmap_converter.mojom.h"
 #include "chrome/browser/pdf/pdf_pref_names.h"
 #include "chrome/browser/printing/print_compositor_util.h"
 #include "chrome/browser/printing/print_preview_data_service.h"

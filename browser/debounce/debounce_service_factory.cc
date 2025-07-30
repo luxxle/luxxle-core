@@ -10,7 +10,7 @@
 
 #include "base/feature_list.h"
 #include "base/no_destructor.h"
-#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/luxxle_browser_process.h"
 #include "luxxle/components/debounce/core/browser/debounce_service.h"
 #include "luxxle/components/debounce/core/common/features.h"
 #include "chrome/browser/profiles/incognito_helpers.h"
@@ -43,15 +43,15 @@ std::unique_ptr<KeyedService>
 DebounceServiceFactory::BuildServiceInstanceForBrowserContext(
     content::BrowserContext* context) const {
   // Don't create service is debounce feature is disabled
-  if (!base::FeatureList::IsEnabled(debounce::features::kBraveDebounce))
+  if (!base::FeatureList::IsEnabled(debounce::features::kLuxxleDebounce))
     return nullptr;
 
   debounce::DebounceComponentInstaller* component_installer = nullptr;
-  // Brave browser process may be null if we are being created within a unit
+  // Luxxle browser process may be null if we are being created within a unit
   // test.
-  if (g_brave_browser_process)
+  if (g_luxxle_browser_process)
     component_installer =
-        g_brave_browser_process->debounce_component_installer();
+        g_luxxle_browser_process->debounce_component_installer();
   return std::make_unique<DebounceService>(
       component_installer, Profile::FromBrowserContext(context)->GetPrefs());
 }

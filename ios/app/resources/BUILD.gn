@@ -11,9 +11,9 @@ group("resources") {
 
 repack("repack_unscaled_resources") {
   visibility = [ ":resources" ]
-  output = "$target_gen_dir/brave_resources.pak"
+  output = "$target_gen_dir/luxxle_resources.pak"
   # Commented out: removed components dependency - using Chromium defaults instead
-  # sources = [ "$root_gen_dir/components/brave_components_resources.pak" ]
+  # sources = [ "$root_gen_dir/components/luxxle_components_resources.pak" ]
   # Commented out: removed components dependency - using Chromium defaults instead
   # deps = [ "//luxxle/components/resources" ]
   copy_data_to_bundle = true

@@ -6,7 +6,7 @@
 #ifndef LUXXLE_IOS_BROWSER_API_CONTENT_SETTINGS_DEFAULT_HOST_CONTENT_SETTINGS_INTERNAL_H_
 #define LUXXLE_IOS_BROWSER_API_CONTENT_SETTINGS_DEFAULT_HOST_CONTENT_SETTINGS_INTERNAL_H_
 
-#include "brave/ios/browser/api/content_settings/default_host_content_settings.h"
+#include "luxxle/ios/browser/api/content_settings/default_host_content_settings.h"
 
 class HostContentSettingsMap;
 

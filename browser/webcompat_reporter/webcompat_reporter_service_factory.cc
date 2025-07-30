@@ -9,7 +9,7 @@
 #include <utility>
 
 #include "base/no_destructor.h"
-#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/luxxle_browser_process.h"
 #include "luxxle/browser/webcompat_reporter/webcompat_reporter_service_delegate.h"
 #include "luxxle/components/webcompat_reporter/browser/webcompat_reporter_service.h"
 #include "chrome/browser/browser_process.h"
@@ -73,7 +73,7 @@ WebcompatReporterServiceFactory::BuildServiceInstanceForBrowserContext(
       prefs,
       std::make_unique<WebcompatReporterServiceDelegateImpl>(
           g_browser_process->component_updater(),
-          g_brave_browser_process->ad_block_service(),
+          g_luxxle_browser_process->ad_block_service(),
           HostContentSettingsMapFactory::GetForProfile(context),
           CookieSettingsFactory::GetForProfile(
               Profile::FromBrowserContext(context))),

@@ -1,5 +1,0 @@
-include_rules = [
-  "+brave/components/permissions",
-  "+brave/components/brave_shields/content/test",
-  "+brave/components/ephemeral_storage",
-]

@@ -9,14 +9,14 @@
 #include <utility>
 
 #include "base/strings/string_number_conversions.h"
-// REMOVED: #include "luxxle/browser/brave_wallet/.*"
-#include "luxxle/browser/ui/brave_icon_with_badge_image_source.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/browser/luxxle_wallet/.*"
+#include "luxxle/browser/ui/luxxle_icon_with_badge_image_source.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
 #include "luxxle/components/constants/webui_url_constants.h"
 #include "luxxle/components/vector_icons/vector_icons.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_finder.h"
 #include "chrome/browser/ui/browser_list.h"
@@ -24,7 +24,7 @@
 #include "chrome/browser/ui/tabs/tab_strip_model.h"
 #include "chrome/browser/ui/views/chrome_layout_provider.h"
 #include "chrome/browser/ui/views/toolbar/toolbar_ink_drop_util.h"
-#include "components/grit/brave_components_strings.h"
+#include "components/grit/luxxle_components_strings.h"
 #include "components/prefs/pref_service.h"
 #include "content/public/browser/web_contents.h"
 #include "ui/base/l10n/l10n_util.h"
@@ -39,7 +39,7 @@
 
 namespace {
 
-constexpr int kBraveWalletLeftMarginExtra = -3;
+constexpr int kLuxxleWalletLeftMarginExtra = -3;
 
 content::WebContents* GetActiveWebContents() {
   return BrowserList::GetInstance()
@@ -48,10 +48,10 @@ content::WebContents* GetActiveWebContents() {
       ->GetActiveWebContents();
 }
 
-class BraveWalletButtonHighlightPathGenerator
+class LuxxleWalletButtonHighlightPathGenerator
     : public views::HighlightPathGenerator {
  public:
-  explicit BraveWalletButtonHighlightPathGenerator(bool use_extra_left_margin)
+  explicit LuxxleWalletButtonHighlightPathGenerator(bool use_extra_left_margin)
       : use_extra_left_margin_(use_extra_left_margin) {}
 
   // HighlightPathGenerator:
@@ -61,7 +61,7 @@ class BraveWalletButtonHighlightPathGenerator
     gfx::Rect rect(view->size());
     rect.Inset(GetToolbarInkDropInsets(view));
     rect.Outset(gfx::Outsets::TLBR(
-        0, 0, 0, use_extra_left_margin_ ? kBraveWalletLeftMarginExtra : 0));
+        0, 0, 0, use_extra_left_margin_ ? kLuxxleWalletLeftMarginExtra : 0));
 
     auto* layout_provider = ChromeLayoutProvider::Get();
     DCHECK(layout_provider);
@@ -91,19 +91,19 @@ class WalletButtonMenuModel : public ui::SimpleMenuModel,
 
  private:
   enum ContextMenuCommand {
-    HideBraveWalletIcon,
+    HideLuxxleWalletIcon,
   };
 
   // ui::SimpleMenuModel::Delegate override:
   void ExecuteCommand(int command_id, int event_flags) override {
-    if (command_id == HideBraveWalletIcon) {
+    if (command_id == HideLuxxleWalletIcon) {
       prefs_->SetBoolean(kShowWalletIconOnToolbar, false);
     }
   }
 
   void Build() {
-    AddItemWithStringId(HideBraveWalletIcon,
-                        IDS_HIDE_BRAVE_WALLET_ICON_ON_TOOLBAR);
+    AddItemWithStringId(HideLuxxleWalletIcon,
+                        IDS_HIDE_LUXXLE_WALLET_ICON_ON_TOOLBAR);
   }
 
   raw_ptr<PrefService> prefs_ = nullptr;
@@ -144,7 +144,7 @@ WalletButton::WalletButton(View* backup_anchor_view, Profile* profile)
   SetButtonController(std::move(menu_button_controller));
 
   notification_source_ =
-      std::make_unique<brave_wallet::WalletButtonNotificationSource>(
+      std::make_unique<luxxle_wallet::WalletButtonNotificationSource>(
           profile, base::BindRepeating(&WalletButton::OnNotificationUpdate,
                                        weak_ptr_factory_.GetWeakPtr()));
 }
@@ -183,7 +183,7 @@ void WalletButton::OnThemeChanged() {
   ToolbarButton::OnThemeChanged();
 
   views::HighlightPathGenerator::Install(
-      this, std::make_unique<BraveWalletButtonHighlightPathGenerator>(
+      this, std::make_unique<LuxxleWalletButtonHighlightPathGenerator>(
                 (counter_ > 0)));
 }
 
@@ -197,7 +197,7 @@ std::string WalletButton::GetBadgeText() {
 
 void WalletButton::UpdateImageAndText(bool activated) {
   views::HighlightPathGenerator::Install(
-      this, std::make_unique<BraveWalletButtonHighlightPathGenerator>(
+      this, std::make_unique<LuxxleWalletButtonHighlightPathGenerator>(
                 (counter_ > 0)));
 
   const ui::ColorProvider* color_provider = GetColorProvider();
@@ -210,24 +210,24 @@ void WalletButton::UpdateImageAndText(bool activated) {
   if (counter_ == 0) {
     SetImageModel(views::Button::STATE_NORMAL,
                   ui::ImageModel::FromVectorIcon(
-                      kLeoProductBraveWalletIcon,
+                      kLeoProductLuxxleWalletIcon,
                       color_provider->GetColor(color_id), GetIconSize()));
     return;
   }
 
-  auto icon = gfx::CreateVectorIcon(kLeoProductBraveWalletIcon, GetIconSize(),
+  auto icon = gfx::CreateVectorIcon(kLeoProductLuxxleWalletIcon, GetIconSize(),
                                     color_provider->GetColor(color_id));
 
   size_t icon_size = std::max(icon.width(), icon.height());
-  auto badge_size = luxxle::BraveIconWithBadgeImageSource::GetMaxBadgeSize();
+  auto badge_size = luxxle::LuxxleIconWithBadgeImageSource::GetMaxBadgeSize();
   gfx::Size preferred_size(icon_size + badge_size.width(),
                            icon_size + badge_size.height() / 2);
 
-  auto image_source = std::make_unique<luxxle::BraveIconWithBadgeImageSource>(
+  auto image_source = std::make_unique<luxxle::LuxxleIconWithBadgeImageSource>(
       preferred_size,
       base::BindRepeating(&GetColorProviderForView,
                           weak_ptr_factory_.GetWeakPtr()),
-      icon_size, kBraveWalletLeftMarginExtra);
+      icon_size, kLuxxleWalletLeftMarginExtra);
   image_source->SetAllowEmptyText(show_suggest_badge_);
   image_source->SetIcon(gfx::Image(icon));
 
@@ -240,28 +240,28 @@ void WalletButton::UpdateImageAndText(bool activated) {
 }
 
 void WalletButton::ShowWalletBubble() {
-  brave_wallet::BraveWalletTabHelper::FromWebContents(GetActiveWebContents())
+  luxxle_wallet::LuxxleWalletTabHelper::FromWebContents(GetActiveWebContents())
       ->ShowBubble();
 }
 
 void WalletButton::ShowApproveWalletBubble() {
-  brave_wallet::BraveWalletTabHelper::FromWebContents(GetActiveWebContents())
+  luxxle_wallet::LuxxleWalletTabHelper::FromWebContents(GetActiveWebContents())
       ->ShowApproveWalletBubble();
 }
 
 void WalletButton::CloseWalletBubble() {
-  brave_wallet::BraveWalletTabHelper::FromWebContents(GetActiveWebContents())
+  luxxle_wallet::LuxxleWalletTabHelper::FromWebContents(GetActiveWebContents())
       ->CloseBubble();
 }
 
 bool WalletButton::IsShowingBubble() {
-  return brave_wallet::BraveWalletTabHelper::FromWebContents(
+  return luxxle_wallet::LuxxleWalletTabHelper::FromWebContents(
              GetActiveWebContents())
       ->IsShowingBubble();
 }
 
 bool WalletButton::IsBubbleClosedForTesting() {
-  return brave_wallet::BraveWalletTabHelper::FromWebContents(
+  return luxxle_wallet::LuxxleWalletTabHelper::FromWebContents(
              GetActiveWebContents())
       ->IsBubbleClosedForTesting();
 }

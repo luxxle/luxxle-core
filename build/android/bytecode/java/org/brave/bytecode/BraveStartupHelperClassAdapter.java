@@ -3,23 +3,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveStartupHelperClassAdapter extends BraveClassVisitor {
+public class LuxxleStartupHelperClassAdapter extends LuxxleClassVisitor {
     static String sStartupHelperClassName =
             "org/chromium/chrome/browser/tab_group_sync/StartupHelper";
-    static String sBraveStartupHelperClassName =
-            "org/chromium/chrome/browser/tab_group_sync/BraveStartupHelper";
+    static String sLuxxleStartupHelperClassName =
+            "org/chromium/chrome/browser/tab_group_sync/LuxxleStartupHelper";
 
-    public BraveStartupHelperClassAdapter(ClassVisitor visitor) {
+    public LuxxleStartupHelperClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        changeSuperName(sStartupHelperClassName, sBraveStartupHelperClassName);
+        changeSuperName(sStartupHelperClassName, sLuxxleStartupHelperClassName);
         changeMethodOwner(
                 sStartupHelperClassName,
                 "handleUnsavedLocalTabGroups",
-                sBraveStartupHelperClassName);
+                sLuxxleStartupHelperClassName);
     }
 }

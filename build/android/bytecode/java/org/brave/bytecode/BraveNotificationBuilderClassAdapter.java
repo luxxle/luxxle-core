@@ -3,20 +3,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveNotificationBuilderClassAdapter extends BraveClassVisitor {
+public class LuxxleNotificationBuilderClassAdapter extends LuxxleClassVisitor {
     static String sStandardNotificationBuilderClassName =
             "org/chromium/chrome/browser/notifications/StandardNotificationBuilder";
-    static String sBraveNotificationBuilderClassName =
-            "org/chromium/chrome/browser/notifications/BraveNotificationBuilder";
+    static String sLuxxleNotificationBuilderClassName =
+            "org/chromium/chrome/browser/notifications/LuxxleNotificationBuilder";
 
-    public BraveNotificationBuilderClassAdapter(ClassVisitor visitor) {
+    public LuxxleNotificationBuilderClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         redirectConstructor(
-                sStandardNotificationBuilderClassName, sBraveNotificationBuilderClassName);
+                sStandardNotificationBuilderClassName, sLuxxleNotificationBuilderClassName);
     }
 }

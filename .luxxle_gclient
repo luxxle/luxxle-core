@@ -1,0 +1,7 @@
+solutions = [
+  {
+    "managed": True,
+    "name": ".",
+    "url": "https://github.com/luxxle/luxxle-core.git"
+  }
+]

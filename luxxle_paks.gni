@@ -1,0 +1,28 @@
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at https://mozilla.org/MPL/2.0/.
+
+import("//build/config/locales.gni")
+import("//tools/grit/repack.gni")
+
+assert(!is_ios)
+
+# Minimal template for Luxxle paks - simplified version for minimal browser
+template("luxxle_paks") {
+  # Acknowledge parameters we don't use in minimal implementation
+  not_needed(invoker, [ "output_dir", "copy_data_to_bundle" ])
+  
+  # For now, just create a minimal group that satisfies the dependency
+  # Most Luxxle-specific resources are disabled in the minimal config
+  group(target_name) {
+    forward_variables_from(invoker, [ "deps" ])
+    
+    # Minimal dependencies - just what's needed for basic browser functionality
+    public_deps = []
+    
+    if (defined(invoker.public_deps)) {
+      public_deps += invoker.public_deps
+    }
+  }
+}

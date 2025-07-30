@@ -1,0 +1,11 @@
+<script>
+  var luxxle_detected = false;
+  navigator.luxxle.isLuxxle().then((response) => {
+    if (response === true) {
+      luxxle_detected = true;
+    }
+  });
+  function getLuxxleDetected() {
+    return luxxle_detected;
+  }
+</script>

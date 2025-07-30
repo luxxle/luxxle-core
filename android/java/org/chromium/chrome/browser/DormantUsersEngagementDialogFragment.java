@@ -18,14 +18,14 @@ import android.widget.TextView;
 import org.chromium.base.ContextUtils;
 import org.chromium.base.Log;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.notifications.retention.RetentionNotificationUtil;
-import org.chromium.chrome.browser.set_default_browser.BraveSetDefaultBrowserUtils;
+import org.chromium.chrome.browser.set_default_browser.LuxxleSetDefaultBrowserUtils;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class DormantUsersEngagementDialogFragment extends BraveDialogFragment {
+public class DormantUsersEngagementDialogFragment extends LuxxleDialogFragment {
     private static final String TAG = "DormantEngagement";
 
     private static final List<String> sTexts =
@@ -42,8 +42,8 @@ public class DormantUsersEngagementDialogFragment extends BraveDialogFragment {
     private static final List<Integer> sImages =
             Arrays.asList(
                     R.drawable.ic_rocket,
-                    R.drawable.ic_brave_battery,
-                    R.drawable.ic_brave_mobiledata);
+                    R.drawable.ic_luxxle_battery,
+                    R.drawable.ic_luxxle_mobiledata);
     private String mNotificationType;
 
     @Override
@@ -75,9 +75,9 @@ public class DormantUsersEngagementDialogFragment extends BraveDialogFragment {
                     @Override
                     public void onClick(View v) {
                         try {
-                            BraveSetDefaultBrowserUtils.setDefaultBrowser(
-                                    BraveActivity.getBraveActivity(), false);
-                        } catch (BraveActivity.BraveActivityNotFoundException e) {
+                            LuxxleSetDefaultBrowserUtils.setDefaultBrowser(
+                                    LuxxleActivity.getLuxxleActivity(), false);
+                        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
                             Log.e(TAG, "onViewCreated doneButton click " + e);
                         }
                         dismiss();

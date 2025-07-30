@@ -9,7 +9,7 @@ import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
-import org.chromium.brave_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
 import org.chromium.chrome.browser.crypto_wallet.model.CryptoAccountTypeInfo;
 
 import java.util.List;

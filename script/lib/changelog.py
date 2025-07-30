@@ -31,7 +31,7 @@ def render_markdown(changelog_txt, version, logging):
         heading = '# Release Notes'
         s = heading + '\n'
         s = s + '\n'
-        changes = reconstruct_brave_changelog_list(version_changes)
+        changes = reconstruct_luxxle_changelog_list(version_changes)
         for i in changes:
             s = s + i + '\n'
     else:
@@ -52,7 +52,7 @@ def render_html(changelog_txt, version, logging):
     return rendered
 
 
-def reconstruct_brave_changelog_list(li):
+def reconstruct_luxxle_changelog_list(li):
     """
     li is a list
     """

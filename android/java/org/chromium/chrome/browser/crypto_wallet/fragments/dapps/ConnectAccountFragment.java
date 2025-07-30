@@ -26,18 +26,18 @@ import org.jni_zero.NativeMethods;
 
 import org.chromium.base.Callback;
 import org.chromium.base.Log;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.PermissionLifetimeOption;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.PermissionLifetimeOption;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.BraveRewardsHelper;
+import org.chromium.chrome.browser.LuxxleRewardsHelper;
 import org.chromium.chrome.browser.ChromeTabbedActivity;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.app.domain.WalletModel;
 import org.chromium.chrome.browser.crypto_wallet.fragments.CreateAccountBottomSheetFragment;
-import org.chromium.chrome.browser.crypto_wallet.permission.BravePermissionAccountsListAdapter;
-import org.chromium.chrome.browser.crypto_wallet.permission.BravePermissionAccountsListAdapter.Mode;
-import org.chromium.chrome.browser.crypto_wallet.permission.BravePermissionAccountsListAdapter.PermissionListener;
+import org.chromium.chrome.browser.crypto_wallet.permission.LuxxlePermissionAccountsListAdapter;
+import org.chromium.chrome.browser.crypto_wallet.permission.LuxxlePermissionAccountsListAdapter.Mode;
+import org.chromium.chrome.browser.crypto_wallet.permission.LuxxlePermissionAccountsListAdapter.PermissionListener;
 import org.chromium.chrome.browser.crypto_wallet.util.AccountsPermissionsHelper;
 import org.chromium.chrome.browser.crypto_wallet.util.Utils;
 import org.chromium.chrome.browser.crypto_wallet.util.WalletUtils;
@@ -61,7 +61,7 @@ public class ConnectAccountFragment extends BaseDAppsFragment implements Permiss
     private ImageView mFavicon;
     private AccountInfo[] mAccountInfos;
     private HashSet<AccountInfo> mAccountsWithPermissions;
-    private BravePermissionAccountsListAdapter mAccountsListAdapter;
+    private LuxxlePermissionAccountsListAdapter mAccountsListAdapter;
     private RecyclerView mRecyclerView;
     private AccountInfo mSelectedAccount;
     private FaviconHelper mFaviconHelper;
@@ -72,9 +72,9 @@ public class ConnectAccountFragment extends BaseDAppsFragment implements Permiss
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             mWalletModel = activity.getWalletModel();
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "onCreate " + e);
         }
     }
@@ -83,7 +83,7 @@ public class ConnectAccountFragment extends BaseDAppsFragment implements Permiss
     private void updateAccounts() {
         if (mSelectedAccount == null || mAccountInfos == null) return;
         AccountsPermissionsHelper accountsPermissionsHelper =
-                new AccountsPermissionsHelper(getBraveWalletService(), mAccountInfos);
+                new AccountsPermissionsHelper(getLuxxleWalletService(), mAccountInfos);
         accountsPermissionsHelper.checkAccounts(
                 () -> {
                     mAccountsWithPermissions =
@@ -94,7 +94,7 @@ public class ConnectAccountFragment extends BaseDAppsFragment implements Permiss
                                     mAccountsWithPermissions.size()));
                     if (mAccountsListAdapter == null) {
                         mAccountsListAdapter =
-                                new BravePermissionAccountsListAdapter(
+                                new LuxxlePermissionAccountsListAdapter(
                                         mAccountInfos, Mode.ACCOUNT_CONNECTION, this, null);
                         mRecyclerView.setAdapter(mAccountsListAdapter);
                         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -128,7 +128,7 @@ public class ConnectAccountFragment extends BaseDAppsFragment implements Permiss
         mRecyclerView = view.findViewById(R.id.accounts_list);
         mFavicon = view.findViewById(R.id.favicon);
 
-        getBraveWalletService()
+        getLuxxleWalletService()
                 .getActiveOrigin(
                         originInfo -> {
                             mWebSite.setText(Utils.geteTldSpanned(originInfo));
@@ -141,7 +141,7 @@ public class ConnectAccountFragment extends BaseDAppsFragment implements Permiss
     private void initComponents() {
         mFaviconHelper = new FaviconHelper();
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             GURL pageUrl = getCurrentHostHttpAddress();
             FaviconImageCallback imageCallback =
                     (bitmap, iconUrl) ->
@@ -149,7 +149,7 @@ public class ConnectAccountFragment extends BaseDAppsFragment implements Permiss
             // 0 is a max bitmap size for download
             mFaviconHelper.getLocalFaviconImageForURL(
                     activity.getCurrentProfile(), pageUrl, 0, imageCallback);
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "initComponents " + e);
         }
         assert mWalletModel != null;
@@ -204,7 +204,7 @@ public class ConnectAccountFragment extends BaseDAppsFragment implements Permiss
     }
 
     /**
-     * Data passed from ConnectAccountFragment to BraveDappPermissionPromptDialog for pending
+     * Data passed from ConnectAccountFragment to LuxxleDappPermissionPromptDialog for pending
      * connect account requests
      */
     public static class ConnectAccountPendingData {
@@ -236,10 +236,10 @@ public class ConnectAccountFragment extends BaseDAppsFragment implements Permiss
 
     @Override
     public void connectAccount(@NonNull final AccountInfo account) {
-        Tab tab = BraveRewardsHelper.currentActiveChromeTabbedActivityTab();
+        Tab tab = LuxxleRewardsHelper.currentActiveChromeTabbedActivityTab();
         if (tab != null) {
             if (tab.getWebContents() != null) {
-                // Static data for BraveDappPermissionPromptDialog.show
+                // Static data for LuxxleDappPermissionPromptDialog.show
                 setConnectAccountPendingData(account.address, PermissionLifetimeOption.FOREVER);
                 ConnectAccountFragmentJni.get()
                         .connectAccount(
@@ -263,7 +263,7 @@ public class ConnectAccountFragment extends BaseDAppsFragment implements Permiss
 
     @Override
     public void disconnectAccount(@NonNull final AccountInfo account) {
-        getBraveWalletService()
+        getLuxxleWalletService()
                 .resetPermission(
                         account.accountId,
                         success -> {
@@ -303,7 +303,7 @@ public class ConnectAccountFragment extends BaseDAppsFragment implements Permiss
     }
 
     private GURL getCurrentHostHttpAddress() {
-        ChromeTabbedActivity activity = BraveActivity.getChromeTabbedActivity();
+        ChromeTabbedActivity activity = LuxxleActivity.getChromeTabbedActivity();
         if (activity != null && activity.getActivityTab() != null) {
             return activity.getActivityTab().getUrl().getOrigin();
         }

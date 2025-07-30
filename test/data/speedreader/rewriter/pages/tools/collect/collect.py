@@ -42,7 +42,7 @@ def collect_data(browser, out_dir, url):
 
   if ticket != '':
     with open(out + "/ticket.url", "w") as f :
-      f.write("https://github.com/brave/brave-browser/issues/" + ticket)
+      f.write("https://github.com/luxxle/luxxle-browser/issues/" + ticket)
 
   time.sleep(1)
   process.terminate()

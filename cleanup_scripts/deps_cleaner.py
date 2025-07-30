@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 DEPS File Cleaner - Phase 1.2 Implementation  
-Removes all references to brave/ paths from DEPS files
+Removes all references to luxxle/ paths from DEPS files
 """
 
 import os
@@ -48,7 +48,7 @@ class DepsFileCleaner:
             return False
     
     def clean_deps_file(self, deps_file):
-        """Clean a single DEPS file of brave references"""
+        """Clean a single DEPS file of luxxle references"""
         print(f"📄 Processing: {deps_file.relative_to(self.luxxle_root)}")
         
         try:
@@ -61,14 +61,14 @@ class DepsFileCleaner:
         original_content = content
         modifications_made = []
         
-        # Patterns to remove brave references
+        # Patterns to remove luxxle references
         patterns_to_remove = [
-            # Direct brave path imports
-            r'^\s*["\']?\+brave/[^"\']*["\']?,?\s*$',
-            # Import statements with brave_chromium_utils
-            r'^\s*from\s+brave_chromium_utils\s+import.*$',
-            # Include patterns for brave paths
-            r'^\s*["\']!brave/[^"\']*["\']?,?\s*$',
+            # Direct luxxle path imports
+            r'^\s*["\']?\+luxxle/[^"\']*["\']?,?\s*$',
+            # Import statements with luxxle_chromium_utils
+            r'^\s*from\s+luxxle_chromium_utils\s+import.*$',
+            # Include patterns for luxxle paths
+            r'^\s*["\']!luxxle/[^"\']*["\']?,?\s*$',
         ]
         
         # Remove lines matching patterns
@@ -90,11 +90,11 @@ class DepsFileCleaner:
         content = '\n'.join(new_lines)
         
         replacements = [
-            # Replace any remaining brave references
-            (r'\bbrave/', 'luxxle/'),
-            (r'\bbrave_chromium_utils', 'luxxle_chromium_utils'),
-            # Remove brave buildflags
-            (r'.*brave.*buildflags.*\n?', ''),
+            # Replace any remaining luxxle references
+            (r'\bluxxle/', 'luxxle/'),
+            (r'\bluxxle_chromium_utils', 'luxxle_chromium_utils'),
+            # Remove luxxle buildflags
+            (r'.*luxxle.*buildflags.*\n?', ''),
         ]
         
         for pattern, replacement in replacements:
@@ -139,12 +139,12 @@ class DepsFileCleaner:
                 print(f"  ✗ Failed to write file: {e}")
                 return False
         else:
-            print(f"  ✓ No brave references found")
+            print(f"  ✓ No luxxle references found")
             return True
     
     def verify_deps_files(self):
-        """Verify that no brave references remain in DEPS files"""
-        print("\n🔍 Verifying no brave references remain...")
+        """Verify that no luxxle references remain in DEPS files"""
+        print("\n🔍 Verifying no luxxle references remain...")
         
         deps_files = self.find_all_deps_files()
         remaining_refs = []
@@ -154,15 +154,15 @@ class DepsFileCleaner:
                 with open(deps_file, 'r', encoding='utf-8') as f:
                     content = f.read()
                 
-                # Check for any remaining brave references
-                brave_patterns = [
-                    r'\bbrave/',
-                    r'\bbrave_chromium_utils',
-                    r'brave.*buildflags',
+                # Check for any remaining luxxle references
+                luxxle_patterns = [
+                    r'\bluxxle/',
+                    r'\bluxxle_chromium_utils',
+                    r'luxxle.*buildflags',
                 ]
                 
                 for i, line in enumerate(content.split('\n')):
-                    for pattern in brave_patterns:
+                    for pattern in luxxle_patterns:
                         if re.search(pattern, line, re.IGNORECASE):
                             remaining_refs.append({
                                 'file': deps_file.relative_to(self.luxxle_root),
@@ -174,12 +174,12 @@ class DepsFileCleaner:
                 print(f"  ✗ Failed to verify {deps_file}: {e}")
         
         if remaining_refs:
-            print(f"⚠️  Found {len(remaining_refs)} remaining brave references:")
+            print(f"⚠️  Found {len(remaining_refs)} remaining luxxle references:")
             for ref in remaining_refs:
                 print(f"  • {ref['file']}:{ref['line']} - {ref['content']}")
             return False
         else:
-            print("✅ No brave references found in DEPS files!")
+            print("✅ No luxxle references found in DEPS files!")
             return True
     
     def clean_all_deps_files(self):

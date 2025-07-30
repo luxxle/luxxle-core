@@ -10,7 +10,7 @@
 
 #include "base/functional/callback.h"
 #include "base/notreached.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "build/build_config.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_finder.h"
@@ -31,7 +31,7 @@ void ShowObsoleteSystemConfirmDialog(base::OnceCallback<void(bool)> callback) {
   }
 }
 
-}  // namespace brave
+}  // namespace luxxle
 
 ObsoleteSystemConfirmDialogView::ObsoleteSystemConfirmDialogView(
     base::OnceCallback<void(bool)> closing_callback)

@@ -9,7 +9,7 @@ import("//build/util/branding.gni")
 import("//extensions/buildflags/buildflags.gni")
 import("//mojo/public/tools/bindings/mojom.gni")
 
-brave_common_visibility_targets = [
+luxxle_common_visibility_targets = [
   ":*",
   "//luxxle:browser_dependencies",
   "//luxxle:child_dependencies",
@@ -25,12 +25,12 @@ brave_common_visibility_targets = [
 ]
 
 source_set("channel_info") {
-  visibility = brave_common_visibility_targets
+  visibility = luxxle_common_visibility_targets
 
   if (is_linux) {
     sources = [
-      "brave_channel_info_posix.cc",
-      "brave_channel_info_posix.h",
+      "luxxle_channel_info_posix.cc",
+      "luxxle_channel_info_posix.h",
     ]
 
     deps = [
@@ -48,17 +48,17 @@ group("common") {
 }
 
 config("constants_configs") {
-  visibility = brave_common_visibility_targets +
+  visibility = luxxle_common_visibility_targets +
                # These are layering violation and need to be fixed
                [ "//chrome/tools/build/mac:infoplist_strings_util" ]
   defines = []
   if (is_mac) {
-    defines += [ "BRAVE_PRODUCT_STRING=\"$chrome_product_full_name\"" ]
+    defines += [ "LUXXLE_PRODUCT_STRING=\"$chrome_product_full_name\"" ]
   }
 }
 
 mojom("mojo_bindings") {
-  sources = [ "brave_renderer_configuration.mojom" ]
+  sources = [ "luxxle_renderer_configuration.mojom" ]
 
   deps = [ "//mojo/public/mojom/base" ]
 }

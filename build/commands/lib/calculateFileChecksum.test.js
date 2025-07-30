@@ -8,7 +8,7 @@ const fs = require('fs-extra')
 const os = require('os')
 const calculateFileChecksum = require('./calculateFileChecksum')
 
-const dirPrefixTmp = 'brave-browser-test-calculate-file-checksum-'
+const dirPrefixTmp = 'luxxle-browser-test-calculate-file-checksum-'
 const testFile1Name = 'file1'
 const testFile1InitialContent = 'this is a test'
 const encoding = 'utf8'

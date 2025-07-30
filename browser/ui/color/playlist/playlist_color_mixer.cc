@@ -5,7 +5,7 @@
 
 #include "luxxle/browser/ui/color/playlist/playlist_color_mixer.h"
 
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/ui/color/nala/nala_color_id.h"
 #include "ui/color/color_mixer.h"
 #include "ui/color/color_provider.h"
@@ -16,19 +16,19 @@ namespace playlist {
 void AddThemeColorMixer(ui::ColorProvider* provider,
                         const ui::ColorProviderKey& key) {
   ui::ColorMixer& mixer = provider->AddMixer();
-  mixer[kColorBravePlaylistAddedIcon] = {nala::kColorSystemfeedbackSuccessIcon};
-  mixer[kColorBravePlaylistCheckedIcon] = {nala::kColorIconInteractive};
-  mixer[kColorBravePlaylistSelectedBackground] = {
+  mixer[kColorLuxxlePlaylistAddedIcon] = {nala::kColorSystemfeedbackSuccessIcon};
+  mixer[kColorLuxxlePlaylistCheckedIcon] = {nala::kColorIconInteractive};
+  mixer[kColorLuxxlePlaylistSelectedBackground] = {
       nala::kColorContainerInteractive};
-  mixer[kColorBravePlaylistListBorder] = {nala::kColorDividerSubtle};
-  mixer[kColorBravePlaylistMoveDialogDescription] = {nala::kColorTextSecondary};
-  mixer[kColorBravePlaylistMoveDialogCreatePlaylistAndMoveTitle] = {
+  mixer[kColorLuxxlePlaylistListBorder] = {nala::kColorDividerSubtle};
+  mixer[kColorLuxxlePlaylistMoveDialogDescription] = {nala::kColorTextSecondary};
+  mixer[kColorLuxxlePlaylistMoveDialogCreatePlaylistAndMoveTitle] = {
       nala::kColorTextPrimary};
-  mixer[kColorBravePlaylistNewPlaylistDialogNameLabel] = {
+  mixer[kColorLuxxlePlaylistNewPlaylistDialogNameLabel] = {
       nala::kColorTextPrimary};
-  mixer[kColorBravePlaylistNewPlaylistDialogItemsLabel] = {
+  mixer[kColorLuxxlePlaylistNewPlaylistDialogItemsLabel] = {
       nala::kColorTextSecondary};
-  mixer[kColorBravePlaylistTextInteractive] = {nala::kColorTextInteractive};
+  mixer[kColorLuxxlePlaylistTextInteractive] = {nala::kColorTextInteractive};
 }
 
 }  // namespace playlist

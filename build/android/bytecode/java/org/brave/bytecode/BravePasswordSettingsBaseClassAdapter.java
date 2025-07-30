@@ -3,25 +3,25 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BravePasswordSettingsBaseClassAdapter extends BraveClassVisitor {
+public class LuxxlePasswordSettingsBaseClassAdapter extends LuxxleClassVisitor {
     static String sPasswordSettingsClassName =
             "org/chromium/chrome/browser/password_manager/settings/PasswordSettings";
-    static String sBravePasswordSettingsBaseClassName =
-            "org/chromium/chrome/browser/password_manager/settings/BravePasswordSettingsBase";
+    static String sLuxxlePasswordSettingsBaseClassName =
+            "org/chromium/chrome/browser/password_manager/settings/LuxxlePasswordSettingsBase";
 
-    public BravePasswordSettingsBaseClassAdapter(ClassVisitor visitor) {
+    public LuxxlePasswordSettingsBaseClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        changeSuperName(sPasswordSettingsClassName, sBravePasswordSettingsBaseClassName);
+        changeSuperName(sPasswordSettingsClassName, sLuxxlePasswordSettingsBaseClassName);
 
         changeMethodOwner(
                 sPasswordSettingsClassName,
                 "createCheckPasswords",
-                sBravePasswordSettingsBaseClassName);
+                sLuxxlePasswordSettingsBaseClassName);
         deleteMethod(sPasswordSettingsClassName, "createCheckPasswords");
     }
 }

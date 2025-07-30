@@ -1,6 +1,6 @@
-# Brave environment setup helpers
+# Luxxle environment setup helpers
 
-The directory contains shell helpers to set Brave-specific environment
+The directory contains shell helpers to set Luxxle-specific environment
 variables. These variables allows you to run `gn`, `ninja`, `gclient` and other
 tools directly.
 

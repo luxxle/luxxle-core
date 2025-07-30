@@ -3,7 +3,7 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
-"""A tool to perform authorization to brave-perf-dashboard.appspot.com"""
+"""A tool to perform authorization to luxxle-perf-dashboard.appspot.com"""
 
 import sys
 import json

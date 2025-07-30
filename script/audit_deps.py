@@ -167,7 +167,7 @@ def extract_resolutions(result):
 def parse_args():
     """Parse command line arguments."""
 
-    parser = argparse.ArgumentParser(description='Audit brave-core npm deps')
+    parser = argparse.ArgumentParser(description='Audit luxxle-core npm deps')
     parser.add_argument('input_dir', nargs='?', help='Directory to check')
     parser.add_argument('--source_root',
                         required=True,

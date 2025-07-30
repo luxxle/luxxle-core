@@ -33,20 +33,20 @@ import androidx.fragment.app.Fragment;
 import org.json.JSONException;
 
 import org.chromium.base.Log;
-import org.chromium.brave_rewards.mojom.PublisherStatus;
-import org.chromium.brave_rewards.mojom.WalletStatus;
+import org.chromium.luxxle_rewards.mojom.PublisherStatus;
+import org.chromium.luxxle_rewards.mojom.WalletStatus;
 import org.chromium.build.annotations.NullMarked;
 import org.chromium.build.annotations.Nullable;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.BraveRewardsBalance;
-import org.chromium.chrome.browser.BraveRewardsExternalWallet;
-import org.chromium.chrome.browser.BraveRewardsHelper;
-import org.chromium.chrome.browser.BraveRewardsNativeWorker;
-import org.chromium.chrome.browser.BraveRewardsObserver;
-import org.chromium.chrome.browser.BraveWalletProvider;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.LuxxleRewardsBalance;
+import org.chromium.chrome.browser.LuxxleRewardsExternalWallet;
+import org.chromium.chrome.browser.LuxxleRewardsHelper;
+import org.chromium.chrome.browser.LuxxleRewardsNativeWorker;
+import org.chromium.chrome.browser.LuxxleRewardsObserver;
+import org.chromium.chrome.browser.LuxxleWalletProvider;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.night_mode.GlobalNightModeStateProviderHolder;
-import org.chromium.chrome.browser.rewards.BraveRewardsBannerInfo;
+import org.chromium.chrome.browser.rewards.LuxxleRewardsBannerInfo;
 import org.chromium.chrome.browser.util.TabUtils;
 import org.chromium.ui.base.DeviceFormFactor;
 import org.chromium.ui.text.ChromeClickableSpan;
@@ -55,12 +55,12 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 @NullMarked
-public class RewardsTippingPanelFragment extends Fragment implements BraveRewardsObserver {
+public class RewardsTippingPanelFragment extends Fragment implements LuxxleRewardsObserver {
     public static final String TAG_FRAGMENT = "tipping_panel_tag";
     private static final String TAG = "TippingPanelFragment";
 
-    private BraveRewardsNativeWorker mBraveRewardsNativeWorker;
-    private String mWalletType = BraveRewardsNativeWorker.getInstance().getExternalWalletType();
+    private LuxxleRewardsNativeWorker mLuxxleRewardsNativeWorker;
+    private String mWalletType = LuxxleRewardsNativeWorker.getInstance().getExternalWalletType();
 
     private TextView mRadioTipAmount[] = new TextView[4];
     private double[] mTipChoices;
@@ -90,7 +90,7 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
 
     private double mRate;
     private boolean mIsBatCurrency;
-    private @Nullable BraveRewardsExternalWallet mExternalWallet;
+    private @Nullable LuxxleRewardsExternalWallet mExternalWallet;
     private ProgressBar mTipProgressBar;
     private ProgressBar mFetchBalanceProgressBar;
 
@@ -115,8 +115,8 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
     }
 
     private void init() {
-        mBraveRewardsNativeWorker = BraveRewardsNativeWorker.getInstance();
-        mBraveRewardsNativeWorker.addObserver(this);
+        mLuxxleRewardsNativeWorker = LuxxleRewardsNativeWorker.getInstance();
+        mLuxxleRewardsNativeWorker.addObserver(this);
     }
 
     @Override
@@ -126,12 +126,12 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
             @Nullable Bundle savedInstanceState) {
         final View view =
                 LayoutInflater.from(getContext())
-                        .inflate(R.layout.brave_rewards_tippingpanel_fragment_base, null);
+                        .inflate(R.layout.luxxle_rewards_tippingpanel_fragment_base, null);
         mIsTablet = DeviceFormFactor.isNonMultiDisplayContextOnTablet(getActivity());
         if (getArguments() != null) {
             mCurrentTabId = getArguments().getInt(RewardsTippingBannerActivity.TAB_ID_EXTRA);
-            mBraveRewardsNativeWorker.getPublisherBanner(
-                    mBraveRewardsNativeWorker.getPublisherId(mCurrentTabId));
+            mLuxxleRewardsNativeWorker.getPublisherBanner(
+                    mLuxxleRewardsNativeWorker.getPublisherId(mCurrentTabId));
         }
         mContentView = view;
         mSendButton = view.findViewById(R.id.send_tip_button);
@@ -141,7 +141,7 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
         mCustodianText = view.findViewById(R.id.custodian_text);
 
         init(view);
-        mBraveRewardsNativeWorker.fetchBalance();
+        mLuxxleRewardsNativeWorker.fetchBalance();
         initTipChoice(mToggle);
         setAlreadyMonthlyContributionSetMessage();
         sendTipButtonClick(view);
@@ -162,7 +162,7 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
             try {
                 setBalanceText();
             } catch (NullPointerException e) {
-                Log.e(TAG, "BraveRewardsPanel onBalance " + e);
+                Log.e(TAG, "LuxxleRewardsPanel onBalance " + e);
             }
         }
     }
@@ -181,7 +181,7 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
         Resources res = getResources();
         TextView proceedTextView = view.findViewById(R.id.proceed_terms_of_service);
         proceedTextView.setMovementMethod(LinkMovementMethod.getInstance());
-        String termsOfServiceText = String.format(res.getString(R.string.brave_rewards_tos_text),
+        String termsOfServiceText = String.format(res.getString(R.string.luxxle_rewards_tos_text),
                 res.getString(R.string.terms_of_service), res.getString(R.string.privacy_policy));
         int termsOfServiceTextColor =
                 GlobalNightModeStateProviderHolder.getInstance().isInNightMode()
@@ -189,7 +189,7 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
                         : R.color.terms_of_service_text_color;
 
         SpannableString spannableString =
-                BraveRewardsHelper.tosSpannableString(termsOfServiceText, termsOfServiceTextColor);
+                LuxxleRewardsHelper.tosSpannableString(termsOfServiceText, termsOfServiceTextColor);
         proceedTextView.setText(spannableString);
     }
 
@@ -199,14 +199,14 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
 
         if (!TextUtils.isEmpty(externalWallet)) {
             try {
-                mExternalWallet = new BraveRewardsExternalWallet(externalWallet);
+                mExternalWallet = new LuxxleRewardsExternalWallet(externalWallet);
                 String custodianType = mExternalWallet.getType();
                 if (!TextUtils.isEmpty(custodianType)) {
                     String sendWithCustodian =
                             String.format(getString(R.string.send_with_custodian),
                                     getWalletStringFromType(custodianType));
                     mSendButton.setText(sendWithCustodian);
-                    if (custodianType.equals(BraveWalletProvider.SOLANA)) {
+                    if (custodianType.equals(LuxxleWalletProvider.SOLANA)) {
                         mSendButton.setVisibility(View.GONE);
                     }
                 }
@@ -215,7 +215,7 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
                     if (walletStatus == WalletStatus.LOGGED_OUT) {
                         setLogoutStateMessage();
                     } else {
-                        int pubStatus = mBraveRewardsNativeWorker.getPublisherStatus(mCurrentTabId);
+                        int pubStatus = mLuxxleRewardsNativeWorker.getPublisherStatus(mCurrentTabId);
                         setPublisherNoteText(pubStatus);
                     }
                 } else {
@@ -229,11 +229,11 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
 
     private void setPublisherNoteText(int pubStatus) {
         if ((pubStatus == PublisherStatus.UPHOLD_VERIFIED
-                        && !mWalletType.equals(BraveWalletProvider.UPHOLD))
+                        && !mWalletType.equals(LuxxleWalletProvider.UPHOLD))
                 || (pubStatus == PublisherStatus.BITFLYER_VERIFIED
-                        && !mWalletType.equals(BraveWalletProvider.BITFLYER))
+                        && !mWalletType.equals(LuxxleWalletProvider.BITFLYER))
                 || (pubStatus == PublisherStatus.GEMINI_VERIFIED
-                        && !mWalletType.equals(BraveWalletProvider.GEMINI))) {
+                        && !mWalletType.equals(LuxxleWalletProvider.GEMINI))) {
             String notePart1 =
                     String.format(getString(R.string.creator_unable_receive_contributions),
                             getWalletStringFromType(mWalletType));
@@ -242,7 +242,7 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
             if (!TextUtils.isEmpty(mWeb3Url)) {
                 notePart1 += getString(R.string.still_receive_contributions_from_web3);
                 mWeb3WalletButton.setVisibility(View.VISIBLE);
-            } else if (mWalletType.equals(BraveWalletProvider.SOLANA)) {
+            } else if (mWalletType.equals(LuxxleWalletProvider.SOLANA)) {
                 notePart1 = getString(R.string.creator_isnt_setup_web3);
                 backgroundDrawable = R.drawable.rewards_tipping_web3_error_background;
             }
@@ -266,10 +266,10 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
     }
 
     private void setAlreadyMonthlyContributionSetMessage() {
-        String pubId = mBraveRewardsNativeWorker.getPublisherId(mCurrentTabId);
+        String pubId = mLuxxleRewardsNativeWorker.getPublisherId(mCurrentTabId);
 
         boolean isPreviouslyMonthlyContributionExist =
-                mBraveRewardsNativeWorker.isCurrentPublisherInRecurrentDonations(pubId);
+                mLuxxleRewardsNativeWorker.isCurrentPublisherInRecurrentDonations(pubId);
         if (isPreviouslyMonthlyContributionExist) {
             showAlreadySetMonthlyContribution();
         }
@@ -334,18 +334,18 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
     }
 
     private SpannableString stringMonthlyToSpannableString(String text) {
-        Spanned textSpanned = BraveRewardsHelper.spannedFromHtmlString(text);
+        Spanned textSpanned = LuxxleRewardsHelper.spannedFromHtmlString(text);
         SpannableString textSpannableString = new SpannableString(textSpanned.toString());
         ChromeClickableSpan monthlyContributionClickableSpan =
                 new ChromeClickableSpan(
                         getActivity().getColor(R.color.monthly_contributions_text_color),
                         (textView) -> {
                             TabUtils.openUrlInNewTab(
-                                    false, BraveActivity.BRAVE_REWARDS_SETTINGS_MONTHLY_URL);
+                                    false, LuxxleActivity.LUXXLE_REWARDS_SETTINGS_MONTHLY_URL);
                             dismissRewardsPanel();
                         });
 
-        BraveRewardsHelper.setSpan(
+        LuxxleRewardsHelper.setSpan(
                 getActivity(),
                 text,
                 textSpannableString,
@@ -384,13 +384,13 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
     }
 
     private String getWalletStringFromType(String walletType) {
-        if (walletType.equals(BraveWalletProvider.UPHOLD)) {
+        if (walletType.equals(LuxxleWalletProvider.UPHOLD)) {
             return getResources().getString(R.string.uphold);
-        } else if (walletType.equals(BraveWalletProvider.GEMINI)) {
+        } else if (walletType.equals(LuxxleWalletProvider.GEMINI)) {
             return getResources().getString(R.string.gemini);
-        } else if (walletType.equals(BraveWalletProvider.BITFLYER)) {
+        } else if (walletType.equals(LuxxleWalletProvider.BITFLYER)) {
             return getResources().getString(R.string.bitflyer);
-        } else if (walletType.equals(BraveWalletProvider.ZEBPAY)) {
+        } else if (walletType.equals(LuxxleWalletProvider.ZEBPAY)) {
             return getResources().getString(R.string.zebpay);
         } else {
             return getResources().getString(R.string.wallet_sol_name);
@@ -406,7 +406,7 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
         warningTitle.setText(title);
         TextView warningDescription = view.findViewById(R.id.tipping_warning_description_text);
         warningDescription.setText(description);
-        if (BraveWalletProvider.SOLANA.equals(mWalletType)) {
+        if (LuxxleWalletProvider.SOLANA.equals(mWalletType)) {
             view.findViewById(R.id.tipping_warning_icon).setVisibility(View.VISIBLE);
             warningTitle.setTextColor(
                     getActivity().getColor(R.color.tipping_web3_error_text_color));
@@ -430,15 +430,15 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
                 v -> {
                     if (mIsLogoutState) {
                         TabUtils.openUrlInNewTab(
-                                false, BraveActivity.BRAVE_REWARDS_WALLET_RECONNECT_URL);
+                                false, LuxxleActivity.LUXXLE_REWARDS_WALLET_RECONNECT_URL);
                         dismissRewardsPanel();
                     } else {
                         SwitchCompat isMonthly = view.findViewById(R.id.monthly_switch);
                         mAmountSelected = selectedAmount();
 
                         if (mSendButton.isEnabled()) {
-                            mBraveRewardsNativeWorker.donate(
-                                    mBraveRewardsNativeWorker.getPublisherId(mCurrentTabId),
+                            mLuxxleRewardsNativeWorker.donate(
+                                    mLuxxleRewardsNativeWorker.getPublisherId(mCurrentTabId),
                                     mAmountSelected,
                                     isMonthly.isChecked());
                             mSendButton.setEnabled(false);
@@ -501,7 +501,7 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
         mCurrency1ValueTextView = view.findViewById(R.id.currencyOneEditText1);
         mCurrency2ValueTextView = view.findViewById(R.id.exchange_amount1);
         mCurrency1ValueEditTextView.addTextChangedListener(mTextChangeListener);
-        mRate = mBraveRewardsNativeWorker.getWalletRate();
+        mRate = mLuxxleRewardsNativeWorker.getWalletRate();
         mRadioTipAmount[0] = view.findViewById(R.id.tipChoice1);
         mRadioTipAmount[1] = view.findViewById(R.id.tipChoice2);
         mRadioTipAmount[2] = view.findViewById(R.id.tipChoice3);
@@ -514,7 +514,7 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
 
     void setBalanceText() {
         double balance = DEFAULT_AMOUNT;
-        BraveRewardsBalance rewards_balance = mBraveRewardsNativeWorker.getWalletBalance();
+        LuxxleRewardsBalance rewards_balance = mLuxxleRewardsNativeWorker.getWalletBalance();
         if (rewards_balance != null) {
             balance = rewards_balance.getTotal();
             mBalance = balance;
@@ -523,7 +523,7 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
         DecimalFormat df = new DecimalFormat("#.###");
         df.setRoundingMode(RoundingMode.FLOOR);
         df.setMinimumFractionDigits(3);
-        String walletAmount = df.format(balance) + " " + BraveRewardsHelper.BAT_TEXT;
+        String walletAmount = df.format(balance) + " " + LuxxleRewardsHelper.BAT_TEXT;
 
         ((TextView) mContentView.findViewById(R.id.wallet_amount_text)).setText(walletAmount);
     }
@@ -552,16 +552,16 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
         int custodianIcon = R.drawable.ic_logo_solana;
         int custodianName = R.string.wallet_sol_name;
 
-        if (mWalletType.equals(BraveWalletProvider.UPHOLD)) {
+        if (mWalletType.equals(LuxxleWalletProvider.UPHOLD)) {
             custodianIcon = R.drawable.upload_icon;
             custodianName = R.string.uphold;
-        } else if (mWalletType.equals(BraveWalletProvider.GEMINI)) {
+        } else if (mWalletType.equals(LuxxleWalletProvider.GEMINI)) {
             custodianIcon = R.drawable.ic_gemini_logo_cyan;
             custodianName = R.string.gemini;
-        } else if (mWalletType.equals(BraveWalletProvider.BITFLYER)) {
+        } else if (mWalletType.equals(LuxxleWalletProvider.BITFLYER)) {
             custodianIcon = R.drawable.ic_logo_bitflyer_colored;
             custodianName = R.string.bitflyer;
-        } else if (mWalletType.equals(BraveWalletProvider.ZEBPAY)) {
+        } else if (mWalletType.equals(LuxxleWalletProvider.ZEBPAY)) {
             custodianIcon = R.drawable.ic_logo_zebpay;
             custodianName = R.string.zebpay;
         }
@@ -571,7 +571,7 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
     }
 
     private void initTipChoice(boolean isBat) {
-        mTipChoices = mBraveRewardsNativeWorker.getTipChoices();
+        mTipChoices = mLuxxleRewardsNativeWorker.getTipChoices();
         if (mTipChoices.length < 3) {
             // when native not giving tip choices initialize with default values
             mTipChoices = new double[3];
@@ -706,17 +706,17 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (null != mBraveRewardsNativeWorker) {
-            mBraveRewardsNativeWorker.removeObserver(this);
+        if (null != mLuxxleRewardsNativeWorker) {
+            mLuxxleRewardsNativeWorker.removeObserver(this);
         }
     }
 
     private void dismissRewardsPanel() {
         if (mIsTablet) {
             try {
-                BraveActivity braveActivity = BraveActivity.getBraveActivity();
-                braveActivity.dismissRewardsPanel();
-            } catch (BraveActivity.BraveActivityNotFoundException e) {
+                LuxxleActivity luxxleActivity = LuxxleActivity.getLuxxleActivity();
+                luxxleActivity.dismissRewardsPanel();
+            } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
                 Log.e(TAG, "setShareYourSupportClickListener " + e);
             }
         } else {
@@ -728,12 +728,12 @@ public class RewardsTippingPanelFragment extends Fragment implements BraveReward
     @Override
     public void onPublisherBanner(String jsonBannerInfo) {
         try {
-            BraveRewardsBannerInfo bannerInfo = new BraveRewardsBannerInfo(jsonBannerInfo);
+            LuxxleRewardsBannerInfo bannerInfo = new LuxxleRewardsBannerInfo(jsonBannerInfo);
             if (bannerInfo != null && !TextUtils.isEmpty(bannerInfo.getWeb3Url())) {
                 mWeb3Url = bannerInfo.getWeb3Url();
                 mWeb3WalletButton.setVisibility(View.VISIBLE);
             }
-            mBraveRewardsNativeWorker.getExternalWallet();
+            mLuxxleRewardsNativeWorker.getExternalWallet();
         } catch (JSONException e) {
             Log.e(TAG, "TippingBanner -> CreatorPanel:onAttach JSONException error " + e);
         }

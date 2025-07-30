@@ -3,21 +3,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveMediaSessionTabHelperClassAdapter extends BraveClassVisitor {
+public class LuxxleMediaSessionTabHelperClassAdapter extends LuxxleClassVisitor {
     static String sMediaSessionTabHelper =
             "org/chromium/chrome/browser/media/ui/MediaSessionTabHelper";
-    static String sBraveMediaSessionTabHelper =
-            "org/chromium/chrome/browser/media/ui/BraveMediaSessionTabHelper";
+    static String sLuxxleMediaSessionTabHelper =
+            "org/chromium/chrome/browser/media/ui/LuxxleMediaSessionTabHelper";
 
-    public BraveMediaSessionTabHelperClassAdapter(ClassVisitor visitor) {
+    public LuxxleMediaSessionTabHelperClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sMediaSessionTabHelper, sBraveMediaSessionTabHelper);
-        deleteField(sBraveMediaSessionTabHelper, "mTab");
+        redirectConstructor(sMediaSessionTabHelper, sLuxxleMediaSessionTabHelper);
+        deleteField(sLuxxleMediaSessionTabHelper, "mTab");
         makeProtectedField(sMediaSessionTabHelper, "mTab");
     }
 }

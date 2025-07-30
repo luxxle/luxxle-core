@@ -21,7 +21,7 @@ namespace sidebar {
 class SidebarBrowserTest;
 }  // namespace sidebar
 
-class BraveBrowserView;
+class LuxxleBrowserView;
 
 // Monitors mouse event to show sidebar when mouse is around the left or
 // right side of browser window.
@@ -37,7 +37,7 @@ class SidebarShowOptionsEventDetectWidget : public views::ViewObserver,
     virtual ~Delegate() {}
   };
 
-  explicit SidebarShowOptionsEventDetectWidget(BraveBrowserView& browser_view,
+  explicit SidebarShowOptionsEventDetectWidget(LuxxleBrowserView& browser_view,
                                                Delegate& delegate);
   ~SidebarShowOptionsEventDetectWidget() override;
 
@@ -63,7 +63,7 @@ class SidebarShowOptionsEventDetectWidget : public views::ViewObserver,
   void AdjustWidgetBounds();
 
   bool sidebar_on_left_ = true;
-  raw_ref<BraveBrowserView> browser_view_;
+  raw_ref<LuxxleBrowserView> browser_view_;
   raw_ptr<ContentsView, DanglingUntriaged> contents_view_ = nullptr;
   raw_ref<Delegate> delegate_;
   std::unique_ptr<views::Widget> widget_;

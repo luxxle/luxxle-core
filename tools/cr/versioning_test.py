@@ -27,7 +27,7 @@ class VersioningTest(unittest.TestCase):
         """Test that load_package_file loads the correct package.json."""
         # Update the package.json file with a specific version
         test_version_1 = "1.2.3.4"
-        v1 = self.fake_chromium_src.update_brave_version(test_version_1)
+        v1 = self.fake_chromium_src.update_luxxle_version(test_version_1)
 
         # Load the package.json file using load_package_file
         loaded_package_1 = load_package_file("HEAD")
@@ -41,7 +41,7 @@ class VersioningTest(unittest.TestCase):
 
         # Update the package.json file with a second version
         test_version_2 = "2.3.4.5"
-        self.fake_chromium_src.update_brave_version(test_version_2)
+        self.fake_chromium_src.update_luxxle_version(test_version_2)
 
         loaded_package_2 = load_package_file("HEAD")
         self.assertEqual(
@@ -111,7 +111,7 @@ class VersioningTest(unittest.TestCase):
         """Test that Version.from_git retrieves the correct version."""
         # Update the package.json file with a specific version
         test_version_1 = "3.4.5.6"
-        commit_hash_1 = self.fake_chromium_src.update_brave_version(
+        commit_hash_1 = self.fake_chromium_src.update_luxxle_version(
             test_version_1)
 
         # Retrieve the version using Version.from_git with HEAD
@@ -121,7 +121,7 @@ class VersioningTest(unittest.TestCase):
 
         # Update the package.json file with another version
         test_version_2 = "4.5.6.7"
-        commit_hash_2 = self.fake_chromium_src.update_brave_version(
+        commit_hash_2 = self.fake_chromium_src.update_luxxle_version(
             test_version_2)
 
         # Retrieve the version using Version.from_git with HEAD
@@ -176,9 +176,9 @@ class VersioningTest(unittest.TestCase):
         test_version = '1.2.3'
         self.fake_chromium_src.write_and_stage_file(
             'package.json', json.dumps({'version': test_version}),
-            self.fake_chromium_src.brave)
+            self.fake_chromium_src.luxxle)
         self.fake_chromium_src.commit('Update package.json',
-                                      self.fake_chromium_src.brave)
+                                      self.fake_chromium_src.luxxle)
 
         # Assert the uplift branch name is generated correctly
         uplift_branch_name = get_uplift_branch_name_from_package()

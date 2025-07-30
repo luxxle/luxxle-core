@@ -6,8 +6,8 @@
 r"""A tool to calculate disk usage statistics for perf profiles
 
 Usage:
-tools/perf/perf_profile_stats.py brave-typical-mac v1.68.1 > /tmp/old.txt
-tools/perf/perf_profile_stats.py brave-typical-mac v1.69.22 > /tmp/new.txt
+tools/perf/perf_profile_stats.py luxxle-typical-mac v1.68.1 > /tmp/old.txt
+tools/perf/perf_profile_stats.py luxxle-typical-mac v1.69.22 > /tmp/new.txt
 code --diff /tmp/old.txt /tmp/new.txt
 """
 import argparse
@@ -15,7 +15,7 @@ import tempfile
 import json
 
 import components.profile_tools as profile_tools
-from components.version import BraveVersion
+from components.version import LuxxleVersion
 
 parser = argparse.ArgumentParser()
 parser.add_argument('profile', type=str)
@@ -31,7 +31,7 @@ if not args.work_directory:
   args.work_directory = tempfile.mkdtemp(prefix='perf-profile-')
 
 profile_dir = profile_tools.GetProfilePath(args.profile, args.work_directory,
-                                           BraveVersion(args.version))
+                                           LuxxleVersion(args.version))
 stats = profile_tools.GetProfileStats(profile_dir,
                                       args.skip_chromium_components)
 

@@ -128,13 +128,13 @@ class FakeChromiumRepoTest(unittest.TestCase):
             ['diff', '--name-only', '--cached'], self.repo.chromium)
         self.assertIn(file_path, staged_files)
 
-    def test_update_brave_version(self):
-        """Tests the update_brave_version method of FakeChromiumRepo."""
+    def test_update_luxxle_version(self):
+        """Tests the update_luxxle_version method of FakeChromiumRepo."""
         new_version = '1.2.3.4'
-        commit_hash = self.repo.update_brave_version(new_version)
+        commit_hash = self.repo.update_luxxle_version(new_version)
 
         # Verify the package.json file exists
-        package_json_path = self.repo.brave / 'package.json'
+        package_json_path = self.repo.luxxle / 'package.json'
         self.assertTrue(package_json_path.exists())
 
         # Verify the version in package.json is updated
@@ -145,7 +145,7 @@ class FakeChromiumRepoTest(unittest.TestCase):
 
         # Verify the commit exists in the repository
         short_hash = commit_hash[:7]
-        log = self.repo._run_git_command(['log', '--oneline'], self.repo.brave)
+        log = self.repo._run_git_command(['log', '--oneline'], self.repo.luxxle)
         self.assertIn(f'Update from Chromium N/A to Chromium {new_version}',
                       log)
         self.assertIn(short_hash, log)
@@ -171,7 +171,7 @@ class FakeChromiumRepoTest(unittest.TestCase):
 
         # Run update_patches on a clean tree (no patches should be produced)
         self.repo.run_update_patches()
-        self.assertFalse(any(self.repo.brave_patches.iterdir()),
+        self.assertFalse(any(self.repo.luxxle_patches.iterdir()),
                          'No patches should be produced for a clean tree.')
 
         # Modify the files without staging (leave the tree dirty)
@@ -188,14 +188,14 @@ class FakeChromiumRepoTest(unittest.TestCase):
 
         # Check that the patchfile for test_repo is created
         patch_file_name_repo = f'{file_path_repo.replace("/", "-")}.patch'
-        patch_file_path_repo = (self.repo.brave_patches / repo_path /
+        patch_file_path_repo = (self.repo.luxxle_patches / repo_path /
                                 patch_file_name_repo)
         self.assertTrue(patch_file_path_repo.exists())
 
         # Check the patchfile for Chromium is created
         patch_file_name_chromium = (
             f'{file_path_chromium.replace("/", "-")}.patch')
-        patch_file_path_chromium = (self.repo.brave_patches /
+        patch_file_path_chromium = (self.repo.luxxle_patches /
                                     patch_file_name_chromium)
         self.assertTrue(patch_file_path_chromium.exists())
 
@@ -342,7 +342,7 @@ class FakeChromiumRepoTest(unittest.TestCase):
         self.repo._run_git_command(['checkout', '.'], self.repo.chromium)
 
         # Corrupt the patch file for a.txt
-        patch_file_a = self.repo.brave_patches / 'a.txt.patch'
+        patch_file_a = self.repo.luxxle_patches / 'a.txt.patch'
         patch_file_a.write_text('corrupted patch content')
 
         # Run apply_patches to apply the patches

@@ -1,4 +1,4 @@
-// Copyright (c) 2025 The Brave Authors. All rights reserved.
+// Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -10,7 +10,7 @@ import { EmailAliasModal, EditState, EditMode }
 
 import { clickLeoButton } from './test_utils'
 import { EmailAliasesServiceInterface, GenerateAliasResult }
-  from "gen/brave/components/email_aliases/email_aliases.mojom.m"
+  from "gen/luxxle/components/email_aliases/email_aliases.mojom.m"
 
 jest.mock('$web-common/locale', () => ({
   getLocale: (key: string) => {
@@ -37,7 +37,7 @@ const mockEmailAliasesService: EmailAliasesServiceInterface = {
 
 describe('EmailAliasModal', () => {
   const mockOnReturnToMain = jest.fn()
-  const mockEmail = 'test@brave.com'
+  const mockEmail = 'test@luxxle.com'
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -46,7 +46,7 @@ describe('EmailAliasModal', () => {
     mockEmailAliasesService.generateAlias = jest.fn()
       .mockResolvedValue({
         result: {
-          errorMessage: null, aliasEmail: 'generated@brave.com'
+          errorMessage: null, aliasEmail: 'generated@luxxle.com'
         }
       })
   })
@@ -76,9 +76,9 @@ describe('EmailAliasModal', () => {
     const mockEditState: EditState = {
       mode: 'Edit',
       alias: {
-        email: 'existing@brave.com',
+        email: 'existing@luxxle.com',
         note: 'Existing Alias',
-        domains: ['brave.com']
+        domains: ['luxxle.com']
       }
     }
 
@@ -97,7 +97,7 @@ describe('EmailAliasModal', () => {
       .toBeInTheDocument()
 
     // Check that existing alias is displayed
-    expect(screen.getByText(/existing@brave\.com/)).toBeInTheDocument()
+    expect(screen.getByText(/existing@luxxle\.com/)).toBeInTheDocument()
     expect(screen.getByPlaceholderText('emailAliasesEditNotePlaceholder'))
       .toHaveValue('Existing Alias')
   })
@@ -125,7 +125,7 @@ describe('EmailAliasModal', () => {
         .toBeInTheDocument()
       expect(screen.queryByTestId('loading-icon')).not.toBeInTheDocument()
       const generatedEmailContainer = screen.getByTestId('generated-email')
-      expect(generatedEmailContainer).toHaveTextContent('generated@brave.com')
+      expect(generatedEmailContainer).toHaveTextContent('generated@luxxle.com')
     })
 
     // Ensure the save button is enabled
@@ -194,7 +194,7 @@ describe('EmailAliasModal', () => {
   })
 
   it('shows loading state while generating alias', async () => {
-    const aliasEmail = 'new@brave.com'
+    const aliasEmail = 'new@luxxle.com'
     mockEmailAliasesService.generateAlias = jest.fn().mockImplementation(
       () => Promise.resolve<{ result: GenerateAliasResult }>({
         result: { aliasEmail, errorMessage: undefined } }))
@@ -268,9 +268,9 @@ describe('EmailAliasModal', () => {
     const mockEditState: EditState = {
       mode: 'Edit',
       alias: {
-        email: 'existing@brave.com',
+        email: 'existing@luxxle.com',
         note: 'Existing Alias',
-        domains: ['brave.com']
+        domains: ['luxxle.com']
       }
     }
 
@@ -286,7 +286,7 @@ describe('EmailAliasModal', () => {
 
     // Wait for initial state to be set
     await waitFor(() => {
-      expect(screen.getByText(/existing@brave\.com/)).toBeInTheDocument()
+      expect(screen.getByText(/existing@luxxle\.com/)).toBeInTheDocument()
       expect(screen.getByPlaceholderText('emailAliasesEditNotePlaceholder'))
         .toHaveValue('Existing Alias')
     })
@@ -301,7 +301,7 @@ describe('EmailAliasModal', () => {
     // Check that updateAlias was called
     await waitFor(() => {
       expect(mockEmailAliasesService.updateAlias).toHaveBeenCalledWith(
-        'existing@brave.com',
+        'existing@luxxle.com',
         'Existing Alias'
       )
       expect(mockOnReturnToMain).toHaveBeenCalled()
@@ -311,16 +311,16 @@ describe('EmailAliasModal', () => {
   const states: EditState[] = [{
     mode: 'Create' as EditMode,
     alias: {
-      email: 'new@brave.com',
+      email: 'new@luxxle.com',
       note: 'New Alias',
       domains: undefined
     }
   }, {
     mode: 'Edit' as EditMode,
     alias: {
-      email: 'existing@brave.com',
+      email: 'existing@luxxle.com',
       note: 'Existing Alias',
-      domains: ['brave.com']
+      domains: ['luxxle.com']
     }
   }]
 

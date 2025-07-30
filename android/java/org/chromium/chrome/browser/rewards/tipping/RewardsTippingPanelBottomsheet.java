@@ -78,7 +78,7 @@ public class RewardsTippingPanelBottomsheet extends BottomSheetDialogFragment {
     public Dialog onCreateDialog(Bundle savedInstance) {
         BottomSheetDialog dialog = (BottomSheetDialog) super.onCreateDialog(savedInstance);
         final View view = LayoutInflater.from(getContext())
-                                  .inflate(R.layout.brave_rewards_tippingpanel_bottomsheet, null);
+                                  .inflate(R.layout.luxxle_rewards_tippingpanel_bottomsheet, null);
         dialog.setContentView(view);
         replace();
         setupFullHeight(dialog);

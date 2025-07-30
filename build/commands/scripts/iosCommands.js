@@ -10,7 +10,7 @@ const util = require('../lib/util')
 
 const bootstrap = (options = {}) => {
   const utilConfig = config.defaultOptions
-  utilConfig.cwd = config.braveCoreDir
+  utilConfig.cwd = config.luxxleCoreDir
   const bootstrapArgs = ['script/ios_bootstrap.py']
   if (options.force) {
     bootstrapArgs.push('--force')
@@ -20,9 +20,9 @@ const bootstrap = (options = {}) => {
     const args = [
       path.join(
         config.srcDir,
-        'brave',
+        'luxxle',
         'ios',
-        'brave-ios',
+        'luxxle-ios',
         'App',
         'Client.xcodeproj',
       ),

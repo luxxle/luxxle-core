@@ -25,7 +25,7 @@ import org.chromium.base.supplier.OneshotSupplier;
 import org.chromium.base.supplier.Supplier;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.ActivityTabProvider;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.app.ChromeActivity;
 import org.chromium.chrome.browser.bookmarks.BookmarkManagerOpener;
 import org.chromium.chrome.browser.bookmarks.BookmarkManagerOpenerImpl;
@@ -71,7 +71,7 @@ class BottomToolbarCoordinator implements View.OnLongClickListener {
     private CallbackController mCallbackController = new CallbackController();
     ObservableSupplier<AppMenuButtonHelper> mMenuButtonHelperSupplier;
     private Runnable mOriginalHomeButtonRunnable;
-    private final BraveScrollingBottomViewResourceFrameLayout mScrollingBottomView;
+    private final LuxxleScrollingBottomViewResourceFrameLayout mScrollingBottomView;
     private HomeButton mHomeButton;
     private BookmarksButton mBookmarksButton;
     private BottomToolbarNewTabButton mNewTabButton;
@@ -123,7 +123,7 @@ class BottomToolbarCoordinator implements View.OnLongClickListener {
 
         mMenuButtonHelperSupplier = menuButtonHelperSupplier;
         mOriginalHomeButtonRunnable = openHomepageAction;
-        mScrollingBottomView = (BraveScrollingBottomViewResourceFrameLayout) scrollingBottomView;
+        mScrollingBottomView = (LuxxleScrollingBottomViewResourceFrameLayout) scrollingBottomView;
 
         mBottomContainerTopShadow =
                 mScrollingBottomView.findViewById(R.id.bottom_container_top_shadow);
@@ -188,8 +188,8 @@ class BottomToolbarCoordinator implements View.OnLongClickListener {
 
         ChromeActivity activity = null;
         try {
-            activity = BraveActivity.getBraveActivity();
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+            activity = LuxxleActivity.getLuxxleActivity();
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "initializeWithNative " + e);
         }
         // Do not change bottom bar if HomePage is not customized.
@@ -273,8 +273,8 @@ class BottomToolbarCoordinator implements View.OnLongClickListener {
                     v -> {
                         if (mHomepageManager.isHomepageEnabled()) {
                             try {
-                                BraveActivity.getBraveActivity().setComesFromNewTab(true);
-                            } catch (BraveActivity.BraveActivityNotFoundException e) {
+                                LuxxleActivity.getLuxxleActivity().setComesFromNewTab(true);
+                            } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
                                 Log.e(TAG, "HomeButton click " + e);
                             }
                             mOriginalHomeButtonRunnable.run();

@@ -5,12 +5,12 @@
 
 #include "luxxle/browser/ui/webui/navigation_bar_data_provider.h"
 
-// REMOVED: #include "luxxle/browser/brave_rewards/.*"
-// REMOVED: #include "luxxle/browser/brave_wallet/.*"
-#include "brave/grit/brave_generated_resources.h"
+// REMOVED: #include "luxxle/browser/luxxle_rewards/.*"
+// REMOVED: #include "luxxle/browser/luxxle_wallet/.*"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/grit/generated_resources.h"
-#include "components/grit/brave_components_strings.h"
+#include "components/grit/luxxle_components_strings.h"
 #include "components/strings/grit/components_strings.h"
 #include "content/public/browser/web_ui_data_source.h"
 
@@ -23,13 +23,13 @@ void NavigationBarDataProvider::Initialize(content::WebUIDataSource* source,
   source->AddLocalizedString("brToolbarDownloadsTitle", IDS_DOWNLOADS_TITLE);
   source->AddLocalizedString("brToolbarHistoryTitle", IDS_HISTORY_TITLE);
   source->AddLocalizedString("brToolbarRewardsTitle",
-                             IDS_BRAVE_UI_BRAVE_REWARDS_TOOLBAR);
+                             IDS_LUXXLE_UI_LUXXLE_REWARDS_TOOLBAR);
   source->AddLocalizedString("brToolbarWalletsTitle", IDS_WALLETS_TITLE);
 
   source->AddBoolean(
       "brToolbarShowRewardsButton",
-      brave_rewards::IsSupportedForProfile(
-          profile, brave_rewards::IsSupportedOptions::kSkipRegionCheck));
-  source->AddBoolean("isBraveWalletAllowed",
-                     brave_wallet::IsAllowedForContext(profile));
+      luxxle_rewards::IsSupportedForProfile(
+          profile, luxxle_rewards::IsSupportedOptions::kSkipRegionCheck));
+  source->AddBoolean("isLuxxleWalletAllowed",
+                     luxxle_wallet::IsAllowedForContext(profile));
 }

@@ -17,9 +17,9 @@ class ThemeService;
 namespace misc_metrics {
 
 inline constexpr char kBrowserColorSchemeHistogramName[] =
-    "Brave.Theme.BrowserColorScheme";
+    "Luxxle.Theme.BrowserColorScheme";
 inline constexpr char kThemeColorDefaultHistogramName[] =
-    "Brave.Theme.ThemeColorDefault";
+    "Luxxle.Theme.ThemeColorDefault";
 
 class ThemeMetrics : public ThemeServiceObserver {
  public:

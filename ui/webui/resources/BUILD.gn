@@ -16,10 +16,10 @@ import("//ui/webui/webui_features.gni")
 import("./fonts/fonts.gni")
 import("./sources.gni")
 
-# These targets add files to chrome://resources/brave
+# These targets add files to chrome://resources/luxxle
 # - Use build_cr_componesnrt or other methods to compile resources and generate GRDPs
 # - Use extensible patch to ui/webui/resources/build.gn to get the files in these GRDPs to typescript, grd, and c++ (via the main resources .grd)
-# - Files generates here are path mapped from chrome://resources/brave via:
+# - Files generates here are path mapped from chrome://resources/luxxle via:
 #    - Typescript compiler in //tools/typescript/ts_library.gni
 #    - Rollup bundler in //chrome/browser/resources/tools/optimize_webui.gni
 
@@ -42,16 +42,16 @@ if (include_polymer) {
   build_webui("build") {
     grd_prefix = "luxxle"
 
-    # Ensure all the files are relative to this dir (with a brave/ prefix),
+    # Ensure all the files are relative to this dir (with a luxxle/ prefix),
     # and not //ui/webui/resources which is the default for build_cr_component.
     ts_files = [
       "lit_overriding.ts",
       "polymer_overriding.ts",
-      "js/brave_browser_command/brave_browser_command_proxy.ts",
+      "js/luxxle_browser_command/luxxle_browser_command_proxy.ts",
     ]
 
-    mojo_files = [ "$root_gen_dir/luxxle/ui/webui/resources/js/brave_browser_command/brave_browser_command.mojom-webui.ts" ]
-    mojo_files_deps = [ "js/brave_browser_command:mojo_bindings_ts__generator" ]
+    mojo_files = [ "$root_gen_dir/luxxle/ui/webui/resources/js/luxxle_browser_command/luxxle_browser_command.mojom-webui.ts" ]
+    mojo_files_deps = [ "js/luxxle_browser_command:mojo_bindings_ts__generator" ]
 
     css_files = [
       "br_elements/br_shared_style.css",
@@ -150,12 +150,12 @@ generate_grd("fonts_grdp") {
   deps = [ ":fonts_copy" ]
 }
 
-# Removed @brave/leo dependency - using local icons instead
-# leo_icons_base_path = "../../../node_modules/@brave/leo/icons"
+# Removed @luxxle/leo dependency - using local icons instead
+# leo_icons_base_path = "../../../node_modules/@luxxle/leo/icons"
 
 # These are icons included in Leo. Add them on an as-needed basis, because there
 # are a **LOT** of icons in Leo. You can check if there's an icon  which suits
-# your needs here: https://leo.bravesoftware.com/?path=/story/icon--all-icons
+# your needs here: https://leo.luxxlesoftware.com/?path=/story/icon--all-icons
 leo_icons = [
   "accessibility.svg",
   "activity.svg",
@@ -182,11 +182,11 @@ leo_icons = [
   "social-leo-favicon-fullheight-color.svg",
   "bluetooth-off.svg",
   "bluetooth.svg",
-  "brave-icon-monochrome.svg",
-  "brave-icon-outline.svg",
-  "brave-icon-release-color.svg",
-  "brave-icon-search-color.svg",
-  "brave-search-big-color.svg",
+  "luxxle-icon-monochrome.svg",
+  "luxxle-icon-outline.svg",
+  "luxxle-icon-release-color.svg",
+  "luxxle-icon-search-color.svg",
+  "luxxle-search-big-color.svg",
   "browser-extensions.svg",
   "browser-home.svg",
   "browser-ntp-widget.svg",
@@ -341,10 +341,10 @@ leo_icons = [
   "product-bat-color.svg",
   "product-bat-outline.svg",
   "product-bookmarks.svg",
-  "product-brave-leo.svg",
-  "product-brave-news.svg",
-  "product-brave-talk.svg",
-  "product-brave-wallet.svg",
+  "product-luxxle-leo.svg",
+  "product-luxxle-news.svg",
+  "product-luxxle-talk.svg",
+  "product-luxxle-wallet.svg",
   "product-ipfs-outline.svg",
   "product-private-window.svg",
   "product-sync.svg",
@@ -382,7 +382,7 @@ leo_icons = [
   "smartphone-desktop-off.svg",
   "smartphone-desktop.svg",
   "smartphone-hand.svg",
-  "social-brave-release-favicon-fullheight-color.svg",
+  "social-luxxle-release-favicon-fullheight-color.svg",
   "social-dribbble.svg",
   "social-github.svg",
   "social-reddit.svg",
@@ -552,11 +552,11 @@ copy("static_copy") {
   outputs = [ "$luxxle_resources_extra_grdps_path/{{source_target_relative}}" ]
 }
 
-# Disabled @brave/leo static copy
+# Disabled @luxxle/leo static copy
 # copy("leo_static_copy") {
 #   sources = rebase_path(leo_static_files,
 #                         ".",
-#                         "../../../node_modules/@brave/leo/tokens")
+#                         "../../../node_modules/@luxxle/leo/tokens")
 #   outputs = [ "$luxxle_resources_extra_grdps_path/leo/css/{{source_file_part}}" ]
 # }
 

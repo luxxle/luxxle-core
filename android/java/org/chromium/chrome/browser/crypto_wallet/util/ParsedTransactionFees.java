@@ -7,13 +7,13 @@ package org.chromium.chrome.browser.crypto_wallet.util;
 
 import static org.chromium.chrome.browser.crypto_wallet.util.WalletConstants.SOLANA_TRANSACTION_TYPES;
 
-import org.chromium.brave_wallet.mojom.BtcTxData;
-import org.chromium.brave_wallet.mojom.FilTxData;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
-import org.chromium.brave_wallet.mojom.TransactionInfo;
-import org.chromium.brave_wallet.mojom.TxData1559;
-import org.chromium.brave_wallet.mojom.TxDataUnion;
-import org.chromium.brave_wallet.mojom.ZecTxData;
+import org.chromium.luxxle_wallet.mojom.BtcTxData;
+import org.chromium.luxxle_wallet.mojom.FilTxData;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.TransactionInfo;
+import org.chromium.luxxle_wallet.mojom.TxData1559;
+import org.chromium.luxxle_wallet.mojom.TxDataUnion;
+import org.chromium.luxxle_wallet.mojom.ZecTxData;
 import org.chromium.build.annotations.NullMarked;
 import org.chromium.build.annotations.Nullable;
 
@@ -21,7 +21,7 @@ import java.math.BigInteger;
 
 /*
  * Transaction fees parser. Java version adapted from
- * components/brave_wallet_ui/utils/tx-utils.ts.
+ * components/luxxle_wallet_ui/utils/tx-utils.ts.
  */
 
 @NullMarked
@@ -105,7 +105,7 @@ public class ParsedTransactionFees {
     @Nullable
     private static String checkForMissingGasLimitError(String gasLimit) {
         return (gasLimit.isEmpty() || gasLimit.equals("0") || gasLimit.equals("0x0"))
-                ? "braveWalletMissingGasLimitError"
+                ? "luxxleWalletMissingGasLimitError"
                 : null;
     }
 

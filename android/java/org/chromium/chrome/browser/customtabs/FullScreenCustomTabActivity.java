@@ -33,7 +33,7 @@ import org.chromium.chrome.browser.browserservices.intents.BrowserServicesIntent
 import org.chromium.chrome.browser.customtabs.content.CustomTabActivityTabController;
 import org.chromium.chrome.browser.customtabs.features.minimizedcustomtab.CustomTabMinimizationManagerHolder;
 import org.chromium.chrome.browser.customtabs.features.toolbar.CustomTabToolbarCoordinator;
-import org.chromium.chrome.browser.notifications.BravePermissionUtils;
+import org.chromium.chrome.browser.notifications.LuxxlePermissionUtils;
 import org.chromium.chrome.browser.preferences.ChromeSharedPreferences;
 import org.chromium.chrome.browser.ui.RootUiCoordinator;
 import org.chromium.chrome.browser.ui.desktop_windowing.AppHeaderCoordinator;
@@ -72,7 +72,7 @@ public class FullScreenCustomTabActivity extends CustomTabActivity {
     public void performPostInflationStartup() {
 
         // Updating the value of mIsEnterAnimationCompleted to true to avoid
-        // https://github.com/luxxle/brave-browser/issues/45005
+        // https://github.com/luxxle/luxxle-browser/issues/45005
         mIsEnterAnimationCompleted = true;
 
         super.performPostInflationStartup();
@@ -109,15 +109,15 @@ public class FullScreenCustomTabActivity extends CustomTabActivity {
 
         int count =
                 ChromeSharedPreferences.getInstance()
-                        .readInt(BravePermissionUtils.REWARDS_NOTIFICATION_PERMISSION_COUNT, 0);
+                        .readInt(LuxxlePermissionUtils.REWARDS_NOTIFICATION_PERMISSION_COUNT, 0);
 
-        if (!BravePermissionUtils.hasNotificationPermission(FullScreenCustomTabActivity.this)
+        if (!LuxxlePermissionUtils.hasNotificationPermission(FullScreenCustomTabActivity.this)
                 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
                 && count < 3) {
-            BravePermissionUtils.showNotificationPermissionDialog(FullScreenCustomTabActivity.this);
+            LuxxlePermissionUtils.showNotificationPermissionDialog(FullScreenCustomTabActivity.this);
             ChromeSharedPreferences.getInstance()
                     .writeInt(
-                            BravePermissionUtils.REWARDS_NOTIFICATION_PERMISSION_COUNT, count + 1);
+                            LuxxlePermissionUtils.REWARDS_NOTIFICATION_PERMISSION_COUNT, count + 1);
         }
     }
 
@@ -137,7 +137,7 @@ public class FullScreenCustomTabActivity extends CustomTabActivity {
     public void onRequestPermissionsResult(
             int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == BravePermissionUtils.NOTIFICATION_PERMISSION_CODE
+        if (requestCode == LuxxlePermissionUtils.NOTIFICATION_PERMISSION_CODE
                 && grantResults.length != 0
                 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
             Snackbar snackbar =
@@ -145,14 +145,14 @@ public class FullScreenCustomTabActivity extends CustomTabActivity {
                                     getResources()
                                             .getString(
                                                     R.string
-                                                            .enable_notifications_from_brave_to_earn_brave_rewards),
+                                                            .enable_notifications_from_luxxle_to_earn_luxxle_rewards),
                                     new SnackbarController() {
                                         @Override
                                         public void onDismissNoAction(Object actionData) {}
 
                                         @Override
                                         public void onAction(Object actionData) {
-                                            BravePermissionUtils.notificationSettingPage(
+                                            LuxxlePermissionUtils.notificationSettingPage(
                                                     FullScreenCustomTabActivity.this);
                                         }
                                     },
@@ -160,7 +160,7 @@ public class FullScreenCustomTabActivity extends CustomTabActivity {
                                     Snackbar.UMA_UNKNOWN)
                             .setAction(
                                     getResources()
-                                            .getString(R.string.brave_open_system_sync_settings),
+                                            .getString(R.string.luxxle_open_system_sync_settings),
                                     null)
                             .setSingleLine(false)
                             .setDuration(0); // it would use default timing for snackbar

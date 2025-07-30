@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 #import <XCTest/XCTest.h>
-#import "brave/build/ios/mojom/cpp_transformations.h"
+#import "luxxle/build/ios/mojom/cpp_transformations.h"
 #import "test_foo.h"
 
 @interface VectorTransformTest : XCTestCase

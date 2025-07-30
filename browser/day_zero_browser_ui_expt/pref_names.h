@@ -7,6 +7,6 @@
 #define LUXXLE_BROWSER_DAY_ZERO_BROWSER_UI_EXPT_PREF_NAMES_H_
 
 inline constexpr char kDayZeroExperimentTargetInstall[] =
-    "brave.day_zero_experiment.target_install";
+    "luxxle.day_zero_experiment.target_install";
 
 #endif  // LUXXLE_BROWSER_DAY_ZERO_BROWSER_UI_EXPT_PREF_NAMES_H_

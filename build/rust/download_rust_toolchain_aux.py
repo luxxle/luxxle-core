@@ -10,17 +10,17 @@ from pathlib import Path
 import shutil
 import tempfile
 
-import brave_chromium_utils
+import luxxle_chromium_utils
 import build_rust_toolchain_aux
 import deps
 import deps_config
 
-with brave_chromium_utils.sys_path(build_rust_toolchain_aux.TOOLS_RUST):
+with luxxle_chromium_utils.sys_path(build_rust_toolchain_aux.TOOLS_RUST):
     import build_rust
     RUST_TOOLCHAIN = build_rust.RUST_TOOLCHAIN_OUT_DIR
 
-BRAVE_RUST_TOOLCHAIN_AUX = os.path.join(RUST_TOOLCHAIN,
-                                        '.brave_rust_toolchain_aux')
+LUXXLE_RUST_TOOLCHAIN_AUX = os.path.join(RUST_TOOLCHAIN,
+                                        '.luxxle_rust_toolchain_aux')
 
 
 def is_download_needed():
@@ -29,7 +29,7 @@ def is_download_needed():
 
     package_name = ''
     try:
-        with open(BRAVE_RUST_TOOLCHAIN_AUX) as file:
+        with open(LUXXLE_RUST_TOOLCHAIN_AUX) as file:
             package_name = file.readline().rstrip()
     except Exception:
         pass
@@ -56,7 +56,7 @@ def install_package(src_dir):
 
 
 def save_package_name():
-    with open(BRAVE_RUST_TOOLCHAIN_AUX, 'w+') as file:
+    with open(LUXXLE_RUST_TOOLCHAIN_AUX, 'w+') as file:
         file.write(f'{build_rust_toolchain_aux.package_name()}\n')
 
 
@@ -77,7 +77,7 @@ def main():
                 print("If you see this error message, "
                       "it means you're likely on the rebase team "
                       "and doing a Chromium bump - please visit "
-                      "https://ci.brave.com/view/rust and use your branch "
+                      "https://ci.luxxle.com/view/rust and use your branch "
                       "to build the required Rust auxiliary package.")
             raise
 

@@ -16,14 +16,14 @@ from tempfile import TemporaryDirectory
 import re
 
 CHROMIUM_SRC_DIR = __file__.split('/src/', 1)[0] + '/src'
-DMG_TOOL_PATH = join(CHROMIUM_SRC_DIR, 'brave', 'third_party',
+DMG_TOOL_PATH = join(CHROMIUM_SRC_DIR, 'luxxle', 'third_party',
                      'libdmg-hfsplus', 'build', 'dmg', 'dmg')
 
 
 def main():
     assert exists(DMG_TOOL_PATH), DMG_TOOL_PATH + \
         ' does not exist. Please make sure that checkout_dmg_tool is set to' \
-        ' True in the "custom_vars" section of the "src/brave" section of' \
+        ' True in the "custom_vars" section of the "src/luxxle" section of' \
         ' your .gclient file, then `npm run sync` (without `--target_os=mac`)' \
         ' to download and build it.'
     args = parse_args()

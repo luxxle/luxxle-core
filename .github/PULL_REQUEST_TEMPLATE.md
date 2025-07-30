@@ -1,4 +1,4 @@
-<!-- Add brave-browser issue below that this PR will resolve -->
+<!-- Add luxxle-browser issue below that this PR will resolve -->
 Resolves
 
 <!-- CI-related labels that can be applied to this PR:
@@ -12,7 +12,7 @@ Resolves
 * CI/skip-all-linters - do not run presubmit and lint checks
 * CI/storybook-url (1) - deploy storybook and provide a unique URL for each build
 
-(1) applied automatically when some files are changed (see: https://github.com/brave/brave-core/blob/master/.github/labeler.yml)
+(1) applied automatically when some files are changed (see: https://github.com/luxxle/luxxle-core/blob/master/.github/labeler.yml)
 -->
 
 <!--
@@ -23,16 +23,16 @@ Resolves
   [Style guide](https://chromium.googlesource.com/chromium/src/+/main/styleguide/c++/c++.md)
   [Core principles](https://www.chromium.org/developers/core-principles/)
 - Ensure there are (tests)[https://www.chromium.org/developers/testing/]. Unit test as much as possible (including edge cases), but also include browser tests covering high level functionality.
-- Ensure that there are comments explaining what classes/methods are/do. The "why" is often more important than the "what" in comments. Also update any relevant docs (moving docs from wiki to brave-core if necessary).
-- Request security or other review (third-party libraries, rust code, etc...) if applicable [security/privacy review is needed](https://github.com/brave/brave-browser/wiki/Security-reviews) [other review](https://github.com/brave/reviews/issues/new/choose)
+- Ensure that there are comments explaining what classes/methods are/do. The "why" is often more important than the "what" in comments. Also update any relevant docs (moving docs from wiki to luxxle-core if necessary).
+- Request security or other review (third-party libraries, rust code, etc...) if applicable [security/privacy review is needed](https://github.com/luxxle/luxxle-browser/wiki/Security-reviews) [other review](https://github.com/luxxle/reviews/issues/new/choose)
   Also see [adding third-party libraries](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/adding_to_third_party.md) for general guidelines on using third party code
-- Maks sure there is a [ticket](https://github.com/brave/brave-browser/issues) for your issue
+- Maks sure there is a [ticket](https://github.com/luxxle/luxxle-browser/issues) for your issue
 - Use Github [auto-closing keywords](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue) in the PR description above
 - Write a good [PR/commit description](https://google.github.io/eng-practices/review/developer/cl-descriptions.html)
 - Squash any review feedback or "fixup" commits before merge, so that history is a record of what happened in the repo, not your PR
 - Add appropriate labels (`QA/Yes` or `QA/No`; `release-notes/include` or `release-notes/exclude`; `OS/...`) to the associated issue
 - Checked the PR locally:
-  * `npm run test -- brave_browser_tests`, `npm run test -- brave_unit_tests` [wiki](https://github.com/brave/brave-browser/wiki/Tests)
-  * `npm run presubmit` [wiki](https://github.com/brave/brave-browser/wiki/Presubmit-checks), `npm run gn_check`, `npm run tslint`
+  * `npm run test -- luxxle_browser_tests`, `npm run test -- luxxle_unit_tests` [wiki](https://github.com/luxxle/luxxle-browser/wiki/Tests)
+  * `npm run presubmit` [wiki](https://github.com/luxxle/luxxle-browser/wiki/Presubmit-checks), `npm run gn_check`, `npm run tslint`
 - Run `git rebase master` (if needed)
 -->

@@ -15,13 +15,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.BraveDialogFragment;
+import org.chromium.chrome.browser.LuxxleDialogFragment;
 import org.chromium.chrome.browser.billing.InAppPurchaseWrapper;
 import org.chromium.chrome.browser.billing.LinkSubscriptionUtils;
 import org.chromium.chrome.browser.util.TabUtils;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnPrefUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnPrefUtils;
 
-public class LinkVpnSubscriptionDialogFragment extends BraveDialogFragment
+public class LinkVpnSubscriptionDialogFragment extends LuxxleDialogFragment
         implements View.OnClickListener {
     private static final String TAG = "LinkVpnSubscription";
 
@@ -33,7 +33,7 @@ public class LinkVpnSubscriptionDialogFragment extends BraveDialogFragment
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        BraveVpnPrefUtils.setLinkSubscriptionDialogShown(true);
+        LuxxleVpnPrefUtils.setLinkSubscriptionDialogShown(true);
         Button mDoneButton = view.findViewById(R.id.btn_done);
         mDoneButton.setOnClickListener(this);
         ImageView btnClose = view.findViewById(R.id.modal_close);
@@ -43,8 +43,8 @@ public class LinkVpnSubscriptionDialogFragment extends BraveDialogFragment
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_done) {
-            TabUtils.openURLWithBraveActivity(
-                    LinkSubscriptionUtils.getBraveAccountLinkUrl(
+            TabUtils.openURLWithLuxxleActivity(
+                    LinkSubscriptionUtils.getLuxxleAccountLinkUrl(
                             InAppPurchaseWrapper.SubscriptionProduct.VPN));
         }
         dismiss();

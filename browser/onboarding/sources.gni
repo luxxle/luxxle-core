@@ -3,13 +3,13 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-brave_browser_onboarding_sources = [
+luxxle_browser_onboarding_sources = [
   "//luxxle/browser/onboarding/onboarding_tab_helper.cc",
   "//luxxle/browser/onboarding/onboarding_tab_helper.h",
   "//luxxle/browser/onboarding/pref_names.h",
 ]
 
-brave_browser_onboarding_deps = [
+luxxle_browser_onboarding_deps = [
   "//base",
   "//luxxle/browser:browser_process",
   # Commented out: removed components dependency - using Chromium defaults instead

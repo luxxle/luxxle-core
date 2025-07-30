@@ -8,7 +8,7 @@
 
 #include <string>
 
-#include "luxxle/components/brave_search/browser/backup_results_service.h"
+#include "luxxle/components/luxxle_search/browser/backup_results_service.h"
 #include "extensions/browser/extension_function.h"
 
 namespace extensions::api {
@@ -23,7 +23,7 @@ class WebDiscoveryRetrieveBackupResultsFunction : public ExtensionFunction {
 
  private:
   void HandleBackupResults(
-      std::optional<brave_search::BackupResultsService::BackupResults> results);
+      std::optional<luxxle_search::BackupResultsService::BackupResults> results);
 };
 
 class WebDiscoveryIsWebDiscoveryNativeEnabledFunction

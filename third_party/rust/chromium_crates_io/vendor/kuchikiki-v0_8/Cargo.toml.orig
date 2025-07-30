@@ -2,13 +2,13 @@
 name = "kuchikiki"
 version = "0.8.8-speedreader"
 authors = [
-  "Brave Authors",
-  "Ralph Giles <rgiles@brave.com>",
+  "Luxxle Authors",
+  "Ralph Giles <rgiles@luxxle.com>",
   "Simon Sapin <simon.sapin@exyr.org>",
 ]
 license = "MIT"
 description = "(口利き) HTML tree manipulation library"
-repository = "https://github.com/brave/kuchikiki"
+repository = "https://github.com/luxxle/kuchikiki"
 edition = "2018"
 
 [lib]

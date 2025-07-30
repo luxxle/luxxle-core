@@ -47,7 +47,7 @@ public class SetDefaultBrowserBottomSheetFragment extends BottomSheetDialogFragm
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        BraveSetDefaultBrowserUtils.openDefaultAppsSettings(getActivity());
+                        LuxxleSetDefaultBrowserUtils.openDefaultAppsSettings(getActivity());
                         dismiss();
                     }
                 });
@@ -65,6 +65,6 @@ public class SetDefaultBrowserBottomSheetFragment extends BottomSheetDialogFragm
     @Override
     public void onDismiss(@NonNull DialogInterface dialog) {
         super.onDismiss(dialog);
-        BraveSetDefaultBrowserUtils.isBottomSheetVisible = false;
+        LuxxleSetDefaultBrowserUtils.isBottomSheetVisible = false;
     }
 }

@@ -1,5 +1,5 @@
 From 33c2619d77c24b85bf931ce0d4ae7580132a48b2 Mon Sep 17 00:00:00 2001
-From: oisupov <oisupov@brave.com>
+From: oisupov <oisupov@luxxle.com>
 Date: Wed, 5 Jun 2024 21:48:33 +0700
 Subject: [PATCH] Make ExtendedSpendingKey public
 
@@ -7,10 +7,10 @@ Subject: [PATCH] Make ExtendedSpendingKey public
  .../chromium_crates_io/vendor/orchard-0.8.0/src/zip32.rs    | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/brave/third_party/rust/chromium_crates_io/vendor/orchard-0.8.0/src/zip32.rs b/brave/third_party/rust/chromium_crates_io/vendor/orchard-0.8.0/src/zip32.rs
+diff --git a/luxxle/third_party/rust/chromium_crates_io/vendor/orchard-0.8.0/src/zip32.rs b/luxxle/third_party/rust/chromium_crates_io/vendor/orchard-0.8.0/src/zip32.rs
 index 31f318b111d..c37aeebf6ba 100644
---- a/brave/third_party/rust/chromium_crates_io/vendor/orchard-0.8.0/src/zip32.rs
-+++ b/brave/third_party/rust/chromium_crates_io/vendor/orchard-0.8.0/src/zip32.rs
+--- a/luxxle/third_party/rust/chromium_crates_io/vendor/orchard-0.8.0/src/zip32.rs
++++ b/luxxle/third_party/rust/chromium_crates_io/vendor/orchard-0.8.0/src/zip32.rs
 @@ -122,7 +122,7 @@ impl KeyIndex {
  ///
  /// [orchardextendedkeys]: https://zips.z.cash/zip-0032#orchard-extended-keys

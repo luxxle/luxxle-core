@@ -1,5 +1,5 @@
 # Group depending on upstream's counterpart to make it easier to manage
-# dependencies in brave/ (//chrome/utility does not depend on //luxxle/utility,
+# dependencies in luxxle/ (//chrome/utility does not depend on //luxxle/utility,
 # so //luxxle/utility becomes essentially an alias for //chrome/utility now).
 group("utility") {
   public_deps = [ "//chrome/utility" ]

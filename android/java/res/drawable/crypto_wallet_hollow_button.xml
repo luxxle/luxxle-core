@@ -16,7 +16,7 @@
                 <shape
                     android:padding="1dp"
                     android:shape="rectangle">
-                    <solid android:color="@color/brave_wallet_day_night_negative_ripple_color" />
+                    <solid android:color="@color/luxxle_wallet_day_night_negative_ripple_color" />
                     <stroke
                         android:width="1dp"
                         android:color="#5E6175" />

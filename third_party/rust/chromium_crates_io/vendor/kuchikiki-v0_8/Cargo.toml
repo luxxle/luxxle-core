@@ -14,8 +14,8 @@ edition = "2018"
 name = "kuchikiki"
 version = "0.8.8-speedreader"
 authors = [
-    "Brave Authors",
-    "Ralph Giles <rgiles@brave.com>",
+    "Luxxle Authors",
+    "Ralph Giles <rgiles@luxxle.com>",
     "Simon Sapin <simon.sapin@exyr.org>",
 ]
 build = false
@@ -27,7 +27,7 @@ autobenches = false
 description = "(口利き) HTML tree manipulation library"
 readme = "README.md"
 license = "MIT"
-repository = "https://github.com/brave/kuchikiki"
+repository = "https://github.com/luxxle/kuchikiki"
 
 [lib]
 name = "kuchikiki"

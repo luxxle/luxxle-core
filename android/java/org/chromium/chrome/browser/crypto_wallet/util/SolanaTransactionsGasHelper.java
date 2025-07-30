@@ -5,23 +5,23 @@
 
 package org.chromium.chrome.browser.crypto_wallet.util;
 
-import org.chromium.brave_wallet.mojom.SolanaProviderError;
-import org.chromium.brave_wallet.mojom.TransactionInfo;
-import org.chromium.brave_wallet.mojom.TransactionType;
-import org.chromium.chrome.browser.crypto_wallet.activities.BraveWalletBaseActivity;
+import org.chromium.luxxle_wallet.mojom.SolanaProviderError;
+import org.chromium.luxxle_wallet.mojom.TransactionInfo;
+import org.chromium.luxxle_wallet.mojom.TransactionType;
+import org.chromium.chrome.browser.crypto_wallet.activities.LuxxleWalletBaseActivity;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SolanaTransactionsGasHelper {
-    private final WeakReference<BraveWalletBaseActivity> mActivity;
+    private final WeakReference<LuxxleWalletBaseActivity> mActivity;
     private TransactionInfo[] mTransactionInfos;
     private HashMap<String, Long> mPerTxFee;
 
     public SolanaTransactionsGasHelper(
-            BraveWalletBaseActivity activity, TransactionInfo[] transactionInfos) {
-        mActivity = new WeakReference<BraveWalletBaseActivity>(activity);
+            LuxxleWalletBaseActivity activity, TransactionInfo[] transactionInfos) {
+        mActivity = new WeakReference<LuxxleWalletBaseActivity>(activity);
         mTransactionInfos = transactionInfos;
         mPerTxFee = new HashMap<String, Long>();
     }

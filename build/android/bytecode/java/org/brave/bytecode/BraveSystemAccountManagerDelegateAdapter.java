@@ -3,21 +3,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveSystemAccountManagerDelegateAdapter extends BraveClassVisitor {
+public class LuxxleSystemAccountManagerDelegateAdapter extends LuxxleClassVisitor {
     static String sSystemAccountManagerDelegateClassName =
             "org/chromium/components/signin/SystemAccountManagerDelegate";
-    static String sBraveSystemAccountManagerDelegateClassName =
-            "org/chromium/components/signin/BraveSystemAccountManagerDelegate";
+    static String sLuxxleSystemAccountManagerDelegateClassName =
+            "org/chromium/components/signin/LuxxleSystemAccountManagerDelegate";
 
-    public BraveSystemAccountManagerDelegateAdapter(ClassVisitor visitor) {
+    public LuxxleSystemAccountManagerDelegateAdapter(ClassVisitor visitor) {
         super(visitor);
 
         redirectConstructor(
                 sSystemAccountManagerDelegateClassName,
-                sBraveSystemAccountManagerDelegateClassName);
+                sLuxxleSystemAccountManagerDelegateClassName);
     }
 }

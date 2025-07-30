@@ -5,8 +5,8 @@
 
 source_set("sync") {
   sources = [
-    "brave_sync_service_impl_delegate.cc",
-    "brave_sync_service_impl_delegate.h",
+    "luxxle_sync_service_impl_delegate.cc",
+    "luxxle_sync_service_impl_delegate.h",
   ]
 
   deps = [

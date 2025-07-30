@@ -1,38 +1,38 @@
-# Copyright 2020 The Brave Authors. All rights reserved.
+# Copyright 2020 The Luxxle Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-# Contains flags that should be applied only to brave_public_apk_for_test.
+# Contains flags that should be applied only to luxxle_public_apk_for_test.
 
 # Do not obfuscate class names, methods and fields that are
 # needed for checking of existence for bytecode manipulation
 -keepnames class org.chromium.chrome.browser.settings.MainSettings
 
 # Do not obfuscate the above classes as we check on fields in tests
--keep class org.chromium.brave_wallet.mojom.BlockchainToken { *; }
--keep class org.chromium.brave_wallet.mojom.SwapQuoteParams { *; }
--keep class org.chromium.brave_wallet.mojom.AccountInfo { *; }
--keep class org.chromium.brave_wallet.mojom.TxData { *; }
--keep class org.chromium.brave_wallet.mojom.GasEstimation1559 { *; }
--keep class org.chromium.brave_wallet.mojom.TxData1559 { *; }
--keep class org.chromium.brave_wallet.mojom.NetworkInfo { *; }
--keep class org.chromium.components.browser_ui.media.BraveMediaSessionHelper { *; }
+-keep class org.chromium.luxxle_wallet.mojom.BlockchainToken { *; }
+-keep class org.chromium.luxxle_wallet.mojom.SwapQuoteParams { *; }
+-keep class org.chromium.luxxle_wallet.mojom.AccountInfo { *; }
+-keep class org.chromium.luxxle_wallet.mojom.TxData { *; }
+-keep class org.chromium.luxxle_wallet.mojom.GasEstimation1559 { *; }
+-keep class org.chromium.luxxle_wallet.mojom.TxData1559 { *; }
+-keep class org.chromium.luxxle_wallet.mojom.NetworkInfo { *; }
+-keep class org.chromium.components.browser_ui.media.LuxxleMediaSessionHelper { *; }
 -keep class org.chromium.content_public.browser.MediaSessionObserver { *; }
 -keep class org.chromium.ui.ViewProvider { *; }
 -keep class org.chromium.components.browser_ui.media.MediaSessionHelper { *; }
 -keep class org.chromium.components.browser_ui.notifications.ForegroundServiceUtils { *; }
 -keep class org.chromium.chrome.browser.media.ui.ChromeMediaNotificationControllerDelegate { *; }
 -keep class org.chromium.chrome.browser.media.ui.MediaSessionTabHelper { *; }
--keep class org.chromium.components.browser_ui.notifications.BraveForegroundServiceUtils { *; }
--keep class org.chromium.chrome.browser.media.ui.BraveMediaNotificationControllerDelegate { *; }
--keep class org.chromium.chrome.browser.media.ui.BraveMediaSessionTabHelper { *; }
+-keep class org.chromium.components.browser_ui.notifications.LuxxleForegroundServiceUtils { *; }
+-keep class org.chromium.chrome.browser.media.ui.LuxxleMediaNotificationControllerDelegate { *; }
+-keep class org.chromium.chrome.browser.media.ui.LuxxleMediaSessionTabHelper { *; }
 
 -keep class org.chromium.chrome.browser.bookmarks.BookmarkBridge {
     *** mNativeBookmarkBridge;
     <init>(...);
 }
 
--keep class org.chromium.chrome.browser.bookmarks.BraveBookmarkBridge {
+-keep class org.chromium.chrome.browser.bookmarks.LuxxleBookmarkBridge {
     <init>(...);
 }
 
@@ -61,7 +61,7 @@
     *** updateTilePlaceholderVisibility(...);
 }
 
--keep class org.chromium.chrome.browser.suggestions.tile.BraveMostVisitedTilesMediator {
+-keep class org.chromium.chrome.browser.suggestions.tile.LuxxleMostVisitedTilesMediator {
     public <init>(...);
 }
 
@@ -76,7 +76,7 @@
     *** updateSearchProviderHasLogo(...);
 }
 
--keep class org.chromium.chrome.browser.ntp.BraveNewTabPage {
+-keep class org.chromium.chrome.browser.ntp.LuxxleNewTabPage {
     public <init>(...);
 }
 
@@ -118,7 +118,7 @@
     *** runMenuItemEnterAnimations(...);
 }
 
--keep class org.chromium.chrome.browser.ui.appmenu.BraveAppMenu {
+-keep class org.chromium.chrome.browser.ui.appmenu.LuxxleAppMenu {
     public <init>(...);
 }
 
@@ -169,7 +169,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.toolbar.top.BraveTopToolbarCoordinator {
+-keep class org.chromium.chrome.browser.toolbar.top.LuxxleTopToolbarCoordinator {
     public <init>(...);
 }
 
@@ -189,7 +189,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.appmenu.BraveTabbedAppMenuPropertiesDelegate {
+-keep class org.chromium.chrome.browser.appmenu.LuxxleTabbedAppMenuPropertiesDelegate {
     public <init>(...);
 }
 
@@ -197,7 +197,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.tabmodel.BraveTabCreator {
+-keep class org.chromium.chrome.browser.tabmodel.LuxxleTabCreator {
     public <init>(...);
 }
 
@@ -210,7 +210,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.bookmarks.BraveBookmarkToolbar {
+-keep class org.chromium.chrome.browser.bookmarks.LuxxleBookmarkToolbar {
     public <init>(...);
 }
 
@@ -219,7 +219,7 @@
     <init>(...);
 }
 
--keep class org.chromium.chrome.browser.bookmarks.BraveBookmarkToolbarCoordinator {
+-keep class org.chromium.chrome.browser.bookmarks.LuxxleBookmarkToolbarCoordinator {
     <init>(...);
 }
 
@@ -228,7 +228,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.app.bookmarks.BraveBookmarkActivity {
+-keep class org.chromium.chrome.browser.app.bookmarks.LuxxleBookmarkActivity {
     public <init>(...);
 }
 
@@ -246,7 +246,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.bookmarks.BraveBookmarkManagerCoordinator {
+-keep class org.chromium.chrome.browser.bookmarks.LuxxleBookmarkManagerCoordinator {
     public <init>(...);
 }
 
@@ -256,7 +256,7 @@
     <init>(...);
 }
 
--keep class org.chromium.chrome.browser.bookmarks.BraveBookmarkManagerMediator {
+-keep class org.chromium.chrome.browser.bookmarks.LuxxleBookmarkManagerMediator {
     <init>(...);
 }
 
@@ -264,7 +264,7 @@
     <init>(...);
 }
 
--keep class org.chromium.chrome.browser.bookmarks.BraveBookmarkModel {
+-keep class org.chromium.chrome.browser.bookmarks.LuxxleBookmarkModel {
     <init>(...);
 }
 
@@ -273,7 +273,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.bookmarks.BraveBookmarkPage {
+-keep class org.chromium.chrome.browser.bookmarks.LuxxleBookmarkPage {
     public <init>(...);
 }
 
@@ -282,11 +282,11 @@
     *** isKeyInUse(...);
 }
 
--keep class org.chromium.base.shared_preferences.BraveStrictPreferenceKeyChecker {
+-keep class org.chromium.base.shared_preferences.LuxxleStrictPreferenceKeyChecker {
     <init>(...);
 }
 
--keep class org.chromium.chrome.browser.toolbar.BraveToolbarManager {
+-keep class org.chromium.chrome.browser.toolbar.LuxxleToolbarManager {
     public <init>(...);
 }
 
@@ -296,7 +296,7 @@
     *** mBottomControlsStacker;
 }
 
--keep class org.chromium.chrome.browser.toolbar.bottom.BraveBottomControlsMediator {
+-keep class org.chromium.chrome.browser.toolbar.bottom.LuxxleBottomControlsMediator {
     <init>(...);
 }
 
@@ -304,7 +304,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.password_manager.settings.BravePasswordSettingsBase {
+-keep class org.chromium.chrome.browser.password_manager.settings.LuxxlePasswordSettingsBase {
     public <init>(...);
 }
 
@@ -312,7 +312,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.app.appmenu.BraveAppMenuPropertiesDelegateImpl {
+-keep class org.chromium.chrome.browser.app.appmenu.LuxxleAppMenuPropertiesDelegateImpl {
     public <init>(...);
 }
 
@@ -324,7 +324,7 @@
     <init>(...);
 }
 
--keep class org.chromium.chrome.browser.settings.BraveSettingsLauncherImpl {
+-keep class org.chromium.chrome.browser.settings.LuxxleSettingsLauncherImpl {
     public <init>(...);
 }
 
@@ -333,15 +333,15 @@
     *** mToolbarView;
 }
 
--keep class org.chromium.chrome.browser.tasks.tab_management.BraveTabGroupUiCoordinator {
+-keep class org.chromium.chrome.browser.tasks.tab_management.LuxxleTabGroupUiCoordinator {
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.site_settings.BraveSiteSettingsDelegate {
+-keep class org.chromium.chrome.browser.site_settings.LuxxleSiteSettingsDelegate {
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.site_settings.BraveSingleCategorySettings {
+-keep class org.chromium.chrome.browser.site_settings.LuxxleSingleCategorySettings {
     public <init>(...);
 }
 
@@ -354,23 +354,23 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.settings.BraveMainPreferencesBase
+-keep class org.chromium.chrome.browser.settings.LuxxleMainPreferencesBase
 
--keep class org.chromium.chrome.browser.search_engines.settings.BraveBaseSearchEngineAdapter
+-keep class org.chromium.chrome.browser.search_engines.settings.LuxxleBaseSearchEngineAdapter
 
 -keep class org.chromium.chrome.browser.ChromeTabbedActivity
 
--keep class org.chromium.chrome.browser.app.BraveActivity
+-keep class org.chromium.chrome.browser.app.LuxxleActivity
 
--keep class org.chromium.chrome.browser.media.BravePictureInPictureActivity
+-keep class org.chromium.chrome.browser.media.LuxxlePictureInPictureActivity
 
 -keep class org.chromium.chrome.browser.suggestions.tile.SuggestionsTileView
 
--keep class org.chromium.chrome.browser.suggestions.tile.BraveTileView
+-keep class org.chromium.chrome.browser.suggestions.tile.LuxxleTileView
 
 -keep class org.chromium.chrome.browser.customtabs.features.toolbar.CustomTabToolbar
 
--keep class org.chromium.chrome.browser.toolbar.top.BraveToolbarLayoutImpl
+-keep class org.chromium.chrome.browser.toolbar.top.LuxxleToolbarLayoutImpl
 
 -keep class org.chromium.chrome.browser.toolbar.top.ToolbarPhone {
     *** mLocationBarBackgroundColorForNtp;
@@ -385,7 +385,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.notifications.BraveNotificationManagerProxyImpl {
+-keep class org.chromium.chrome.browser.notifications.LuxxleNotificationManagerProxyImpl {
     public <init>(...);
 }
 
@@ -393,7 +393,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.omnibox.status.BraveStatusMediator {
+-keep class org.chromium.chrome.browser.omnibox.status.LuxxleStatusMediator {
     public <init>(...);
 }
 
@@ -409,7 +409,7 @@
     *** mSnapScrollHelper;
 }
 
--keep class org.chromium.chrome.browser.feed.BraveFeedSurfaceMediator {
+-keep class org.chromium.chrome.browser.feed.LuxxleFeedSurfaceMediator {
     <init>(...);
 }
 
@@ -417,7 +417,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.toolbar.menu_button.BraveMenuButtonCoordinator {
+-keep class org.chromium.chrome.browser.toolbar.menu_button.LuxxleMenuButtonCoordinator {
     public <init>(...);
 }
 
@@ -429,15 +429,15 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.share.BraveShareDelegateImpl {
+-keep class org.chromium.chrome.browser.share.LuxxleShareDelegateImpl {
     public <init>(...);
 }
 
 # Rules for inner class constructor match
 -keepattributes InnerClasses, EnclosingMethod
 -keep class org.chromium.components.browser_ui.site_settings.ContentSettingsResources**
--keep class org.chromium.components.browser_ui.site_settings.BraveContentSettingsResources**
--keepclassmembers class org.chromium.components.browser_ui.site_settings.BraveContentSettingsResources** { *; }
+-keep class org.chromium.components.browser_ui.site_settings.LuxxleContentSettingsResources**
+-keepclassmembers class org.chromium.components.browser_ui.site_settings.LuxxleContentSettingsResources** { *; }
 -keepclassmembers class org.chromium.components.browser_ui.site_settings.ContentSettingsResources** { *; }
 
 -keep class org.chromium.components.browser_ui.site_settings.WebsitePermissionsFetcher {
@@ -448,7 +448,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.components.browser_ui.site_settings.BraveSingleWebsiteSettings {
+-keep class org.chromium.components.browser_ui.site_settings.LuxxleSingleWebsiteSettings {
     public <init>(...);
 }
 
@@ -456,7 +456,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.components.browser_ui.site_settings.BraveWebsite {
+-keep class org.chromium.components.browser_ui.site_settings.LuxxleWebsite {
     public <init>(...);
 }
 
@@ -464,7 +464,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.components.browser_ui.site_settings.BraveSiteSettingsPreferencesBase {
+-keep class org.chromium.components.browser_ui.site_settings.LuxxleSiteSettingsPreferencesBase {
     public <init>(...);
 }
 
@@ -477,7 +477,7 @@
     *** getCardViewBackgroundColor(...);
 }
 
--keep class org.chromium.chrome.browser.download.BraveDownloadMessageUiControllerImpl {
+-keep class org.chromium.chrome.browser.download.LuxxleDownloadMessageUiControllerImpl {
     *** isVisibleToUser(...);
 }
 
@@ -485,7 +485,7 @@
     *** isVisibleToUser(...);
 }
 
--keep class org.chromium.chrome.browser.omnibox.suggestions.BraveAutocompleteCoordinator {
+-keep class org.chromium.chrome.browser.omnibox.suggestions.LuxxleAutocompleteCoordinator {
     *** createViewProvider(...);
 }
 
@@ -495,11 +495,11 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.omnibox.suggestions.BraveAutocompleteMediator {
+-keep class org.chromium.chrome.browser.omnibox.suggestions.LuxxleAutocompleteMediator {
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.omnibox.suggestions.BraveAutocompleteMediatorBase {
+-keep class org.chromium.chrome.browser.omnibox.suggestions.LuxxleAutocompleteMediatorBase {
     public <init>(...);
 }
 
@@ -510,7 +510,7 @@
     <init>(...);
 }
 
--keep class org.chromium.chrome.browser.multiwindow.BraveMultiInstanceManagerApi31 {
+-keep class org.chromium.chrome.browser.multiwindow.LuxxleMultiInstanceManagerApi31 {
     <init>(...);
 }
 
@@ -522,7 +522,7 @@
     <init>(...);
 }
 
--keep class org.chromium.chrome.browser.multiwindow.BraveMultiWindowUtils {
+-keep class org.chromium.chrome.browser.multiwindow.LuxxleMultiWindowUtils {
     public <init>(...);
 }
 
@@ -530,7 +530,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.notifications.permissions.BraveNotificationPermissionRationaleDialogController {
+-keep class org.chromium.chrome.browser.notifications.permissions.LuxxleNotificationPermissionRationaleDialogController {
     public <init>(...);
 }
 
@@ -540,7 +540,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.contextmenu.BraveChromeContextMenuPopulator {
+-keep class org.chromium.chrome.browser.contextmenu.LuxxleChromeContextMenuPopulator {
     *** mItemDelegate;
     *** mParams;
     *** getProfile(...);
@@ -554,7 +554,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.omnibox.BraveLocationBarCoordinator {
+-keep class org.chromium.chrome.browser.omnibox.LuxxleLocationBarCoordinator {
     public <init>(...);
 }
 
@@ -562,7 +562,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.omnibox.BraveLocationBarLayout {
+-keep class org.chromium.chrome.browser.omnibox.LuxxleLocationBarLayout {
     public <init>(...);
 }
 
@@ -584,7 +584,7 @@
     *** onAssistantVoiceSearchServiceChanged(...);
 }
 
--keep class org.chromium.chrome.browser.omnibox.BraveLocationBarMediator {
+-keep class org.chromium.chrome.browser.omnibox.LuxxleLocationBarMediator {
     public <init>(...);
 }
 
@@ -592,7 +592,7 @@
     <init>(...);
 }
 
--keep class org.chromium.chrome.browser.omnibox.suggestions.BraveDropdownItemViewInfoListBuilder {
+-keep class org.chromium.chrome.browser.omnibox.suggestions.LuxxleDropdownItemViewInfoListBuilder {
     <init>(...);
 }
 
@@ -600,7 +600,7 @@
     <init>(...);
 }
 
--keep class org.chromium.chrome.browser.omnibox.suggestions.BraveDropdownItemViewInfoListManager {
+-keep class org.chromium.chrome.browser.omnibox.suggestions.LuxxleDropdownItemViewInfoListManager {
     <init>(...);
 }
 
@@ -619,7 +619,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.partnercustomizations.BraveCustomizationProviderDelegateImpl {
+-keep class org.chromium.chrome.browser.partnercustomizations.LuxxleCustomizationProviderDelegateImpl {
     public <init>(...);
 }
 
@@ -628,20 +628,20 @@
     *** getSharingAccountInfo(...);
 }
 
--keep class org.chromium.chrome.browser.share.send_tab_to_self.BraveManageAccountDevicesLinkView {
+-keep class org.chromium.chrome.browser.share.send_tab_to_self.LuxxleManageAccountDevicesLinkView {
     public <init>(...);
 }
 
 -keep class org.chromium.chrome.browser.ChromeApplicationImpl
 
--keep class org.chromium.chrome.browser.BraveApplicationImplBase
+-keep class org.chromium.chrome.browser.LuxxleApplicationImplBase
 
 -keep class org.chromium.chrome.browser.dom_distiller.ReaderModeManager {
     *** mTab;
     <init>(...);
 }
 
--keep class org.chromium.chrome.browser.dom_distiller.BraveReaderModeManager {
+-keep class org.chromium.chrome.browser.dom_distiller.LuxxleReaderModeManager {
     <init>(...);
 }
 
@@ -649,7 +649,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.crash.BravePureJavaExceptionReporter {
+-keep class org.chromium.chrome.browser.crash.LuxxlePureJavaExceptionReporter {
     public <init>(...);
 }
 
@@ -665,7 +665,7 @@
     *** extractUrlFromIntent(...);
 }
 
--keep class org.chromium.chrome.browser.BraveIntentHandler {
+-keep class org.chromium.chrome.browser.LuxxleIntentHandler {
     public <init>(...);
 }
 
@@ -673,7 +673,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.BraveAppHooks {
+-keep class org.chromium.chrome.browser.LuxxleAppHooks {
     public <init>(...);
 }
 
@@ -682,7 +682,7 @@
     <init>(...);
 }
 
--keep class org.chromium.components.cached_flags.BraveCachedFlag {
+-keep class org.chromium.components.cached_flags.LuxxleCachedFlag {
     <init>(...);
 }
 
@@ -693,7 +693,7 @@
     *** updateVisibility(...);
 }
 
--keep class org.chromium.chrome.browser.logo.BraveLogoMediator {
+-keep class org.chromium.chrome.browser.logo.LuxxleLogoMediator {
     public <init>(...);
 }
 
@@ -701,7 +701,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.document.BraveLauncherActivity {
+-keep class org.chromium.chrome.browser.document.LuxxleLauncherActivity {
     public <init>(...);
 }
 
@@ -709,7 +709,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.components.permissions.BravePermissionDialogDelegate {
+-keep class org.chromium.components.permissions.LuxxlePermissionDialogDelegate {
     public <init>(...);
 }
 
@@ -717,7 +717,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.settings.BravePreferenceFragment {
+-keep class org.chromium.chrome.browser.settings.LuxxlePreferenceFragment {
     public <init>(...);
 }
 
@@ -725,7 +725,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.notifications.BraveNotificationBuilder {
+-keep class org.chromium.chrome.browser.notifications.LuxxleNotificationBuilder {
     public <init>(...);
 }
 
@@ -733,7 +733,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.tabbed_mode.BraveTabbedRootUiCoordinator {
+-keep class org.chromium.chrome.browser.tabbed_mode.LuxxleTabbedRootUiCoordinator {
     public <init>(...);
 }
 
@@ -745,7 +745,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.firstrun.BraveFreIntentCreator {
+-keep class org.chromium.chrome.browser.firstrun.LuxxleFreIntentCreator {
     public <init>(...);
 }
 
@@ -753,7 +753,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.feedback.BraveHelpAndFeedbackLauncherImpl {
+-keep class org.chromium.chrome.browser.feedback.LuxxleHelpAndFeedbackLauncherImpl {
     public <init>(...);
 }
 
@@ -765,7 +765,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.externalnav.BraveExternalNavigationHandler {
+-keep class org.chromium.chrome.browser.externalnav.LuxxleExternalNavigationHandler {
     public <init>(...);
 }
 
@@ -774,7 +774,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.tabmodel.BraveTabGroupModelFilter {
+-keep class org.chromium.chrome.browser.tabmodel.LuxxleTabGroupModelFilter {
     public <init>(...);
 }
 
@@ -783,7 +783,7 @@
     *** calculateButtonData(...);
 }
 
--keep class org.chromium.chrome.browser.identity_disc.BraveIdentityDiscController {
+-keep class org.chromium.chrome.browser.identity_disc.LuxxleIdentityDiscController {
     public <init>(...);
 }
 
@@ -791,7 +791,7 @@
     <init>(...);
 }
 
--keep class org.chromium.chrome.browser.bookmarks.BraveBookmarkUiPrefs {
+-keep class org.chromium.chrome.browser.bookmarks.LuxxleBookmarkUiPrefs {
     <init>(...);
 }
 
@@ -801,7 +801,7 @@
     *** mTab;
 }
 
--keep class org.chromium.chrome.browser.customtabs.features.partialcustomtab.BravePartialCustomTabBottomSheetStrategy {
+-keep class org.chromium.chrome.browser.customtabs.features.partialcustomtab.LuxxlePartialCustomTabBottomSheetStrategy {
     public <init>(...);
 }
 
@@ -810,7 +810,7 @@
     *** mMoveToolbar;
 }
 
--keep class org.chromium.chrome.browser.compositor.layouts.BraveToolbarSwipeLayout {
+-keep class org.chromium.chrome.browser.compositor.layouts.LuxxleToolbarSwipeLayout {
     public <init>(...);
 }
 
@@ -818,7 +818,7 @@
     protected <init>(...);
 }
 
--keep class org.chromium.components.embedder_support.view.BraveContentView {
+-keep class org.chromium.components.embedder_support.view.LuxxleContentView {
     protected <init>(...);
 }
 
@@ -826,7 +826,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.components.signin.BraveSystemAccountManagerDelegate {
+-keep class org.chromium.components.signin.LuxxleSystemAccountManagerDelegate {
     public <init>(...);
 }
 
@@ -834,7 +834,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.omnibox.BraveAutocompleteEditText {
+-keep class org.chromium.chrome.browser.omnibox.LuxxleAutocompleteEditText {
     public <init>(...);
 }
 
@@ -842,15 +842,15 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.omnibox.suggestions.editurl.BraveEditUrlSuggestionProcessor {
+-keep class org.chromium.chrome.browser.omnibox.suggestions.editurl.LuxxleEditUrlSuggestionProcessor {
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.omnibox.suggestions.editurl.BraveEditUrlSuggestionProcessorBase
+-keep class org.chromium.chrome.browser.omnibox.suggestions.editurl.LuxxleEditUrlSuggestionProcessorBase
 
 -keep class org.chromium.chrome.browser.suggestions.tile.MostVisitedTilesLayout
 
--keep class org.chromium.chrome.browser.suggestions.tile.BraveMostVisitedTilesLayoutBase
+-keep class org.chromium.chrome.browser.suggestions.tile.LuxxleMostVisitedTilesLayoutBase
 
 -keep class org.chromium.chrome.browser.hub.HubManagerImpl {
     *** ensureHubCoordinatorIsInitialized(...);
@@ -861,7 +861,7 @@
     *** mBackgroundColorForNtp;
 }
 
--keep class org.chromium.chrome.browser.ui.system.BraveStatusBarColorController {
+-keep class org.chromium.chrome.browser.ui.system.LuxxleStatusBarColorController {
     public <init>(...);
 }
 
@@ -874,7 +874,7 @@
     *** prepareNotificationBuilder(...);
 }
 
--keep class org.chromium.chrome.browser.tasks.tab_management.BraveTabSwitcherPaneBase
+-keep class org.chromium.chrome.browser.tasks.tab_management.LuxxleTabSwitcherPaneBase
 
 -keep class org.chromium.chrome.browser.tasks.tab_management.TabSwitcherPane
 
@@ -882,7 +882,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.tasks.tab_management.BraveIncognitoTabSwitcherPane {
+-keep class org.chromium.chrome.browser.tasks.tab_management.LuxxleIncognitoTabSwitcherPane {
     public <init>(...);
 }
 
@@ -892,7 +892,7 @@
     *** mActiveTab;
 }
 
--keep class org.chromium.chrome.browser.tabbed_mode.BraveTabbedNavigationBarColorControllerBase
+-keep class org.chromium.chrome.browser.tabbed_mode.LuxxleTabbedNavigationBarColorControllerBase
 
 -keep class org.chromium.chrome.browser.settings.SettingsIntentUtil {
     *** createIntent(...);
@@ -923,23 +923,23 @@
     *** mDismissPending;
 }
 
--keep class org.chromium.chrome.browser.media.BraveFullscreenVideoPictureInPictureController
+-keep class org.chromium.chrome.browser.media.LuxxleFullscreenVideoPictureInPictureController
 
 -keep class org.chromium.chrome.browser.fullscreen.FullscreenHtmlApiHandlerBase
 
--keep class org.chromium.chrome.browser.fullscreen.BraveFullscreenHtmlApiHandlerBase
+-keep class org.chromium.chrome.browser.fullscreen.LuxxleFullscreenHtmlApiHandlerBase
 
 -keep class org.chromium.chrome.browser.fullscreen.FullscreenHtmlApiHandlerCompat {
     public <init>(...);
 }
--keep class org.chromium.chrome.browser.fullscreen.BraveFullscreenHtmlApiHandlerCompat {
+-keep class org.chromium.chrome.browser.fullscreen.LuxxleFullscreenHtmlApiHandlerCompat {
     public <init>(...);
 }
 
 -keep class org.chromium.chrome.browser.fullscreen.FullscreenHtmlApiHandlerLegacy {
     public <init>(...);
 }
--keep class org.chromium.chrome.browser.fullscreen.BraveFullscreenHtmlApiHandlerLegacy {
+-keep class org.chromium.chrome.browser.fullscreen.LuxxleFullscreenHtmlApiHandlerLegacy {
     public <init>(...);
 }
 
@@ -947,7 +947,7 @@
     *** calculateStateTransition(...);
 }
 
--keep class org.chromium.chrome.browser.toolbar.BraveToolbarPositionController {
+-keep class org.chromium.chrome.browser.toolbar.LuxxleToolbarPositionController {
     *** calculateStateTransition(...);
 }
 
@@ -964,7 +964,7 @@
     public <init>(...);
 }
 
--keep class org.chromium.chrome.browser.quickactionsearchwidget.BraveQuickActionSearchWidgetProvider {
+-keep class org.chromium.chrome.browser.quickactionsearchwidget.LuxxleQuickActionSearchWidgetProvider {
     public <init>(...);
 }
 
@@ -979,12 +979,12 @@
     *** getChromeNtpRadioButton(...);
 }
 
--keep class org.chromium.chrome.browser.homepage.settings.BraveRadioButtonGroupHomepagePreference
+-keep class org.chromium.chrome.browser.homepage.settings.LuxxleRadioButtonGroupHomepagePreference
 
 -keep class org.chromium.chrome.browser.tab_group_sync.StartupHelper {
     *** handleUnsavedLocalTabGroups(...);
 }
 
--keep class org.chromium.chrome.browser.tab_group_sync.BraveStartupHelper {
+-keep class org.chromium.chrome.browser.tab_group_sync.LuxxleStartupHelper {
     *** handleUnsavedLocalTabGroups(...);
 }

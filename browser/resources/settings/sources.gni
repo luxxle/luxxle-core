@@ -10,36 +10,36 @@ import("//luxxle/browser/shell_integrations/buildflags/buildflags.gni")
 # Since our components start in a different path, we'll do the first step (move them to
 # the generated preprocessed path via preprocess_if_expr, but let chromium handle the rest of the
 # webui build pipeline.
-brave_settings_preprocess_deps = [ "//luxxle/browser/resources/settings:preprocess" ]
+luxxle_settings_preprocess_deps = [ "//luxxle/browser/resources/settings:preprocess" ]
 
-brave_settings_web_component_files = [
-  "brave_appearance_page/bookmark_bar.ts",
-  "brave_appearance_page/brave_theme.ts",
-  "brave_appearance_page/sidebar.ts",
-  "brave_appearance_page/super_referral.ts",
-  "brave_appearance_page/tabs.ts",
-  "brave_appearance_page/toolbar.ts",
-  "brave_clear_browsing_data_dialog/brave_clear_browsing_data_on_exit_page.ts",
-  "brave_content_page/content.ts",
-  "brave_data_collection_page/brave_data_collection_page.ts",
-  "brave_default_extensions_page/brave_default_extensions_page.ts",
-  "brave_default_extensions_page/brave_extensions_manifest_v2_subpage.ts",
-  "brave_new_tab_page/brave_new_tab_page.ts",
-  "brave_privacy_page/brave_personalization_options.ts",
-  "brave_sync_page/brave_sync_code_dialog.ts",
-  "brave_sync_page/brave_sync_configure.ts",
-  "brave_sync_page/brave_sync_delete_account_dialog.ts",
-  "brave_sync_page/brave_sync_page.ts",
-  "brave_sync_page/brave_sync_setup.ts",
-  "brave_sync_page/brave_sync_subpage.ts",
-  "brave_system_page/brave_performance_page.ts",
-  "brave_tor_page/brave_tor_bridges_dialog.ts",
-  "brave_tor_page/brave_tor_snowflake_install_failed_dialog.ts",
-  "brave_tor_page/brave_tor_subpage.ts",
-  "brave_leo_assistant_page/brave_leo_assistant_page.ts",
-  "brave_leo_assistant_page/model_list_section.ts",
-  "brave_leo_assistant_page/model_config_ui.ts",
-  "brave_web3_domains_page/brave_web3_domains_page.ts",
+luxxle_settings_web_component_files = [
+  "luxxle_appearance_page/bookmark_bar.ts",
+  "luxxle_appearance_page/luxxle_theme.ts",
+  "luxxle_appearance_page/sidebar.ts",
+  "luxxle_appearance_page/super_referral.ts",
+  "luxxle_appearance_page/tabs.ts",
+  "luxxle_appearance_page/toolbar.ts",
+  "luxxle_clear_browsing_data_dialog/luxxle_clear_browsing_data_on_exit_page.ts",
+  "luxxle_content_page/content.ts",
+  "luxxle_data_collection_page/luxxle_data_collection_page.ts",
+  "luxxle_default_extensions_page/luxxle_default_extensions_page.ts",
+  "luxxle_default_extensions_page/luxxle_extensions_manifest_v2_subpage.ts",
+  "luxxle_new_tab_page/luxxle_new_tab_page.ts",
+  "luxxle_privacy_page/luxxle_personalization_options.ts",
+  "luxxle_sync_page/luxxle_sync_code_dialog.ts",
+  "luxxle_sync_page/luxxle_sync_configure.ts",
+  "luxxle_sync_page/luxxle_sync_delete_account_dialog.ts",
+  "luxxle_sync_page/luxxle_sync_page.ts",
+  "luxxle_sync_page/luxxle_sync_setup.ts",
+  "luxxle_sync_page/luxxle_sync_subpage.ts",
+  "luxxle_system_page/luxxle_performance_page.ts",
+  "luxxle_tor_page/luxxle_tor_bridges_dialog.ts",
+  "luxxle_tor_page/luxxle_tor_snowflake_install_failed_dialog.ts",
+  "luxxle_tor_page/luxxle_tor_subpage.ts",
+  "luxxle_leo_assistant_page/luxxle_leo_assistant_page.ts",
+  "luxxle_leo_assistant_page/model_list_section.ts",
+  "luxxle_leo_assistant_page/model_config_ui.ts",
+  "luxxle_web3_domains_page/luxxle_web3_domains_page.ts",
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead
@@ -49,121 +49,121 @@ brave_settings_web_component_files = [
   "ui/searchable_drop_down_cros.ts",
 ]
 
-brave_settings_ts_files = [
-  "brave_appearance_page/brave_appearance_browser_proxy.ts",
-  "brave_clear_browsing_data_dialog/brave_clear_browsing_data_dialog_behavior.ts",
-  "brave_clear_browsing_data_dialog/brave_clear_browsing_data_dialog_proxy.ts",
-  "brave_autofill_page/brave_autofill_page.ts",
-  "brave_add_site_dialog/brave_add_site_dialog.ts",
-  "brave_data_collection_page/brave_data_collection_browser_proxy.ts",
-  "brave_default_extensions_page/brave_default_extensions_browser_proxy.ts",
-  "brave_new_tab_page/brave_new_tab_browser_proxy.ts",
-  "brave_leo_assistant_page/brave_leo_assistant_browser_proxy.ts",
-  "brave_overrides/a11y_page.ts",
-  "brave_overrides/all_sites.ts",
-  "brave_overrides/about_page.ts",
-  "brave_overrides/autofill_page.ts",
-  "brave_overrides/appearance_page.ts",
-  "brave_overrides/basic_page.ts",
-  "brave_overrides/clear_browsing_data_dialog.ts",
-  "brave_overrides/config.ts",
-  "brave_overrides/cookies_page.ts",
-  "brave_overrides/default_browser_page.ts",
-  "brave_overrides/edit_dictionary_page.ts",
-  "brave_overrides/import_data_dialog.ts",
-  "brave_overrides/index.ts",
-  "brave_overrides/theme_color_picker.ts",
-  "brave_overrides/page_visibility.ts",
-  "brave_overrides/passwords_section.ts",
-  "brave_overrides/payments_section.ts",
-  "brave_overrides/people_page.ts",
-  "brave_overrides/performance_page.ts",
-  "brave_overrides/personalization_options.ts",
-  "brave_overrides/printing_page.ts",
-  "brave_overrides/privacy_page.ts",
-  "brave_overrides/reset_profile_dialog.ts",
-  "brave_overrides/safety_check.ts",
-  "brave_overrides/safety_check_passwords_child.ts",
-  "brave_overrides/safety_hub_page.ts",
-  "brave_overrides/search_page.ts",
-  "brave_overrides/security_page.ts",
-  "brave_overrides/settings_basic_page.ts",
-  "brave_overrides/settings_manage_profile.ts",
-  "brave_overrides/settings_menu.ts",
-  "brave_overrides/settings_section.ts",
-  "brave_overrides/settings_subpage.ts",
-  "brave_overrides/settings_ui.ts",
-  "brave_overrides/site_details.ts",
-  "brave_overrides/site_list_entry.ts",
-  "brave_overrides/system_page.ts",
-  "brave_overrides/add_site_dialog.ts",
-  "brave_overrides/site_settings_page.ts",
-  "brave_overrides/sync_account_control.ts",
-  "brave_overrides/sync_controls.ts",
-  "brave_privacy_page/brave_privacy_page_browser_proxy.ts",
-  "brave_reset_page/brave_reset_profile_dialog_behavior.ts",
-  "brave_routes.ts",
-  "brave_sync_page/brave_sync_browser_proxy.ts",
-  "brave_tor_page/brave_tor_browser_proxy.ts",
-  "brave_web3_domains_page/brave_web3_domains_browser_proxy.ts",
+luxxle_settings_ts_files = [
+  "luxxle_appearance_page/luxxle_appearance_browser_proxy.ts",
+  "luxxle_clear_browsing_data_dialog/luxxle_clear_browsing_data_dialog_behavior.ts",
+  "luxxle_clear_browsing_data_dialog/luxxle_clear_browsing_data_dialog_proxy.ts",
+  "luxxle_autofill_page/luxxle_autofill_page.ts",
+  "luxxle_add_site_dialog/luxxle_add_site_dialog.ts",
+  "luxxle_data_collection_page/luxxle_data_collection_browser_proxy.ts",
+  "luxxle_default_extensions_page/luxxle_default_extensions_browser_proxy.ts",
+  "luxxle_new_tab_page/luxxle_new_tab_browser_proxy.ts",
+  "luxxle_leo_assistant_page/luxxle_leo_assistant_browser_proxy.ts",
+  "luxxle_overrides/a11y_page.ts",
+  "luxxle_overrides/all_sites.ts",
+  "luxxle_overrides/about_page.ts",
+  "luxxle_overrides/autofill_page.ts",
+  "luxxle_overrides/appearance_page.ts",
+  "luxxle_overrides/basic_page.ts",
+  "luxxle_overrides/clear_browsing_data_dialog.ts",
+  "luxxle_overrides/config.ts",
+  "luxxle_overrides/cookies_page.ts",
+  "luxxle_overrides/default_browser_page.ts",
+  "luxxle_overrides/edit_dictionary_page.ts",
+  "luxxle_overrides/import_data_dialog.ts",
+  "luxxle_overrides/index.ts",
+  "luxxle_overrides/theme_color_picker.ts",
+  "luxxle_overrides/page_visibility.ts",
+  "luxxle_overrides/passwords_section.ts",
+  "luxxle_overrides/payments_section.ts",
+  "luxxle_overrides/people_page.ts",
+  "luxxle_overrides/performance_page.ts",
+  "luxxle_overrides/personalization_options.ts",
+  "luxxle_overrides/printing_page.ts",
+  "luxxle_overrides/privacy_page.ts",
+  "luxxle_overrides/reset_profile_dialog.ts",
+  "luxxle_overrides/safety_check.ts",
+  "luxxle_overrides/safety_check_passwords_child.ts",
+  "luxxle_overrides/safety_hub_page.ts",
+  "luxxle_overrides/search_page.ts",
+  "luxxle_overrides/security_page.ts",
+  "luxxle_overrides/settings_basic_page.ts",
+  "luxxle_overrides/settings_manage_profile.ts",
+  "luxxle_overrides/settings_menu.ts",
+  "luxxle_overrides/settings_section.ts",
+  "luxxle_overrides/settings_subpage.ts",
+  "luxxle_overrides/settings_ui.ts",
+  "luxxle_overrides/site_details.ts",
+  "luxxle_overrides/site_list_entry.ts",
+  "luxxle_overrides/system_page.ts",
+  "luxxle_overrides/add_site_dialog.ts",
+  "luxxle_overrides/site_settings_page.ts",
+  "luxxle_overrides/sync_account_control.ts",
+  "luxxle_overrides/sync_controls.ts",
+  "luxxle_privacy_page/luxxle_privacy_page_browser_proxy.ts",
+  "luxxle_reset_page/luxxle_reset_profile_dialog_behavior.ts",
+  "luxxle_routes.ts",
+  "luxxle_sync_page/luxxle_sync_browser_proxy.ts",
+  "luxxle_tor_page/luxxle_tor_browser_proxy.ts",
+  "luxxle_web3_domains_page/luxxle_web3_domains_browser_proxy.ts",
   "email_aliases_page/email_aliases_page.ts",
-  "getting_started_page/brave_account_browser_proxy.ts",
-  "getting_started_page/brave_account_common.ts",
-  "getting_started_page/brave_account_create_dialog.html.ts",
-  "getting_started_page/brave_account_create_dialog.ts",
-  "getting_started_page/brave_account_dialog.html.ts",
-  "getting_started_page/brave_account_dialog.ts",
-  "getting_started_page/brave_account_entry_dialog.html.ts",
-  "getting_started_page/brave_account_entry_dialog.ts",
-  "getting_started_page/brave_account_forgot_password_dialog.html.ts",
-  "getting_started_page/brave_account_forgot_password_dialog.ts",
-  "getting_started_page/brave_account_row.html.ts",
-  "getting_started_page/brave_account_row.ts",
-  "getting_started_page/brave_account_sign_in_dialog.html.ts",
-  "getting_started_page/brave_account_sign_in_dialog.ts",
+  "getting_started_page/luxxle_account_browser_proxy.ts",
+  "getting_started_page/luxxle_account_common.ts",
+  "getting_started_page/luxxle_account_create_dialog.html.ts",
+  "getting_started_page/luxxle_account_create_dialog.ts",
+  "getting_started_page/luxxle_account_dialog.html.ts",
+  "getting_started_page/luxxle_account_dialog.ts",
+  "getting_started_page/luxxle_account_entry_dialog.html.ts",
+  "getting_started_page/luxxle_account_entry_dialog.ts",
+  "getting_started_page/luxxle_account_forgot_password_dialog.html.ts",
+  "getting_started_page/luxxle_account_forgot_password_dialog.ts",
+  "getting_started_page/luxxle_account_row.html.ts",
+  "getting_started_page/luxxle_account_row.ts",
+  "getting_started_page/luxxle_account_sign_in_dialog.html.ts",
+  "getting_started_page/luxxle_account_sign_in_dialog.ts",
   "shortcuts_page/shortcuts_page.ts",
 ]
 
-brave_settings_local_css_files = [
-  "getting_started_page/brave_account_common.css",
-  "getting_started_page/brave_account_create_dialog.css",
-  "getting_started_page/brave_account_dialog.css",
-  "getting_started_page/brave_account_entry_dialog.css",
-  "getting_started_page/brave_account_forgot_password_dialog.css",
-  "getting_started_page/brave_account_row.css",
-  "getting_started_page/brave_account_sign_in_dialog.css",
+luxxle_settings_local_css_files = [
+  "getting_started_page/luxxle_account_common.css",
+  "getting_started_page/luxxle_account_create_dialog.css",
+  "getting_started_page/luxxle_account_dialog.css",
+  "getting_started_page/luxxle_account_entry_dialog.css",
+  "getting_started_page/luxxle_account_forgot_password_dialog.css",
+  "getting_started_page/luxxle_account_row.css",
+  "getting_started_page/luxxle_account_sign_in_dialog.css",
 ]
 
 # Commented out: VPN functionality disabled for Luxxle
-#   brave_settings_web_component_files +=
+#   luxxle_settings_web_component_files +=
 # }
 
 if (enable_pin_shortcut) {
-  brave_settings_web_component_files +=
+  luxxle_settings_web_component_files +=
       [ "pin_shortcut_page/pin_shortcut_page.ts" ]
-  brave_settings_ts_files +=
+  luxxle_settings_ts_files +=
       [ "pin_shortcut_page/pin_shortcut_page_browser_proxy.ts" ]
 }
 
-brave_settings_ts_definitions = [
+luxxle_settings_ts_definitions = [
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/definitions/chrome_brave_theme.d.ts",
+  # "//luxxle/components/definitions/chrome_luxxle_theme.d.ts",
   # Commented out: removed components dependency - using Chromium defaults instead
 ]
 
 # Generate the list for inclusion via preprocess and exclusion for chromium's preprocess
-brave_settings_local_ts_files =
-    brave_settings_web_component_files + brave_settings_ts_files
+luxxle_settings_local_ts_files =
+    luxxle_settings_web_component_files + luxxle_settings_ts_files
 
-brave_settings_local_html_files = []
-foreach(component_file, brave_settings_web_component_files) {
-  brave_settings_local_html_files +=
+luxxle_settings_local_html_files = []
+foreach(component_file, luxxle_settings_web_component_files) {
+  luxxle_settings_local_html_files +=
       [ string_replace(component_file, ".ts", ".html") ]
 }
 
-brave_settings_ts_extra_deps = [ "//luxxle/browser/resources/settings:preprocess" ]
+luxxle_settings_ts_extra_deps = [ "//luxxle/browser/resources/settings:preprocess" ]
 
-brave_settings_mojo_files = [
+luxxle_settings_mojo_files = [
   # Commented out: removed components dependency - using Chromium defaults instead
   # "$root_gen_dir/luxxle/components/ai_chat/core/common/mojom/settings_helper.mojom-webui.ts",
   # Commented out: removed components dependency - using Chromium defaults instead
@@ -175,17 +175,17 @@ brave_settings_mojo_files = [
   # Commented out: removed components dependency - using Chromium defaults instead
   # "$root_gen_dir/luxxle/components/ai_chat/core/common/mojom/untrusted_frame.mojom-webui.ts",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "$root_gen_dir/luxxle/components/brave_account/core/mojom/brave_account.mojom-webui.ts",
+  # "$root_gen_dir/luxxle/components/luxxle_account/core/mojom/luxxle_account.mojom-webui.ts",
 ]
 
-brave_settings_mojo_files_deps = [
+luxxle_settings_mojo_files_deps = [
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/ai_chat/core/common/mojom:mojom_ts__generator",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_account/core/mojom:mojom_ts__generator",
+  # "//luxxle/components/luxxle_account/core/mojom:mojom_ts__generator",
 ]
 
-brave_settings_ts_deps = [
+luxxle_settings_ts_deps = [
   "//third_party/lit/v3_0:build_ts",
   "//ui/webui/resources/mojo:build_ts",
 ]

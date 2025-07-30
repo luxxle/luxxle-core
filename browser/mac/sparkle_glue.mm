@@ -1,9 +1,9 @@
-/* Copyright (c) 2023 The Brave Authors. All rights reserved.
+/* Copyright (c) 2023 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#import "brave/browser/mac/sparkle_glue.h"
+#import "luxxle/browser/mac/sparkle_glue.h"
 
 #include <sys/mount.h>
 #include <sys/stat.h>
@@ -18,10 +18,10 @@
 #include "base/strings/sys_string_conversions.h"
 #include "base/system/sys_info.h"
 #include "base/task/thread_pool.h"
-#import "brave/browser/mac/su_updater.h"
+#import "luxxle/browser/mac/su_updater.h"
 #include "luxxle/browser/update_util.h"
-#include "luxxle/common/brave_channel_info.h"
-#include "luxxle/components/constants/brave_switches.h"
+#include "luxxle/common/luxxle_channel_info.h"
+#include "luxxle/components/constants/luxxle_switches.h"
 #include "chrome/common/channel_info.h"
 #include "chrome/common/chrome_constants.h"
 
@@ -80,7 +80,7 @@ std::string GetDescriptionFromAppcastItem(id item) {
     shared = [[SparkleGlue alloc] init];
     [shared loadParameters];
     if (![shared loadSparkleFramework]) {
-      VLOG(0) << "brave update: Failed to load sparkle framework";
+      VLOG(0) << "luxxle update: Failed to load sparkle framework";
       shared = nil;
     }
   }
@@ -124,7 +124,7 @@ std::string GetDescriptionFromAppcastItem(id item) {
 }
 
 - (void)registerWithSparkle {
-  // This can be called by BraveBrowserMainPartsMac::PreMainMessageLoopStart()
+  // This can be called by LuxxleBrowserMainPartsMac::PreMainMessageLoopStart()
   // again when browser is relaunched.
   if (_registered) {
     return;
@@ -140,8 +140,8 @@ std::string GetDescriptionFromAppcastItem(id item) {
   [_su_updater setDelegate:self];
 
   // Background update check interval.
-  constexpr NSTimeInterval kBraveUpdateCheckIntervalInSec = 3 * 60 * 60;
-  [_su_updater setUpdateCheckInterval:kBraveUpdateCheckIntervalInSec];
+  constexpr NSTimeInterval kLuxxleUpdateCheckIntervalInSec = 3 * 60 * 60;
+  [_su_updater setUpdateCheckInterval:kLuxxleUpdateCheckIntervalInSec];
 
   [_su_updater setAutomaticallyDownloadsUpdates:YES];
 
@@ -325,13 +325,13 @@ std::string GetDescriptionFromAppcastItem(id item) {
 #pragma mark - SUUpdaterDelegate
 
 - (void)updater:(id)updater didFinishLoadingAppcast:(id)appcast {
-  VLOG(0) << "brave update: did finish loading appcast";
+  VLOG(0) << "luxxle update: did finish loading appcast";
 
   [self updateStatus:kAutoupdateChecking version:nil error:nil];
 }
 
 - (void)updater:(id)updater didFindValidUpdate:(id)item {
-  VLOG(0) << "brave update: did find valid update with " +
+  VLOG(0) << "luxxle update: did find valid update with " +
              GetDescriptionFromAppcastItem(item);
 
   // Caching update candidate version.
@@ -344,7 +344,7 @@ std::string GetDescriptionFromAppcastItem(id item) {
 }
 
 - (void)updaterDidNotFindUpdate:(id)updater {
-  VLOG(0) << "brave update: did not find update";
+  VLOG(0) << "luxxle update: did not find update";
 
   [self determineUpdateStatusAsync];
 }
@@ -352,7 +352,7 @@ std::string GetDescriptionFromAppcastItem(id item) {
 - (void)updater:(id)updater
     willDownloadUpdate:(id)item
            withRequest:(NSMutableURLRequest *)request {
-  VLOG(0) << "brave update: willDownloadUpdate with " +
+  VLOG(0) << "luxxle update: willDownloadUpdate with " +
              GetDescriptionFromAppcastItem(item);
   [self updateStatus:kAutoupdateInstalling
              version:nil
@@ -362,7 +362,7 @@ std::string GetDescriptionFromAppcastItem(id item) {
 - (void)updater:(id)updater
     failedToDownloadUpdate:(id)item
                      error:(NSError *)error {
-  VLOG(0) << "brave update: failed to download update with " +
+  VLOG(0) << "luxxle update: failed to download update with " +
                  GetDescriptionFromAppcastItem(item) + " with error - " +
                  base::SysNSStringToUTF8([error description]);
   [self updateStatus:kAutoupdateInstallFailed
@@ -371,14 +371,14 @@ std::string GetDescriptionFromAppcastItem(id item) {
 }
 
 - (void)userDidCancelDownload:(id)updater {
-  VLOG(0) << "brave update: user did cancel download";
+  VLOG(0) << "luxxle update: user did cancel download";
   [self updateStatus:kAutoupdateInstallFailed
                version:nil
                  error:nil];
 }
 
 - (void)updater:(id)updater willInstallUpdate:(id)item {
-  VLOG(0) << "brave update: will install update with " +
+  VLOG(0) << "luxxle update: will install update with " +
              GetDescriptionFromAppcastItem(item);
   [self updateStatus:kAutoupdateInstalling
              version:nil
@@ -388,7 +388,7 @@ std::string GetDescriptionFromAppcastItem(id item) {
 - (void)updater:(id)updater
     willInstallUpdateOnQuit:(id)item
     immediateInstallationInvocation:(NSInvocation *)invocation {
-  VLOG(0) << "brave update: will install update on quit with " +
+  VLOG(0) << "luxxle update: will install update on quit with " +
              GetDescriptionFromAppcastItem(item);
 
   _updateWillBeInstalledOnQuit = YES;
@@ -397,7 +397,7 @@ std::string GetDescriptionFromAppcastItem(id item) {
 }
 
 - (void)updater:(id)updater didAbortWithError:(NSError *)error {
-  VLOG(0) << "brave update: did abort with error: " +
+  VLOG(0) << "luxxle update: did abort with error: " +
              base::SysNSStringToUTF8([error localizedDescription]);
   /* Error code. See SUErrors.h
     // Appcast phase errors.
@@ -452,8 +452,8 @@ std::string GetDescriptionFromAppcastItem(id item) {
         command->GetSwitchValueASCII(switches::kUpdateFeedURL));
   }
 
-  return [NSString stringWithFormat:@"https://updates.bravesoftware.com/"
-                                    @"sparkle/Brave-Browser/%s/appcast.xml",
+  return [NSString stringWithFormat:@"https://updates.luxxlesoftware.com/"
+                                    @"sparkle/Luxxle-Browser/%s/appcast.xml",
                                     GetUpdateChannel().c_str()];
 }
 @end

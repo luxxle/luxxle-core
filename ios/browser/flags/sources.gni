@@ -3,19 +3,19 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-brave_flags_deps = [
+luxxle_flags_deps = [
   "//base",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_ads/core",
+  # "//luxxle/components/luxxle_ads/core",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_component_updater/browser",
+  # "//luxxle/components/luxxle_component_updater/browser",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_rewards/core",
+  # "//luxxle/components/luxxle_rewards/core",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_rewards/core/buildflags",
+  # "//luxxle/components/luxxle_rewards/core/buildflags",
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_user_agent/common:common",
+  # "//luxxle/components/luxxle_user_agent/common:common",
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/de_amp/common",

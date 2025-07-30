@@ -6,7 +6,7 @@
 #include "luxxle/browser/ui/views/frame/vertical_tab_strip_root_view.h"
 
 #include "luxxle/browser/ui/browser_commands.h"
-#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_view.h"
 #include "luxxle/browser/ui/views/frame/vertical_tab_strip_region_view.h"
 #include "luxxle/browser/ui/views/frame/vertical_tab_strip_widget_delegate_view.h"
 #include "luxxle/browser/ui/views/tabs/vertical_tab_utils.h"
@@ -57,7 +57,7 @@ class VerticalTabStripRootViewBrowserTest : public InProcessBrowserTest {
   }
 
   VerticalTabStripWidgetDelegateView* vtab_tab_strip_widget_delegate_view() {
-    auto* browser_view = static_cast<BraveBrowserView*>(
+    auto* browser_view = static_cast<LuxxleBrowserView*>(
         BrowserView::GetBrowserViewForBrowser(browser()));
     if (browser_view) {
       return browser_view->vertical_tab_strip_widget_delegate_view();
@@ -103,7 +103,7 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripRootViewBrowserTest,
   EXPECT_EQ(tab_strip_model->count(), 1);
 
   ui::OSExchangeData data;
-  GURL url("https://brave.com/");
+  GURL url("https://luxxle.com/");
   data.SetURL(url, std::u16string());
 
   Tab* current_tab = GetTabAt(0);
@@ -133,7 +133,7 @@ IN_PROC_BROWSER_TEST_F(VerticalTabStripRootViewBrowserTest, DragOnCurrentTab) {
   EXPECT_EQ(tab_strip_model->count(), 1);
 
   ui::OSExchangeData data;
-  GURL url("https://brave.com/");
+  GURL url("https://luxxle.com/");
   data.SetURL(url, std::u16string());
 
   Tab* current_tab = GetTabAt(0);

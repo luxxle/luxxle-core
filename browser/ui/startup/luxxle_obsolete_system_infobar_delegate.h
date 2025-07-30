@@ -1,0 +1,52 @@
+/* Copyright (c) 2022 The Luxxle Authors. All rights reserved.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+#ifndef LUXXLE_BROWSER_UI_STARTUP_LUXXLE_OBSOLETE_SYSTEM_INFOBAR_DELEGATE_H_
+#define LUXXLE_BROWSER_UI_STARTUP_LUXXLE_OBSOLETE_SYSTEM_INFOBAR_DELEGATE_H_
+
+#include <string>
+#include <vector>
+
+#include "base/memory/weak_ptr.h"
+#include "luxxle/components/infobars/core/luxxle_confirm_infobar_delegate.h"
+
+namespace infobars {
+class ContentInfoBarManager;
+}  // namespace infobars
+
+class LuxxleObsoleteSystemInfoBarDelegate : public LuxxleConfirmInfoBarDelegate {
+ public:
+  static void Create(infobars::ContentInfoBarManager* infobar_manager);
+
+  LuxxleObsoleteSystemInfoBarDelegate(
+      const LuxxleObsoleteSystemInfoBarDelegate&) = delete;
+  LuxxleObsoleteSystemInfoBarDelegate& operator=(
+      const LuxxleObsoleteSystemInfoBarDelegate&) = delete;
+
+ private:
+  LuxxleObsoleteSystemInfoBarDelegate();
+  ~LuxxleObsoleteSystemInfoBarDelegate() override;
+
+  // LuxxleConfirmInfoBarDelegate overrides:
+  bool HasCheckbox() const override;
+  std::u16string GetCheckboxText() const override;
+  void SetCheckboxChecked(bool checked) override;
+  bool InterceptClosing() override;
+  infobars::InfoBarDelegate::InfoBarIdentifier GetIdentifier() const override;
+  std::u16string GetLinkText() const override;
+  GURL GetLinkURL() const override;
+  std::u16string GetMessageText() const override;
+  int GetButtons() const override;
+  std::vector<int> GetButtonsOrder() const override;
+  bool ShouldExpire(const NavigationDetails& details) const override;
+
+  void OnConfirmDialogClosing(bool suppress);
+
+  bool launch_confirmation_dialog_ = false;
+
+  base::WeakPtrFactory<LuxxleObsoleteSystemInfoBarDelegate> weak_factory_{this};
+};
+
+#endif  // LUXXLE_BROWSER_UI_STARTUP_LUXXLE_OBSOLETE_SYSTEM_INFOBAR_DELEGATE_H_

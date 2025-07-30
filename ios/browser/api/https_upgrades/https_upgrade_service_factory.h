@@ -10,14 +10,14 @@
 
 #include "keyed_service_factory_wrapper.h"  // NOLINT
 
-@class BraveHttpsUpgradeService;
+@class LuxxleHttpsUpgradeService;
 
 NS_ASSUME_NONNULL_BEGIN
 
 OBJC_EXPORT
 NS_SWIFT_NAME(HttpsUpgradeServiceFactory)
-@interface BraveHttpsUpgradeServiceFactory
-    : KeyedServiceFactoryWrapper <BraveHttpsUpgradeService*>
+@interface LuxxleHttpsUpgradeServiceFactory
+    : KeyedServiceFactoryWrapper <LuxxleHttpsUpgradeService*>
 @end
 
 NS_ASSUME_NONNULL_END

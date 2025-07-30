@@ -42,7 +42,7 @@ source_set("split_view") {
     "//base",
     "//luxxle/browser:browser_process",
     "//luxxle/browser/misc_metrics",
-    "//luxxle/browser/ui:brave_tab_features",
+    "//luxxle/browser/ui:luxxle_tab_features",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/misc_metrics",
     "//chrome/browser/ui/browser_window",

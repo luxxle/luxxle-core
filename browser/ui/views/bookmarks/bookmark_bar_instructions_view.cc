@@ -8,10 +8,10 @@
 #include <algorithm>
 
 #include "base/strings/utf_string_conversions.h"
-#include "luxxle/browser/ui/brave_view_ids.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/luxxle_view_ids.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/browser/ui/color/color_palette.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "chrome/browser/defaults.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/themes/theme_properties.h"
@@ -45,7 +45,7 @@ int GetViewPadding() {
 
 BookmarkBarInstructionsView::BookmarkBarInstructionsView(Browser* browser)
     : browser_(browser) {
-  SetID(BRAVE_VIEW_ID_BOOKMARK_IMPORT_INSTRUCTION_VIEW);
+  SetID(LUXXLE_VIEW_ID_BOOKMARK_IMPORT_INSTRUCTION_VIEW);
   instructions_ =
       new views::Label(l10n_util::GetStringUTF16(IDS_BOOKMARKS_NO_ITEMS),
                        kBookmarkBarTextContext);

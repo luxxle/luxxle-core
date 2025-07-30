@@ -6,9 +6,9 @@
 common_packaging_files_sources = [
   "//luxxle/LICENSE",
   "//luxxle/chromium_src/chrome/app/resources/manpage.1.in",
-  "//luxxle/chromium_src/chrome/installer/linux/common/brave-browser/chromium-browser.appdata.xml",
-  "//luxxle/chromium_src/chrome/installer/linux/common/brave-browser/chromium-browser.info",
-  "//luxxle/installer/linux/common/brave_installer.include",
+  "//luxxle/chromium_src/chrome/installer/linux/common/luxxle-browser/chromium-browser.appdata.xml",
+  "//luxxle/chromium_src/chrome/installer/linux/common/luxxle-browser/chromium-browser.info",
+  "//luxxle/installer/linux/common/luxxle_installer.include",
 ]
 
 common_packaging_files_excluded_sources = [
@@ -17,9 +17,9 @@ common_packaging_files_excluded_sources = [
   "common/chromium-browser.info",
 ]
 
-brave_packaging_files_executables = [
-  "$root_out_dir/brave",
-  "$root_out_dir/brave_sandbox",
+luxxle_packaging_files_executables = [
+  "$root_out_dir/luxxle",
+  "$root_out_dir/luxxle_sandbox",
 ]
 
 excluded_packaging_files_executables = [
@@ -27,7 +27,7 @@ excluded_packaging_files_executables = [
   "$root_out_dir/chrome_sandbox",
 ]
 
-brave_installer_deps = [
+luxxle_installer_deps = [
   "//luxxle/build/linux:copy_exe",
   "//luxxle/build/linux:copy_sandbox",
 ]

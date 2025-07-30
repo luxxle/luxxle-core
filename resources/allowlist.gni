@@ -3,6 +3,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-# Allowlist file used by brave resources, created after merging chrome allowlist
-# and brave resources.
-brave_allowlist_file = "${root_gen_dir}/brave_resources_allowlist.txt"
+# Allowlist file used by luxxle resources, created after merging chrome allowlist
+# and luxxle resources.
+luxxle_allowlist_file = "${root_gen_dir}/luxxle_resources_allowlist.txt"

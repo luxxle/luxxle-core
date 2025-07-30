@@ -8,8 +8,8 @@ import("//ios/build/config.gni")
 
 source_set("importer") {
   sources = [
-    "brave_password_importer.h",
-    "brave_password_importer.mm",
+    "luxxle_password_importer.h",
+    "luxxle_password_importer.mm",
   ]
 
   deps = [

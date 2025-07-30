@@ -12,5 +12,5 @@ std::unique_ptr<KeyedService> AutocompleteClassifierFactory::BuildInstanceFor(
       std::make_unique<AutocompleteController>(
           std::make_unique<ChromeAutocompleteProviderClient>(profile),
           AutocompleteClassifier::DefaultOmniboxProviders()),
-      std::make_unique<BraveAutocompleteSchemeClassifier>(profile));
+      std::make_unique<LuxxleAutocompleteSchemeClassifier>(profile));
 }

@@ -5,7 +5,7 @@
 
 #include <vector>
 
-#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/app/luxxle_command_ids.h"
 #include "chrome/browser/ui/views/accelerator_table.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
@@ -22,7 +22,7 @@ bool HasCommandID(int command_id) {
 
 }  // namespace
 
-TEST(AcceleratorTableTest, CheckBraveAccelerators) {
+TEST(AcceleratorTableTest, CheckLuxxleAccelerators) {
   EXPECT_TRUE(HasCommandID(IDC_NEW_OFFTHERECORD_WINDOW_TOR));
   EXPECT_TRUE(HasCommandID(IDC_TOGGLE_SIDEBAR));
 }

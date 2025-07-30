@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (c) 2020 The Brave Authors. All rights reserved.
+<!-- Copyright (c) 2020 The Luxxle Authors. All rights reserved.
      This Source Code Form is subject to the terms of the Mozilla Public
      License, v. 2.0. If a copy of the MPL was not distributed with this file,
      You can obtain one at https://mozilla.org/MPL/2.0/. -->
@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:layout_margin="16dp"
-    android:background="@drawable/brave_sync_cover_general" >
+    android:background="@drawable/luxxle_sync_cover_general" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="@string/share_brave_with_your_friends"
+            android:text="@string/share_luxxle_with_your_friends"
             android:textColor="@color/default_icon_color_tint_list"
             android:fontFamily="sans-serif"
             android:visibility="gone"

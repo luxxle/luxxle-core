@@ -26,7 +26,7 @@ import org.chromium.chrome.browser.app.helpers.Api33AndPlusBackPressHelper;
 import org.chromium.chrome.browser.crypto_wallet.util.Utils;
 import org.chromium.chrome.browser.util.TabUtils;
 
-/** Onboarding fragment showing terms and conditions to accept before using Brave Wallet. */
+/** Onboarding fragment showing terms and conditions to accept before using Luxxle Wallet. */
 public class OnboardingTermsOfUseFragment extends BaseOnboardingWalletFragment
         implements CompoundButton.OnCheckedChangeListener {
 
@@ -74,7 +74,7 @@ public class OnboardingTermsOfUseFragment extends BaseOnboardingWalletFragment
                         requireContext(),
                         R.string.accept_terms_of_use,
                         (v) -> {
-                            TabUtils.openUrlInNewTab(false, Utils.BRAVE_TERMS_OF_USE_URL);
+                            TabUtils.openUrlInNewTab(false, Utils.LUXXLE_TERMS_OF_USE_URL);
                             TabUtils.bringChromeTabbedActivityToTheTop(requireActivity());
                         });
         mTermsOfUseCheckBox.setMovementMethod(LinkMovementMethod.getInstance());

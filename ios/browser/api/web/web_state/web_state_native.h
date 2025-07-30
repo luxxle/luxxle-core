@@ -47,6 +47,6 @@ class NativeWebState final {
   std::unique_ptr<Observer> web_state_observer_;
 };
 
-}  // namespace brave
+}  // namespace luxxle
 
 #endif  // LUXXLE_IOS_BROWSER_API_WEB_WEB_STATE_WEB_STATE_NATIVE_H_

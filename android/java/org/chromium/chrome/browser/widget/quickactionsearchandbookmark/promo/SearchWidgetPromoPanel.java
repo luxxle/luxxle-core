@@ -15,7 +15,7 @@ import android.widget.PopupWindow;
 import androidx.annotation.NonNull;
 
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.widget.quickactionsearchandbookmark.utils.BraveSearchWidgetUtils;
+import org.chromium.chrome.browser.widget.quickactionsearchandbookmark.utils.LuxxleSearchWidgetUtils;
 
 public class SearchWidgetPromoPanel implements View.OnClickListener {
     private PopupWindow mPopupWindow;
@@ -34,14 +34,14 @@ public class SearchWidgetPromoPanel implements View.OnClickListener {
     @Override
     public void onClick(@NonNull View view) {
         if (view.getId() == R.id.btAddWidget)
-            BraveSearchWidgetUtils.requestPinAppWidget();
+            LuxxleSearchWidgetUtils.requestPinAppWidget();
         else if (view.getId() == R.id.tvNotNow)
-            BraveSearchWidgetUtils.setShouldShowWidgetPromo(false);
+            LuxxleSearchWidgetUtils.setShouldShowWidgetPromo(false);
         mPopupWindow.dismiss();
     }
 
     public void showIfNeeded(@NonNull View anchorView) {
-        if (BraveSearchWidgetUtils.getShouldShowWidgetPromo(mContext))
+        if (LuxxleSearchWidgetUtils.getShouldShowWidgetPromo(mContext))
             mPopupWindow.showAsDropDown(anchorView);
     }
 }

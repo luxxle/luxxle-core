@@ -36,7 +36,7 @@ class LanguageMetrics;
 class PageMetrics;
 
 inline constexpr char kSearchSuggestEnabledHistogramName[] =
-    "Brave.Search.SearchSuggest";
+    "Luxxle.Search.SearchSuggest";
 
 class ProfileMiscMetricsService : public KeyedService {
  public:

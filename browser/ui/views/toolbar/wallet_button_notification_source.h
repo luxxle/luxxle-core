@@ -9,14 +9,14 @@
 #include <optional>
 
 #include "base/memory/weak_ptr.h"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
 #include "chrome/browser/profiles/profile.h"
 #include "components/prefs/pref_service.h"
 #include "mojo/public/cpp/bindings/receiver.h"
 
-namespace brave_wallet {
+namespace luxxle_wallet {
 
 using WalletButtonNotificationSourceCallback =
     base::RepeatingCallback<void(bool /* show suggest */,
@@ -70,6 +70,6 @@ class WalletButtonNotificationSource : mojom::TxServiceObserver,
   base::WeakPtrFactory<WalletButtonNotificationSource> weak_ptr_factory_{this};
 };
 
-}  // namespace brave_wallet
+}  // namespace luxxle_wallet
 
 #endif  // LUXXLE_BROWSER_UI_VIEWS_TOOLBAR_WALLET_BUTTON_NOTIFICATION_SOURCE_H_

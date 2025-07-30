@@ -3,5 +3,5 @@
 # This file provides variables for components/translate/core/common/BUILD.gn
 
 # Define empty translate core common variables to use Chromium defaults
-brave_components_translate_core_common_sources = []
-brave_components_translate_core_common_public_deps = [] 
+luxxle_components_translate_core_common_sources = []
+luxxle_components_translate_core_common_public_deps = [] 

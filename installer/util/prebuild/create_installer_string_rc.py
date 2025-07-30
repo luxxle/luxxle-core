@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-from brave_chromium_utils import inline_file
+from luxxle_chromium_utils import inline_file
 
 inline_file("//chrome/installer/util/prebuild/create_installer_string_rc.py",
             globals(), locals())

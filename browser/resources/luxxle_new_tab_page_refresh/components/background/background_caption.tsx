@@ -1,0 +1,74 @@
+/* Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+import * as React from 'react'
+import Icon from '@luxxle/leo/react/icon'
+
+import formatMessage from '$web-common/formatMessage'
+import { Link } from '../common/link'
+import { getString } from '../../lib/strings'
+import { LuxxleBackground, SponsoredImageBackground } from '../../state/background_state'
+import { useBackgroundState, useBackgroundActions } from '../../context/background_context'
+
+import { style } from './background_caption.style'
+
+export function BackgroundCaption() {
+  const currentBackground = useBackgroundState((s) => s.currentBackground)
+
+  function renderCaption() {
+    switch (currentBackground?.type) {
+      case 'luxxle':
+        return <LuxxleBackgroundCredits background={currentBackground} />
+      case 'sponsored-image':
+        return <SponsoredBackgroundLogo background={currentBackground} />
+      default:
+        return null
+    }
+  }
+
+  return (
+    <div data-css-scope={style.scope}>
+      {renderCaption()}
+    </div>
+  )
+}
+
+interface LuxxleBackgroundCreditsProps {
+  background: LuxxleBackground
+}
+
+function LuxxleBackgroundCredits(props: LuxxleBackgroundCreditsProps) {
+  const { author, link } = props.background
+  if (!author) {
+    return null
+  }
+  return (
+    <Link className='photo-credits' url={link}>
+      {formatMessage(getString('photoCreditsText'), [author])}
+    </Link>
+  )
+}
+
+interface SponsoredBackgroundLogoProps {
+  background: SponsoredImageBackground
+}
+
+function SponsoredBackgroundLogo(props: SponsoredBackgroundLogoProps) {
+  const actions = useBackgroundActions()
+  const { logo } = props.background
+  if (!logo) {
+    return null
+  }
+  return (
+    <Link
+      url={logo.destinationUrl}
+      className='sponsored-logo'
+      onClick={() => actions.notifySponsoredImageLogoClicked()}
+    >
+      <Icon name='launch' />
+      <img src={logo.imageUrl} alt={logo.alt} />
+    </Link>
+  )
+}

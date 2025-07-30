@@ -13,7 +13,7 @@
 class SidebarButtonView : public views::ImageButton {
   METADATA_HEADER(SidebarButtonView, views::ImageButton)
  public:
-  // Value ought to follow TOOLBAR_BUTTON_HEIGHT in brave_layout_constants.cc
+  // Value ought to follow TOOLBAR_BUTTON_HEIGHT in luxxle_layout_constants.cc
   static constexpr int kSidebarButtonSize = 28;
   // Value ought to follow kDefaultIconSize in toolbar_button.h
   static constexpr int kDefaultIconSize = 20;

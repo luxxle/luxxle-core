@@ -8,9 +8,9 @@ import("//ios/build/config.gni")
 
 source_set("driver") {
   sources = [
-    "brave_sync_profile_service+private.h",
-    "brave_sync_profile_service.h",
-    "brave_sync_profile_service.mm",
+    "luxxle_sync_profile_service+private.h",
+    "luxxle_sync_profile_service.h",
+    "luxxle_sync_profile_service.mm",
   ]
 
   deps = [

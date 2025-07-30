@@ -3,29 +3,29 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveIntentHandlerClassAdapter extends BraveClassVisitor {
+public class LuxxleIntentHandlerClassAdapter extends LuxxleClassVisitor {
     static String sIntentHandlerClassName = "org/chromium/chrome/browser/IntentHandler";
-    static String sBraveIntentHandlerClassName = "org/chromium/chrome/browser/BraveIntentHandler";
+    static String sLuxxleIntentHandlerClassName = "org/chromium/chrome/browser/LuxxleIntentHandler";
 
-    public BraveIntentHandlerClassAdapter(ClassVisitor visitor) {
+    public LuxxleIntentHandlerClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         makePublicMethod(sIntentHandlerClassName, "getUrlForCustomTab");
         changeMethodOwner(
-                sBraveIntentHandlerClassName, "getUrlForCustomTab", sIntentHandlerClassName);
+                sLuxxleIntentHandlerClassName, "getUrlForCustomTab", sIntentHandlerClassName);
 
         makePublicMethod(sIntentHandlerClassName, "getUrlForWebapp");
-        changeMethodOwner(sBraveIntentHandlerClassName, "getUrlForWebapp", sIntentHandlerClassName);
+        changeMethodOwner(sLuxxleIntentHandlerClassName, "getUrlForWebapp", sIntentHandlerClassName);
 
         makePublicMethod(sIntentHandlerClassName, "isJavascriptSchemeOrInvalidUrl");
-        changeMethodOwner(sBraveIntentHandlerClassName, "isJavascriptSchemeOrInvalidUrl",
+        changeMethodOwner(sLuxxleIntentHandlerClassName, "isJavascriptSchemeOrInvalidUrl",
                 sIntentHandlerClassName);
 
         changeMethodOwner(
-                sIntentHandlerClassName, "extractUrlFromIntent", sBraveIntentHandlerClassName);
+                sIntentHandlerClassName, "extractUrlFromIntent", sLuxxleIntentHandlerClassName);
     }
 }

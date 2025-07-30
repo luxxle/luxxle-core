@@ -87,13 +87,13 @@ class PatchfileTest(unittest.TestCase):
         # Let's create a patch for it
         target_file = self.fake_chromium_src.chromium / test_idl
         target_file.write_text(target_file.read_text().replace(
-            'FROM_STORE', 'FROM_STORE,\n    FROM_BRAVE_STORE'))
+            'FROM_STORE', 'FROM_STORE,\n    FROM_LUXXLE_STORE'))
         self.fake_chromium_src.run_update_patches()
         # clearing out our custom change so we can have upstream changes
         # piling to this file
         self.fake_chromium_src._run_git_command(
             ["checkout", "."], self.fake_chromium_src.chromium)
-        self.assertFalse('FROM_BRAVE_STORE' in target_file.read_text())
+        self.assertFalse('FROM_LUXXLE_STORE' in target_file.read_text())
 
         # Adding an upstream chromium change that should conflict with our
         # patch
@@ -106,7 +106,7 @@ class PatchfileTest(unittest.TestCase):
             'Added DELETED to developer_private.idl Location',
             self.fake_chromium_src.chromium)
 
-        self.assertFalse('FROM_BRAVE_STORE' in target_file.read_text())
+        self.assertFalse('FROM_LUXXLE_STORE' in target_file.read_text())
         patchfile = Patchfile(
             path=self.fake_chromium_src.get_patchfile_path_for_source(
                 self.fake_chromium_src.chromium, test_idl))
@@ -149,7 +149,7 @@ class PatchfileTest(unittest.TestCase):
         # Let's create a patch for it
         target_file = self.fake_chromium_src.chromium / test_idl
         target_file.write_text(target_file.read_text().replace(
-            'FROM_STORE', 'FROM_STORE,\n    FROM_BRAVE_STORE'))
+            'FROM_STORE', 'FROM_STORE,\n    FROM_LUXXLE_STORE'))
         self.fake_chromium_src.run_update_patches()
         # clearing out our custom change so we can have upstream changes piling
         # to this file
@@ -189,14 +189,14 @@ class PatchfileTest(unittest.TestCase):
             'Added ErrorType to developer_private.idl',
             self.fake_chromium_src.chromium)
 
-        self.assertFalse('FROM_BRAVE_STORE' in target_file.read_text())
+        self.assertFalse('FROM_LUXXLE_STORE' in target_file.read_text())
         patchfile = Patchfile(
             path=self.fake_chromium_src.get_patchfile_path_for_source(
                 self.fake_chromium_src.chromium, test_idl))
         applied = patchfile.apply()
         self.assertEqual(applied.status, Patchfile.ApplyStatus.CLEAN)
         self.assertFalse(applied.patch)
-        self.assertTrue('FROM_BRAVE_STORE' in target_file.read_text())
+        self.assertTrue('FROM_LUXXLE_STORE' in target_file.read_text())
 
     def test_apply_broken(self):
         '''Tests the behavior when applying a broken patchfile.'''
@@ -229,7 +229,7 @@ class PatchfileTest(unittest.TestCase):
         self.assertFalse('last line' in target_file.read_text())
 
         # A simple strip over the contents of the patch should break it
-        target_patch = (self.fake_chromium_src.brave /
+        target_patch = (self.fake_chromium_src.luxxle /
                         self.fake_chromium_src.get_patchfile_path_for_source(
                             self.fake_chromium_src.chromium, test_idl))
         target_patch.write_text(target_patch.read_text().strip())
@@ -289,15 +289,15 @@ class PatchfileTest(unittest.TestCase):
         self.assertTrue(applied.patch.source_from_git)
         self.assertEqual(applied.patch.source_from_git, str(test_idl))
 
-    def test_source_from_brave(self):
-        """Tests the source_from_brave method of Patchfile."""
+    def test_source_from_luxxle(self):
+        """Tests the source_from_luxxle method of Patchfile."""
         self.assertEqual(
             Patchfile(path=PurePath('patches/v8/build-android-gyp-dex.py.patch'
-                                    )).source_from_brave(),
+                                    )).source_from_luxxle(),
             '../v8/build/android/gyp/dex.py')
         self.assertEqual(
             Patchfile(path=PurePath(
-                'patches/build-android-gyp-dex.py.patch')).source_from_brave(),
+                'patches/build-android-gyp-dex.py.patch')).source_from_luxxle(),
             '../build/android/gyp/dex.py')
 
     def test_path_from_repo(self):
@@ -309,7 +309,7 @@ class PatchfileTest(unittest.TestCase):
         self.assertEqual(
             Patchfile(path=PurePath(
                 'patches/build-android-gyp-dex.py.patch')).path_from_repo(),
-            'brave/patches/build-android-gyp-dex.py.patch')
+            'luxxle/patches/build-android-gyp-dex.py.patch')
 
     def test_fetch_source_from_git(self):
         """Test fetch_source_from_git with renamed patch file."""
@@ -341,8 +341,8 @@ class PatchfileTest(unittest.TestCase):
                 self.fake_chromium_src.chromium, test_idl))
         renamed_patch_path = original_patch_path.with_name(
             'renamed_developer_private.idl.patch')
-        (self.fake_chromium_src.brave / original_patch_path).rename(
-            self.fake_chromium_src.brave / renamed_patch_path)
+        (self.fake_chromium_src.luxxle / original_patch_path).rename(
+            self.fake_chromium_src.luxxle / renamed_patch_path)
 
         # Fetch the source from the renamed patch file
         patchfile = Patchfile(path=renamed_patch_path)

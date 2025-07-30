@@ -1,0 +1,14 @@
+# Copyright (c) 2024 The Luxxle Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at https://mozilla.org/MPL/2.0/.
+
+luxxle_wallet_public_headers = [
+  "//luxxle/ios/browser/api/luxxle_wallet/luxxle_wallet_api.h",
+  "//luxxle/ios/browser/api/luxxle_wallet/luxxle_wallet_provider_delegate_ios.h",
+  "//luxxle/ios/browser/api/luxxle_wallet/luxxle_wallet_solana_utils.h",
+  "//luxxle/ios/browser/api/luxxle_wallet/token_registry_utils.h",
+  "$root_gen_dir/luxxle/ios/browser/api/luxxle_wallet/luxxle_wallet.mojom.objc.h",
+  "$root_gen_dir/luxxle/ios/browser/api/luxxle_wallet/meld_integration.mojom.objc.h",
+]
+luxxle_wallet_public_deps = [ "//luxxle/ios/browser/api/luxxle_wallet:wallet_mojom_wrappers" ]

@@ -1,4 +1,4 @@
-/* Copyright (c) 2021 The Brave Authors. All rights reserved.
+/* Copyright (c) 2021 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
@@ -6,7 +6,7 @@
 #import "inline_content_ad_ios.h"
 
 #include "base/strings/sys_string_conversions.h"
-// REMOVED: #include "luxxle/components/brave_ads/.*"
+// REMOVED: #include "luxxle/components/luxxle_ads/.*"
 
 #if !defined(__has_feature) || !__has_feature(objc_arc)
 #error "This file requires ARC support."
@@ -30,7 +30,7 @@
 @implementation InlineContentAdIOS
 
 - (instancetype)initWithInlineContentAdInfo:
-    (const brave_ads::InlineContentAdInfo&)info {
+    (const luxxle_ads::InlineContentAdInfo&)info {
   if ((self = [super init])) {
     self.placementID = base::SysUTF8ToNSString(info.placement_id);
     self.creativeInstanceID =

@@ -6,17 +6,17 @@
 import("//build/buildflag_header.gni")
 
 declare_args() {
-  brave_ios_developer_options_code = ""
+  luxxle_ios_developer_options_code = ""
 }
 
 if (is_official_build) {
-  assert(brave_ios_developer_options_code != "")
+  assert(luxxle_ios_developer_options_code != "")
 }
 
 buildflag_header("developer_options_code_buildflag") {
   header = "developer_options_code_buildflags.h"
   flags = [
-    "BRAVE_IOS_DEVELOPER_OPTIONS_CODE=\"$brave_ios_developer_options_code\"",
+    "LUXXLE_IOS_DEVELOPER_OPTIONS_CODE=\"$luxxle_ios_developer_options_code\"",
   ]
 }
 

@@ -6,7 +6,7 @@
 #include "luxxle/browser/ui/views/playlist/playlist_action_icon_view.h"
 
 #include "base/logging.h"
-#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/app/luxxle_command_ids.h"
 #include "luxxle/browser/ui/views/playlist/playlist_bubble_view.h"
 #include "luxxle/browser/ui/views/playlist/playlist_bubbles_controller.h"
 #include "luxxle/components/playlist/browser/playlist_tab_helper.h"

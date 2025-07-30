@@ -10,7 +10,7 @@ import("//media/cdm/library_cdm/cdm_paths.gni")
 
 if (should_generate_symbols) {
   action("generate_symbols") {
-    symbols_dir = "$brave_dist_dir/$brave_product_name.syms"
+    symbols_dir = "$luxxle_dist_dir/$luxxle_product_name.syms"
     outputs = [ symbols_dir ]
 
     args = [
@@ -48,7 +48,7 @@ group("symbol_dist_resources") {
 copy("dist_resources") {
   sources = [ "$root_out_dir/chrome_elf.dll" ]
 
-  outputs = [ "$brave_dist_dir/{{source_file_part}}" ]
+  outputs = [ "$luxxle_dist_dir/{{source_file_part}}" ]
 
   public_deps = [ "//chrome/chrome_elf" ]
 }

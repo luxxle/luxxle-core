@@ -6,7 +6,7 @@
 #include "luxxle/browser/ui/webui/settings/pin_shortcut_handler.h"
 
 #include "base/functional/bind.h"
-#include "luxxle/browser/brave_shell_integration.h"
+#include "luxxle/browser/luxxle_shell_integration.h"
 #include "chrome/browser/profiles/profile.h"
 #include "content/public/browser/browser_thread.h"
 #include "content/public/browser/web_ui.h"

@@ -10,7 +10,7 @@
 #include "base/test/scoped_feature_list.h"
 #include "luxxle/browser/ui/webui/ai_rewriter/ai_rewriter_ui.h"
 #include "luxxle/components/ai_rewriter/common/features.h"
-#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/constants/luxxle_paths.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_window.h"
 #include "chrome/test/base/in_process_browser_test.h"

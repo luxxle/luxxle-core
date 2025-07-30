@@ -5,5 +5,5 @@
 # This file provides variables for components/content_settings/core/browser/BUILD.gn
 
 # Define empty content settings core browser variables to use Chromium defaults
-brave_components_content_settings_core_browser_sources = []
-brave_components_content_settings_core_browser_deps = [] 
+luxxle_components_content_settings_core_browser_sources = []
+luxxle_components_content_settings_core_browser_deps = [] 

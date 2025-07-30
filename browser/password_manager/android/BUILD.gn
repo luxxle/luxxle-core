@@ -5,7 +5,7 @@
 
 source_set("unit_tests") {
   testonly = true
-  sources = [ "brave_password_manager_android_util_unittest.cc" ]
+  sources = [ "luxxle_password_manager_android_util_unittest.cc" ]
 
   deps = [
     "//base/test:test_support",

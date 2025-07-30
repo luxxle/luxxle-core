@@ -18,7 +18,7 @@ type IconOverridesMap = {
   [iconName: string]: string // new icon name
 }
 
-const debug = false || document.location.href.includes('brave-overriding-debug')
+const debug = false || document.location.href.includes('luxxle-overriding-debug')
 
 if (debug) {
   // Useful to diagnose module definition timing for template modification
@@ -34,7 +34,7 @@ const ignoredComponents = [
   'cr-toolbar'
 ]
 
-function addBraveBehaviorsLegacy(moduleName: string, component: { behaviors: Function[] }) {
+function addLuxxleBehaviorsLegacy(moduleName: string, component: { behaviors: Function[] }) {
   if (allBehaviorsMap[moduleName]) {
     component.behaviors = component.behaviors || []
     component.behaviors.push(...allBehaviorsMap[moduleName])
@@ -42,7 +42,7 @@ function addBraveBehaviorsLegacy(moduleName: string, component: { behaviors: Fun
   }
 }
 
-function addBraveProperties(moduleName: string, component: { properties: any }) {
+function addLuxxleProperties(moduleName: string, component: { properties: any }) {
   if (allPropertiesMap[moduleName]) {
     component.properties = component.properties || {}
     component.properties = {
@@ -59,9 +59,9 @@ function applyPrototypeModifications(moduleName: string, prototype: any) {
   prototypeModifications[moduleName]?.(prototype)
 }
 
-const allBraveTemplateModificationsMap = {}
+const allLuxxleTemplateModificationsMap = {}
 
-function addBraveTemplateModifications(moduleName: string, component: PolymerElement, modifyFn: (content: DocumentFragment) => unknown) {
+function addLuxxleTemplateModifications(moduleName: string, component: PolymerElement, modifyFn: (content: DocumentFragment) => unknown) {
   const template = component._template || component.template
   if (template) {
     const templateContent = template.content
@@ -75,9 +75,9 @@ function addBraveTemplateModifications(moduleName: string, component: PolymerEle
   }
 }
 
-const styleOverridePrefix = 'brave-override-style-'
+const styleOverridePrefix = 'luxxle-override-style-'
 
-function addBraveStyleOverride(moduleName: string, styleOverrideModuleNames: string[], component: PolymerElement, template = component._template || component.template) {
+function addLuxxleStyleOverride(moduleName: string, styleOverrideModuleNames: string[], component: PolymerElement, template = component._template || component.template) {
   if (!styleOverrideModuleNames.length) {
     console.warn(`Asked to add style overrides for ${moduleName} but was provided with an empty array`)
     return
@@ -96,7 +96,7 @@ function addBraveStyleOverride(moduleName: string, styleOverrideModuleNames: str
     `${styleElement.getAttribute('include')} ${styleOverrideModuleNames.join(' ')}`
   )
   if (debug) {
-    console.log(`Brave Style Override added of "${styleOverrideModuleNames.join(' ')}" for ${moduleName}`, styleElement)
+    console.log(`Luxxle Style Override added of "${styleOverrideModuleNames.join(' ')}" for ${moduleName}`, styleElement)
     // TODO(petemill): Check if we can find each style override module
   }
 }
@@ -115,7 +115,7 @@ export function RegisterPolymerComponentProperties(propertiesMap) {
   Object.assign(allPropertiesMap, propertiesMap)
   for (const componentName in propertiesMap) {
     if (componentPropertyModifications[componentName]) {
-      addBraveProperties(componentName, componentPropertyModifications[componentName])
+      addLuxxleProperties(componentName, componentPropertyModifications[componentName])
     }
   }
 }
@@ -145,7 +145,7 @@ export function RegisterPolymerTemplateModifications(modificationsMap: Modificat
     // has not been called yet for the component.
     // However, this would be more robust if we moved to a subclassing approach.
   }
-  Object.assign(allBraveTemplateModificationsMap, awaitingComponentModifications)
+  Object.assign(allLuxxleTemplateModificationsMap, awaitingComponentModifications)
 }
 
 export function RegisterPolymerComponentReplacement(name, component) {
@@ -217,21 +217,21 @@ export function OverrideIronIcons(iconSetName: string, overridingIconSetName: st
   for (const chromiumIconName in iconOverrides) {
     const chromiumIcon = srcIconSet.querySelector(`#${chromiumIconName}`)
     if (!chromiumIcon) {
-      console.error(`[brave overrides] Could not find chromium icon '${chromiumIconName}' in iconset '${iconSetName}' for replacement!`)
+      console.error(`[luxxle overrides] Could not find chromium icon '${chromiumIconName}' in iconset '${iconSetName}' for replacement!`)
       continue
     }
-    const braveIconName = iconOverrides[chromiumIconName]
-    const braveIcon = overrideIconSet.querySelector(`#${braveIconName}`)
-    if (!braveIcon) {
-      console.error(`[brave overrides] Could not find brave icon '${braveIconName}' in iconset '${overridingIconSetName}' for replacement!`)
+    const luxxleIconName = iconOverrides[chromiumIconName]
+    const luxxleIcon = overrideIconSet.querySelector(`#${luxxleIconName}`)
+    if (!luxxleIcon) {
+      console.error(`[luxxle overrides] Could not find luxxle icon '${luxxleIconName}' in iconset '${overridingIconSetName}' for replacement!`)
       continue
     }
     // replace
     while (chromiumIcon.firstChild) {
       chromiumIcon.firstChild.remove()
     }
-    while (braveIcon.firstChild) {
-      chromiumIcon.appendChild(braveIcon.firstChild)
+    while (luxxleIcon.firstChild) {
+      chromiumIcon.appendChild(luxxleIcon.firstChild)
     }
   }
   // Ensure icons get re-parsed if already parseds
@@ -259,14 +259,14 @@ Polymer.Class = function (info, mixin) {
   if (debug) {
     console.debug(`Polymer component legacy registering: ${name}`, info)
   }
-  addBraveBehaviorsLegacy(name, info)
+  addLuxxleBehaviorsLegacy(name, info)
   return oldClass(info, mixin)
 }
 
 // Also override for components which do not call Polymer() but instead
 // inherit from PolymerElement.
 const oldPrepareTemplate = PolymerElement._prepareTemplate;
-PolymerElement._prepareTemplate = function BravePolymer_PrepareTemplate() {
+PolymerElement._prepareTemplate = function LuxxlePolymer_PrepareTemplate() {
   oldPrepareTemplate.call(this)
   const name = this.is
   if (!name) {
@@ -282,16 +282,16 @@ PolymerElement._prepareTemplate = function BravePolymer_PrepareTemplate() {
   // features, such as editing template or properties.
   // Other modifications, such as injecting overriden classes (aka behaviors),
   // will happen at component definition time.
-  addBraveProperties(name, this.prototype)
+  addLuxxleProperties(name, this.prototype)
 
   // This allows us to add new functions to the prototype and/or replace
   // existing ones.
   applyPrototypeModifications(name, this.prototype)
 
-  const templateModifyFn = allBraveTemplateModificationsMap[name]
+  const templateModifyFn = allLuxxleTemplateModificationsMap[name]
   if (templateModifyFn) {
-    addBraveTemplateModifications(name, this.prototype, templateModifyFn)
-    // TODO(petemill): delete allBraveTemplateModificationsMap entry when done so that the
+    addLuxxleTemplateModifications(name, this.prototype, templateModifyFn)
+    // TODO(petemill): delete allLuxxleTemplateModificationsMap entry when done so that the
     // function can be collected. We do not delete at the moment since
     // _prepareTemplate can be called multiple times. We should move template
     // modification to happen via automatic subclassing and overriding of template
@@ -299,7 +299,7 @@ PolymerElement._prepareTemplate = function BravePolymer_PrepareTemplate() {
   }
   const styleOverrideModules = moduleNamesWithStyleOverrides[name]
   if (styleOverrideModules && styleOverrideModules) {
-    addBraveStyleOverride(name, styleOverrideModules, this.prototype)
+    addLuxxleStyleOverride(name, styleOverrideModules, this.prototype)
   }
 }
 
@@ -313,22 +313,22 @@ const oldDefine = window.customElements.define
  * @param {boolean} [useIgnoreList=true]
  * @returns
  */
-function BraveDefineCustomElements(name, component, options, useIgnoreList = true) {
+function LuxxleDefineCustomElements(name, component, options, useIgnoreList = true) {
   if (component.polymerElementVersion) {
     if (debug) {
-      console.log('BraveDefineCustomElements PolymerElement defined', name, component, options)
+      console.log('LuxxleDefineCustomElements PolymerElement defined', name, component, options)
     }
     // Global ignore (likely due to manual replacement)
     if (useIgnoreList && ignoredComponents.includes(name)) {
       if (debug) {
-        console.log(`BraveDefineCustomElements ignored ${name}`)
+        console.log(`LuxxleDefineCustomElements ignored ${name}`)
       }
       return
     }
     // Inject behaviors
     if (allBehaviorsMap[name]) {
       if (debug) {
-        console.log('BraveDefineCustomElements added behavior', allBehaviorsMap[name])
+        console.log('LuxxleDefineCustomElements added behavior', allBehaviorsMap[name])
       }
       component = mixinBehaviors(allBehaviorsMap[name], component)
       delete allBehaviorsMap[name]
@@ -337,11 +337,11 @@ function BraveDefineCustomElements(name, component, options, useIgnoreList = tru
   oldDefine.call(this, name, component, options)
 }
 
-window.customElements.define = BraveDefineCustomElements
+window.customElements.define = LuxxleDefineCustomElements
 
 export function define(name, component, options?) {
   // We still want style and template overrides
-  BraveDefineCustomElements.call(window.customElements, name, component, options, false)
+  LuxxleDefineCustomElements.call(window.customElements, name, component, options, false)
 }
 
 /**

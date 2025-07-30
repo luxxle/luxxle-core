@@ -28,7 +28,7 @@ description = "A rust implemention of the privacy pass cryptographic protocol us
 documentation = "https://docs.rs/challenge-bypass-ristretto"
 readme = "README.md"
 license = "MPL-2.0"
-repository = "https://github.com/brave-intl/challenge-bypass-ristretto"
+repository = "https://github.com/luxxle-intl/challenge-bypass-ristretto"
 
 [package.metadata.docs.rs]
 rustdoc-args = [

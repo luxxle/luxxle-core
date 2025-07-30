@@ -6,16 +6,16 @@
 #ifndef LUXXLE_BROWSER_UI_WALLET_BUBBLE_MANAGER_DELEGATE_IMPL_H_
 #define LUXXLE_BROWSER_UI_WALLET_BUBBLE_MANAGER_DELEGATE_IMPL_H_
 
-#include "luxxle/browser/ui/brave_wallet/wallet_bubble_manager_delegate.h"
+#include "luxxle/browser/ui/luxxle_wallet/wallet_bubble_manager_delegate.h"
 
 #include <memory>
 #include <vector>
 
 #include "base/memory/raw_ptr.h"
-#include "luxxle/browser/ui/webui/brave_wallet/wallet_panel_ui.h"
+#include "luxxle/browser/ui/webui/luxxle_wallet/wallet_panel_ui.h"
 #include "url/gurl.h"
 
-namespace brave_wallet {
+namespace luxxle_wallet {
 
 class WalletWebUIBubbleManager;
 
@@ -43,6 +43,6 @@ class WalletBubbleManagerDelegateImpl : public WalletBubbleManagerDelegate {
   std::unique_ptr<WalletWebUIBubbleManager> webui_bubble_manager_;
 };
 
-}  // namespace brave_wallet
+}  // namespace luxxle_wallet
 
 #endif  // LUXXLE_BROWSER_UI_WALLET_BUBBLE_MANAGER_DELEGATE_IMPL_H_

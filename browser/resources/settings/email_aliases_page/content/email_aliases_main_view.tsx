@@ -1,14 +1,14 @@
-// Copyright (c) 2025 The Brave Authors. All rights reserved.
+// Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
 import { AliasList } from './email_aliases_list'
-import { font, spacing } from '@brave/leo/tokens/css/variables'
+import { font, spacing } from '@luxxle/leo/tokens/css/variables'
 import { getLocale } from '$web-common/locale'
 import { MainEmailDisplay } from './email_aliases_main_email_display'
 import * as React from 'react'
-import ProgressRing from '@brave/leo/react/progressRing'
+import ProgressRing from '@luxxle/leo/react/progressRing'
 import Row from './styles/Row'
 import styled from 'styled-components'
 
@@ -37,7 +37,7 @@ export const MainView = ({
 }) => (authState.status === AuthenticationStatus.kStartup
         ? <SpacedRow>
             <ProgressRing />
-            <div>{getLocale('emailAliasesConnectingToBraveAccount')}</div>
+            <div>{getLocale('emailAliasesConnectingToLuxxleAccount')}</div>
           </SpacedRow>
         : <span>
             <MainEmailDisplay

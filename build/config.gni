@@ -13,7 +13,7 @@ declare_args() {
   # "dev" for dev channel release.
   # "nightly" for nightly channel release.
   # "" for stable channel release.
-  brave_channel = ""
+  luxxle_channel = ""
   base_sparkle_update_url = ""
   enable_sparkle = !is_component_build && is_mac
   build_sparkle = false
@@ -22,18 +22,18 @@ declare_args() {
   sparkle_eddsa_private_key = ""
   sparkle_eddsa_public_key = ""
 
-  brave_product_name = "Luxxle"
-  brave_exe = ""
-  brave_version_major = ""
-  brave_version_minor = ""
-  brave_version_build = ""
+  luxxle_product_name = "Luxxle"
+  luxxle_exe = ""
+  luxxle_version_major = ""
+  luxxle_version_minor = ""
+  luxxle_version_build = ""
   chrome_version_string = ""
   target_android_base = ""
   target_android_output_format = ""
-  brave_android_keystore_path = "."
-  brave_android_keystore_name = ""
-  brave_android_keystore_password = ""
-  brave_android_key_password = ""
+  luxxle_android_keystore_path = "."
+  luxxle_android_keystore_name = ""
+  luxxle_android_keystore_password = ""
+  luxxle_android_key_password = ""
 
   skip_signing = false
 
@@ -41,7 +41,7 @@ declare_args() {
   build_delta_installer = false
   last_chrome_installer = ""
 
-  # Enables brave/tools/redirect_cc target, replaces brave/chromium_src
+  # Enables luxxle/tools/redirect_cc target, replaces luxxle/chromium_src
   # overrides with empty ones to make //base buildable for redirect_cc.
   # LUXXLE: Force disable redirect_cc completely
   is_redirect_cc_build = false
@@ -49,19 +49,19 @@ declare_args() {
   
   # ============================================================================
   # LUXXLE MINIMAL BROWSER CONFIGURATION
-  # All Brave features disabled for clean Chromium experience
+  # All Luxxle features disabled for clean Chromium experience with Luxxle branding
   # ============================================================================
   
   # Core Features - ALL DISABLED
   enable_commander = false
-  enable_brave_education = false
+  enable_luxxle_education = false
   enable_custom_background = false
   
   # Wayback Machine and Archive Features - DISABLED
-  enable_brave_wayback_machine = false
+  enable_luxxle_wayback_machine = false
   
   # Torrent and P2P Features - DISABLED
-  enable_brave_webtorrent = false
+  enable_luxxle_webtorrent = false
   enable_web_discovery = false
   enable_web_discovery_native = false
   
@@ -77,43 +77,43 @@ declare_args() {
   enable_tor = false
   
   # VPN and Network Features - DISABLED
-  enable_brave_vpn = false
+  enable_luxxle_vpn = false
   
   # Wallet and Crypto Features - DISABLED
-  enable_brave_wallet = false
+  enable_luxxle_wallet = false
   enable_ethereum_remote_client = false
   
   # Rewards and Ads Features - DISABLED
-  enable_brave_rewards = false
-  enable_brave_ads = false
+  enable_luxxle_rewards = false
+  enable_luxxle_ads = false
   enable_gemini_wallet = false
   enable_ipfs = false
   enable_ipfs_local_node = false
   
   # Sync and Cloud Features - DISABLED (use Chromium sync)
-  enable_brave_sync = false
+  enable_luxxle_sync = false
   
   # News and Content Features - DISABLED
-  enable_brave_news = false
+  enable_luxxle_news = false
   enable_speedreader = false
   
   # Search and Omnibox Features - DISABLED
-  enable_brave_search = false
+  enable_luxxle_search = false
   
   # Social and Communication Features - DISABLED
-  enable_brave_talk = false
+  enable_luxxle_talk = false
   
   # Developer and Advanced Features - DISABLED
-  enable_brave_federated = false
-  enable_brave_translate = false
-  enable_brave_shields = false  # Use Chromium's built-in blocking
+  enable_luxxle_federated = false
+  enable_luxxle_translate = false
+  enable_luxxle_shields = false  # Use Chromium's built-in blocking
   
   # AI and ML Features - DISABLED
   enable_ai_chat = false
-  enable_brave_leo = false
+  enable_luxxle_leo = false
   
   # Enterprise and Policy Features - DISABLED
-  enable_brave_enterprise = false
+  enable_luxxle_enterprise = false
 }
 
 if (target_os == "win") {
@@ -137,36 +137,40 @@ if (should_generate_symbols && is_mac) {
          "Incompatible args to generate symbols on MacOS")
 }
 
-brave_version = "$brave_version_major.$brave_version_minor.$brave_version_build"
+luxxle_version = "$luxxle_version_major.$luxxle_version_minor.$luxxle_version_build"
 
-if (brave_exe == "") {
-  brave_exe = brave_product_name
+if (luxxle_exe == "") {
+  if (is_win) {
+    luxxle_exe = "luxxle"  # Lowercase to match actual build output
+  } else {
+    luxxle_exe = luxxle_product_name
+  }
 }
 
-brave_dist_dir = "$root_out_dir/dist"
+luxxle_dist_dir = "$root_out_dir/dist"
 if (is_win) {
-  brave_exe = "$brave_exe.exe"
-brave_underline_full_version = "_$chrome_version_major" + "_$brave_version_major" +
-      "_$brave_version_minor" + "_$brave_version_build"
+  luxxle_exe = "$luxxle_exe.exe"
+luxxle_underline_full_version = "_$chrome_version_major" + "_$luxxle_version_major" +
+      "_$luxxle_version_minor" + "_$luxxle_version_build"
   _channel = ""
-  brave_app_guid = "{AFE6A462-C574-4B8A-AF43-4CC60DF4563B}"
-  if (brave_channel == "nightly") {
+  luxxle_app_guid = "{AFE6A462-C574-4B8A-AF43-4CC60DF4563B}"
+  if (luxxle_channel == "nightly") {
     # Temporary support PR's non-Release builds on nightly channel.
     # CI expect the installer files (*Setup.exe) in the output dir are
-    # correspond passed brave_channel. Therefore to make Static+nightly work
+    # correspond passed luxxle_channel. Therefore to make Static+nightly work
     # we should set _channel to "Nightly".
     # TODO(atuchin): revert after PRs start to use the development channel.
     _channel = "Nightly"
-    brave_app_guid = "{C6CB981E-DB30-4876-8639-109F8933582C}"
+    luxxle_app_guid = "{C6CB981E-DB30-4876-8639-109F8933582C}"
   } else if (is_official_build) {
-    if (brave_channel == "beta") {
+    if (luxxle_channel == "beta") {
       _channel = "Beta"
-      brave_app_guid = "{103BD053-949B-43A8-9120-2E424887DE11}"
-    } else if (brave_channel == "dev") {
+      luxxle_app_guid = "{103BD053-949B-43A8-9120-2E424887DE11}"
+    } else if (luxxle_channel == "dev") {
       _channel = "Dev"
-      brave_app_guid = "{CB2150F2-595F-4633-891A-E39720CE0531}"
+      luxxle_app_guid = "{CB2150F2-595F-4633-891A-E39720CE0531}"
     } else {
-      assert(brave_channel == "", "Unknown channel name")
+      assert(luxxle_channel == "", "Unknown channel name")
     }
   } else {
     _channel = "Development"
@@ -175,69 +179,69 @@ brave_underline_full_version = "_$chrome_version_major" + "_$brave_version_major
   if (target_cpu == "x86") {
     _arch = "32"
   }
-  brave_installer_exe = "brave_installer.exe"
-brave_stub_installer_exe = "BraveBrowser$_channel" + "Setup$_arch$brave_underline_full_version.exe"
-brave_untagged_stub_installer_exe = "BraveBrowserUntagged$_channel" +
-      "Setup$_arch$brave_underline_full_version.exe"
-brave_standalone_installer_exe = "BraveBrowserStandalone$_channel" +
-      "Setup$_arch$brave_underline_full_version.exe"
-  brave_silent_installer_exe = "BraveBrowserStandaloneSilent$_channel" +
-                               "Setup$_arch$brave_underline_full_version.exe"
-brave_untagged_installer_exe = "BraveBrowserStandaloneUntagged$_channel" +
-                                 "Setup$_arch$brave_underline_full_version.exe"
+  luxxle_installer_exe = "luxxle_installer.exe"
+luxxle_stub_installer_exe = "LuxxleBrowser$_channel" + "Setup$_arch$luxxle_underline_full_version.exe"
+luxxle_untagged_stub_installer_exe = "LuxxleBrowserUntagged$_channel" +
+      "Setup$_arch$luxxle_underline_full_version.exe"
+luxxle_standalone_installer_exe = "LuxxleBrowserStandalone$_channel" +
+      "Setup$_arch$luxxle_underline_full_version.exe"
+  luxxle_silent_installer_exe = "LuxxleBrowserStandaloneSilent$_channel" +
+                               "Setup$_arch$luxxle_underline_full_version.exe"
+luxxle_untagged_installer_exe = "LuxxleBrowserStandaloneUntagged$_channel" +
+                                 "Setup$_arch$luxxle_underline_full_version.exe"
 } else if (is_mac) {
-  brave_exe = "$chrome_product_full_name.app"
-  brave_dmg = "$chrome_product_full_name.dmg"
-  brave_pkg = "$chrome_product_full_name.pkg"
-  brave_zip = "$chrome_product_full_name.app.zip"
-  brave_delta = "$chrome_product_full_name.delta"
+  luxxle_exe = "$chrome_product_full_name.app"
+  luxxle_dmg = "$chrome_product_full_name.dmg"
+  luxxle_pkg = "$chrome_product_full_name.pkg"
+  luxxle_zip = "$chrome_product_full_name.app.zip"
+  luxxle_delta = "$chrome_product_full_name.delta"
 
-  brave_product_dir_name_suffix = ""
+  luxxle_product_dir_name_suffix = ""
   if (is_official_build) {
-    if (brave_channel == "beta") {
-      brave_product_dir_name_suffix = "-Beta"
-    } else if (brave_channel == "dev") {
-      brave_product_dir_name_suffix = "-Dev"
-    } else if (brave_channel == "nightly") {
-      brave_product_dir_name_suffix = "-Nightly"
+    if (luxxle_channel == "beta") {
+      luxxle_product_dir_name_suffix = "-Beta"
+    } else if (luxxle_channel == "dev") {
+      luxxle_product_dir_name_suffix = "-Dev"
+    } else if (luxxle_channel == "nightly") {
+      luxxle_product_dir_name_suffix = "-Nightly"
     } else {
-      assert(brave_channel == "", "Unknown channel name")
+      assert(luxxle_channel == "", "Unknown channel name")
     }
   } else {
-    brave_product_dir_name_suffix = "-Development"
+    luxxle_product_dir_name_suffix = "-Development"
   }
-brave_product_dir_name = "BraveSoftware/Brave-Browser$brave_product_dir_name_suffix"
+luxxle_product_dir_name = "LuxxleSoftware/Luxxle-Browser$luxxle_product_dir_name_suffix"
 
   if (base_sparkle_update_url == "") {
-base_sparkle_update_url = "https://updates.bravesoftware.com/sparkle/Brave-Browser"
+base_sparkle_update_url = "https://updates.luxxlesoftware.com/sparkle/Luxxle-Browser"
   }
 }
 
-brave_platform = "darwin"
+luxxle_platform = "darwin"
 if (is_win) {
-  brave_platform = "win32"
+  luxxle_platform = "win32"
 } else if (is_linux) {
-  brave_platform = "linux"
+  luxxle_platform = "linux"
 } else if (is_android) {
-  brave_platform = "android"
+  luxxle_platform = "android"
 }
 
-is_release_channel = brave_channel == ""
+is_release_channel = luxxle_channel == ""
 
-brave_android_output = ""
+luxxle_android_output = ""
 if (is_android) {
-  brave_android_output += "$root_out_dir/apks/Brave"
+  luxxle_android_output += "$root_out_dir/apks/Luxxle"
   if (target_android_base == "modern") {
     assert(target_cpu != "arm64" && target_cpu != "x64")
-    brave_android_output += "Modern"
+    luxxle_android_output += "Modern"
   } else if (target_cpu == "arm64" || target_cpu == "x64" ||
              target_android_base == "mono") {
-    brave_android_output += "Mono"
+    luxxle_android_output += "Mono"
   }
 
   if (target_android_output_format == "aab") {
-    brave_android_output += "$target_cpu.aab"
+    luxxle_android_output += "$target_cpu.aab"
   } else {
-    brave_android_output += "$target_cpu.apk"
+    luxxle_android_output += "$target_cpu.apk"
   }
 }

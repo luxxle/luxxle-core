@@ -33,7 +33,7 @@ import org.chromium.chrome.browser.app.helpers.Api33AndPlusBackPressHelper;
 import org.chromium.chrome.browser.crypto_wallet.adapters.AutoGridLayoutManager;
 import org.chromium.chrome.browser.crypto_wallet.adapters.OnboardingNetworkSelectorGridAdapter;
 
-/** Onboarding fragment showing networks to include before using Brave Wallet. */
+/** Onboarding fragment showing networks to include before using Luxxle Wallet. */
 public class OnboardingNetworkSelectionFragment extends BaseOnboardingWalletFragment
         implements CompoundButton.OnCheckedChangeListener,
                 OnboardingNetworkSelectorGridAdapter.OnNetworkSelectionListener {

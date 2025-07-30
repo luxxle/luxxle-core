@@ -12,26 +12,26 @@ import android.os.Bundle;
 
 import androidx.preference.Preference;
 
-import org.chromium.base.BraveFeatureList;
-import org.chromium.base.BravePreferenceKeys;
+import org.chromium.base.LuxxleFeatureList;
+import org.chromium.base.LuxxlePreferenceKeys;
 import org.chromium.base.ContextUtils;
 import org.chromium.base.supplier.ObservableSupplier;
 import org.chromium.base.supplier.ObservableSupplierImpl;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.BraveFeatureUtil;
-import org.chromium.chrome.browser.BraveRelaunchUtils;
-import org.chromium.chrome.browser.BraveRewardsNativeWorker;
-import org.chromium.chrome.browser.BraveRewardsObserver;
+import org.chromium.chrome.browser.LuxxleFeatureUtil;
+import org.chromium.chrome.browser.LuxxleRelaunchUtils;
+import org.chromium.chrome.browser.LuxxleRewardsNativeWorker;
+import org.chromium.chrome.browser.LuxxleRewardsObserver;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
-import org.chromium.chrome.browser.multiwindow.BraveMultiWindowDialogFragment;
-import org.chromium.chrome.browser.multiwindow.BraveMultiWindowUtils;
+import org.chromium.chrome.browser.multiwindow.LuxxleMultiWindowDialogFragment;
+import org.chromium.chrome.browser.multiwindow.LuxxleMultiWindowUtils;
 import org.chromium.chrome.browser.multiwindow.MultiWindowUtils;
 import org.chromium.chrome.browser.night_mode.NightModeUtils;
 import org.chromium.chrome.browser.ntp.NtpUtil;
-import org.chromium.chrome.browser.preferences.BravePref;
+import org.chromium.chrome.browser.preferences.LuxxlePref;
 import org.chromium.chrome.browser.preferences.ChromeSharedPreferences;
 import org.chromium.chrome.browser.profiles.ProfileManager;
-import org.chromium.chrome.browser.tasks.tab_management.BraveTabUiFeatureUtilities;
+import org.chromium.chrome.browser.tasks.tab_management.LuxxleTabUiFeatureUtilities;
 import org.chromium.chrome.browser.toolbar.ToolbarPositionController;
 import org.chromium.chrome.browser.toolbar.bottom.BottomToolbarConfiguration;
 import org.chromium.chrome.browser.toolbar.settings.AddressBarSettingsFragment;
@@ -40,22 +40,22 @@ import org.chromium.components.browser_ui.settings.SettingsUtils;
 import org.chromium.components.user_prefs.UserPrefs;
 import org.chromium.ui.base.DeviceFormFactor;
 
-public class AppearancePreferences extends BravePreferenceFragment
-        implements Preference.OnPreferenceChangeListener, BraveRewardsObserver {
-    public static final String PREF_HIDE_BRAVE_REWARDS_ICON = "hide_brave_rewards_icon";
-    public static final String PREF_HIDE_BRAVE_REWARDS_ICON_MIGRATION =
-            "hide_brave_rewards_icon_migration";
-    public static final String PREF_SHOW_BRAVE_REWARDS_ICON = "show_brave_rewards_icon";
+public class AppearancePreferences extends LuxxlePreferenceFragment
+        implements Preference.OnPreferenceChangeListener, LuxxleRewardsObserver {
+    public static final String PREF_HIDE_LUXXLE_REWARDS_ICON = "hide_luxxle_rewards_icon";
+    public static final String PREF_HIDE_LUXXLE_REWARDS_ICON_MIGRATION =
+            "hide_luxxle_rewards_icon_migration";
+    public static final String PREF_SHOW_LUXXLE_REWARDS_ICON = "show_luxxle_rewards_icon";
     public static final String PREF_ADS_SWITCH = "ads_switch";
-    public static final String PREF_BRAVE_NIGHT_MODE_ENABLED = "brave_night_mode_enabled_key";
-    public static final String PREF_BRAVE_DISABLE_SHARING_HUB = "brave_disable_sharing_hub";
-    public static final String PREF_BRAVE_ENABLE_TAB_GROUPS = "brave_enable_tab_groups";
-    public static final String PREF_BRAVE_ENABLE_SPEEDREADER = "brave_enable_speedreader";
+    public static final String PREF_LUXXLE_NIGHT_MODE_ENABLED = "luxxle_night_mode_enabled_key";
+    public static final String PREF_LUXXLE_DISABLE_SHARING_HUB = "luxxle_disable_sharing_hub";
+    public static final String PREF_LUXXLE_ENABLE_TAB_GROUPS = "luxxle_enable_tab_groups";
+    public static final String PREF_LUXXLE_ENABLE_SPEEDREADER = "luxxle_enable_speedreader";
     public static final String PREF_ENABLE_MULTI_WINDOWS = "enable_multi_windows";
     public static final String PREF_SHOW_UNDO_WHEN_TABS_CLOSED = "show_undo_when_tabs_closed";
     public static final String PREF_ADDRESS_BAR = "address_bar";
 
-    private BraveRewardsNativeWorker mBraveRewardsNativeWorker;
+    private LuxxleRewardsNativeWorker mLuxxleRewardsNativeWorker;
 
     private final ObservableSupplierImpl<String> mPageTitle = new ObservableSupplierImpl<>();
 
@@ -63,27 +63,27 @@ public class AppearancePreferences extends BravePreferenceFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPageTitle.set(getString(R.string.prefs_appearance));
-        SettingsUtils.addPreferencesFromResource(this, R.xml.brave_appearance_preferences);
+        SettingsUtils.addPreferencesFromResource(this, R.xml.luxxle_appearance_preferences);
         boolean isTablet =
                 DeviceFormFactor.isNonMultiDisplayContextOnTablet(
                         ContextUtils.getApplicationContext());
         if (isTablet) {
-            removePreferenceIfPresent(BravePreferenceKeys.BRAVE_BOTTOM_TOOLBAR_ENABLED_KEY);
+            removePreferenceIfPresent(LuxxlePreferenceKeys.LUXXLE_BOTTOM_TOOLBAR_ENABLED_KEY);
         }
 
         if (!NightModeUtils.isNightModeSupported()) {
             removePreferenceIfPresent(PREF_UI_THEME);
         }
 
-        mBraveRewardsNativeWorker = BraveRewardsNativeWorker.getInstance();
-        if (mBraveRewardsNativeWorker == null || !mBraveRewardsNativeWorker.isSupported()) {
-            removePreferenceIfPresent(PREF_SHOW_BRAVE_REWARDS_ICON);
+        mLuxxleRewardsNativeWorker = LuxxleRewardsNativeWorker.getInstance();
+        if (mLuxxleRewardsNativeWorker == null || !mLuxxleRewardsNativeWorker.isSupported()) {
+            removePreferenceIfPresent(PREF_SHOW_LUXXLE_REWARDS_ICON);
         }
 
-        if (!ChromeFeatureList.isEnabled(BraveFeatureList.BRAVE_SPEEDREADER)) {
-            removePreferenceIfPresent(PREF_BRAVE_ENABLE_SPEEDREADER);
+        if (!ChromeFeatureList.isEnabled(LuxxleFeatureList.LUXXLE_SPEEDREADER)) {
+            removePreferenceIfPresent(PREF_LUXXLE_ENABLE_SPEEDREADER);
         }
-        if (!new BraveMultiWindowUtils().shouldShowEnableWindow(getActivity())) {
+        if (!new LuxxleMultiWindowUtils().shouldShowEnableWindow(getActivity())) {
             removePreferenceIfPresent(PREF_ENABLE_MULTI_WINDOWS);
         }
 
@@ -104,11 +104,11 @@ public class AppearancePreferences extends BravePreferenceFragment
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ChromeSwitchPreference showBraveRewardsIconPref =
-                (ChromeSwitchPreference) findPreference(PREF_SHOW_BRAVE_REWARDS_ICON);
-        if (showBraveRewardsIconPref != null) {
-            showBraveRewardsIconPref.setChecked(NtpUtil.shouldShowRewardsIcon());
-            showBraveRewardsIconPref.setOnPreferenceChangeListener(this);
+        ChromeSwitchPreference showLuxxleRewardsIconPref =
+                (ChromeSwitchPreference) findPreference(PREF_SHOW_LUXXLE_REWARDS_ICON);
+        if (showLuxxleRewardsIconPref != null) {
+            showLuxxleRewardsIconPref.setChecked(NtpUtil.shouldShowRewardsIcon());
+            showLuxxleRewardsIconPref.setOnPreferenceChangeListener(this);
         }
 
         ChromeSwitchPreference adsSwitchPref =
@@ -118,21 +118,21 @@ public class AppearancePreferences extends BravePreferenceFragment
             adsSwitchPref.setOnPreferenceChangeListener(this);
         }
 
-        Preference nightModeEnabled = findPreference(PREF_BRAVE_NIGHT_MODE_ENABLED);
+        Preference nightModeEnabled = findPreference(PREF_LUXXLE_NIGHT_MODE_ENABLED);
         nightModeEnabled.setOnPreferenceChangeListener(this);
         if (nightModeEnabled instanceof ChromeSwitchPreference) {
             ((ChromeSwitchPreference) nightModeEnabled)
                     .setChecked(ChromeFeatureList.isEnabled(
-                            BraveFeatureList.FORCE_WEB_CONTENTS_DARK_MODE));
+                            LuxxleFeatureList.FORCE_WEB_CONTENTS_DARK_MODE));
         }
 
         Preference enableBottomToolbar =
-                findPreference(BravePreferenceKeys.BRAVE_BOTTOM_TOOLBAR_ENABLED_KEY);
+                findPreference(LuxxlePreferenceKeys.LUXXLE_BOTTOM_TOOLBAR_ENABLED_KEY);
         if (enableBottomToolbar != null) {
             enableBottomToolbar.setOnPreferenceChangeListener(this);
         }
 
-        Preference disableSharingHub = findPreference(PREF_BRAVE_DISABLE_SHARING_HUB);
+        Preference disableSharingHub = findPreference(PREF_LUXXLE_DISABLE_SHARING_HUB);
         if (disableSharingHub != null) {
             disableSharingHub.setOnPreferenceChangeListener(this);
             if (disableSharingHub instanceof ChromeSwitchPreference) {
@@ -140,28 +140,28 @@ public class AppearancePreferences extends BravePreferenceFragment
                         .setChecked(
                                 ChromeSharedPreferences.getInstance()
                                         .readBoolean(
-                                                BravePreferenceKeys.BRAVE_DISABLE_SHARING_HUB,
+                                                LuxxlePreferenceKeys.LUXXLE_DISABLE_SHARING_HUB,
                                                 false));
             }
         }
 
-        Preference enableTabGroups = findPreference(PREF_BRAVE_ENABLE_TAB_GROUPS);
+        Preference enableTabGroups = findPreference(PREF_LUXXLE_ENABLE_TAB_GROUPS);
         if (enableTabGroups != null) {
             enableTabGroups.setOnPreferenceChangeListener(this);
             if (enableTabGroups instanceof ChromeSwitchPreference) {
                 ((ChromeSwitchPreference) enableTabGroups)
-                        .setChecked(BraveTabUiFeatureUtilities.isBraveTabGroupsEnabled());
+                        .setChecked(LuxxleTabUiFeatureUtilities.isLuxxleTabGroupsEnabled());
             }
         }
 
-        Preference enableSpeedreader = findPreference(PREF_BRAVE_ENABLE_SPEEDREADER);
+        Preference enableSpeedreader = findPreference(PREF_LUXXLE_ENABLE_SPEEDREADER);
         if (enableSpeedreader != null) {
             enableSpeedreader.setOnPreferenceChangeListener(this);
             if (enableSpeedreader instanceof ChromeSwitchPreference) {
                 ((ChromeSwitchPreference) enableSpeedreader)
                         .setChecked(
                                 UserPrefs.get(ProfileManager.getLastUsedRegularProfile())
-                                        .getBoolean(BravePref.SPEEDREADER_PREF_ENABLED));
+                                        .getBoolean(LuxxlePref.SPEEDREADER_PREF_ENABLED));
             }
         }
 
@@ -170,7 +170,7 @@ public class AppearancePreferences extends BravePreferenceFragment
             enableMultiWindow.setOnPreferenceChangeListener(this);
             if (enableMultiWindow instanceof ChromeSwitchPreference) {
                 ((ChromeSwitchPreference) enableMultiWindow)
-                        .setChecked(BraveMultiWindowUtils.shouldEnableMultiWindows());
+                        .setChecked(LuxxleMultiWindowUtils.shouldEnableMultiWindows());
             }
         }
 
@@ -182,7 +182,7 @@ public class AppearancePreferences extends BravePreferenceFragment
                     .setChecked(
                             ChromeSharedPreferences.getInstance()
                                     .readBoolean(
-                                            BravePreferenceKeys.SHOW_UNDO_WHEN_TABS_CLOSED, true));
+                                            LuxxlePreferenceKeys.SHOW_UNDO_WHEN_TABS_CLOSED, true));
         }
     }
 
@@ -193,8 +193,8 @@ public class AppearancePreferences extends BravePreferenceFragment
 
     @Override
     public void onStart() {
-        if (mBraveRewardsNativeWorker != null) {
-            mBraveRewardsNativeWorker.addObserver(this);
+        if (mLuxxleRewardsNativeWorker != null) {
+            mLuxxleRewardsNativeWorker.addObserver(this);
         }
         super.onStart();
 
@@ -209,7 +209,7 @@ public class AppearancePreferences extends BravePreferenceFragment
         }
 
         Preference enableBottomToolbar =
-                findPreference(BravePreferenceKeys.BRAVE_BOTTOM_TOOLBAR_ENABLED_KEY);
+                findPreference(LuxxlePreferenceKeys.LUXXLE_BOTTOM_TOOLBAR_ENABLED_KEY);
         if (enableBottomToolbar instanceof ChromeSwitchPreference) {
             if (BottomToolbarConfiguration.isToolbarTopAnchored()) {
                 boolean isTablet =
@@ -219,15 +219,15 @@ public class AppearancePreferences extends BravePreferenceFragment
                         .setChecked(
                                 !isTablet
                                         && BottomToolbarConfiguration
-                                                .isBraveBottomControlsEnabled());
+                                                .isLuxxleBottomControlsEnabled());
             }
             if (BottomToolbarConfiguration.isToolbarBottomAnchored()) {
                 updatePreferenceSummary(
-                        BravePreferenceKeys.BRAVE_BOTTOM_TOOLBAR_ENABLED_KEY,
-                        R.string.brave_bottom_navigation_toolbar_disabled_summary);
+                        LuxxlePreferenceKeys.LUXXLE_BOTTOM_TOOLBAR_ENABLED_KEY,
+                        R.string.luxxle_bottom_navigation_toolbar_disabled_summary);
             } else {
                 updatePreferenceSummary(
-                        BravePreferenceKeys.BRAVE_BOTTOM_TOOLBAR_ENABLED_KEY,
+                        LuxxlePreferenceKeys.LUXXLE_BOTTOM_TOOLBAR_ENABLED_KEY,
                         ((ChromeSwitchPreference) enableBottomToolbar).isChecked()
                                 ? R.string.text_on
                                 : R.string.text_off);
@@ -239,8 +239,8 @@ public class AppearancePreferences extends BravePreferenceFragment
 
     @Override
     public void onStop() {
-        if (mBraveRewardsNativeWorker != null) {
-            mBraveRewardsNativeWorker.removeObserver(this);
+        if (mLuxxleRewardsNativeWorker != null) {
+            mLuxxleRewardsNativeWorker.removeObserver(this);
         }
         super.onStop();
     }
@@ -249,53 +249,53 @@ public class AppearancePreferences extends BravePreferenceFragment
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         String key = preference.getKey();
         boolean shouldRelaunch = false;
-        if (BravePreferenceKeys.BRAVE_BOTTOM_TOOLBAR_ENABLED_KEY.equals(key)) {
+        if (LuxxlePreferenceKeys.LUXXLE_BOTTOM_TOOLBAR_ENABLED_KEY.equals(key)) {
             SharedPreferences prefs = ContextUtils.getAppSharedPreferences();
-            Boolean originalStatus = BottomToolbarConfiguration.isBraveBottomControlsEnabled();
+            Boolean originalStatus = BottomToolbarConfiguration.isLuxxleBottomControlsEnabled();
             updatePreferenceSummary(
-                    BravePreferenceKeys.BRAVE_BOTTOM_TOOLBAR_ENABLED_KEY,
+                    LuxxlePreferenceKeys.LUXXLE_BOTTOM_TOOLBAR_ENABLED_KEY,
                     !originalStatus ? R.string.text_on : R.string.text_off);
             prefs.edit()
                     .putBoolean(
-                            BravePreferenceKeys.BRAVE_BOTTOM_TOOLBAR_ENABLED_KEY, !originalStatus)
+                            LuxxlePreferenceKeys.LUXXLE_BOTTOM_TOOLBAR_ENABLED_KEY, !originalStatus)
                     .apply();
             shouldRelaunch = true;
-        } else if (PREF_SHOW_BRAVE_REWARDS_ICON.equals(key)) {
+        } else if (PREF_SHOW_LUXXLE_REWARDS_ICON.equals(key)) {
             SharedPreferences sharedPreferences = ContextUtils.getAppSharedPreferences();
             SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();
-            sharedPreferencesEditor.putBoolean(PREF_SHOW_BRAVE_REWARDS_ICON, !(boolean) newValue);
+            sharedPreferencesEditor.putBoolean(PREF_SHOW_LUXXLE_REWARDS_ICON, !(boolean) newValue);
             sharedPreferencesEditor.apply();
             shouldRelaunch = true;
         } else if (PREF_ADS_SWITCH.equals(key)) {
             setPrefAdsInBackgroundEnabled((boolean) newValue);
-        } else if (PREF_BRAVE_NIGHT_MODE_ENABLED.equals(key)) {
-            BraveFeatureUtil.enableFeature(
-                    BraveFeatureList.ENABLE_FORCE_DARK, (boolean) newValue, true);
+        } else if (PREF_LUXXLE_NIGHT_MODE_ENABLED.equals(key)) {
+            LuxxleFeatureUtil.enableFeature(
+                    LuxxleFeatureList.ENABLE_FORCE_DARK, (boolean) newValue, true);
             shouldRelaunch = true;
-        } else if (PREF_BRAVE_DISABLE_SHARING_HUB.equals(key)) {
+        } else if (PREF_LUXXLE_DISABLE_SHARING_HUB.equals(key)) {
             ChromeSharedPreferences.getInstance()
                     .writeBoolean(
-                            BravePreferenceKeys.BRAVE_DISABLE_SHARING_HUB, (boolean) newValue);
-        } else if (PREF_BRAVE_ENABLE_TAB_GROUPS.equals(key)) {
+                            LuxxlePreferenceKeys.LUXXLE_DISABLE_SHARING_HUB, (boolean) newValue);
+        } else if (PREF_LUXXLE_ENABLE_TAB_GROUPS.equals(key)) {
             ChromeSharedPreferences.getInstance()
-                    .writeBoolean(BravePreferenceKeys.BRAVE_TAB_GROUPS_ENABLED, (boolean) newValue);
-        } else if (PREF_BRAVE_ENABLE_SPEEDREADER.equals(key)) {
+                    .writeBoolean(LuxxlePreferenceKeys.LUXXLE_TAB_GROUPS_ENABLED, (boolean) newValue);
+        } else if (PREF_LUXXLE_ENABLE_SPEEDREADER.equals(key)) {
             UserPrefs.get(ProfileManager.getLastUsedRegularProfile())
-                    .setBoolean(BravePref.SPEEDREADER_PREF_ENABLED, (boolean) newValue);
+                    .setBoolean(LuxxlePref.SPEEDREADER_PREF_ENABLED, (boolean) newValue);
             shouldRelaunch = true;
         } else if (PREF_ENABLE_MULTI_WINDOWS.equals(key)) {
             if (!(boolean) newValue) {
                 if (MultiWindowUtils.getInstanceCount() > 1) {
-                    BraveMultiWindowDialogFragment dialogFragment =
-                            BraveMultiWindowDialogFragment.newInstance();
-                    BraveMultiWindowDialogFragment.DismissListener dismissListener =
-                            new BraveMultiWindowDialogFragment.DismissListener() {
+                    LuxxleMultiWindowDialogFragment dialogFragment =
+                            LuxxleMultiWindowDialogFragment.newInstance();
+                    LuxxleMultiWindowDialogFragment.DismissListener dismissListener =
+                            new LuxxleMultiWindowDialogFragment.DismissListener() {
                                 @Override
                                 public void onDismiss() {
                                     if (MultiWindowUtils.getInstanceCount() == 1) {
                                         if (preference instanceof ChromeSwitchPreference) {
                                             ((ChromeSwitchPreference) preference).setChecked(false);
-                                            BraveMultiWindowUtils.updateEnableMultiWindows(false);
+                                            LuxxleMultiWindowUtils.updateEnableMultiWindows(false);
                                         }
                                     }
                                 }
@@ -304,31 +304,31 @@ public class AppearancePreferences extends BravePreferenceFragment
 
                     dialogFragment.show(
                             getActivity().getSupportFragmentManager(),
-                            "BraveMultiWindowDialogFragment");
+                            "LuxxleMultiWindowDialogFragment");
 
                     return false;
                 }
             }
-            BraveMultiWindowUtils.updateEnableMultiWindows((boolean) newValue);
+            LuxxleMultiWindowUtils.updateEnableMultiWindows((boolean) newValue);
         } else if (PREF_SHOW_UNDO_WHEN_TABS_CLOSED.equals(key)) {
             ChromeSharedPreferences.getInstance()
                     .writeBoolean(
-                            BravePreferenceKeys.SHOW_UNDO_WHEN_TABS_CLOSED, (boolean) newValue);
+                            LuxxlePreferenceKeys.SHOW_UNDO_WHEN_TABS_CLOSED, (boolean) newValue);
         }
         if (shouldRelaunch) {
-            BraveRelaunchUtils.askForRelaunch(getActivity());
+            LuxxleRelaunchUtils.askForRelaunch(getActivity());
         }
 
         return true;
     }
 
-    /** Returns the user preference for whether the brave ads in background is enabled. */
+    /** Returns the user preference for whether the luxxle ads in background is enabled. */
     public static boolean getPrefAdsInBackgroundEnabled() {
         SharedPreferences sharedPreferences = ContextUtils.getAppSharedPreferences();
         return sharedPreferences.getBoolean(PREF_ADS_SWITCH, false);
     }
 
-    /** Sets the user preference for whether the brave ads in background is enabled. */
+    /** Sets the user preference for whether the luxxle ads in background is enabled. */
     public void setPrefAdsInBackgroundEnabled(boolean enabled) {
         SharedPreferences sharedPreferences = ContextUtils.getAppSharedPreferences();
         SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();

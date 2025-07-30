@@ -6,7 +6,7 @@ import("//build/config/android/rules.gni")
 
 android_library("java") {
   sources =
-      [ "java/src/org/chromium/chrome/browser/theme/BraveThemeUtils.java" ]
+      [ "java/src/org/chromium/chrome/browser/theme/LuxxleThemeUtils.java" ]
   deps = [
     "//base:base_java",
     "//chrome/browser/ui/android/theme:java",

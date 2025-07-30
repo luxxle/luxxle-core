@@ -27,6 +27,6 @@ class ProcessLauncher {
                                                   int timeout_sec);
 };
 
-}  // namespace brave
+}  // namespace luxxle
 
 #endif  // LUXXLE_BASE_PROCESS_PROCESS_LAUNCHER_H_

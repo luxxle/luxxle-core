@@ -6,7 +6,7 @@
 import("//build/config/android/rules.gni")
 
 android_library("java") {
-  sources = [ "android/java/src/org/chromium/chrome/browser/tab_group_sync/BraveStartupHelper.java" ]
+  sources = [ "android/java/src/org/chromium/chrome/browser/tab_group_sync/LuxxleStartupHelper.java" ]
 
   deps = [ "//chrome/browser/tab_group_sync:java" ]
 }

@@ -8,8 +8,8 @@
 #include <memory>
 
 #include "base/memory/raw_ptr.h"
-#include "luxxle/browser/ui/brave_browser.h"
-#include "luxxle/browser/ui/views/frame/brave_contents_view_util.h"
+#include "luxxle/browser/ui/luxxle_browser.h"
+#include "luxxle/browser/ui/views/frame/luxxle_contents_view_util.h"
 #include "luxxle/components/constants/webui_url_constants.h"
 #include "chrome/browser/ui/color/chrome_color_id.h"
 #include "content/public/browser/browser_context.h"
@@ -28,8 +28,8 @@ namespace {
 
 constexpr gfx::Size kToolbarSize{870, 40};
 constexpr gfx::RoundedCornersF kRoundedCorners(
-    BraveContentsViewUtil::kBorderRadius,
-    BraveContentsViewUtil::kBorderRadius,
+    LuxxleContentsViewUtil::kBorderRadius,
+    LuxxleContentsViewUtil::kBorderRadius,
     0,
     0);
 

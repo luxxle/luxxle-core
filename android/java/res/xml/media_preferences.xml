@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (c) 2023 The Brave Authors. All rights reserved.
+<!-- Copyright (c) 2023 The Luxxle Authors. All rights reserved.
      This Source Code Form is subject to the terms of the Mozilla Public
      License, v. 2.0. If a copy of the MPL was not distributed with this file,
      You can obtain one at https://mozilla.org/MPL/2.0/. -->
@@ -24,7 +24,7 @@
         android:title="@string/youtube">
         <org.chromium.components.browser_ui.settings.ChromeSwitchPreference
             android:key="play_yt_video_in_browser"
-            android:title="@string/prefs_open_youtube_links_brave" />
+            android:title="@string/prefs_open_youtube_links_luxxle" />
         <org.chromium.components.browser_ui.settings.ChromeSwitchPreference
             android:key="hide_youtube_recommended_content"
             android:title="@string/block_youtube_recommended_content"

@@ -3,22 +3,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveToolbarSwipeLayoutClassAdapter extends BraveClassVisitor {
+public class LuxxleToolbarSwipeLayoutClassAdapter extends LuxxleClassVisitor {
     static String sToolbarSwipeLayoutClassName =
             "org/chromium/chrome/browser/compositor/layouts/ToolbarSwipeLayout";
-    static String sBraveToolbarSwipeLayoutClassName =
-            "org/chromium/chrome/browser/compositor/layouts/BraveToolbarSwipeLayout";
+    static String sLuxxleToolbarSwipeLayoutClassName =
+            "org/chromium/chrome/browser/compositor/layouts/LuxxleToolbarSwipeLayout";
 
-    public BraveToolbarSwipeLayoutClassAdapter(ClassVisitor visitor) {
+    public LuxxleToolbarSwipeLayoutClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sToolbarSwipeLayoutClassName, sBraveToolbarSwipeLayoutClassName);
+        redirectConstructor(sToolbarSwipeLayoutClassName, sLuxxleToolbarSwipeLayoutClassName);
 
-        deleteField(sBraveToolbarSwipeLayoutClassName, "mMoveToolbar");
+        deleteField(sLuxxleToolbarSwipeLayoutClassName, "mMoveToolbar");
         makeProtectedField(sToolbarSwipeLayoutClassName, "mMoveToolbar");
     }
 }

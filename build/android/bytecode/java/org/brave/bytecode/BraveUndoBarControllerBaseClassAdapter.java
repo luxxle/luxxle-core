@@ -3,21 +3,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveUndoBarControllerBaseClassAdapter extends BraveClassVisitor {
+public class LuxxleUndoBarControllerBaseClassAdapter extends LuxxleClassVisitor {
     static String sUndoBarController =
             "org/chromium/chrome/browser/undo_tab_close_snackbar/UndoBarController";
-    static String sBraveUndoBarControllerBase =
-            "org/chromium/chrome/browser/undo_tab_close_snackbar/BraveUndoBarControllerBase";
+    static String sLuxxleUndoBarControllerBase =
+            "org/chromium/chrome/browser/undo_tab_close_snackbar/LuxxleUndoBarControllerBase";
 
-    public BraveUndoBarControllerBaseClassAdapter(ClassVisitor visitor) {
+    public LuxxleUndoBarControllerBaseClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        changeSuperName(sUndoBarController, sBraveUndoBarControllerBase);
+        changeSuperName(sUndoBarController, sLuxxleUndoBarControllerBase);
 
-        changeMethodOwner(sUndoBarController, "showUndoBar", sBraveUndoBarControllerBase);
+        changeMethodOwner(sUndoBarController, "showUndoBar", sLuxxleUndoBarControllerBase);
     }
 }

@@ -3,20 +3,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveNotificationPermissionRationaleDialogControllerClassAdapter
-        extends BraveClassVisitor {
+public class LuxxleNotificationPermissionRationaleDialogControllerClassAdapter
+        extends LuxxleClassVisitor {
     static String sContoller =
             "org/chromium/chrome/browser/notifications/permissions/NotificationPermissionRationaleDialogController";
-    static String sBraveContoller =
-            "org/chromium/chrome/browser/notifications/permissions/BraveNotificationPermissionRationaleDialogController";
+    static String sLuxxleContoller =
+            "org/chromium/chrome/browser/notifications/permissions/LuxxleNotificationPermissionRationaleDialogController";
 
-    public BraveNotificationPermissionRationaleDialogControllerClassAdapter(ClassVisitor visitor) {
+    public LuxxleNotificationPermissionRationaleDialogControllerClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sContoller, sBraveContoller);
+        redirectConstructor(sContoller, sLuxxleContoller);
     }
 }

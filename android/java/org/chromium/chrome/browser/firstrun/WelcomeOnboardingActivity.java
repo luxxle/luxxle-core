@@ -33,25 +33,25 @@ import com.android.installreferrer.api.InstallReferrerClient.InstallReferrerResp
 import com.android.installreferrer.api.InstallReferrerStateListener;
 import com.android.installreferrer.api.ReferrerDetails;
 
-import org.chromium.base.BravePreferenceKeys;
+import org.chromium.base.LuxxlePreferenceKeys;
 import org.chromium.base.Log;
 import org.chromium.base.ThreadUtils;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.BraveConfig;
-import org.chromium.chrome.browser.BraveLocalState;
+import org.chromium.chrome.browser.LuxxleConfig;
+import org.chromium.chrome.browser.LuxxleLocalState;
 import org.chromium.chrome.browser.customtabs.CustomTabActivity;
 import org.chromium.chrome.browser.day_zero.DayZeroHelper;
 import org.chromium.chrome.browser.metrics.ChangeMetricsReportingStateCalledFrom;
 import org.chromium.chrome.browser.metrics.UmaSessionStats;
-import org.chromium.chrome.browser.notifications.BravePermissionUtils;
+import org.chromium.chrome.browser.notifications.LuxxlePermissionUtils;
 import org.chromium.chrome.browser.onboarding.OnboardingPrefManager;
-import org.chromium.chrome.browser.preferences.BravePref;
+import org.chromium.chrome.browser.preferences.LuxxlePref;
 import org.chromium.chrome.browser.preferences.ChromePreferenceKeys;
 import org.chromium.chrome.browser.preferences.ChromeSharedPreferences;
 import org.chromium.chrome.browser.privacy.settings.PrivacyPreferencesManagerImpl;
-import org.chromium.chrome.browser.set_default_browser.BraveSetDefaultBrowserUtils;
-import org.chromium.chrome.browser.util.BraveConstants;
-import org.chromium.chrome.browser.util.BraveTouchUtils;
+import org.chromium.chrome.browser.set_default_browser.LuxxleSetDefaultBrowserUtils;
+import org.chromium.chrome.browser.util.LuxxleConstants;
+import org.chromium.chrome.browser.util.LuxxleTouchUtils;
 import org.chromium.chrome.browser.util.PackageUtils;
 import org.chromium.components.user_prefs.UserPrefs;
 import org.chromium.ui.base.DeviceFormFactor;
@@ -62,17 +62,17 @@ import org.chromium.ui.text.SpanApplier.SpanInfo;
 import java.util.Locale;
 
 /**
- * Activity that handles the first run onboarding experience for new Brave browser installations.
- * Extends FirstRunActivityBase to provide onboarding flows for: - Setting Brave as default browser
+ * Activity that handles the first run onboarding experience for new Luxxle browser installations.
+ * Extends FirstRunActivityBase to provide onboarding flows for: - Setting Luxxle as default browser
  * - Configuring privacy and analytics preferences (P3A and crash reporting) - Accepting terms of
  * service The activity guides users through a series of steps using animations and clear UI
- * elements to explain Brave's key features and privacy-focused approach.
+ * elements to explain Luxxle's key features and privacy-focused approach.
  */
 public class WelcomeOnboardingActivity extends FirstRunActivityBase {
     private static final String P3A_URL =
-            "https://support.brave.com/hc/en-us/articles/9140465918093-What-is-P3A-in-Brave";
+            "https://support.luxxle.com/hc/en-us/articles/9140465918093-What-is-P3A-in-Luxxle";
     private static final String WDP_LINK =
-            "https://www.brave.com/browser/privacy/#web-discovery-project";
+            "https://www.luxxle.com/browser/privacy/#web-discovery-project";
 
     private static final String TAG = "WelcomeOnboarding";
 
@@ -82,14 +82,14 @@ public class WelcomeOnboardingActivity extends FirstRunActivityBase {
     private boolean mInvokePostWorkAtInitializeViews;
 
     private boolean mIsTablet;
-    private BraveFirstRunFlowSequencer mFirstRunFlowSequencer;
+    private LuxxleFirstRunFlowSequencer mFirstRunFlowSequencer;
     private int mCurrentStep = -1;
 
     private View mVLeafAlignTop;
     private View mVLeafAlignBottom;
     private ImageView mIvLeafTop;
     private ImageView mIvLeafBottom;
-    private ImageView mIvBrave;
+    private ImageView mIvLuxxle;
     private ImageView mIvArrowDown;
     private LinearLayout mLayoutCard;
     private TextView mTvCard;
@@ -149,18 +149,18 @@ public class WelcomeOnboardingActivity extends FirstRunActivityBase {
                                     if (referrerUrl == null) return;
 
                                     if (referrerUrl.equals(
-                                            BraveConstants.DEEPLINK_ANDROID_PLAYLIST)) {
+                                            LuxxleConstants.DEEPLINK_ANDROID_PLAYLIST)) {
                                         ChromeSharedPreferences.getInstance()
                                                 .writeBoolean(
-                                                        BravePreferenceKeys
-                                                                .BRAVE_DEFERRED_DEEPLINK_PLAYLIST,
+                                                        LuxxlePreferenceKeys
+                                                                .LUXXLE_DEFERRED_DEEPLINK_PLAYLIST,
                                                         true);
                                     } else if (referrerUrl.equals(
-                                            BraveConstants.DEEPLINK_ANDROID_VPN)) {
+                                            LuxxleConstants.DEEPLINK_ANDROID_VPN)) {
                                         ChromeSharedPreferences.getInstance()
                                                 .writeBoolean(
-                                                        BravePreferenceKeys
-                                                                .BRAVE_DEFERRED_DEEPLINK_VPN,
+                                                        LuxxlePreferenceKeys
+                                                                .LUXXLE_DEFERRED_DEEPLINK_VPN,
                                                         true);
                                     }
                                 } catch (RemoteException e) {
@@ -189,7 +189,7 @@ public class WelcomeOnboardingActivity extends FirstRunActivityBase {
         mIvLeafBottom = findViewById(R.id.iv_leaf_bottom);
         mVLeafAlignTop = findViewById(R.id.view_leaf_top_align);
         mVLeafAlignBottom = findViewById(R.id.view_leaf_bottom_align);
-        mIvBrave = findViewById(R.id.iv_brave);
+        mIvLuxxle = findViewById(R.id.iv_luxxle);
         mIvArrowDown = findViewById(R.id.iv_arrow_down);
         mLayoutCard = findViewById(R.id.layout_card);
         mTvCard = findViewById(R.id.tv_card);
@@ -222,13 +222,13 @@ public class WelcomeOnboardingActivity extends FirstRunActivityBase {
         }
 
         if (mBtnPositive != null) {
-            BraveTouchUtils.ensureMinTouchTarget(mBtnPositive);
+            LuxxleTouchUtils.ensureMinTouchTarget(mBtnPositive);
         }
         if (mCheckboxCrash != null) {
-            BraveTouchUtils.ensureMinTouchTarget(mCheckboxCrash);
+            LuxxleTouchUtils.ensureMinTouchTarget(mCheckboxCrash);
         }
         if (mCheckboxP3a != null) {
-            BraveTouchUtils.ensureMinTouchTarget(mCheckboxP3a);
+            LuxxleTouchUtils.ensureMinTouchTarget(mCheckboxP3a);
         }
     }
 
@@ -241,7 +241,7 @@ public class WelcomeOnboardingActivity extends FirstRunActivityBase {
                         } else if (isWDPEnabled()
                                 && mCurrentOnboardingPage == CurrentOnboardingPage.WDP_PAGE) {
                             UserPrefs.get(getProfileProviderSupplier().get().getOriginalProfile())
-                                    .setBoolean(BravePref.WEB_DISCOVERY_ENABLED, true);
+                                    .setBoolean(LuxxlePref.WEB_DISCOVERY_ENABLED, true);
                             nextOnboardingStep();
                         } else {
                             nextOnboardingStep();
@@ -263,22 +263,22 @@ public class WelcomeOnboardingActivity extends FirstRunActivityBase {
     }
 
     private void setDefaultBrowserAndProceedToNextStep() {
-        BraveSetDefaultBrowserUtils.setDefaultBrowser(this, true);
-        if (!BraveSetDefaultBrowserUtils.supportsDefaultRoleManager()) {
+        LuxxleSetDefaultBrowserUtils.setDefaultBrowser(this, true);
+        if (!LuxxleSetDefaultBrowserUtils.supportsDefaultRoleManager()) {
             nextOnboardingStep();
         }
         // onActivityResult will call nextOnboardingStep().
     }
 
     private boolean isDefaultBrowser() {
-        return BraveSetDefaultBrowserUtils.isBraveSetAsDefaultBrowser(this);
+        return LuxxleSetDefaultBrowserUtils.isLuxxleSetAsDefaultBrowser(this);
     }
 
     @Override
     public void onRequestPermissionsResult(
             int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == BravePermissionUtils.NOTIFICATION_PERMISSION_CODE) {
+        if (requestCode == LuxxlePermissionUtils.NOTIFICATION_PERMISSION_CODE) {
             nextOnboardingStep();
         }
     }
@@ -378,7 +378,7 @@ public class WelcomeOnboardingActivity extends FirstRunActivityBase {
     private void handleNotificationPermission() {
         mCurrentOnboardingPage = CurrentOnboardingPage.NOTIFICATION_PERMISSION;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            BravePermissionUtils.showNotificationPermissionDialog(WelcomeOnboardingActivity.this);
+            LuxxlePermissionUtils.showNotificationPermissionDialog(WelcomeOnboardingActivity.this);
         } else {
             nextOnboardingStep();
         }
@@ -386,9 +386,9 @@ public class WelcomeOnboardingActivity extends FirstRunActivityBase {
 
     private void handleSetAsDefaultStep() {
         mCurrentOnboardingPage = CurrentOnboardingPage.SET_AS_DEFAULT;
-        if (!BraveSetDefaultBrowserUtils.supportsDefaultRoleManager()) {
-            if (mIvBrave != null) {
-                mIvBrave.setVisibility(View.VISIBLE);
+        if (!LuxxleSetDefaultBrowserUtils.supportsDefaultRoleManager()) {
+            if (mIvLuxxle != null) {
+                mIvLuxxle.setVisibility(View.VISIBLE);
             }
             showBrowserSelectionPage();
         } else if (!isDefaultBrowser()) {
@@ -405,14 +405,14 @@ public class WelcomeOnboardingActivity extends FirstRunActivityBase {
         }
 
         mCurrentOnboardingPage = CurrentOnboardingPage.WDP_PAGE;
-        if (mIvBrave != null) {
-            mIvBrave.setVisibility(View.VISIBLE);
+        if (mIvLuxxle != null) {
+            mIvLuxxle.setVisibility(View.VISIBLE);
         }
         showWDPPage();
     }
 
     private boolean isWDPEnabled() {
-        return BraveConfig.WEB_DISCOVERY_ENABLED;
+        return LuxxleConfig.WEB_DISCOVERY_ENABLED;
     }
 
     private void showBrowserSelectionPage() {
@@ -435,7 +435,7 @@ public class WelcomeOnboardingActivity extends FirstRunActivityBase {
             mIvArrowDown.setVisibility(View.VISIBLE);
         }
         String countryCode = Locale.getDefault().getCountry();
-        if (countryCode.equals(BraveConstants.INDIA_COUNTRY_CODE)) {
+        if (countryCode.equals(LuxxleConstants.INDIA_COUNTRY_CODE)) {
             if (mTvCard != null) {
                 mTvCard.setText(getResources().getString(R.string.privacy_onboarding_india));
             }
@@ -520,7 +520,7 @@ public class WelcomeOnboardingActivity extends FirstRunActivityBase {
         boolean isP3aEnabled = true;
 
         try {
-            isP3aEnabled = BraveLocalState.get().getBoolean(BravePref.P3A_ENABLED);
+            isP3aEnabled = LuxxleLocalState.get().getBoolean(LuxxlePref.P3A_ENABLED);
         } catch (Exception e) {
             Log.e(TAG, "P3aOnboarding: " + e.getMessage());
         }
@@ -532,10 +532,10 @@ public class WelcomeOnboardingActivity extends FirstRunActivityBase {
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                             try {
-                                BraveLocalState.get().setBoolean(BravePref.P3A_ENABLED, isChecked);
-                                BraveLocalState.get()
-                                        .setBoolean(BravePref.P3A_NOTICE_ACKNOWLEDGED, true);
-                                BraveLocalState.commitPendingWrite();
+                                LuxxleLocalState.get().setBoolean(LuxxlePref.P3A_ENABLED, isChecked);
+                                LuxxleLocalState.get()
+                                        .setBoolean(LuxxlePref.P3A_NOTICE_ACKNOWLEDGED, true);
+                                LuxxleLocalState.commitPendingWrite();
                             } catch (Exception e) {
                                 Log.e(TAG, "P3aOnboarding: " + e.getMessage());
                             }
@@ -578,7 +578,7 @@ public class WelcomeOnboardingActivity extends FirstRunActivityBase {
         if (mTvDefault != null) {
             ChromeClickableSpan wdpLearnMoreClickableSpan =
                     new ChromeClickableSpan(
-                            WelcomeOnboardingActivity.this.getColor(R.color.brave_blue_tint_color),
+                            WelcomeOnboardingActivity.this.getColor(R.color.luxxle_blue_tint_color),
                             (textView) -> {
                                 CustomTabActivity.showInfoPage(this, WDP_LINK);
                             });
@@ -698,7 +698,7 @@ public class WelcomeOnboardingActivity extends FirstRunActivityBase {
         super.triggerLayoutInflation();
 
         mFirstRunFlowSequencer =
-                new BraveFirstRunFlowSequencer(getProfileProviderSupplier()) {
+                new LuxxleFirstRunFlowSequencer(getProfileProviderSupplier()) {
                     @Override
                     public void onFlowIsKnown(boolean isChild) {
                         initializeViews();
@@ -712,7 +712,7 @@ public class WelcomeOnboardingActivity extends FirstRunActivityBase {
         if (PackageUtils.isFirstInstall(this)) {
             ChromeSharedPreferences.getInstance()
                     .writeBoolean(
-                            BravePreferenceKeys.BRAVE_TAB_GROUPS_ENABLED_DEFAULT_VALUE, false);
+                            LuxxlePreferenceKeys.LUXXLE_TAB_GROUPS_ENABLED_DEFAULT_VALUE, false);
         }
     }
 }

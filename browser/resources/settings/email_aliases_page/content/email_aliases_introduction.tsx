@@ -1,10 +1,10 @@
-// Copyright (c) 2025 The Brave Authors. All rights reserved.
+// Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
 import { getLocale } from '$web-common/locale'
-import { radius, spacing } from '@brave/leo/tokens/css/variables'
+import { radius, spacing } from '@luxxle/leo/tokens/css/variables'
 import * as React from 'react'
 import Card from './styles/Card'
 import SecureLink from '$web-common/SecureLink'
@@ -25,9 +25,9 @@ export const Introduction = () =>
       </div>
       <div>
         {getLocale('emailAliasesDescription')}  {
-           /* TODO(https://github.com/luxxle/brave-browser/issues/45408):
+           /* TODO(https://github.com/luxxle/luxxle-browser/issues/45408):
            // Link to the email aliases support page */}
-        <SecureLink href="https://support.brave.com" target='_blank'>
+        <SecureLink href="https://support.luxxle.com" target='_blank'>
           {getLocale('emailAliasesLearnMore')}
         </SecureLink>
       </div>

@@ -20,7 +20,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnProfileUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnProfileUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -84,12 +84,12 @@ public class TimerDialogFragment extends BottomSheetDialogFragment
         switch (timerItemModel.getTimerDuration()) {
             case MINUTES_15:
             case MINUTES_60:
-                BraveVpnProfileUtils.getInstance().stopVpn(getActivity());
+                LuxxleVpnProfileUtils.getInstance().stopVpn(getActivity());
                 TimerUtils.scheduleVpnAction(
                         getActivity(), timerItemModel.getTimerDuration().getMinutes());
                 break;
             case NONE:
-                BraveVpnProfileUtils.getInstance().stopVpn(getActivity());
+                LuxxleVpnProfileUtils.getInstance().stopVpn(getActivity());
                 break;
             default:
                 break;

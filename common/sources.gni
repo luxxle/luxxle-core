@@ -7,6 +7,6 @@
 # This file provides variables for chrome/common/BUILD.gn
 
 # Define empty chrome common variables to use Chromium defaults
-brave_chrome_common_sources = []
-brave_chrome_common_deps = []
-brave_chrome_common_public_deps = []
+luxxle_chrome_common_sources = []
+luxxle_chrome_common_deps = []
+luxxle_chrome_common_public_deps = []

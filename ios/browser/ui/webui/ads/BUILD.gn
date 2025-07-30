@@ -15,12 +15,12 @@ source_set("ads") {
 
   deps = [
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_ads/browser/resources:generated_resources",
+    # "//luxxle/components/luxxle_ads/browser/resources:generated_resources",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/constants",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/resources:static_resources",
-    "//luxxle/ios/browser/brave_ads",
+    "//luxxle/ios/browser/luxxle_ads",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//components/prefs",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -33,7 +33,7 @@ source_set("ads") {
   public_deps = [
     "//base",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_ads/core",
+    # "//luxxle/components/luxxle_ads/core",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/services/bat_ads/public/interfaces",
     "//ios/web/public",

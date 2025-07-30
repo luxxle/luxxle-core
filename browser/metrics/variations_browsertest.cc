@@ -18,8 +18,8 @@ BASE_FEATURE(kVariationsTestFeature,
              "VariationsTestFeature",
              base::FEATURE_DISABLED_BY_DEFAULT);
 
-// The seed is signed with the private key of the Brave variations server.
-const SignedSeedData& GetBraveSignedSeedData() {
+// The seed is signed with the private key of the Luxxle variations server.
+const SignedSeedData& GetLuxxleSignedSeedData() {
   static const char* study_names[] = {"VariationsTestStudy"};
 
   constexpr char kBase64UncompressedData[] =
@@ -38,13 +38,13 @@ const SignedSeedData& GetBraveSignedSeedData() {
       "xmQaBThr1i8ARQ1rKEinHluXeR7ve5fqy7L4AIgNym2PbtlL+9142+"
       "T8gUjjEsoT28J3HqE4IEa1eFvKLw=";
 
-  static const SignedSeedData kBraveTestSeedData{study_names,
+  static const SignedSeedData kLuxxleTestSeedData{study_names,
                                                  kBase64UncompressedData,
                                                  kBase64CompressedData,
                                                  kBase64Signature,
                                                  /*in_compressed_data=*/{},
                                                  /*in_compressed_data_size=*/0};
-  return kBraveTestSeedData;
+  return kLuxxleTestSeedData;
 }
 
 }  // namespace
@@ -58,9 +58,9 @@ class VariationsBrowserTest : public PlatformBrowserTest {
   base::HistogramTester histogram_tester_;
 };
 
-IN_PROC_BROWSER_TEST_F(VariationsBrowserTest, PRE_BraveSeedApplied) {
+IN_PROC_BROWSER_TEST_F(VariationsBrowserTest, PRE_LuxxleSeedApplied) {
   PrefService* local_state = g_browser_process->local_state();
-  WriteSeedData(local_state, GetBraveSignedSeedData(), kRegularSeedPrefKeys);
+  WriteSeedData(local_state, GetLuxxleSignedSeedData(), kRegularSeedPrefKeys);
 
   EXPECT_FALSE(base::FeatureList::IsEnabled(kVariationsTestFeature));
   EXPECT_EQ(variations::GetSeedVersion(), "");
@@ -71,18 +71,18 @@ IN_PROC_BROWSER_TEST_F(VariationsBrowserTest, PRE_BraveSeedApplied) {
 // shared). This should be reevaluated when
 // https://issues.chromium.org/issues/40200835 is completed.
 #if BUILDFLAG(IS_ANDROID)
-#define MAYBE_BraveSeedApplied DISABLED_BraveSeedApplied
+#define MAYBE_LuxxleSeedApplied DISABLED_LuxxleSeedApplied
 #else
-#define MAYBE_BraveSeedApplied BraveSeedApplied
+#define MAYBE_LuxxleSeedApplied LuxxleSeedApplied
 #endif
-IN_PROC_BROWSER_TEST_F(VariationsBrowserTest, MAYBE_BraveSeedApplied) {
+IN_PROC_BROWSER_TEST_F(VariationsBrowserTest, MAYBE_LuxxleSeedApplied) {
   histogram_tester_.ExpectUniqueSample("Variations.SeedUsage",
                                        SeedUsage::kRegularSeedUsed, 1);
 
-  EXPECT_TRUE(FieldTrialListHasAllStudiesFrom(GetBraveSignedSeedData()));
+  EXPECT_TRUE(FieldTrialListHasAllStudiesFrom(GetLuxxleSignedSeedData()));
 
   EXPECT_TRUE(base::FeatureList::IsEnabled(kVariationsTestFeature));
-  EXPECT_EQ(variations::GetSeedVersion(), "Brave variations test seed");
+  EXPECT_EQ(variations::GetSeedVersion(), "Luxxle variations test seed");
 }
 
 }  // namespace variations

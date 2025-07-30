@@ -9,9 +9,9 @@
 
 #include "base/test/metrics/histogram_tester.h"
 #include "luxxle/browser/ui/browser_commands.h"
-// REMOVED: #include "luxxle/components/brave_ads/.*"
+// REMOVED: #include "luxxle/components/luxxle_ads/.*"
 #include "luxxle/components/constants/pref_names.h"
-#include "luxxle/components/search_engines/brave_prepopulated_engines.h"
+#include "luxxle/components/search_engines/luxxle_prepopulated_engines.h"
 #include "luxxle/components/tor/buildflags/buildflags.h"
 #include "luxxle/components/web_discovery/buildflags/buildflags.h"
 #include "chrome/browser/profiles/profile.h"
@@ -60,7 +60,7 @@ class SearchEngineProviderP3ATest : public InProcessBrowserTest {
 IN_PROC_BROWSER_TEST_F(SearchEngineProviderP3ATest, DefaultSearchEngineP3A) {
   // Check that the metric is reported on startup.
   histogram_tester_->ExpectUniqueSample(kDefaultSearchEngineMetric,
-                                        SearchEngineP3A::kBrave, 1);
+                                        SearchEngineP3A::kLuxxle, 1);
 
   auto* service =
       TemplateURLServiceFactory::GetForProfile(browser()->profile());
@@ -82,13 +82,13 @@ IN_PROC_BROWSER_TEST_F(SearchEngineProviderP3ATest, DefaultSearchEngineP3A) {
                                        SearchEngineP3A::kDuckDuckGo, 1);
 
   // Check switching back to original engine.
-  auto brave_data = TemplateURLPrepopulateData::GetPrepopulatedEngine(
+  auto luxxle_data = TemplateURLPrepopulateData::GetPrepopulatedEngine(
       *browser()->profile()->GetPrefs(), regional_engines,
-      TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_BRAVE);
-  TemplateURL brave_url(*brave_data);
-  service->SetUserSelectedDefaultSearchProvider(&brave_url);
+      TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_LUXXLE);
+  TemplateURL luxxle_url(*luxxle_data);
+  service->SetUserSelectedDefaultSearchProvider(&luxxle_url);
   histogram_tester_->ExpectBucketCount(kDefaultSearchEngineMetric,
-                                       SearchEngineP3A::kBrave, 2);
+                                       SearchEngineP3A::kLuxxle, 2);
 
   // Check that incognito or TOR profiles do not emit the metric.
   CreateIncognitoBrowser();
@@ -123,19 +123,19 @@ IN_PROC_BROWSER_TEST_F(SearchEngineProviderP3ATest, SwitchSearchEngineP3A) {
   TemplateURL ddg_url(*ddg_data);
 
   service->SetUserSelectedDefaultSearchProvider(&ddg_url);
-  // This assumes Brave Search is the default!
+  // This assumes Luxxle Search is the default!
   histogram_tester_->ExpectBucketCount(kSwitchSearchEngineMetric,
-                                       SearchEngineSwitchP3A::kBraveToDDG, 1);
+                                       SearchEngineSwitchP3A::kLuxxleToDDG, 1);
 
   // Check additional changes.
-  auto brave_data = TemplateURLPrepopulateData::GetPrepopulatedEngine(
+  auto luxxle_data = TemplateURLPrepopulateData::GetPrepopulatedEngine(
       *browser()->profile()->GetPrefs(), regional_engines,
-      TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_BRAVE);
-  TemplateURL brave_url(*brave_data);
+      TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_LUXXLE);
+  TemplateURL luxxle_url(*luxxle_data);
 
-  service->SetUserSelectedDefaultSearchProvider(&brave_url);
+  service->SetUserSelectedDefaultSearchProvider(&luxxle_url);
   histogram_tester_->ExpectBucketCount(kSwitchSearchEngineMetric,
-                                       SearchEngineSwitchP3A::kDDGToBrave, 1);
+                                       SearchEngineSwitchP3A::kDDGToLuxxle, 1);
 
   // Check additional changes.
   auto bing_data = TemplateURLPrepopulateData::GetPrepopulatedEngine(
@@ -145,12 +145,12 @@ IN_PROC_BROWSER_TEST_F(SearchEngineProviderP3ATest, SwitchSearchEngineP3A) {
 
   service->SetUserSelectedDefaultSearchProvider(&bing_url);
   histogram_tester_->ExpectBucketCount(kSwitchSearchEngineMetric,
-                                       SearchEngineSwitchP3A::kBraveToOther, 1);
+                                       SearchEngineSwitchP3A::kLuxxleToOther, 1);
 
   // Check switching back to original engine.
-  service->SetUserSelectedDefaultSearchProvider(&brave_url);
+  service->SetUserSelectedDefaultSearchProvider(&luxxle_url);
   histogram_tester_->ExpectBucketCount(kSwitchSearchEngineMetric,
-                                       SearchEngineSwitchP3A::kOtherToBrave, 1);
+                                       SearchEngineSwitchP3A::kOtherToLuxxle, 1);
 
   // Check that incognito or TOR profiles do not emit the metric.
   histogram_tester_->ExpectTotalCount(kSwitchSearchEngineMetric, 8);
@@ -172,7 +172,7 @@ IN_PROC_BROWSER_TEST_F(SearchEngineProviderP3ATest, WebDiscoveryEnabledP3A) {
   histogram_tester_->ExpectBucketCount(kWebDiscoveryEnabledMetric, 1, 1);
 
   histogram_tester_->ExpectUniqueSample(kWebDiscoveryAndAdsMetric, 0, 2);
-  prefs->SetBoolean(brave_ads::prefs::kOptedInToNotificationAds, true);
+  prefs->SetBoolean(luxxle_ads::prefs::kOptedInToNotificationAds, true);
   histogram_tester_->ExpectBucketCount(kWebDiscoveryAndAdsMetric, 1, 1);
 
   prefs->SetBoolean(kWebDiscoveryEnabled, false);

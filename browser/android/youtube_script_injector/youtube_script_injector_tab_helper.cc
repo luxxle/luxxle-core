@@ -7,7 +7,7 @@
 
 #include "base/strings/utf_string_conversions.h"
 #include "luxxle/browser/android/youtube_script_injector/features.h"
-#include "luxxle/components/brave_shields/content/browser/brave_shields_util.h"
+#include "luxxle/components/luxxle_shields/content/browser/luxxle_shields_util.h"
 #include "luxxle/components/constants/pref_names.h"
 #include "chrome/browser/profiles/profile.h"
 #include "components/prefs/pref_service.h"
@@ -95,7 +95,7 @@ bool IsBackgroundVideoPlaybackEnabled(content::WebContents* contents) {
       static_cast<Profile*>(contents->GetBrowserContext())->GetPrefs();
 
   return (base::FeatureList::IsEnabled(
-              ::preferences::features::kBraveBackgroundVideoPlayback) &&
+              ::preferences::features::kLuxxleBackgroundVideoPlayback) &&
           prefs->GetBoolean(kBackgroundVideoPlaybackEnabled));
 }
 
@@ -120,7 +120,7 @@ void YouTubeScriptInjectorTabHelper::PrimaryMainDocumentElementAvailable() {
         kYoutubeBackgroundPlayback, base::NullCallback());
   }
   if (base::FeatureList::IsEnabled(
-          ::preferences::features::kBravePictureInPictureForYouTubeVideos)) {
+          ::preferences::features::kLuxxlePictureInPictureForYouTubeVideos)) {
     contents->GetPrimaryMainFrame()->ExecuteJavaScript(
         kYoutubePictureInPictureSupport, base::NullCallback());
   }

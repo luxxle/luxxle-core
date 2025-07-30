@@ -7,9 +7,9 @@
 #include "base/android/jni_array.h"
 #include "base/android/jni_string.h"
 #include "base/functional/callback.h"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
-#include "luxxle/components/permissions/contexts/brave_wallet_permission_context.h"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
+#include "luxxle/components/permissions/contexts/luxxle_wallet_permission_context.h"
 #include "chrome/android/chrome_jni_headers/ConnectAccountFragment_jni.h"
 #include "content/public/browser/render_frame_host.h"
 #include "content/public/browser/web_contents.h"
@@ -61,25 +61,25 @@ static void JNI_ConnectAccountFragment_ConnectAccount(
     return;
   }
 
-  brave_wallet::mojom::CoinType coin =
-      static_cast<brave_wallet::mojom::CoinType>(account_id_coin);
-  CHECK(brave_wallet::mojom::IsKnownEnumValue(coin));
+  luxxle_wallet::mojom::CoinType coin =
+      static_cast<luxxle_wallet::mojom::CoinType>(account_id_coin);
+  CHECK(luxxle_wallet::mojom::IsKnownEnumValue(coin));
 
-  auto request_type = brave_wallet::CoinTypeToPermissionRequestType(coin);
-  auto permission = brave_wallet::CoinTypeToPermissionType(coin);
+  auto request_type = luxxle_wallet::CoinTypeToPermissionRequestType(coin);
+  auto permission = luxxle_wallet::CoinTypeToPermissionType(coin);
 
   if (!request_type || !permission) {
     PlainCallConnectAccountCallback(env, java_callback, false);
     return;
   }
 
-  if (permissions::BraveWalletPermissionContext::HasRequestsInProgress(
+  if (permissions::LuxxleWalletPermissionContext::HasRequestsInProgress(
           rfh, *request_type)) {
     PlainCallConnectAccountCallback(env, java_callback, false);
     return;
   }
 
-  permissions::BraveWalletPermissionContext::RequestPermissions(
+  permissions::LuxxleWalletPermissionContext::RequestPermissions(
       *permission, rfh, {account_address},
       base::BindOnce(
           [](JNIEnv* env,

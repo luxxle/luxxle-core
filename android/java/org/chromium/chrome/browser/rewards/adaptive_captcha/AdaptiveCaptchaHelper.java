@@ -18,10 +18,10 @@ import org.chromium.base.ContextUtils;
 import org.chromium.base.Log;
 import org.chromium.base.task.PostTask;
 import org.chromium.base.task.TaskTraits;
-import org.chromium.chrome.browser.BraveRewardsNativeWorker;
-import org.chromium.chrome.browser.preferences.BravePref;
+import org.chromium.chrome.browser.LuxxleRewardsNativeWorker;
+import org.chromium.chrome.browser.preferences.LuxxlePref;
 import org.chromium.chrome.browser.profiles.ProfileManager;
-import org.chromium.chrome.browser.settings.developer.BraveQAPreferences;
+import org.chromium.chrome.browser.settings.developer.LuxxleQAPreferences;
 import org.chromium.components.user_prefs.UserPrefs;
 import org.chromium.net.ChromiumNetworkAdapter;
 import org.chromium.net.NetworkTrafficAnnotationTag;
@@ -42,20 +42,20 @@ public class AdaptiveCaptchaHelper {
     public static void startAttestation(String captchaId, String paymentId) {
         PostTask.postTask(TaskTraits.BEST_EFFORT_MAY_BLOCK, () -> {
             HttpURLConnection urlConnection = null;
-            String startAttestationUrl = BraveRewardsNativeWorker.getInstance().getAttestationURL();
-            if (BraveQAPreferences.shouldVlogRewards()) {
+            String startAttestationUrl = LuxxleRewardsNativeWorker.getInstance().getAttestationURL();
+            if (LuxxleQAPreferences.shouldVlogRewards()) {
                 Log.e(TAG, startAttestationUrl);
             }
             NetworkTrafficAnnotationTag annotation =
-                    NetworkTrafficAnnotationTag.createComplete("Brave attestation api android",
+                    NetworkTrafficAnnotationTag.createComplete("Luxxle attestation api android",
                             "semantics {"
-                                    + "  sender: 'Brave Android app'"
+                                    + "  sender: 'Luxxle Android app'"
                                     + "  description: "
                                     + "    'This api gets unique value for payment ID'"
                                     + "  trigger: 'When payment id as captcha scheduled'"
                                     + "  data:"
                                     + "    'payment id'"
-                                    + "  destination: Brave grant endpoint"
+                                    + "  destination: Luxxle grant endpoint"
                                     + "}"
                                     + "policy {"
                                     + "  cookies_allowed: NO"
@@ -85,7 +85,7 @@ public class AdaptiveCaptchaHelper {
                 Log.e(TAG, e.getMessage());
             } finally {
                 if (urlConnection != null) urlConnection.disconnect();
-                if (BraveQAPreferences.shouldVlogRewards()) {
+                if (LuxxleQAPreferences.shouldVlogRewards()) {
                     Log.e(TAG, logMessage);
                 }
             }
@@ -113,19 +113,19 @@ public class AdaptiveCaptchaHelper {
                 () -> {
                     HttpURLConnection urlConnection = null;
                     String attestPaymentIdUrl =
-                            BraveRewardsNativeWorker.getInstance()
+                            LuxxleRewardsNativeWorker.getInstance()
                                     .getAttestationURLWithPaymentId(paymentId);
-                    if (BraveQAPreferences.shouldVlogRewards()) {
+                    if (LuxxleQAPreferences.shouldVlogRewards()) {
                         Log.e(TAG, attestPaymentIdUrl);
                     }
                     NetworkTrafficAnnotationTag annotation =
                             NetworkTrafficAnnotationTag.createComplete(
-                                    "Brave attestation api android",
-                                    "semantics {  sender: 'Brave Android app'  description:    "
+                                    "Luxxle attestation api android",
+                                    "semantics {  sender: 'Luxxle Android app'  description:    "
                                         + " 'This api attests play integrity token for the given"
                                         + " payment ID'  trigger: 'When payment id as captcha"
                                         + " scheduled with integrity token'  data:    'integrity"
-                                        + " token, unique value, package name'  destination: Brave"
+                                        + " token, unique value, package name'  destination: Luxxle"
                                         + " grant endpoint}policy {  cookies_allowed: NO "
                                         + " policy_exception_justification: 'Not implemented.'}");
                     String logMessage = "";
@@ -152,7 +152,7 @@ public class AdaptiveCaptchaHelper {
                         Log.e(TAG, e.getMessage());
                     } finally {
                         if (urlConnection != null) urlConnection.disconnect();
-                        if (BraveQAPreferences.shouldVlogRewards()) {
+                        if (LuxxleQAPreferences.shouldVlogRewards()) {
                             Log.e(TAG, logMessage);
                         }
                     }
@@ -165,19 +165,19 @@ public class AdaptiveCaptchaHelper {
                 () -> {
                     HttpURLConnection urlConnection = null;
                     String solveCaptchaUrl =
-                            BraveRewardsNativeWorker.getInstance()
+                            LuxxleRewardsNativeWorker.getInstance()
                                     .getCaptchaSolutionURL(paymentId, captchaId);
-                    if (BraveQAPreferences.shouldVlogRewards()) {
+                    if (LuxxleQAPreferences.shouldVlogRewards()) {
                         Log.e(TAG, solveCaptchaUrl);
                     }
                     NetworkTrafficAnnotationTag annotation =
                             NetworkTrafficAnnotationTag.createComplete(
-                                    "Brave attestation api android",
-                                    "semantics {  sender: 'Brave Android app'  description:    "
+                                    "Luxxle attestation api android",
+                                    "semantics {  sender: 'Luxxle Android app'  description:    "
                                         + " 'This api solves captcha for the given payment ID' "
                                         + " trigger: 'When attestation is successful with the give"
                                         + " integrity token for provided payment id'  data:   "
-                                        + " 'payment id'  destination: Brave grant endpoint}policy"
+                                        + " 'payment id'  destination: Luxxle grant endpoint}policy"
                                         + " {  cookies_allowed: NO  policy_exception_justification:"
                                         + " 'Not implemented.'}");
 
@@ -205,7 +205,7 @@ public class AdaptiveCaptchaHelper {
                         Log.e(TAG, e.getMessage());
                     } finally {
                         if (urlConnection != null) urlConnection.disconnect();
-                        if (BraveQAPreferences.shouldVlogRewards()) {
+                        if (LuxxleQAPreferences.shouldVlogRewards()) {
                             Log.e(TAG, logMessage);
                         }
                     }
@@ -214,21 +214,21 @@ public class AdaptiveCaptchaHelper {
 
     private static void clearCaptchaPrefs() {
         UserPrefs.get(ProfileManager.getLastUsedRegularProfile())
-                .setInteger(BravePref.SCHEDULED_CAPTCHA_FAILED_ATTEMPTS, 0);
+                .setInteger(LuxxlePref.SCHEDULED_CAPTCHA_FAILED_ATTEMPTS, 0);
         UserPrefs.get(ProfileManager.getLastUsedRegularProfile())
-                .setString(BravePref.SCHEDULED_CAPTCHA_ID, "");
+                .setString(LuxxlePref.SCHEDULED_CAPTCHA_ID, "");
         UserPrefs.get(ProfileManager.getLastUsedRegularProfile())
-                .setString(BravePref.SCHEDULED_CAPTCHA_PAYMENT_ID, "");
+                .setString(LuxxlePref.SCHEDULED_CAPTCHA_PAYMENT_ID, "");
         UserPrefs.get(ProfileManager.getLastUsedRegularProfile())
-                .setBoolean(BravePref.SCHEDULED_CAPTCHA_PAUSED, false);
+                .setBoolean(LuxxlePref.SCHEDULED_CAPTCHA_PAUSED, false);
     }
 
     private static void recordFailureAttempt() {
         UserPrefs.get(ProfileManager.getLastUsedRegularProfile())
                 .setInteger(
-                        BravePref.SCHEDULED_CAPTCHA_FAILED_ATTEMPTS,
+                        LuxxlePref.SCHEDULED_CAPTCHA_FAILED_ATTEMPTS,
                         UserPrefs.get(ProfileManager.getLastUsedRegularProfile())
-                                        .getInteger(BravePref.SCHEDULED_CAPTCHA_FAILED_ATTEMPTS)
+                                        .getInteger(LuxxlePref.SCHEDULED_CAPTCHA_FAILED_ATTEMPTS)
                                 + 1);
     }
 

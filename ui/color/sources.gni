@@ -7,12 +7,12 @@
 # This file provides variables for ui/color/BUILD.gn
 
 # Define empty UI color variables to use Chromium defaults
-brave_ui_color_sources = []
-brave_ui_color_public_deps = []
+luxxle_ui_color_sources = []
+luxxle_ui_color_public_deps = []
 
 # Define empty UI color mixer variables to use Chromium defaults
-brave_ui_color_mixer_sources = []
-brave_ui_color_mixer_public_deps = []
+luxxle_ui_color_mixer_sources = []
+luxxle_ui_color_mixer_public_deps = []
 
 luxxle_ui_color_sources = []
 luxxle_ui_color_public_deps = [ "//luxxle/ui/color:nala_color_id" ]

@@ -18,7 +18,7 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.chromium.brave_shields.mojom.SubscriptionInfo;
+import org.chromium.luxxle_shields.mojom.SubscriptionInfo;
 import org.chromium.chrome.R;
 import org.chromium.mojo_base.mojom.Value;
 
@@ -35,16 +35,16 @@ public class ContentFilteringAdapter extends RecyclerView.Adapter<RecyclerView.V
     private static final int THREE_ITEMS_SPACE = 3;
     private static final int FOUR_ITEMS_SPACE = 4;
 
-    private BraveContentFilteringListener mBraveContentFileringListener;
+    private LuxxleContentFilteringListener mLuxxleContentFileringListener;
     private ArrayList<SubscriptionInfo> mSubscriptionFilterLists;
     private Value mFilterLists[];
     private Context mContext;
     private boolean mIsEdit;
 
     public ContentFilteringAdapter(
-            Context context, BraveContentFilteringListener braveContentFileringListener) {
+            Context context, LuxxleContentFilteringListener luxxleContentFileringListener) {
         mContext = context;
-        mBraveContentFileringListener = braveContentFileringListener;
+        mLuxxleContentFileringListener = luxxleContentFileringListener;
     }
 
     @Override
@@ -143,7 +143,7 @@ public class ContentFilteringAdapter extends RecyclerView.Adapter<RecyclerView.V
                 customFilterListViewHolder.toggleSwitch.setOnClickListener(
                         view -> {
                             customFilter.enabled = !customFilter.enabled;
-                            mBraveContentFileringListener.onSubscriptionFilterToggle(
+                            mLuxxleContentFileringListener.onSubscriptionFilterToggle(
                                     holder.getAdapterPosition() - TWO_ITEMS_SPACE,
                                     customFilter.enabled);
                         });
@@ -159,7 +159,7 @@ public class ContentFilteringAdapter extends RecyclerView.Adapter<RecyclerView.V
                 customFilterListViewHolder.deleteImageView.setOnClickListener(
                         view -> {
                             if (mIsEdit) {
-                                mBraveContentFileringListener.onSubscriptionFilterDelete(
+                                mLuxxleContentFileringListener.onSubscriptionFilterDelete(
                                         holder.getAdapterPosition() - TWO_ITEMS_SPACE);
                             }
                         });
@@ -170,10 +170,10 @@ public class ContentFilteringAdapter extends RecyclerView.Adapter<RecyclerView.V
             customFilterListViewHolder.itemView.setOnClickListener(
                     view -> {
                         if (holder.getAdapterPosition() == ONE_ITEM_SPACE) {
-                            mBraveContentFileringListener.onCustomFilters();
+                            mLuxxleContentFileringListener.onCustomFilters();
                         } else if (holder.getAdapterPosition()
                                 == mSubscriptionFilterLists.size() + TWO_ITEMS_SPACE) {
-                            mBraveContentFileringListener.onAddSubscriptionFilter();
+                            mLuxxleContentFileringListener.onAddSubscriptionFilter();
                         }
                     });
         } else if (holder instanceof FilterListViewHolder) {
@@ -193,7 +193,7 @@ public class ContentFilteringAdapter extends RecyclerView.Adapter<RecyclerView.V
                 filterListViewHolder.toggleSwitch.setOnClickListener(
                         view -> {
                             storage.get("enabled").setBoolValue(!isEnabled);
-                            mBraveContentFileringListener.onFilterToggle(uuid, !isEnabled);
+                            mLuxxleContentFileringListener.onFilterToggle(uuid, !isEnabled);
                         });
             }
         }

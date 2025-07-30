@@ -15,10 +15,10 @@ include_rules += [
 ]
 
 specific_include_rules = {
-  "brave_browser_main_parts\.h": [
+  "luxxle_browser_main_parts\.h": [
     "+src/chrome/browser/chrome_browser_main.h",
   ],
-  "brave_local_state_prefs\.cc": [
+  "luxxle_local_state_prefs\.cc": [
   ],
   ".*test.*\.cc": [
   ],

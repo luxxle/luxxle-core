@@ -3,28 +3,28 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveSingleWebsiteSettingsClassAdapter extends BraveClassVisitor {
+public class LuxxleSingleWebsiteSettingsClassAdapter extends LuxxleClassVisitor {
     static String sSingleWebsiteSettingsClassName =
             "org/chromium/components/browser_ui/site_settings/SingleWebsiteSettings";
-    static String sBraveSingleWebsiteSettingsClassName =
-            "org/chromium/components/browser_ui/site_settings/BraveSingleWebsiteSettings";
+    static String sLuxxleSingleWebsiteSettingsClassName =
+            "org/chromium/components/browser_ui/site_settings/LuxxleSingleWebsiteSettings";
 
-    public BraveSingleWebsiteSettingsClassAdapter(ClassVisitor visitor) {
+    public LuxxleSingleWebsiteSettingsClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        changeSuperName(sSingleWebsiteSettingsClassName, sBraveSingleWebsiteSettingsClassName);
+        changeSuperName(sSingleWebsiteSettingsClassName, sLuxxleSingleWebsiteSettingsClassName);
 
         changeMethodOwner(sSingleWebsiteSettingsClassName, "getPreferenceKey",
-                sBraveSingleWebsiteSettingsClassName);
+                sLuxxleSingleWebsiteSettingsClassName);
         changeMethodOwner(sSingleWebsiteSettingsClassName, "setupContentSettingsPreferences",
-                sBraveSingleWebsiteSettingsClassName);
+                sLuxxleSingleWebsiteSettingsClassName);
 
         makePublicMethod(sSingleWebsiteSettingsClassName, "setupContentSettingsPreference");
-        changeMethodOwner(sBraveSingleWebsiteSettingsClassName, "setupContentSettingsPreference",
+        changeMethodOwner(sLuxxleSingleWebsiteSettingsClassName, "setupContentSettingsPreference",
                 sSingleWebsiteSettingsClassName);
     }
 }

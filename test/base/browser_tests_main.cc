@@ -10,7 +10,7 @@
 #include "base/command_line.h"
 #include "base/test/launcher/test_launcher.h"
 #include "base/test/test_switches.h"
-#include "brave/test/base/brave_test_launcher_delegate.h"
+#include "luxxle/test/base/luxxle_test_launcher_delegate.h"
 #include "build/build_config.h"
 #include "chrome/test/base/chrome_test_launcher.h"
 #include "chrome/test/base/chrome_test_suite.h"
@@ -62,6 +62,6 @@ int main(int argc, char** argv) {
   }
 
   ChromeTestSuiteRunner runner;
-  BraveTestLauncherDelegate delegate(&runner);
+  LuxxleTestLauncherDelegate delegate(&runner);
   return LaunchChromeTests(parallel_jobs, &delegate, argc, argv);
 }

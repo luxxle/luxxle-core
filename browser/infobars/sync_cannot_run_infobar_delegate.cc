@@ -10,9 +10,9 @@
 #include <utility>
 
 #include "base/memory/raw_ptr.h"
-#include "luxxle/browser/ui/brave_pages.h"
-#include "luxxle/components/brave_sync/brave_sync_prefs.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/browser/ui/luxxle_pages.h"
+#include "luxxle/components/luxxle_sync/luxxle_sync_prefs.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "chrome/browser/infobars/confirm_infobar_creator.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
@@ -23,10 +23,10 @@
 
 namespace {
 
-bool SeedDecryptionFailed(raw_ptr<brave_sync::Prefs> brave_sync_prefs) {
-  CHECK_NE(brave_sync_prefs, nullptr);
+bool SeedDecryptionFailed(raw_ptr<luxxle_sync::Prefs> luxxle_sync_prefs) {
+  CHECK_NE(luxxle_sync_prefs, nullptr);
   bool failed_to_decrypt = false;
-  std::string seed = brave_sync_prefs->GetSeed(&failed_to_decrypt);
+  std::string seed = luxxle_sync_prefs->GetSeed(&failed_to_decrypt);
   return failed_to_decrypt;
 }
 
@@ -37,12 +37,12 @@ void SyncCannotRunInfoBarDelegate::Create(
     infobars::ContentInfoBarManager* infobar_manager,
     Profile* profile,
     Browser* browser) {
-  brave_sync::Prefs brave_sync_prefs(profile->GetPrefs());
-  if (brave_sync_prefs.IsFailedDecryptSeedNoticeDismissed()) {
+  luxxle_sync::Prefs luxxle_sync_prefs(profile->GetPrefs());
+  if (luxxle_sync_prefs.IsFailedDecryptSeedNoticeDismissed()) {
     return;
   }
 
-  if (!SeedDecryptionFailed(&brave_sync_prefs)) {
+  if (!SeedDecryptionFailed(&luxxle_sync_prefs)) {
     return;
   }
 
@@ -77,7 +77,7 @@ void SyncCannotRunInfoBarDelegate::InfoBarDismissed() {
 }
 
 std::u16string SyncCannotRunInfoBarDelegate::GetMessageText() const {
-  return l10n_util::GetStringUTF16(IDS_BRAVE_SYNC_CANNOT_RUN_INFOBAR_MESSAGE);
+  return l10n_util::GetStringUTF16(IDS_LUXXLE_SYNC_CANNOT_RUN_INFOBAR_MESSAGE);
 }
 
 int SyncCannotRunInfoBarDelegate::GetButtons() const {
@@ -88,13 +88,13 @@ std::u16string SyncCannotRunInfoBarDelegate::GetButtonLabel(
     InfoBarButton button) const {
   if (button == BUTTON_CANCEL) {
     return l10n_util::GetStringUTF16(
-        IDS_BRAVE_SYNC_CANNOT_RUN_INFOBAR_DONT_SHOW_BUTTON);
+        IDS_LUXXLE_SYNC_CANNOT_RUN_INFOBAR_DONT_SHOW_BUTTON);
   }
 
   DCHECK(button == BUTTON_OK);
 
   return l10n_util::GetStringUTF16(
-      IDS_BRAVE_SYNC_CANNOT_RUN_INFOBAR_CHECK_DETAILS_BUTTON);
+      IDS_LUXXLE_SYNC_CANNOT_RUN_INFOBAR_CHECK_DETAILS_BUTTON);
 }
 
 bool SyncCannotRunInfoBarDelegate::Accept() {
@@ -105,7 +105,7 @@ bool SyncCannotRunInfoBarDelegate::Accept() {
 
 bool SyncCannotRunInfoBarDelegate::Cancel() {
   // "Don't show again" button
-  brave_sync::Prefs brave_sync_prefs(profile_->GetPrefs());
-  brave_sync_prefs.DismissFailedDecryptSeedNotice();
+  luxxle_sync::Prefs luxxle_sync_prefs(profile_->GetPrefs());
+  luxxle_sync_prefs.DismissFailedDecryptSeedNotice();
   return true;
 }

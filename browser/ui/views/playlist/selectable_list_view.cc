@@ -7,7 +7,7 @@
 
 #include "base/strings/utf_string_conversions.h"
 #include "luxxle/app/vector_icons/vector_icons.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/browser/ui/views/playlist/thumbnail_view.h"
 #include "luxxle/components/vector_icons/vector_icons.h"
 #include "ui/base/metadata/metadata_impl_macros.h"
@@ -45,7 +45,7 @@ SelectableView::SelectableView(const std::string& id,
 
   selected_icon_ = AddChildView(std::make_unique<views::ImageView>());
   selected_icon_->SetImage(ui::ImageModel::FromVectorIcon(
-      kLeoCheckCircleOutlineIcon, kColorBravePlaylistCheckedIcon, 20));
+      kLeoCheckCircleOutlineIcon, kColorLuxxlePlaylistCheckedIcon, 20));
   selected_icon_->SetVisible(selected_);
 }
 
@@ -86,7 +86,7 @@ void SelectableView::UpdateBackground() {
 
   if (selected_) {
     SetBackground(views::CreateSolidBackground(
-        cp->GetColor(kColorBravePlaylistSelectedBackground)));
+        cp->GetColor(kColorLuxxlePlaylistSelectedBackground)));
   } else {
     SetBackground(nullptr);
   }

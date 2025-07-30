@@ -8,8 +8,8 @@ import copy
 import os
 import sys
 
-import brave_chromium_utils
-import brave_node
+import luxxle_chromium_utils
+import luxxle_node
 import chromium_presubmit_overrides
 import override_utils
 
@@ -42,10 +42,10 @@ def CheckLeoVariables(input_api, output_api):
 
     try:
         parts = [
-            brave_node.PathInNodeModules('@brave', 'leo', 'src', 'scripts',
+            luxxle_node.PathInNodeModules('@luxxle', 'leo', 'src', 'scripts',
                                          'audit-tokens.js')
         ]
-        brave_node.RunNode(parts)
+        luxxle_node.RunNode(parts)
         return []
     except RuntimeError as err:
         return [output_api.PresubmitError(err.args[1])]
@@ -54,13 +54,13 @@ def CheckLeoVariables(input_api, output_api):
 # Check and fix formatting issues (supports --fix).
 def CheckPatchFormatted(input_api, output_api):
     cmd = [
-        brave_chromium_utils.wspath(
+        luxxle_chromium_utils.wspath(
             '//luxxle/build/commands/scripts/format.js'), '--presubmit'
     ]
     if not input_api.PRESUBMIT_FIX:
         cmd.append('--dry-run')
     try:
-        brave_node.RunNode(cmd)
+        luxxle_node.RunNode(cmd)
         return []
     except RuntimeError as err:
         return [
@@ -84,14 +84,14 @@ def CheckESLint(input_api, output_api):
     files_to_check = input_api.AffectedFiles(file_filter=file_filter,
                                              include_deletes=False)
 
-    with brave_chromium_utils.sys_path('//tools'):
+    with luxxle_chromium_utils.sys_path('//tools'):
         from web_dev_style import js_checker
         return js_checker.JSChecker(input_api,
                                     output_api).RunEsLintChecks(files_to_check)
 
 
 def CheckWebDevStyle(input_api, output_api):
-    with brave_chromium_utils.sys_path('//tools'):
+    with luxxle_chromium_utils.sys_path('//tools'):
         from web_dev_style import presubmit_support, js_checker
         # Disable RunEsLintChecks, it's run separately in CheckESLint.
         with override_utils.override_scope_function(
@@ -121,12 +121,12 @@ def CheckPylint(input_api, output_api):
 
 
 def CheckLicense(input_api, output_api):
-    """Verifies the Brave license header."""
+    """Verifies the Luxxle license header."""
 
     files_to_check = input_api.DEFAULT_FILES_TO_CHECK + (r'.+\.gni?$', )
     files_to_skip = input_api.DEFAULT_FILES_TO_SKIP + (
         r"\.storybook/",
-        r"ios/browser/api/brave_rewards/legacy_database/core_data_models/",
+        r"ios/browser/api/luxxle_rewards/legacy_database/core_data_models/",
         r'win_build_output/',
     )
 
@@ -270,7 +270,7 @@ def CheckNewSourceFileWithoutGnChangeOnUpload(input_api, output_api):
     return []
 
 
-# DON'T ADD NEW BRAVE CHECKS AFTER THIS LINE.
+# DON'T ADD NEW LUXXLE CHECKS AFTER THIS LINE.
 #
 # This call inlines Chromium checks into current scope from src/PRESUBMIT.py. We
 # do this to have the right order of checks, so all `--fix`-aware checks are
@@ -281,7 +281,7 @@ chromium_presubmit_overrides.inline_presubmit('//PRESUBMIT.py', globals(),
 # pyright: reportUnboundVariable=false, reportUndefinedVariable=false
 
 _BANNED_JAVA_FUNCTIONS += (BanRule(
-    r'/(BraveLeoPrefUtils|Utils)\.getProfile\(\)',
+    r'/(LuxxleLeoPrefUtils|Utils)\.getProfile\(\)',
     ('Prefer passing in the Profile reference instead of relying on the '
      'static getProfile() call. Only top level entry points '
      '(e.g. Activities) should call ProfileManager.getLastUsedRegularProfile '
@@ -324,7 +324,7 @@ _BANNED_CPP_FUNCTIONS += (
     ))
 
 
-# Extend BanRule exclude lists with Brave-specific paths.
+# Extend BanRule exclude lists with Luxxle-specific paths.
 def ApplyBanRuleExcludes():
     # Collect all _BANNED_* variables declared in //PRESUBMIT.py.
     ban_rule_lists = [
@@ -365,16 +365,16 @@ ApplyBanRuleExcludes()
 
 @chromium_presubmit_overrides.override_check(globals())
 def CheckForIncludeGuards(original_check, input_api, output_api, **kwargs):
-    # Add 'brave/' prefix for header guard checks to properly validate guards.
+    # Add 'luxxle/' prefix for header guard checks to properly validate guards.
     def AffectedSourceFiles(self, original_method, source_file):
 
-        def PrependBrave(affected_file):
+        def PrependLuxxle(affected_file):
             affected_file = copy.copy(affected_file)
-            affected_file._path = f'brave/{affected_file._path}'
+            affected_file._path = f'luxxle/{affected_file._path}'
             return affected_file
 
         return [
-            PrependBrave(f) for f in filter(self.FilterSourceFile,
+            PrependLuxxle(f) for f in filter(self.FilterSourceFile,
                                             original_method(source_file))
         ]
 
@@ -415,7 +415,7 @@ def _ChangeHasSecurityReviewer(*_):
 @chromium_presubmit_overrides.override_check(globals())
 def CheckJavaStyle(_original_check, input_api, output_api):
     """ Copy of upstream's CheckJavaStyle. The only difference - it uses
-    brave/tools/android/checkstyle/brave-style-5.0.xml style file where all
+    luxxle/tools/android/checkstyle/luxxle-style-5.0.xml style file where all
     errors are replaced with warnings except UnusedImports.
     When all style error will be fixed, this function should be removed and
     the original function from upstream must be used again """
@@ -433,7 +433,7 @@ def CheckJavaStyle(_original_check, input_api, output_api):
     if not sys.platform.startswith('linux'):
         return []
 
-    with brave_chromium_utils.sys_path('//tools/android/checkstyle'):
+    with luxxle_chromium_utils.sys_path('//tools/android/checkstyle'):
         import checkstyle
 
     files_to_skip = input_api.DEFAULT_FILES_TO_SKIP
@@ -450,7 +450,7 @@ def CheckJavaStyle(_original_check, input_api, output_api):
 
     local_path = os.path.join(input_api.PresubmitLocalPath(), 'luxxle')
     style_file = os.path.join(input_api.PresubmitLocalPath(), 'luxxle', 'tools',
-                              'android', 'checkstyle', 'brave-style-5.0.xml')
+                              'android', 'checkstyle', 'luxxle-style-5.0.xml')
     violations = checkstyle.run_checkstyle(local_path, style_file, java_files)
     warnings = ['  ' + str(v) for v in violations if v.is_warning()]
     errors = ['  ' + str(v) for v in violations if v.is_error()]
@@ -486,15 +486,15 @@ def CheckTodoBugReferences(_original_check, input_api, output_api):
     for f in input_api.AffectedSourceFiles(_FilterFile):
         for line_number, line in f.ChangedContents():
             match = pattern.match(line)
-            if match and 'https://github.com/luxxle/brave-browser/issues' not in match.group(
+            if match and 'https://github.com/luxxle/luxxle-browser/issues' not in match.group(
                     0):
                 problems.append(f"{f.LocalPath()}: {line_number}\n    {line}")
 
     if problems:
         return [
             output_api.PresubmitPromptWarning(
-                'TODO comments must be accompanied with a valid brave-browser '
-                'issue. https://github.com/luxxle/brave-browser/issues',
+                'TODO comments must be accompanied with a valid luxxle-browser '
+                'issue. https://github.com/luxxle/luxxle-browser/issues',
                 problems)
         ]
     return []

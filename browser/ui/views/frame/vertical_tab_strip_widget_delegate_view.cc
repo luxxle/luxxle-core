@@ -8,7 +8,7 @@
 #include <utility>
 
 #include "base/check.h"
-#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_view.h"
 #include "luxxle/browser/ui/views/frame/vertical_tab_strip_region_view.h"
 #include "luxxle/browser/ui/views/frame/vertical_tab_strip_root_view.h"
 #include "luxxle/browser/ui/views/tabs/vertical_tab_utils.h"
@@ -148,7 +148,7 @@ void VerticalTabStripWidgetDelegateView::OnWidgetVisibilityChanged(
         visible) {
       // This happens when restoring browser window. The upstream implementation
       // make child widgets visible regardless of their previous visibility.
-      // https://github.com/luxxle/brave-browser/issues/29917
+      // https://github.com/luxxle/luxxle-browser/issues/29917
       widget->Hide();
     }
   }

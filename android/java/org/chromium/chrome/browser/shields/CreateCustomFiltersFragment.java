@@ -23,20 +23,20 @@ import android.widget.TextView;
 
 import org.chromium.base.supplier.ObservableSupplier;
 import org.chromium.base.supplier.ObservableSupplierImpl;
-import org.chromium.brave_shields.mojom.FilterListAndroidHandler;
+import org.chromium.luxxle_shields.mojom.FilterListAndroidHandler;
 import org.chromium.build.annotations.NullMarked;
 import org.chromium.build.annotations.Nullable;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.BraveRewardsHelper;
+import org.chromium.chrome.browser.LuxxleRewardsHelper;
 import org.chromium.chrome.browser.customtabs.CustomTabActivity;
-import org.chromium.chrome.browser.settings.BravePreferenceFragment;
+import org.chromium.chrome.browser.settings.LuxxlePreferenceFragment;
 import org.chromium.ui.text.ChromeClickableSpan;
 import org.chromium.ui.widget.Toast;
 
 @NullMarked
-public class CreateCustomFiltersFragment extends BravePreferenceFragment {
-    public static final String BRAVE_ADBLOCK_FILTER_SYNTAX_PAGE =
-            "https://support.brave.com/hc/en-us/articles/6449369961741";
+public class CreateCustomFiltersFragment extends LuxxlePreferenceFragment {
+    public static final String LUXXLE_ADBLOCK_FILTER_SYNTAX_PAGE =
+            "https://support.luxxle.com/hc/en-us/articles/6449369961741";
 
     private @Nullable FilterListAndroidHandler mFilterListAndroidHandler;
     private EditText mEtCustomFilters;
@@ -71,20 +71,20 @@ public class CreateCustomFiltersFragment extends BravePreferenceFragment {
                 String.format(
                         getResources().getString(R.string.create_custom_filter_summary),
                         getResources().getString(R.string.adblock_filter_syntax));
-        Spanned summaryTextSpanned = BraveRewardsHelper.spannedFromHtmlString(summaryText);
+        Spanned summaryTextSpanned = LuxxleRewardsHelper.spannedFromHtmlString(summaryText);
         SpannableString summaryTextSpannableString =
                 new SpannableString(summaryTextSpanned.toString());
 
         if (getActivity() != null) {
             ChromeClickableSpan summaryTextClickableSpan =
                     new ChromeClickableSpan(
-                            getActivity().getColor(R.color.brave_link),
+                            getActivity().getColor(R.color.luxxle_link),
                             (textView) -> {
                                 CustomTabActivity.showInfoPage(
-                                        getActivity(), BRAVE_ADBLOCK_FILTER_SYNTAX_PAGE);
+                                        getActivity(), LUXXLE_ADBLOCK_FILTER_SYNTAX_PAGE);
                             });
 
-            BraveRewardsHelper.setSpan(
+            LuxxleRewardsHelper.setSpan(
                     getActivity(),
                     summaryText,
                     summaryTextSpannableString,
@@ -129,7 +129,7 @@ public class CreateCustomFiltersFragment extends BravePreferenceFragment {
                         int messageId =
                                 isUpdated
                                         ? R.string.saved_changes_success
-                                        : R.string.brave_rewards_local_general_grant_error_title;
+                                        : R.string.luxxle_rewards_local_general_grant_error_title;
                         if (getActivity() != null) {
                             Toast.makeText(getActivity(), messageId, Toast.LENGTH_SHORT).show();
                         }

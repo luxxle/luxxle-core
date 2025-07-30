@@ -1,5 +1,5 @@
 include_rules = [
-  # TODO(sszaloki): https://github.com/luxxle/brave-browser/issues/46286
+  # TODO(sszaloki): https://github.com/luxxle/luxxle-browser/issues/46286
   # Try to componentize zxcvbn_data_component_installer.{h,cc}, and upstream the change.
   # That's technically not a layering violation, as there's nothing browser-specific in:
   "+chrome/browser/component_updater/zxcvbn_data_component_installer.h",

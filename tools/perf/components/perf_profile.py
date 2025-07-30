@@ -11,19 +11,19 @@ import shutil
 import components.path_util as path_util
 
 from components.cloud_storage import CloudFolder, DownloadFileFromCloudStorage
-from components.version import BraveVersion
+from components.version import LuxxleVersion
 from components.git_tools import GetFileAtRevision
 from components.perf_test_utils import IsSha1Hash
 
 
-with path_util.SysPath(path_util.GetBraveScriptDir(), 0):
+with path_util.SysPath(path_util.GetLuxxleScriptDir(), 0):
   from lib.util import extract_zip
 
 
-def _GetProfileHash(profile: str, version: BraveVersion) -> str:
+def _GetProfileHash(profile: str, version: LuxxleVersion) -> str:
   if IsSha1Hash(profile):  # the explicit profile hash
     return profile
-  sha1_filepath = os.path.join(path_util.GetBravePerfProfileDir(),
+  sha1_filepath = os.path.join(path_util.GetLuxxlePerfProfileDir(),
                                f'{profile}.zip.sha1')
   sha1_fallback_filepath = sha1_filepath + '.fallback'
 
@@ -50,7 +50,7 @@ def _GetProfileHash(profile: str, version: BraveVersion) -> str:
 
 
 def GetProfilePath(profile: str, work_directory: str,
-                   version: BraveVersion) -> str:
+                   version: LuxxleVersion) -> str:
   assert profile != 'clean'
 
   profile_dir = None
@@ -61,7 +61,7 @@ def GetProfilePath(profile: str, work_directory: str,
     shutil.copytree(profile, profile_dir)
   else:
     sha1 = _GetProfileHash(profile, version)
-    zip_path = os.path.join(path_util.GetBravePerfProfileDir(),
+    zip_path = os.path.join(path_util.GetLuxxlePerfProfileDir(),
                             f'{profile}_{sha1}.zip')
 
     if not os.path.isfile(zip_path):

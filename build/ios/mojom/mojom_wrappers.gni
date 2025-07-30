@@ -48,11 +48,11 @@ mojom_target_parser = "get_path_info("${mojom_target_path}:${mojom_target_name}_
   generate_wrappers_target = "${target_name}_generate_wrappers"
 
   action_foreach(generate_wrappers_target) {
-    script = "//brave/build/ios/mojom/gen_model_wrappers.py"
+    script = "//luxxle/build/ios/mojom/gen_model_wrappers.py"
     inputs = [
-      "//brave/build/ios/mojom/cpp_transformations.h",
-      "//brave/build/ios/mojom/mojom_objc_generator.py",
-      "$root_gen_dir/brave/build/ios/mojom/objc_templates.zip",
+      "//luxxle/build/ios/mojom/cpp_transformations.h",
+      "//luxxle/build/ios/mojom/mojom_objc_generator.py",
+      "$root_gen_dir/luxxle/build/ios/mojom/objc_templates.zip",
     ]
     sources = invoker.sources
     outputs = [
@@ -61,7 +61,7 @@ mojom_target_parser = "get_path_info("${mojom_target_path}:${mojom_target_name}_
       "$mojom_output_dir/{{source_file_part}}.objc.mm",
     ]
     _module_path = rebase_path("$dep_target_gen/{{source_file_part}}-module")
-    bytecode_path = rebase_path("$root_gen_dir/brave/build/ios/mojom")
+    bytecode_path = rebase_path("$root_gen_dir/luxxle/build/ios/mojom")
     args = [
       "--mojom-module=$_module_path",
       "--output-dir=" + rebase_path(mojom_output_dir),
@@ -75,7 +75,7 @@ mojom_target_parser = "get_path_info("${mojom_target_path}:${mojom_target_name}_
       args += [ "--exclude=$_excluded_types" ]
     }
     deps = [
-      "//brave/build/ios/mojom:precompile_templates",
+      "//luxxle/build/ios/mojom:precompile_templates",
       "//mojo/public/cpp/bindings",
       mojom_target,
       mojom_target_parser,
@@ -86,8 +86,8 @@ mojom_target_parser = "get_path_info("${mojom_target_path}:${mojom_target_name}_
 
   config(type_headers_target_name) {
     include_dirs = [
-      "//brave/build/ios/mojom/public/base",
-      "//brave/ios/browser/api/url",
+      "//luxxle/build/ios/mojom/public/base",
+      "//luxxle/ios/browser/api/url",
     ]
   }
 
@@ -113,8 +113,8 @@ mojom_target_parser = "get_path_info("${mojom_target_path}:${mojom_target_name}_
     public_deps += [
       ":$generate_wrappers_target",
       "//base",
-      "//brave/build/ios/mojom:precompile_templates",
-      "//brave/build/ios/mojom/public/base",
+      "//luxxle/build/ios/mojom:precompile_templates",
+      "//luxxle/build/ios/mojom/public/base",
       "//net",
       mojom_target,
     ]

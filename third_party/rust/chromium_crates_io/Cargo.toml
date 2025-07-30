@@ -20,11 +20,11 @@ speedreader-ffi = "0.1"
 skus-cxx = "0.1"
 json-cxx = "1"
 filecoin-cxx = "1"
-# Removed brave-news-cxx and brave_wallet dependencies - not needed in Luxxle
+# Removed luxxle-news-cxx and luxxle_wallet dependencies - not needed in Luxxle
 adblock-cxx = { version = "1" }
 constellation-cxx = "0.1"
 challenge-bypass-ristretto-cxx = "1"
-# Removed zcash dependency - was tied to brave_wallet functionality
+# Removed zcash dependency - was tied to luxxle_wallet functionality
 anonymous-credentials = "0.1"
 document-extractor = "0.1"
 flatbuffers = { version = "25.2.10" }
@@ -65,10 +65,10 @@ package = "json-cxx"
 path = "../../../components/filecoin/rs"
 package = "filecoin-cxx"
 
-# Removed brave-news-cxx and brave_wallet patches - not needed in Luxxle
+# Removed luxxle-news-cxx and luxxle_wallet patches - not needed in Luxxle
 
 [patch.crates-io.adblock-cxx_v1]
-path = "../../../components/brave_shields/core/browser/adblock/rs"
+path = "../../../components/luxxle_shields/core/browser/adblock/rs"
 package = "adblock-cxx"
 
 [patch.crates-io.constellation-cxx_v0_1]
@@ -299,4 +299,4 @@ package = "windows-sys"
 path = "../../../../third_party/rust/chromium_crates_io/vendor/windows-targets-v0_52"
 package = "windows-targets"
 
-# Removed all zcash patches - were tied to brave_wallet functionality
+# Removed all zcash patches - were tied to luxxle_wallet functionality

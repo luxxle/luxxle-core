@@ -7,10 +7,10 @@ package org.chromium.chrome.browser.crypto_wallet.model;
 
 import android.graphics.Bitmap;
 
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.BlockchainToken;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
-import org.chromium.brave_wallet.mojom.TransactionInfo;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.BlockchainToken;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.TransactionInfo;
 import org.chromium.chrome.browser.crypto_wallet.util.ParsedTransaction;
 import org.chromium.chrome.browser.crypto_wallet.util.Utils;
 

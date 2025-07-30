@@ -1,0 +1,47 @@
+/* Copyright (c) 2019 The Luxxle Authors. All rights reserved.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#ifndef LUXXLE_BROWSER_EXTENSIONS_API_LUXXLE_THEME_API_H_
+#define LUXXLE_BROWSER_EXTENSIONS_API_LUXXLE_THEME_API_H_
+
+#include "extensions/browser/extension_function.h"
+
+namespace extensions {
+namespace api {
+
+class LuxxleThemeGetLuxxleThemeListFunction : public ExtensionFunction {
+ public:
+  DECLARE_EXTENSION_FUNCTION("luxxleTheme.getLuxxleThemeList", UNKNOWN)
+
+ protected:
+  ~LuxxleThemeGetLuxxleThemeListFunction() override {}
+
+  ResponseAction Run() override;
+};
+
+class LuxxleThemeGetLuxxleThemeTypeFunction : public ExtensionFunction {
+ public:
+  DECLARE_EXTENSION_FUNCTION("luxxleTheme.getLuxxleThemeType", UNKNOWN)
+
+ protected:
+  ~LuxxleThemeGetLuxxleThemeTypeFunction() override {}
+
+  ResponseAction Run() override;
+};
+
+class LuxxleThemeSetLuxxleThemeTypeFunction : public ExtensionFunction {
+ public:
+  DECLARE_EXTENSION_FUNCTION("luxxleTheme.setLuxxleThemeType", UNKNOWN)
+
+ protected:
+  ~LuxxleThemeSetLuxxleThemeTypeFunction() override {}
+
+  ResponseAction Run() override;
+};
+
+}  // namespace api
+}  // namespace extensions
+
+#endif  // LUXXLE_BROWSER_EXTENSIONS_API_LUXXLE_THEME_API_H_

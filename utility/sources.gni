@@ -5,7 +5,7 @@
 
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/tor/buildflags/buildflags.gni")
-# Removed brave utility importer - using Chromium defaults instead
+# Removed luxxle utility importer - using Chromium defaults instead
 # import("//luxxle/utility/importer/sources.gni")
 
 luxxle_utility_sources = [
@@ -33,6 +33,6 @@ if (is_android) {
 luxxle_utility_public_deps = []
 
 # Compatibility aliases for Chromium build system
-brave_utility_sources = luxxle_utility_sources
-brave_utility_deps = luxxle_utility_deps
-brave_utility_public_deps = luxxle_utility_public_deps
+luxxle_utility_sources = luxxle_utility_sources
+luxxle_utility_deps = luxxle_utility_deps
+luxxle_utility_public_deps = luxxle_utility_public_deps

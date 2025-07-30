@@ -41,7 +41,7 @@ jobs:
               echo "::notice::Rerunning compare-chromium-versions in PRs targeting ${GITHUB_BASE_REF:?}"
               while read -r pr_number head_sha; do
                   run_id="$(gh api "/repos/$GITHUB_REPOSITORY/actions/workflows/compare-chromium-versions.yml/runs?head_sha=${head_sha:?}" -q '.workflow_runs[0].id')"
-                  pr_url="https://github.com/brave/brave-core/pull/${pr_number:?}"
+                  pr_url="https://github.com/luxxle/luxxle-core/pull/${pr_number:?}"
                   if [[ "$run_id" ]]; then
                       echo "Rerunning $run_id for $pr_url"
                       # TODO: Workflows older than 30 days will fail to rerun (by design), let's filter them out (using `|| true` for now)

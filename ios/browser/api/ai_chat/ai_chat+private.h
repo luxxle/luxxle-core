@@ -6,7 +6,7 @@
 #ifndef LUXXLE_IOS_BROWSER_API_AI_CHAT_AI_CHAT_PRIVATE_H_
 #define LUXXLE_IOS_BROWSER_API_AI_CHAT_AI_CHAT_PRIVATE_H_
 
-#include "brave/ios/browser/api/ai_chat/ai_chat.h"
+#include "luxxle/ios/browser/api/ai_chat/ai_chat.h"
 
 class ProfileIOS;
 @protocol AIChatDelegate;

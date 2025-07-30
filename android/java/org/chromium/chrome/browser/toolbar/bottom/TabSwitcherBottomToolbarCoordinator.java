@@ -20,7 +20,7 @@ import org.chromium.chrome.browser.omaha.UpdateMenuItemHelper;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.chrome.browser.tabmodel.IncognitoStateProvider;
 import org.chromium.chrome.browser.theme.ThemeColorProvider;
-import org.chromium.chrome.browser.toolbar.menu_button.BraveMenuButtonCoordinator;
+import org.chromium.chrome.browser.toolbar.menu_button.LuxxleMenuButtonCoordinator;
 import org.chromium.chrome.browser.toolbar.menu_button.MenuButton;
 import org.chromium.chrome.browser.toolbar.menu_button.MenuButtonState;
 import org.chromium.chrome.browser.ui.appmenu.AppMenuButtonHelper;
@@ -98,7 +98,7 @@ public class TabSwitcherBottomToolbarCoordinator {
         if (mMenuButton != null) {
             Supplier<MenuButtonState> menuButtonStateSupplier =
                     () -> UpdateMenuItemHelper.getInstance(profile).getUiState().buttonState;
-            BraveMenuButtonCoordinator.setupPropertyModel(mMenuButton, menuButtonStateSupplier);
+            LuxxleMenuButtonCoordinator.setupPropertyModel(mMenuButton, menuButtonStateSupplier);
         }
 
         new OneShotCallback<>(

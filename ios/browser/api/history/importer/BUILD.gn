@@ -8,8 +8,8 @@ import("//ios/build/config.gni")
 
 source_set("importer") {
   sources = [
-    "brave_history_importer.h",
-    "brave_history_importer.mm",
+    "luxxle_history_importer.h",
+    "luxxle_history_importer.mm",
     "history_json_reader.cc",
     "history_json_reader.h",
   ]

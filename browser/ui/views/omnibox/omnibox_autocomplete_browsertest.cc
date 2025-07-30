@@ -5,7 +5,7 @@
 
 #include "base/strings/utf_string_conversions.h"
 #include "luxxle/components/constants/pref_names.h"
-#include "luxxle/components/omnibox/browser/brave_omnibox_prefs.h"
+#include "luxxle/components/omnibox/browser/luxxle_omnibox_prefs.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/views/frame/browser_view.h"

@@ -7,7 +7,7 @@
 
 #include "base/memory/raw_ptr.h"
 #include "base/values.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "build/build_config.h"
 #include "chrome/browser/profiles/profile_attributes_storage.h"
 #include "chrome/grit/theme_resources.h"
@@ -86,7 +86,7 @@ TEST_F(ProfileAttributeMigrationTest,
 }
 
 TEST_F(ProfileAttributeMigrationTest,
-       MigrateObsoleteProfileAttributes_BraveAvatarIcon) {
+       MigrateObsoleteProfileAttributes_LuxxleAvatarIcon) {
   // get the entry and set it to default
   auto* profile_attribute_entry = entry();
   profile_attribute_entry->SetAvatarIconIndex(56);

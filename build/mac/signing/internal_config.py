@@ -6,7 +6,7 @@
 # Upstream's signing and PKG/DMG/ZIP generation logic lets embedders hook into
 # the process by providing a module named `signing.internal_config` with a class
 # named `InternalCodeSignConfig`. This file provides such code to apply
-# customizations that are necessary for Brave. It collaborates with the similar
+# customizations that are necessary for Luxxle. It collaborates with the similar
 # hook `internal_invoker.py` in this directory.
 
 import os
@@ -14,7 +14,7 @@ import os
 from signing.chromium_config import ChromiumCodeSignConfig
 from signing.model import Distribution, NotarizeAndStapleLevel
 
-BRAVE_CHANNEL = os.environ.get('BRAVE_CHANNEL')
+LUXXLE_CHANNEL = os.environ.get('LUXXLE_CHANNEL')
 
 
 class InternalCodeSignConfig(ChromiumCodeSignConfig):
@@ -31,7 +31,7 @@ class InternalCodeSignConfig(ChromiumCodeSignConfig):
     @property
     def distributions(self):
         return [
-            Distribution(channel=BRAVE_CHANNEL,
+            Distribution(channel=LUXXLE_CHANNEL,
                          package_as_dmg=True,
                          package_as_pkg=True,
                          package_as_zip=True)

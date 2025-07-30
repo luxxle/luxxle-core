@@ -5,8 +5,8 @@
 
 package org.chromium.chrome.browser.crypto_wallet.observers;
 
-import org.chromium.brave_wallet.mojom.TransactionInfo;
-import org.chromium.brave_wallet.mojom.TxServiceObserver;
+import org.chromium.luxxle_wallet.mojom.TransactionInfo;
+import org.chromium.luxxle_wallet.mojom.TxServiceObserver;
 import org.chromium.mojo.system.MojoException;
 
 public class TxServiceObserverImpl implements TxServiceObserver {

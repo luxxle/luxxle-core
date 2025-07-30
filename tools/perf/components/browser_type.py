@@ -14,18 +14,18 @@ from typing import List, Optional
 from components.field_trials import FieldTrialsMode
 from components.common_options import CommonOptions
 from components.perf_test_utils import (DownloadArchiveAndUnpack, DownloadFile,
-                                        GetProcessOutput, ToBravePlatformName,
+                                        GetProcessOutput, ToLuxxlePlatformName,
                                         ToChromiumPlatformName)
-from components.version import BraveVersion
+from components.version import LuxxleVersion
 
 
-def _GetBraveDownloadUrl(tag: str, filename: str) -> str:
-  return ('https://github.com/luxxle/brave-browser/releases/download/' +
+def _GetLuxxleDownloadUrl(tag: str, filename: str) -> str:
+  return ('https://github.com/luxxle/luxxle-browser/releases/download/' +
           f'{tag}/{filename}')
 
 
 def _GetChromiumDownloadUrl(version: str, filename: str) -> str:
-  return ('https://build-artifacts.brave.com/chromium-builds/' +
+  return ('https://build-artifacts.luxxle.com/chromium-builds/' +
           f'{version}/{filename}')
 
 
@@ -96,7 +96,7 @@ class BrowserType:
     self._report_as_reference = report_as_reference
 
   @property
-  def is_brave(self) -> bool:
+  def is_luxxle(self) -> bool:
     return False
 
   @property
@@ -126,7 +126,7 @@ class BrowserType:
   def GetDefaultFieldTrials(self) -> FieldTrialsMode:
     return FieldTrialsMode.NO_TRIALS
 
-  def DownloadBrowserBinary(self, url: Optional[str], version: BraveVersion,
+  def DownloadBrowserBinary(self, url: Optional[str], version: LuxxleVersion,
                             out_dir: str, common_options: CommonOptions) -> str:
     raise NotImplementedError()
 
@@ -144,23 +144,23 @@ class BrowserType:
     raise RuntimeError(f'Unsupported platfrom {sys.platform}')
 
 
-class BraveBrowserTypeImpl(BrowserType):
+class LuxxleBrowserTypeImpl(BrowserType):
 
   def __init__(self, channel: str):
-    super().__init__('luxxle', 'Brave Browser', channel, [], [], False)
+    super().__init__('luxxle', 'Luxxle Browser', channel, [], [], False)
 
   @property
-  def is_brave(self) -> bool:
+  def is_luxxle(self) -> bool:
     return True
 
   def _GetWinInstallPath(self) -> str:
-    app_name = 'Brave-Browser'
+    app_name = 'Luxxle-Browser'
     if self.channel is not None:
       app_name += '-' + self.channel
     return os.path.join(os.path.expanduser('~'), 'AppData', 'Local',
-                        'BraveSoftware', app_name, 'Application')
+                        'LuxxleSoftware', app_name, 'Application')
 
-  def DownloadBrowserBinary(self, url: Optional[str], version: BraveVersion,
+  def DownloadBrowserBinary(self, url: Optional[str], version: LuxxleVersion,
                             out_dir: str, common_options: CommonOptions) -> str:
     if url is None and not version.is_tag:
       raise RuntimeError(
@@ -171,21 +171,21 @@ class BraveBrowserTypeImpl(BrowserType):
     if (target_os == 'windows' and version_parts[0] == 1
         and version_parts[1] < 35):
       if url is None:
-        url = _GetBraveDownloadUrl(
-            tag, f'BraveBrowserStandaloneSilent{self.channel}Setup.exe')
+        url = _GetLuxxleDownloadUrl(
+            tag, f'LuxxleBrowserStandaloneSilent{self.channel}Setup.exe')
       return _DownloadWinInstallerAndExtract(out_dir, url,
                                              self._GetWinInstallPath(),
-                                             'brave.exe')
+                                             'luxxle.exe')
     if target_os == 'android':
       if url is None:
-        url = _GetBraveDownloadUrl(tag, 'Bravearm64Universal.apk')
-      apk_filename = os.path.join(out_dir, f'brave-{version.to_string()}.apk')
+        url = _GetLuxxleDownloadUrl(tag, 'Luxxlearm64Universal.apk')
+      apk_filename = os.path.join(out_dir, f'luxxle-{version.to_string()}.apk')
       DownloadFile(url, apk_filename)
       return apk_filename
 
     if url is None:
-      brave_platform = ToBravePlatformName(target_os)
-      url = _GetBraveDownloadUrl(tag, f'brave-{tag}-{brave_platform}.zip')
+      luxxle_platform = ToLuxxlePlatformName(target_os)
+      url = _GetLuxxleDownloadUrl(tag, f'luxxle-{tag}-{luxxle_platform}.zip')
     DownloadArchiveAndUnpack(out_dir, url)
     _FixUpUnpackedBrowser(out_dir)
 
@@ -199,7 +199,7 @@ class ChromiumBrowserTypeImpl(BrowserType):
   def __init__(self):
     super().__init__('chrome', 'Chromium', None, [], [], True)
 
-  def DownloadBrowserBinary(self, url: Optional[str], version: BraveVersion,
+  def DownloadBrowserBinary(self, url: Optional[str], version: LuxxleVersion,
                             out_dir: str, common_options: CommonOptions) -> str:
     target_os = common_options.target_os
     chromium_version_str = version.chromium_version.to_string()
@@ -212,8 +212,8 @@ class ChromiumBrowserTypeImpl(BrowserType):
       DownloadFile(url, apk_path)
       return apk_path
 
-    brave_platform_name = ToBravePlatformName(target_os)
-    filename = f'chromium-{chromium_version_str}-{brave_platform_name}.zip'
+    luxxle_platform_name = ToLuxxlePlatformName(target_os)
+    filename = f'chromium-{chromium_version_str}-{luxxle_platform_name}.zip'
     if url is None:
       url = _GetChromiumDownloadUrl(chromium_version_str, filename)
     DownloadArchiveAndUnpack(out_dir, url)
@@ -226,7 +226,7 @@ class ChromeBrowserTypeImpl(BrowserType):
   def __init__(self, channel: str):
     super().__init__('chrome', 'Google Chrome', channel, [], [], True)
 
-  def DownloadBrowserBinary(self, url: Optional[str], version: BraveVersion,
+  def DownloadBrowserBinary(self, url: Optional[str], version: LuxxleVersion,
                             out_dir: str, common_options: CommonOptions) -> str:
     raise NotImplementedError()
 
@@ -239,7 +239,7 @@ class ChromeOfficialBrowserTypeImpl(ChromeBrowserTypeImpl):
     return os.path.join(os.path.expanduser('~'), 'AppData', 'Local', 'Google',
                         app_name, 'Application')
 
-  def DownloadBrowserBinary(self, url: Optional[str], version: BraveVersion,
+  def DownloadBrowserBinary(self, url: Optional[str], version: LuxxleVersion,
                             out_dir: str, common_options: CommonOptions) -> str:
     if common_options.target_os == 'windows':
       if url is None:
@@ -256,7 +256,7 @@ class ChromeTestingBrowserTypeImpl(ChromeBrowserTypeImpl):
     return os.path.join(f'chrome-{chrome_platform}',
                         super().GetBinaryPath(target_os))
 
-  def DownloadBrowserBinary(self, url: Optional[str], version: BraveVersion,
+  def DownloadBrowserBinary(self, url: Optional[str], version: LuxxleVersion,
                             out_dir: str, common_options: CommonOptions) -> str:
     chrome_platform = ToChromiumPlatformName(common_options.target_os)
     chromium_version_str = version.chromium_version.to_string()
@@ -280,7 +280,7 @@ def ParseBrowserType(browser: str) -> BrowserType:
     return ChromeTestingBrowserTypeImpl('for Testing')
 
   if browser == 'luxxle':
-    return BraveBrowserTypeImpl('Nightly')
+    return LuxxleBrowserTypeImpl('Nightly')
   if browser.startswith('custom'):
     return BrowserType(browser, browser, '', [], [], False)
 

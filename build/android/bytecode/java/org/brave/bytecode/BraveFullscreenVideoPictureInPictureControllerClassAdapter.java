@@ -3,26 +3,26 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveFullscreenVideoPictureInPictureControllerClassAdapter extends BraveClassVisitor {
+public class LuxxleFullscreenVideoPictureInPictureControllerClassAdapter extends LuxxleClassVisitor {
     static String sFullscreenVideoPictureInPictureController =
             "org/chromium/chrome/browser/media/FullscreenVideoPictureInPictureController";
-    static String sBraveFullscreenVideoPictureInPictureController =
-            "org/chromium/chrome/browser/media/BraveFullscreenVideoPictureInPictureController";
+    static String sLuxxleFullscreenVideoPictureInPictureController =
+            "org/chromium/chrome/browser/media/LuxxleFullscreenVideoPictureInPictureController";
 
-    public BraveFullscreenVideoPictureInPictureControllerClassAdapter(ClassVisitor visitor) {
+    public LuxxleFullscreenVideoPictureInPictureControllerClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         changeSuperName(
                 sFullscreenVideoPictureInPictureController,
-                sBraveFullscreenVideoPictureInPictureController);
+                sLuxxleFullscreenVideoPictureInPictureController);
         deleteField(sFullscreenVideoPictureInPictureController, "mDismissPending");
         changeMethodOwner(
                 sFullscreenVideoPictureInPictureController,
                 "dismissActivityIfNeeded",
-                sBraveFullscreenVideoPictureInPictureController);
+                sLuxxleFullscreenVideoPictureInPictureController);
     }
 }

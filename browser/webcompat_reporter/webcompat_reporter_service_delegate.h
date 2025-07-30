@@ -13,9 +13,9 @@
 #include "components/content_settings/core/browser/cookie_settings.h"
 #include "components/content_settings/core/browser/host_content_settings_map.h"
 
-namespace brave_shields {
+namespace luxxle_shields {
 class AdBlockService;
-}  // namespace brave_shields
+}  // namespace luxxle_shields
 
 namespace webcompat_reporter {
 
@@ -24,7 +24,7 @@ class WebcompatReporterServiceDelegateImpl
  public:
   explicit WebcompatReporterServiceDelegateImpl(
       component_updater::ComponentUpdateService* component_update_service,
-      brave_shields::AdBlockService* adblock_service,
+      luxxle_shields::AdBlockService* adblock_service,
       HostContentSettingsMap* host_content_settings_map,
       scoped_refptr<content_settings::CookieSettings> content_settings);
   WebcompatReporterServiceDelegateImpl(
@@ -42,7 +42,7 @@ class WebcompatReporterServiceDelegateImpl
       const std::optional<std::string>& current_url) const override;
 
  private:
-  const raw_ptr<brave_shields::AdBlockService> adblock_service_;
+  const raw_ptr<luxxle_shields::AdBlockService> adblock_service_;
   const raw_ptr<HostContentSettingsMap> host_content_settings_map_;
   scoped_refptr<content_settings::CookieSettings> cookie_settings_;
 };

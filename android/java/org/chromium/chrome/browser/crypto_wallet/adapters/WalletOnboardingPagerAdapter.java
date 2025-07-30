@@ -14,8 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import org.chromium.brave_wallet.mojom.BraveWalletP3a;
-import org.chromium.brave_wallet.mojom.OnboardingAction;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletP3a;
+import org.chromium.luxxle_wallet.mojom.OnboardingAction;
 import org.chromium.chrome.browser.crypto_wallet.fragments.UnlockWalletFragment;
 import org.chromium.chrome.browser.crypto_wallet.fragments.onboarding.OnboardingBackupWalletFragment;
 import org.chromium.chrome.browser.crypto_wallet.fragments.onboarding.OnboardingConfirmationFragment;
@@ -51,7 +51,7 @@ public class WalletOnboardingPagerAdapter extends FragmentStateAdapter {
     private static final long TERMS_OF_USE_RESTORE_ID = 998;
     private static final long UNLOCK_ID = 997;
 
-    @NonNull private final BraveWalletP3a mBraveWalletP3A;
+    @NonNull private final LuxxleWalletP3a mLuxxleWalletP3A;
     private final boolean mRestartSetupAction;
     private final boolean mRestartRestoreAction;
 
@@ -59,11 +59,11 @@ public class WalletOnboardingPagerAdapter extends FragmentStateAdapter {
 
     public WalletOnboardingPagerAdapter(
             @NonNull final FragmentActivity fragmentActivity,
-            @NonNull final BraveWalletP3a braveWalletP3a,
+            @NonNull final LuxxleWalletP3a luxxleWalletP3a,
             final boolean restartSetupAction,
             final boolean restartRestoreAction) {
         super(fragmentActivity);
-        mBraveWalletP3A = braveWalletP3a;
+        mLuxxleWalletP3A = luxxleWalletP3a;
         mRestartSetupAction = restartSetupAction;
         mRestartRestoreAction = restartRestoreAction;
         mWalletAction = WalletAction.UNLOCK;
@@ -76,11 +76,11 @@ public class WalletOnboardingPagerAdapter extends FragmentStateAdapter {
         mWalletAction = walletAction;
 
         if (walletAction == WalletAction.ONBOARDING) {
-            mBraveWalletP3A.reportOnboardingAction(OnboardingAction.SHOWN);
+            mLuxxleWalletP3A.reportOnboardingAction(OnboardingAction.SHOWN);
         } else if (walletAction == WalletAction.PASSWORD_CREATION) {
-            mBraveWalletP3A.reportOnboardingAction(OnboardingAction.LEGAL_AND_PASSWORD);
+            mLuxxleWalletP3A.reportOnboardingAction(OnboardingAction.LEGAL_AND_PASSWORD);
         } else if (walletAction == WalletAction.ONBOARDING_RESTORE) {
-            mBraveWalletP3A.reportOnboardingAction(OnboardingAction.START_RESTORE);
+            mLuxxleWalletP3A.reportOnboardingAction(OnboardingAction.START_RESTORE);
         }
 
         notifyItemRangeChanged(0, getItemCount());

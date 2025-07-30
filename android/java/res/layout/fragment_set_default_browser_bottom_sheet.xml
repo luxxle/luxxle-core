@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (c) 2022 The Brave Authors. All rights reserved.
+<!-- Copyright (c) 2022 The Luxxle Authors. All rights reserved.
      This Source Code Form is subject to the terms of the Mozilla Public
      License, v. 2.0. If a copy of the MPL was not distributed with this file,
      You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:drawablePadding="15dp"
-        app:drawableStartCompat="@drawable/ic_brave_36"
-        android:text="@string/brave_privacy_set_default_browser"
+        app:drawableStartCompat="@drawable/ic_luxxle_36"
+        android:text="@string/luxxle_privacy_set_default_browser"
         android:textSize="20sp"
         android:textColor="@color/set_default_text_color"
         android:textStyle="bold"/>
@@ -33,7 +33,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginStart="54dp"
         android:textSize="14sp"
-        android:text="@string/brave_choose"
+        android:text="@string/luxxle_choose"
         android:textColor="@color/set_default_text_color"/>
 
     <LinearLayout
@@ -56,7 +56,7 @@
             android:paddingStart="35dp"
             android:paddingEnd="35dp"
             android:textSize="14sp"
-            android:text="@string/brave_cancel"
+            android:text="@string/luxxle_cancel"
             android:textColor="@color/onboarding_gray" 
             style="?android:attr/borderlessButtonStyle"/>
 
@@ -67,7 +67,7 @@
             android:layout_marginStart="10dp"
             android:background="@drawable/orange_rounded_button"
             app:backgroundTint="@null"
-            android:text="@string/brave_next"
+            android:text="@string/luxxle_next"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:paddingTop="8dp"

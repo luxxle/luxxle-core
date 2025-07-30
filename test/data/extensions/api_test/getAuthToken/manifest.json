@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "name": "Brave",
+  "name": "Luxxle",
   "manifest_version": 3,
   "description": "API test for google oauth",
   "web_accessible_resources": [

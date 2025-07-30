@@ -189,14 +189,14 @@ def install(download_dir, path):
         result_lines = result.splitlines()
         for x in result_lines:
             x = x.strip()
-            index = x.find('/Volumes/Brave')
+            index = x.find('/Volumes/Luxxle')
             if index > -1:
                 volume = x[index:]
                 break
 
         if volume is None:
             raise Exception(
-                '[ERROR] did not find "/Volumes/Brave" sub-string in mount list!\nFull response from "hdiutil":\n'
+                '[ERROR] did not find "/Volumes/Luxxle" sub-string in mount list!\nFull response from "hdiutil":\n'
                 + result)
 
         print('-> mounted as "' + volume + '"')
@@ -429,7 +429,7 @@ def main():
         return 1
 
     github_token = get_github_token()
-    repo = GitHub(github_token).repos(BRAVE_REPO)
+    repo = GitHub(github_token).repos(LUXXLE_REPO)
 
     get_releases(repo)
     tag_names.sort(key=lambda s: map(int, s.split('.')))

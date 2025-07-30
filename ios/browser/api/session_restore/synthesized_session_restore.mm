@@ -1,9 +1,9 @@
-/* Copyright (c) 2023 The Brave Authors. All rights reserved.
+/* Copyright (c) 2023 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#import "brave/ios/browser/api/session_restore/synthesized_session_restore.h"
+#import "luxxle/ios/browser/api/session_restore/synthesized_session_restore.h"
 #include "base/ios/ios_util.h"
 #include "base/strings/sys_string_conversions.h"
 #include "ios/web/navigation/synthesized_history_entry_data.h"

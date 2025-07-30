@@ -3,20 +3,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BravePreferenceFragmentClassAdapter extends BraveClassVisitor {
+public class LuxxlePreferenceFragmentClassAdapter extends LuxxleClassVisitor {
     static String sDeveloperSettingsClassName =
             "org/chromium/chrome/browser/tracing/settings/DeveloperSettings";
 
-    static String sBravePreferenceFragmentClassName =
-            "org/chromium/chrome/browser/settings/BravePreferenceFragment";
+    static String sLuxxlePreferenceFragmentClassName =
+            "org/chromium/chrome/browser/settings/LuxxlePreferenceFragment";
 
-    public BravePreferenceFragmentClassAdapter(ClassVisitor visitor) {
+    public LuxxlePreferenceFragmentClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        changeSuperName(sDeveloperSettingsClassName, sBravePreferenceFragmentClassName);
+        changeSuperName(sDeveloperSettingsClassName, sLuxxlePreferenceFragmentClassName);
     }
 }

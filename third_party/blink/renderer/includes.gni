@@ -6,71 +6,71 @@
 # common includes which can help minimize patches for
 # src/third_party/blink/renderer/core/BUILD.gn
 
-import("//luxxle/third_party/blink/renderer/core/brave_page_graph/sources.gni")
+import("//luxxle/third_party/blink/renderer/core/luxxle_page_graph/sources.gni")
 
-brave_blink_renderer_platform_visibility = []
+luxxle_blink_renderer_platform_visibility = []
 
-brave_blink_renderer_platform_public_deps = []
+luxxle_blink_renderer_platform_public_deps = []
 
-brave_blink_renderer_platform_sources = [
-  "//luxxle/third_party/blink/renderer/platform/brave_audio_farbling_helper.cc",
-  "//luxxle/third_party/blink/renderer/platform/brave_audio_farbling_helper.h",
+luxxle_blink_renderer_platform_sources = [
+  "//luxxle/third_party/blink/renderer/platform/luxxle_audio_farbling_helper.cc",
+  "//luxxle/third_party/blink/renderer/platform/luxxle_audio_farbling_helper.h",
 ]
 
-brave_blink_renderer_platform_deps = []
+luxxle_blink_renderer_platform_deps = []
 
-brave_blink_renderer_core_visibility = [ "//luxxle/third_party/blink/renderer/*" ]
+luxxle_blink_renderer_core_visibility = [ "//luxxle/third_party/blink/renderer/*" ]
 
-brave_blink_renderer_core_public_deps = [
+luxxle_blink_renderer_core_public_deps = [
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_page_graph/common:buildflags",
+  # "//luxxle/components/luxxle_page_graph/common:buildflags",
   "//luxxle/third_party/blink/renderer",
 ]
 
-brave_blink_renderer_core_sources = [
-  "//luxxle/third_party/blink/renderer/core/farbling/brave_session_cache.cc",
-  "//luxxle/third_party/blink/renderer/core/farbling/brave_session_cache.h",
+luxxle_blink_renderer_core_sources = [
+  "//luxxle/third_party/blink/renderer/core/farbling/luxxle_session_cache.cc",
+  "//luxxle/third_party/blink/renderer/core/farbling/luxxle_session_cache.h",
   "//luxxle/third_party/blink/renderer/core/resource_pool_limiter/resource_pool_limiter.cc",
   "//luxxle/third_party/blink/renderer/core/resource_pool_limiter/resource_pool_limiter.h",
 ]
 
-# Commented out: removed Brave components - using Chromium defaults instead
-# brave_blink_renderer_core_deps =
-#     [ "//luxxle/components/brave_shields/core/common/" ]
+# Commented out: removed Luxxle components - using Chromium defaults instead
+# luxxle_blink_renderer_core_deps =
+#     [ "//luxxle/components/luxxle_shields/core/common/" ]
 
-brave_blink_renderer_core_deps = []
+luxxle_blink_renderer_core_deps = []
 
 if (!is_android && !is_ios) {
   # Commented out: removed components dependency - using Chromium defaults instead
-  # brave_blink_renderer_core_deps += [ "//luxxle/components/brave_geolocation_permission/common:brave_geolocation_permission_blink" ]
+  # luxxle_blink_renderer_core_deps += [ "//luxxle/components/luxxle_geolocation_permission/common:luxxle_geolocation_permission_blink" ]
 }
 
-brave_blink_renderer_core_public_deps += brave_page_graph_core_public_deps
-brave_blink_renderer_core_sources += brave_page_graph_core_sources
-brave_blink_renderer_core_deps += brave_page_graph_core_deps
+luxxle_blink_renderer_core_public_deps += luxxle_page_graph_core_public_deps
+luxxle_blink_renderer_core_sources += luxxle_page_graph_core_sources
+luxxle_blink_renderer_core_deps += luxxle_page_graph_core_deps
 
 # common includes which can help minimize patches for
 # src/third_party/blink/renderer/modules/BUILD.gn
-brave_blink_renderer_modules_visibility = [ "//luxxle/third_party/blink/renderer/*" ]
+luxxle_blink_renderer_modules_visibility = [ "//luxxle/third_party/blink/renderer/*" ]
 
-brave_blink_sub_modules = [
-  "//luxxle/third_party/blink/renderer/modules/brave",
+luxxle_blink_sub_modules = [
+  "//luxxle/third_party/blink/renderer/modules/luxxle",
   "//luxxle/third_party/blink/renderer/modules/global_privacy_control",
 ]
 
 # common includes which can help minimize patches for
 # third_party/blink/renderer/bindings/idl_in_modules.gni
-brave_static_idl_files_in_modules = [
-  "//luxxle/third_party/blink/renderer/modules/brave/brave.idl",
-  "//luxxle/third_party/blink/renderer/modules/brave/navigator_brave.idl",
-  "//luxxle/third_party/blink/renderer/modules/brave/worker_navigator_brave.idl",
+luxxle_static_idl_files_in_modules = [
+  "//luxxle/third_party/blink/renderer/modules/luxxle/luxxle.idl",
+  "//luxxle/third_party/blink/renderer/modules/luxxle/navigator_luxxle.idl",
+  "//luxxle/third_party/blink/renderer/modules/luxxle/worker_navigator_luxxle.idl",
   "//luxxle/third_party/blink/renderer/modules/global_privacy_control/navigator_global_privacy_control.idl",
   "//luxxle/third_party/blink/renderer/modules/global_privacy_control/worker_navigator_global_privacy_control.idl",
 ]
 
 # common includes which can help minimize patches for
 # third_party/blink/renderer/bindings/generated_in_modules.gni
-brave_generated_interface_sources_in_modules = [
-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_brave.h",
-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_brave.cc",
+luxxle_generated_interface_sources_in_modules = [
+  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_luxxle.h",
+  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_luxxle.cc",
 ]

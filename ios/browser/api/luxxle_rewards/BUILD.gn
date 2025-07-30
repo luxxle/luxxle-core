@@ -1,0 +1,60 @@
+# Copyright (c) 2023 The Luxxle Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at https://mozilla.org/MPL/2.0/.
+
+import("//luxxle/build/ios/coredata_model.gni")
+import("//luxxle/build/ios/mojom/mojom_wrappers.gni")
+import("//build/config/ios/rules.gni")
+
+config("external_config") {
+  visibility = [ ":*" ]
+  include_dirs = [ "$target_gen_dir" ]
+}
+
+source_set("luxxle_rewards") {
+  configs += [ ":external_config" ]
+
+  sources = [
+    "luxxle_rewards_api.h",
+    "luxxle_rewards_api.mm",
+    "rewards_client_bridge.h",
+    "rewards_client_ios.h",
+    "rewards_client_ios.mm",
+    "rewards_notification.h",
+    "rewards_notification.m",
+    "rewards_observer.h",
+    "rewards_observer.mm",
+  ]
+
+  deps = [
+    ":rewards_mojom_wrappers",
+    "//base",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/luxxle_rewards/core",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/luxxle_rewards/core/engine",
+    "//luxxle/ios/browser/api/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/os_crypt/sync",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//components/prefs",
+    "//ios/chrome/browser/shared/model/application_context",
+    "//ios/chrome/browser/shared/model/profile",
+    "//net:net",
+    "//url",
+  ]
+
+  frameworks = [
+    "Foundation.framework",
+    "UIKit.framework",
+    "Network.framework",
+  ]
+}
+
+ios_objc_mojom_wrappers("rewards_mojom_wrappers") {
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # mojom_target = "//luxxle/components/luxxle_rewards/core/mojom:mojom"
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # sources = [ "//luxxle/components/luxxle_rewards/core/mojom/rewards.mojom" ]
+}

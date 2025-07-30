@@ -8,7 +8,7 @@
 #include <utility>
 
 #include "luxxle/browser/ephemeral_storage/ephemeral_storage_service_factory.h"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
 #include "luxxle/components/ephemeral_storage/ephemeral_storage_service.h"
 #include "net/base/features.h"
 #include "net/base/url_util.h"
@@ -18,7 +18,7 @@ namespace permissions {
 PermissionOriginLifetimeMonitorImpl::PermissionOriginLifetimeMonitorImpl(
     content::BrowserContext* browser_context)
     : browser_context_(browser_context) {
-  DCHECK(base::FeatureList::IsEnabled(net::features::kBraveEphemeralStorage));
+  DCHECK(base::FeatureList::IsEnabled(net::features::kLuxxleEphemeralStorage));
 }
 
 PermissionOriginLifetimeMonitorImpl::~PermissionOriginLifetimeMonitorImpl() =
@@ -43,9 +43,9 @@ PermissionOriginLifetimeMonitorImpl::SubscribeToPermissionOriginDestruction(
 
   url::Origin sub_request_origin;
   bool is_sub_request_origin = false;
-  for (auto type : {RequestType::kBraveEthereum, RequestType::kBraveSolana,
-                    RequestType::kBraveCardano}) {
-    if (brave_wallet::ParseRequestingOriginFromSubRequest(
+  for (auto type : {RequestType::kLuxxleEthereum, RequestType::kLuxxleSolana,
+                    RequestType::kLuxxleCardano}) {
+    if (luxxle_wallet::ParseRequestingOriginFromSubRequest(
             type, url::Origin::Create(requesting_origin), &sub_request_origin,
             nullptr)) {
       is_sub_request_origin = true;

@@ -1,0 +1,75 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+[
+  {
+    "namespace": "luxxleTheme",
+    "description": "Use the <code>chrome.luxxleTheme</code> API to get/set luxxle theme",
+    "compiler_options": {
+      "implemented_in": "luxxle/browser/extensions/api/luxxle_theme_api.h"
+    },
+    "events": [
+      {
+        "name": "onLuxxleThemeTypeChanged",
+        "type": "function",
+        "description": "Fired when luxxle theme is changed",
+        "parameters": [
+          {
+            "name": "type",
+            "type": "string",
+            "description": "new active theme type(ex, Dark or Light)"
+          }
+        ]
+      }
+    ],
+    "functions": [
+      {
+        "name": "getLuxxleThemeList",
+        "type": "function",
+        "description": "Get available luxxle theme list",
+        "parameters": [],
+        "returns_async": {
+          "name": "callback",
+          "parameters": [
+            {
+              "name": "types",
+              "type": "string",
+              "description": "json stringified available theme list"
+            }
+          ]
+        },
+        "does_not_support_promises": "Requires refactoring"
+      },
+      {
+        "name": "getLuxxleThemeType",
+        "type": "function",
+        "description": "Get current luxxle theme",
+        "parameters": [],
+        "returns_async": {
+          "name": "callback",
+          "parameters": [
+            {
+              "name": "types",
+              "type": "string",
+              "description": "current theme type (Dark or Light)"
+            }
+          ]
+        },
+        "does_not_support_promises": "Requires refactoring"
+      },
+      {
+        "name": "setLuxxleThemeType",
+        "type": "function",
+        "description": "Set current theme type",
+        "parameters": [
+          {
+            "name": "type",
+            "type": "string",
+            "description": "current theme type (Dark or Light)"
+          }
+        ]
+      }
+    ]
+  }
+]

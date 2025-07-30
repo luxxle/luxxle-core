@@ -6,13 +6,13 @@
 #ifndef LUXXLE_IOS_BROWSER_API_NTP_BACKGROUND_IMAGES_NTP_BACKGROUND_IMAGES_SERVICE_IOS_PRIVATE_H_
 #define LUXXLE_IOS_BROWSER_API_NTP_BACKGROUND_IMAGES_NTP_BACKGROUND_IMAGES_SERVICE_IOS_PRIVATE_H_
 
-#include "brave/ios/browser/api/ntp_background_images/ntp_background_images_service_ios.h"
+#include "luxxle/ios/browser/api/ntp_background_images/ntp_background_images_service_ios.h"
 
 #include <memory>
 
-namespace brave_ads {
+namespace luxxle_ads {
 class AdsService;
-}  // namespace brave_ads
+}  // namespace luxxle_ads
 
 namespace ntp_background_images {
 class NTPBackgroundImagesService;
@@ -24,7 +24,7 @@ class NTPBackgroundImagesService;
     initWithBackgroundImagesService:
         (std::unique_ptr<ntp_background_images::NTPBackgroundImagesService>)
             service
-                        ads_service:(brave_ads::AdsService*)ads_service;
+                        ads_service:(luxxle_ads::AdsService*)ads_service;
 
 @end
 

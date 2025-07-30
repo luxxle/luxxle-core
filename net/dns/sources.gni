@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-brave_net_dns_sources = [
+luxxle_net_dns_sources = [
   "//luxxle/net/dns/secure_dns_counter.cc",
   "//luxxle/net/dns/secure_dns_counter.h",
   "//luxxle/net/dns/secure_dns_endpoints.h",

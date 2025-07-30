@@ -89,7 +89,7 @@ class CommonOptions:
     parser.add_argument(
         '--variations-repo-dir',
         type=str,
-        help='A path to brave-variation repository to use Griffin in tests')
+        help='A path to luxxle-variation repository to use Griffin in tests')
     parser.add_argument('--target-os',
                         '--target_os',
                         type=str,
@@ -106,7 +106,7 @@ class CommonOptions:
 
     parser.add_argument('--ci-mode',
                         action='store_true',
-                        help='Used for CI (brave-browser-test-perf-* builds).')
+                        help='Used for CI (luxxle-browser-test-perf-* builds).')
     parser.add_argument('--chromium',
                         action='store_true',
                         help='(with config=auto) Run chromium (reference) build'
@@ -132,11 +132,11 @@ class CommonOptions:
         default=True,
         help=(
             '[For profile updating] Upload the updated profile to cloud storage'
-            + 'and push the changes to brave-core'))
+            + 'and push the changes to luxxle-core'))
     parser.add_argument(
         '--upload-branch',
         type=str,
-        help=('[For profile updating] A target brave-core branch to push the ' +
+        help=('[For profile updating] A target luxxle-core branch to push the ' +
               'changes. update-profiles-<version> is used by default'))
 
     parser.add_argument('--more-help',

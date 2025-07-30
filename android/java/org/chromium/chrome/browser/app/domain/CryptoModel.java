@@ -12,21 +12,21 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import org.chromium.base.Callbacks.Callback1;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.AssetRatioService;
-import org.chromium.brave_wallet.mojom.BlockchainRegistry;
-import org.chromium.brave_wallet.mojom.BraveWalletConstants;
-import org.chromium.brave_wallet.mojom.BraveWalletService;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.DecryptRequest;
-import org.chromium.brave_wallet.mojom.EthTxManagerProxy;
-import org.chromium.brave_wallet.mojom.GetEncryptionPublicKeyRequest;
-import org.chromium.brave_wallet.mojom.JsonRpcService;
-import org.chromium.brave_wallet.mojom.KeyringService;
-import org.chromium.brave_wallet.mojom.SolanaTxManagerProxy;
-import org.chromium.brave_wallet.mojom.SwapService;
-import org.chromium.brave_wallet.mojom.TransactionInfo;
-import org.chromium.brave_wallet.mojom.TxService;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.AssetRatioService;
+import org.chromium.luxxle_wallet.mojom.BlockchainRegistry;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletConstants;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletService;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.DecryptRequest;
+import org.chromium.luxxle_wallet.mojom.EthTxManagerProxy;
+import org.chromium.luxxle_wallet.mojom.GetEncryptionPublicKeyRequest;
+import org.chromium.luxxle_wallet.mojom.JsonRpcService;
+import org.chromium.luxxle_wallet.mojom.KeyringService;
+import org.chromium.luxxle_wallet.mojom.SolanaTxManagerProxy;
+import org.chromium.luxxle_wallet.mojom.SwapService;
+import org.chromium.luxxle_wallet.mojom.TransactionInfo;
+import org.chromium.luxxle_wallet.mojom.TxService;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.crypto_wallet.model.CryptoAccountTypeInfo;
 import org.chromium.chrome.browser.crypto_wallet.util.PendingTxHelper;
@@ -50,7 +50,7 @@ public class CryptoModel {
     private JsonRpcService mJsonRpcService;
     private EthTxManagerProxy mEthTxManagerProxy;
     private SolanaTxManagerProxy mSolanaTxManagerProxy;
-    private BraveWalletService mBraveWalletService;
+    private LuxxleWalletService mLuxxleWalletService;
     private AssetRatioService mAssetRatioService;
     private SwapService mSwapService;
     private CryptoSharedActions mCryptoSharedActions;
@@ -69,7 +69,7 @@ public class CryptoModel {
     public CryptoModel(Context context, TxService txService, KeyringService keyringService,
             BlockchainRegistry blockchainRegistry, JsonRpcService jsonRpcService,
             EthTxManagerProxy ethTxManagerProxy, SolanaTxManagerProxy solanaTxManagerProxy,
-            BraveWalletService braveWalletService, AssetRatioService assetRatioService,
+            LuxxleWalletService luxxleWalletService, AssetRatioService assetRatioService,
             CryptoSharedActions cryptoSharedActions, SwapService swapService) {
         mContext = context;
         mTxService = txService;
@@ -78,7 +78,7 @@ public class CryptoModel {
         mJsonRpcService = jsonRpcService;
         mEthTxManagerProxy = ethTxManagerProxy;
         mSolanaTxManagerProxy = solanaTxManagerProxy;
-        mBraveWalletService = braveWalletService;
+        mLuxxleWalletService = luxxleWalletService;
         mAssetRatioService = assetRatioService;
         mSwapService = swapService;
         mCryptoSharedActions = cryptoSharedActions;
@@ -86,7 +86,7 @@ public class CryptoModel {
         mPendingTxHelper = new PendingTxHelper(mTxService, new AccountInfo[0], true, true);
         mNetworkModel =
                 new NetworkModel(
-                        mBraveWalletService, mJsonRpcService, mSharedData, mCryptoSharedActions);
+                        mLuxxleWalletService, mJsonRpcService, mSharedData, mCryptoSharedActions);
     }
 
     public void resetServices(
@@ -97,7 +97,7 @@ public class CryptoModel {
             JsonRpcService mJsonRpcService,
             EthTxManagerProxy mEthTxManagerProxy,
             SolanaTxManagerProxy mSolanaTxManagerProxy,
-            BraveWalletService mBraveWalletService,
+            LuxxleWalletService mLuxxleWalletService,
             AssetRatioService mAssetRatioService) {
         synchronized (mLock) {
             mContext = context;
@@ -107,10 +107,10 @@ public class CryptoModel {
             this.mJsonRpcService = mJsonRpcService;
             this.mEthTxManagerProxy = mEthTxManagerProxy;
             this.mSolanaTxManagerProxy = mSolanaTxManagerProxy;
-            this.mBraveWalletService = mBraveWalletService;
+            this.mLuxxleWalletService = mLuxxleWalletService;
             this.mAssetRatioService = mAssetRatioService;
             mPendingTxHelper.setTxService(mTxService);
-            mNetworkModel.resetServices(mBraveWalletService, mJsonRpcService);
+            mNetworkModel.resetServices(mLuxxleWalletService, mJsonRpcService);
         }
         init();
     }
@@ -127,10 +127,10 @@ public class CryptoModel {
     }
 
     public void getPublicEncryptionRequest(Callback1<GetEncryptionPublicKeyRequest> onResult) {
-        if (mBraveWalletService == null) {
+        if (mLuxxleWalletService == null) {
             return;
         }
-        mBraveWalletService.getPendingGetEncryptionPublicKeyRequests(requests -> {
+        mLuxxleWalletService.getPendingGetEncryptionPublicKeyRequests(requests -> {
             GetEncryptionPublicKeyRequest request = null;
             if (requests != null && requests.length > 0) {
                 request = requests[0];
@@ -140,10 +140,10 @@ public class CryptoModel {
     }
 
     public void getDecryptMessageRequest(Callback1<DecryptRequest> onResult) {
-        if (mBraveWalletService == null) {
+        if (mLuxxleWalletService == null) {
             return;
         }
-        mBraveWalletService.getPendingDecryptRequests(requests -> {
+        mLuxxleWalletService.getPendingDecryptRequests(requests -> {
             DecryptRequest request = null;
             if (requests != null && requests.length > 0) {
                 request = requests[0];
@@ -168,12 +168,12 @@ public class CryptoModel {
     public List<CryptoAccountTypeInfo> getSupportedCryptoAccountTypes() {
         List<CryptoAccountTypeInfo> cryptoAccountTypeInfos = new ArrayList<>();
         cryptoAccountTypeInfos.add(new CryptoAccountTypeInfo(
-                mContext.getString(R.string.brave_wallet_create_account_ethereum_description),
+                mContext.getString(R.string.luxxle_wallet_create_account_ethereum_description),
                 mContext.getString(R.string.wallet_eth_name), CoinType.ETH, R.drawable.eth));
 
         cryptoAccountTypeInfos.add(
                 new CryptoAccountTypeInfo(
-                        mContext.getString(R.string.brave_wallet_create_account_solana_description),
+                        mContext.getString(R.string.luxxle_wallet_create_account_solana_description),
                         mContext.getString(R.string.wallet_sol_name),
                         CoinType.SOL,
                         R.drawable.ic_sol_asset_icon));
@@ -181,7 +181,7 @@ public class CryptoModel {
         cryptoAccountTypeInfos.add(
                 new CryptoAccountTypeInfo(
                         mContext.getString(
-                                R.string.brave_wallet_create_account_filecoin_description),
+                                R.string.luxxle_wallet_create_account_filecoin_description),
                         mContext.getString(R.string.wallet_fil_name),
                         CoinType.FIL,
                         R.drawable.ic_fil_asset_icon));
@@ -229,11 +229,11 @@ public class CryptoModel {
     }
 
     public void updateNftDiscovery(boolean isEnabled) {
-        mBraveWalletService.setNftDiscoveryEnabled(isEnabled);
+        mLuxxleWalletService.setNftDiscoveryEnabled(isEnabled);
     }
 
     public void isNftDiscoveryEnabled(Callback1<Boolean> callback) {
-        mBraveWalletService.getNftDiscoveryEnabled(callback::call);
+        mLuxxleWalletService.getNftDiscoveryEnabled(callback::call);
     }
 
     /*
@@ -252,7 +252,7 @@ public class CryptoModel {
         @Override
         public String getChainId() {
             if (mNetworkModel.mChainId.getValue() == null) {
-                return BraveWalletConstants.MAINNET_CHAIN_ID;
+                return LuxxleWalletConstants.MAINNET_CHAIN_ID;
             }
             return mNetworkModel.mChainId.getValue();
         }

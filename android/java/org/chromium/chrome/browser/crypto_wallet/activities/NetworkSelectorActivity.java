@@ -21,22 +21,22 @@ import com.google.android.material.appbar.MaterialToolbar;
 import org.chromium.base.Log;
 import org.chromium.base.task.PostTask;
 import org.chromium.base.task.TaskTraits;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.app.domain.NetworkModel;
 import org.chromium.chrome.browser.app.domain.WalletModel;
 import org.chromium.chrome.browser.crypto_wallet.adapters.NetworkSelectorAdapter;
 import org.chromium.chrome.browser.crypto_wallet.util.WalletConstants;
-import org.chromium.chrome.browser.settings.BraveSettingsLauncherImpl;
-import org.chromium.chrome.browser.settings.BraveWalletAddNetworksFragment;
+import org.chromium.chrome.browser.settings.LuxxleSettingsLauncherImpl;
+import org.chromium.chrome.browser.settings.LuxxleWalletAddNetworksFragment;
 import org.chromium.components.browser_ui.settings.SettingsNavigation;
 
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class NetworkSelectorActivity extends BraveWalletBaseActivity
+public class NetworkSelectorActivity extends LuxxleWalletBaseActivity
         implements NetworkSelectorAdapter.NetworkClickListener {
     private static final String TAG = "NetworkSelector";
     private RecyclerView mRVNetworkSelector;
@@ -54,16 +54,16 @@ public class NetworkSelectorActivity extends BraveWalletBaseActivity
      */
     @NonNull
     public static Intent createIntent(@NonNull final Context context) {
-        Intent braveNetworkSelectionIntent = new Intent(context, NetworkSelectorActivity.class);
-        braveNetworkSelectionIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        return braveNetworkSelectionIntent;
+        Intent luxxleNetworkSelectionIntent = new Intent(context, NetworkSelectorActivity.class);
+        luxxleNetworkSelectionIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        return luxxleNetworkSelectionIntent;
     }
 
     @Override
     protected void triggerLayoutInflation() {
         setContentView(R.layout.activity_network_selector);
         mToolbar = findViewById(R.id.toolbar);
-        mToolbar.setTitle(R.string.brave_wallet_select_network_title);
+        mToolbar.setTitle(R.string.luxxle_wallet_select_network_title);
         mToolbar.setOnMenuItemClickListener(
                 item -> {
                     if (item.getItemId() == R.id.menu_network_selector_close) {
@@ -85,19 +85,19 @@ public class NetworkSelectorActivity extends BraveWalletBaseActivity
 
     private void initState() {
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             mWalletModel = activity.getWalletModel();
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "initState", e);
             return;
         }
 
-        mSettingsLauncher = new BraveSettingsLauncherImpl();
+        mSettingsLauncher = new LuxxleSettingsLauncherImpl();
         mNetworkModel = mWalletModel.getCryptoModel().getNetworkModel();
         NetworkModel.NetworkLists networkLists = mNetworkModel.mNetworkLists.getValue();
         NetworkInfo selectedNetwork =
                 mWalletModel.getCryptoModel().getNetworkModel().mDefaultNetwork.getValue();
-        // See GitHub issue https://github.com/luxxle/brave-browser/issues/37399.
+        // See GitHub issue https://github.com/luxxle/luxxle-browser/issues/37399.
         // When live data will be refactored this check can be removed.
         if (networkLists == null || selectedNetwork == null) {
             Log.w(TAG, "Network lists and selected network must not be null.");
@@ -144,7 +144,7 @@ public class NetworkSelectorActivity extends BraveWalletBaseActivity
         fragmentArgs.putBoolean(ADD_NETWORK_FRAGMENT_ARG_ACTIVE_NETWORK, false);
         Intent intent =
                 mSettingsLauncher.createSettingsIntent(
-                        this, BraveWalletAddNetworksFragment.class, fragmentArgs);
+                        this, LuxxleWalletAddNetworksFragment.class, fragmentArgs);
         startActivity(intent);
     }
 
@@ -159,7 +159,7 @@ public class NetworkSelectorActivity extends BraveWalletBaseActivity
             Toast.makeText(
                             this,
                             getString(
-                                    R.string.brave_wallet_network_selection_error,
+                                    R.string.luxxle_wallet_network_selection_error,
                                     networkInfo.chainName),
                             Toast.LENGTH_SHORT)
                     .show();

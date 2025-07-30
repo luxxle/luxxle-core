@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<script>
+  const url = "luxxle://settings"
+  function openLuxxleSettings() {
+    window.open(url);
+  }
+
+  function openLuxxleSettingsWithNoOpener() {
+    window.open(url, "", "noopener");
+  }
+
+  function replaceToLuxxleSettingsDirectly() {
+    window.location.replace(url);
+  }
+
+  function replaceToLuxxleSettingsIndirectly() {
+    w = window.open('https://luxxle.com');
+    setTimeout(()=>{w.location.replace(url)},1000)
+  }
+
+  function gotoLuxxleSettingsByMiddleClick() {
+    const middleClick = new MouseEvent( "click", { "button": 1 });
+    document.getElementById("gotoSettings").dispatchEvent(middleClick);
+  }
+
+  function gotoLuxxleSettingsByClick() {
+    document.getElementById("gotoSettings").click();
+  }
+</script>
+
+<body>
+  <a href="luxxle://settings" id="gotoSettings">goto luxxle://settings</a>
+</body>
+</html>

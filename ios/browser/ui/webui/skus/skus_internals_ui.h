@@ -20,7 +20,7 @@
 #include "mojo/public/cpp/bindings/receiver_set.h"
 #include "mojo/public/cpp/bindings/remote_set.h"
 
-// MARK: - BASED ON: brave/browser/ui/webui/skus_internals_ui.h
+// MARK: - BASED ON: luxxle/browser/ui/webui/skus_internals_ui.h
 
 class SkusInternalsUI : public web::WebUIIOSController,
                         public skus::mojom::SkusInternals {

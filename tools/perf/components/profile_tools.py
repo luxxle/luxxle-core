@@ -19,7 +19,7 @@ import components.git_tools as git_tools
 import components.perf_test_runner as perf_test_runner
 import components.perf_config as perf_config
 
-from components.path_util import GetBravePerfProfileDir
+from components.path_util import GetLuxxlePerfProfileDir
 from components.perf_profile import GetProfilePath
 from components.perf_config import RunnerConfig
 from components.common_options import CommonOptions, PerfMode
@@ -33,7 +33,7 @@ _CACHE_DIRECTORIES = [
     'GraphiteDawnCache', 'ShaderCache', 'component_crx_cache'
 ]
 
-_PR_SEE_DETAILS_LINK = ('https://github.com/luxxle/brave-core/blob/master/' +
+_PR_SEE_DETAILS_LINK = ('https://github.com/luxxle/luxxle-core/blob/master/' +
                         'tools/perf/updating_test_profiles.md')
 _PR_BODY = f"""Automated perf profile update via CI
 Pre-approval checklist:
@@ -144,9 +144,9 @@ def MakeUpdatedProfileArchive(cfg: RunnerConfig, options: CommonOptions,
     new_profile_sha1_path = cloud_storage.UploadFileToCloudStorage(
         cloud_storage.CloudFolder.TEST_PROFILES, profile_zip)
     files: Dict[str, str] = dict()
-    files[new_profile_sha1_path] = os.path.join(GetBravePerfProfileDir(),
+    files[new_profile_sha1_path] = os.path.join(GetLuxxlePerfProfileDir(),
                                                 zip_filename + '.sha1')
-    files[profile_zip_sizes] = os.path.join(GetBravePerfProfileDir(),
+    files[profile_zip_sizes] = os.path.join(GetLuxxlePerfProfileDir(),
                                             sizes_filename)
     version_str = cfg.version.to_string()
     commit_message = f'Update perf profile {cfg.profile} using {version_str}'
@@ -161,7 +161,7 @@ def MakeUpdatedProfileArchive(cfg: RunnerConfig, options: CommonOptions,
                              target='master',
                              title=f'Roll perf profiles update ({branch})',
                              body=_PR_BODY,
-                             reviewers=[git_tools.GH_BRAVE_PERF_TEAM],
+                             reviewers=[git_tools.GH_LUXXLE_PERF_TEAM],
                              extra_args=['--label', 'CI/skip'])
   return profile_dir
 
@@ -237,7 +237,7 @@ def _GetComponentGroup(name: str, path: str,
     return 'Ntp'
   if 'Wallet' in name:
     return 'Wallet'
-  if 'Brave' in name or re.match(r'[a-z]{32}', path) is not None:
+  if 'Luxxle' in name or re.match(r'[a-z]{32}', path) is not None:
     return 'Other'
   return None if skip_chromium_components else 'chromium'
 
@@ -273,15 +273,15 @@ def GetProfileStats(profile_dir: str,
   return result
 
 
-def RunUpdateProfile(brave_config: perf_config.PerfConfig,
+def RunUpdateProfile(luxxle_config: perf_config.PerfConfig,
                      chromium_config: perf_config.PerfConfig,
                      options: CommonOptions) -> bool:
-  brave_profile = _RunUpdateProfileForConfig(brave_config, options, [])
-  if not brave_profile:
+  luxxle_profile = _RunUpdateProfileForConfig(luxxle_config, options, [])
+  if not luxxle_profile:
     return False
 
-  # Take Safe Browsing database from Brave profile
-  safe_browsing = _GetSafeBrowsingDir(brave_profile)
+  # Take Safe Browsing database from Luxxle profile
+  safe_browsing = _GetSafeBrowsingDir(luxxle_profile)
   extra_dirs_to_add = []
   if os.path.isdir(safe_browsing):
     extra_dirs_to_add.append(safe_browsing)
@@ -302,7 +302,7 @@ def _RunUpdateProfileForConfig(config: perf_config.PerfConfig,
   config.runners[0].profile_rebase = perf_config.ProfileRebaseType.NONE
   config.benchmarks = [
       perf_config.BenchmarkConfig({
-          'name': 'brave_utils.online',
+          'name': 'luxxle_utils.online',
           'pageset-repeat': 3,
           'stories': ['UpdateProfile'],
           'stories_exclude': [],

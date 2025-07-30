@@ -28,18 +28,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import org.chromium.base.Log;
-import org.chromium.brave_wallet.mojom.AccountId;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
-import org.chromium.brave_wallet.mojom.OriginInfo;
-import org.chromium.brave_wallet.mojom.SignDataUnion;
-import org.chromium.brave_wallet.mojom.SignMessageRequest;
-import org.chromium.brave_wallet.mojom.SiweMessage;
+import org.chromium.luxxle_wallet.mojom.AccountId;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.OriginInfo;
+import org.chromium.luxxle_wallet.mojom.SignDataUnion;
+import org.chromium.luxxle_wallet.mojom.SignMessageRequest;
+import org.chromium.luxxle_wallet.mojom.SiweMessage;
 import org.chromium.build.annotations.NullMarked;
 import org.chromium.build.annotations.Nullable;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.app.domain.DappsModel;
 import org.chromium.chrome.browser.app.domain.WalletModel;
 import org.chromium.chrome.browser.app.helpers.ImageLoader;
@@ -90,13 +90,13 @@ public class SiweMessageFragment extends WalletBottomSheetDialogFragment {
         mExecutor = Executors.newSingleThreadExecutor();
         mHandler = new Handler(Looper.getMainLooper());
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             mWalletModel = activity.getWalletModel();
             if (mWalletModel != null) {
                 mDappsModel = mWalletModel.getDappsModel();
                 registerKeyringObserver(mWalletModel.getKeyringModel());
             }
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "onCreate ", e);
         }
     }
@@ -121,7 +121,7 @@ public class SiweMessageFragment extends WalletBottomSheetDialogFragment {
         mBtSign = view.findViewById(R.id.frag_siwe_msg_btn_sign);
         fillSignMessageInfo(true);
 
-        mBtSign.setText(R.string.brave_wallet_sign_in_message_positive_button_action);
+        mBtSign.setText(R.string.luxxle_wallet_sign_in_message_positive_button_action);
         return view;
     }
 
@@ -197,13 +197,13 @@ public class SiweMessageFragment extends WalletBottomSheetDialogFragment {
             builder.append(separator);
             builder.append(
                     getString(
-                            R.string.brave_wallet_sign_in_with_brave_wallet_message,
+                            R.string.luxxle_wallet_sign_in_with_luxxle_wallet_message,
                             mCurrentSignMessageRequest.originInfo.eTldPlusOne));
             builder.append(separator);
             builder.append(
                     AndroidUtils.createClickableSpanString(
                             requireContext(),
-                            R.string.brave_wallet_see_details,
+                            R.string.luxxle_wallet_see_details,
                             (view) -> showSiweDetails()));
             details.updateViewCb =
                     textView -> {
@@ -286,20 +286,20 @@ public class SiweMessageFragment extends WalletBottomSheetDialogFragment {
         assert mCurrentSignMessageRequest.signData.which() == SignDataUnion.Tag.EthSiweData;
 
         List<TwoLineItemRecyclerViewAdapter.TwoLineItem> items = new ArrayList<>();
-        addDetail(items, R.string.brave_wallet_origin, getOriginJson(mSiweMessageData.origin));
-        addDetail(items, R.string.brave_wallet_address, mSiweMessageData.address);
-        addDetail(items, R.string.brave_wallet_statement, mSiweMessageData.statement);
-        addDetail(items, R.string.brave_wallet_uri, mSiweMessageData.uri.url);
-        addDetail(items, R.string.brave_wallet_version, Integer.toString(mSiweMessageData.version));
-        addDetail(items, R.string.brave_wallet_chain_id, Long.toString(mSiweMessageData.chainId));
-        addDetail(items, R.string.brave_wallet_nonce, mSiweMessageData.nonce);
-        addDetail(items, R.string.brave_wallet_issued_at, mSiweMessageData.issuedAt);
-        addDetail(items, R.string.brave_wallet_expiration_time, mSiweMessageData.expirationTime);
-        addDetail(items, R.string.brave_wallet_not_before, mSiweMessageData.notBefore);
-        addDetail(items, R.string.brave_wallet_request_id, mSiweMessageData.requestId);
+        addDetail(items, R.string.luxxle_wallet_origin, getOriginJson(mSiweMessageData.origin));
+        addDetail(items, R.string.luxxle_wallet_address, mSiweMessageData.address);
+        addDetail(items, R.string.luxxle_wallet_statement, mSiweMessageData.statement);
+        addDetail(items, R.string.luxxle_wallet_uri, mSiweMessageData.uri.url);
+        addDetail(items, R.string.luxxle_wallet_version, Integer.toString(mSiweMessageData.version));
+        addDetail(items, R.string.luxxle_wallet_chain_id, Long.toString(mSiweMessageData.chainId));
+        addDetail(items, R.string.luxxle_wallet_nonce, mSiweMessageData.nonce);
+        addDetail(items, R.string.luxxle_wallet_issued_at, mSiweMessageData.issuedAt);
+        addDetail(items, R.string.luxxle_wallet_expiration_time, mSiweMessageData.expirationTime);
+        addDetail(items, R.string.luxxle_wallet_not_before, mSiweMessageData.notBefore);
+        addDetail(items, R.string.luxxle_wallet_request_id, mSiweMessageData.requestId);
         addDetail(items, R.string.resources, getSiweResources(mSiweMessageData.resources));
         TwoLineItemBottomSheetFragment fragment = TwoLineItemBottomSheetFragment.newInstance(items);
-        fragment.mTitle = getString(R.string.brave_wallet_see_details);
+        fragment.mTitle = getString(R.string.luxxle_wallet_see_details);
         fragment.show(getParentFragmentManager(), TAG);
     }
 

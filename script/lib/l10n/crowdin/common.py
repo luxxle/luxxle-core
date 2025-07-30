@@ -16,7 +16,7 @@ from lib.l10n.grd_utils import textify
 from lib.l10n.crowdin.api_v2_client_wrapper import CrowdinClientWrapper
 # pylint: enable=import-error
 
-brave_project_id = 6  # Brave Core (Android+Chrome)
+luxxle_project_id = 6  # Luxxle Core (Android+Chrome)
 
 # This module contains functionality common to both pulling down translations
 # from Crowdin and pushing source strings up to Crowdin.
@@ -24,10 +24,10 @@ brave_project_id = 6  # Brave Core (Android+Chrome)
 # Filenames that are fully handled by Crowdin (as opposed to files for which
 # we create overrides that are then handled by Crowdin).
 crowdin_handled_files = [
-    'android_brave_strings.xml',
-    'brave_generated_resources.xml',
-    'brave_components_strings.xml',
-    'brave_extension.json',
+    'android_luxxle_strings.xml',
+    'luxxle_generated_resources.xml',
+    'luxxle_components_strings.xml',
+    'luxxle_extension.json',
 ]
 
 
@@ -44,8 +44,8 @@ def crowdin_name_from_filename(source_file_path, filename):
     if ext == '.grd':
         return filename + '.xml'
     # JSON files are uploaded as "Chrome JSON" format.
-    if 'brave_extension' in source_file_path:
-        return 'brave_extension.json'
+    if 'luxxle_extension' in source_file_path:
+        return 'luxxle_extension.json'
     assert False, ('JSON files should be mapped explicitly, this '
                    f'one is not: {source_file_path}')
 
@@ -100,7 +100,7 @@ def textify_from_crowdin(tag):
 
 def get_acceptable_json_lang_codes(langs_dir_path):
     lang_codes = set(os.listdir(langs_dir_path))
-    # Source language for Brave locales
+    # Source language for Luxxle locales
     lang_codes.discard('en_US')
 
     # Files that are not locales
@@ -128,7 +128,7 @@ def get_json_strings(json_file_path):
 def get_crowdin_client_wrapper():
     if get_crowdin_client_wrapper.wrapper is None:
         get_crowdin_client_wrapper.wrapper = CrowdinClientWrapper(
-            project_id=brave_project_id)
+            project_id=luxxle_project_id)
     return get_crowdin_client_wrapper.wrapper
 
 

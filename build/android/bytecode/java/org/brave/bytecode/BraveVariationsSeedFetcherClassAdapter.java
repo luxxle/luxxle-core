@@ -3,27 +3,27 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveVariationsSeedFetcherClassAdapter extends BraveClassVisitor {
+public class LuxxleVariationsSeedFetcherClassAdapter extends LuxxleClassVisitor {
     static String sVariationsSeedFetcherClassName =
             "org/chromium/components/variations/firstrun/VariationsSeedFetcher";
-    static String sBraveVariationsSeedFetcherClassName =
-            "org/chromium/components/variations/firstrun/BraveVariationsSeedFetcher";
+    static String sLuxxleVariationsSeedFetcherClassName =
+            "org/chromium/components/variations/firstrun/LuxxleVariationsSeedFetcher";
 
-    public BraveVariationsSeedFetcherClassAdapter(ClassVisitor visitor) {
+    public LuxxleVariationsSeedFetcherClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         changeMethodOwner(
-                sVariationsSeedFetcherClassName, "get", sBraveVariationsSeedFetcherClassName);
+                sVariationsSeedFetcherClassName, "get", sLuxxleVariationsSeedFetcherClassName);
 
-        deleteField(sBraveVariationsSeedFetcherClassName, "sLock");
+        deleteField(sLuxxleVariationsSeedFetcherClassName, "sLock");
         makeProtectedField(sVariationsSeedFetcherClassName, "sLock");
-        deleteField(sBraveVariationsSeedFetcherClassName, "DEFAULT_VARIATIONS_SERVER_URL");
+        deleteField(sLuxxleVariationsSeedFetcherClassName, "DEFAULT_VARIATIONS_SERVER_URL");
         makeProtectedField(sVariationsSeedFetcherClassName, "DEFAULT_VARIATIONS_SERVER_URL");
-        deleteField(sBraveVariationsSeedFetcherClassName, "DEFAULT_FAST_VARIATIONS_SERVER_URL");
+        deleteField(sLuxxleVariationsSeedFetcherClassName, "DEFAULT_FAST_VARIATIONS_SERVER_URL");
         makeProtectedField(sVariationsSeedFetcherClassName, "DEFAULT_FAST_VARIATIONS_SERVER_URL");
     }
 }

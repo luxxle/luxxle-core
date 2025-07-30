@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/item_fragment_two_line_title"
-        style="@style/BraveWalletTextView"
+        style="@style/LuxxleWalletTextView"
         android:layout_width="0dp"
         app:layout_constraintEnd_toStartOf="@id/item_fragment_two_line_sub_title"
         app:layout_constraintHorizontal_weight="3.5"
@@ -18,7 +18,7 @@
 
     <TextView
         android:id="@+id/item_fragment_two_line_sub_title"
-        style="@style/BraveWalletTextView"
+        style="@style/LuxxleWalletTextView"
         android:layout_width="0dp"
         android:drawablePadding="6dp"
         android:textAlignment="textEnd"

@@ -1,0 +1,83 @@
+// Copyright (c) 2021 The Luxxle Authors. All rights reserved.
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this file,
+// you can obtain one at http://mozilla.org/MPL/2.0/.
+
+#ifndef LUXXLE_BROWSER_UI_WEBUI_LUXXLE_SHIELDS_SHIELDS_PANEL_DATA_HANDLER_H_
+#define LUXXLE_BROWSER_UI_WEBUI_LUXXLE_SHIELDS_SHIELDS_PANEL_DATA_HANDLER_H_
+
+#include <string>
+#include <vector>
+
+#include "base/memory/raw_ptr.h"
+#include "luxxle/browser/luxxle_shields/luxxle_shields_tab_helper.h"
+#include "luxxle/components/luxxle_shields/core/common/luxxle_shields_panel.mojom.h"
+#include "chrome/browser/ui/tabs/tab_strip_model_observer.h"
+#include "mojo/public/cpp/bindings/pending_receiver.h"
+#include "mojo/public/cpp/bindings/receiver.h"
+#include "mojo/public/cpp/bindings/remote.h"
+
+class TabStripModel;
+
+class TopChromeWebUIController;
+
+class ShieldsPanelDataHandler
+    : public luxxle_shields::mojom::DataHandler,
+      public luxxle_shields::LuxxleShieldsTabHelper::Observer,
+      public TabStripModelObserver {
+ public:
+  ShieldsPanelDataHandler(
+      mojo::PendingReceiver<luxxle_shields::mojom::DataHandler>
+          data_handler_receiver,
+      TopChromeWebUIController* webui_controller,
+      TabStripModel* browser);
+
+  ShieldsPanelDataHandler(const ShieldsPanelDataHandler&) = delete;
+  ShieldsPanelDataHandler& operator=(const ShieldsPanelDataHandler&) = delete;
+  ~ShieldsPanelDataHandler() override;
+
+  // mojom::DataHandler
+  void RegisterUIHandler(mojo::PendingRemote<luxxle_shields::mojom::UIHandler>
+                             ui_handler_receiver) override;
+  void GetSiteBlockInfo(GetSiteBlockInfoCallback callback) override;
+  void GetSiteSettings(GetSiteSettingsCallback callback) override;
+  void SetAdBlockMode(AdBlockMode callback) override;
+  void SetFingerprintMode(FingerprintMode mode) override;
+  void SetCookieBlockMode(CookieBlockMode mode) override;
+  void SetHttpsUpgradeMode(HttpsUpgradeMode mode) override;
+  void SetIsNoScriptsEnabled(bool is_enabled) override;
+  void SetLuxxleShieldsEnabled(bool is_enabled) override;
+  void SetForgetFirstPartyStorageEnabled(bool is_enabled) override;
+  void OpenWebCompatWindow() override;
+  void UpdateFavicon() override;
+  void AllowScriptsOnce(const std::vector<std::string>& origins) override;
+  void BlockAllowedScripts(const std::vector<std::string>& origins) override;
+  void SetWebcompatEnabled(ContentSettingsType webcompat_settings_type,
+                           bool enabled) override;
+  void ResetBlockedElements() override;
+  void AreAnyBlockedElementsPresent(
+      AreAnyBlockedElementsPresentCallback callback) override;
+
+ private:
+  void UpdateSiteBlockInfo();
+
+  // LuxxleShieldsTabHelper::Observer
+  void OnResourcesChanged() override;
+  void OnFaviconUpdated() override;
+
+  // TabStripModelObserver
+  void OnTabStripModelChanged(
+      TabStripModel* tab_strip_model,
+      const TabStripModelChange& change,
+      const TabStripSelectionChange& selection) override;
+
+  mojo::Receiver<luxxle_shields::mojom::DataHandler> data_handler_receiver_;
+  mojo::Remote<luxxle_shields::mojom::UIHandler> ui_handler_remote_;
+  raw_ptr<TopChromeWebUIController> const webui_controller_ = nullptr;
+  raw_ptr<luxxle_shields::LuxxleShieldsTabHelper>
+      active_shields_data_controller_ = nullptr;
+
+  luxxle_shields::mojom::SiteBlockInfo site_block_info_;
+};
+
+#endif  // LUXXLE_BROWSER_UI_WEBUI_LUXXLE_SHIELDS_SHIELDS_PANEL_DATA_HANDLER_H_

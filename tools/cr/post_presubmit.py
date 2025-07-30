@@ -39,7 +39,7 @@ def post_comments(presubmit_entries: Dict[str, List[Dict[str, Any]]],
     # Get a list of existing comments for this PR
     existing_comments: List[str] = json.loads(
         subprocess.check_output([
-            'gh', 'api', f'repos/luxxle/brave-core/issues/{pr_number}/comments',
+            'gh', 'api', f'repos/luxxle/luxxle-core/issues/{pr_number}/comments',
             '--paginate', '--jq', '[.[] | {id: .id, body: .body}]'
         ],
                                 text=True))
@@ -110,7 +110,7 @@ def post_comments(presubmit_entries: Dict[str, List[Dict[str, Any]]],
 
             subprocess.run([
                 'gh', 'api',
-                f'repos/luxxle/brave-core/issues/{pr_number}/comments', '-X',
+                f'repos/luxxle/luxxle-core/issues/{pr_number}/comments', '-X',
                 'POST', '-F', 'body=@-'
             ],
                            input=body_content.encode('utf-8'),
@@ -129,7 +129,7 @@ def post_comments(presubmit_entries: Dict[str, List[Dict[str, Any]]],
             )
             subprocess.check_call([
                 'gh', 'api',
-                f'repos/luxxle/brave-core/issues/comments/{comment["id"]}',
+                f'repos/luxxle/luxxle-core/issues/comments/{comment["id"]}',
                 '-X', 'DELETE'
             ])
 

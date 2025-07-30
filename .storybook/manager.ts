@@ -6,10 +6,10 @@
 import { addons } from '@storybook/manager-api'
 import { create } from '@storybook/theming'
 
-const braveTheme = create({
+const luxxleTheme = create({
   base: 'dark',
-  brandTitle: 'Brave Browser UI',
-  brandUrl: 'https://github.com/luxxle/brave-core'
+  brandTitle: 'Luxxle Browser UI',
+  brandUrl: 'https://github.com/luxxle/luxxle-core'
 })
 
 addons.setConfig({
@@ -17,5 +17,5 @@ addons.setConfig({
   showNav: true,
   showPanel: true,
   panelPosition: 'right',
-  theme: braveTheme
+  theme: luxxleTheme
 })

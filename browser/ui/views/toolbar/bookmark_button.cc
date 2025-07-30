@@ -19,20 +19,20 @@
 #include "ui/base/metadata/metadata_impl_macros.h"
 #include "ui/gfx/paint_vector_icon.h"
 
-BraveBookmarkButton::BraveBookmarkButton(PressedCallback callback)
+LuxxleBookmarkButton::LuxxleBookmarkButton(PressedCallback callback)
     : ToolbarButton(std::move(callback)) {
   SetID(VIEW_ID_STAR_BUTTON);
   set_tag(IDC_BOOKMARK_THIS_TAB);
 }
 
-BraveBookmarkButton::~BraveBookmarkButton() = default;
+LuxxleBookmarkButton::~LuxxleBookmarkButton() = default;
 
-void BraveBookmarkButton::SetToggled(bool on) {
+void LuxxleBookmarkButton::SetToggled(bool on) {
   active_ = on;
   UpdateImageAndText();
 }
 
-void BraveBookmarkButton::UpdateImageAndText() {
+void LuxxleBookmarkButton::UpdateImageAndText() {
   const ui::ColorProvider* color_provider = GetColorProvider();
   SkColor icon_color = color_provider->GetColor(kColorToolbarButtonIcon);
   const gfx::VectorIcon& icon =
@@ -45,5 +45,5 @@ void BraveBookmarkButton::UpdateImageAndText() {
   SetTooltipText(l10n_util::GetStringUTF16(tooltip_id));
 }
 
-BEGIN_METADATA(BraveBookmarkButton)
+BEGIN_METADATA(LuxxleBookmarkButton)
 END_METADATA

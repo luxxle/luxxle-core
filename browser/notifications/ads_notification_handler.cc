@@ -7,12 +7,12 @@
 
 #include <optional>
 
-// REMOVED: #include "luxxle/browser/brave_ads/.*"
-// REMOVED: #include "luxxle/components/brave_ads/.*"
+// REMOVED: #include "luxxle/browser/luxxle_ads/.*"
+// REMOVED: #include "luxxle/components/luxxle_ads/.*"
 #include "build/build_config.h"
 #include "url/gurl.h"
 
-namespace brave_ads {
+namespace luxxle_ads {
 
 namespace {
 const void* const kUserDataKey = &kUserDataKey;
@@ -87,4 +87,4 @@ void AdsNotificationHandler::OpenSettings(Profile* profile,
   ads_service->OnNotificationAdClicked(id);
 }
 
-}  // namespace brave_ads
+}  // namespace luxxle_ads

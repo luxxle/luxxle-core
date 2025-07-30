@@ -1,0 +1,74 @@
+# Copyright 2023 The Chromium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# @generated from third_party/rust/chromium_crates_io/BUILD.gn.hbs by
+# tools/crates/gnrt.
+# Do not edit!
+
+import("//build/rust/cargo_crate.gni")
+
+cargo_crate("lib") {
+  crate_name = "luxxle_miracl"
+  epoch = "0.1"
+  crate_type = "rlib"
+  crate_root = "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/lib.rs"
+  sources = [
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/aes.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/arch.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/bn254/big.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/bn254/bls.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/bn254/dbig.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/bn254/ecdh.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/bn254/ecp.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/bn254/ecp2.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/bn254/eddsa.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/bn254/fp.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/bn254/fp12.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/bn254/fp2.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/bn254/fp4.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/bn254/hpke.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/bn254/mod.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/bn254/mpin.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/bn254/pair.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/bn254/rom.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/dilithium.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/gcm.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/hash256.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/hash384.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/hash512.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/hmac.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/kyber.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/lib.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/main.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/nhs.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/rand.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/sha3.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/share.rs",
+    "//luxxle/third_party/rust/chromium_crates_io/vendor/luxxle-miracl-v0_1/src/x509.rs",
+  ]
+  inputs = []
+
+  build_native_rust_unit_tests = false
+  edition = "2021"
+  cargo_pkg_version = "0.1.3"
+  cargo_pkg_authors = "Mike Scott <mike.scott@miracl.com>"
+  cargo_pkg_name = "luxxle-miracl"
+  cargo_pkg_description =
+      "Subset of the MIRACL Core library that includes the bn254 elliptic curve"
+  library_configs -= [ "//build/config/coverage:default_coverage" ]
+  library_configs -= [ "//build/config/compiler:chromium_code" ]
+  library_configs += [ "//build/config/compiler:no_chromium_code" ]
+  executable_configs -= [ "//build/config/compiler:chromium_code" ]
+  executable_configs += [ "//build/config/compiler:no_chromium_code" ]
+  proc_macro_configs -= [ "//build/config/compiler:chromium_code" ]
+  proc_macro_configs += [ "//build/config/compiler:no_chromium_code" ]
+  features = [
+    "default",
+    "std",
+  ]
+  rustenv = []
+  rustflags = [
+    "--cap-lints=allow",  # Suppress all warnings in crates.io crates
+  ]
+}

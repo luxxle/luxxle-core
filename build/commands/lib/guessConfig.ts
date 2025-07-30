@@ -10,7 +10,7 @@ import fs from 'fs'
 const buildConfigs = ['Component', 'Static', 'Debug', 'Release']
 const extraArchitectures = ['arm64', 'x86']
 
-// Choose which brave-core build directory to look for pre-compiled
+// Choose which luxxle-core build directory to look for pre-compiled
 // resource dependencies:
 // 1. Default for local builds for the actual platform / architecture
 // 2. platform / architecture overriden by environment variables
@@ -40,7 +40,7 @@ function getBuildOutputPathList() {
 
 if (fs.existsSync(outputPath)) {
   console.log(
-    'Assuming precompiled dependencies can be found at the existing path found from brave-core configuration: '
+    'Assuming precompiled dependencies can be found at the existing path found from luxxle-core configuration: '
       + outputPath,
   )
 } else {
@@ -51,7 +51,7 @@ if (fs.existsSync(outputPath)) {
     )
   if (!outDirectories.length) {
     throw new Error(
-      'Cannot find any brave-core build output directories. Have you run a brave-core build yet with the specified (or default) configuration?',
+      'Cannot find any luxxle-core build output directories. Have you run a luxxle-core build yet with the specified (or default) configuration?',
     )
   }
   outputPath = outDirectories[0]

@@ -3,21 +3,21 @@
   const D = document
   const isDebug = false
 
-  const braveSoftwareOrigin = 'dev-pages.bravesoftware.com'
-  const braveSoftwareComOrigin = 'dev-pages.brave.software'
+  const luxxleSoftwareOrigin = 'dev-pages.luxxlesoftware.com'
+  const luxxleSoftwareComOrigin = 'dev-pages.luxxle.software'
 
   let thisOrigin = document.location.host
   const bodyElm = document.body
   let otherOrigin
 
-  if (thisOrigin.startsWith(braveSoftwareOrigin)) {
-      thisOrigin = braveSoftwareOrigin
-      otherOrigin = braveSoftwareComOrigin
-      bodyElm.className += ' brave-software-com'
-  } else if (thisOrigin.startsWith(braveSoftwareComOrigin)) {
-      thisOrigin = braveSoftwareComOrigin
-      otherOrigin = braveSoftwareOrigin
-      bodyElm.className += ' brave-software'
+  if (thisOrigin.startsWith(luxxleSoftwareOrigin)) {
+      thisOrigin = luxxleSoftwareOrigin
+      otherOrigin = luxxleSoftwareComOrigin
+      bodyElm.className += ' luxxle-software-com'
+  } else if (thisOrigin.startsWith(luxxleSoftwareComOrigin)) {
+      thisOrigin = luxxleSoftwareComOrigin
+      otherOrigin = luxxleSoftwareOrigin
+      bodyElm.className += ' luxxle-software'
   }
 
   const classToOrigin = {
@@ -120,7 +120,7 @@
     W.addEventListener('message', onMessage, false)
   }
 
-  W.BRAVE = {
+  W.LUXXLE = {
     logger,
     thisOriginUrl,
     otherOriginUrl,

@@ -23,13 +23,13 @@ import argparse
 import re
 import os
 import sys
-import brave_chromium_utils
+import luxxle_chromium_utils
 # Look for potential problems in chromium_src overrides.
 
-BRAVE_SRC = os.path.abspath(
+LUXXLE_SRC = os.path.abspath(
     os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
-BRAVE_CHROMIUM_SRC = os.path.join(BRAVE_SRC, 'chromium_src')
-CHROMIUM_SRC = os.path.abspath(os.path.dirname(BRAVE_SRC))
+LUXXLE_CHROMIUM_SRC = os.path.join(LUXXLE_SRC, 'chromium_src')
+CHROMIUM_SRC = os.path.abspath(os.path.dirname(LUXXLE_SRC))
 
 # Capture group 1: the name of the macro
 # Capture group 2: opening parenthesis if the macro is function-like
@@ -51,7 +51,7 @@ def is_header_guard_define(override_filepath, target):
     """
     Checks if the target define is the header guard for the override file path
     """
-    guard_string = ("BRAVE_CHROMIUM_SRC_" +
+    guard_string = ("LUXXLE_CHROMIUM_SRC_" +
                     override_filepath.replace('\\', '/').replace(
                         '/', '_').replace('-', '_').replace('.', '_').upper() +
                     "_")
@@ -81,9 +81,9 @@ def filter_chromium_src_filepaths(affected_paths, exclude_regexp=None):
     """
     result = []
     for path in affected_paths:
-        # Strip the BRAVE_CHROMIUM_SRC prefix to match against the
+        # Strip the LUXXLE_CHROMIUM_SRC prefix to match against the
         # list of relative paths to be included and/or excluded
-        relative_path = path.replace(BRAVE_CHROMIUM_SRC, '')[1:]
+        relative_path = path.replace(LUXXLE_CHROMIUM_SRC, '')[1:]
 
         # Normalize back slashes to forward slashes just in case we're in
         # Windows before trying to match them against a regular expression.
@@ -100,17 +100,17 @@ def filter_chromium_src_filepaths(affected_paths, exclude_regexp=None):
 
 def filter_all_chromium_src_filepaths(exclude_regexp):
     """
-    Return a list of paths pointing to the files in |BRAVE_CHROMIUM_SRC|
+    Return a list of paths pointing to the files in |LUXXLE_CHROMIUM_SRC|
     after filtering out the exclusions.
     """
     result = []
-    for dir_path, _dirnames, filenames in os.walk(BRAVE_CHROMIUM_SRC):
+    for dir_path, _dirnames, filenames in os.walk(LUXXLE_CHROMIUM_SRC):
         for filename in filenames:
             full_path = os.path.join(dir_path, filename)
 
-            # Strip the BRAVE_CHROMIUM_SRC prefix to match against the
+            # Strip the LUXXLE_CHROMIUM_SRC prefix to match against the
             # list of relative paths to be included and/or excluded
-            relative_path = full_path.replace(BRAVE_CHROMIUM_SRC, '')[1:]
+            relative_path = full_path.replace(LUXXLE_CHROMIUM_SRC, '')[1:]
 
             # Normalize back slashes to forward slashes just in case we're in
             # Windows before trying to match them against a regular expression.
@@ -362,7 +362,7 @@ class ChromiumSrcOverridesChecker:
                                                      override_filepath)
             if not os.path.isfile(original_filepath):
                 additional_extensions = (
-                    brave_chromium_utils.get_additional_extensions())
+                    luxxle_chromium_utils.get_additional_extensions())
                 if any(
                         override_filepath.endswith(ext)
                         and os.path.isfile(original_filepath.replace(ext, ''))
@@ -409,7 +409,7 @@ class ChromiumSrcOverridesChecker:
         """
         Validates that a symbol specified in exclusions exists in the file.
         """
-        override_path = os.path.join(BRAVE_CHROMIUM_SRC, path)
+        override_path = os.path.join(LUXXLE_CHROMIUM_SRC, path)
         with open(override_path, mode='r', encoding='utf-8') as file:
             pattern = rf'(\b{symbol}\b)'
             content = strip_comments(file.read())
@@ -427,14 +427,14 @@ class ChromiumSrcOverridesChecker:
         """
         Validates that the exclusion file path exists.
         """
-        override_path = os.path.join(BRAVE_CHROMIUM_SRC, path)
+        override_path = os.path.join(LUXXLE_CHROMIUM_SRC, path)
         if not os.path.isfile(override_path):
             self.AddError(
                 "  Path listed in //luxxle/chromium_src/" +
                 "check_chromium_src_config.json5 " +
                 f"cannot be found:\n  chromium_src/{path}.\n  If the file " +
                 "was removed then also remove it from the list in " +
-                "//brave/chromium_src/check_chromium_src_config.json5")
+                "//luxxle/chromium_src/check_chromium_src_config.json5")
             return False
         return True
 
@@ -460,7 +460,7 @@ class ChromiumSrcOverridesChecker:
         return result
 
     def load_exclusions(self):
-        config_path = os.path.join(BRAVE_CHROMIUM_SRC,
+        config_path = os.path.join(LUXXLE_CHROMIUM_SRC,
                                    'check_chromium_src_config.json5')
         if not os.path.isfile(config_path):
             self.AddError(f"  Unable to load config file {config_path}.")
@@ -492,7 +492,7 @@ class ChromiumSrcOverridesChecker:
             return self.messages
 
         # Change into the chromium_src directory for convenience.
-        os.chdir(BRAVE_CHROMIUM_SRC)
+        os.chdir(LUXXLE_CHROMIUM_SRC)
 
         # Build filters
         exclude_regexp = None
@@ -536,7 +536,7 @@ def main():
                                          options.arch)
 
     # Check that the required directories exist.
-    for directory in [BRAVE_SRC, gen_buildir]:
+    for directory in [LUXXLE_SRC, gen_buildir]:
         if not os.path.isdir(directory):
             print(f"ERROR: {directory} is not a valid directory.")
             return 1

@@ -12,7 +12,7 @@ import os
 import re
 import traceback
 
-import brave_chromium_utils
+import luxxle_chromium_utils
 import override_utils
 
 # pylint: disable=protected-access,unused-variable
@@ -22,11 +22,11 @@ CANNED_CHECKS_KEY = 'canned'
 
 # Helper to load json5 presubmit config.
 def load_presubmit_config():
-    with brave_chromium_utils.sys_path('//third_party/pyjson5/src'):
+    with luxxle_chromium_utils.sys_path('//third_party/pyjson5/src'):
         import json5
         return json5.load(
             open(
-                brave_chromium_utils.wspath(
+                luxxle_chromium_utils.wspath(
                     '//luxxle/chromium_presubmit_config.json5')))
 
 
@@ -188,7 +188,7 @@ def inline_presubmit(filename, _globals, _locals):
     class State:
         def __init__(self, filename):
             self.presubmit_dir = os.path.dirname(
-                brave_chromium_utils.wspath(filename))
+                luxxle_chromium_utils.wspath(filename))
             self.orig_cwd = os.getcwd()
             self.orig_presubmit_dir = ''
 
@@ -212,7 +212,7 @@ def inline_presubmit(filename, _globals, _locals):
     assert pre_check_name not in _globals
     _globals[pre_check_name] = PreRunChecks
 
-    brave_chromium_utils.inline_file(filename, _globals, _locals)
+    luxxle_chromium_utils.inline_file(filename, _globals, _locals)
     apply_generic_check_overrides(_globals, filename, True)
 
     def PostRunChecks(input_api, _output_api):

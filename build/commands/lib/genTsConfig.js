@@ -12,7 +12,7 @@ const Config = require('./config')
  * so that typescript can import files from cthe current build's
  * gen/ directory (e.g. mojom-generated JS).
  *
- * @param {*} genPath precompiled brave-core gen dir full path
+ * @param {*} genPath precompiled luxxle-core gen dir full path
  * @param {*} name name of tsconfig file, e.g. tsconfig-webpack.json
  * @param {*} atPath where to generate the file
  * @param {*} extendsFrom full path of tsconfig to extend
@@ -22,7 +22,7 @@ module.exports = async function createGenTsConfig(
   genPath = process.env.ROOT_GEN_DIR,
   name = 'tsconfig-webpack.json',
   atPath = genPath,
-  extendsFrom = path.join(Config.braveCoreDir, 'tsconfig-webpack.json'),
+  extendsFrom = path.join(Config.luxxleCoreDir, 'tsconfig-webpack.json'),
 ) {
   const pathMap = require('../../../components/webpack/path-map')(genPath)
   const configExtendsFrom = path.relative(atPath, extendsFrom)

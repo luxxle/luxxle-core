@@ -20,11 +20,11 @@ import org.chromium.base.supplier.ObservableSupplierImpl;
 import org.chromium.build.annotations.NullMarked;
 import org.chromium.build.annotations.Nullable;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.BraveRelaunchUtils;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.LuxxleRelaunchUtils;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.ntp.NtpUtil;
 import org.chromium.chrome.browser.ntp_background_images.NTPBackgroundImagesBridge;
-import org.chromium.chrome.browser.preferences.BravePref;
+import org.chromium.chrome.browser.preferences.LuxxlePref;
 import org.chromium.chrome.browser.profiles.ProfileManager;
 import org.chromium.chrome.browser.util.TabUtils;
 import org.chromium.components.browser_ui.settings.ChromeSwitchPreference;
@@ -35,7 +35,7 @@ import org.chromium.ui.text.ChromeClickableSpan;
 
 /** Fragment to keep track of all the display related preferences. */
 @NullMarked
-public class BackgroundImagesPreferences extends BravePreferenceFragment
+public class BackgroundImagesPreferences extends LuxxlePreferenceFragment
         implements OnPreferenceChangeListener {
     private static final String TAG = "BackgroundImages";
 
@@ -43,17 +43,17 @@ public class BackgroundImagesPreferences extends BravePreferenceFragment
     public static final String PREF_SHOW_BACKGROUND_IMAGES = "show_background_images";
     public static final String PREF_SHOW_SPONSORED_IMAGES = "show_sponsored_images";
     public static final String PREF_SHOW_TOP_SITES = "show_top_sites";
-    public static final String PREF_SHOW_BRAVE_STATS = "show_brave_stats";
+    public static final String PREF_SHOW_LUXXLE_STATS = "show_luxxle_stats";
     public static final String PREF_BACKGROUND_IMAGES_CATEGORY = "background_images";
 
     public static final String PREF_SPONSORED_IMAGES_LEARN_MORE = "sponsored_images_learn_more";
 
     public static final String NEW_TAB_TAKEOVER_LEARN_MORE_LINK_URL =
-            "https://support.brave.com/hc/en-us/articles/35182999599501";
+            "https://support.luxxle.com/hc/en-us/articles/35182999599501";
 
     private ChromeSwitchPreference mShowBackgroundImagesPref;
     private ChromeSwitchPreference mShowSponsoredImagesPref;
-    private ChromeSwitchPreference mShowBraveStatsPref;
+    private ChromeSwitchPreference mShowLuxxleStatsPref;
     private ChromeSwitchPreference mShowTopSitesPref;
     private ClickableSpansTextMessagePreference mLearnMorePreference;
 
@@ -75,7 +75,7 @@ public class BackgroundImagesPreferences extends BravePreferenceFragment
             mShowBackgroundImagesPref.setEnabled(true);
             mShowBackgroundImagesPref.setChecked(
                     UserPrefs.get(ProfileManager.getLastUsedRegularProfile())
-                            .getBoolean(BravePref.NEW_TAB_PAGE_SHOW_BACKGROUND_IMAGE));
+                            .getBoolean(LuxxlePref.NEW_TAB_PAGE_SHOW_BACKGROUND_IMAGE));
             mShowBackgroundImagesPref.setOnPreferenceChangeListener(this);
         }
         mShowSponsoredImagesPref =
@@ -83,11 +83,11 @@ public class BackgroundImagesPreferences extends BravePreferenceFragment
         if (mShowSponsoredImagesPref != null) {
             mShowSponsoredImagesPref.setEnabled(
                     UserPrefs.get(ProfileManager.getLastUsedRegularProfile())
-                            .getBoolean(BravePref.NEW_TAB_PAGE_SHOW_BACKGROUND_IMAGE));
+                            .getBoolean(LuxxlePref.NEW_TAB_PAGE_SHOW_BACKGROUND_IMAGE));
             mShowSponsoredImagesPref.setChecked(
                     UserPrefs.get(ProfileManager.getLastUsedRegularProfile())
                             .getBoolean(
-                                    BravePref.NEW_TAB_PAGE_SHOW_SPONSORED_IMAGES_BACKGROUND_IMAGE));
+                                    LuxxlePref.NEW_TAB_PAGE_SHOW_SPONSORED_IMAGES_BACKGROUND_IMAGE));
             mShowSponsoredImagesPref.setOnPreferenceChangeListener(this);
         }
         mLearnMorePreference =
@@ -96,7 +96,7 @@ public class BackgroundImagesPreferences extends BravePreferenceFragment
         if (mLearnMorePreference != null) {
             ChromeClickableSpan chromeClickableSpan =
                     new ChromeClickableSpan(
-                            getContext().getColor(R.color.brave_link),
+                            getContext().getColor(R.color.luxxle_link),
                             sponsoredImagesLearnMoreClickedCallback());
             SpannableString spannableString =
                     new SpannableString(
@@ -117,11 +117,11 @@ public class BackgroundImagesPreferences extends BravePreferenceFragment
             mShowTopSitesPref.setChecked(NtpUtil.shouldDisplayTopSites());
             mShowTopSitesPref.setOnPreferenceChangeListener(this);
         }
-        mShowBraveStatsPref = (ChromeSwitchPreference) findPreference(PREF_SHOW_BRAVE_STATS);
-        if (mShowBraveStatsPref != null) {
-            mShowBraveStatsPref.setEnabled(true);
-            mShowBraveStatsPref.setChecked(NtpUtil.shouldDisplayBraveStats());
-            mShowBraveStatsPref.setOnPreferenceChangeListener(this);
+        mShowLuxxleStatsPref = (ChromeSwitchPreference) findPreference(PREF_SHOW_LUXXLE_STATS);
+        if (mShowLuxxleStatsPref != null) {
+            mShowLuxxleStatsPref.setEnabled(true);
+            mShowLuxxleStatsPref.setChecked(NtpUtil.shouldDisplayLuxxleStats());
+            mShowLuxxleStatsPref.setOnPreferenceChangeListener(this);
         }
     }
 
@@ -138,18 +138,18 @@ public class BackgroundImagesPreferences extends BravePreferenceFragment
                 mShowSponsoredImagesPref.setEnabled((boolean) newValue);
             }
             UserPrefs.get(ProfileManager.getLastUsedRegularProfile())
-                    .setBoolean(BravePref.NEW_TAB_PAGE_SHOW_BACKGROUND_IMAGE, (boolean) newValue);
-            BraveRelaunchUtils.askForRelaunch(getActivity());
+                    .setBoolean(LuxxlePref.NEW_TAB_PAGE_SHOW_BACKGROUND_IMAGE, (boolean) newValue);
+            LuxxleRelaunchUtils.askForRelaunch(getActivity());
         } else if (PREF_SHOW_SPONSORED_IMAGES.equals(key)) {
             UserPrefs.get(ProfileManager.getLastUsedRegularProfile())
                     .setBoolean(
-                            BravePref.NEW_TAB_PAGE_SHOW_SPONSORED_IMAGES_BACKGROUND_IMAGE,
+                            LuxxlePref.NEW_TAB_PAGE_SHOW_SPONSORED_IMAGES_BACKGROUND_IMAGE,
                             (boolean) newValue);
-            BraveRelaunchUtils.askForRelaunch(getActivity());
+            LuxxleRelaunchUtils.askForRelaunch(getActivity());
         } else if (PREF_SHOW_TOP_SITES.equals(key)) {
             NtpUtil.setDisplayTopSites((boolean) newValue);
-        } else if (PREF_SHOW_BRAVE_STATS.equals(key)) {
-            NtpUtil.setDisplayBraveStats((boolean) newValue);
+        } else if (PREF_SHOW_LUXXLE_STATS.equals(key)) {
+            NtpUtil.setDisplayLuxxleStats((boolean) newValue);
         }
         return true;
     }
@@ -158,8 +158,8 @@ public class BackgroundImagesPreferences extends BravePreferenceFragment
         return (view) -> {
             try {
                 TabUtils.openUrlInNewTab(false, NEW_TAB_TAKEOVER_LEARN_MORE_LINK_URL);
-                TabUtils.bringChromeTabbedActivityToTheTop(BraveActivity.getBraveActivity());
-            } catch (BraveActivity.BraveActivityNotFoundException e) {
+                TabUtils.bringChromeTabbedActivityToTheTop(LuxxleActivity.getLuxxleActivity());
+            } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
                 Log.e(TAG, "sponsoredImagesLearnMoreClickedCallback" + e);
             }
         };

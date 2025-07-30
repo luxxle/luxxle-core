@@ -114,7 +114,7 @@ source_set("unit_tests") {
     "//luxxle/browser/misc_metrics",
     "//luxxle/browser/misc_metrics:misc_metrics_impl",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/core",
+    # "//luxxle/components/luxxle_rewards/core",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/misc_metrics",
     "//chrome/browser",

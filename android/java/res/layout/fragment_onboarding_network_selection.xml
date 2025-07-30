@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--* Copyright (c) 2024 The Brave Authors. All rights reserved.
+<!--* Copyright (c) 2024 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
@@ -38,8 +38,8 @@
             android:textColor="@color/text_secondary" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:theme="@style/BraveWalletEditTextTheme"
-            style="@style/BraveWalletInputLayout"
+            android:theme="@style/LuxxleWalletEditTextTheme"
+            style="@style/LuxxleWalletInputLayout"
             android:id="@+id/network_search_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
 
         <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/show_testnets"
-            style="@style/BraveWalletCheckBox"
+            style="@style/LuxxleWalletCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -92,7 +92,7 @@
             android:layout_marginBottom="16dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            style="@style/BraveWalletOnboardingButton"/>
+            style="@style/LuxxleWalletOnboardingButton"/>
 
         <TextView
             style="@style/SmallRegular"

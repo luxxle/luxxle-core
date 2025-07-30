@@ -6,7 +6,7 @@
 package org.chromium.chrome.browser.crypto_wallet.listeners;
 
 /**
- * Interface implemented by {@link org.chromium.chrome.browser.app.BraveActivity} in charge of
+ * Interface implemented by {@link org.chromium.chrome.browser.app.LuxxleActivity} in charge of
  * defining the navigation behavior for onboarding, biometric prompt, next page, and navigation
  * icons.
  */

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!-- Copyright (c) 2022 The Brave Authors. All rights reserved.
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright (c) 2022 The Luxxle Authors. All rights reserved.
      This Source Code Form is subject to the terms of the Mozilla Public
      License, v. 2.0. If a copy of the MPL was not distributed with this file,
      You can obtain one at https://mozilla.org/MPL/2.0/. */
@@ -23,7 +23,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:background="@drawable/ic_wallet_lock"
-        android:backgroundTint="@color/brave_white"
+        android:backgroundTint="@color/luxxle_white"
         android:contentDescription="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,11 +31,11 @@
 
     <TextView
         android:id="@+id/tv_dapp_desc"
-        style="@style/BraveWalletTextViewWhite"
+        style="@style/LuxxleWalletTextViewWhite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="40dp"
-        android:text="@string/brave_wallet_dapps_connection_request_msg"
+        android:text="@string/luxxle_wallet_dapps_connection_request_msg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

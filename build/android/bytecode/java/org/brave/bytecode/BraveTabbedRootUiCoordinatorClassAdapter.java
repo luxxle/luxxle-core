@@ -3,20 +3,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveTabbedRootUiCoordinatorClassAdapter extends BraveClassVisitor {
+public class LuxxleTabbedRootUiCoordinatorClassAdapter extends LuxxleClassVisitor {
     static String sTabbedRootUiCoordinatorClassName =
             "org/chromium/chrome/browser/tabbed_mode/TabbedRootUiCoordinator";
-    static String sBraveTabbedRootUiCoordinatorClassName =
-            "org/chromium/chrome/browser/tabbed_mode/BraveTabbedRootUiCoordinator";
+    static String sLuxxleTabbedRootUiCoordinatorClassName =
+            "org/chromium/chrome/browser/tabbed_mode/LuxxleTabbedRootUiCoordinator";
 
-    public BraveTabbedRootUiCoordinatorClassAdapter(ClassVisitor visitor) {
+    public LuxxleTabbedRootUiCoordinatorClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         redirectConstructor(
-                sTabbedRootUiCoordinatorClassName, sBraveTabbedRootUiCoordinatorClassName);
+                sTabbedRootUiCoordinatorClassName, sLuxxleTabbedRootUiCoordinatorClassName);
     }
 }

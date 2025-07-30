@@ -9,7 +9,7 @@
 #include <string>
 
 #include "base/no_destructor.h"
-#include "luxxle/components/search_engines/brave_prepopulated_engines.h"
+#include "luxxle/components/search_engines/luxxle_prepopulated_engines.h"
 #include "build/build_config.h"
 #include "chrome/browser/profiles/incognito_helpers.h"
 #include "chrome/browser/profiles/profile.h"

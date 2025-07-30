@@ -11,7 +11,7 @@ class GitStatus:
     """
 
     def __init__(self):
-        self.git_status = repository.brave.run_git('status', '--short')
+        self.git_status = repository.luxxle.run_git('status', '--short')
 
         # a list of all deleted files, regardless of their staged status.
         self.deleted = []

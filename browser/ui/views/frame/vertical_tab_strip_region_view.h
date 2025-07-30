@@ -25,7 +25,7 @@ namespace views {
 class ResizeArea;
 }
 
-class BraveNewTabButton;
+class LuxxleNewTabButton;
 class BrowserView;
 class FullscreenController;
 class TabSearchButton;
@@ -203,7 +203,7 @@ class VerticalTabStripRegionView : public views::View,
   raw_ptr<views::View> separator_ = nullptr;
 
   // New tab button created for vertical tabs
-  raw_ptr<BraveNewTabButton> new_tab_button_ = nullptr;
+  raw_ptr<LuxxleNewTabButton> new_tab_button_ = nullptr;
 
   raw_ptr<views::View> resize_area_ = nullptr;
   std::optional<int> resize_offset_;

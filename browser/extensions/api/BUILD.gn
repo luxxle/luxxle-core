@@ -7,16 +7,16 @@ import("//luxxle/common/extensions/api/api_sources.gni")
 import("//tools/json_schema_compiler/json_schema_api.gni")
 
 function_registration("generated_api_registration") {
-  sources = brave_extensions_api_schema_sources
+  sources = luxxle_extensions_api_schema_sources
   impl_dir = "//luxxle/browser/extensions/api/"
-  bundle_name = "Brave"
-  root_namespace = brave_extensions_api_root_namespace
+  bundle_name = "Luxxle"
+  root_namespace = luxxle_extensions_api_root_namespace
 
   deps = [
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_ads/core/mojom",
+    # "//luxxle/components/luxxle_ads/core/mojom",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/core/mojom",
+    # "//luxxle/components/luxxle_rewards/core/mojom",
     "//extensions/browser",
     "//extensions/common",
   ]

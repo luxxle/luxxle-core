@@ -5,14 +5,14 @@
 
 import("//extensions/buildflags/buildflags.gni")
 
-brave_browser_search_engines_sources = [
+luxxle_browser_search_engines_sources = [
   "//luxxle/browser/search_engines/search_engine_provider_service_factory.cc",
   "//luxxle/browser/search_engines/search_engine_provider_service_factory.h",
   "//luxxle/browser/search_engines/search_engine_tracker.cc",
   "//luxxle/browser/search_engines/search_engine_tracker.h",
 ]
 
-brave_browser_search_engines_deps = [
+luxxle_browser_search_engines_deps = [
   "//base",
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead
@@ -32,21 +32,21 @@ brave_browser_search_engines_deps = [
 ]
 
 if (is_android) {
-  brave_browser_search_engines_sources += [
+  luxxle_browser_search_engines_sources += [
     "//luxxle/browser/search_engines/normal_window_search_engine_provider_service_android.cc",
     "//luxxle/browser/search_engines/normal_window_search_engine_provider_service_android.h",
     "//luxxle/browser/search_engines/private_window_search_engine_provider_service_android.cc",
     "//luxxle/browser/search_engines/private_window_search_engine_provider_service_android.h",
   ]
 
-  brave_browser_search_engines_deps += [
+  luxxle_browser_search_engines_deps += [
     # Commented out: removed components dependency - using Chromium defaults instead
     "//chrome/browser/profiles:profile",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//components/prefs",
   ]
 } else {
-  brave_browser_search_engines_sources += [
+  luxxle_browser_search_engines_sources += [
     "//luxxle/browser/search_engines/normal_window_search_engine_provider_service.cc",
     "//luxxle/browser/search_engines/normal_window_search_engine_provider_service.h",
     "//luxxle/browser/search_engines/pref_names.h",
@@ -60,7 +60,7 @@ if (is_android) {
     "//luxxle/browser/search_engines/tor_window_search_engine_provider_service.h",
   ]
 
-  brave_browser_search_engines_deps += [
+  luxxle_browser_search_engines_deps += [
     "//luxxle/browser/profiles:util",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/search_engines",
@@ -81,5 +81,5 @@ if (is_android) {
 }
 
 if (enable_extensions) {
-  brave_browser_search_engines_deps += [ "//extensions/browser" ]
+  luxxle_browser_search_engines_deps += [ "//extensions/browser" ]
 }

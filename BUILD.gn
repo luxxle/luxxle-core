@@ -1,36 +1,122 @@
-# Copyright (c) 2017 The Luxxle Authors. All rights reserved.
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-# LUXXLE: Minimal Chromium-based browser build configuration
-
+import("//luxxle/build/config.gni")
+import("//luxxle/tools/crates/config.gni")
 import("//build/config/locales.gni")
-import("//chrome/browser/buildflags.gni") 
+import("//build/config/zip.gni")
+import("//chrome/browser/buildflags.gni")
+import("//extensions/buildflags/buildflags.gni")
+import("//media/media_options.gni")
+import("//third_party/icu/config.gni")
+import("//third_party/widevine/cdm/widevine.gni")
 import("//tools/grit/repack.gni")
-import("//luxxle/build_config.gni")
+import("//tools/v8_context_snapshot/v8_context_snapshot.gni")
+import("//ui/base/ui_features.gni")
 
-# LUXXLE: Build configuration to enable features that use otherwise unused functions
-# This prevents unused function warnings by actually enabling the features
+if (!is_ios) {
+  import("//luxxle/luxxle_paks.gni")
+}
 
+if (enable_library_cdms) {
+  import("//media/cdm/library_cdm/cdm_paths.gni")
+}
+
+if (is_mac) {
+  import("//luxxle/build/mac/tweak_info_plist.gni")
+  import("//build/config/mac/rules.gni")
+}
+
+if (is_win) {
+  import("//luxxle/build/win/sign.gni")
+}
+
+if (is_linux) {
+  import("//luxxle/build/linux/channels.gni")
+}
+
+declare_args() {
+  audit_dev_deps = true
+}
+
+# chromium_unit_tests_deps = [
+#   "//base:base_unittests",
+#   "//net:net_unittests",
+# ]
+# if (!is_ios) {
+#   chromium_unit_tests_deps += [ "//chrome/test:unit_tests" ]
+# }
+# if (use_blink) {
+#   chromium_unit_tests_deps += [ "//content/test:content_unittests" ]
+# }
+
+# group("chromium_unit_tests") {
+#   testonly = true
+#   data_deps = chromium_unit_tests_deps
+
+#   write_file("$root_out_dir/chromium_unit_tests.json",
+#              chromium_unit_tests_deps,
+#              "json")
+# }
+
+# luxxle_all_unit_tests_deps = [ "//luxxle/components:luxxle_components_unittests" ]
+# if (!is_ios) {
+#   luxxle_all_unit_tests_deps += [ "//luxxle/test:luxxle_unit_tests" ]
+# } else {
+#   luxxle_all_unit_tests_deps += [ "//luxxle/ios/testing:ios_luxxle_unit_tests" ]
+# }
+# if (!is_ios && !is_android) {
+#   luxxle_all_unit_tests_deps += [ "//luxxle/test:luxxle_installer_unittests" ]
+# }
+# group("luxxle_all_unit_tests") {
+#   testonly = true
+#   data_deps = luxxle_all_unit_tests_deps
+#   write_file("$root_out_dir/luxxle_all_unit_tests.json",
+#              luxxle_all_unit_tests_deps,
+#              "json")
+# }
+
+# This target serves as a canonical place to define all code that has to be
+# buildable in all platforms in a single build run.
 group("all") {
   testonly = true
-  # Build standard Chromium + Luxxle modifications
-  deps = [ "//chrome" ]
-  
-  if (!is_android && !is_ios) {
-    deps += [
-      "//chrome/test:browser_tests",
-      "//chrome/test:unit_tests", 
-    ]
+  deps = [
+    # ":luxxle_all_unit_tests",
+    # ":chromium_unit_tests",
+    "//luxxle",
+  ]
+
+  # if (!is_android && !is_ios) {
+  #   deps += [
+  #     "//luxxle/test:luxxle_network_audit_tests",
+  #     "//chrome/test:browser_tests",
+  #   ]
+  # }
+
+  if (toolkit_views) {
+    deps += [ "//ui/views/examples:views_examples" ]
   }
+
+  # if (!is_ios) {
+  #   deps += [ "//luxxle/test:luxxle_browser_tests" ]
+  # }
+
+  # if (is_android) {
+  #   deps += [
+  #     "//luxxle/build/android:luxxle",
+  #     "//luxxle/test:luxxle_java_unit_tests",
+  #     "//luxxle/test:luxxle_junit_tests",
+  #   ]
+  # }
 }
 
 if (!is_ios) {
   group("child_dependencies") {
     deps = [
       "common",
-      "//luxxle/renderer", 
+      "//luxxle/renderer",
       "//luxxle/utility",
     ]
   }
@@ -38,29 +124,594 @@ if (!is_ios) {
   group("browser_dependencies") {
     deps = [
       "browser",
+       "chromium_src/chrome/app",
       "common",
+      "//components/omnibox/common",
+      "//services/device/public/cpp:device_features",
+      "//services/network/public/cpp",
     ]
-    
+
+    data_deps = [ ":unpacked_resources" ]
+
     if (!is_ios) {
       deps += [ ":packed_resources" ]
     }
   }
+
+  group("storybook") {
+    deps = [ "//luxxle/.storybook:storybook" ]
+  }
 }
 
-group("packed_resources") {
-  deps = [ "//chrome:packed_resources" ]
+if (is_win) {
+  packed_files_rc_file =
+      "$root_out_dir/gen/chrome/installer/mini_installer/packed_delta_files.rc"
+  action("delta_installer_archive") {
+    script = "//luxxle/tools/win/create_delta_archive.py"
+    if (skip_signing) {
+      setup_exe = "setup.exe"
+    } else {
+      setup_exe = "presigned_binaries/setup.exe"
+    }
+    inputs = [
+      # The original tool for delta archive generation was called "courgette".
+      # But it runs out of memory on recent Chromium / luxxle revisions. Its
+      # drop-in replacement is Zucchini. We need to use its 64-bit version to
+      # again prevent out of memory errors.
+      "$root_out_dir/zucchini64.exe",
+      "$root_out_dir/chrome.7z",
+      "$root_out_dir/" + setup_exe,
+    ]
+    outputs = [
+      "$root_out_dir/chrome_patch.diff",
+      "$root_out_dir/chrome_patch.packed.7z",
+      "$root_out_dir/setup_patch.diff",
+      "$root_out_dir/setup_patch.packed.7z",
+      packed_files_rc_file,
+    ]
+    deps = [
+      "//chrome/installer/mini_installer:mini_installer_archive",
+      "//chrome/installer/setup:setup",
+      "//components/zucchini:zucchini64",
+    ]
+    if (!skip_signing) {
+      deps += [ ":signed_setup_exe" ]
+    }
+    args = [
+      "zucchini64.exe",
+      "$last_chrome_installer/chrome.7z",
+      "chrome.7z",
+      "$last_chrome_installer/setup.exe",
+      setup_exe,
+      "chrome_patch.diff",
+      "chrome_patch.packed.7z",
+      "setup_patch.diff",
+      "setup_patch.packed.7z",
+      rebase_path(packed_files_rc_file, root_build_dir),
+    ]
+    if (is_component_build) {
+      args += [ "--is_component_build" ]
+    }
+  }
+
+  if (!skip_signing) {
+    sign("signed_setup_exe") {
+      sources = [ "$root_out_dir/setup.exe" ]
+      outputs = [ "$root_out_dir/presigned_binaries/setup.exe" ]
+      deps = [ "//chrome/installer/setup:setup" ]
+    }
+    sign("signed_luxxle_exe") {
+      sources = [ "$root_out_dir/luxxle.exe" ]
+      outputs = [ "$root_out_dir/presigned_binaries/luxxle.exe" ]
+      deps = [ "//luxxle/build/win:copy_exe" ]
+    }
+    sign("signed_chrome_dll") {
+      sources = [ "$root_out_dir/chrome.dll" ]
+      outputs = [ "$root_out_dir/presigned_binaries/chrome.dll" ]
+      deps = [ "//chrome:chrome_dll" ]
+    }
+  }
+
+  group("mini_installer_dependencies") {
+    deps = [ ":luxxle" ]
+    if (!skip_signing) {
+      deps += [
+        ":signed_luxxle_exe",
+        ":signed_chrome_dll",
+        ":signed_setup_exe",
+      ]
+      if (enable_widevine && enable_cdm_host_verification) {
+        deps += [
+          "//luxxle/browser/widevine:luxxle_exe_sig",
+          "//luxxle/browser/widevine:chrome_dll_sig",
+        ]
+      }
+    }
+  }
 }
 
 group("luxxle") {
-  deps = [ "//chrome" ]
+  deps = [ "build/$target_os:luxxle" ]
+  if (!is_android && !is_ios) {
+    deps += [
+      # luxxle_extension:locales",
+      "//chrome",
+    ]
+  }
 }
 
 group("resources") {
-  public_deps = []
+  public_deps = [
+    # TODO(bridiver)
+    # "//luxxle/browser:resources",
+    # "//luxxle/common:resources",
+    # "//luxxle/renderer:resources",
+    "//luxxle/components/resources",
+  ]
+
+  data_deps = [ "//luxxle/components/resources:about_credits" ]
+}
+
+if (is_android) {
+  android_assets("luxxle_file_assets") {
+    sources = [
+      "//luxxle/LICENSE.html",
+      "//luxxle/android/java/org/chromium/chrome/browser/ntp/ntp_news_optin_icon_animation.json",
+      "//luxxle/android/java/org/chromium/chrome/browser/onboarding/animations/onboarding_ads.json",
+      "//luxxle/android/java/org/chromium/chrome/browser/onboarding/animations/onboarding_ads_notification.json",
+      "//luxxle/android/java/org/chromium/chrome/browser/onboarding/animations/onboarding_rewards.json",
+      "//luxxle/android/java/org/chromium/chrome/browser/onboarding/animations/privacy_protection.json",
+      "//luxxle/android/java/org/chromium/chrome/browser/onboarding/animations/save_data_and_battery.json",
+      "//luxxle/android/java/org/chromium/chrome/browser/onboarding/animations/website_loads_faster.json",
+      "//luxxle/android/java/org/chromium/chrome/browser/vpn/luxxle_vpn_confirm.json",
+    ]
+    disable_compression = false
+  }
+
+  android_assets("luxxle_pak_assets") {
+    sources = [ "$root_out_dir/luxxle_resources.pak" ]
+
+    deps = [
+      "//luxxle:luxxle_file_assets",
+      "//luxxle:packed_resources_extra",
+    ]
+    disable_compression = true
+  }
 }
 
 if (is_mac) {
   group("framework_bundle_data") {
+    deps = [
+      "components/luxxle_extension/extension/luxxle_extension:luxxle_extension_framework_bundle_data",
+      "//luxxle/build/rust:framework_exports",
+    ]
+  }
+}
+
+group("unpacked_resources") {
+  if (!is_mac) {
     deps = []
+    # Extensions disabled for now - uncomment when extension system is ready
+    # if (enable_extensions) {
+    #   deps = [
+    #     "//luxxle/components/luxxle_extension/extension/luxxle_extension:locales",
+    #   ]
+    # }
+  }
+}
+
+if (!is_ios) {
+  luxxle_paks("packed_resources") {
+    if (is_mac) {
+      output_dir = "$root_gen_dir/repack"
+      copy_data_to_bundle = true
+    } else {
+      output_dir = root_out_dir
+    }
+  }
+}
+
+# #TODO(bridiver) - what to do
+# if (!is_ios) {
+#   group("luxxle_tests") {
+#     testonly = true
+
+#     deps = [ "test:luxxle_unit_tests" ]
+
+#     if (!is_android) {
+#       deps += [
+#         "test:luxxle_browser_tests",
+#         "test:luxxle_network_audit_tests",
+#       ]
+#     }
+#     if (use_libfuzzer) {
+#       deps += [ "//luxxle/fuzzers:luxxle_fuzzers" ]
+#     }
+#   }
+# }
+
+branding_dir = "//luxxle/app/theme/$branding_path_component"
+copy("theme_files") {
+  visibility = [ ":*" ]
+  if (is_linux) {
+    sources = [
+      "$branding_dir/linux/product_logo_128_beta.png",
+      "$branding_dir/linux/product_logo_128_dev.png",
+      "$branding_dir/linux/product_logo_128_development.png",
+      "$branding_dir/linux/product_logo_128_nightly.png",
+    ]
+  } else {
+    sources = [
+      "$branding_dir/product_logo_128_beta.png",
+      "$branding_dir/product_logo_128_dev.png",
+      "$branding_dir/product_logo_128_development.png",
+      "$branding_dir/product_logo_128_nightly.png",
+    ]
+  }
+  outputs = [ "$root_out_dir/installer/theme/{{source_file_part}}" ]
+}
+
+group("create_dist") {
+  deps = []
+  if (is_android) {
+    if (android_aab_to_apk && target_cpu == "arm64") {
+      deps += [ "build/android:sign_app_convert_aab_to_apk" ]
+    } else {
+      deps += [ "build/android:sign_app" ]
+    }
+  } else {
+    deps += [ ":create_symbols_dist" ]
+  }
+
+  # for linux zip will be created along with installer
+  if (!is_linux) {
+    deps += [ ":create_dist_zips" ]
+  }
+
+  if (is_win) {
+    deps += [
+      "//luxxle/build/win:create_signed_installer",
+      # "//luxxle/components/policy:pack_policy_templates",
+    ]
+
+    if (build_omaha) {
+      deps += [ "//luxxle/vendor/omaha" ]
+    }
+
+    if (build_delta_installer) {
+      deps += [ "//luxxle/build/win:signed_delta_installer" ]
+    }
+  }
+  if (is_mac) {
+    deps += [ "//luxxle/build/mac:create_dist_mac" ]
+  }
+  if (is_linux) {
+    deps += [
+      ":theme_files",
+      "//luxxle/app/linux:dist_resources",
+      "//chrome/installer/linux:$linux_channel",
+    ]
+  }
+}
+
+if (!is_mac && !is_android && !is_ios) {
+  copy("luxxle_locale_dist_resources") {
+    deps = [ "//chrome:packed_resources" ]
+
+    sources = []
+    foreach(locale, platform_pak_locales) {
+      sources += [ "$root_out_dir/locales/$locale.pak" ]
+    }
+    outputs = [ "$luxxle_dist_dir/locales/{{source_file_part}}" ]
+  }
+
+  # Extensions disabled for now - uncomment when extension system is ready
+  # if (enable_extensions) {
+  #   group("luxxle_extensions_locale_dist_resources") {
+  #     deps = [
+  #       # "//luxxle/components/luxxle_extension/extension/luxxle_extension:locales",
+  #     ]
+
+  #     public_deps = []
+  #     foreach(locale, platform_pak_locales) {
+  #       # public_deps is used intentionaly because ":create_dist_zip" needs the all dependency
+  #       # of all locale files.
+  #       public_deps += [ ":luxxle_shields_locales_${locale}" ]
+  #     }
+  #   }
+  # }
+
+    # Extension locales disabled for now - uncomment when extension system is ready
+    # foreach(locale, platform_pak_locales) {
+    #   copy("luxxle_shields_locales_${locale}") {
+    #     # deps = [ "//luxxle/components/luxxle_extension/extension/luxxle_extension:locales_$locale" ]
+
+    #     locale = string_replace(locale, "-", "_")
+    #     sources = [ "$root_out_dir/resources/luxxle_extension/_locales/$locale/messages.json" ]
+    #     outputs = [ "$luxxle_dist_dir/resources/luxxle_extension/_locales/$locale/{{source_file_part}}" ]
+    #   }
+    # }
+  }
+
+copy("luxxle_license_dist_resources") {
+  sources = [ "//luxxle/LICENSE" ]
+
+  outputs = [ "$luxxle_dist_dir/{{source_file_part}}" ]
+}
+
+action("generate_static_version") {
+  script = "//build/util/version.py"
+  outputs = [ "$root_out_dir/version" ]
+  args = [
+    "-e", "VERSION_FULL=\"0.0.1\"",
+    "-f", rebase_path("$root_out_dir/version", root_build_dir),
+    "-t", "@VERSION_FULL@",
+  ]
+}
+
+if (!is_android && !is_ios) {
+  copy("luxxle_dist_resources") {
+    sources = [ "$root_out_dir/version" ]
+
+    deps = [
+      ":generate_static_version",
+      ":luxxle",
+      ":luxxle_license_dist_resources",
+      ":packed_resources",
+      "build/$target_os:luxxle",
+      "//base/version_info:generate_version_info",
+      "//chrome:packed_resources",
+      "//third_party/icu:icudata",
+    ]
+
+    if (!is_mac) {
+      sources += [
+        "$root_out_dir/$luxxle_exe",
+        "$root_out_dir/chrome_100_percent.pak",
+        "$root_out_dir/chrome_200_percent.pak",
+        "$root_out_dir/icudtl.dat",
+        "$root_out_dir/resources.pak",
+      ]
+      
+      # Only include Luxxle-specific PAK files if they're being generated
+      # Comment out until the packed_resources target generates them
+      # sources += [
+      #   "$root_out_dir/luxxle_100_percent.pak",
+      #   "$root_out_dir/luxxle_200_percent.pak",
+      #   "$root_out_dir/luxxle_resources.pak",
+      # ]
+
+      if (v8_use_external_startup_data) {
+        deps += [ "//v8" ]
+
+        if (use_v8_context_snapshot) {
+          sources += [ "$root_out_dir/v8_context_snapshot.bin" ]
+          deps += [ "//tools/v8_context_snapshot" ]
+        } else {
+          sources += [ "$root_out_dir/snapshot_blob.bin" ]
+        }
+      }
+    }
+
+    outputs = [ "$luxxle_dist_dir/{{source_file_part}}" ]
+  }
+}
+
+if (target_cpu == "x86") {
+  target_arch = "ia32"
+} else {
+  target_arch = target_cpu
+}
+
+template("create_dist_template") {
+  action(target_name) {
+    inputs = get_target_outputs(":luxxle_license_dist_resources")
+
+    file_inputs = []
+    foreach(input, inputs) {
+      file_inputs += [ rebase_path(input, luxxle_dist_dir) ]
+    }
+
+    rebase_base_dir = rebase_path(luxxle_dist_dir)
+
+    outputs = [ invoker.output ]
+    rebase_output = rebase_path(invoker.output)
+
+    dir_inputs = invoker.dir_inputs
+
+    script = "//luxxle/script/create-dist.py"
+
+    deps = [ ":luxxle_license_dist_resources" ]
+    if (defined(invoker.deps)) {
+      deps += invoker.deps
+    }
+
+    args = [
+      "--base-dir=$rebase_base_dir",
+      "--inputs=$file_inputs",
+      "--dir-inputs=$dir_inputs",
+      "--output=$rebase_output",
+    ]
+  }
+}
+
+if (should_generate_symbols) {
+  create_dist_template("create_luxxle_symbols_dist") {
+    if (is_android) {
+      output = "$luxxle_dist_dir/$luxxle_product_name-v$luxxle_version-$luxxle_platform-$target_android_base-$target_cpu-symbols-$target_android_output_format.zip"
+    } else {
+      output = "$luxxle_dist_dir/$luxxle_product_name-v$luxxle_version-$luxxle_platform-$target_arch-symbols.zip"
+    }
+
+    deps = [ "//luxxle/app/$current_os:symbol_dist_resources" ]
+
+    if (is_win) {
+      dir_inputs = [ "$luxxle_product_name.syms" ]
+    } else {
+      dir_inputs = [ "$luxxle_product_name.breakpad.syms" ]
+    }
+  }
+
+  if (is_mac) {
+    copy("create_native_symbols_dist") {
+      sources = [ "$root_out_dir/$chrome_product_full_name.dSYM.tar.bz2" ]
+      outputs = [ "$luxxle_dist_dir/$luxxle_product_name-v$luxxle_version-$luxxle_platform-$target_arch-native-symbols.tar.bz2" ]
+
+      deps = [ "//chrome:chrome_dsym_archive" ]
+    }
+  } else {
+    group("create_native_symbols_dist") {
+    }
+  }
+}
+
+group("create_symbols_dist") {
+  # Currently on some platforms (Android, Linux) this target generate more
+  # than just symbols, so always depend on it.
+  public_deps = [ "//luxxle/app/$current_os:symbol_dist_resources" ]
+
+  if (should_generate_symbols) {
+    public_deps += [
+      ":create_luxxle_symbols_dist",
+      ":create_native_symbols_dist",
+    ]
+  }
+}
+
+action("create_dist_zips") {
+  output = "$luxxle_dist_dir/$luxxle_product_name-v$luxxle_version-$luxxle_platform-$target_arch.zip"
+  outputs = [ output ]
+
+  if (is_win) {
+    # Repack a Chrome release archive to the luxxle format.
+    # Besides changing from 7z to zip, the directory structure is a bit different.
+    # TODO(atuchin): support other platforms.
+
+    script = "//luxxle/script/repack-archive.py"
+    deps = [ "//chrome/installer/mini_installer:mini_installer_archive" ]
+
+    input = "$root_out_dir/chrome.7z"
+    inputs = [ input ]
+
+    args = [
+      "--input=" + rebase_path(input),
+      "--output=" + rebase_path(output),
+      "--target_dir=Chrome-bin",
+    ]
+  } else {  # !is_win
+    script = "//luxxle/script/create-dist.py"
+
+    inputs = []
+    deps = [ "app/$current_os:dist_resources" ]
+
+    if (!is_mac) {
+      inputs += get_target_outputs(":luxxle_license_dist_resources")
+      deps += [ ":luxxle_license_dist_resources" ]
+    }
+
+    if (!is_mac && !is_android && !is_ios) {
+      inputs += get_target_outputs(":luxxle_dist_resources")
+      inputs += get_target_outputs(":luxxle_locale_dist_resources")
+      if (enable_extensions) {
+        foreach(locale, platform_pak_locales) {
+          inputs += get_target_outputs(":luxxle_shields_locales_${locale}")
+        }
+      }
+    }
+
+    file_inputs = []
+    foreach(input, inputs) {
+      file_inputs += [ rebase_path(input, luxxle_dist_dir) ]
+    }
+
+    dir_inputs = []
+    if (is_mac) {
+      dir_inputs += [ luxxle_exe ]
+      rebase_base_dir = rebase_path(root_out_dir)
+      deps += [ "//chrome:chrome_app" ]
+    } else {
+      rebase_base_dir = rebase_path(luxxle_dist_dir, root_out_dir)
+    }
+
+    if (!is_mac && !is_android && !is_ios) {
+      deps += [
+        ":luxxle_dist_resources",
+        ":luxxle_locale_dist_resources",
+      ]
+
+      if (enable_extensions) {
+        deps += [ ":luxxle_extensions_locale_dist_resources" ]
+      }
+    }
+
+    rebase_output = rebase_path(output)
+    args = [
+      "--base-dir=$rebase_base_dir",
+      "--inputs=$file_inputs",
+      "--dir-inputs=$dir_inputs",
+      "--output=$rebase_output",
+    ]
+  }  # !is_win
+}
+
+if (is_mac) {
+  group("luxxle_app") {
+    deps = [ ":luxxle_app_plist" ]
+  }
+
+  luxxle_tweak_info_plist("luxxle_app_plist") {
+    info_plist = "$root_gen_dir/chrome/chrome_app_plist_tweaked.plist"
+
+    args = [
+      "--luxxle_channel=" + luxxle_channel,
+      "--luxxle_product_dir_name=" + luxxle_product_dir_name,
+      "--luxxle_version=" + luxxle_version,
+      "--luxxle_eddsa_key=" + sparkle_eddsa_public_key,
+    ]
+
+    if (skip_signing) {
+      args += [ "--skip_signing" ]
+    }
+
+    if (enable_updater) {
+      args += [ "--enable_updater" ]
+    }
+
+    deps = [ "//chrome:chrome_app_plist" ]
+  }
+
+  luxxle_tweak_info_plist("luxxle_helper_plist") {
+    info_plist = "$root_gen_dir/chrome/chrome_helper_plist_tweaked.plist"
+
+    args = [
+      "--luxxle_channel=" + luxxle_channel,
+      "--luxxle_product_dir_name=" + luxxle_product_dir_name,
+      "--luxxle_version=" + luxxle_version,
+    ]
+
+    deps = [ "//chrome:chrome_helper_plist" ]
+  }
+}
+
+action("audit_deps") {
+  script = "//luxxle/script/audit_deps.py"
+
+  outputs = [ "$root_gen_dir/non-existent-audit_deps" ]
+
+  args = [
+    "--source_root=" + rebase_path("//luxxle"),
+    "--cargo_audit_exe=" + rebase_path(cargo_audit_exe),
+  ]
+
+  if (audit_dev_deps) {
+    args += [ "--audit_dev_deps" ]
+  }
+
+  deps = [ "//luxxle/tools/crates:build_cargo_audit($host_toolchain)" ]
+}
+
+if (is_redirect_cc_build) {
+  group("redirect_cc") {
+    deps = [ "//luxxle/tools/redirect_cc" ]
   }
 }

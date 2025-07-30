@@ -27,18 +27,18 @@ namespace {
 // For profile specific values, see browser/profiles/profile_util.cc
 void RecordInitialP3AValues() {
 #if !BUILDFLAG(IS_ANDROID)
-  // Removed Brave importer P3A - using Chromium defaults
+  // Removed Luxxle importer P3A - using Chromium defaults
   // if (first_run::IsChromeFirstRun()) {
   //   RecordImporterP3A(importer::ImporterType::TYPE_UNKNOWN);
   // }
 
-  // Removed Brave new tab message handler - using Chromium defaults
-  // BraveNewTabMessageHandler::RecordInitialP3AValues(
+  // Removed Luxxle new tab message handler - using Chromium defaults
+  // LuxxleNewTabMessageHandler::RecordInitialP3AValues(
   //     g_browser_process->local_state());
 #endif  // !BUILDFLAG(IS_ANDROID)
 
-  // Removed Brave shields P3A - using Chromium defaults
-  // brave_shields::MaybeRecordShieldsUsageP3A(brave_shields::kNeverClicked,
+  // Removed Luxxle shields P3A - using Chromium defaults
+  // luxxle_shields::MaybeRecordShieldsUsageP3A(luxxle_shields::kNeverClicked,
   //                                           g_browser_process->local_state());
 
   // Record crash reporting status stats.
@@ -63,24 +63,24 @@ void LuxxleBrowserMainExtraParts::PreProfileInit() {
 }
 
 void LuxxleBrowserMainExtraParts::PostBrowserStart() {
-  // Removed Brave browser process - using Chromium defaults
-  // g_brave_browser_process->StartBraveServices();
+  // Removed Luxxle browser process - using Chromium defaults
+  // g_luxxle_browser_process->StartLuxxleServices();
 }
 
 void LuxxleBrowserMainExtraParts::PreMainMessageLoopRun() {
-  // Removed Brave P3A service - using Chromium defaults
-  // if (g_brave_browser_process->p3a_service() != nullptr) {
-  //   g_brave_browser_process->p3a_service()->Init(
+  // Removed Luxxle P3A service - using Chromium defaults
+  // if (g_luxxle_browser_process->p3a_service() != nullptr) {
+  //   g_luxxle_browser_process->p3a_service()->Init(
   //       g_browser_process->shared_url_loader_factory());
   // }
 
   RecordInitialP3AValues();
 
-  // Removed Brave window tracker - using Chromium defaults
+  // Removed Luxxle window tracker - using Chromium defaults
   // #if !BUILDFLAG(IS_ANDROID)
-  // luxxle::BraveWindowTracker::CreateInstance(g_browser_process->local_state());
+  // luxxle::LuxxleWindowTracker::CreateInstance(g_browser_process->local_state());
   // #endif  // !BUILDFLAG(IS_ANDROID)
   
-  // Removed Brave uptime monitor - using Chromium defaults
-  // g_brave_browser_process->process_misc_metrics()->uptime_monitor()->Init();
+  // Removed Luxxle uptime monitor - using Chromium defaults
+  // g_luxxle_browser_process->process_misc_metrics()->uptime_monitor()->Init();
 }

@@ -30,9 +30,9 @@ found in the LICENSE file.
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_gravity="center_horizontal"
-            android:buttonTint="@color/brave_action_color"
+            android:buttonTint="@color/luxxle_action_color"
             android:paddingVertical="8dp"
             android:textAppearance="@style/TextAppearance.TextMedium.Secondary"
-            android:text="@string/brave_dont_ask_again"/>
+            android:text="@string/luxxle_dont_ask_again"/>
 
 </LinearLayout>

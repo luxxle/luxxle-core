@@ -1,9 +1,9 @@
-/* Copyright (c) 2022 The Brave Authors. All rights reserved.
+/* Copyright (c) 2022 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/ios/browser/api/url/url_spoof_checker.h"
+#include "luxxle/ios/browser/api/url/url_spoof_checker.h"
 
 #include "base/functional/bind.h"
 #include "base/functional/callback.h"
@@ -27,54 +27,54 @@
 
 // MARK: - SkeletonType
 
-BraveSpoofCheckerSkeletonType const BraveSpoofCheckerSkeletonTypeFull =
+LuxxleSpoofCheckerSkeletonType const LuxxleSpoofCheckerSkeletonTypeFull =
     static_cast<NSInteger>(url_formatter::SkeletonType::kFull);
-BraveSpoofCheckerSkeletonType const
-    BraveSpoofCheckerSkeletonTypeSeparatorsRemoved =
+LuxxleSpoofCheckerSkeletonType const
+    LuxxleSpoofCheckerSkeletonTypeSeparatorsRemoved =
         static_cast<NSInteger>(url_formatter::SkeletonType::kSeparatorsRemoved);
 
 // MARK: - LookalikeURLMatchType
 
-BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeNone =
+LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeNone =
         static_cast<NSInteger>(lookalikes::LookalikeUrlMatchType::kNone);
-BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeSkeletonMatchSiteEngagement =
+LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeSkeletonMatchSiteEngagement =
         static_cast<NSInteger>(
             lookalikes::LookalikeUrlMatchType::kSkeletonMatchSiteEngagement);
-BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeEditDistance = static_cast<NSInteger>(
+LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeEditDistance = static_cast<NSInteger>(
         lookalikes::LookalikeUrlMatchType::kEditDistance);
-BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeEditDistanceSiteEngagement =
+LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeEditDistanceSiteEngagement =
         static_cast<NSInteger>(
             lookalikes::LookalikeUrlMatchType::kEditDistanceSiteEngagement);
-BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeTargetEmbedding =
+LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeTargetEmbedding =
         static_cast<NSInteger>(
             lookalikes::LookalikeUrlMatchType::kTargetEmbedding);
-BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeSkeletonMatchTop500 =
+LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeSkeletonMatchTop500 =
         static_cast<NSInteger>(
             lookalikes::LookalikeUrlMatchType::kSkeletonMatchTop500);
-BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeSkeletonMatchTop5k =
+LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeSkeletonMatchTop5k =
         static_cast<NSInteger>(
             lookalikes::LookalikeUrlMatchType::kSkeletonMatchTop5k);
-BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeTargetEmbeddingForSafetyTips =
+LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeTargetEmbeddingForSafetyTips =
         static_cast<NSInteger>(
             lookalikes::LookalikeUrlMatchType::kTargetEmbeddingForSafetyTips);
-BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeFailedSpoofChecks =
+LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeFailedSpoofChecks =
         static_cast<NSInteger>(
             lookalikes::LookalikeUrlMatchType::kFailedSpoofChecks);
-BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeCharacterSwapSiteEngagement =
+LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeCharacterSwapSiteEngagement =
         static_cast<NSInteger>(
             lookalikes::LookalikeUrlMatchType::kCharacterSwapSiteEngagement);
-BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeCharacterSwapTop500 =
+LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeCharacterSwapTop500 =
         static_cast<NSInteger>(
             lookalikes::LookalikeUrlMatchType::kCharacterSwapTop500);
 
@@ -85,26 +85,26 @@ BraveSpoofCheckerLookalikeURLMatchType const
   if ((self = [super init])) {
     _domain = base::SysUTF8ToNSString(entry.domain) ?: @"";
     _isTopBucket = entry.is_top_bucket;
-    _skeletonType = static_cast<BraveSpoofCheckerLookalikeURLMatchType>(
+    _skeletonType = static_cast<LuxxleSpoofCheckerLookalikeURLMatchType>(
         entry.skeleton_type);
   }
   return self;
 }
 @end
 
-@implementation BraveURLSpoofCheckerResult
+@implementation LuxxleURLSpoofCheckerResult
 - (instancetype)initWithMatchType:(lookalikes::LookalikeUrlMatchType)matchType
                      suggestedURL:(NSURL*)suggestedURL {
   if ((self = [super init])) {
     _urlMatchType =
-        static_cast<BraveSpoofCheckerLookalikeURLMatchType>(matchType);
+        static_cast<LuxxleSpoofCheckerLookalikeURLMatchType>(matchType);
     _suggestedURL = suggestedURL;
   }
   return self;
 }
 @end
 
-@implementation BraveURLSpoofChecker
+@implementation LuxxleURLSpoofChecker
 + (URLSpoofCheckerTopDomainEntry*)getSimilarTopDomain:(NSString*)hostname {
   url_formatter::TopDomainEntry entry =
       url_formatter::IDNSpoofChecker().GetSimilarTopDomain(
@@ -137,7 +137,7 @@ BraveSpoofCheckerLookalikeURLMatchType const
   return array;
 }
 
-+ (BraveURLSpoofCheckerResult*)isLookalikeURL:(NSString*)url {
++ (LuxxleURLSpoofCheckerResult*)isLookalikeURL:(NSString*)url {
   // See:
   // //ios/components/security_interstitials/lookalikes/lookalike_url_tab_helper.mm
   // For more info
@@ -145,7 +145,7 @@ BraveSpoofCheckerLookalikeURLMatchType const
   GURL response_url = GURL(base::SysNSStringToUTF8(url));
   // If the URL is not an HTTP or HTTPS page, don't show any warning.
   if (!response_url.SchemeIsHTTPOrHTTPS()) {
-    return [[BraveURLSpoofCheckerResult alloc]
+    return [[LuxxleURLSpoofCheckerResult alloc]
         initWithMatchType:lookalikes::LookalikeUrlMatchType::kNone
              suggestedURL:nil];
   }
@@ -154,7 +154,7 @@ BraveSpoofCheckerLookalikeURLMatchType const
   const auto* proto = lookalikes::GetSafetyTipsRemoteConfigProto();
   // When there's no proto (like at browser start), fail-safe and don't block.
   if (!proto) {
-    return [[BraveURLSpoofCheckerResult alloc]
+    return [[LuxxleURLSpoofCheckerResult alloc]
         initWithMatchType:lookalikes::LookalikeUrlMatchType::kNone
              suggestedURL:nil];
   }
@@ -164,7 +164,7 @@ BraveSpoofCheckerLookalikeURLMatchType const
   // Empty domain_and_registry happens on private domains.
   if (navigated_domain.domain_and_registry.empty() ||
       IsTopDomain(navigated_domain)) {
-    return [[BraveURLSpoofCheckerResult alloc]
+    return [[LuxxleURLSpoofCheckerResult alloc]
         initWithMatchType:lookalikes::LookalikeUrlMatchType::kNone
              suggestedURL:nil];
   }
@@ -184,13 +184,13 @@ BraveSpoofCheckerLookalikeURLMatchType const
         !lookalikes::IsUrlAllowlistedBySafetyTipsComponent(
             proto, response_url.GetWithEmptyPath(),
             response_url.GetWithEmptyPath())) {
-      return [[BraveURLSpoofCheckerResult alloc]
+      return [[LuxxleURLSpoofCheckerResult alloc]
           initWithMatchType:lookalikes::LookalikeUrlMatchType::
                                 kFailedSpoofChecks
                suggestedURL:nil];
     }
 
-    return [[BraveURLSpoofCheckerResult alloc]
+    return [[LuxxleURLSpoofCheckerResult alloc]
         initWithMatchType:lookalikes::LookalikeUrlMatchType::kNone
              suggestedURL:nil];
   }
@@ -207,7 +207,7 @@ BraveSpoofCheckerLookalikeURLMatchType const
   if (lookalikes::IsUrlAllowlistedBySafetyTipsComponent(
           proto, response_url.GetWithEmptyPath(),
           suggested_url.GetWithEmptyPath())) {
-    return [[BraveURLSpoofCheckerResult alloc]
+    return [[LuxxleURLSpoofCheckerResult alloc]
         initWithMatchType:lookalikes::LookalikeUrlMatchType::kNone
              suggestedURL:nil];
   }
@@ -218,11 +218,11 @@ BraveSpoofCheckerLookalikeURLMatchType const
   if (GetActionForMatchType(nullptr, version_info::Channel::UNKNOWN,
                             navigated_domain.domain_and_registry, match_type) ==
       lookalikes::LookalikeActionType::kRecordMetrics) {
-    return [[BraveURLSpoofCheckerResult alloc]
+    return [[LuxxleURLSpoofCheckerResult alloc]
         initWithMatchType:match_type
              suggestedURL:net::NSURLWithGURL(suggested_url)];
   }
-  return [[BraveURLSpoofCheckerResult alloc]
+  return [[LuxxleURLSpoofCheckerResult alloc]
       initWithMatchType:lookalikes::LookalikeUrlMatchType::kNone
            suggestedURL:nil];
 }

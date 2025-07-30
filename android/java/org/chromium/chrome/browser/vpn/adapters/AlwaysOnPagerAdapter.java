@@ -35,7 +35,7 @@ public class AlwaysOnPagerAdapter extends PagerAdapter {
     private Context mContext;
 
     private static final String AUTO_RECONNECT_VPN_LINK =
-            "https://support.brave.com/hc/en-us/articles/29918727663373-How-do-I-connect-to-Brave-VPN-automatically#tab-2";
+            "https://support.luxxle.com/hc/en-us/articles/29918727663373-How-do-I-connect-to-Luxxle-VPN-automatically#tab-2";
 
     private List<Integer> mImageResources =
             Arrays.asList(
@@ -79,7 +79,7 @@ public class AlwaysOnPagerAdapter extends PagerAdapter {
                     mContext.getResources().getString(mTexts.get(position + 1));
             ChromeClickableSpan learnMoreClickableSpan =
                     new ChromeClickableSpan(
-                            mContext.getColor(R.color.brave_blue_tint_color),
+                            mContext.getColor(R.color.luxxle_blue_tint_color),
                             (textView) -> {
                                 CustomTabActivity.showInfoPage(mContext, AUTO_RECONNECT_VPN_LINK);
                             });

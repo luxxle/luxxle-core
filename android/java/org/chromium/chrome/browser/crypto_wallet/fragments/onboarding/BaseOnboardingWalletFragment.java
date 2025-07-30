@@ -16,8 +16,8 @@ import androidx.lifecycle.ViewModelStoreOwner;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.chromium.brave_wallet.mojom.BraveWalletP3a;
-import org.chromium.brave_wallet.mojom.OnboardingAction;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletP3a;
+import org.chromium.luxxle_wallet.mojom.OnboardingAction;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.crypto_wallet.fragments.BaseWalletNextPageFragment;
 import org.chromium.chrome.browser.crypto_wallet.model.OnboardingViewModel;
@@ -73,7 +73,7 @@ public abstract class BaseOnboardingWalletFragment extends BaseWalletNextPageFra
     protected void showSkipDialog(final boolean isOnboarding, final int incrementCount) {
         MaterialAlertDialogBuilder builder =
                 new MaterialAlertDialogBuilder(
-                                requireContext(), R.style.BraveWalletAlertDialogTheme)
+                                requireContext(), R.style.LuxxleWalletAlertDialogTheme)
                         .setView(R.layout.dialog_skip_onboarding);
         mDialog = builder.show();
         AppCompatButton goBack = mDialog.findViewById(R.id.button_go_back);
@@ -84,9 +84,9 @@ public abstract class BaseOnboardingWalletFragment extends BaseWalletNextPageFra
         if (skip != null) {
             skip.setOnClickListener(
                     v -> {
-                        BraveWalletP3a braveWalletP3A = getBraveWalletP3A();
-                        if (braveWalletP3A != null && isOnboarding) {
-                            braveWalletP3A.reportOnboardingAction(
+                        LuxxleWalletP3a luxxleWalletP3A = getLuxxleWalletP3A();
+                        if (luxxleWalletP3A != null && isOnboarding) {
+                            luxxleWalletP3A.reportOnboardingAction(
                                     OnboardingAction.COMPLETE_RECOVERY_SKIPPED);
                         }
                         if (isOnboarding) {

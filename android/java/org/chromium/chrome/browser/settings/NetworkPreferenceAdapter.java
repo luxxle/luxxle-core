@@ -27,8 +27,8 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import org.chromium.base.Callback;
 import org.chromium.base.Log;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
 import org.chromium.chrome.R;
 import org.chromium.ui.listmenu.BasicListMenu;
 import org.chromium.ui.listmenu.ListMenu;
@@ -42,7 +42,7 @@ import java.util.List;
 
 /**
  * Network preference adapter that shows all the available networks and let the user add, edit or
- * remove a specific network. Used by {@link BraveWalletNetworksPreference}.
+ * remove a specific network. Used by {@link LuxxleWalletNetworksPreference}.
  */
 public class NetworkPreferenceAdapter extends RecyclerView.Adapter<ViewHolder> {
     private static final String TAG = "NetworkPreference";
@@ -78,7 +78,7 @@ public class NetworkPreferenceAdapter extends RecyclerView.Adapter<ViewHolder> {
     private final List<String> mHiddenBtcChainIds;
 
     /**
-     * Listener implemented by {@link BraveWalletNetworksPreference} used to handle network
+     * Listener implemented by {@link LuxxleWalletNetworksPreference} used to handle network
      * operations.
      */
     interface ItemClickListener {
@@ -178,11 +178,11 @@ public class NetworkPreferenceAdapter extends RecyclerView.Adapter<ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         final LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         if (viewType == NETWORK_ITEM) {
-            View row = inflater.inflate(R.layout.brave_wallet_network_item, viewGroup, false);
+            View row = inflater.inflate(R.layout.luxxle_wallet_network_item, viewGroup, false);
             return new NetworkViewHolder(row);
         } else {
             // Label item.
-            View view = inflater.inflate(R.layout.brave_wallet_network_label, viewGroup, false);
+            View view = inflater.inflate(R.layout.luxxle_wallet_network_label, viewGroup, false);
             return new LabelViewHolder(view);
         }
     }
@@ -263,7 +263,7 @@ public class NetworkPreferenceAdapter extends RecyclerView.Adapter<ViewHolder> {
                 menuItems.add(buildMenuListItem(R.string.edit, 0, 0));
                 menuItems.add(buildMenuListItem(R.string.remove, 0, 0));
             }
-            menuItems.add(buildMenuListItem(R.string.brave_wallet_add_network_set_as_active, 0, 0));
+            menuItems.add(buildMenuListItem(R.string.luxxle_wallet_add_network_set_as_active, 0, 0));
 
             ListMenu.Delegate delegate =
                     (model) -> {
@@ -283,7 +283,7 @@ public class NetworkPreferenceAdapter extends RecyclerView.Adapter<ViewHolder> {
                                             notifyItemRemoved(position);
                                         }
                                     });
-                        } else if (textId == R.string.brave_wallet_add_network_set_as_active) {
+                        } else if (textId == R.string.luxxle_wallet_add_network_set_as_active) {
                             mListener.onItemSetAsActive(
                                     networkInfo,
                                     result -> {
@@ -482,13 +482,13 @@ public class NetworkPreferenceAdapter extends RecyclerView.Adapter<ViewHolder> {
             mType = type;
             mNetworkInfo = null;
             if (mType == LABEL_ETHEREUM_ITEM) {
-                mNetworkNameRes = R.string.brave_ethereum_networks;
+                mNetworkNameRes = R.string.luxxle_ethereum_networks;
             } else if (mType == LABEL_FILECOIN_ITEM) {
-                mNetworkNameRes = R.string.brave_filecoin_networks;
+                mNetworkNameRes = R.string.luxxle_filecoin_networks;
             } else if (mType == LABEL_SOLANA_ITEM) {
-                mNetworkNameRes = R.string.brave_solana_networks;
+                mNetworkNameRes = R.string.luxxle_solana_networks;
             } else if (mType == LABEL_BITCOIN_ITEM) {
-                mNetworkNameRes = R.string.brave_bitcoin_networks;
+                mNetworkNameRes = R.string.luxxle_bitcoin_networks;
             } else {
                 throw new IllegalStateException(
                         String.format("Network name not found for label type %d.", mType));

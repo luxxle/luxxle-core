@@ -43,9 +43,9 @@ class OnboardingTabHelper
   // content::WebContentsObserver
   void DidStopLoading() override;
 
-  void PerformBraveShieldsChecksAndShowHelpBubble();
-  bool CanHighlightBraveShields();
-  void ShowBraveHelpBubbleView();
+  void PerformLuxxleShieldsChecksAndShowHelpBubble();
+  bool CanHighlightLuxxleShields();
+  void ShowLuxxleHelpBubbleView();
   std::string GetTextForOnboardingShieldsBubble();
   void CleanUp();
 

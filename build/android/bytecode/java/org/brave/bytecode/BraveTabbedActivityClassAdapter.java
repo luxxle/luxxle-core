@@ -3,49 +3,49 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveTabbedActivityClassAdapter extends BraveClassVisitor {
+public class LuxxleTabbedActivityClassAdapter extends LuxxleClassVisitor {
     static String sChromeTabbedActivityClassName =
             "org/chromium/chrome/browser/ChromeTabbedActivity";
-    static String sBraveActivityClassName = "org/chromium/chrome/browser/app/BraveActivity";
+    static String sLuxxleActivityClassName = "org/chromium/chrome/browser/app/LuxxleActivity";
     static String sTabbedRootUiCoordinatorClassName =
             "org/chromium/chrome/browser/tabbed_mode/TabbedRootUiCoordinator";
     static String sTabbedAppMenuPropertiesDelegateClassName =
             "org/chromium/chrome/browser/tabbed_mode/TabbedAppMenuPropertiesDelegate";
-    static String sBraveTabbedAppMenuPropertiesDelegateClassName =
-            "org/chromium/chrome/browser/appmenu/BraveTabbedAppMenuPropertiesDelegate";
+    static String sLuxxleTabbedAppMenuPropertiesDelegateClassName =
+            "org/chromium/chrome/browser/appmenu/LuxxleTabbedAppMenuPropertiesDelegate";
     static String sChromeTabCreatorClassName =
             "org/chromium/chrome/browser/tabmodel/ChromeTabCreator";
-    static String sBraveTabCreatorClassName =
-            "org/chromium/chrome/browser/tabmodel/BraveTabCreator";
+    static String sLuxxleTabCreatorClassName =
+            "org/chromium/chrome/browser/tabmodel/LuxxleTabCreator";
     static String sAppMenuPropertiesDelegateImplClassName =
             "org/chromium/chrome/browser/app/appmenu/AppMenuPropertiesDelegateImpl";
-    static String sBraveAppMenuPropertiesDelegateImplClassName =
-            "org/chromium/chrome/browser/app/appmenu/BraveAppMenuPropertiesDelegateImpl";
+    static String sLuxxleAppMenuPropertiesDelegateImplClassName =
+            "org/chromium/chrome/browser/app/appmenu/LuxxleAppMenuPropertiesDelegateImpl";
     static String sCustomTabAppMenuPropertiesDelegateClassName =
             "org/chromium/chrome/browser/customtabs/CustomTabAppMenuPropertiesDelegate";
 
-    public BraveTabbedActivityClassAdapter(ClassVisitor visitor) {
+    public LuxxleTabbedActivityClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        changeSuperName(sChromeTabbedActivityClassName, sBraveActivityClassName);
+        changeSuperName(sChromeTabbedActivityClassName, sLuxxleActivityClassName);
 
         changeSuperName(
                 sTabbedAppMenuPropertiesDelegateClassName,
-                sBraveAppMenuPropertiesDelegateImplClassName);
+                sLuxxleAppMenuPropertiesDelegateImplClassName);
 
         changeSuperName(
                 sCustomTabAppMenuPropertiesDelegateClassName,
-                sBraveAppMenuPropertiesDelegateImplClassName);
+                sLuxxleAppMenuPropertiesDelegateImplClassName);
 
         redirectConstructor(
                 sTabbedAppMenuPropertiesDelegateClassName,
-                sBraveTabbedAppMenuPropertiesDelegateClassName);
+                sLuxxleTabbedAppMenuPropertiesDelegateClassName);
 
-        redirectConstructor(sChromeTabCreatorClassName, sBraveTabCreatorClassName);
+        redirectConstructor(sChromeTabCreatorClassName, sLuxxleTabCreatorClassName);
 
         makePublicMethod(sChromeTabbedActivityClassName, "hideOverview");
 
@@ -53,7 +53,7 @@ public class BraveTabbedActivityClassAdapter extends BraveClassVisitor {
 
         makePublicMethod(sChromeTabbedActivityClassName, "maybeHandleUrlIntent");
         changeMethodOwner(
-                sChromeTabbedActivityClassName, "maybeHandleUrlIntent", sBraveActivityClassName);
+                sChromeTabbedActivityClassName, "maybeHandleUrlIntent", sLuxxleActivityClassName);
         makeProtectedField(sChromeTabbedActivityClassName, "mLayoutManager");
         makeProtectedField(sChromeTabbedActivityClassName, "mMultiInstanceManager");
     }

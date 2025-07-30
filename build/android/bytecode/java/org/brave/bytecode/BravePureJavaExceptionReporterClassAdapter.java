@@ -3,20 +3,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BravePureJavaExceptionReporterClassAdapter extends BraveClassVisitor {
+public class LuxxlePureJavaExceptionReporterClassAdapter extends LuxxleClassVisitor {
     static String sChromePureJavaExceptionReporterClassName =
             "org/chromium/chrome/browser/crash/ChromePureJavaExceptionReporter";
-    static String sBravePureJavaExceptionReporterClassName =
-            "org/chromium/chrome/browser/crash/BravePureJavaExceptionReporter";
+    static String sLuxxlePureJavaExceptionReporterClassName =
+            "org/chromium/chrome/browser/crash/LuxxlePureJavaExceptionReporter";
 
-    public BravePureJavaExceptionReporterClassAdapter(ClassVisitor visitor) {
+    public LuxxlePureJavaExceptionReporterClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         redirectConstructor(sChromePureJavaExceptionReporterClassName,
-                sBravePureJavaExceptionReporterClassName);
+                sLuxxlePureJavaExceptionReporterClassName);
     }
 }

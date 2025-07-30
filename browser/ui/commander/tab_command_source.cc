@@ -32,7 +32,7 @@
 #include "chrome/browser/ui/tabs/tab_group_model.h"
 #include "chrome/browser/ui/tabs/tab_strip_model.h"
 #include "chrome/grit/generated_resources.h"
-#include "components/grit/brave_components_strings.h"
+#include "components/grit/luxxle_components_strings.h"
 #include "components/sessions/content/session_tab_helper.h"
 #include "ui/base/l10n/l10n_util.h"
 #include "ui/base/models/list_selection_model.h"

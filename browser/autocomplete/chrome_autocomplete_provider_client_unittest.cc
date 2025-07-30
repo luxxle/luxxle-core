@@ -20,7 +20,7 @@ class AutocompleteControllerLeoTest : public testing::Test {
     AutocompleteMatch match(nullptr, relevance, false,
                             AutocompleteMatchType::SEARCH_SUGGEST_ENTITY);
     match.contents = contents;
-    match.RecordAdditionalInfo("match-from-brave-leo-provider", true);
+    match.RecordAdditionalInfo("match-from-luxxle-leo-provider", true);
     return match;
   }
 

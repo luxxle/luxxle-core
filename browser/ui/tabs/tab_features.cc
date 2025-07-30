@@ -12,7 +12,7 @@
 #include "base/no_destructor.h"
 #include "luxxle/browser/ai_chat/ai_chat_utils.h"
 #include "luxxle/browser/ai_chat/tab_data_web_contents_observer.h"
-#include "luxxle/browser/ui/side_panel/brave_side_panel_utils.h"
+#include "luxxle/browser/ui/side_panel/luxxle_side_panel_utils.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/tabs/public/tab_features.h"
 #include "components/tabs/public/tab_interface.h"

@@ -22,9 +22,9 @@
 #include "services/network/public/mojom/url_loader_factory.mojom.h"
 #include "services/network/public/mojom/websocket.mojom.h"
 
-class BraveProxyingURLLoaderFactory;
-class BraveProxyingWebSocket;
-class BraveRequestHandler;
+class LuxxleProxyingURLLoaderFactory;
+class LuxxleProxyingWebSocket;
+class LuxxleRequestHandler;
 
 namespace content {
 class BrowserContext;
@@ -66,7 +66,7 @@ class ResourceContextData : public base::SupportsUserData::Data {
       network::URLLoaderFactoryBuilder& factory_builder,
       scoped_refptr<base::SequencedTaskRunner> navigation_response_task_runner);
 
-  static BraveProxyingWebSocket* CreateProxyingWebSocket(
+  static LuxxleProxyingWebSocket* CreateProxyingWebSocket(
       content::ContentBrowserClient::WebSocketFactory factory,
       const GURL& url,
       const net::SiteForCookies& site_for_cookies,
@@ -76,20 +76,20 @@ class ResourceContextData : public base::SupportsUserData::Data {
       content::FrameTreeNodeId frame_tree_node_id,
       const url::Origin& origin);
 
-  void RemoveProxy(BraveProxyingURLLoaderFactory* proxy);
-  void RemoveProxyWebSocket(BraveProxyingWebSocket* proxy);
+  void RemoveProxy(LuxxleProxyingURLLoaderFactory* proxy);
+  void RemoveProxyWebSocket(LuxxleProxyingWebSocket* proxy);
 
  private:
   ResourceContextData();
 
-  std::unique_ptr<BraveRequestHandler> request_handler_;
+  std::unique_ptr<LuxxleRequestHandler> request_handler_;
   scoped_refptr<RequestIDGenerator> request_id_generator_;
 
-  std::set<std::unique_ptr<BraveProxyingURLLoaderFactory>,
+  std::set<std::unique_ptr<LuxxleProxyingURLLoaderFactory>,
            base::UniquePtrComparator>
       proxies_;
 
-  std::set<std::unique_ptr<BraveProxyingWebSocket>,
+  std::set<std::unique_ptr<LuxxleProxyingWebSocket>,
            base::UniquePtrComparator>
       websocket_proxies_;
 

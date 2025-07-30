@@ -25,19 +25,19 @@ class BrockitTest(unittest.TestCase):
         self.fake_chromium_src.add_dep('v8')
         self.fake_chromium_src.add_dep('third_party/test1')
 
-        # Patch VERSION_UPGRADE_FILE to be under self.fake_chromium_src.brave
-        brockit.VERSION_UPGRADE_FILE = (self.fake_chromium_src.brave /
+        # Patch VERSION_UPGRADE_FILE to be under self.fake_chromium_src.luxxle
+        brockit.VERSION_UPGRADE_FILE = (self.fake_chromium_src.luxxle /
                                         '.version_upgrade')
 
         self.addCleanup(self.fake_chromium_src.cleanup)
 
     def test_get_current_branch_upstream_name(self):
         """Test that the upstream branch name is correctly retrieved."""
-        # Create a remote for the Brave repository
-        self.fake_chromium_src.create_brave_remote()
+        # Create a remote for the Luxxle repository
+        self.fake_chromium_src.create_luxxle_remote()
 
         # Set the upstream branch for the current branch
-        repo_path = self.fake_chromium_src.brave
+        repo_path = self.fake_chromium_src.luxxle
         self.fake_chromium_src._run_git_command(
             ['checkout', '-b', 'test-branch'], repo_path)
         self.fake_chromium_src._run_git_command(
@@ -50,7 +50,7 @@ class BrockitTest(unittest.TestCase):
     def test_get_current_branch_upstream_name_no_upstream(self):
         """Test when there's no upstream branch."""
         # Create a branch without setting an upstream
-        repo_path = self.fake_chromium_src.brave
+        repo_path = self.fake_chromium_src.luxxle
         self.fake_chromium_src._run_git_command(
             ['checkout', '-b', 'no-upstream-branch'], repo_path)
 
@@ -66,19 +66,19 @@ class BrockitTest(unittest.TestCase):
             'chromium_src/net/tools/transport_security_state_generator/'
             'input_file_parsers.cc')
         test_pinslist_path = (
-            self.fake_chromium_src.brave /
+            self.fake_chromium_src.luxxle /
             'chromium_src/net/tools/transport_security_state_generator/'
             'input_file_parsers.cc')
 
         test_pinslist_path.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy(original_pinslist_path, test_pinslist_path)
 
-        # Stage and commit the file to the Brave fake repository
+        # Stage and commit the file to the Luxxle fake repository
         self.fake_chromium_src._run_git_command(
-            ['add', str(test_pinslist_path)], self.fake_chromium_src.brave)
+            ['add', str(test_pinslist_path)], self.fake_chromium_src.luxxle)
         self.fake_chromium_src._run_git_command(
             ['commit', '-m', 'Add pinslist file for testing'],
-            self.fake_chromium_src.brave)
+            self.fake_chromium_src.luxxle)
 
         # Ensure there is an empty line at the end of the file before the update
         self.assertTrue(test_pinslist_path.read_text().endswith('\n'),
@@ -208,7 +208,7 @@ class BrockitTest(unittest.TestCase):
 
         # Verify that the listed patches are staged
         staged_files = self.fake_chromium_src._run_git_command(
-            ['diff', '--cached', '--name-only'], self.fake_chromium_src.brave)
+            ['diff', '--cached', '--name-only'], self.fake_chromium_src.luxxle)
         self.assertIn(
             str(
                 self.fake_chromium_src.get_patchfile_path_for_source(

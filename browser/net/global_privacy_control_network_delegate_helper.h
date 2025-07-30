@@ -15,8 +15,8 @@ namespace luxxle {
 int OnBeforeStartTransaction_GlobalPrivacyControlWork(
     net::HttpRequestHeaders* headers,
     const ResponseCallback& next_callback,
-    std::shared_ptr<BraveRequestInfo> ctx);
+    std::shared_ptr<LuxxleRequestInfo> ctx);
 
-}  // namespace brave
+}  // namespace luxxle
 
 #endif  // LUXXLE_BROWSER_NET_GLOBAL_PRIVACY_CONTROL_NETWORK_DELEGATE_HELPER_H_

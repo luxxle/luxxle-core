@@ -11,12 +11,12 @@ import("//luxxle/browser/shell_integrations/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/text_recognition/common/buildflags/buildflags.gni")
-import("//luxxle/resources/brave_grit.gni")
+import("//luxxle/resources/luxxle_grit.gni")
 import("//build/config/features.gni")
 import("//build/config/locales.gni")
 
 action("generate_command_metadata") {
-  command_files = [ "//luxxle/app/brave_command_ids.h" ]
+  command_files = [ "//luxxle/app/luxxle_command_ids.h" ]
   cc_template = "command_utils.cc.template"
 
   sources = command_files + [ cc_template ]
@@ -35,7 +35,7 @@ action("generate_command_metadata") {
 }
 
 source_set("command_ids") {
-  sources = [ "brave_command_ids.h" ]
+  sources = [ "luxxle_command_ids.h" ]
 
   deps = [
     "//base",
@@ -57,24 +57,24 @@ source_set("command_ids") {
   }
 }
 
-brave_grit("brave_generated_resources_grit") {
+luxxle_grit("luxxle_generated_resources_grit") {
   defines = [
     # Commented out: removed feature flags that require components
     # "enable_pin_shortcut=$enable_pin_shortcut",
     # "enable_request_otr=$enable_request_otr",
     # "enable_text_recognition=$enable_text_recognition",
   ]
-  source = "brave_generated_resources.grd"
-  output_dir = "$root_gen_dir/brave"
+  source = "luxxle_generated_resources.grd"
+  output_dir = "$root_gen_dir/luxxle"
   outputs = [
-    "grit/brave_generated_resources.h",
+    "grit/luxxle_generated_resources.h",
 
     # This is needed for the includes and not the localized messages
-    "brave_generated_resources.pak",
+    "luxxle_generated_resources.pak",
   ]
 
   foreach(locale, all_chrome_locales) {
-    outputs += [ "brave_generated_resources_$locale.pak" ]
+    outputs += [ "luxxle_generated_resources_$locale.pak" ]
   }
 }
 
@@ -85,7 +85,7 @@ source_set("browser_tests") {
     defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]
 
     sources = [
-      "brave_main_delegate_browsertest.cc",
+      "luxxle_main_delegate_browsertest.cc",
       "command_utils_browsertest.cc",
     ]
 
@@ -114,7 +114,7 @@ source_set("browser_tests") {
 source_set("unit_tests") {
   testonly = true
   sources = [
-    "brave_main_delegate_unittest.cc",
+    "luxxle_main_delegate_unittest.cc",
     "feature_defaults_unittest.cc",
   ]
   if (!is_android) {

@@ -6,7 +6,7 @@
     "browser-type": "luxxle",
     "label": "luxxle",
     "target": "v1.71.15",
-    "profile": "brave-typical-win",
+    "profile": "luxxle-typical-win",
     "profile-rebase": "online",
     "extra-browser-args": [
       // "--disable-http2", // add this to record jetstream2

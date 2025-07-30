@@ -20,7 +20,7 @@ import org.chromium.chrome.browser.init.ActivityProfileProvider;
 import org.chromium.chrome.browser.init.AsyncInitializationActivity;
 import org.chromium.chrome.browser.profiles.ProfileProvider;
 import org.chromium.chrome.browser.vpn.adapters.AlwaysOnPagerAdapter;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnUtils;
 
 public class VpnAlwaysOnActivity extends AsyncInitializationActivity {
     private void initializeViews() {
@@ -46,7 +46,7 @@ public class VpnAlwaysOnActivity extends AsyncInitializationActivity {
         Button autoReconnectVpnAction = findViewById(R.id.auto_reconnect_vpn_action_button);
         autoReconnectVpnAction.setOnClickListener(
                 v -> {
-                    BraveVpnUtils.openVpnSettings(VpnAlwaysOnActivity.this);
+                    LuxxleVpnUtils.openVpnSettings(VpnAlwaysOnActivity.this);
                 });
     }
 

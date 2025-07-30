@@ -23,12 +23,12 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import org.chromium.base.supplier.ObservableSupplier;
 import org.chromium.base.supplier.ObservableSupplierImpl;
-import org.chromium.brave_shields.mojom.FilterListAndroidHandler;
+import org.chromium.luxxle_shields.mojom.FilterListAndroidHandler;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.settings.BravePreferenceFragment;
+import org.chromium.chrome.browser.settings.LuxxlePreferenceFragment;
 import org.chromium.url.mojom.Url;
 
-public class AddCustomFilterListsFragment extends BravePreferenceFragment {
+public class AddCustomFilterListsFragment extends LuxxlePreferenceFragment {
     private FilterListAndroidHandler mFilterListAndroidHandler;
     private final ObservableSupplierImpl<String> mPageTitle = new ObservableSupplierImpl<>();
 

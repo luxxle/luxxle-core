@@ -15,7 +15,7 @@ public class BottomToolbarVariationManager {
      *     mode in the current variation.
      */
     public static boolean isNewTabButtonOnBottomControls() {
-        return BottomToolbarConfiguration.isBraveBottomControlsEnabled();
+        return BottomToolbarConfiguration.isLuxxleBottomControlsEnabled();
     }
 
     /**
@@ -23,7 +23,7 @@ public class BottomToolbarVariationManager {
      *     the current variation.
      */
     public static boolean isMenuButtonOnBottomControls() {
-        return BottomToolbarConfiguration.isBraveBottomControlsEnabled();
+        return BottomToolbarConfiguration.isLuxxleBottomControlsEnabled();
     }
 
     /**
@@ -31,7 +31,7 @@ public class BottomToolbarVariationManager {
      *     the current variation.
      */
     public static boolean shouldBottomControlsBeVisibleInOverviewMode() {
-        return BottomToolbarConfiguration.isBraveBottomControlsEnabled();
+        return BottomToolbarConfiguration.isLuxxleBottomControlsEnabled();
     }
 
     /**
@@ -39,7 +39,7 @@ public class BottomToolbarVariationManager {
      *     current variation.
      */
     public static boolean isHomeButtonOnBottomControls() {
-        return BottomToolbarConfiguration.isBraveBottomControlsEnabled();
+        return BottomToolbarConfiguration.isLuxxleBottomControlsEnabled();
     }
 
     /**
@@ -47,7 +47,7 @@ public class BottomToolbarVariationManager {
      *     mode in current variation.
      */
     public static boolean isTabSwitcherOnBottomControls() {
-        return BottomToolbarConfiguration.isBraveBottomControlsEnabled();
+        return BottomToolbarConfiguration.isLuxxleBottomControlsEnabled();
     }
 
     /**
@@ -55,6 +55,6 @@ public class BottomToolbarVariationManager {
      *     in current variation.
      */
     public static boolean isBookmarkButtonOnBottomControls() {
-        return BottomToolbarConfiguration.isBraveBottomControlsEnabled();
+        return BottomToolbarConfiguration.isLuxxleBottomControlsEnabled();
     }
 }

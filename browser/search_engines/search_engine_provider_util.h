@@ -24,6 +24,6 @@ void PrepareSearchSuggestionsConfig(PrefService& local_state, bool first_run);
 void UpdateDefaultSearchSuggestionsPrefs(PrefService& local_state,
                                          PrefService& profile_prefs);
 
-}  // namespace brave
+}  // namespace luxxle
 
 #endif  // LUXXLE_BROWSER_SEARCH_ENGINES_SEARCH_ENGINE_PROVIDER_UTIL_H_

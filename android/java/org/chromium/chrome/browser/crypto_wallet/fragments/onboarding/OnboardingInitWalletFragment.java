@@ -22,11 +22,11 @@ import org.chromium.base.task.PostTask;
 import org.chromium.base.task.TaskTraits;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.ChromeTabbedActivity;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.app.helpers.Api33AndPlusBackPressHelper;
-import org.chromium.chrome.browser.crypto_wallet.activities.BraveWalletActivity;
+import org.chromium.chrome.browser.crypto_wallet.activities.LuxxleWalletActivity;
 
-/** Initial onboarding fragment to setup Brave Wallet. */
+/** Initial onboarding fragment to setup Luxxle Wallet. */
 public class OnboardingInitWalletFragment extends BaseOnboardingWalletFragment {
     private static final String TAG = "SetupWalletFragment";
 
@@ -68,7 +68,7 @@ public class OnboardingInitWalletFragment extends BaseOnboardingWalletFragment {
                     }
                     mButtonClicked = true;
 
-                    checkOnBraveActivity(true, false);
+                    checkOnLuxxleActivity(true, false);
                     if (mOnNextPage != null) {
                         // Add a little delay for a smooth ripple effect animation.
                         PostTask.postDelayedTask(
@@ -84,7 +84,7 @@ public class OnboardingInitWalletFragment extends BaseOnboardingWalletFragment {
                     }
                     mButtonClicked = true;
 
-                    checkOnBraveActivity(false, true);
+                    checkOnLuxxleActivity(false, true);
                     if (mOnNextPage != null) {
                         // Add a little delay for a smooth ripple effect animation.
                         PostTask.postDelayedTask(
@@ -123,17 +123,17 @@ public class OnboardingInitWalletFragment extends BaseOnboardingWalletFragment {
     }
 
     // We need to remove that check and restart once
-    // https://github.com/luxxle/brave-browser/issues/27887
+    // https://github.com/luxxle/luxxle-browser/issues/27887
     // is done.
-    private void checkOnBraveActivity(boolean setupAction, boolean restoreAction) {
+    private void checkOnLuxxleActivity(boolean setupAction, boolean restoreAction) {
         try {
-            BraveActivity.getBraveActivity();
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
-            Log.e(TAG, "checkOnBraveActivity " + e);
+            LuxxleActivity.getLuxxleActivity();
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
+            Log.e(TAG, "checkOnLuxxleActivity " + e);
             Intent intent = new Intent(getActivity(), ChromeTabbedActivity.class);
-            intent.putExtra(BraveWalletActivity.RESTART_WALLET_ACTIVITY, true);
-            intent.putExtra(BraveWalletActivity.RESTART_WALLET_ACTIVITY_SETUP, setupAction);
-            intent.putExtra(BraveWalletActivity.RESTART_WALLET_ACTIVITY_RESTORE, restoreAction);
+            intent.putExtra(LuxxleWalletActivity.RESTART_WALLET_ACTIVITY, true);
+            intent.putExtra(LuxxleWalletActivity.RESTART_WALLET_ACTIVITY_SETUP, setupAction);
+            intent.putExtra(LuxxleWalletActivity.RESTART_WALLET_ACTIVITY_RESTORE, restoreAction);
             intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             intent.setAction(Intent.ACTION_VIEW);
             startActivity(intent);

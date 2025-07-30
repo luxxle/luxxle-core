@@ -5,32 +5,32 @@
 
 import("//extensions/buildflags/buildflags.gni")
 
-brave_browser_importer_sources = []
-brave_browser_importer_public_deps = []
-brave_browser_importer_impl_sources = []
-brave_browser_importer_impl_deps = []
+luxxle_browser_importer_sources = []
+luxxle_browser_importer_public_deps = []
+luxxle_browser_importer_impl_sources = []
+luxxle_browser_importer_impl_deps = []
 
 if (!is_android) {
-  brave_browser_importer_sources +=
-      [ "//luxxle/browser/importer/brave_external_process_importer_host.h" ]
-  brave_browser_importer_public_deps += [
+  luxxle_browser_importer_sources +=
+      [ "//luxxle/browser/importer/luxxle_external_process_importer_host.h" ]
+  luxxle_browser_importer_public_deps += [
     "//base",
     "//chrome/common/extensions",
     "//extensions/buildflags",
   ]
-  brave_browser_importer_impl_sources += [
-    "//luxxle/browser/importer/brave_external_process_importer_client.cc",
-    "//luxxle/browser/importer/brave_external_process_importer_client.h",
-    "//luxxle/browser/importer/brave_external_process_importer_host.cc",
-    "//luxxle/browser/importer/brave_in_process_importer_bridge.cc",
-    "//luxxle/browser/importer/brave_in_process_importer_bridge.h",
+  luxxle_browser_importer_impl_sources += [
+    "//luxxle/browser/importer/luxxle_external_process_importer_client.cc",
+    "//luxxle/browser/importer/luxxle_external_process_importer_client.h",
+    "//luxxle/browser/importer/luxxle_external_process_importer_host.cc",
+    "//luxxle/browser/importer/luxxle_in_process_importer_bridge.cc",
+    "//luxxle/browser/importer/luxxle_in_process_importer_bridge.h",
   ]
   if (enable_extensions) {
-    brave_browser_importer_impl_sources += [
+    luxxle_browser_importer_impl_sources += [
       "//luxxle/browser/importer/extensions_import_helpers.cc",
       "//luxxle/browser/importer/extensions_import_helpers.h",
     ]
-    brave_browser_importer_impl_deps += [
+    luxxle_browser_importer_impl_deps += [
       "//luxxle/common/importer",
       "//chrome/browser/extensions",
       # Commented out: removed components dependency - using Chromium defaults instead
@@ -39,9 +39,9 @@ if (!is_android) {
       "//extensions/common:common_constants",
     ]
   }
-  brave_browser_importer_impl_deps += [
+  luxxle_browser_importer_impl_deps += [
     "//base",
-    "//luxxle/app:brave_generated_resources_grit_grit",
+    "//luxxle/app:luxxle_generated_resources_grit_grit",
     "//luxxle/browser/importer",
     "//luxxle/common/importer:interfaces",
     "//content/public/browser",

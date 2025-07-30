@@ -7,7 +7,7 @@ package org.chromium.chrome.browser.crypto_wallet.model;
 
 import androidx.annotation.IntegerRes;
 
-import org.chromium.brave_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.CoinType;
 
 import java.io.Serializable;
 

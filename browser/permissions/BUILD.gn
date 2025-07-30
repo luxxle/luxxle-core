@@ -22,7 +22,7 @@ if (!is_android) {
     deps = [
       "//luxxle/browser",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_component_updater/browser:browser",
+      # "//luxxle/components/luxxle_component_updater/browser:browser",
       # Commented out: removed components dependency - using Chromium defaults instead
       # Commented out: removed components dependency - using Chromium defaults instead
       # Commented out: removed components dependency - using Chromium defaults instead

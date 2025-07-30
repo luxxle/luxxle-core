@@ -13,8 +13,8 @@
 #include <vector>
 
 #include "base/values.h"
-// REMOVED: #include "luxxle/components/brave_ads/.*"
-#import "brave/components/brave_ads/core/public/ads_client/ads_client.h"
+// REMOVED: #include "luxxle/components/luxxle_ads/.*"
+#import "luxxle/components/luxxle_ads/core/public/ads_client/ads_client.h"
 
 @protocol AdsClientBridge
 @required
@@ -22,32 +22,32 @@
 - (bool)isBrowserActive;
 - (bool)isBrowserInFullScreenMode;
 - (bool)canShowNotificationAdsWhileBrowserIsBackgrounded;
-- (void)addObserver:(brave_ads::AdsClientNotifierObserver*)observer;
-- (void)removeObserver:(brave_ads::AdsClientNotifierObserver*)observer;
+- (void)addObserver:(luxxle_ads::AdsClientNotifierObserver*)observer;
+- (void)removeObserver:(luxxle_ads::AdsClientNotifierObserver*)observer;
 - (void)notifyPendingObservers;
 - (bool)isNetworkConnectionAvailable;
 - (bool)canShowNotificationAds;
 - (void)loadResourceComponent:(const std::string&)id
                       version:(int)version
-                     callback:(brave_ads::LoadFileCallback)callback;
+                     callback:(luxxle_ads::LoadFileCallback)callback;
 - (void)showScheduledCaptcha:(const std::string&)payment_id
                    captchaId:(const std::string&)captcha_id;
 - (void)getSiteHistory:(int)max_count
                forDays:(int)days_ago
-              callback:(brave_ads::GetSiteHistoryCallback)callback;
+              callback:(luxxle_ads::GetSiteHistoryCallback)callback;
 - (void)load:(const std::string&)name
-    callback:(brave_ads::LoadCallback)callback;
+    callback:(luxxle_ads::LoadCallback)callback;
 - (void)log:(const char*)file
             line:(int)line
     verboseLevel:(int)verbose_level
          message:(const std::string&)message;
 - (void)save:(const std::string&)name
        value:(const std::string&)value
-    callback:(brave_ads::SaveCallback)callback;
-- (void)showNotificationAd:(const brave_ads::NotificationAdInfo&)info;
+    callback:(luxxle_ads::SaveCallback)callback;
+- (void)showNotificationAd:(const luxxle_ads::NotificationAdInfo&)info;
 - (void)closeNotificationAd:(const std::string&)placement_id;
-- (void)UrlRequest:(brave_ads::mojom::UrlRequestInfoPtr)url_request
-          callback:(brave_ads::UrlRequestCallback)callback;
+- (void)UrlRequest:(luxxle_ads::mojom::UrlRequestInfoPtr)url_request
+          callback:(luxxle_ads::UrlRequestCallback)callback;
 - (void)setProfilePref:(const std::string&)path value:(base::Value)value;
 - (bool)findProfilePref:(const std::string&)path;
 - (std::optional<base::Value>)getProfilePref:(const std::string&)path;

@@ -14,7 +14,7 @@ import re
 from lib.widevine import can_generate_sig_file, generate_sig_file
 
 
-def GenerateBraveWidevineSigFile(paths, config, part):
+def GenerateLuxxleWidevineSigFile(paths, config, part):
     """ Generates Widevine .sig file """
     if can_generate_sig_file():
         # Framework needs to be signed before generating Widevine signature
@@ -36,8 +36,8 @@ def GenerateBraveWidevineSigFile(paths, config, part):
         generate_sig_file(sig_source_file, sig_target_file, '1')
 
 
-def BraveModifyPartsForSigning(parts, config):
-    """ Inserts Brave specific parts that need to be signed """
+def LuxxleModifyPartsForSigning(parts, config):
+    """ Inserts Luxxle specific parts that need to be signed """
     parts = collections.OrderedDict(parts)
     from signing.model import CodeSignedProduct, VerifyOptions, CodeSignOptions  # pylint: disable=import-error, import-outside-toplevel
 
@@ -85,15 +85,15 @@ def BraveModifyPartsForSigning(parts, config):
                                    | CodeSignOptions.HARDENED_RUNTIME)
 
     if config.enable_updater:
-        # The privileged helper is com.brave.Browser.UpdaterPrivilegedHelper.
+        # The privileged helper is com.luxxle.Browser.UpdaterPrivilegedHelper.
         # But the value here is
-        # com.brave.Browser.<channel>.UpdaterPrivilegedHelper. This is because
+        # com.luxxle.Browser.<channel>.UpdaterPrivilegedHelper. This is because
         # our current branding logic treats each channel as a separate product.
         # We should instead use upstream's channel_customize mechanism.
-        # See https://github.com/luxxle/brave-browser/issues/39347.
+        # See https://github.com/luxxle/luxxle-browser/issues/39347.
         privileged_helper = parts['privileged-helper']
-        channel_re = 'com.brave.Browser(.*).UpdaterPrivilegedHelper'
-        replacement = 'com.brave.Browser.UpdaterPrivilegedHelper'
+        channel_re = 'com.luxxle.Browser(.*).UpdaterPrivilegedHelper'
+        replacement = 'com.luxxle.Browser.UpdaterPrivilegedHelper'
         privileged_helper.path = re.sub(channel_re, replacement,
                                         privileged_helper.path)
         privileged_helper.identifier = re.sub(channel_re, replacement,

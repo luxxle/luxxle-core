@@ -1,4 +1,4 @@
-/* Copyright (c) 2023 The Brave Authors. All rights reserved.
+/* Copyright (c) 2023 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
@@ -16,10 +16,10 @@
 #include "base/apple/foundation_util.h"
 #include "base/apple/scoped_objc_class_swizzler.h"
 #include "base/test/scoped_feature_list.h"
-#include "luxxle/app/brave_command_ids.h"
-#include "luxxle/browser/brave_browser_features.h"
-#include "luxxle/browser/brave_browser_process.h"
-#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/app/luxxle_command_ids.h"
+#include "luxxle/browser/luxxle_browser_features.h"
+#include "luxxle/browser/luxxle_browser_process.h"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_view.h"
 #include "luxxle/components/tor/buildflags/buildflags.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/browser/bookmarks/bookmark_model_factory.h"
@@ -51,10 +51,10 @@ namespace {
 
 constexpr char kTestingPage[] = "/empty.html";
 
-class BraveAppControllerBrowserTest : public InProcessBrowserTest {
+class LuxxleAppControllerBrowserTest : public InProcessBrowserTest {
  public:
-  BraveAppControllerBrowserTest() {
-    features_.InitWithFeatureState(features::kBraveCopyCleanLinkByDefault,
+  LuxxleAppControllerBrowserTest() {
+    features_.InitWithFeatureState(features::kLuxxleCopyCleanLinkByDefault,
                                    true);
   }
 
@@ -69,11 +69,11 @@ class BraveAppControllerBrowserTest : public InProcessBrowserTest {
   base::test::ScopedFeatureList features_;
 };
 
-class BraveAppControllerCleanLinkFeatureDisabledBrowserTest
+class LuxxleAppControllerCleanLinkFeatureDisabledBrowserTest
     : public InProcessBrowserTest {
  public:
-  BraveAppControllerCleanLinkFeatureDisabledBrowserTest() {
-    features_.InitWithFeatureState(features::kBraveCopyCleanLinkByDefault,
+  LuxxleAppControllerCleanLinkFeatureDisabledBrowserTest() {
+    features_.InitWithFeatureState(features::kLuxxleCopyCleanLinkByDefault,
                                    false);
   }
 
@@ -81,22 +81,22 @@ class BraveAppControllerCleanLinkFeatureDisabledBrowserTest
   base::test::ScopedFeatureList features_;
 };
 
-IN_PROC_BROWSER_TEST_F(BraveAppControllerCleanLinkFeatureDisabledBrowserTest,
+IN_PROC_BROWSER_TEST_F(LuxxleAppControllerCleanLinkFeatureDisabledBrowserTest,
                        CopyLinkItemVisible) {
   ASSERT_TRUE(embedded_test_server()->Start());
   GURL url = embedded_test_server()->GetURL(kTestingPage);
   ASSERT_TRUE(ui_test_utils::NavigateToURL(browser(), url));
   EXPECT_EQ(1u, chrome::GetTotalBrowserCount());
 
-  BraveBrowserView* browser_view = static_cast<BraveBrowserView*>(
-      BraveBrowserView::GetBrowserViewForBrowser(browser()));
+  LuxxleBrowserView* browser_view = static_cast<LuxxleBrowserView*>(
+      LuxxleBrowserView::GetBrowserViewForBrowser(browser()));
   OmniboxView* omnibox_view = browser_view->GetLocationBar()->GetOmniboxView();
   omnibox_view->SetFocus(true);
   omnibox_view->SelectAll(false);
   EXPECT_TRUE(omnibox_view->IsSelectAll());
-  EXPECT_TRUE(BraveBrowserWindow::From(browser()->window())->HasSelectedURL());
+  EXPECT_TRUE(LuxxleBrowserWindow::From(browser()->window())->HasSelectedURL());
 
-  BraveAppController* ac = base::apple::ObjCCastStrict<BraveAppController>(
+  LuxxleAppController* ac = base::apple::ObjCCastStrict<LuxxleAppController>(
       [[NSApplication sharedApplication] delegate]);
   ASSERT_TRUE(ac);
   NSMenu* edit_submenu = [[[NSApp mainMenu] itemWithTag:IDC_EDIT_MENU] submenu];
@@ -114,21 +114,21 @@ IN_PROC_BROWSER_TEST_F(BraveAppControllerCleanLinkFeatureDisabledBrowserTest,
   EXPECT_EQ([copy_item keyEquivalentModifierMask], NSEventModifierFlagCommand);
 }
 
-IN_PROC_BROWSER_TEST_F(BraveAppControllerBrowserTest, CopyLinkItemVisible) {
+IN_PROC_BROWSER_TEST_F(LuxxleAppControllerBrowserTest, CopyLinkItemVisible) {
   ASSERT_TRUE(embedded_test_server()->Start());
   GURL url = embedded_test_server()->GetURL(kTestingPage);
   ASSERT_TRUE(ui_test_utils::NavigateToURL(browser(), url));
   EXPECT_EQ(1u, chrome::GetTotalBrowserCount());
 
-  BraveBrowserView* browser_view = static_cast<BraveBrowserView*>(
-      BraveBrowserView::GetBrowserViewForBrowser(browser()));
+  LuxxleBrowserView* browser_view = static_cast<LuxxleBrowserView*>(
+      LuxxleBrowserView::GetBrowserViewForBrowser(browser()));
   OmniboxView* omnibox_view = browser_view->GetLocationBar()->GetOmniboxView();
   omnibox_view->SetFocus(true);
   omnibox_view->SelectAll(false);
   EXPECT_TRUE(omnibox_view->IsSelectAll());
-  EXPECT_TRUE(BraveBrowserWindow::From(browser()->window())->HasSelectedURL());
+  EXPECT_TRUE(LuxxleBrowserWindow::From(browser()->window())->HasSelectedURL());
 
-  BraveAppController* ac = base::apple::ObjCCastStrict<BraveAppController>(
+  LuxxleAppController* ac = base::apple::ObjCCastStrict<LuxxleAppController>(
       [[NSApplication sharedApplication] delegate]);
   ASSERT_TRUE(ac);
 
@@ -149,7 +149,7 @@ IN_PROC_BROWSER_TEST_F(BraveAppControllerBrowserTest, CopyLinkItemVisible) {
   EXPECT_EQ([copy_item keyEquivalentModifierMask], 0UL);
 }
 
-IN_PROC_BROWSER_TEST_F(BraveAppControllerBrowserTest, CopyLinkItemNotVisible) {
+IN_PROC_BROWSER_TEST_F(LuxxleAppControllerBrowserTest, CopyLinkItemNotVisible) {
   EXPECT_EQ(1u, chrome::GetTotalBrowserCount());
   OmniboxView* omnibox_view =
       browser()->window()->GetLocationBar()->GetOmniboxView();
@@ -176,20 +176,20 @@ IN_PROC_BROWSER_TEST_F(BraveAppControllerBrowserTest, CopyLinkItemNotVisible) {
   EXPECT_EQ([copy_item keyEquivalentModifierMask], NSEventModifierFlagCommand);
 }
 
-IN_PROC_BROWSER_TEST_F(BraveAppControllerBrowserTest,
+IN_PROC_BROWSER_TEST_F(LuxxleAppControllerBrowserTest,
                        CopyLinkItemNotVisibleWithoutSelection) {
   ASSERT_TRUE(embedded_test_server()->Start());
   GURL url = embedded_test_server()->GetURL(kTestingPage);
   ASSERT_TRUE(ui_test_utils::NavigateToURL(browser(), url));
   EXPECT_EQ(1u, chrome::GetTotalBrowserCount());
 
-  BraveBrowserView* browser_view = static_cast<BraveBrowserView*>(
-      BraveBrowserView::GetBrowserViewForBrowser(browser()));
+  LuxxleBrowserView* browser_view = static_cast<LuxxleBrowserView*>(
+      LuxxleBrowserView::GetBrowserViewForBrowser(browser()));
   OmniboxView* omnibox_view = browser_view->GetLocationBar()->GetOmniboxView();
   EXPECT_FALSE(omnibox_view->IsSelectAll());
-  EXPECT_FALSE(BraveBrowserWindow::From(browser()->window())->HasSelectedURL());
+  EXPECT_FALSE(LuxxleBrowserWindow::From(browser()->window())->HasSelectedURL());
 
-  BraveAppController* ac = base::apple::ObjCCastStrict<BraveAppController>(
+  LuxxleAppController* ac = base::apple::ObjCCastStrict<LuxxleAppController>(
       [[NSApplication sharedApplication] delegate]);
   ASSERT_TRUE(ac);
 
@@ -202,7 +202,7 @@ IN_PROC_BROWSER_TEST_F(BraveAppControllerBrowserTest,
   EXPECT_TRUE([clean_link_menu_item isHidden]);
 }
 
-IN_PROC_BROWSER_TEST_F(BraveAppControllerBrowserTest,
+IN_PROC_BROWSER_TEST_F(LuxxleAppControllerBrowserTest,
                        BookmarkItemsFromMenuBarTest) {
   AppController* ac =
       base::apple::ObjCCastStrict<AppController>([NSApp delegate]);
@@ -251,10 +251,10 @@ IN_PROC_BROWSER_TEST_F(BraveAppControllerBrowserTest,
 }
 
 #if BUILDFLAG(ENABLE_TOR)
-IN_PROC_BROWSER_TEST_F(BraveAppControllerBrowserTest, TorItemEnabled) {
+IN_PROC_BROWSER_TEST_F(LuxxleAppControllerBrowserTest, TorItemEnabled) {
   NSApplication* app = [NSApplication sharedApplication];
-  BraveAppController* ac =
-      base::apple::ObjCCastStrict<BraveAppController>([app delegate]);
+  LuxxleAppController* ac =
+      base::apple::ObjCCastStrict<LuxxleAppController>([app delegate]);
   ASSERT_TRUE(ac);
 
   NSMenu* dockMenu = [ac applicationDockMenu:app];
@@ -278,11 +278,11 @@ IN_PROC_BROWSER_TEST_F(BraveAppControllerBrowserTest, TorItemEnabled) {
   EXPECT_TRUE(tor_window->profile()->IsTor());
 }
 
-IN_PROC_BROWSER_TEST_F(BraveAppControllerBrowserTest,
+IN_PROC_BROWSER_TEST_F(LuxxleAppControllerBrowserTest,
                        TorItemDisabled_ByPolicy) {
   NSApplication* app = [NSApplication sharedApplication];
-  BraveAppController* ac =
-      base::apple::ObjCCastStrict<BraveAppController>([app delegate]);
+  LuxxleAppController* ac =
+      base::apple::ObjCCastStrict<LuxxleAppController>([app delegate]);
   ASSERT_TRUE(ac);
 
   NSMenu* dockMenu = [ac applicationDockMenu:app];
@@ -306,11 +306,11 @@ IN_PROC_BROWSER_TEST_F(BraveAppControllerBrowserTest,
   EXPECT_TRUE(tor_menu.isHidden);
 }
 
-IN_PROC_BROWSER_TEST_F(BraveAppControllerBrowserTest,
+IN_PROC_BROWSER_TEST_F(LuxxleAppControllerBrowserTest,
                        TorItemDisabled_ByLocalState) {
   NSApplication* app = [NSApplication sharedApplication];
-  BraveAppController* ac =
-      base::apple::ObjCCastStrict<BraveAppController>([app delegate]);
+  LuxxleAppController* ac =
+      base::apple::ObjCCastStrict<LuxxleAppController>([app delegate]);
   ASSERT_TRUE(ac);
   CHECK(g_browser_process);
 

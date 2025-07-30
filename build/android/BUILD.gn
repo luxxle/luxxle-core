@@ -3,8 +3,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import("//brave/android/brave_xml_preprocessor.gni")
-import("//brave/build/config.gni")
+import("//luxxle/android/luxxle_xml_preprocessor.gni")
+import("//luxxle/build/config.gni")
 import("//build/config/android/rules.gni")
 import("//third_party/jni_zero/jni_zero.gni")
 import("//tools/grit/grit_rule.gni")
@@ -14,12 +14,12 @@ _jarsigner = "//third_party/jdk/current/bin/jarsigner"
 _zipalign = "$android_sdk_build_tools/zipalign"
 
 action("sign_app_convert_aab_to_apk") {
-  script = "//brave/build/android/aab_to_apk.py"
+  script = "//luxxle/build/android/aab_to_apk.py"
 
   deps = [ ":sign_app" ]
 
   target_aab_path = "$root_out_dir/apks/MonochromePublic64.aab"
-  output_apk_path = "$root_out_dir/apks/Bravearm64Universal.apk"
+  output_apk_path = "$root_out_dir/apks/Luxxlearm64Universal.apk"
   output_path = "$root_out_dir/apks/"
   bundletool =
       "//third_party/android_build_tools/bundletool/cipd/bundletool.jar"
@@ -31,10 +31,10 @@ action("sign_app_convert_aab_to_apk") {
     rebase_path(target_aab_path, root_out_dir),
     rebase_path(output_apk_path, root_out_dir),
     rebase_path(output_path, root_out_dir),
-    rebase_path("$brave_android_keystore_path", root_out_dir),
-    "$brave_android_keystore_password",
-    "$brave_android_key_password",
-    "$brave_android_keystore_name",
+    rebase_path("$luxxle_android_keystore_path", root_out_dir),
+    "$luxxle_android_keystore_password",
+    "$luxxle_android_key_password",
+    "$luxxle_android_keystore_name",
     rebase_path(_zipalign, root_out_dir),
     rebase_path(_apksigner, root_out_dir),
     rebase_path(_jarsigner, root_out_dir),
@@ -42,7 +42,7 @@ action("sign_app_convert_aab_to_apk") {
 }
 
 action("sign_app") {
-  script = "//brave/build/android/sign_apk.py"
+  script = "//luxxle/build/android/sign_apk.py"
 
   deps = [ "//luxxle:create_symbols_dist" ]
 
@@ -80,14 +80,14 @@ action("sign_app") {
   ]
   args += [
     rebase_path(target_sign_app_path, root_out_dir),
-    rebase_path("$brave_android_keystore_path", root_out_dir),
-    "$brave_android_keystore_password",
-    "$brave_android_key_password",
-    "$brave_android_keystore_name",
+    rebase_path("$luxxle_android_keystore_path", root_out_dir),
+    "$luxxle_android_keystore_password",
+    "$luxxle_android_key_password",
+    "$luxxle_android_keystore_name",
   ]
 }
 
-copy("brave") {
+copy("luxxle") {
   visibility = [ "*" ]
   deps = []
   sources = []
@@ -118,114 +118,114 @@ copy("brave") {
       sources += [ "$root_out_dir/apks/ChromePublic.apk" ]
     }
   }
-  outputs = [ brave_android_output ]
+  outputs = [ luxxle_android_output ]
 }
 
-java_strings_grd("android_brave_strings_grd") {
-  grd_file = "//brave/browser/ui/android/strings/android_brave_strings.grd"
+java_strings_grd("android_luxxle_strings_grd") {
+  grd_file = "//luxxle/browser/ui/android/strings/android_luxxle_strings.grd"
   outputs = [
-    "values/android_brave_strings.xml",
-    "values-af/android_brave_strings.xml",
-    "values-am/android_brave_strings.xml",
-    "values-ar/android_brave_strings.xml",
-    "values-as/android_brave_strings.xml",
-    "values-az/android_brave_strings.xml",
-    "values-be/android_brave_strings.xml",
-    "values-bg/android_brave_strings.xml",
-    "values-bn/android_brave_strings.xml",
-    "values-bs/android_brave_strings.xml",
-    "values-ca/android_brave_strings.xml",
-    "values-cs/android_brave_strings.xml",
-    "values-da/android_brave_strings.xml",
-    "values-de/android_brave_strings.xml",
-    "values-el/android_brave_strings.xml",
-    "values-en-rGB/android_brave_strings.xml",
-    "values-es/android_brave_strings.xml",
-    "values-es-rUS/android_brave_strings.xml",
-    "values-et/android_brave_strings.xml",
-    "values-eu/android_brave_strings.xml",
-    "values-fa/android_brave_strings.xml",
-    "values-fi/android_brave_strings.xml",
-    "values-fr/android_brave_strings.xml",
-    "values-fr-rCA/android_brave_strings.xml",
-    "values-gl/android_brave_strings.xml",
-    "values-gu/android_brave_strings.xml",
-    "values-hi/android_brave_strings.xml",
-    "values-hr/android_brave_strings.xml",
-    "values-hu/android_brave_strings.xml",
-    "values-hy/android_brave_strings.xml",
-    "values-in/android_brave_strings.xml",
-    "values-is/android_brave_strings.xml",
-    "values-it/android_brave_strings.xml",
-    "values-iw/android_brave_strings.xml",
-    "values-ja/android_brave_strings.xml",
-    "values-ka/android_brave_strings.xml",
-    "values-kk/android_brave_strings.xml",
-    "values-km/android_brave_strings.xml",
-    "values-kn/android_brave_strings.xml",
-    "values-ko/android_brave_strings.xml",
-    "values-ky/android_brave_strings.xml",
-    "values-lo/android_brave_strings.xml",
-    "values-lt/android_brave_strings.xml",
-    "values-lv/android_brave_strings.xml",
-    "values-mk/android_brave_strings.xml",
-    "values-ml/android_brave_strings.xml",
-    "values-mn/android_brave_strings.xml",
-    "values-mr/android_brave_strings.xml",
-    "values-ms/android_brave_strings.xml",
-    "values-my/android_brave_strings.xml",
-    "values-nb/android_brave_strings.xml",
-    "values-ne/android_brave_strings.xml",
-    "values-nl/android_brave_strings.xml",
-    "values-or/android_brave_strings.xml",
-    "values-pa/android_brave_strings.xml",
-    "values-pl/android_brave_strings.xml",
-    "values-pt-rBR/android_brave_strings.xml",
-    "values-pt-rPT/android_brave_strings.xml",
-    "values-ro/android_brave_strings.xml",
-    "values-ru/android_brave_strings.xml",
-    "values-si/android_brave_strings.xml",
-    "values-sk/android_brave_strings.xml",
-    "values-sl/android_brave_strings.xml",
-    "values-sq/android_brave_strings.xml",
-    "values-sr/android_brave_strings.xml",
-    "values-sv/android_brave_strings.xml",
-    "values-sw/android_brave_strings.xml",
-    "values-ta/android_brave_strings.xml",
-    "values-te/android_brave_strings.xml",
-    "values-th/android_brave_strings.xml",
-    "values-tl/android_brave_strings.xml",
-    "values-tr/android_brave_strings.xml",
-    "values-uk/android_brave_strings.xml",
-    "values-ur/android_brave_strings.xml",
-    "values-uz/android_brave_strings.xml",
-    "values-vi/android_brave_strings.xml",
-    "values-zh-rCN/android_brave_strings.xml",
-    "values-zh-rHK/android_brave_strings.xml",
-    "values-zh-rTW/android_brave_strings.xml",
-    "values-zu/android_brave_strings.xml",
+    "values/android_luxxle_strings.xml",
+    "values-af/android_luxxle_strings.xml",
+    "values-am/android_luxxle_strings.xml",
+    "values-ar/android_luxxle_strings.xml",
+    "values-as/android_luxxle_strings.xml",
+    "values-az/android_luxxle_strings.xml",
+    "values-be/android_luxxle_strings.xml",
+    "values-bg/android_luxxle_strings.xml",
+    "values-bn/android_luxxle_strings.xml",
+    "values-bs/android_luxxle_strings.xml",
+    "values-ca/android_luxxle_strings.xml",
+    "values-cs/android_luxxle_strings.xml",
+    "values-da/android_luxxle_strings.xml",
+    "values-de/android_luxxle_strings.xml",
+    "values-el/android_luxxle_strings.xml",
+    "values-en-rGB/android_luxxle_strings.xml",
+    "values-es/android_luxxle_strings.xml",
+    "values-es-rUS/android_luxxle_strings.xml",
+    "values-et/android_luxxle_strings.xml",
+    "values-eu/android_luxxle_strings.xml",
+    "values-fa/android_luxxle_strings.xml",
+    "values-fi/android_luxxle_strings.xml",
+    "values-fr/android_luxxle_strings.xml",
+    "values-fr-rCA/android_luxxle_strings.xml",
+    "values-gl/android_luxxle_strings.xml",
+    "values-gu/android_luxxle_strings.xml",
+    "values-hi/android_luxxle_strings.xml",
+    "values-hr/android_luxxle_strings.xml",
+    "values-hu/android_luxxle_strings.xml",
+    "values-hy/android_luxxle_strings.xml",
+    "values-in/android_luxxle_strings.xml",
+    "values-is/android_luxxle_strings.xml",
+    "values-it/android_luxxle_strings.xml",
+    "values-iw/android_luxxle_strings.xml",
+    "values-ja/android_luxxle_strings.xml",
+    "values-ka/android_luxxle_strings.xml",
+    "values-kk/android_luxxle_strings.xml",
+    "values-km/android_luxxle_strings.xml",
+    "values-kn/android_luxxle_strings.xml",
+    "values-ko/android_luxxle_strings.xml",
+    "values-ky/android_luxxle_strings.xml",
+    "values-lo/android_luxxle_strings.xml",
+    "values-lt/android_luxxle_strings.xml",
+    "values-lv/android_luxxle_strings.xml",
+    "values-mk/android_luxxle_strings.xml",
+    "values-ml/android_luxxle_strings.xml",
+    "values-mn/android_luxxle_strings.xml",
+    "values-mr/android_luxxle_strings.xml",
+    "values-ms/android_luxxle_strings.xml",
+    "values-my/android_luxxle_strings.xml",
+    "values-nb/android_luxxle_strings.xml",
+    "values-ne/android_luxxle_strings.xml",
+    "values-nl/android_luxxle_strings.xml",
+    "values-or/android_luxxle_strings.xml",
+    "values-pa/android_luxxle_strings.xml",
+    "values-pl/android_luxxle_strings.xml",
+    "values-pt-rBR/android_luxxle_strings.xml",
+    "values-pt-rPT/android_luxxle_strings.xml",
+    "values-ro/android_luxxle_strings.xml",
+    "values-ru/android_luxxle_strings.xml",
+    "values-si/android_luxxle_strings.xml",
+    "values-sk/android_luxxle_strings.xml",
+    "values-sl/android_luxxle_strings.xml",
+    "values-sq/android_luxxle_strings.xml",
+    "values-sr/android_luxxle_strings.xml",
+    "values-sv/android_luxxle_strings.xml",
+    "values-sw/android_luxxle_strings.xml",
+    "values-ta/android_luxxle_strings.xml",
+    "values-te/android_luxxle_strings.xml",
+    "values-th/android_luxxle_strings.xml",
+    "values-tl/android_luxxle_strings.xml",
+    "values-tr/android_luxxle_strings.xml",
+    "values-uk/android_luxxle_strings.xml",
+    "values-ur/android_luxxle_strings.xml",
+    "values-uz/android_luxxle_strings.xml",
+    "values-vi/android_luxxle_strings.xml",
+    "values-zh-rCN/android_luxxle_strings.xml",
+    "values-zh-rHK/android_luxxle_strings.xml",
+    "values-zh-rTW/android_luxxle_strings.xml",
+    "values-zu/android_luxxle_strings.xml",
   ]
 }
 
-brave_xml_preprocessor("brave_java_xml_preprocess_resources") {
-  sources = brave_java_preprocess_xml_sources
-  modules = brave_java_preprocess_module_sources
+luxxle_xml_preprocessor("luxxle_java_xml_preprocess_resources") {
+  sources = luxxle_java_preprocess_xml_sources
+  modules = luxxle_java_preprocess_module_sources
 }
 
 generate_jni("jni_headers") {
   sources = [
-    "//brave/android/java/org/chromium/chrome/browser/brave_leo/BraveLeoSettingsLauncherHelper.java",
-    "//brave/android/java/org/chromium/chrome/browser/crypto_wallet/util/WalletDataFilesInstallerUtil.java",
-    "//brave/android/java/org/chromium/chrome/browser/day_zero/DayZeroHelper.java",
-    "//brave/android/java/org/chromium/chrome/browser/informers/BraveSyncAccountDeletedInformer.java",
-    "//brave/android/java/org/chromium/chrome/browser/notifications/channels/BraveSiteChannelsManagerBridge.java",
-    "//brave/android/java/org/chromium/chrome/browser/preferences/BravePrefServiceBridge.java",
-    "//brave/android/java/org/chromium/chrome/browser/signin/BraveSigninManager.java",
-    "//brave/android/java/org/chromium/chrome/browser/util/TabUtils.java",
+    "//luxxle/android/java/org/chromium/chrome/browser/luxxle_leo/LuxxleLeoSettingsLauncherHelper.java",
+    "//luxxle/android/java/org/chromium/chrome/browser/crypto_wallet/util/WalletDataFilesInstallerUtil.java",
+    "//luxxle/android/java/org/chromium/chrome/browser/day_zero/DayZeroHelper.java",
+    "//luxxle/android/java/org/chromium/chrome/browser/informers/LuxxleSyncAccountDeletedInformer.java",
+    "//luxxle/android/java/org/chromium/chrome/browser/notifications/channels/LuxxleSiteChannelsManagerBridge.java",
+    "//luxxle/android/java/org/chromium/chrome/browser/preferences/LuxxlePrefServiceBridge.java",
+    "//luxxle/android/java/org/chromium/chrome/browser/signin/LuxxleSigninManager.java",
+    "//luxxle/android/java/org/chromium/chrome/browser/util/TabUtils.java",
   ]
 
   public_deps = [
-    "//brave/android/java/org/chromium/chrome/browser/search_engines:jni_headers",
+    "//luxxle/android/java/org/chromium/chrome/browser/search_engines:jni_headers",
     "//chrome/android:chrome_jni_headers",
   ]
 }

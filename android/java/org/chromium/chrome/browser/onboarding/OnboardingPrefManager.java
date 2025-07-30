@@ -13,10 +13,10 @@ import android.content.SharedPreferences;
 
 import org.chromium.base.ContextUtils;
 import org.chromium.base.Log;
-import org.chromium.chrome.browser.BraveAdsNativeHelper;
-import org.chromium.chrome.browser.app.BraveActivity;
-import org.chromium.chrome.browser.app.BraveActivity.BraveActivityNotFoundException;
-import org.chromium.chrome.browser.notifications.BraveOnboardingNotification;
+import org.chromium.chrome.browser.LuxxleAdsNativeHelper;
+import org.chromium.chrome.browser.app.LuxxleActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity.LuxxleActivityNotFoundException;
+import org.chromium.chrome.browser.notifications.LuxxleOnboardingNotification;
 import org.chromium.chrome.browser.notifications.retention.RetentionNotificationUtil;
 import org.chromium.chrome.browser.profiles.ProfileManager;
 import org.chromium.misc_metrics.mojom.MiscAndroidMetrics;
@@ -33,8 +33,8 @@ public class OnboardingPrefManager {
     private static final String PREF_ONBOARDING = "onboarding";
     private static final String PREF_P3A_ONBOARDING = "p3a_onboarding";
     private static final String PREF_ONBOARDING_V2 = "onboarding_v2";
-    public static final String PREF_BRAVE_STATS = "brave_stats";
-    public static final String PREF_BRAVE_STATS_NOTIFICATION = "brave_stats_notification";
+    public static final String PREF_LUXXLE_STATS = "luxxle_stats";
+    public static final String PREF_LUXXLE_STATS_NOTIFICATION = "luxxle_stats_notification";
     public static final String FROM_NOTIFICATION = "from_notification";
     public static final String FROM_STATS = "from_stats";
     public static final String ONE_TIME_NOTIFICATION = "one_time_notification";
@@ -65,7 +65,7 @@ public class OnboardingPrefManager {
 
     public static boolean isNotification;
 
-    public static final String BRAVE = "Brave";
+    public static final String LUXXLE = "Luxxle";
     public static final String YANDEX = "Yandex";
     public static final String YAHOO_JP = "Yahoo! JAPAN";
 
@@ -141,37 +141,37 @@ public class OnboardingPrefManager {
         sharedPreferencesEditor.apply();
     }
 
-    public boolean isBraveStatsEnabled() {
-        return mSharedPreferences.getBoolean(PREF_BRAVE_STATS, false);
+    public boolean isLuxxleStatsEnabled() {
+        return mSharedPreferences.getBoolean(PREF_LUXXLE_STATS, false);
     }
 
-    public void setBraveStatsEnabled(boolean enabled) {
+    public void setLuxxleStatsEnabled(boolean enabled) {
         SharedPreferences.Editor sharedPreferencesEditor = mSharedPreferences.edit();
-        sharedPreferencesEditor.putBoolean(PREF_BRAVE_STATS, enabled);
+        sharedPreferencesEditor.putBoolean(PREF_LUXXLE_STATS, enabled);
         sharedPreferencesEditor.apply();
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             MiscAndroidMetrics miscAndroidMetrics = activity.getMiscAndroidMetrics();
             if (miscAndroidMetrics != null) {
                 miscAndroidMetrics.recordPrivacyHubEnabledStatus(enabled);
             }
-        } catch (BraveActivityNotFoundException e) {
+        } catch (LuxxleActivityNotFoundException e) {
             Log.e(TAG, "Could not report privacy hub enabled change to P3A: " + e);
         }
     }
 
-    public boolean isBraveStatsNotificationEnabled() {
-        return mSharedPreferences.getBoolean(PREF_BRAVE_STATS_NOTIFICATION, true);
+    public boolean isLuxxleStatsNotificationEnabled() {
+        return mSharedPreferences.getBoolean(PREF_LUXXLE_STATS_NOTIFICATION, true);
     }
 
-    public void setBraveStatsNotificationEnabled(boolean enabled) {
+    public void setLuxxleStatsNotificationEnabled(boolean enabled) {
         SharedPreferences.Editor sharedPreferencesEditor = mSharedPreferences.edit();
-        sharedPreferencesEditor.putBoolean(PREF_BRAVE_STATS_NOTIFICATION, enabled);
+        sharedPreferencesEditor.putBoolean(PREF_LUXXLE_STATS_NOTIFICATION, enabled);
         sharedPreferencesEditor.apply();
     }
 
     public boolean isAdsAvailable() {
-        return BraveAdsNativeHelper.nativeIsSupportedRegion(
+        return LuxxleAdsNativeHelper.nativeIsSupportedRegion(
                 ProfileManager.getLastUsedRegularProfile());
     }
 
@@ -191,7 +191,7 @@ public class OnboardingPrefManager {
 
     public void onboardingNotification() {
         if (!isOnboardingNotificationShown()) {
-            BraveOnboardingNotification.showOnboardingNotification();
+            LuxxleOnboardingNotification.showOnboardingNotification();
             setOnboardingNotificationShown(true);
         }
     }

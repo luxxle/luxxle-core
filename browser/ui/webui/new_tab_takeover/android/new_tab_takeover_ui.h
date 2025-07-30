@@ -24,9 +24,9 @@ class ViewCounterService;
 // On desktop, we use a Web UI to display new tab pages. On Android, however,
 // there is no Web UI implementation. Instead, Android overlays a native view
 // over a web contents view. The native view displays the background image,
-// Brave Stats, and Brave News. When the user navigates to a URL, the native
+// Luxxle Stats, and Luxxle News. When the user navigates to a URL, the native
 // view is hidden, revealing the web contents view and its HTML content. To
-// display rich media HTML alongside Brave Stats and Brave News, we use a
+// display rich media HTML alongside Luxxle Stats and Luxxle News, we use a
 // `ThinWebView` to render the HTML behind these overlays.
 class NewTabTakeoverUI : public ui::MojoWebUIController,
                          public new_tab_takeover::mojom::NewTabTakeover {

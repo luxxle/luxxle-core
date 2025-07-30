@@ -1,17 +1,17 @@
-// Copyright (c) 2025 The Brave Authors. All rights reserved.
+// Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
 import { AliasItem } from './email_aliases_item'
-import { color, font, spacing } from '@brave/leo/tokens/css/variables'
+import { color, font, spacing } from '@luxxle/leo/tokens/css/variables'
 import { EditState, EmailAliasModal } from './email_aliases_modal'
 import { getLocale } from '$web-common/locale'
 import * as React from 'react'
-import Button from '@brave/leo/react/button'
+import Button from '@luxxle/leo/react/button'
 import Col from './styles/Col'
 import Description from './styles/Description'
-import Dialog from '@brave/leo/react/dialog'
+import Dialog from '@luxxle/leo/react/dialog'
 import Row from './styles/Row'
 import styled from 'styled-components'
 import { Alias, EmailAliasesServiceInterface, MAX_ALIASES }

@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef LUXXLE_BROWSER_BRAVE_BROWSER_MAIN_PARTS_MAC_H_
-#define LUXXLE_BROWSER_BRAVE_BROWSER_MAIN_PARTS_MAC_H_
+#ifndef LUXXLE_BROWSER_LUXXLE_BROWSER_MAIN_PARTS_MAC_H_
+#define LUXXLE_BROWSER_LUXXLE_BROWSER_MAIN_PARTS_MAC_H_
 
 #include "chrome/browser/chrome_browser_main_mac.h"
 
-class BraveBrowserMainPartsMac : public ChromeBrowserMainPartsMac {
+class LuxxleBrowserMainPartsMac : public ChromeBrowserMainPartsMac {
  public:
   using ChromeBrowserMainPartsMac::ChromeBrowserMainPartsMac;
-  ~BraveBrowserMainPartsMac() override = default;
+  ~LuxxleBrowserMainPartsMac() override = default;
 
  private:
   // ChromeBrowserMainPartsMac overrides:
@@ -19,4 +19,4 @@ class BraveBrowserMainPartsMac : public ChromeBrowserMainPartsMac {
   void PostProfileInit(Profile* profile, bool is_initial_profile) override;
 };
 
-#endif  // LUXXLE_BROWSER_BRAVE_BROWSER_MAIN_PARTS_MAC_H_
+#endif  // LUXXLE_BROWSER_LUXXLE_BROWSER_MAIN_PARTS_MAC_H_

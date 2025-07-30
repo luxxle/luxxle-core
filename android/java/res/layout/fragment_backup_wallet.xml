@@ -35,8 +35,8 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:theme="@style/BraveWalletEditTextTheme"
-            style="@style/BraveWalletInputLayout"
+            android:theme="@style/LuxxleWalletEditTextTheme"
+            style="@style/LuxxleWalletInputLayout"
             app:errorEnabled="true"
             app:endIconMode="password_toggle"
             android:id="@+id/text_input_layout"
@@ -64,7 +64,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="40dp"
             android:layout_marginHorizontal="16dp"
-            style="@style/BraveWalletOnboardingButton"/>
+            style="@style/LuxxleWalletOnboardingButton"/>
 
         <ImageView
             android:id="@+id/biometric_unlock_wallet"

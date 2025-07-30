@@ -8,11 +8,11 @@ package org.chromium.chrome.browser.crypto_wallet.presenters;
 import android.content.Context;
 import android.text.TextUtils;
 
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.SolanaAccountMeta;
-import org.chromium.brave_wallet.mojom.SolanaInstruction;
-import org.chromium.brave_wallet.mojom.SolanaInstructionAccountParam;
-import org.chromium.brave_wallet.mojom.SolanaInstructionParam;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.SolanaAccountMeta;
+import org.chromium.luxxle_wallet.mojom.SolanaInstruction;
+import org.chromium.luxxle_wallet.mojom.SolanaInstructionAccountParam;
+import org.chromium.luxxle_wallet.mojom.SolanaInstructionParam;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.crypto_wallet.adapters.TwoLineItemRecyclerViewAdapter.TwoLineItem;
 import org.chromium.chrome.browser.crypto_wallet.adapters.TwoLineItemRecyclerViewAdapter.TwoLineItemHeader;
@@ -89,7 +89,7 @@ public class SolanaInstructionPresenter {
                                 mSolanaInstruction.decodedData != null
                                         ? mSolanaInstruction.decodedData.instructionType
                                         : -1));
-        if (!txSubType.equals(context.getString(R.string.brave_wallet_unknown))) {
+        if (!txSubType.equals(context.getString(R.string.luxxle_wallet_unknown))) {
             twoLineItems.add(
                     new TwoLineItemText(
                             TransactionUtils.getSolanaProgramIdName(
@@ -108,11 +108,11 @@ public class SolanaInstructionPresenter {
         if (shouldShowRawData()) {
             // Add data and program id field also
             twoLineItems.add(
-                    new TwoLineItemHeader(context.getString(R.string.brave_wallet_data_text)));
+                    new TwoLineItemHeader(context.getString(R.string.luxxle_wallet_data_text)));
             twoLineItems.addAll(solanaInstructionPresenter.dataToList());
 
             twoLineItems.add(
-                    new TwoLineItemHeader(context.getString(R.string.brave_wallet_tx_progam_id)));
+                    new TwoLineItemHeader(context.getString(R.string.luxxle_wallet_tx_progam_id)));
             twoLineItems.addAll(solanaInstructionPresenter.programIdToList());
         }
         twoLineItems.addAll(solanaInstructionPresenter.accountParamDataToList());
@@ -130,7 +130,7 @@ public class SolanaInstructionPresenter {
                             new TwoLineItemText(
                                     resources.getString(
                                             R.string
-                                                    .brave_wallet_solana_address_lookup_table_account),
+                                                    .luxxle_wallet_solana_address_lookup_table_account),
                                     null));
                 }
                 twoLineItemDataSources.add(new TwoLineItemText(null, solanaAccountMeta.pubkey));
@@ -139,7 +139,7 @@ public class SolanaInstructionPresenter {
                             new TwoLineItemText(
                                     resources.getString(
                                             R.string
-                                                    .brave_wallet_solana_address_lookup_table_index),
+                                                    .luxxle_wallet_solana_address_lookup_table_index),
                                     String.valueOf(Byte.toUnsignedInt(lookupTableIndex.val))));
                 }
             }
@@ -156,7 +156,7 @@ public class SolanaInstructionPresenter {
                                     accountPresenter.mLocalizeAccountHeader,
                                     resources.getString(
                                             R.string
-                                                    .brave_wallet_solana_address_lookup_table_account));
+                                                    .luxxle_wallet_solana_address_lookup_table_account));
                     twoLineItemText.setTitle(prependedTableIndexSubTitle);
                 }
                 if (!accountPresenter.mSolanaAccountMeta.isSigner
@@ -165,7 +165,7 @@ public class SolanaInstructionPresenter {
                             new TwoLineItemText(
                                     resources.getString(
                                             R.string
-                                                    .brave_wallet_solana_address_lookup_table_index),
+                                                    .luxxle_wallet_solana_address_lookup_table_index),
                                     String.valueOf(
                                             Byte.toUnsignedInt(
                                                     accountPresenter

@@ -8,7 +8,7 @@
 #include <memory>
 
 #include "base/test/metrics/histogram_tester.h"
-#include "luxxle/browser/themes/brave_dark_mode_utils.h"
+#include "luxxle/browser/themes/luxxle_dark_mode_utils.h"
 #include "luxxle/components/constants/pref_names.h"
 #include "chrome/browser/themes/theme_service.h"
 #include "chrome/browser/themes/theme_service_factory.h"
@@ -44,11 +44,11 @@ class ThemeMetricsTest : public testing::Test {
 
 TEST_F(ThemeMetricsTest, ReportMetrics) {
   histogram_tester_.ExpectUniqueSample(kBrowserColorSchemeHistogramName, 0, 1);
-  dark_mode::SetBraveDarkModeType(
-      dark_mode::BraveDarkModeType::BRAVE_DARK_MODE_TYPE_DARK);
+  dark_mode::SetLuxxleDarkModeType(
+      dark_mode::LuxxleDarkModeType::LUXXLE_DARK_MODE_TYPE_DARK);
   histogram_tester_.ExpectBucketCount(kBrowserColorSchemeHistogramName, 1, 1);
-  dark_mode::SetBraveDarkModeType(
-      dark_mode::BraveDarkModeType::BRAVE_DARK_MODE_TYPE_LIGHT);
+  dark_mode::SetLuxxleDarkModeType(
+      dark_mode::LuxxleDarkModeType::LUXXLE_DARK_MODE_TYPE_LIGHT);
   histogram_tester_.ExpectBucketCount(kBrowserColorSchemeHistogramName, 2, 1);
   histogram_tester_.ExpectTotalCount(kBrowserColorSchemeHistogramName, 3);
 

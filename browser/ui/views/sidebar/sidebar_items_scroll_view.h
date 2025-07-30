@@ -30,7 +30,7 @@ namespace sidebar {
 class SidebarBrowserTest;
 }  // namespace sidebar
 
-class BraveBrowser;
+class LuxxleBrowser;
 class SidebarItemDragContext;
 class SidebarItemsContentsView;
 
@@ -44,7 +44,7 @@ class SidebarItemsScrollView : public views::View,
                                public sidebar::SidebarModel::Observer {
   METADATA_HEADER(SidebarItemsScrollView, views::View)
  public:
-  explicit SidebarItemsScrollView(BraveBrowser* browser);
+  explicit SidebarItemsScrollView(LuxxleBrowser* browser);
   ~SidebarItemsScrollView() override;
 
   SidebarItemsScrollView(const SidebarItemsScrollView&) = delete;
@@ -131,7 +131,7 @@ class SidebarItemsScrollView : public views::View,
   void ClearDragIndicator();
 
   std::optional<size_t> lastly_added_item_index_;
-  raw_ptr<BraveBrowser> browser_ = nullptr;
+  raw_ptr<LuxxleBrowser> browser_ = nullptr;
   raw_ptr<views::ImageButton> up_arrow_ = nullptr;
   raw_ptr<views::ImageButton> down_arrow_ = nullptr;
   raw_ptr<SidebarItemsContentsView> contents_view_ = nullptr;

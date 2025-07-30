@@ -14,7 +14,7 @@
 #include "luxxle/browser/playlist/playlist_service_factory.h"
 #include "luxxle/browser/ui/browser_commands.h"
 #include "luxxle/browser/ui/playlist/playlist_dialogs.h"
-#include "luxxle/browser/ui/webui/brave_webui_source.h"
+#include "luxxle/browser/ui/webui/luxxle_webui_source.h"
 #include "luxxle/browser/ui/webui/playlist_active_tab_tracker.h"
 #include "luxxle/components/constants/webui_url_constants.h"
 #include "luxxle/components/playlist/browser/playlist_service.h"
@@ -25,8 +25,8 @@
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_finder.h"
 #include "chrome/grit/generated_resources.h"
-#include "components/grit/brave_components_resources.h"
-#include "components/grit/brave_components_strings.h"
+#include "components/grit/luxxle_components_resources.h"
+#include "components/grit/luxxle_components_strings.h"
 #include "components/prefs/pref_service.h"
 #include "components/sessions/content/session_tab_helper.h"
 #include "components/user_prefs/user_prefs.h"
@@ -44,49 +44,49 @@ namespace {
 
 void AddLocalizedStrings(content::WebUIDataSource* source) {
   static constexpr webui::LocalizedString kLocalizedStrings[] = {
-      {"braveDefaultPlaylistName", IDS_PLAYLIST_DEFAULT_PLAYLIST_NAME},
-      {"bravePlaylistContextMenuEdit", IDS_PLAYLIST_CONTEXT_MENU_EDIT},
-      {"bravePlaylistContextMenuShare", IDS_PLAYLIST_CONTEXT_MENU_SHARE},
-      {"bravePlaylistContextMenuKeepForOfflinePlaying",
+      {"luxxleDefaultPlaylistName", IDS_PLAYLIST_DEFAULT_PLAYLIST_NAME},
+      {"luxxlePlaylistContextMenuEdit", IDS_PLAYLIST_CONTEXT_MENU_EDIT},
+      {"luxxlePlaylistContextMenuShare", IDS_PLAYLIST_CONTEXT_MENU_SHARE},
+      {"luxxlePlaylistContextMenuKeepForOfflinePlaying",
        IDS_PLAYLIST_CONTEXT_MENU_KEEP_FOR_OFFLINE_PLAYING},
-      {"bravePlaylistContextMenuRemovePlayedContents",
+      {"luxxlePlaylistContextMenuRemovePlayedContents",
        IDS_PLAYLIST_CONTEXT_MENU_REMOVE_PLAYED_CONTENTS},
-      {"bravePlaylistContextMenuMove", IDS_PLAYLIST_CONTEXT_MENU_MOVE},
-      {"bravePlaylistContextMenuRemoveOfflineData",
+      {"luxxlePlaylistContextMenuMove", IDS_PLAYLIST_CONTEXT_MENU_MOVE},
+      {"luxxlePlaylistContextMenuRemoveOfflineData",
        IDS_PLAYLIST_CONTEXT_MENU_REMOVE_OFFLINE_DATA},
-      {"bravePlaylistContextMenuRemoveFromPlaylist",
+      {"luxxlePlaylistContextMenuRemoveFromPlaylist",
        IDS_PLAYLIST_CONTEXT_MENU_REMOVE_FROM_PLAYLIST},
-      {"bravePlaylistContextMenuRenamePlaylist",
+      {"luxxlePlaylistContextMenuRenamePlaylist",
        IDS_PLAYLIST_CONTEXT_MENU_RENAME_PLAYLIST},
-      {"bravePlaylistContextMenuDeletePlaylist",
+      {"luxxlePlaylistContextMenuDeletePlaylist",
        IDS_PLAYLIST_CONTEXT_MENU_DELETE_PLAYLIST},
-      {"bravePlaylistContextMenuViewOriginalPage",
+      {"luxxlePlaylistContextMenuViewOriginalPage",
        IDS_PLAYLIST_CONTEXT_MENU_VIEW_ORIGINAL_PAGE},
-      {"bravePlaylistEmptyFolderMessage", IDS_PLAYLIST_EMPTY_FOLDER_MESSAGE},
-      {"bravePlaylistTooltipCreatePlaylistFolder",
+      {"luxxlePlaylistEmptyFolderMessage", IDS_PLAYLIST_EMPTY_FOLDER_MESSAGE},
+      {"luxxlePlaylistTooltipCreatePlaylistFolder",
        IDS_PLAYLIST_TOOLTIP_CREATE_PLAYLIST_FOLDER},
-      {"bravePlaylistTooltipOpenPlaylistSettings",
+      {"luxxlePlaylistTooltipOpenPlaylistSettings",
        IDS_PLAYLIST_TOOLTIP_OPEN_PLAYLIST_SETTINGS},
-      {"bravePlaylistTooltipClosePanel",
+      {"luxxlePlaylistTooltipClosePanel",
        IDS_SIDEBAR_PANEL_CLOSE_BUTTON_TOOLTIP},
-      {"bravePlaylistTooltipPlay", IDS_PLAYLIST_TOOLTIP_PLAY},
-      {"bravePlaylistTooltipPause", IDS_PLAYLIST_TOOLTIP_PAUSE},
-      {"bravePlaylistTooltipNext", IDS_PLAYLIST_TOOLTIP_NEXT},
-      {"bravePlaylistTooltipPrevious", IDS_PLAYLIST_TOOLTIP_PREVIOUS},
-      {"bravePlaylistTooltipShuffle", IDS_PLAYLIST_TOOLTIP_SHUFFLE},
-      {"bravePlaylistTooltipToggleMuted", IDS_PLAYLIST_TOOLTIP_TOGGLE_MUTED},
-      {"bravePlaylistTooltipRewind", IDS_PLAYLIST_TOOLTIP_REWIND},
-      {"bravePlaylistTooltipForward", IDS_PLAYLIST_TOOLTIP_FORWARD},
-      {"bravePlaylistTooltipClose", IDS_PLAYLIST_TOOLTIP_CLOSE},
-      {"bravePlaylistTooltipLoopOff", IDS_PLAYLIST_TOOLTIP_LOOP_OFF},
-      {"bravePlaylistTooltipLoopOne", IDS_PLAYLIST_TOOLTIP_LOOP_ONE},
-      {"bravePlaylistTooltipLoopAll", IDS_PLAYLIST_TOOLTIP_LOOP_ALL},
-      {"bravePlaylistFailedToPlayTitle", IDS_PLAYLIST_FAILED_TO_PLAY_TITLE},
-      {"bravePlaylistFailedToPlayDescription",
+      {"luxxlePlaylistTooltipPlay", IDS_PLAYLIST_TOOLTIP_PLAY},
+      {"luxxlePlaylistTooltipPause", IDS_PLAYLIST_TOOLTIP_PAUSE},
+      {"luxxlePlaylistTooltipNext", IDS_PLAYLIST_TOOLTIP_NEXT},
+      {"luxxlePlaylistTooltipPrevious", IDS_PLAYLIST_TOOLTIP_PREVIOUS},
+      {"luxxlePlaylistTooltipShuffle", IDS_PLAYLIST_TOOLTIP_SHUFFLE},
+      {"luxxlePlaylistTooltipToggleMuted", IDS_PLAYLIST_TOOLTIP_TOGGLE_MUTED},
+      {"luxxlePlaylistTooltipRewind", IDS_PLAYLIST_TOOLTIP_REWIND},
+      {"luxxlePlaylistTooltipForward", IDS_PLAYLIST_TOOLTIP_FORWARD},
+      {"luxxlePlaylistTooltipClose", IDS_PLAYLIST_TOOLTIP_CLOSE},
+      {"luxxlePlaylistTooltipLoopOff", IDS_PLAYLIST_TOOLTIP_LOOP_OFF},
+      {"luxxlePlaylistTooltipLoopOne", IDS_PLAYLIST_TOOLTIP_LOOP_ONE},
+      {"luxxlePlaylistTooltipLoopAll", IDS_PLAYLIST_TOOLTIP_LOOP_ALL},
+      {"luxxlePlaylistFailedToPlayTitle", IDS_PLAYLIST_FAILED_TO_PLAY_TITLE},
+      {"luxxlePlaylistFailedToPlayDescription",
        IDS_PLAYLIST_FAILED_TO_PLAY_DESCRIPTION},
-      {"bravePlaylistFailedToPlayRecover", IDS_PLAYLIST_FAILED_TO_PLAY_RECOVER},
-      {"bravePlaylistAddMediaFromPage", IDS_PLAYLIST_ADD_MEDIA_FROM_PAGE},
-      {"bravePlaylistAlertDismiss", IDS_PLAYLIST_ALERT_DISMISS},
+      {"luxxlePlaylistFailedToPlayRecover", IDS_PLAYLIST_FAILED_TO_PLAY_RECOVER},
+      {"luxxlePlaylistAddMediaFromPage", IDS_PLAYLIST_ADD_MEDIA_FROM_PAGE},
+      {"luxxlePlaylistAlertDismiss", IDS_PLAYLIST_ALERT_DISMISS},
   };
 
   for (const auto& [name, id] : kLocalizedStrings) {
@@ -104,7 +104,7 @@ UntrustedPlayerUI::UntrustedPlayerUI(content::WebUI* web_ui)
   source->OverrideContentSecurityPolicy(
       network::mojom::CSPDirectiveName::ScriptSrc,
       std::string("script-src 'self' chrome-untrusted://resources "
-                  "chrome-untrusted://brave-resources;"));
+                  "chrome-untrusted://luxxle-resources;"));
   source->OverrideContentSecurityPolicy(
       network::mojom::CSPDirectiveName::MediaSrc,
       std::string("media-src 'self' chrome-untrusted://playlist-data "
@@ -112,7 +112,7 @@ UntrustedPlayerUI::UntrustedPlayerUI(content::WebUI* web_ui)
   source->OverrideContentSecurityPolicy(
       network::mojom::CSPDirectiveName::StyleSrc,
       std::string("style-src chrome-untrusted://resources "
-                  "chrome-untrusted://brave-resources 'unsafe-inline';"));
+                  "chrome-untrusted://luxxle-resources 'unsafe-inline';"));
   source->OverrideContentSecurityPolicy(
       network::mojom::CSPDirectiveName::ImgSrc,
       std::string("img-src 'self' chrome-untrusted://playlist-data "

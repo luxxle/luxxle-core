@@ -18,9 +18,9 @@
 #include "luxxle/browser/ephemeral_storage/ephemeral_storage_service_factory.h"
 #include "luxxle/browser/permissions/mock_permission_lifetime_prompt_factory.h"
 #include "luxxle/browser/permissions/permission_lifetime_manager_factory.h"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
 #include "luxxle/components/ephemeral_storage/ephemeral_storage_service.h"
-#include "luxxle/components/permissions/brave_permission_manager.h"
+#include "luxxle/components/permissions/luxxle_permission_manager.h"
 #include "luxxle/components/permissions/permission_lifetime_pref_names.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/browser/permissions/permission_manager_factory.h"
@@ -63,13 +63,13 @@ struct TestCase {
 constexpr TestCase kTestCases[] = {
     {nullptr, ContentSettingsType::GEOLOCATION, std::nullopt},
     {"0xaf5Ad1E10926C0Ee4af4eDAC61DD60E853753f8A",
-     ContentSettingsType::BRAVE_ETHEREUM,
-     blink::PermissionType::BRAVE_ETHEREUM},
+     ContentSettingsType::LUXXLE_ETHEREUM,
+     blink::PermissionType::LUXXLE_ETHEREUM},
     {"BrG44HdsEhzapvs8bEqzvkq4egwevS3fRE6ze2ENo6S8",
-     ContentSettingsType::BRAVE_SOLANA, blink::PermissionType::BRAVE_SOLANA},
+     ContentSettingsType::LUXXLE_SOLANA, blink::PermissionType::LUXXLE_SOLANA},
     {"addr1q8gg2r3vf9zggn48g7m8vx62rwf6warcs4k7ej8mdzmqmesj30jz7psduyk6n4n2qrud"
      "2xlv9fgj53n6ds3t8cs4fvzs05yzmz",
-     ContentSettingsType::BRAVE_CARDANO, blink::PermissionType::BRAVE_CARDANO}};
+     ContentSettingsType::LUXXLE_CARDANO, blink::PermissionType::LUXXLE_CARDANO}};
 
 constexpr char kPreTestDataFileName[] = "pre_test_data";
 
@@ -82,9 +82,9 @@ std::string GetContentSettingTypeString(ContentSettingsType type) {
     break;
 
     TYPE_CASE(ContentSettingsType::GEOLOCATION)
-    TYPE_CASE(ContentSettingsType::BRAVE_ETHEREUM)
-    TYPE_CASE(ContentSettingsType::BRAVE_SOLANA)
-    TYPE_CASE(ContentSettingsType::BRAVE_CARDANO)
+    TYPE_CASE(ContentSettingsType::LUXXLE_ETHEREUM)
+    TYPE_CASE(ContentSettingsType::LUXXLE_SOLANA)
+    TYPE_CASE(ContentSettingsType::LUXXLE_CARDANO)
 
 #undef TYPE_CASE
     default:
@@ -139,8 +139,8 @@ class PermissionLifetimeManagerBrowserTest : public InProcessBrowserTest {
         browser()->tab_strip_model()->GetActiveWebContents());
   }
 
-  BravePermissionManager* permission_manager() {
-    return static_cast<permissions::BravePermissionManager*>(
+  LuxxlePermissionManager* permission_manager() {
+    return static_cast<permissions::LuxxlePermissionManager*>(
         PermissionManagerFactory::GetForProfile(browser()->profile()));
   }
 
@@ -202,14 +202,14 @@ class PermissionLifetimeManagerBrowserTest : public InProcessBrowserTest {
     if (entry.address && entry.permission) {
       auto last_committed_origin =
           url::Origin::Create(active_web_contents()->GetLastCommittedURL());
-      auto origin = brave_wallet::GetConcatOriginFromWalletAddresses(
+      auto origin = luxxle_wallet::GetConcatOriginFromWalletAddresses(
           last_committed_origin, {std::string(entry.address)});
       EXPECT_TRUE(origin);
       permission_manager()->RequestPermissionsForOrigin(
           {*entry.permission}, active_web_contents()->GetPrimaryMainFrame(),
           origin->GetURL(), true, base::DoNothing());
 
-      auto sub_request_origin = brave_wallet::GetSubRequestOrigin(
+      auto sub_request_origin = luxxle_wallet::GetSubRequestOrigin(
           ContentSettingsTypeToRequestType(entry.type), last_committed_origin,
           entry.address);
       EXPECT_TRUE(sub_request_origin);

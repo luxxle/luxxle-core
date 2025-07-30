@@ -12,7 +12,7 @@ import org.jni_zero.NativeMethods;
 
 import org.chromium.base.ObserverList;
 import org.chromium.base.ThreadUtils;
-import org.chromium.chrome.browser.BraveRewardsNativeWorker;
+import org.chromium.chrome.browser.LuxxleRewardsNativeWorker;
 import org.chromium.chrome.browser.ntp_background_images.model.BackgroundImage;
 import org.chromium.chrome.browser.ntp_background_images.model.ImageCredit;
 import org.chromium.chrome.browser.ntp_background_images.model.NTPImage;
@@ -69,8 +69,8 @@ public class NTPBackgroundImagesBridge {
     }
 
     public static boolean enableSponsoredImages() {
-        BraveRewardsNativeWorker braveRewardsNativeWorker = BraveRewardsNativeWorker.getInstance();
-        return braveRewardsNativeWorker != null && braveRewardsNativeWorker.isSupported();
+        LuxxleRewardsNativeWorker luxxleRewardsNativeWorker = LuxxleRewardsNativeWorker.getInstance();
+        return luxxleRewardsNativeWorker != null && luxxleRewardsNativeWorker.isSupported();
     }
 
     public static NTPBackgroundImagesBridge getInstance(Profile profile) {

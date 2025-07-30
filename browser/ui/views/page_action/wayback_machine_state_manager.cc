@@ -9,8 +9,8 @@
 
 #include "base/functional/bind.h"
 #include "luxxle/browser/ui/views/page_action/wayback_machine_action_icon_view.h"
-#include "luxxle/components/brave_wayback_machine/brave_wayback_machine_tab_helper.h"
-#include "luxxle/components/brave_wayback_machine/wayback_state.h"
+#include "luxxle/components/luxxle_wayback_machine/luxxle_wayback_machine_tab_helper.h"
+#include "luxxle/components/luxxle_wayback_machine/wayback_state.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/tabs/tab_strip_model.h"
 
@@ -31,7 +31,7 @@ WaybackState WaybackMachineStateManager::GetActiveTabWaybackState() const {
   }
 
   auto* tab_helper =
-      BraveWaybackMachineTabHelper::FromWebContents(active_contents);
+      LuxxleWaybackMachineTabHelper::FromWebContents(active_contents);
   CHECK(tab_helper);
   return tab_helper->wayback_state();
 }
@@ -46,7 +46,7 @@ void WaybackMachineStateManager::OnTabStripModelChanged(
 
   if (selection.old_contents) {
     auto* tab_helper =
-        BraveWaybackMachineTabHelper::FromWebContents(selection.old_contents);
+        LuxxleWaybackMachineTabHelper::FromWebContents(selection.old_contents);
     CHECK(tab_helper);
     tab_helper->SetWaybackStateChangedCallback(base::NullCallback());
 
@@ -64,7 +64,7 @@ void WaybackMachineStateManager::OnTabStripModelChanged(
 
   if (selection.new_contents) {
     auto* tab_helper =
-        BraveWaybackMachineTabHelper::FromWebContents(selection.new_contents);
+        LuxxleWaybackMachineTabHelper::FromWebContents(selection.new_contents);
     CHECK(tab_helper);
     tab_helper->SetWaybackStateChangedCallback(
         base::BindRepeating(&WaybackMachineStateManager::OnWaybackStateChanged,

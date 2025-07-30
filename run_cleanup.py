@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Master Luxxle Cleanup Script
-Executes all cleanup phases in the correct order to strip Brave components
+Executes all cleanup phases in the correct order to strip Luxxle components
 """
 
 import os
@@ -34,7 +34,7 @@ def run_script(script_path, description):
 
 def main():
     print("🧹 LUXXLE CLEANUP - MASTER SCRIPT")
-    print("This script will remove all Brave components from the Luxxle codebase")
+    print("This script will remove all Luxxle components from the Luxxle codebase")
     print("=" * 60)
     
     # Verify we're in the correct directory
@@ -50,15 +50,15 @@ def main():
     # Phase 1: Critical Build System Cleanup
     print("\n🎯 PHASE 1: CRITICAL BUILD SYSTEM CLEANUP")
     
-    # Phase 1.1: Remove Brave Directories
-    script_1_1 = cleanup_dir / "brave_directory_cleaner.py"
+    # Phase 1.1: Remove Luxxle Directories
+    script_1_1 = cleanup_dir / "luxxle_directory_cleaner.py"
     if script_1_1.exists():
-        if not run_script(script_1_1, "Phase 1.1 - Remove Brave Directories"):
+        if not run_script(script_1_1, "Phase 1.1 - Remove Luxxle Directories"):
             print("⚠️  Phase 1.1 failed. Continue anyway? (y/N): ", end="")
             if input().lower() != 'y':
                 sys.exit(1)
     else:
-        print("⚠️  Script not found: brave_directory_cleaner.py")
+        print("⚠️  Script not found: luxxle_directory_cleaner.py")
     
     # Phase 1.2: Clean DEPS Files  
     script_1_2 = cleanup_dir / "deps_cleaner.py"
@@ -76,24 +76,24 @@ def main():
     print("="*60)
     print("The following tasks need manual attention:")
     print()
-    print("1. 📁 Rename Brave-named files:")
-    print("   - browser/brave_browser_main_parts_mac.h → luxxle_browser_main_parts_mac.h")
-    print("   - browser/brave_browser_main_parts.h → luxxle_browser_main_parts.h") 
-    print("   - browser/brave_browser_features.h → luxxle_browser_features.h")
-    print("   - browser/brave_app_controller_mac.h → luxxle_app_controller_mac.h")
+    print("1. 📁 Rename Luxxle-named files:")
+    print("   - browser/luxxle_browser_main_parts_mac.h → luxxle_browser_main_parts_mac.h")
+    print("   - browser/luxxle_browser_main_parts.h → luxxle_browser_main_parts.h") 
+    print("   - browser/luxxle_browser_features.h → luxxle_browser_features.h")
+    print("   - browser/luxxle_app_controller_mac.h → luxxle_app_controller_mac.h")
     print()
     print("2. 🔧 Update BUILD.gn files:")
-    print("   - Remove brave utility dependencies in utility/BUILD.gn")
-    print("   - Remove brave sources in utility/sources.gni")
-    print("   - Update browser/BUILD.gn brave targets")
+    print("   - Remove luxxle utility dependencies in utility/BUILD.gn")
+    print("   - Remove luxxle sources in utility/sources.gni")
+    print("   - Update browser/BUILD.gn luxxle targets")
     print()
     print("3. 🎨 Update UI Components:")
-    print("   - Replace @brave/leo imports in ui/webui/resources/")
+    print("   - Replace @luxxle/leo imports in ui/webui/resources/")
     print("   - Update package.json dependencies")
-    print("   - Fix CSS variables (--brave-toolbar-gradient)")
+    print("   - Fix CSS variables (--luxxle-toolbar-gradient)")
     print()
     print("4. ⚙️  Configuration Updates:")
-    print("   - Remove .brave_gclient file")
+    print("   - Remove .luxxle_gclient file")
     print("   - Update search engine defaults to luxxle.com")
     print("   - Update branding and metadata")
     print()

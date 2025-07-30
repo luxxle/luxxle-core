@@ -21,9 +21,9 @@ luxxle_resources_extra_grdps = [
 
 luxxle_resources_extra_grdps_deps = [ "//luxxle/ui/webui/resources:grdp" ]
 
-# Define brave variables to use existing luxxle resources instead of Chromium defaults
-brave_resources_extra_grdps = luxxle_resources_extra_grdps
-brave_resources_extra_grdps_deps = luxxle_resources_extra_grdps_deps
+# Define luxxle variables to use existing luxxle resources instead of Chromium defaults
+luxxle_resources_extra_grdps = luxxle_resources_extra_grdps
+luxxle_resources_extra_grdps_deps = luxxle_resources_extra_grdps_deps
 
 # At the moment, all non-static resources are only required for polymer WebUI.
 # This could change and, when it does, the `include_polymer` conditional can be removed

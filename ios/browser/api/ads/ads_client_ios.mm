@@ -1,15 +1,15 @@
-/* Copyright (c) 2021 The Brave Authors. All rights reserved.
+/* Copyright (c) 2021 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#import "brave/ios/browser/api/ads/ads_client_ios.h"
+#import "luxxle/ios/browser/api/ads/ads_client_ios.h"
 
 #include <optional>
 
 #include "base/values.h"
-// REMOVED: #include "luxxle/components/brave_ads/.*"
-#import "brave/ios/browser/api/ads/ads_client_bridge.h"
+// REMOVED: #include "luxxle/components/luxxle_ads/.*"
+#import "luxxle/ios/browser/api/ads/ads_client_bridge.h"
 
 #if !defined(__has_feature) || !__has_feature(objc_arc)
 #error "This file requires ARC support."
@@ -22,12 +22,12 @@ AdsClientIOS::~AdsClientIOS() {
   bridge_ = nil;
 }
 
-void AdsClientIOS::AddObserver(brave_ads::AdsClientNotifierObserver* observer) {
+void AdsClientIOS::AddObserver(luxxle_ads::AdsClientNotifierObserver* observer) {
   [bridge_ addObserver:observer];
 }
 
 void AdsClientIOS::RemoveObserver(
-    brave_ads::AdsClientNotifierObserver* observer) {
+    luxxle_ads::AdsClientNotifierObserver* observer) {
   [bridge_ removeObserver:observer];
 }
 
@@ -51,7 +51,7 @@ bool AdsClientIOS::CanShowNotificationAdsWhileBrowserIsBackgrounded() const {
   return [bridge_ canShowNotificationAdsWhileBrowserIsBackgrounded];
 }
 
-void AdsClientIOS::ShowNotificationAd(const brave_ads::NotificationAdInfo& ad) {
+void AdsClientIOS::ShowNotificationAd(const luxxle_ads::NotificationAdInfo& ad) {
   [bridge_ showNotificationAd:ad];
 }
 
@@ -64,21 +64,21 @@ void AdsClientIOS::CloseNotificationAd(const std::string& placement_id) {
 }
 
 void AdsClientIOS::UrlRequest(
-    brave_ads::mojom::UrlRequestInfoPtr mojom_url_request,
-    brave_ads::UrlRequestCallback callback) {
+    luxxle_ads::mojom::UrlRequestInfoPtr mojom_url_request,
+    luxxle_ads::UrlRequestCallback callback) {
   [bridge_ UrlRequest:std::move(mojom_url_request)
              callback:std::move(callback)];
 }
 
 void AdsClientIOS::Save(const std::string& name,
                         const std::string& value,
-                        brave_ads::SaveCallback callback) {
+                        luxxle_ads::SaveCallback callback) {
   [bridge_ save:name value:value callback:std::move(callback)];
 }
 
 void AdsClientIOS::LoadResourceComponent(const std::string& id,
                                          int version,
-                                         brave_ads::LoadFileCallback callback) {
+                                         luxxle_ads::LoadFileCallback callback) {
   [bridge_ loadResourceComponent:id
                          version:version
                         callback:std::move(callback)];
@@ -86,14 +86,14 @@ void AdsClientIOS::LoadResourceComponent(const std::string& id,
 
 void AdsClientIOS::GetSiteHistory(int max_count,
                                   int days_ago,
-                                  brave_ads::GetSiteHistoryCallback callback) {
+                                  luxxle_ads::GetSiteHistoryCallback callback) {
   [bridge_ getSiteHistory:max_count
                   forDays:days_ago
                  callback:std::move(callback)];
 }
 
 void AdsClientIOS::Load(const std::string& name,
-                        brave_ads::LoadCallback callback) {
+                        luxxle_ads::LoadCallback callback) {
   [bridge_ load:name callback:std::move(callback)];
 }
 

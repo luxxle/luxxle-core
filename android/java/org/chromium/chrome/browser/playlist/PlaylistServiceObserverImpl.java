@@ -5,10 +5,10 @@
 
 package org.chromium.chrome.browser.playlist;
 
-import com.brave.playlist.model.PlaylistItemModel;
-import com.brave.playlist.playback_service.VideoPlaybackService;
-import com.brave.playlist.util.ConstantUtils;
-import com.brave.playlist.util.MediaUtils;
+import com.luxxle.playlist.model.PlaylistItemModel;
+import com.luxxle.playlist.playback_service.VideoPlaybackService;
+import com.luxxle.playlist.util.ConstantUtils;
+import com.luxxle.playlist.util.MediaUtils;
 
 import org.chromium.chrome.browser.playlist.hls_content.HlsUtils;
 import org.chromium.mojo.system.MojoException;

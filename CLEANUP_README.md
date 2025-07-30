@@ -1,6 +1,6 @@
 # Luxxle Cleanup Scripts
 
-This directory contains scripts to help clean up remaining Brave components from your Luxxle fork.
+This directory contains scripts to help clean up remaining Luxxle components from your Luxxle fork.
 
 ## Answer to Your Question: Scriptable vs Manual?
 
@@ -8,10 +8,10 @@ This directory contains scripts to help clean up remaining Brave components from
 
 ### ✅ **Use Scripts For:**
 - BUILD.gn dependency removal (bulk replacements)
-- Include path updates (`#include "brave/` → `#include "luxxle/`)
-- Header guard replacements (`BRAVE_` → `LUXXLE_`)
-- Resource reference cleanup (`IDR_BRAVE_` patterns)
-- Namespace updates (`brave::` → `luxxle::`)
+- Include path updates (`#include "luxxle/` → `#include "luxxle/`)
+- Header guard replacements (`LUXXLE_` → `LUXXLE_`)
+- Resource reference cleanup (`IDR_LUXXLE_` patterns)
+- Namespace updates (`luxxle::` → `luxxle::`)
 
 ### ⚠️ **Manual Review Needed For:**
 - Complex logic changes in C++ code
@@ -47,7 +47,7 @@ python run_luxxle_cleanup.py --resources-only
 ## 📋 Individual Scripts
 
 ### `fix_build_dependencies.py`
-**Purpose:** Removes/comments out Brave component dependencies in BUILD.gn files
+**Purpose:** Removes/comments out Luxxle component dependencies in BUILD.gn files
 **Safe Level:** 🟢 High - Just comments out problematic lines
 ```bash
 python fix_build_dependencies.py --dry-run  # Preview changes
@@ -64,7 +64,7 @@ python fix_includes.py                     # Apply to all files
 ```
 
 ### `fix_resources.py`
-**Purpose:** Cleans up IDR_BRAVE resource references
+**Purpose:** Cleans up IDR_LUXXLE resource references
 **Safe Level:** 🟡 Medium - May affect UI, review needed
 ```bash
 python fix_resources.py --dry-run          # Preview changes
@@ -78,7 +78,7 @@ python fix_resources.py                    # Apply to all files
 ### 1. **Search Engine Configuration**
 Location: `browser/search_engines/`
 - Update default search to luxxle.com
-- Remove Brave-specific search features
+- Remove Luxxle-specific search features
 
 ### 2. **Branding and UI**
 - Update app icons and logos
@@ -125,9 +125,9 @@ See exactly what would change before applying
 ### Current Issues Found:
 - ❌ 50+ BUILD.gn files with broken dependencies
 - ❌ 200+ files with wrong include paths  
-- ❌ 100+ files with IDR_BRAVE resource references
-- ❌ Header guards still using BRAVE_ prefix
-- ❌ Namespace references to brave::
+- ❌ 100+ files with IDR_LUXXLE resource references
+- ❌ Header guards still using LUXXLE_ prefix
+- ❌ Namespace references to luxxle::
 
 ### After Scripts:
 - ✅ BUILD.gn files cleaned (dependencies commented out)

@@ -18,7 +18,7 @@ struct TemplateURLData;
 
 // The purpose of this service for tor is making user changed search engine
 // provider persist across the sessions.
-// Also, BraveProfileManager::SetNonPersonalProfilePrefs() overrides for it.
+// Also, LuxxleProfileManager::SetNonPersonalProfilePrefs() overrides for it.
 class TorWindowSearchEngineProviderService
     : public PrivateWindowSearchEngineProviderServiceBase,
       public TemplateURLServiceObserver {

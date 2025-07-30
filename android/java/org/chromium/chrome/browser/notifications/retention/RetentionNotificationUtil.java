@@ -17,9 +17,9 @@ import androidx.core.app.NotificationCompat;
 import org.chromium.base.ContextUtils;
 import org.chromium.base.IntentUtils;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.brave_stats.BraveStatsUtil;
+import org.chromium.chrome.browser.luxxle_stats.LuxxleStatsUtil;
 import org.chromium.chrome.browser.local_database.DatabaseHelper;
-import org.chromium.chrome.browser.notifications.channels.BraveChannelDefinitions;
+import org.chromium.chrome.browser.notifications.channels.LuxxleChannelDefinitions;
 import org.chromium.chrome.browser.onboarding.OnboardingPrefManager;
 
 import java.util.Calendar;
@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class RetentionNotificationUtil {
     public static String NOTIFICATION_TYPE = "notification_type";
-    private static final String BRAVE_BROWSER = "Brave Browser";
+    private static final String LUXXLE_BROWSER = "Luxxle Browser";
 
     public static final String HOUR_3 = "hour_3";
     public static final String HOUR_24 = "hour_24";
@@ -49,56 +49,56 @@ public class RetentionNotificationUtil {
                             new RetentionNotification(
                                     3,
                                     3 * 60,
-                                    BraveChannelDefinitions.ChannelId.BRAVE_BROWSER,
-                                    BRAVE_BROWSER)),
+                                    LuxxleChannelDefinitions.ChannelId.LUXXLE_BROWSER,
+                                    LUXXLE_BROWSER)),
                     Map.entry(
                             HOUR_24,
                             new RetentionNotification(
                                     24,
                                     24 * 60,
-                                    BraveChannelDefinitions.ChannelId.BRAVE_BROWSER,
-                                    BRAVE_BROWSER)),
+                                    LuxxleChannelDefinitions.ChannelId.LUXXLE_BROWSER,
+                                    LUXXLE_BROWSER)),
                     Map.entry(
                             DAY_6,
                             new RetentionNotification(
                                     6,
                                     6 * 24 * 60,
-                                    BraveChannelDefinitions.ChannelId.BRAVE_BROWSER,
-                                    BRAVE_BROWSER)),
+                                    LuxxleChannelDefinitions.ChannelId.LUXXLE_BROWSER,
+                                    LUXXLE_BROWSER)),
                     Map.entry(
                             EVERY_SUNDAY,
                             new RetentionNotification(
                                     7,
                                     -1,
-                                    BraveChannelDefinitions.ChannelId.BRAVE_BROWSER,
-                                    BRAVE_BROWSER)),
+                                    LuxxleChannelDefinitions.ChannelId.LUXXLE_BROWSER,
+                                    LUXXLE_BROWSER)),
                     Map.entry(
                             DAY_10,
                             new RetentionNotification(
                                     10,
                                     10 * 24 * 60,
-                                    BraveChannelDefinitions.ChannelId.BRAVE_BROWSER,
-                                    BRAVE_BROWSER)),
+                                    LuxxleChannelDefinitions.ChannelId.LUXXLE_BROWSER,
+                                    LUXXLE_BROWSER)),
                     Map.entry(
                             DAY_30,
                             new RetentionNotification(
                                     30,
                                     30 * 24 * 60,
-                                    BraveChannelDefinitions.ChannelId.BRAVE_BROWSER,
-                                    BRAVE_BROWSER)),
+                                    LuxxleChannelDefinitions.ChannelId.LUXXLE_BROWSER,
+                                    LUXXLE_BROWSER)),
                     Map.entry(
                             DAY_35,
                             new RetentionNotification(
                                     35,
                                     35 * 24 * 60,
-                                    BraveChannelDefinitions.ChannelId.BRAVE_BROWSER,
-                                    BRAVE_BROWSER)),
+                                    LuxxleChannelDefinitions.ChannelId.LUXXLE_BROWSER,
+                                    LUXXLE_BROWSER)),
                     Map.entry(
                             DORMANT_USERS_DAY_14,
                             new RetentionNotification(
                                     20,
                                     14 * 24 * 60,
-                                    BraveChannelDefinitions.ChannelId.BRAVE_BROWSER,
+                                    LuxxleChannelDefinitions.ChannelId.LUXXLE_BROWSER,
                                     ContextUtils.getApplicationContext()
                                             .getResources()
                                             .getString(
@@ -109,7 +109,7 @@ public class RetentionNotificationUtil {
                             new RetentionNotification(
                                     21,
                                     25 * 24 * 60,
-                                    BraveChannelDefinitions.ChannelId.BRAVE_BROWSER,
+                                    LuxxleChannelDefinitions.ChannelId.LUXXLE_BROWSER,
                                     ContextUtils.getApplicationContext()
                                             .getResources()
                                             .getString(
@@ -120,7 +120,7 @@ public class RetentionNotificationUtil {
                             new RetentionNotification(
                                     22,
                                     40 * 24 * 60,
-                                    BraveChannelDefinitions.ChannelId.BRAVE_BROWSER,
+                                    LuxxleChannelDefinitions.ChannelId.LUXXLE_BROWSER,
                                     ContextUtils.getApplicationContext()
                                             .getResources()
                                             .getString(
@@ -161,7 +161,7 @@ public class RetentionNotificationUtil {
         DatabaseHelper mDatabaseHelper = DatabaseHelper.getInstance();
         switch (notificationType) {
             case HOUR_3:
-                if (OnboardingPrefManager.getInstance().isBraveStatsEnabled()) {
+                if (OnboardingPrefManager.getInstance().isLuxxleStatsEnabled()) {
                     long adsTrackersCount = mDatabaseHelper.getAllStats().size();
                     if (adsTrackersCount >= 5) {
                         return String.format(
@@ -176,9 +176,9 @@ public class RetentionNotificationUtil {
                     return context.getResources().getString(R.string.notification_hour_3_text_3);
                 }
             case HOUR_24:
-                if (OnboardingPrefManager.getInstance().isBraveStatsEnabled()) {
+                if (OnboardingPrefManager.getInstance().isLuxxleStatsEnabled()) {
                     Pair<String, String> dataSavedPair =
-                            BraveStatsUtil.getBraveStatsStringFormNumberPair(
+                            LuxxleStatsUtil.getLuxxleStatsStringFormNumberPair(
                                     mDatabaseHelper.getTotalSavedBandwidth(), true);
                     return String.format(
                             context.getResources().getString(R.string.notification_hour_24_text_1),
@@ -191,8 +191,8 @@ public class RetentionNotificationUtil {
                 long adsTrackersCountWeekly =
                         mDatabaseHelper
                                 .getAllStatsWithDate(
-                                        BraveStatsUtil.getCalculatedDate("yyyy-MM-dd", -7),
-                                        BraveStatsUtil.getCalculatedDate("yyyy-MM-dd", 0))
+                                        LuxxleStatsUtil.getCalculatedDate("yyyy-MM-dd", -7),
+                                        LuxxleStatsUtil.getCalculatedDate("yyyy-MM-dd", 0))
                                 .size();
                 return String.format(
                         context.getResources().getString(R.string.notification_weekly_stats),

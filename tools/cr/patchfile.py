@@ -107,7 +107,7 @@ class Patchfile:
         where git, and `apply_patches` cannot provide the source file name.
 
         e.g. "patches/build-android-gyp-dex.py.patch" ->
-             "brave/build/android/gyp/dex.py"
+             "luxxle/build/android/gyp/dex.py"
         """
         return self.path.name[:-len(".patch")].replace('-', '/')
 
@@ -123,15 +123,15 @@ class Patchfile:
             return self.provided_source
         return self.source_name_from_patch_naming()
 
-    def source_from_brave(self) -> PurePath:
-        """The source file path relative to the `brave/` directory.
+    def source_from_luxxle(self) -> PurePath:
+        """The source file path relative to the `luxxle/` directory.
         """
-        return f'{self.repository.from_brave() / self.source()}'
+        return f'{self.repository.from_luxxle() / self.source()}'
 
     def path_from_repo(self) -> PurePath:
         """The patch path relative to the repository source belongs.
         """
-        return f'{self.repository.to_brave() / self.path}'
+        return f'{self.repository.to_luxxle() / self.path}'
 
     def apply(self) -> ApplyResult:
         """Applies the patch file with `git apply --3way`.

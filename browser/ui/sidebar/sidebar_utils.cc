@@ -12,7 +12,7 @@
 #include "luxxle/browser/ui/sidebar/sidebar_controller.h"
 #include "luxxle/browser/ui/sidebar/sidebar_model.h"
 #include "luxxle/browser/ui/sidebar/sidebar_service_factory.h"
-#include "luxxle/components/constants/brave_switches.h"
+#include "luxxle/components/constants/luxxle_switches.h"
 #include "luxxle/components/constants/webui_url_constants.h"
 #include "luxxle/components/sidebar/browser/constants.h"
 #include "luxxle/components/sidebar/browser/pref_names.h"
@@ -92,11 +92,11 @@ GURL ConvertURLToBuiltInItemURL(const GURL& url) {
   if (url == GURL(chrome::kChromeUIBookmarksURL))
     return GURL(chrome::kChromeUIBookmarksSidePanelURL);
 
-  if (url.host() == kBraveTalkHost)
-    return GURL(kBraveTalkURL);
+  if (url.host() == kLuxxleTalkHost)
+    return GURL(kLuxxleTalkURL);
 
   if (url.SchemeIs(content::kChromeUIScheme) && url.host() == kWalletPageHost) {
-    return GURL(kBraveUIWalletPageURL);
+    return GURL(kLuxxleUIWalletPageURL);
   }
   return url;
 }
@@ -136,7 +136,7 @@ SidePanelEntryId SidePanelIdFromSideBarItemType(BuiltInItemType type) {
       return SidePanelEntryId::kChatUI;
     case BuiltInItemType::kWallet:
       [[fallthrough]];
-    case BuiltInItemType::kBraveTalk:
+    case BuiltInItemType::kLuxxleTalk:
       [[fallthrough]];
     case BuiltInItemType::kHistory:
       [[fallthrough]];

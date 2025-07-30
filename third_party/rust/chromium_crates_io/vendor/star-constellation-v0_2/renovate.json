@@ -1,11 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "local>brave/renovate-config"
+    "local>luxxle/renovate-config"
   ],
   "packageRules": [
     {
-      "description": "Stay compatible with older deps for brave-core",
+      "description": "Stay compatible with older deps for luxxle-core",
       "matchDepTypes": ["dependencies"],
       "matchUpdateTypes": ["minor", "patch"],
       "enabled": false

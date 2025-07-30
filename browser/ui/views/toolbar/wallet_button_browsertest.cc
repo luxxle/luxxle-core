@@ -8,8 +8,8 @@
 #include "base/feature_list.h"
 #include "base/run_loop.h"
 #include "base/test/scoped_feature_list.h"
-#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_view.h"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/test/test_browser_dialog.h"
 #include "chrome/browser/ui/views/bubble/webui_bubble_manager.h"
@@ -24,14 +24,14 @@ ui::MouseEvent GetDummyEvent() {
 }
 }  // namespace
 
-namespace brave_wallet {
+namespace luxxle_wallet {
 
 class WalletButtonButtonBrowserTest : public InProcessBrowserTest {
  public:
   // InProcessBrowserTest:
   void SetUp() override {
     scoped_feature_list_.InitAndEnableFeature(
-        features::kNativeBraveWalletFeature);
+        features::kNativeLuxxleWalletFeature);
     InProcessBrowserTest::SetUp();
   }
 
@@ -40,7 +40,7 @@ class WalletButtonButtonBrowserTest : public InProcessBrowserTest {
   }
 
   WalletButton* wallet_button() {
-    return static_cast<BraveBrowserView*>(browser_view())->GetWalletButton();
+    return static_cast<LuxxleBrowserView*>(browser_view())->GetWalletButton();
   }
 
  private:
@@ -61,11 +61,11 @@ class WalletButtonBrowserUITest : public DialogBrowserTest {
  public:
   // DialogBrowserTest:
   void SetUp() override {
-    feature_list_.InitAndEnableFeature(features::kNativeBraveWalletFeature);
+    feature_list_.InitAndEnableFeature(features::kNativeLuxxleWalletFeature);
     DialogBrowserTest::SetUp();
   }
   void ShowUi(const std::string& name) override {
-    auto* wallet_button = static_cast<BraveBrowserView*>(
+    auto* wallet_button = static_cast<LuxxleBrowserView*>(
                               BrowserView::GetBrowserViewForBrowser(browser()))
                               ->GetWalletButton();
     views::test::ButtonTestApi(wallet_button).NotifyClick(GetDummyEvent());
@@ -80,4 +80,4 @@ IN_PROC_BROWSER_TEST_F(WalletButtonBrowserUITest, InvokeUi_default) {
   ShowAndVerifyUi();
 }
 
-}  // namespace brave_wallet
+}  // namespace luxxle_wallet

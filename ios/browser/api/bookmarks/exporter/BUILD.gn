@@ -12,8 +12,8 @@ source_set("exporter") {
     "bookmark_html_writer.h",
     "bookmarks_encoder.cc",
     "bookmarks_encoder.h",
-    "brave_bookmarks_exporter.h",
-    "brave_bookmarks_exporter.mm",
+    "luxxle_bookmarks_exporter.h",
+    "luxxle_bookmarks_exporter.mm",
   ]
 
   deps = [

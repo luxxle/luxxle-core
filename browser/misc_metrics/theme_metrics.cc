@@ -7,7 +7,7 @@
 
 #include "base/check_is_test.h"
 #include "base/metrics/histogram_macros.h"
-#include "luxxle/browser/themes/brave_dark_mode_utils.h"
+#include "luxxle/browser/themes/luxxle_dark_mode_utils.h"
 #include "luxxle/components/constants/pref_names.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/profile.h"
@@ -19,7 +19,7 @@ ThemeMetrics::ThemeMetrics(ThemeService* theme_service)
     : theme_service_(theme_service) {
   if (g_browser_process->local_state()) {
     pref_change_registrar_.Init(g_browser_process->local_state());
-    pref_change_registrar_.Add(kBraveDarkMode,
+    pref_change_registrar_.Add(kLuxxleDarkMode,
                                base::BindRepeating(&ThemeMetrics::ReportMetrics,
                                                    base::Unretained(this)));
   } else {
@@ -38,7 +38,7 @@ void ThemeMetrics::ReportMetrics() {
 
   UMA_HISTOGRAM_EXACT_LINEAR(
       kBrowserColorSchemeHistogramName,
-      static_cast<int>(dark_mode::GetBraveDarkModeType()), 3);
+      static_cast<int>(dark_mode::GetLuxxleDarkModeType()), 3);
   UMA_HISTOGRAM_BOOLEAN(kThemeColorDefaultHistogramName,
                         theme_service_->UsingDefaultTheme());
 }

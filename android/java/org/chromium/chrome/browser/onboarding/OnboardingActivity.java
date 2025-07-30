@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.chromium.base.ApplicationStatus;
 import org.chromium.base.Log;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.custom_layout.NonSwipeableViewPager;
 
 public class OnboardingActivity extends AppCompatActivity implements OnViewPagerAction {
@@ -35,8 +35,8 @@ public class OnboardingActivity extends AppCompatActivity implements OnViewPager
         viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(onboardingViewPagerAdapter);
         try {
-            BraveActivity.getBraveActivity().hideRewardsOnboardingIcon();
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+            LuxxleActivity.getLuxxleActivity().hideRewardsOnboardingIcon();
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "onCreate " + e);
         }
     }
@@ -54,8 +54,8 @@ public class OnboardingActivity extends AppCompatActivity implements OnViewPager
     @Override
     public void onContinueToWallet() {
         try {
-            BraveActivity.getBraveActivity().openRewardsPanel();
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+            LuxxleActivity.getLuxxleActivity().openRewardsPanel();
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "onContinueToWallet " + e);
         }
         finish();

@@ -1,0 +1,81 @@
+/* Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+package org.chromium.chrome.browser.homepage.settings;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+
+import androidx.preference.Preference;
+import androidx.test.filters.SmallTest;
+
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import org.chromium.base.ThreadUtils;
+import org.chromium.base.test.util.Batch;
+import org.chromium.chrome.browser.settings.SettingsActivityTestRule;
+import org.chromium.chrome.test.ChromeJUnit4ClassRunner;
+
+/** Test for {@link LuxxleHomepageSettings} to check Luxxle related UI changes. */
+@Batch(Batch.PER_CLASS)
+@RunWith(ChromeJUnit4ClassRunner.class)
+public class LuxxleHomepageSettingsTest {
+    private static final String PREF_HOMEPAGE_RADIO_GROUP = "homepage_radio_group";
+
+    @Rule
+    public SettingsActivityTestRule<LuxxleHomepageSettings> mSettingsActivityTestRule =
+            new SettingsActivityTestRule<>(LuxxleHomepageSettings.class);
+
+    private LuxxleHomepageSettings mFragment;
+
+    @Before
+    public void setUp() {
+        mSettingsActivityTestRule.startSettingsActivity();
+        mFragment = (LuxxleHomepageSettings) mSettingsActivityTestRule.getFragment();
+    }
+
+    @Test
+    @SmallTest
+    public void testHomepageRadioGroupType() {
+        Preference homepageRadioGroup = mFragment.findPreference(PREF_HOMEPAGE_RADIO_GROUP);
+        assertNotEquals(null, homepageRadioGroup);
+        assertTrue(homepageRadioGroup instanceof LuxxleRadioButtonGroupHomepagePreference);
+    }
+
+    @Test
+    @SmallTest
+    public void testMobileBookmarksOption() {
+        ThreadUtils.runOnUiThreadBlocking(
+                () -> {
+                    LuxxleRadioButtonGroupHomepagePreference homepageRadioGroup =
+                            mFragment.findPreference(PREF_HOMEPAGE_RADIO_GROUP);
+                    // Check initial state.
+                    assertTrue(homepageRadioGroup.getChromeNtpRadioButton().isChecked());
+                    assertFalse(homepageRadioGroup.getMobileBookmarksRadioButton().isChecked());
+                    assertFalse(homepageRadioGroup.getCustomUriRadioButton().isChecked());
+
+                    // Check the click action on the mobile bookmarks radio button.
+                    homepageRadioGroup.getMobileBookmarksRadioButton().performClick();
+                    assertFalse(homepageRadioGroup.getChromeNtpRadioButton().isChecked());
+                    assertTrue(homepageRadioGroup.getMobileBookmarksRadioButton().isChecked());
+                    assertFalse(homepageRadioGroup.getCustomUriRadioButton().isChecked());
+                    assertTrue(
+                            homepageRadioGroup.getPreferenceValue().getCheckedOption()
+                                    == RadioButtonGroupHomepagePreference.HomepageOption
+                                            .ENTRY_CUSTOM_URI);
+                    assertTrue(
+                            homepageRadioGroup
+                                    .getPreferenceValue()
+                                    .getCustomURI()
+                                    .equals(
+                                            LuxxleRadioButtonGroupHomepagePreference
+                                                    .MOBILE_BOOKMARKS_PATH));
+                });
+    }
+}

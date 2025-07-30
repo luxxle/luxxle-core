@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 OBJC_EXPORT
-@interface BraveStoreKitPurchase : NSObject
+@interface LuxxleStoreKitPurchase : NSObject
 @property(nonatomic, readonly) NSUInteger quantity;
 @property(nonatomic, readonly) NSString* productId;
 @property(nonatomic, readonly) NSString* transactionId;
@@ -28,13 +28,13 @@ OBJC_EXPORT
 @end
 
 OBJC_EXPORT
-@interface BraveStoreKitReceipt : NSObject
+@interface LuxxleStoreKitReceipt : NSObject
 @property(nonatomic, readonly) NSString* bundleId;
 @property(nonatomic, readonly) NSString* appVersion;
 @property(nonatomic, readonly, nullable) NSData* opaqueData;
 @property(nonatomic, readonly) NSString* sha1Hash;
 @property(nonatomic, readonly)
-    NSArray<BraveStoreKitPurchase*>* inAppPurchaseReceipts;
+    NSArray<LuxxleStoreKitPurchase*>* inAppPurchaseReceipts;
 @property(nonatomic, readonly) NSString* originalApplicationVersion;
 @property(nonatomic, readonly, nullable) NSDate* receiptCreationDate;
 @property(nonatomic, readonly, nullable) NSDate* receiptExpirationDate;

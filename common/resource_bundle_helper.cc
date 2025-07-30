@@ -31,11 +31,11 @@ namespace {
 #if !BUILDFLAG(IS_ANDROID)
 base::FilePath GetResourcesPakFilePath() {
 #if BUILDFLAG(IS_MAC)
-  return base::apple::PathForFrameworkBundleResource("brave_resources.pak");
+  return base::apple::PathForFrameworkBundleResource("luxxle_resources.pak");
 #else
   base::FilePath pak_path;
   base::PathService::Get(base::DIR_ASSETS, &pak_path);
-  pak_path = pak_path.AppendASCII("brave_resources.pak");
+  pak_path = pak_path.AppendASCII("luxxle_resources.pak");
   return pak_path;
 #endif  // OS_MAC
 }
@@ -47,8 +47,8 @@ base::FilePath GetScaledResourcesPakFilePath(
   DCHECK(scale_factor == ui::k100Percent || scale_factor == ui::k200Percent);
 
   const char* pak_file = (scale_factor == ui::k100Percent)
-                             ? "brave_100_percent.pak"
-                             : "brave_200_percent.pak";
+                             ? "luxxle_100_percent.pak"
+                             : "luxxle_200_percent.pak";
 #if BUILDFLAG(IS_MAC)
   return base::apple::PathForFrameworkBundleResource(pak_file);
 #else
@@ -66,9 +66,9 @@ namespace luxxle {
 
 void InitializeResourceBundle() {
 #if BUILDFLAG(IS_ANDROID)
-  ui::BraveLoadMainAndroidPackFile("assets/brave_resources.pak",
+  ui::LuxxleLoadMainAndroidPackFile("assets/luxxle_resources.pak",
                                    base::FilePath());
-  // brave_100_percent.pak is excluded now from the Android build because
+  // luxxle_100_percent.pak is excluded now from the Android build because
   // its resources are not used
 #else
   auto& rb = ui::ResourceBundle::GetSharedInstance();
@@ -106,4 +106,4 @@ bool SubprocessNeedsResourceBundle() {
 #endif  // BUILDFLAG(IS_IOS)
 }
 
-}  // namespace brave
+}  // namespace luxxle

@@ -1,4 +1,4 @@
-// Copyright (c) 2025 The Brave Authors. All rights reserved.
+// Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -6,7 +6,7 @@
 import * as React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { AliasItem } from '../content/email_aliases_item'
-import { Alias } from 'gen/brave/components/email_aliases/email_aliases.mojom.m'
+import { Alias } from 'gen/luxxle/components/email_aliases/email_aliases.mojom.m'
 
 jest.mock('$web-common/locale', () => ({
   getLocale: (key: string) => {
@@ -34,9 +34,9 @@ Object.assign(navigator, {
 describe('AliasItem', () => {
 
   const mockAlias: Alias = {
-    email: 'test1@brave.com',
+    email: 'test1@luxxle.com',
     note: 'Test Alias 1',
-    domains: ['brave.com']
+    domains: ['luxxle.com']
   }
 
   beforeEach(() => {
@@ -53,7 +53,7 @@ describe('AliasItem', () => {
     )
 
     // Check if alias information is displayed correctly
-    expect(screen.getByText(/test1@brave\.com/)).toBeInTheDocument()
+    expect(screen.getByText(/test1@luxxle\.com/)).toBeInTheDocument()
     expect(screen.getByText(/Test Alias 1/)).toBeInTheDocument()
   })
 
@@ -72,7 +72,7 @@ describe('AliasItem', () => {
 
     // Check if clipboard API was called
     expect(navigator.clipboard.writeText)
-      .toHaveBeenCalledWith('test1@brave.com')
+      .toHaveBeenCalledWith('test1@luxxle.com')
   })
 
   it('copies email when clicking alias label', () => {
@@ -85,12 +85,12 @@ describe('AliasItem', () => {
     )
 
     // Click the alias label
-    const aliasLabel = screen.getByText(/test1@brave\.com/)
+    const aliasLabel = screen.getByText(/test1@luxxle\.com/)
     fireEvent.click(aliasLabel)
 
     // Check if clipboard API was called
     expect(navigator.clipboard.writeText)
-      .toHaveBeenCalledWith('test1@brave.com')
+      .toHaveBeenCalledWith('test1@luxxle.com')
   })
 
   it('handles delete functionality', async () => {

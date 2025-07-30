@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/services/network/public/cpp/system_request_handler.h"
+#include "luxxle/services/network/public/cpp/system_request_handler.h"
 #include "base/no_destructor.h"
 
 namespace network {
@@ -23,10 +23,10 @@ network::ResourceRequest SystemRequestHandler::OnBeforeSystemRequest(
   if (!on_before_system_request_callback_) {
     // Changing to LOG(ERROR) to avoid crash dump uploading as this is spamming
     // our Backtrace system at the moment. Generally, if we get here, it means
-    // that `BraveBrowserProcessImpl::Init` hasn't been called yet and so we
+    // that `LuxxleBrowserProcessImpl::Init` hasn't been called yet and so we
     // don't need to apply our filters in this case.
     LOG(ERROR) << "SystemRequestHandler::OnBeforeSystemRequest called before "
-                  "BraveBrowserProcessImpl::Init";
+                  "LuxxleBrowserProcessImpl::Init";
     return url_request;
   }
   return on_before_system_request_callback_.Run(url_request);

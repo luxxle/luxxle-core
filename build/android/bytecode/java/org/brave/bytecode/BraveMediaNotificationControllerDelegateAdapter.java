@@ -3,23 +3,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveMediaNotificationControllerDelegateAdapter extends BraveClassVisitor {
+public class LuxxleMediaNotificationControllerDelegateAdapter extends LuxxleClassVisitor {
     static String sChromeMediaNotificationControllerDelegate =
             "org/chromium/chrome/browser/media/ui/ChromeMediaNotificationControllerDelegate";
-    static String sBraveMediaNotificationControllerDelegate =
-            "org/chromium/chrome/browser/media/ui/BraveMediaNotificationControllerDelegate";
+    static String sLuxxleMediaNotificationControllerDelegate =
+            "org/chromium/chrome/browser/media/ui/LuxxleMediaNotificationControllerDelegate";
 
-    public BraveMediaNotificationControllerDelegateAdapter(ClassVisitor visitor) {
+    public LuxxleMediaNotificationControllerDelegateAdapter(ClassVisitor visitor) {
         super(visitor);
 
         redirectConstructor(
                 sChromeMediaNotificationControllerDelegate,
-                sBraveMediaNotificationControllerDelegate);
-        deleteMethod(sBraveMediaNotificationControllerDelegate, "getContext");
+                sLuxxleMediaNotificationControllerDelegate);
+        deleteMethod(sLuxxleMediaNotificationControllerDelegate, "getContext");
         makePublicMethod(sChromeMediaNotificationControllerDelegate, "getContext");
     }
 }

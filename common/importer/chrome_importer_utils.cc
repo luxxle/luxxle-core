@@ -150,7 +150,7 @@ bool IsLastActiveProfile(const std::string& profile,
 
 bool CanImportPasswordsForType(importer::ImporterType type) {
   // We can't import passwords from Chrome due to encryption. See
-  // https://github.com/luxxle/brave-browser/issues/34046
+  // https://github.com/luxxle/luxxle-browser/issues/34046
   // #issuecomment-2857856039
   if (type == importer::TYPE_CHROME) {
     return false;

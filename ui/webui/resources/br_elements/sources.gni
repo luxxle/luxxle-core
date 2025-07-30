@@ -3,13 +3,13 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-brave_br_elements_ts_files = [
+luxxle_br_elements_ts_files = [
   "br_toolbar/br_toolbar_search_field.ts",
   "br_toolbar/br_toolbar_search_field.html.ts",
 ]
 
-brave_br_elements_css_files = [ "br_toolbar/br_toolbar_search_field.css" ]
+luxxle_br_elements_css_files = [ "br_toolbar/br_toolbar_search_field.css" ]
 
-brave_br_elements_ts_definitions = []
+luxxle_br_elements_ts_definitions = []
 
-brave_br_elements_preprocess_extra_deps = [ "//luxxle/ui/webui/resources/br_elements:preprocess" ]
+luxxle_br_elements_preprocess_extra_deps = [ "//luxxle/ui/webui/resources/br_elements:preprocess" ]

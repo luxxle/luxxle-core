@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-# Commented out: removed Brave component buildflags imports
+# Commented out: removed Luxxle component buildflags imports
 # These were causing duplicate declaration errors since components have been removed
 # import("//luxxle/components/ai_rewriter/common/buildflags/buildflags.gni")
 import("//build/config/features.gni")
@@ -37,6 +37,6 @@ source_set("renderer") {
 
   if (is_android) {
     # Commented out: removed components dependency - using Chromium defaults instead
-    # deps += [ "//luxxle/components/brave_mobile_subscription/renderer/android" ]
+    # deps += [ "//luxxle/components/luxxle_mobile_subscription/renderer/android" ]
   }
 }

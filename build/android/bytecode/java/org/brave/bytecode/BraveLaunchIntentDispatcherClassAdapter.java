@@ -3,16 +3,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveLaunchIntentDispatcherClassAdapter extends BraveClassVisitor {
+public class LuxxleLaunchIntentDispatcherClassAdapter extends LuxxleClassVisitor {
     static String sLaunchIntentDispatcherClassName = "org/chromium/chrome/browser/LaunchIntentDispatcher";
-    static String sBraveLaunchIntentDispatcherClassName = "org/chromium/chrome/browser/BraveLaunchIntentDispatcher";
+    static String sLuxxleLaunchIntentDispatcherClassName = "org/chromium/chrome/browser/LuxxleLaunchIntentDispatcher";
 
-    public BraveLaunchIntentDispatcherClassAdapter(ClassVisitor visitor) {
+    public LuxxleLaunchIntentDispatcherClassAdapter(ClassVisitor visitor) {
         super(visitor);
-        changeMethodOwner(sLaunchIntentDispatcherClassName, "isCustomTabIntent", sBraveLaunchIntentDispatcherClassName);
+        changeMethodOwner(sLaunchIntentDispatcherClassName, "isCustomTabIntent", sLuxxleLaunchIntentDispatcherClassName);
     }
 }

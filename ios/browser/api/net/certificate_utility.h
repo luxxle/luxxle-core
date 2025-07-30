@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 OBJC_EXPORT
-@interface BraveCertificateUtility : NSObject
+@interface LuxxleCertificateUtility : NSObject
 @property(nonatomic, readonly, class) NSArray<NSData*>* acceptableSPKIHashes;
 
 + (nullable NSString*)pemEncodeCertificate:(SecCertificateRef)certificate;

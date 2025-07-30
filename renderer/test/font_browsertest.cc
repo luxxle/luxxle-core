@@ -4,7 +4,7 @@
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 #include "base/path_service.h"
-#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/constants/luxxle_paths.h"
 #include "chrome/test/base/in_process_browser_test.h"
 #include "chrome/test/base/ui_test_utils.h"
 #include "content/public/test/browser_test.h"
@@ -36,7 +36,7 @@ class FontBrowserTest : public InProcessBrowserTest {
 
 IN_PROC_BROWSER_TEST_F(FontBrowserTest, FreetypeRegression) {
   // Loading this page on 1.50.121 on Linux crashed the tab.
-  // See https://github.com/brave/brave-browser/issues/29893
+  // See https://github.com/luxxle/luxxle-browser/issues/29893
   // and https://bugs.chromium.org/p/chromium/issues/detail?id=1434194
   const GURL url = https_server_.GetURL("/freetype-crash.html");
   ASSERT_TRUE(ui_test_utils::NavigateToURL(browser(), url));

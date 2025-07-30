@@ -43,7 +43,7 @@ class CertificateTransparencyBrowserTest : public InProcessBrowserTest {
   void SetUpOnMainThread() override {
     host_resolver()->AddRule("*", "127.0.0.1");
     embedded_https_test_server().SetCertHostnames(
-        {"sct-exempted.bravesoftware.com", "example.com"});
+        {"sct-exempted.luxxlesoftware.com", "example.com"});
     ASSERT_TRUE(embedded_https_test_server().Start());
   }
 };
@@ -83,7 +83,7 @@ IN_PROC_BROWSER_TEST_F(CertificateTransparencyBrowserTest, ExemptedHost) {
   // URL exempted from SCT requirements
   ASSERT_TRUE(ui_test_utils::NavigateToURL(
       browser(), embedded_https_test_server().GetURL(
-                     "sct-exempted.bravesoftware.com", "/ssl/google.html")));
+                     "sct-exempted.luxxlesoftware.com", "/ssl/google.html")));
 
   ssl_test_util::CheckSecurityState(
       browser()->tab_strip_model()->GetActiveWebContents(),

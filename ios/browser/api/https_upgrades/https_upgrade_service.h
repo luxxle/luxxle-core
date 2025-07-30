@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 OBJC_EXPORT
 NS_SWIFT_NAME(HttpsUpgradeService)
-@interface BraveHttpsUpgradeService : NSObject
+@interface LuxxleHttpsUpgradeService : NSObject
 - (bool)isHttpAllowedForHost:(NSString*)host;
 - (void)allowHttpForHost:(NSString*)host;
 - (void)clearAllowlistFromStartDate:(NSDate*)startDate endDate:(NSDate*)endDate;

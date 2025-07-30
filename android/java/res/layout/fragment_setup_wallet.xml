@@ -43,7 +43,7 @@
             android:layout_marginBottom="16dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
-            app:cardBackgroundColor="@color/brave_wallet_onboarding_card_view_background"
+            app:cardBackgroundColor="@color/luxxle_wallet_onboarding_card_view_background"
             app:cardCornerRadius="10dp"
             app:cardElevation="2dp"
             app:cardUseCompatPadding="true">
@@ -92,7 +92,7 @@
             android:layout_marginBottom="16dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
-            app:cardBackgroundColor="@color/brave_wallet_onboarding_card_view_background"
+            app:cardBackgroundColor="@color/luxxle_wallet_onboarding_card_view_background"
             app:cardCornerRadius="10dp"
             app:cardElevation="2dp"
             app:cardUseCompatPadding="true">
@@ -134,11 +134,11 @@
                     />
 
                 <ImageView
-                    android:id="@+id/brave_icon"
+                    android:id="@+id/luxxle_icon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:contentDescription="@null"
-                    android:src="@drawable/ic_brave"
+                    android:src="@drawable/ic_luxxle"
                     android:layout_marginEnd="8dp"
                     android:layout_toEndOf="@+id/restore_wallet_icon"
                     android:layout_below="@+id/restore_description_text_view" />
@@ -150,7 +150,7 @@
                     android:contentDescription="@null"
                     android:src="@drawable/ic_phantom"
                     android:layout_marginEnd="8dp"
-                    android:layout_toEndOf="@+id/brave_icon"
+                    android:layout_toEndOf="@+id/luxxle_icon"
                     android:layout_below="@+id/restore_description_text_view" />
 
                 <ImageView

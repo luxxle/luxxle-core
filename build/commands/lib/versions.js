@@ -10,7 +10,7 @@ const versions = (buildConfig = config.defaultBuildConfig, options = {}) => {
   config.update(options)
 
   console.log('chrome ' + config.getProjectRef('chrome'))
-  console.log('brave-core ' + config.getProjectRef('brave-core'))
+  console.log('luxxle-core ' + config.getProjectRef('luxxle-core'))
 }
 
 module.exports = versions

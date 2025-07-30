@@ -23,13 +23,13 @@ class FakeChromiumRepo:
         """Initializes the fake Chromium repository.
 
         Creates a temporary directory and initializes a fake Chromium repository
-        with a `src` directory. Also creates a `brave` repository inside `src`.
+        with a `src` directory. Also creates a `luxxle` repository inside `src`.
         """
         self.temp_dir: tempfile.TemporaryDirectory = (
             tempfile.TemporaryDirectory())
         self.base_path: Path = Path(self.temp_dir.name) / 'workspace'
         self._init_repo(self.chromium)
-        self._init_repo(self.brave)  # Create the brave repository
+        self._init_repo(self.luxxle)  # Create the luxxle repository
 
     @property
     def chromium(self) -> Path:
@@ -37,18 +37,18 @@ class FakeChromiumRepo:
         return self.base_path / 'src'
 
     @property
-    def brave(self) -> Path:
-        """Returns the path to the Brave directory"""
-        return self.chromium / 'brave'
+    def luxxle(self) -> Path:
+        """Returns the path to the Luxxle directory"""
+        return self.chromium / 'luxxle'
 
     @property
-    def brave_patches(self) -> Path:
-        """Returns the path to the Brave patches directory."""
-        return self.brave / 'patches'
+    def luxxle_patches(self) -> Path:
+        """Returns the path to the Luxxle patches directory."""
+        return self.luxxle / 'patches'
 
     @property
     def remote(self) -> Path:
-        """Returns the path to the Brave directory"""
+        """Returns the path to the Luxxle directory"""
         return self.base_path / 'remote'
 
     def _run_git_command(self,
@@ -87,19 +87,19 @@ class FakeChromiumRepo:
         self._run_git_command(['add', 'README.md'], path)
         self._run_git_command(['commit', '-m', 'Initial commit'], path)
 
-    def create_brave_remote(self) -> None:
-        """Creates a remote repository for Brave and sets it as the origin.
+    def create_luxxle_remote(self) -> None:
+        """Creates a remote repository for Luxxle and sets it as the origin.
 
         Initializes a git repository at the path returned by `self.remote` and
-        adds it as the `origin` remote for the Brave repository.
+        adds it as the `origin` remote for the Luxxle repository.
         """
         # Initialize the remote repository
-        self._init_repo(self.remote / 'brave')
+        self._init_repo(self.remote / 'luxxle')
 
-        # Add the remote as 'origin' for the Brave repository
+        # Add the remote as 'origin' for the Luxxle repository
         self._run_git_command(
             ['remote', 'add', 'origin',
-             str(self.remote / 'brave')], self.brave)
+             str(self.remote / 'luxxle')], self.luxxle)
 
     def add_repo(self, relative_path: str) -> None:
         """Adds a new repository at the specified relative path.
@@ -202,8 +202,8 @@ class FakeChromiumRepo:
             file_path.unlink()
         self._run_git_command(['add', str(file_path)], repo_path)
 
-    def update_brave_version(self, version: str) -> str:
-        """Updates the Brave version in package.json and commits the change.
+    def update_luxxle_version(self, version: str) -> str:
+        """Updates the Luxxle version in package.json and commits the change.
 
         Args:
             version: The new version string to set.
@@ -211,7 +211,7 @@ class FakeChromiumRepo:
         Returns:
             The hash of the commit made.
         """
-        package_json_path = self.brave / 'package.json'
+        package_json_path = self.luxxle / 'package.json'
         old_version = None
 
         # Check if package.json exists and read the old version if present
@@ -235,30 +235,30 @@ class FakeChromiumRepo:
             json.dump(package_data, f, indent=2)
 
         # Stage the file and commit the change
-        self._run_git_command(['add', str(package_json_path)], self.brave)
+        self._run_git_command(['add', str(package_json_path)], self.luxxle)
         commit_message = (
             f'Update from Chromium {old_version or "N/A"} to Chromium {version}'
         )
-        self._run_git_command(['commit', '-m', commit_message], self.brave)
+        self._run_git_command(['commit', '-m', commit_message], self.luxxle)
 
         # Return the hash of the commit
-        return self._run_git_command(['rev-parse', 'HEAD'], self.brave)
+        return self._run_git_command(['rev-parse', 'HEAD'], self.luxxle)
 
     def run_update_patches(self) -> None:
         """Similar to `npm run update_patches`.
 
         This method generates patches for all modified files in Chromium and
         its dependencies. For simplicity, running this function always results
-        in all of brave's patches being erased and generated again. This
+        in all of luxxle's patches being erased and generated again. This
         eliminates any stales.
         """
         # Delete the patches directory and recreate it
-        if self.brave_patches.exists():
-            shutil.rmtree(self.brave_patches)
-        self.brave_patches.mkdir(parents=True, exist_ok=True)
+        if self.luxxle_patches.exists():
+            shutil.rmtree(self.luxxle_patches)
+        self.luxxle_patches.mkdir(parents=True, exist_ok=True)
 
         for repo_path in self.base_path.glob('src/**'):
-            if repo_path == self.brave or not (repo_path / '.git').exists():
+            if repo_path == self.luxxle or not (repo_path / '.git').exists():
                 continue
 
             # Find all files dirty in the tree.
@@ -268,12 +268,12 @@ class FakeChromiumRepo:
             # Determine the relative path of the repo to Chromium
             relative_repo_path = repo_path.relative_to(self.chromium)
             if modified_files:
-                sub_patches_dir = self.brave_patches / relative_repo_path
+                sub_patches_dir = self.luxxle_patches / relative_repo_path
                 sub_patches_dir.mkdir(parents=True, exist_ok=True)
 
             for filename in modified_files:
                 # Generate the patch file path
-                patch_file = self.brave / self.get_patchfile_path_for_source(
+                patch_file = self.luxxle / self.get_patchfile_path_for_source(
                     relative_repo_path, filename)
 
                 # Generate and write the patch content
@@ -300,9 +300,9 @@ class FakeChromiumRepo:
         """
         if repo_path.is_absolute():
             repo_path = repo_path.relative_to(self.chromium)
-        return (self.brave_patches / repo_path /
+        return (self.luxxle_patches / repo_path /
                 f'{str(filename).replace("/", "-")}.patch').relative_to(
-                    self.brave)
+                    self.luxxle)
 
     def run_apply_patches(self) -> List[Dict]:
         """Similar to `npm run apply_patches`.
@@ -311,17 +311,17 @@ class FakeChromiumRepo:
         dependencies. If any patch fails to apply, it returns a list of
         dictionary entries for the failed patches.
         """
-        if not self.brave_patches.exists():
+        if not self.luxxle_patches.exists():
             raise FileNotFoundError(
-                f'Patches directory {self.brave_patches} does not exist.')
+                f'Patches directory {self.luxxle_patches} does not exist.')
 
         failed_patches = []
 
-        for patch_file in self.brave_patches.rglob('*.patch'):
+        for patch_file in self.luxxle_patches.rglob('*.patch'):
             # Using the relative path of the patch file to determine the target
             # repository path.
             relative_repo_path = patch_file.relative_to(
-                self.brave_patches).parent
+                self.luxxle_patches).parent
             target_repo_path = self.chromium / relative_repo_path
 
             if not (target_repo_path / '.git').exists():
@@ -356,7 +356,7 @@ class FakeChromiumRepo:
                     reason = 'PATCH_CHANGED'
 
                 failed_patches.append({
-                    "patchPath": str(patch_file.relative_to(self.brave)),
+                    "patchPath": str(patch_file.relative_to(self.luxxle)),
                     "path": path,
                     "reason": reason
                 })

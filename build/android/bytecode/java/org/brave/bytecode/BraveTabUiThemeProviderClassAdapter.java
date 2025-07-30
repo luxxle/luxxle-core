@@ -3,22 +3,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveTabUiThemeProviderClassAdapter extends BraveClassVisitor {
+public class LuxxleTabUiThemeProviderClassAdapter extends LuxxleClassVisitor {
     static String sTabUiThemeProviderClassName =
             "org/chromium/chrome/browser/tasks/tab_management/TabUiThemeProvider";
-    static String sBraveTabUiThemeProviderClassName =
-            "org/chromium/chrome/browser/tasks/tab_management/BraveTabUiThemeProvider";
+    static String sLuxxleTabUiThemeProviderClassName =
+            "org/chromium/chrome/browser/tasks/tab_management/LuxxleTabUiThemeProvider";
 
-    public BraveTabUiThemeProviderClassAdapter(ClassVisitor visitor) {
+    public LuxxleTabUiThemeProviderClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         changeMethodOwner(
                 sTabUiThemeProviderClassName,
                 "getActionButtonTintList",
-                sBraveTabUiThemeProviderClassName);
+                sLuxxleTabUiThemeProviderClassName);
     }
 }

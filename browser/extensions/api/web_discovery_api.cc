@@ -7,7 +7,7 @@
 
 #include <utility>
 
-#include "luxxle/browser/brave_search/backup_results_service_factory.h"
+#include "luxxle/browser/luxxle_search/backup_results_service_factory.h"
 #include "luxxle/components/constants/pref_names.h"
 #include "luxxle/components/web_discovery/buildflags/buildflags.h"
 #include "components/prefs/pref_service.h"
@@ -41,7 +41,7 @@ WebDiscoveryRetrieveBackupResultsFunction::Run() {
   const auto* url_str = args().front().GetIfString();
   EXTENSION_FUNCTION_VALIDATE(url_str);
   auto* service =
-      brave_search::BackupResultsServiceFactory::GetForBrowserContext(
+      luxxle_search::BackupResultsServiceFactory::GetForBrowserContext(
           browser_context());
   if (!service) {
     return RespondNow(Error("failed to get BackupResultsService"));
@@ -55,7 +55,7 @@ WebDiscoveryRetrieveBackupResultsFunction::Run() {
 }
 
 void WebDiscoveryRetrieveBackupResultsFunction::HandleBackupResults(
-    std::optional<brave_search::BackupResultsService::BackupResults> results) {
+    std::optional<luxxle_search::BackupResultsService::BackupResults> results) {
   if (!results) {
     Respond(Error("failed to retrieve backup results"));
     return;
@@ -76,7 +76,7 @@ WebDiscoveryIsWebDiscoveryNativeEnabledFunction::Run() {
   bool result = false;
 #if BUILDFLAG(ENABLE_WEB_DISCOVERY_NATIVE)
   result = base::FeatureList::IsEnabled(
-      web_discovery::features::kBraveWebDiscoveryNative);
+      web_discovery::features::kLuxxleWebDiscoveryNative);
 #endif
   return RespondNow(WithArguments(result));
 }

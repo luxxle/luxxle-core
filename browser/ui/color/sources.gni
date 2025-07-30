@@ -3,22 +3,22 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
-brave_browser_ui_color_mixers_sources = []
-brave_browser_ui_color_mixers_deps = []
+luxxle_browser_ui_color_mixers_sources = []
+luxxle_browser_ui_color_mixers_deps = []
 
 if (!is_android) {
-  brave_browser_ui_color_mixers_sources += [
-    "//luxxle/browser/ui/color/brave_color_id.h",
-    "//luxxle/browser/ui/color/brave_color_mixer.cc",
-    "//luxxle/browser/ui/color/brave_color_mixer.h",
-    "//luxxle/browser/ui/color/brave_material_side_panel_color_mixer.cc",
-    "//luxxle/browser/ui/color/brave_material_side_panel_color_mixer.h",
+  luxxle_browser_ui_color_mixers_sources += [
+    "//luxxle/browser/ui/color/luxxle_color_id.h",
+    "//luxxle/browser/ui/color/luxxle_color_mixer.cc",
+    "//luxxle/browser/ui/color/luxxle_color_mixer.h",
+    "//luxxle/browser/ui/color/luxxle_material_side_panel_color_mixer.cc",
+    "//luxxle/browser/ui/color/luxxle_material_side_panel_color_mixer.h",
     "//luxxle/browser/ui/color/color_palette.h",
-    "//luxxle/browser/ui/color/material_brave_color_mixer.cc",
-    "//luxxle/browser/ui/color/material_brave_color_mixer.h",
+    "//luxxle/browser/ui/color/material_luxxle_color_mixer.cc",
+    "//luxxle/browser/ui/color/material_luxxle_color_mixer.h",
   ]
 
-  brave_browser_ui_color_mixers_deps += [
+  luxxle_browser_ui_color_mixers_deps += [
     "//luxxle/browser/themes",
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead

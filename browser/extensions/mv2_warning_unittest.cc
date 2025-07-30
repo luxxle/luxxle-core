@@ -6,7 +6,7 @@
 #include <optional>
 
 #include "base/values.h"
-#include "luxxle/browser/brave_browser_main_extra_parts.h"
+#include "luxxle/browser/luxxle_browser_main_extra_parts.h"
 #include "extensions/common/extension.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
@@ -17,7 +17,7 @@ class Mv2WarningUnitTest : public testing::Test {
 };
 
 TEST(Mv2WarningTest, ExtensionManifestVersions) {
-  auto main_extra_parts = BraveBrowserMainExtraParts();
+  auto main_extra_parts = LuxxleBrowserMainExtraParts();
   main_extra_parts.PreProfileInit();
 
   auto get_manifest = [](std::optional<int> manifest_version) {

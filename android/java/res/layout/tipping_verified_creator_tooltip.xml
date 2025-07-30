@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="@string/brave_ui_verified_publisher"
+        android:text="@string/luxxle_ui_verified_publisher"
         android:textColor="@color/tootltip_verified_creator_text"
         android:fontFamily="sans-serif-medium"
         app:layout_constraintStart_toEndOf="@id/verified_tick_mark2"

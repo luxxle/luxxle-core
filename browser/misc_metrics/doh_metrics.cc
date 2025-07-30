@@ -21,8 +21,8 @@
 namespace misc_metrics {
 
 using net::DohFallbackEndpointType;
-using net::features::kBraveFallbackDoHProvider;
-using net::features::kBraveFallbackDoHProviderEndpoint;
+using net::features::kLuxxleFallbackDoHProvider;
+using net::features::kLuxxleFallbackDoHProviderEndpoint;
 
 namespace {
 
@@ -36,8 +36,8 @@ constexpr base::TimeDelta kAutoSecureReportInterval = base::Seconds(20);
 const char* GetAutoSecureRequestsHistogramName() {
   std::string histogram_name = kAutoSecureRequestsHistogramName;
 
-  if (base::FeatureList::IsEnabled(net::features::kBraveFallbackDoHProvider)) {
-    auto endpoint_type = kBraveFallbackDoHProviderEndpoint.Get();
+  if (base::FeatureList::IsEnabled(net::features::kLuxxleFallbackDoHProvider)) {
+    auto endpoint_type = kLuxxleFallbackDoHProviderEndpoint.Get();
 
     switch (endpoint_type) {
       case DohFallbackEndpointType::kQuad9:
@@ -77,9 +77,9 @@ std::vector<const char*> GetDisabledAutoSecureRequestsHistogramNames() {
 
 DohMetrics::DohMetrics(PrefService* local_state) : local_state_(local_state) {
   int current_fallback_int = static_cast<int>(DohFallbackEndpointType::kNone);
-  if (base::FeatureList::IsEnabled(net::features::kBraveFallbackDoHProvider)) {
+  if (base::FeatureList::IsEnabled(net::features::kLuxxleFallbackDoHProvider)) {
     current_fallback_int =
-        static_cast<int>(kBraveFallbackDoHProviderEndpoint.Get());
+        static_cast<int>(kLuxxleFallbackDoHProviderEndpoint.Get());
   }
   int last_fallback_int = local_state->GetInteger(kMiscMetricsLastDohFallback);
   if (current_fallback_int != last_fallback_int) {

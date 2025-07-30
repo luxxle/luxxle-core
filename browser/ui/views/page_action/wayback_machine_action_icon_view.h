@@ -34,7 +34,7 @@ class WaybackMachineActionIconView : public PageActionIconView {
   void UpdateImpl() override;
 
  private:
-  FRIEND_TEST_ALL_PREFIXES(BraveWaybackMachineTest, BubbleLaunchTest);
+  FRIEND_TEST_ALL_PREFIXES(LuxxleWaybackMachineTest, BubbleLaunchTest);
 
   void ExecuteCommandForTesting();
 

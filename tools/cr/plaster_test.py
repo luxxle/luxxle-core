@@ -20,9 +20,9 @@ class PlasterTest(unittest.TestCase):
         self.fake_chromium_src.setup()
         self.addCleanup(self.fake_chromium_src.cleanup)
 
-        # Override OVERLAY_FILES_PATH to use the rewrite path in the fake Brave
+        # Override OVERLAY_FILES_PATH to use the rewrite path in the fake Luxxle
         # repo
-        plaster.OVERLAY_FILES_PATH = self.fake_chromium_src.brave / 'rewrite'
+        plaster.OVERLAY_FILES_PATH = self.fake_chromium_src.luxxle / 'rewrite'
 
     def test_original_expected_toml_rules(self):
         """Test applying all .toml files in the test/ folder."""
@@ -48,7 +48,7 @@ class PlasterTest(unittest.TestCase):
                     commit_message=f'Add {original_file_from.name}',
                     repo_path=self.fake_chromium_src.chromium)
 
-                # Copy the .toml file to the fake Brave rewrite path.
+                # Copy the .toml file to the fake Luxxle rewrite path.
                 rewrite_path = plaster.OVERLAY_FILES_PATH / toml_file.name
                 rewrite_path.parent.mkdir(parents=True, exist_ok=True)
                 rewrite_path.write_text(toml_file.read_text())

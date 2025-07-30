@@ -10,7 +10,7 @@
 #include "base/strings/string_number_conversions.h"
 #include "base/test/bind.h"
 #include "base/test/metrics/histogram_tester.h"
-// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/luxxle_rewards/.*"
 #include "chrome/browser/bookmarks/bookmark_model_factory.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/browser/history/history_service_factory.h"
@@ -109,7 +109,7 @@ TEST_F(PageMetricsUnitTest, DomainsLoadedCount) {
 
 TEST_F(PageMetricsUnitTest, PagesLoadedCount) {
   // Set up rewards status
-  profile_->GetPrefs()->SetBoolean(brave_rewards::prefs::kEnabled, false);
+  profile_->GetPrefs()->SetBoolean(luxxle_rewards::prefs::kEnabled, false);
 
   task_environment_.FastForwardBy(base::Seconds(30));
 
@@ -139,7 +139,7 @@ TEST_F(PageMetricsUnitTest, PagesLoadedCount) {
   histogram_tester_.ExpectBucketCount(kPagesReloadedHistogramName, 1, 1);
 
   // Change to Rewards enabled
-  profile_->GetPrefs()->SetBoolean(brave_rewards::prefs::kEnabled, true);
+  profile_->GetPrefs()->SetBoolean(luxxle_rewards::prefs::kEnabled, true);
 
   histogram_tester_.ExpectBucketCount(kPagesLoadedNonRewardsHistogramName,
                                       INT_MAX - 1, 1);
@@ -150,7 +150,7 @@ TEST_F(PageMetricsUnitTest, PagesLoadedCount) {
   histogram_tester_.ExpectBucketCount(kPagesReloadedHistogramName, 1, 3);
 
   // Change to Rewards with wallet
-  profile_->GetPrefs()->SetString(brave_rewards::prefs::kExternalWalletType,
+  profile_->GetPrefs()->SetString(luxxle_rewards::prefs::kExternalWalletType,
                                   "uphold");
 
   for (size_t i = 0; i < 30; i++) {

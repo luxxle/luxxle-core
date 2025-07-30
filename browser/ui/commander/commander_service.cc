@@ -32,7 +32,7 @@
 #include "luxxle/components/commander/browser/commander_item_model.h"
 #include "luxxle/components/commander/common/constants.h"
 #include "luxxle/components/commander/common/features.h"
-#include "luxxle/components/omnibox/browser/brave_omnibox_prefs.h"
+#include "luxxle/components/omnibox/browser/luxxle_omnibox_prefs.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_finder.h"
@@ -51,7 +51,7 @@ CommandItemModel FromCommand(const std::unique_ptr<CommandItem>& item) {
 }  // namespace
 
 bool IsEnabled() {
-  return base::FeatureList::IsEnabled(features::kBraveCommander);
+  return base::FeatureList::IsEnabled(features::kLuxxleCommander);
 }
 
 CommanderService::CommanderService(Profile* profile)

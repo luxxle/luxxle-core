@@ -12,7 +12,7 @@
       "pageset-repeat": 10,
       "stories": [
         "load:site:example:2023",
-        "load:site:brave_search:2023",
+        "load:site:luxxle_search:2023",
         "load:site:wikipedia:2023",
         "load:site:bbc:2023",
       ]
@@ -22,7 +22,7 @@
       "pageset-repeat": 10,
       "stories": [
         "load:site:example:2023",
-        "load:site:brave_search:2023",
+        "load:site:luxxle_search:2023",
         "load:site:wikipedia:2023",
         "load:site:bbc:2023",
       ]

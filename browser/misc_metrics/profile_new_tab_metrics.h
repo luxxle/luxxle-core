@@ -13,12 +13,12 @@ class PrefService;
 namespace misc_metrics {
 
 inline constexpr char kNewTabPageDefaultHistogramName[] =
-    "Brave.NTP.DefaultPage";
+    "Luxxle.NTP.DefaultPage";
 
 enum class NewTabPageDefaultType {
   kDashboard = 0,
   kBlank = 1,
-  kHomepageBraveSearch = 2,
+  kHomepageLuxxleSearch = 2,
   kHomepageGoogle = 3,
   kHomepageDuckDuckGo = 4,
   kHomepageOther = 5,

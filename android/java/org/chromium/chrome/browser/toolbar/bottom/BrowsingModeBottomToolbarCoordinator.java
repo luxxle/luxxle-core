@@ -17,20 +17,20 @@ import org.chromium.base.supplier.OneShotCallback;
 import org.chromium.base.supplier.Supplier;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.ActivityTabProvider;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.omaha.UpdateMenuItemHelper;
 import org.chromium.chrome.browser.tab.Tab;
 import org.chromium.chrome.browser.tabmodel.IncognitoStateProvider;
 import org.chromium.chrome.browser.tabmodel.TabModelSelector;
 import org.chromium.chrome.browser.theme.ThemeColorProvider;
-import org.chromium.chrome.browser.toolbar.BraveHomeButton;
+import org.chromium.chrome.browser.toolbar.LuxxleHomeButton;
 import org.chromium.chrome.browser.toolbar.TabSwitcherButtonCoordinator;
 import org.chromium.chrome.browser.toolbar.TabSwitcherButtonView;
-import org.chromium.chrome.browser.toolbar.menu_button.BraveMenuButtonCoordinator;
+import org.chromium.chrome.browser.toolbar.menu_button.LuxxleMenuButtonCoordinator;
 import org.chromium.chrome.browser.toolbar.menu_button.MenuButton;
 import org.chromium.chrome.browser.toolbar.menu_button.MenuButtonState;
 import org.chromium.chrome.browser.ui.appmenu.AppMenuButtonHelper;
-import org.chromium.chrome.browser.util.BraveTouchUtils;
+import org.chromium.chrome.browser.util.LuxxleTouchUtils;
 import org.chromium.components.browser_ui.styles.ChromeColors;
 import org.chromium.ui.modelutil.PropertyModelChangeProcessor;
 
@@ -46,7 +46,7 @@ public class BrowsingModeBottomToolbarCoordinator {
     private final BrowsingModeBottomToolbarMediator mMediator;
 
     /** The home button that lives in the bottom toolbar. */
-    private final BraveHomeButton mBraveHomeButton;
+    private final LuxxleHomeButton mLuxxleHomeButton;
 
     /** The new tab button that lives in the bottom toolbar. */
     private final BottomToolbarNewTabButton mNewTabButton;
@@ -95,14 +95,14 @@ public class BrowsingModeBottomToolbarCoordinator {
 
         mMediator = new BrowsingModeBottomToolbarMediator(mModel);
 
-        mBraveHomeButton = mToolbarRoot.findViewById(R.id.bottom_home_button);
-        mBraveHomeButton.setOnClickListener(homeButtonListener);
+        mLuxxleHomeButton = mToolbarRoot.findViewById(R.id.bottom_home_button);
+        mLuxxleHomeButton.setOnClickListener(homeButtonListener);
 
         mNewTabButton = mToolbarRoot.findViewById(R.id.bottom_new_tab_button);
 
         mSearchAccelerator = mToolbarRoot.findViewById(R.id.search_accelerator);
         mSearchAccelerator.setOnClickListener(searchAcceleratorListener);
-        BraveTouchUtils.ensureMinTouchTarget(mSearchAccelerator);
+        LuxxleTouchUtils.ensureMinTouchTarget(mSearchAccelerator);
 
         // TODO(amaralp): Make this adhere to MVC framework.
         mTabSwitcherButtonView = mToolbarRoot.findViewById(R.id.bottom_tab_switcher_button);
@@ -113,7 +113,7 @@ public class BrowsingModeBottomToolbarCoordinator {
             mNewTabButton.setVisibility(View.VISIBLE);
         }
         if (BottomToolbarVariationManager.isHomeButtonOnBottomControls()) {
-            mBraveHomeButton.setVisibility(View.VISIBLE);
+            mLuxxleHomeButton.setVisibility(View.VISIBLE);
         }
 
         if (BottomToolbarVariationManager.isTabSwitcherOnBottomControls()) {
@@ -128,13 +128,13 @@ public class BrowsingModeBottomToolbarCoordinator {
                     v -> {
                         Tab tab = mTabProvider.get();
                         try {
-                            BraveActivity activity = BraveActivity.getBraveActivity();
+                            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
                             if (tab == null || activity == null) {
                                 assert false;
                                 return;
                             }
                             activity.addOrEditBookmark(tab);
-                        } catch (BraveActivity.BraveActivityNotFoundException e) {
+                        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
                             Log.e(TAG, "BookmarkButton click " + e);
                         }
                     };
@@ -177,7 +177,7 @@ public class BrowsingModeBottomToolbarCoordinator {
                                             tabModelSelector.getModel(false).getProfile())
                                     .getUiState()
                                     .buttonState;
-            BraveMenuButtonCoordinator.setupPropertyModel(mMenuButton, menuButtonStateSupplier);
+            LuxxleMenuButtonCoordinator.setupPropertyModel(mMenuButton, menuButtonStateSupplier);
             if (!BottomToolbarVariationManager.isMenuButtonOnBottomControls()) {
                 mMenuButton.setVisibility(View.GONE);
             }
@@ -200,8 +200,8 @@ public class BrowsingModeBottomToolbarCoordinator {
         }
 
         if (BottomToolbarVariationManager.isHomeButtonOnBottomControls()) {
-            mBraveHomeButton.setThemeColorProvider(themeColorProvider);
-            mBraveHomeButton.onTintChanged(
+            mLuxxleHomeButton.setThemeColorProvider(themeColorProvider);
+            mLuxxleHomeButton.onTintChanged(
                     mThemeColorProvider.getTint(),
                     mThemeColorProvider.getTint(),
                     mThemeColorProvider.getBrandedColorScheme());
@@ -273,8 +273,8 @@ public class BrowsingModeBottomToolbarCoordinator {
     /**
      * @return The browsing mode bottom toolbar's home button.
      */
-    BraveHomeButton getHomeButton() {
-        return mBraveHomeButton;
+    LuxxleHomeButton getHomeButton() {
+        return mLuxxleHomeButton;
     }
 
     /**
@@ -285,7 +285,7 @@ public class BrowsingModeBottomToolbarCoordinator {
             mShareButtonListenerSupplier.removeObserver(mShareButtonListenerSupplierCallback);
         }
         mMediator.destroy();
-        mBraveHomeButton.destroy();
+        mLuxxleHomeButton.destroy();
         mSearchAccelerator.destroy();
         mTabSwitcherButtonCoordinator.destroy();
         mBookmarkButton.destroy();

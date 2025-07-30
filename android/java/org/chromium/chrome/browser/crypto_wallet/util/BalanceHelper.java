@@ -8,18 +8,18 @@ package org.chromium.chrome.browser.crypto_wallet.util;
 import androidx.annotation.NonNull;
 
 import org.chromium.base.Callbacks;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.BlockchainRegistry;
-import org.chromium.brave_wallet.mojom.BlockchainToken;
-import org.chromium.brave_wallet.mojom.BraveWalletService;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.JsonRpcService;
-import org.chromium.brave_wallet.mojom.KeyringService;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
-import org.chromium.brave_wallet.mojom.ProviderError;
-import org.chromium.chrome.browser.BraveConfig;
-import org.chromium.chrome.browser.BraveLocalState;
-import org.chromium.chrome.browser.crypto_wallet.activities.BraveWalletBaseActivity;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.BlockchainRegistry;
+import org.chromium.luxxle_wallet.mojom.BlockchainToken;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletService;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.JsonRpcService;
+import org.chromium.luxxle_wallet.mojom.KeyringService;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.ProviderError;
+import org.chromium.chrome.browser.LuxxleConfig;
+import org.chromium.chrome.browser.LuxxleLocalState;
+import org.chromium.chrome.browser.crypto_wallet.activities.LuxxleWalletBaseActivity;
 import org.chromium.chrome.browser.crypto_wallet.util.AsyncUtils.GetBalanceResponseBaseContext;
 import org.chromium.chrome.browser.crypto_wallet.util.AsyncUtils.GetBalanceResponseContext;
 import org.chromium.chrome.browser.crypto_wallet.util.AsyncUtils.GetBlockchainTokensBalancesResponseContext;
@@ -29,7 +29,7 @@ import org.chromium.chrome.browser.crypto_wallet.util.AsyncUtils.GetNativeAssets
 import org.chromium.chrome.browser.crypto_wallet.util.AsyncUtils.GetSolanaBalanceResponseContext;
 import org.chromium.chrome.browser.crypto_wallet.util.AsyncUtils.GetSplTokenAccountBalanceResponseContext;
 import org.chromium.chrome.browser.crypto_wallet.util.AsyncUtils.MultiResponseHandler;
-import org.chromium.chrome.browser.preferences.BravePref;
+import org.chromium.chrome.browser.preferences.LuxxlePref;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -220,25 +220,25 @@ public class BalanceHelper {
     }
 
     public static void getP3ABalances(
-            WeakReference<BraveWalletBaseActivity> activityRef,
+            WeakReference<LuxxleWalletBaseActivity> activityRef,
             List<NetworkInfo> allNetworks,
             NetworkInfo selectedNetwork,
             Callbacks.Callback1<HashMap<Integer, HashSet<String>>> callback) {
-        BraveWalletBaseActivity activity = activityRef.get();
+        LuxxleWalletBaseActivity activity = activityRef.get();
         if (activity == null || activity.isFinishing()) return;
         KeyringService keyringService = activity.getKeyringService();
-        BraveWalletService braveWalletService = activity.getBraveWalletService();
+        LuxxleWalletService luxxleWalletService = activity.getLuxxleWalletService();
         BlockchainRegistry blockchainRegistry = activity.getBlockchainRegistry();
         JsonRpcService jsonRpcService = activity.getJsonRpcService();
-        assert braveWalletService != null
+        assert luxxleWalletService != null
                 && blockchainRegistry != null
                 && keyringService != null
                 && jsonRpcService != null;
         if (JavaUtils.anyNull(
-                braveWalletService, blockchainRegistry, keyringService, jsonRpcService)) return;
+                luxxleWalletService, blockchainRegistry, keyringService, jsonRpcService)) return;
 
         boolean P3AEnabled =
-                BraveConfig.P3A_ENABLED && BraveLocalState.get().getBoolean(BravePref.P3A_ENABLED);
+                LuxxleConfig.P3A_ENABLED && LuxxleLocalState.get().getBoolean(LuxxlePref.P3A_ENABLED);
 
         HashMap<Integer, HashSet<String>> activeAddresses = new HashMap<Integer, HashSet<String>>();
         for (int coinType : Utils.P3ACoinTypes)
@@ -274,7 +274,7 @@ public class BalanceHelper {
                                     sortedNetworks.get(coinType),
                                     keyringService,
                                     jsonRpcService,
-                                    braveWalletService,
+                                    luxxleWalletService,
                                     blockchainRegistry,
                                     multiResponse,
                                     nativeAssetsBalancesResponses,
@@ -301,13 +301,13 @@ public class BalanceHelper {
             List<NetworkInfo> networks,
             KeyringService keyringService,
             JsonRpcService jsonRpcService,
-            BraveWalletService braveWalletService,
+            LuxxleWalletService luxxleWalletService,
             BlockchainRegistry blockchainRegistry,
             MultiResponseHandler multiResponse,
             ArrayList<GetNativeAssetsBalancesResponseContext> nativeAssetsBalancesResponses,
             ArrayList<GetBlockchainTokensBalancesResponseContext>
                     blockchainTokensBalancesResponses) {
-        if (JavaUtils.anyNull(braveWalletService, blockchainRegistry, jsonRpcService)) return;
+        if (JavaUtils.anyNull(luxxleWalletService, blockchainRegistry, jsonRpcService)) return;
 
         keyringService.getAllAccounts(
                 allAccounts -> {
@@ -317,7 +317,7 @@ public class BalanceHelper {
                                         allAccounts.accounts, network.coin, network.chainId);
 
                         TokenUtils.getVisibleUserAssetsFiltered(
-                                braveWalletService,
+                                luxxleWalletService,
                                 network,
                                 coinType,
                                 TokenUtils.TokenType.ALL,

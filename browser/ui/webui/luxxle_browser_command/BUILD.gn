@@ -1,0 +1,34 @@
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at https://mozilla.org/MPL/2.0/.
+
+import("//luxxle/build/config.gni")
+# Commented out: removed components dependency - using Chromium defaults instead
+import("//build/config/features.gni")
+import("//chrome/common/features.gni")
+
+source_set("luxxle_browser_command") {
+  sources = [
+    "luxxle_browser_command_handler.cc",
+    "luxxle_browser_command_handler.h",
+  ]
+
+  deps = [
+    "//base:base",
+    "//luxxle/browser/ai_chat",
+    # REMOVED: "//luxxle/browser/luxxle_rewards",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/luxxle_education",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/constants",
+    "//luxxle/ui/webui/resources/js/luxxle_browser_command:mojo_bindings",
+    "//chrome/browser/profiles:profile",
+    "//mojo/public/cpp/bindings:bindings",
+    "//ui/base:types",
+    "//url:url",
+  ]
+
+  }
+}

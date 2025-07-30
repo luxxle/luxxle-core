@@ -8,7 +8,7 @@
 # import("//build/config/chrome_build.gni") in compiler.gni
 import("//luxxle/app/entitlements.gni")
 # Re-enabled: file created with minimal config
-import("//luxxle/brave_repack_locales.gni")
+import("//luxxle/luxxle_repack_locales.gni")
 import("//luxxle/browser/extensions/resources.gni")
 import("//luxxle/browser/resources/settings/sources.gni")
 # Re-enabled: file exists and defines needed variables
@@ -22,9 +22,9 @@ import("//luxxle/components/content_settings/core/browser/sources.gni")
 # Re-enabled: file created for omnibox browser variables
 import("//luxxle/components/omnibox/browser/sources.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//brave/components/search_engines/sources.gni")
+# import("//luxxle/components/search_engines/sources.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//brave/components/sync/service/sources.gni")
+# import("//luxxle/components/sync/service/sources.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # Re-enabled: file created for sync device info variables
 import("//luxxle/components/sync_device_info/sources.gni")

@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 The Brave Authors. All rights reserved.
+/* Copyright (c) 2025 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
@@ -106,12 +106,12 @@ fn bench_memory_usage(c: &mut Criterion) {
     let all_requests = load_requests();
     let first_1000_requests: Vec<_> = all_requests.iter().take(1000).collect();
 
-    group.bench_function("brave-list-initial", |b| {
+    group.bench_function("luxxle-list-initial", |b| {
         let mut result = 0;
         b.iter_custom(|iters| {
             for _ in 0..iters {
               ALLOCATOR.reset();
-              let rules = rules_from_lists(&["data/brave/brave-main-list.txt"]);
+              let rules = rules_from_lists(&["data/luxxle/luxxle-main-list.txt"]);
               let engine = Engine::from_rules(rules, Default::default());
 
               noise += 1; // add some noise to make criterion happy
@@ -126,12 +126,12 @@ fn bench_memory_usage(c: &mut Criterion) {
         });
     });
 
-    group.bench_function("brave-list-after-1000-requests", |b| {
+    group.bench_function("luxxle-list-after-1000-requests", |b| {
         b.iter_custom(|iters| {
             let mut result = 0;
             for _ in 0..iters {
                 ALLOCATOR.reset();
-                let rules = rules_from_lists(&["data/brave/brave-main-list.txt"]);
+                let rules = rules_from_lists(&["data/luxxle/luxxle-main-list.txt"]);
                 let engine = Engine::from_rules(rules, Default::default());
 
               for request in first_1000_requests.clone() {

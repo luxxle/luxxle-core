@@ -1,0 +1,34 @@
+/* Copyright (c) 2021 The Luxxle Authors. All rights reserved.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+#ifndef LUXXLE_BROWSER_UI_WEBUI_LUXXLE_WALLET_WALLET_COMMON_UI_H_
+#define LUXXLE_BROWSER_UI_WEBUI_LUXXLE_WALLET_WALLET_COMMON_UI_H_
+
+#include <stdint.h>
+
+class Profile;
+class Browser;
+
+namespace url {
+class Origin;
+}  // namespace url
+
+namespace content {
+class WebContents;
+}  // namespace content
+
+namespace luxxle_wallet {
+
+void AddBlockchainTokenImageSource(Profile* profile);
+
+bool IsLuxxleWalletOrigin(const url::Origin& origin);
+
+content::WebContents* GetWebContentsFromTabId(Browser** browser,
+                                              int32_t tab_id);
+content::WebContents* GetActiveWebContents();
+
+}  // namespace luxxle_wallet
+
+#endif  // LUXXLE_BROWSER_UI_WEBUI_LUXXLE_WALLET_WALLET_COMMON_UI_H_

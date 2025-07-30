@@ -5,16 +5,16 @@
 
 source_set("models") {
   sources = [
-    "brave_certificate_enums.h",
-    "brave_certificate_fingerprint.h",
-    "brave_certificate_fingerprint.mm",
-    "brave_certificate_model+private.h",
-    "brave_certificate_public_key_info.h",
-    "brave_certificate_public_key_info.mm",
-    "brave_certificate_rdns_sequence.h",
-    "brave_certificate_rdns_sequence.mm",
-    "brave_certificate_signature.h",
-    "brave_certificate_signature.mm",
+    "luxxle_certificate_enums.h",
+    "luxxle_certificate_fingerprint.h",
+    "luxxle_certificate_fingerprint.mm",
+    "luxxle_certificate_model+private.h",
+    "luxxle_certificate_public_key_info.h",
+    "luxxle_certificate_public_key_info.mm",
+    "luxxle_certificate_rdns_sequence.h",
+    "luxxle_certificate_rdns_sequence.mm",
+    "luxxle_certificate_signature.h",
+    "luxxle_certificate_signature.mm",
   ]
 
   deps = [

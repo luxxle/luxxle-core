@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
- * Copyright (c) 2024 The Brave Authors. All rights reserved.
+ * Copyright (c) 2024 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
 -->
 
-<org.chromium.chrome.browser.ntp.BraveNewTabPageLayout
+<org.chromium.chrome.browser.ntp.LuxxleNewTabPageLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -77,7 +77,7 @@
                 android:layout_weight="5"
                 android:textSize = "17sp"
                 android:gravity="center_vertical"
-                android:text="@string/brave_news_title"
+                android:text="@string/luxxle_news_title"
                 android:textColor="@color/news_text_color" />
 
             <ImageView
@@ -95,7 +95,7 @@
 
         <include
             android:id="@+id/news_load_new_content"
-            layout="@layout/brave_news_load_new_content"
+            layout="@layout/luxxle_news_load_new_content"
             android:visibility="gone"/>
         
     </LinearLayout>
@@ -159,4 +159,4 @@
 
         </LinearLayout>
 
-</org.chromium.chrome.browser.ntp.BraveNewTabPageLayout>
+</org.chromium.chrome.browser.ntp.LuxxleNewTabPageLayout>

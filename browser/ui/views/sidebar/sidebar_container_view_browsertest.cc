@@ -7,9 +7,9 @@
 
 #include "luxxle/browser/ui/sidebar/sidebar_controller.h"
 #include "luxxle/browser/ui/sidebar/sidebar_service_factory.h"
-#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_view.h"
 #include "luxxle/browser/ui/views/sidebar/sidebar_button_view.h"
-#include "luxxle/browser/ui/views/toolbar/brave_toolbar_view.h"
+#include "luxxle/browser/ui/views/toolbar/luxxle_toolbar_view.h"
 #include "luxxle/browser/ui/views/toolbar/side_panel_button.h"
 #include "luxxle/components/constants/pref_names.h"
 #include "luxxle/components/sidebar/browser/sidebar_item.h"
@@ -31,9 +31,9 @@ class SidebarContainerViewBrowserTest : public InProcessBrowserTest {
       const SidebarContainerViewBrowserTest&) = delete;
   ~SidebarContainerViewBrowserTest() override = default;
 
-  BraveBrowserView* brave_browser_view() {
-    return static_cast<BraveBrowserView*>(
-        BraveBrowserView::GetBrowserViewForBrowser(browser()));
+  LuxxleBrowserView* luxxle_browser_view() {
+    return static_cast<LuxxleBrowserView*>(
+        LuxxleBrowserView::GetBrowserViewForBrowser(browser()));
   }
 
   sidebar::SidebarService* GetService() {
@@ -46,7 +46,7 @@ class SidebarContainerViewBrowserTest : public InProcessBrowserTest {
   }
 
   SidePanelButton* toolbar_button() {
-    return static_cast<BraveToolbarView*>(
+    return static_cast<LuxxleToolbarView*>(
                BrowserView::GetBrowserViewForBrowser(browser())->toolbar())
         ->side_panel_button();
   }

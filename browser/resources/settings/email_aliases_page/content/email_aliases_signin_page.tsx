@@ -1,19 +1,19 @@
-// Copyright (c) 2025 The Brave Authors. All rights reserved.
+// Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
 import { formatLocale, getLocale } from "$web-common/locale";
 import { onEnterKeyForInput } from "./on_enter_key"
-import { spacing } from "@brave/leo/tokens/css/variables";
+import { spacing } from "@luxxle/leo/tokens/css/variables";
 import * as React from 'react'
-import Alert from "@brave/leo/react/alert"
-import BraveIconCircle from "./styles/brave_icon_circle"
-import Button from '@brave/leo/react/button'
+import Alert from "@luxxle/leo/react/alert"
+import LuxxleIconCircle from "./styles/luxxle_icon_circle"
+import Button from '@luxxle/leo/react/button'
 import Card from "./styles/Card"
 import Col from "./styles/Col"
 import formatMessage from '$web-common/formatMessage'
-import Input from '@brave/leo/react/input'
+import Input from '@luxxle/leo/react/input'
 import Row from "./styles/Row"
 import styled from 'styled-components'
 import { AuthenticationStatus, AuthState, EmailAliasesServiceInterface }
@@ -96,7 +96,7 @@ export const MainEmailEntryForm = (
     emailAliasesService: EmailAliasesServiceInterface }) =>
   <Card>
     <SignupRow>
-      <BraveIconCircle name='social-brave-release-favicon-fullheight-color' />
+      <LuxxleIconCircle name='social-luxxle-release-favicon-fullheight-color' />
       {authState.status === AuthenticationStatus.kUnauthenticated ?
         <BeforeSendingEmailForm
           suggestedAuthEmail={authState.email}

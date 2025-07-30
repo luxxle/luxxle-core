@@ -19,14 +19,14 @@ if (process.platform === 'win32') {
   dirName = fs.realpathSync.native(dirName)
 }
 const rootDir = path.resolve(dirName, '..', '..', '..', '..', '..')
-const braveCoreDir = path.join(rootDir, 'src', 'luxxle')
+const luxxleCoreDir = path.join(rootDir, 'src', 'luxxle')
 
 if (rootDir.includes(' ')) {
   Log.error(`Root directory contains spaces, this is not supported: ${rootDir}`)
   process.exit(1)
 }
 
-const packageConfig = function (key, sourceDir = braveCoreDir) {
+const packageConfig = function (key, sourceDir = luxxleCoreDir) {
   let packages = { config: {} }
   const configAbsolutePath = path.join(sourceDir, 'package.json')
   if (fs.existsSync(configAbsolutePath)) {
@@ -49,7 +49,7 @@ const getEnvConfig = (key, defaultValue = undefined) => {
     envConfig = {}
 
     // Parse src/luxxle/.env with all included env files.
-    let envConfigPath = path.join(braveCoreDir, '.env')
+    let envConfigPath = path.join(luxxleCoreDir, '.env')
     if (fs.existsSync(envConfigPath)) {
       dotenvPopulateWithIncludes(envConfig, envConfigPath)
     } else {
@@ -102,16 +102,16 @@ const parseExtraInputs = (inputs, accumulator, callback) => {
   }
 }
 
-const getBraveVersion = (ignorePatchVersionNumber) => {
-  const braveVersion = packageConfig(['version'])
+const getLuxxleVersion = (ignorePatchVersionNumber) => {
+  const luxxleVersion = packageConfig(['version'])
   if (!ignorePatchVersionNumber) {
-    return braveVersion
+    return luxxleVersion
   }
 
-  const braveVersionParts = braveVersion.split('.')
-  assert(braveVersionParts.length === 3)
-  braveVersionParts[2] = '0'
-  return braveVersionParts.join('.')
+  const luxxleVersionParts = luxxleVersion.split('.')
+  assert(luxxleVersionParts.length === 3)
+  luxxleVersionParts[2] = '0'
+  return luxxleVersionParts.join('.')
 }
 
 const getHostOS = () => {
@@ -143,11 +143,11 @@ const Config = function () {
   this.srcDir = path.join(this.rootDir, 'src')
   this.chromeVersion = this.getProjectVersion('chrome')
   this.chromiumRepo = getEnvConfig(['projects', 'chrome', 'repository', 'url'])
-  this.braveCoreDir = braveCoreDir
-  this.luxxlePatchesDir = path.join(this.braveCoreDir, 'patches')
+  this.luxxleCoreDir = luxxleCoreDir
+  this.luxxlePatchesDir = path.join(this.luxxleCoreDir, 'patches')
   this.buildToolsDir = path.join(this.srcDir, 'build')
   this.resourcesDir = path.join(this.rootDir, 'resources')
-  this.depotToolsDir = getDepotToolsDir(this.braveCoreDir)
+  this.depotToolsDir = getDepotToolsDir(this.luxxleCoreDir)
   this.depotToolsRepo = getEnvConfig([
     'projects',
     'depot_tools',
@@ -155,7 +155,7 @@ const Config = function () {
     'url',
   ])
   this.defaultGClientFile = path.join(this.rootDir, '.gclient')
-  this.gClientFile = process.env.BRAVE_GCLIENT_FILE || this.defaultGClientFile
+  this.gClientFile = process.env.LUXXLE_GCLIENT_FILE || this.defaultGClientFile
   this.gClientVerbose = getEnvConfig(['gclient_verbose']) || false
   this.hostOS = getHostOS()
   this.targetArch = getEnvConfig(['target_arch']) || process.arch
@@ -163,22 +163,22 @@ const Config = function () {
   this.targetEnvironment = getEnvConfig(['target_environment'])
   this.gypTargetArch = 'x64'
   this.targetAndroidBase = 'classic'
-  this.braveServicesProductionDomain =
+  this.luxxleServicesProductionDomain =
     getEnvConfig(['luxxle_services_production_domain']) || ''
-  this.braveServicesStagingDomain =
+  this.luxxleServicesStagingDomain =
     getEnvConfig(['luxxle_services_staging_domain']) || ''
-  this.braveServicesDevDomain =
+  this.luxxleServicesDevDomain =
     getEnvConfig(['luxxle_services_dev_domain']) || ''
-  this.braveGoogleApiKey =
-    getEnvConfig(['brave_google_api_key'])
+  this.luxxleGoogleApiKey =
+    getEnvConfig(['luxxle_google_api_key'])
     || 'AIzaSyAREPLACEWITHYOUROWNGOOGLEAPIKEY2Q'
   this.googleApiEndpoint =
-    getEnvConfig(['brave_google_api_endpoint'])
+    getEnvConfig(['luxxle_google_api_endpoint'])
     || 'https://www.googleapis.com/geolocation/v1/geolocate?key='
   this.googleDefaultClientId = getEnvConfig(['google_default_client_id']) || ''
   this.googleDefaultClientSecret =
     getEnvConfig(['google_default_client_secret']) || ''
-  this.infuraProjectId = getEnvConfig(['brave_infura_project_id']) || ''
+  this.infuraProjectId = getEnvConfig(['luxxle_infura_project_id']) || ''
   this.sardineClientId = getEnvConfig(['sardine_client_id']) || ''
   this.sardineClientSecret = getEnvConfig(['sardine_client_secret']) || ''
   this.bitFlyerProductionClientId =
@@ -242,7 +242,7 @@ const Config = function () {
   this.zebPaySandboxClientSecret =
     getEnvConfig(['zebpay_sandbox_client_secret']) || ''
   this.zebPaySandboxOauthUrl = getEnvConfig(['zebpay_sandbox_oauth_url']) || ''
-  this.braveSyncEndpoint = getEnvConfig(['brave_sync_endpoint']) || ''
+  this.luxxleSyncEndpoint = getEnvConfig(['luxxle_sync_endpoint']) || ''
   this.safeBrowsingApiEndpoint =
     getEnvConfig(['safebrowsing_api_endpoint']) || ''
   this.updaterProdEndpoint = getEnvConfig(['updater_prod_endpoint']) || ''
@@ -257,13 +257,13 @@ const Config = function () {
   this.rewardsGrantProdEndpoint =
     getEnvConfig(['rewards_grant_prod_endpoint']) || ''
   this.ignorePatchVersionNumber =
-    !this.isBraveReleaseBuild()
+    !this.isLuxxleReleaseBuild()
     && getEnvConfig(['ignore_patch_version_number'], !this.isCI)
-  this.braveVersion = getBraveVersion(this.ignorePatchVersionNumber)
-  this.braveIOSMarketingPatchVersion =
-    getEnvConfig(['brave_ios_marketing_version_patch']) || ''
-  this.androidOverrideVersionName = this.braveVersion
-  this.releaseTag = this.braveVersion.split('+')[0]
+  this.luxxleVersion = getLuxxleVersion(this.ignorePatchVersionNumber)
+  this.luxxleIOSMarketingPatchVersion =
+    getEnvConfig(['luxxle_ios_marketing_version_patch']) || ''
+  this.androidOverrideVersionName = this.luxxleVersion
+  this.releaseTag = this.luxxleVersion.split('+')[0]
   this.mac_signing_identifier = getEnvConfig(['mac_signing_identifier'])
   this.mac_installer_signing_identifier =
     getEnvConfig(['mac_installer_signing_identifier']) || ''
@@ -285,8 +285,8 @@ const Config = function () {
   this.rbeExecRoot = this.rootDir
   this.realRewrapperDir =
     process.env.RBE_DIR || path.join(this.srcDir, 'buildtools', 'reclient')
-  this.braveStatsApiKey = getEnvConfig(['brave_stats_api_key']) || ''
-  this.braveStatsUpdaterUrl = getEnvConfig(['brave_stats_updater_url']) || ''
+  this.luxxleStatsApiKey = getEnvConfig(['luxxle_stats_api_key']) || ''
+  this.luxxleStatsUpdaterUrl = getEnvConfig(['luxxle_stats_updater_url']) || ''
   this.ignore_compile_failure = false
   this.enable_hangout_services_extension = false
   this.enable_pseudolocales = false
@@ -302,30 +302,30 @@ const Config = function () {
       'signature_generator.py',
     ) || ''
   this.extraGnArgs = {}
-  this.extraGnGenOpts = getEnvConfig(['brave_extra_gn_gen_opts']) || ''
+  this.extraGnGenOpts = getEnvConfig(['luxxle_extra_gn_gen_opts']) || ''
   this.extraNinjaOpts = []
-  this.braveAndroidSafeBrowsingApiKey =
-    getEnvConfig(['brave_safebrowsing_api_key']) || ''
-  this.braveAndroidDeveloperOptionsCode =
-    getEnvConfig(['brave_android_developer_options_code']) || ''
-  this.braveAndroidKeystorePath = getEnvConfig(['brave_android_keystore_path'])
-  this.braveAndroidKeystoreName = getEnvConfig(['brave_android_keystore_name'])
-  this.braveAndroidKeystorePassword = getEnvConfig([
-    'brave_android_keystore_password',
+  this.luxxleAndroidSafeBrowsingApiKey =
+    getEnvConfig(['luxxle_safebrowsing_api_key']) || ''
+  this.luxxleAndroidDeveloperOptionsCode =
+    getEnvConfig(['luxxle_android_developer_options_code']) || ''
+  this.luxxleAndroidKeystorePath = getEnvConfig(['luxxle_android_keystore_path'])
+  this.luxxleAndroidKeystoreName = getEnvConfig(['luxxle_android_keystore_name'])
+  this.luxxleAndroidKeystorePassword = getEnvConfig([
+    'luxxle_android_keystore_password',
   ])
-  this.braveAndroidKeyPassword = getEnvConfig(['brave_android_key_password'])
-  this.braveVariationsServerUrl =
-    getEnvConfig(['brave_variations_server_url']) || ''
+  this.luxxleAndroidKeyPassword = getEnvConfig(['luxxle_android_key_password'])
+  this.luxxleVariationsServerUrl =
+    getEnvConfig(['luxxle_variations_server_url']) || ''
   this.nativeRedirectCCDir = path.join(this.srcDir, 'out', 'redirect_cc')
   this.useRemoteExec = getEnvConfig(['use_remoteexec']) || false
   this.offline = getEnvConfig(['offline']) || false
   this.use_libfuzzer = false
   this.androidAabToApk = false
-  this.useBraveHermeticToolchain = this.rbeService.includes('.luxxle.com:')
-  this.brave_services_key_id = getEnvConfig(['brave_services_key_id']) || ''
+  this.useLuxxleHermeticToolchain = this.rbeService.includes('.luxxle.com:')
+  this.luxxle_services_key_id = getEnvConfig(['luxxle_services_key_id']) || ''
   this.service_key_aichat = getEnvConfig(['service_key_aichat']) || ''
-  this.braveIOSDeveloperOptionsCode =
-    getEnvConfig(['brave_ios_developer_options_code']) || ''
+  this.luxxleIOSDeveloperOptionsCode =
+    getEnvConfig(['luxxle_ios_developer_options_code']) || ''
   this.service_key_stt = getEnvConfig(['service_key_stt']) || ''
   this.skip_download_rust_toolchain_aux =
     getEnvConfig(['skip_download_rust_toolchain_aux']) || false
@@ -335,14 +335,14 @@ Config.prototype.isReleaseBuild = function () {
   return this.buildConfig === 'Release'
 }
 
-Config.prototype.isBraveReleaseBuild = function () {
-  const isBraveReleaseBuildValue = getEnvConfig(['is_brave_release_build'])
-  if (isBraveReleaseBuildValue !== undefined) {
+Config.prototype.isLuxxleReleaseBuild = function () {
+  const isLuxxleReleaseBuildValue = getEnvConfig(['is_luxxle_release_build'])
+  if (isLuxxleReleaseBuildValue !== undefined) {
     assert(
-      isBraveReleaseBuildValue === '0' || isBraveReleaseBuildValue === '1',
-      'Bad is_brave_release_build value (should be 0 or 1)',
+      isLuxxleReleaseBuildValue === '0' || isLuxxleReleaseBuildValue === '1',
+      'Bad is_luxxle_release_build value (should be 0 or 1)',
     )
-    return isBraveReleaseBuildValue === '1'
+    return isLuxxleReleaseBuildValue === '1'
   }
 
   return false
@@ -383,22 +383,22 @@ Config.prototype.isOfficialBuild = function () {
   return this.isReleaseBuild() && !this.isAsan()
 }
 
-Config.prototype.getBraveLogoIconName = function () {
-  let iconName = 'brave-icon-dev-color.svg'
-  if (this.isBraveReleaseBuild()) {
+Config.prototype.getLuxxleLogoIconName = function () {
+  let iconName = 'luxxle-icon-dev-color.svg'
+  if (this.isLuxxleReleaseBuild()) {
     if (this.channel === 'beta') {
-      iconName = 'brave-icon-beta-color.svg'
+      iconName = 'luxxle-icon-beta-color.svg'
     } else if (this.channel === 'nightly') {
-      iconName = 'brave-icon-nightly-color.svg'
+      iconName = 'luxxle-icon-nightly-color.svg'
     } else {
-      iconName = 'brave-icon-release-color.svg'
+      iconName = 'luxxle-icon-release-color.svg'
     }
   }
   return iconName
 }
 
 Config.prototype.buildArgs = function () {
-  const version = this.braveVersion
+  const version = this.luxxleVersion
   let versionParts = version.split('+')[0]
   versionParts = versionParts.split('.')
 
@@ -419,8 +419,8 @@ Config.prototype.buildArgs = function () {
     is_universal_binary: this.isUniversalBinary,
     proprietary_codecs: true,
     ffmpeg_branding: 'Chrome',
-    branding_path_component: 'brave',
-    branding_path_product: 'brave',
+    branding_path_component: 'luxxle',
+    branding_path_product: 'luxxle',
     enable_glic: false,
     enable_nacl: false,
     enable_widevine: true,
@@ -431,12 +431,12 @@ Config.prototype.buildArgs = function () {
     is_debug: this.isDebug(),
     dcheck_always_on:
       getEnvConfig(['dcheck_always_on']) || this.isComponentBuild(),
-    brave_channel: this.channel,
-    brave_google_api_key: this.braveGoogleApiKey,
-    brave_google_api_endpoint: this.googleApiEndpoint,
+    luxxle_channel: this.channel,
+    luxxle_google_api_key: this.luxxleGoogleApiKey,
+    luxxle_google_api_endpoint: this.googleApiEndpoint,
     google_default_client_id: this.googleDefaultClientId,
     google_default_client_secret: this.googleDefaultClientSecret,
-    brave_infura_project_id: this.infuraProjectId,
+    luxxle_infura_project_id: this.infuraProjectId,
     bitflyer_production_client_id: this.bitFlyerProductionClientId,
     bitflyer_production_client_secret: this.bitFlyerProductionClientSecret,
     bitflyer_production_fee_address: this.bitFlyerProductionFeeAddress,
@@ -473,21 +473,21 @@ Config.prototype.buildArgs = function () {
     zebpay_sandbox_client_id: this.zebPaySandboxClientId,
     zebpay_sandbox_client_secret: this.zebPaySandboxClientSecret,
     zebpay_sandbox_oauth_url: this.zebPaySandboxOauthUrl,
-    brave_version_major: versionParts[0],
-    brave_version_minor: versionParts[1],
-    brave_version_build: versionParts[2],
+    luxxle_version_major: versionParts[0],
+    luxxle_version_minor: versionParts[1],
+    luxxle_version_build: versionParts[2],
     chrome_version_string: this.chromeVersion,
-    brave_sync_endpoint: this.braveSyncEndpoint,
+    luxxle_sync_endpoint: this.luxxleSyncEndpoint,
     safebrowsing_api_endpoint: this.safeBrowsingApiEndpoint,
-    brave_variations_server_url: this.braveVariationsServerUrl,
+    luxxle_variations_server_url: this.luxxleVariationsServerUrl,
     updater_prod_endpoint: this.updaterProdEndpoint,
     updater_dev_endpoint: this.updaterDevEndpoint,
     webcompat_report_api_endpoint: this.webcompatReportApiEndpoint,
     rewards_grant_dev_endpoint: this.rewardsGrantDevEndpoint,
     rewards_grant_staging_endpoint: this.rewardsGrantStagingEndpoint,
     rewards_grant_prod_endpoint: this.rewardsGrantProdEndpoint,
-    brave_stats_api_key: this.braveStatsApiKey,
-    brave_stats_updater_url: this.braveStatsUpdaterUrl,
+    luxxle_stats_api_key: this.luxxleStatsApiKey,
+    luxxle_stats_updater_url: this.luxxleStatsUpdaterUrl,
     enable_hangout_services_extension: this.enable_hangout_services_extension,
     enable_cdm_host_verification: this.enableCDMHostVerification(),
     enable_pseudolocales: this.enable_pseudolocales,
@@ -500,19 +500,19 @@ Config.prototype.buildArgs = function () {
     use_siso: false,
     use_libfuzzer: this.use_libfuzzer,
     enable_updater: this.isOfficialBuild(),
-    // Disable "Can't update Brave" notification on macOS until we have switched
+    // Disable "Can't update Luxxle" notification on macOS until we have switched
     // to Omaha 4 and have background updates:
     enable_update_notifications: this.isOfficialBuild(),
-    luxxle_services_production_domain: this.braveServicesProductionDomain,
-    luxxle_services_staging_domain: this.braveServicesStagingDomain,
-    luxxle_services_dev_domain: this.braveServicesDevDomain,
-    brave_services_key_id: this.brave_services_key_id,
+    luxxle_services_production_domain: this.luxxleServicesProductionDomain,
+    luxxle_services_staging_domain: this.luxxleServicesStagingDomain,
+    luxxle_services_dev_domain: this.luxxleServicesDevDomain,
+    luxxle_services_key_id: this.luxxle_services_key_id,
     service_key_aichat: this.service_key_aichat,
     service_key_stt: this.service_key_stt,
     generate_about_credits: true,
   }
 
-  if (!this.isBraveReleaseBuild()) {
+  if (!this.isLuxxleReleaseBuild()) {
     args.chrome_pgo_phase = 0
 
     // Don't randomize mojom message ids. When randomization is enabled, all
@@ -529,7 +529,7 @@ Config.prototype.buildArgs = function () {
   }
 
   if (this.ignorePatchVersionNumber) {
-    assert(!this.isBraveReleaseBuild())
+    assert(!this.isLuxxleReleaseBuild())
 
     // Allow dummy LASTCHANGE to be set. When the real LASTCHANGE is used, ~2300
     // targets are rebuilt with each version bump.
@@ -548,10 +548,10 @@ Config.prototype.buildArgs = function () {
         args.notary_password = this.notary_password
       }
     } else if (this.targetOS === 'android') {
-      args.brave_android_keystore_path = this.braveAndroidKeystorePath
-      args.brave_android_keystore_name = this.braveAndroidKeystoreName
-      args.brave_android_keystore_password = this.braveAndroidKeystorePassword
-      args.brave_android_key_password = this.braveAndroidKeyPassword
+      args.luxxle_android_keystore_path = this.luxxleAndroidKeystorePath
+      args.luxxle_android_keystore_name = this.luxxleAndroidKeystoreName
+      args.luxxle_android_keystore_password = this.luxxleAndroidKeystorePassword
+      args.luxxle_android_key_password = this.luxxleAndroidKeyPassword
     }
   }
 
@@ -647,7 +647,7 @@ Config.prototype.buildArgs = function () {
       // Include vaapi support
       // TODO: Consider setting use_vaapi_x11 instead of use_vaapi. Also
       // consider enabling it for x86 builds. See
-      // https://github.com/brave/brave-browser/issues/1024#issuecomment-1175397914
+      // https://github.com/luxxle/luxxle-browser/issues/1024#issuecomment-1175397914
       args.use_vaapi = true
     }
   }
@@ -662,20 +662,20 @@ Config.prototype.buildArgs = function () {
   // from out/<dir>/args.gn by Python scripts during the build. We do this to
   // handle gn args in upstream build scripts without introducing git conflict.
   if (this.targetOS !== 'android' && this.targetOS !== 'ios') {
-    args.enable_brave_page_graph = true
+    args.enable_luxxle_page_graph = true
   } else {
-    args.enable_brave_page_graph = false
+    args.enable_luxxle_page_graph = false
   }
   // Enable Page Graph WebAPI probes only in dev/nightly builds.
   if (
-    args.enable_brave_page_graph
-    && (!this.isBraveReleaseBuild()
+    args.enable_luxxle_page_graph
+    && (!this.isLuxxleReleaseBuild()
       || this.channel === 'dev'
       || this.channel === 'nightly')
   ) {
-    args.enable_brave_page_graph_webapi_probes = true
+    args.enable_luxxle_page_graph_webapi_probes = true
   } else {
-    args.enable_brave_page_graph_webapi_probes = false
+    args.enable_luxxle_page_graph_webapi_probes = false
   }
 
   // Devtools: Now we patch devtools frontend, so it is useful to see
@@ -692,17 +692,17 @@ Config.prototype.buildArgs = function () {
     args.android_channel = this.channel
     if (!this.isReleaseBuild()) {
       args.android_channel = 'default'
-      args.chrome_public_manifest_package = 'com.brave.browser_default'
+      args.chrome_public_manifest_package = 'com.luxxle.browser_default'
     } else if (this.channel === '') {
       args.android_channel = 'stable'
-      args.chrome_public_manifest_package = 'com.brave.browser'
+      args.chrome_public_manifest_package = 'com.luxxle.browser'
     } else if (this.channel === 'beta') {
-      args.chrome_public_manifest_package = 'com.brave.browser_beta'
+      args.chrome_public_manifest_package = 'com.luxxle.browser_beta'
     } else if (this.channel === 'dev') {
-      args.chrome_public_manifest_package = 'com.brave.browser_dev'
+      args.chrome_public_manifest_package = 'com.luxxle.browser_dev'
     } else if (this.channel === 'nightly') {
       args.android_channel = 'canary'
-      args.chrome_public_manifest_package = 'com.brave.browser_nightly'
+      args.chrome_public_manifest_package = 'com.luxxle.browser_nightly'
     }
     // exclude_unwind_tables is inherited form upstream and is false for any
     // Android build
@@ -713,9 +713,9 @@ Config.prototype.buildArgs = function () {
       || (this.buildConfig === 'Release' ? 'aab' : 'apk')
     args.android_override_version_name = this.androidOverrideVersionName
 
-    args.brave_android_developer_options_code =
-      this.braveAndroidDeveloperOptionsCode
-    args.brave_safebrowsing_api_key = this.braveAndroidSafeBrowsingApiKey
+    args.luxxle_android_developer_options_code =
+      this.luxxleAndroidDeveloperOptionsCode
+    args.luxxle_safebrowsing_api_key = this.luxxleAndroidSafeBrowsingApiKey
     args.safe_browsing_mode = 2
 
     // Required since cr126 to use Chrome password store
@@ -765,9 +765,9 @@ Config.prototype.buildArgs = function () {
     if (this.targetEnvironment) {
       args.target_environment = this.targetEnvironment
     }
-    if (this.braveIOSMarketingPatchVersion) {
-      args.brave_ios_marketing_version_patch =
-        this.braveIOSMarketingPatchVersion
+    if (this.luxxleIOSMarketingPatchVersion) {
+      args.luxxle_ios_marketing_version_patch =
+        this.luxxleIOSMarketingPatchVersion
     }
     args.enable_stripping = !this.isComponentBuild()
     // Component builds are not supported for iOS:
@@ -777,7 +777,7 @@ Config.prototype.buildArgs = function () {
     args.fatal_linker_warnings = !this.isComponentBuild()
     // DCHECK's crash on Static builds without allowing the debugger to continue
     // Can be removed when approprioate DCHECK's have been fixed:
-    // https://github.com/brave/brave-browser/issues/10334
+    // https://github.com/luxxle/luxxle-browser/issues/10334
     args.dcheck_always_on = this.isComponentBuild()
 
     if (!args.is_official_build) {
@@ -796,20 +796,20 @@ Config.prototype.buildArgs = function () {
     args.ios_enable_credential_provider_extension = true
     args.ios_enable_widget_kit_extension = false
 
-    args.brave_ios_developer_options_code = this.braveIOSDeveloperOptionsCode
+    args.luxxle_ios_developer_options_code = this.luxxleIOSDeveloperOptionsCode
 
     // This is currently being flipped on and off by the Chromium team to test
     // however it causes crashes for us at launch. Check `ios/features.gni`
     // in the future to see if this is no longer needed
-    // https://github.com/brave/brave-browser/issues/29934
+    // https://github.com/luxxle/luxxle-browser/issues/29934
     args.ios_partition_alloc_enabled = false
 
-    args.ios_provider_target = '//brave/ios/browser/providers:brave_providers'
+    args.ios_provider_target = '//luxxle/ios/browser/providers:luxxle_providers'
 
     args.ios_locales_pack_extra_source_patterns = [
-      '%root_gen_dir%/components/brave_components_strings_',
+      '%root_gen_dir%/components/luxxle_components_strings_',
     ]
-    args.ios_locales_pack_extra_deps = ['//brave/components/resources:strings']
+    args.ios_locales_pack_extra_deps = ['//luxxle/components/resources:strings']
 
     delete args.safebrowsing_api_endpoint
     delete args.safe_browsing_mode
@@ -821,9 +821,9 @@ Config.prototype.buildArgs = function () {
     delete args.enable_nacl
     delete args.enable_widevine
     delete args.enable_hangout_services_extension
-    delete args.brave_google_api_endpoint
-    delete args.brave_google_api_key
-    delete args.brave_stats_updater_url
+    delete args.luxxle_google_api_endpoint
+    delete args.luxxle_google_api_key
+    delete args.luxxle_stats_updater_url
     delete args.bitflyer_production_client_id
     delete args.bitflyer_production_client_secret
     delete args.bitflyer_production_fee_address
@@ -875,7 +875,7 @@ Config.prototype.shouldSign = function () {
   }
 
   if (this.targetOS === 'android') {
-    return this.braveAndroidKeystorePath !== undefined
+    return this.luxxleAndroidKeystorePath !== undefined
   }
 
   if (this.getTargetOS() === 'mac') {
@@ -1103,7 +1103,7 @@ Config.prototype.update = function (options) {
   if (options.xcode_gen) {
     assert(process.platform === 'darwin' || options.target_os === 'ios')
     if (options.xcode_gen === 'ios') {
-      this.xcode_gen_target = '//brave/ios:*'
+      this.xcode_gen_target = '//luxxle/ios:*'
     } else {
       this.xcode_gen_target = options.xcode_gen
     }
@@ -1175,7 +1175,7 @@ Object.defineProperty(Config.prototype, 'defaultOptions', {
     if (this.getTargetOS() === 'mac' && process.platform !== 'darwin') {
       const crossCompilePath = path.join(
         this.srcDir,
-        'brave',
+        'luxxle',
         'build',
         'mac',
         'cross_compile',
@@ -1184,11 +1184,11 @@ Object.defineProperty(Config.prototype, 'defaultOptions', {
       env = this.addPathToEnv(env, crossCompilePath, true)
     }
     const pythonPaths = [
-      ['brave', 'script'],
+      ['luxxle', 'script'],
       ['tools', 'grit', 'grit', 'extern'],
-      ['brave', 'vendor', 'requests'],
-      ['brave', 'third_party', 'cryptography'],
-      ['brave', 'third_party', 'macholib'],
+      ['luxxle', 'vendor', 'requests'],
+      ['luxxle', 'third_party', 'cryptography'],
+      ['luxxle', 'third_party', 'macholib'],
       ['build'],
       ['third_party', 'depot_tools'],
     ]
@@ -1203,20 +1203,20 @@ Object.defineProperty(Config.prototype, 'defaultOptions', {
       // https://peps.python.org/pep-0540/
       env.PYTHONUTF8 = '1'
     }
-    env.TARGET_ARCH = this.gypTargetArch // for brave scripts
+    env.TARGET_ARCH = this.gypTargetArch // for luxxle scripts
     env.RUSTUP_HOME = path.join(this.srcDir, 'third_party', 'rust-toolchain')
     // Fix `gclient runhooks` - broken since depot_tools a7b20b34f85432b5958963b75edcedfef9cf01fd
     env.GSUTIL_ENABLE_LUCI_AUTH = '0'
 
     if (this.channel) {
-      env.BRAVE_CHANNEL = this.channel
+      env.LUXXLE_CHANNEL = this.channel
     }
 
-    if (!this.useBraveHermeticToolchain) {
+    if (!this.useLuxxleHermeticToolchain) {
       env.DEPOT_TOOLS_WIN_TOOLCHAIN = '0'
     } else {
       // Use hermetic toolchain only internally.
-      env.USE_BRAVE_HERMETIC_TOOLCHAIN = '1'
+      env.USE_LUXXLE_HERMETIC_TOOLCHAIN = '1'
       env.DEPOT_TOOLS_WIN_TOOLCHAIN = '1'
       env.GYP_MSVS_HASH_68a20d6dee = '6c25999c85'
       env.DEPOT_TOOLS_WIN_TOOLCHAIN_BASE_URL = `${this.internalDepsUrl}/windows-hermetic-toolchain/`
@@ -1264,7 +1264,7 @@ Object.defineProperty(Config.prototype, 'defaultOptions', {
       // These env vars are required during `build` stage.
 
       // Autoninja generates -j value when RBE is enabled, adjust limits for
-      // Brave-specific setup.
+      // Luxxle-specific setup.
       env.NINJA_CORE_MULTIPLIER = Math.min(20, env.NINJA_CORE_MULTIPLIER || 20)
       env.NINJA_CORE_LIMIT = Math.min(160, env.NINJA_CORE_LIMIT || 160)
 

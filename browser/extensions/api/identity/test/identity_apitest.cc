@@ -4,8 +4,8 @@
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 #include "base/path_service.h"
-#include "luxxle/browser/extensions/api/identity/brave_web_auth_flow.h"
-#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/browser/extensions/api/identity/luxxle_web_auth_flow.h"
+#include "luxxle/components/constants/luxxle_paths.h"
 #include "chrome/browser/extensions/extension_apitest.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
@@ -33,7 +33,7 @@ IN_PROC_BROWSER_TEST_F(IdentityExtensionApiTest, FetchingTokenInteractiveMode) {
   const Extension* extension =
       LoadExtension(extension_dir_.AppendASCII("getAuthToken"));
   ASSERT_TRUE(extension);
-  BraveWebAuthFlow::SetTokenForTesting("test_token");
+  LuxxleWebAuthFlow::SetTokenForTesting("test_token");
 
   ASSERT_TRUE(extensions::BackgroundScriptExecutor::ExecuteScriptAsync(
       browser()->profile(), kIdentityTestExtensionId, R"(
@@ -58,7 +58,7 @@ IN_PROC_BROWSER_TEST_F(IdentityExtensionApiTest, FetchingTokenSilentMode) {
   const Extension* extension =
       LoadExtension(extension_dir_.AppendASCII("getAuthToken"));
   ASSERT_TRUE(extension);
-  BraveWebAuthFlow::SetTokenForTesting("test_token");
+  LuxxleWebAuthFlow::SetTokenForTesting("test_token");
 
   ASSERT_TRUE(extensions::BackgroundScriptExecutor::ExecuteScriptAsync(
       browser()->profile(), kIdentityTestExtensionId, R"(

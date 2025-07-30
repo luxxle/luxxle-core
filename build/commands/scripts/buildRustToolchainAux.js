@@ -38,7 +38,7 @@ program
     args = [
       path.join(
         config.srcDir,
-        'brave',
+        'luxxle',
         'build',
         'rust',
         'build_rust_toolchain_aux.py',

@@ -7,7 +7,7 @@ source_set("browser_tests") {
   testonly = true
   defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]
 
-  sources = [ "//luxxle/browser/ui/views/location_bar/brave_location_bar_view_browsertest.cc" ]
+  sources = [ "//luxxle/browser/ui/views/location_bar/luxxle_location_bar_view_browsertest.cc" ]
 
   deps = [
     "//base",

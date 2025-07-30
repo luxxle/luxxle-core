@@ -12,7 +12,7 @@
 #include "base/run_loop.h"
 #include "base/test/bind.h"
 #include "luxxle/browser/ui/browser_commands.h"
-#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/luxxle_tab_prefs.h"
 #include "luxxle/browser/ui/tabs/features.h"
 #include "luxxle/browser/ui/tabs/test/shared_pinned_tab_service_browsertest.h"
 #include "chrome/browser/profiles/profile.h"
@@ -31,7 +31,7 @@
 #include "ui/base/window_open_disposition.h"
 
 SharedPinnedTabServiceBrowserTest::SharedPinnedTabServiceBrowserTest()
-    : feature_list_(tabs::features::kBraveSharedPinnedTabs) {}
+    : feature_list_(tabs::features::kLuxxleSharedPinnedTabs) {}
 
 SharedPinnedTabServiceBrowserTest::~SharedPinnedTabServiceBrowserTest() =
     default;
@@ -110,7 +110,7 @@ void SharedPinnedTabServiceBrowserTest::SetUpOnMainThread() {
       }));
   ASSERT_TRUE(https_server_->Start());
 
-  browser()->profile()->GetPrefs()->SetBoolean(brave_tabs::kSharedPinnedTab,
+  browser()->profile()->GetPrefs()->SetBoolean(luxxle_tabs::kSharedPinnedTab,
                                                true);
 }
 
@@ -330,7 +330,7 @@ IN_PROC_BROWSER_TEST_F(SharedPinnedTabServiceBrowserTest, PreferenceChanged) {
   ASSERT_TRUE(browser_2->tab_strip_model()->IsTabPinned(1));
 
   // When disabling the shared pinned tab preference
-  browser_1->profile()->GetPrefs()->SetBoolean(brave_tabs::kSharedPinnedTab,
+  browser_1->profile()->GetPrefs()->SetBoolean(luxxle_tabs::kSharedPinnedTab,
                                                false);
 
   // Then all dummy contents should be gone.
@@ -343,7 +343,7 @@ IN_PROC_BROWSER_TEST_F(SharedPinnedTabServiceBrowserTest, PreferenceChanged) {
   EXPECT_FALSE(browser_2->tab_strip_model()->IsTabPinned(1));
 
   // When enabling the shared pinned tab preference
-  browser_1->profile()->GetPrefs()->SetBoolean(brave_tabs::kSharedPinnedTab,
+  browser_1->profile()->GetPrefs()->SetBoolean(luxxle_tabs::kSharedPinnedTab,
                                                true);
 
   // All pinned tabs should be synchronized

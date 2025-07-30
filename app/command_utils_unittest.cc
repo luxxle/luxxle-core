@@ -17,7 +17,7 @@
 // add the missing command to //luxxle/app/generate_command_metadata.py
 TEST(CommandUtilsUnitTest, AllAcceleratedCommandsShouldBeAvailable) {
   base::test::ScopedFeatureList features;
-  features.InitAndEnableFeature(commands::features::kBraveCommands);
+  features.InitAndEnableFeature(commands::features::kLuxxleCommands);
 
   auto accelerators = GetAcceleratorList();
   const auto& commands = commands::GetCommands();
@@ -31,7 +31,7 @@ TEST(CommandUtilsUnitTest, AllAcceleratedCommandsShouldBeAvailable) {
 
 TEST(CommandUtilsUnitTest, NoTranslationsIncludeAmpersand) {
   base::test::ScopedFeatureList features;
-  features.InitAndEnableFeature(commands::features::kBraveCommands);
+  features.InitAndEnableFeature(commands::features::kLuxxleCommands);
 
   for (const auto& command : commands::GetCommands()) {
     auto translation = commands::GetCommandName(command);

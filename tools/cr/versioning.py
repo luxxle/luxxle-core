@@ -9,7 +9,7 @@ import json
 
 import repository
 
-# The path to the package.json file in brave-core
+# The path to the package.json file in luxxle-core
 PACKAGE_FILE = 'package.json'
 
 # The link to the Chromium source code.
@@ -31,7 +31,7 @@ def load_package_file(branch):
     branch:
       A branch or hash to load the file from.
   """
-    package = repository.brave.read_file(PACKAGE_FILE, commit=branch)
+    package = repository.luxxle.read_file(PACKAGE_FILE, commit=branch)
     return json.loads(package)
 
 

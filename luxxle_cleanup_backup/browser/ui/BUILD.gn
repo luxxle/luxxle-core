@@ -9,7 +9,7 @@ import("//luxxle/build/config.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/ai_rewriter/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_education/buildflags.gni")
+# import("//luxxle/components/luxxle_education/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # Commented out: removed components dependency - using Chromium defaults instead
 # Commented out: removed components dependency - using Chromium defaults instead
@@ -41,9 +41,9 @@ group("ui_public_dependencies") {
     "//chrome/browser/ui:ui_public_dependencies",
   ]
   public_deps = [
-    # Removed brave_rewards_source dependency
-    ":brave_tab_features",
-    ":brave_tab_prefs",
+    # Removed luxxle_rewards_source dependency
+    ":luxxle_tab_features",
+    ":luxxle_tab_prefs",
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -60,9 +60,9 @@ source_set("ui") {
 
   deps = [
     "//luxxle/browser/ai_chat",
-    # REMOVED: "//luxxle/browser/brave_adaptive_captcha",
-    # REMOVED: "//luxxle/browser/brave_ads",
-    # REMOVED: "//luxxle/browser/brave_rewards",
+    # REMOVED: "//luxxle/browser/luxxle_adaptive_captcha",
+    # REMOVED: "//luxxle/browser/luxxle_ads",
+    # REMOVED: "//luxxle/browser/luxxle_rewards",
     "//luxxle/browser/skus",
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -75,29 +75,29 @@ source_set("ui") {
     deps += [ "//luxxle/browser/ui/tabs:impl" ]
   }
 
-  allow_circular_includes_from = brave_ui_allow_circular_includes_from
-  deps += brave_ui_allow_circular_includes_from
+  allow_circular_includes_from = luxxle_ui_allow_circular_includes_from
+  deps += luxxle_ui_allow_circular_includes_from
 
   public_deps = [ ":ui_public_dependencies" ]
 
   sources = [
-    "brave_ui_features.cc",
-    "brave_ui_features.h",
+    "luxxle_ui_features.cc",
+    "luxxle_ui_features.h",
     "webui/ai_chat/ai_chat_ui.cc",
     "webui/ai_chat/ai_chat_ui.h",
     "webui/ai_chat/ai_chat_ui_page_handler.cc",
     "webui/ai_chat/ai_chat_ui_page_handler.h",
     "webui/ai_chat/ai_chat_untrusted_conversation_ui.cc",
     "webui/ai_chat/ai_chat_untrusted_conversation_ui.h",
-    "webui/brave_adblock_internals_ui.cc",
-    "webui/brave_adblock_internals_ui.h",
-    "webui/brave_adblock_ui.cc",
-    "webui/brave_adblock_ui.h",
-    # Removed brave_rewards WebUI sources - no longer needed after brave_rewards cleanup
-    "webui/brave_web_ui_controller_factory.cc",
-    "webui/brave_web_ui_controller_factory.h",
-    "webui/brave_webui_source.cc",
-    "webui/brave_webui_source.h",
+    "webui/luxxle_adblock_internals_ui.cc",
+    "webui/luxxle_adblock_internals_ui.h",
+    "webui/luxxle_adblock_ui.cc",
+    "webui/luxxle_adblock_ui.h",
+    # Removed luxxle_rewards WebUI sources - no longer needed after luxxle_rewards cleanup
+    "webui/luxxle_web_ui_controller_factory.cc",
+    "webui/luxxle_web_ui_controller_factory.h",
+    "webui/luxxle_webui_source.cc",
+    "webui/luxxle_webui_source.h",
     "webui/skus_internals_ui.cc",
     "webui/skus_internals_ui.h",
     "webui/untrusted_sanitized_image_source.cc",
@@ -111,10 +111,10 @@ source_set("ui") {
       "webui/webcompat_reporter/webcompat_reporter_ui.h",
     ]
     deps += [
-      "//luxxle/browser/ui/webui/brave_browser_command",
+      "//luxxle/browser/ui/webui/luxxle_browser_command",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/webcompat_reporter/common:mojom",
-      "//luxxle/ui/webui/resources/js/brave_browser_command:mojo_bindings",
+      "//luxxle/ui/webui/resources/js/luxxle_browser_command:mojo_bindings",
     ]
   }
 
@@ -142,9 +142,9 @@ source_set("ui") {
 
   if (is_android) {
     sources += [
-      "android/ai_chat/brave_leo_settings_launcher_helper.cc",
-      "android/ai_chat/brave_leo_settings_launcher_helper.h",
-      # Removed brave_rewards Android sources - no longer needed after brave_rewards cleanup
+      "android/ai_chat/luxxle_leo_settings_launcher_helper.cc",
+      "android/ai_chat/luxxle_leo_settings_launcher_helper.h",
+      # Removed luxxle_rewards Android sources - no longer needed after luxxle_rewards cleanup
     ]
 
     deps += [
@@ -172,8 +172,8 @@ source_set("ui") {
   #   ]
   # }
 
-  if (enable_brave_education) {
-    deps += [ "webui/brave_education" ]
+  if (enable_luxxle_education) {
+    deps += [ "webui/luxxle_education" ]
   }
 
   if (!is_android) {
@@ -184,58 +184,58 @@ source_set("ui") {
       "bookmark/bookmark_prefs_service.h",
       "bookmark/bookmark_prefs_service_factory.cc",
       "bookmark/bookmark_prefs_service_factory.h",
-      "bookmark/brave_bookmark_prefs.cc",
-      "bookmark/brave_bookmark_prefs.h",
-      "bookmark/brave_bookmark_tab_helper.cc",
-      "bookmark/brave_bookmark_tab_helper.h",
-      "brave_browser.cc",
-      "brave_browser.h",
-      "brave_browser_actions.cc",
-      "brave_browser_actions.h",
-      "brave_browser_command_controller.cc",
-      "brave_browser_command_controller.h",
-      "brave_browser_content_setting_bubble_model_delegate.cc",
-      "brave_browser_content_setting_bubble_model_delegate.h",
-      "brave_browser_window.cc",
-      "brave_browser_window.h",
-      "brave_file_select_utils.cc",
-      "brave_file_select_utils.h",
-      "brave_icon_with_badge_image_source.cc",
-      "brave_icon_with_badge_image_source.h",
-      "brave_layout_constants.cc",
-      "brave_layout_constants.h",
-      "brave_pages.cc",
-      "brave_pages.h",
-      "brave_scheme_utils.cc",
-      "brave_scheme_utils.h",
-      "brave_tab_strip_model_delegate.cc",
-      "brave_tab_strip_model_delegate.h",
-      "brave_view_ids.h",
+      "bookmark/luxxle_bookmark_prefs.cc",
+      "bookmark/luxxle_bookmark_prefs.h",
+      "bookmark/luxxle_bookmark_tab_helper.cc",
+      "bookmark/luxxle_bookmark_tab_helper.h",
+      "luxxle_browser.cc",
+      "luxxle_browser.h",
+      "luxxle_browser_actions.cc",
+      "luxxle_browser_actions.h",
+      "luxxle_browser_command_controller.cc",
+      "luxxle_browser_command_controller.h",
+      "luxxle_browser_content_setting_bubble_model_delegate.cc",
+      "luxxle_browser_content_setting_bubble_model_delegate.h",
+      "luxxle_browser_window.cc",
+      "luxxle_browser_window.h",
+      "luxxle_file_select_utils.cc",
+      "luxxle_file_select_utils.h",
+      "luxxle_icon_with_badge_image_source.cc",
+      "luxxle_icon_with_badge_image_source.h",
+      "luxxle_layout_constants.cc",
+      "luxxle_layout_constants.h",
+      "luxxle_pages.cc",
+      "luxxle_pages.h",
+      "luxxle_scheme_utils.cc",
+      "luxxle_scheme_utils.h",
+      "luxxle_tab_strip_model_delegate.cc",
+      "luxxle_tab_strip_model_delegate.h",
+      "luxxle_view_ids.h",
       "browser_commands.cc",
       "browser_commands.h",
       "browser_dialogs.h",
-      "content_settings/brave_autoplay_blocked_image_model.cc",
-      "content_settings/brave_autoplay_blocked_image_model.h",
-      "content_settings/brave_autoplay_content_setting_bubble_model.cc",
-      "content_settings/brave_autoplay_content_setting_bubble_model.h",
-      "content_settings/brave_content_setting_image_models.cc",
-      "content_settings/brave_content_setting_image_models.h",
-      "omnibox/brave_omnibox_client_impl.cc",
-      "omnibox/brave_omnibox_client_impl.h",
-      "page_action/brave_page_action_icon_type.h",
-      "session_crashed_bubble_brave.cc",
+      "content_settings/luxxle_autoplay_blocked_image_model.cc",
+      "content_settings/luxxle_autoplay_blocked_image_model.h",
+      "content_settings/luxxle_autoplay_content_setting_bubble_model.cc",
+      "content_settings/luxxle_autoplay_content_setting_bubble_model.h",
+      "content_settings/luxxle_content_setting_image_models.cc",
+      "content_settings/luxxle_content_setting_image_models.h",
+      "omnibox/luxxle_omnibox_client_impl.cc",
+      "omnibox/luxxle_omnibox_client_impl.h",
+      "page_action/luxxle_page_action_icon_type.h",
+      "session_crashed_bubble_luxxle.cc",
       "side_panel/ai_chat/ai_chat_side_panel_utils.cc",
       "side_panel/ai_chat/ai_chat_side_panel_utils.h",
-      "startup/brave_startup_tab_provider_impl.cc",
-      "startup/brave_startup_tab_provider_impl.h",
-      "tabs/brave_tab_color_mixer.cc",
-      "tabs/brave_tab_color_mixer.h",
-      "tabs/brave_tab_layout_constants.cc",
-      "tabs/brave_tab_layout_constants.h",
-      "tabs/brave_tab_menu_model.cc",
-      "tabs/brave_tab_menu_model.h",
-      "tabs/brave_tab_strip_model.cc",
-      "tabs/brave_tab_strip_model.h",
+      "startup/luxxle_startup_tab_provider_impl.cc",
+      "startup/luxxle_startup_tab_provider_impl.h",
+      "tabs/luxxle_tab_color_mixer.cc",
+      "tabs/luxxle_tab_color_mixer.h",
+      "tabs/luxxle_tab_layout_constants.cc",
+      "tabs/luxxle_tab_layout_constants.h",
+      "tabs/luxxle_tab_menu_model.cc",
+      "tabs/luxxle_tab_menu_model.h",
+      "tabs/luxxle_tab_strip_model.cc",
+      "tabs/luxxle_tab_strip_model.h",
       "tabs/shared_pinned_tab_dummy_view.h",
       "tabs/shared_pinned_tab_service.cc",
       "tabs/shared_pinned_tab_service.h",
@@ -245,62 +245,62 @@ source_set("ui") {
       "toolbar/app_menu_icons.h",
       "toolbar/bookmark_bar_sub_menu_model.cc",
       "toolbar/bookmark_bar_sub_menu_model.h",
-      "toolbar/brave_app_menu_model.cc",
-      "toolbar/brave_app_menu_model.h",
-      "toolbar/brave_bookmark_context_menu_controller.cc",
-      "toolbar/brave_bookmark_context_menu_controller.h",
-      "toolbar/brave_bookmark_sub_menu_model.cc",
-      "toolbar/brave_bookmark_sub_menu_model.h",
-      "toolbar/brave_recent_tabs_sub_menu_model.h",
-      # Removed brave_rewards top UI sources - no longer needed after brave_rewards cleanup
-      "webui/brave_settings_ui.cc",
-      "webui/brave_settings_ui.h",
+      "toolbar/luxxle_app_menu_model.cc",
+      "toolbar/luxxle_app_menu_model.h",
+      "toolbar/luxxle_bookmark_context_menu_controller.cc",
+      "toolbar/luxxle_bookmark_context_menu_controller.h",
+      "toolbar/luxxle_bookmark_sub_menu_model.cc",
+      "toolbar/luxxle_bookmark_sub_menu_model.h",
+      "toolbar/luxxle_recent_tabs_sub_menu_model.h",
+      # Removed luxxle_rewards top UI sources - no longer needed after luxxle_rewards cleanup
+      "webui/luxxle_settings_ui.cc",
+      "webui/luxxle_settings_ui.h",
       "webui/navigation_bar_data_provider.cc",
       "webui/navigation_bar_data_provider.h",
-      "webui/new_tab_page/brave_new_tab_message_handler.cc",
-      "webui/new_tab_page/brave_new_tab_message_handler.h",
-      "webui/new_tab_page/brave_new_tab_page_handler.cc",
-      "webui/new_tab_page/brave_new_tab_page_handler.h",
-      "webui/new_tab_page/brave_new_tab_ui.cc",
-      "webui/new_tab_page/brave_new_tab_ui.h",
-      "webui/new_tab_page/brave_new_tab_ui_utils.cc",
-      "webui/new_tab_page/brave_new_tab_ui_utils.h",
+      "webui/new_tab_page/luxxle_new_tab_message_handler.cc",
+      "webui/new_tab_page/luxxle_new_tab_message_handler.h",
+      "webui/new_tab_page/luxxle_new_tab_page_handler.cc",
+      "webui/new_tab_page/luxxle_new_tab_page_handler.h",
+      "webui/new_tab_page/luxxle_new_tab_ui.cc",
+      "webui/new_tab_page/luxxle_new_tab_ui.h",
+      "webui/new_tab_page/luxxle_new_tab_ui_utils.cc",
+      "webui/new_tab_page/luxxle_new_tab_ui_utils.h",
       "webui/new_tab_page/top_sites_message_handler.cc",
       "webui/new_tab_page/top_sites_message_handler.h",
-      "webui/private_new_tab_page/brave_private_new_tab_page_handler.cc",
-      "webui/private_new_tab_page/brave_private_new_tab_page_handler.h",
-      "webui/private_new_tab_page/brave_private_new_tab_ui.cc",
-      "webui/private_new_tab_page/brave_private_new_tab_ui.h",
-      "webui/settings/brave_account_handler.cc",
-      "webui/settings/brave_account_handler.h",
-      "webui/settings/brave_adblock_handler.cc",
-      "webui/settings/brave_adblock_handler.h",
-      "webui/settings/brave_appearance_handler.cc",
-      "webui/settings/brave_appearance_handler.h",
-      "webui/settings/brave_clear_browsing_data_handler.cc",
-      "webui/settings/brave_clear_browsing_data_handler.h",
-      "webui/settings/brave_import_bulk_data_handler.cc",
-      "webui/settings/brave_import_bulk_data_handler.h",
-      "webui/settings/brave_import_data_handler.cc",
-      "webui/settings/brave_import_data_handler.h",
-      "webui/settings/brave_importer_observer.cc",
-      "webui/settings/brave_importer_observer.h",
-      "webui/settings/brave_privacy_handler.cc",
-      "webui/settings/brave_privacy_handler.h",
-      "webui/settings/brave_settings_leo_assistant_handler.cc",
-      "webui/settings/brave_settings_leo_assistant_handler.h",
-      "webui/settings/brave_settings_localized_strings_provider.cc",
-      "webui/settings/brave_settings_localized_strings_provider.h",
-      "webui/settings/brave_site_settings_handler.cc",
-      "webui/settings/brave_site_settings_handler.h",
-      "webui/settings/brave_sync_handler.cc",
-      "webui/settings/brave_sync_handler.h",
-      "webui/side_panel/reading_list/brave_reading_list_page_handler.cc",
-      "webui/side_panel/reading_list/brave_reading_list_page_handler.h",
+      "webui/private_new_tab_page/luxxle_private_new_tab_page_handler.cc",
+      "webui/private_new_tab_page/luxxle_private_new_tab_page_handler.h",
+      "webui/private_new_tab_page/luxxle_private_new_tab_ui.cc",
+      "webui/private_new_tab_page/luxxle_private_new_tab_ui.h",
+      "webui/settings/luxxle_account_handler.cc",
+      "webui/settings/luxxle_account_handler.h",
+      "webui/settings/luxxle_adblock_handler.cc",
+      "webui/settings/luxxle_adblock_handler.h",
+      "webui/settings/luxxle_appearance_handler.cc",
+      "webui/settings/luxxle_appearance_handler.h",
+      "webui/settings/luxxle_clear_browsing_data_handler.cc",
+      "webui/settings/luxxle_clear_browsing_data_handler.h",
+      "webui/settings/luxxle_import_bulk_data_handler.cc",
+      "webui/settings/luxxle_import_bulk_data_handler.h",
+      "webui/settings/luxxle_import_data_handler.cc",
+      "webui/settings/luxxle_import_data_handler.h",
+      "webui/settings/luxxle_importer_observer.cc",
+      "webui/settings/luxxle_importer_observer.h",
+      "webui/settings/luxxle_privacy_handler.cc",
+      "webui/settings/luxxle_privacy_handler.h",
+      "webui/settings/luxxle_settings_leo_assistant_handler.cc",
+      "webui/settings/luxxle_settings_leo_assistant_handler.h",
+      "webui/settings/luxxle_settings_localized_strings_provider.cc",
+      "webui/settings/luxxle_settings_localized_strings_provider.h",
+      "webui/settings/luxxle_site_settings_handler.cc",
+      "webui/settings/luxxle_site_settings_handler.h",
+      "webui/settings/luxxle_sync_handler.cc",
+      "webui/settings/luxxle_sync_handler.h",
+      "webui/side_panel/reading_list/luxxle_reading_list_page_handler.cc",
+      "webui/side_panel/reading_list/luxxle_reading_list_page_handler.h",
       "webui/webcompat_reporter/webcompat_reporter_dialog.cc",
       "webui/webcompat_reporter/webcompat_reporter_dialog.h",
-      "webui/welcome_page/brave_welcome_ui.cc",
-      "webui/welcome_page/brave_welcome_ui.h",
+      "webui/welcome_page/luxxle_welcome_ui.cc",
+      "webui/welcome_page/luxxle_welcome_ui.h",
       "webui/welcome_page/welcome_dom_handler.cc",
       "webui/welcome_page/welcome_dom_handler.h",
       "whats_new/pref_names.h",
@@ -395,23 +395,23 @@ source_set("ui") {
 
     if (is_mac) {
       sources += [
-        "webui/settings/brave_full_disk_access_confirm_dialog_delegate.h",
-        "webui/settings/brave_full_disk_access_confirm_dialog_delegate_mac.mm",
+        "webui/settings/luxxle_full_disk_access_confirm_dialog_delegate.h",
+        "webui/settings/luxxle_full_disk_access_confirm_dialog_delegate_mac.mm",
       ]
     }
 
     if (enable_sparkle) {
       sources += [
-        "webui/settings/brave_relaunch_handler_mac.h",
-        "webui/settings/brave_relaunch_handler_mac.mm",
+        "webui/settings/luxxle_relaunch_handler_mac.h",
+        "webui/settings/luxxle_relaunch_handler_mac.mm",
       ]
       deps += [ "//luxxle/browser:mac_features" ]
     }
 
     if (enable_tor) {
       sources += [
-        "webui/settings/brave_tor_handler.cc",
-        "webui/settings/brave_tor_handler.h",
+        "webui/settings/luxxle_tor_handler.cc",
+        "webui/settings/luxxle_tor_handler.h",
       ]
 
       deps += [
@@ -421,10 +421,10 @@ source_set("ui") {
     }
     if (enable_extensions) {
       sources += [
-        "webui/settings/brave_extensions_manifest_v2_handler.cc",
-        "webui/settings/brave_extensions_manifest_v2_handler.h",
-        "webui/settings/brave_tor_snowflake_extension_handler.cc",
-        "webui/settings/brave_tor_snowflake_extension_handler.h",
+        "webui/settings/luxxle_extensions_manifest_v2_handler.cc",
+        "webui/settings/luxxle_extensions_manifest_v2_handler.h",
+        "webui/settings/luxxle_tor_snowflake_extension_handler.cc",
+        "webui/settings/luxxle_tor_snowflake_extension_handler.h",
       ]
 
       deps += [
@@ -471,91 +471,91 @@ source_set("ui") {
     sources += [
       "views/bookmarks/bookmark_bar_instructions_view.cc",
       "views/bookmarks/bookmark_bar_instructions_view.h",
-      "views/bookmarks/brave_bookmark_bar_view.cc",
-      "views/bookmarks/brave_bookmark_bar_view.h",
-      "views/bookmarks/brave_bookmark_context_menu.cc",
-      "views/bookmarks/brave_bookmark_context_menu.h",
-      "views/bookmarks/saved_tab_groups/brave_saved_tab_group_button.cc",
-      "views/bookmarks/saved_tab_groups/brave_saved_tab_group_button.h",
-      "views/brave_first_run_dialog.cc",
-      "views/brave_first_run_dialog.h",
-      "views/brave_javascript_tab_modal_dialog_view_views.cc",
-      "views/brave_javascript_tab_modal_dialog_view_views.h",
-      "views/brave_layout_provider.cc",
-      "views/brave_layout_provider.h",
-      "views/brave_news/brave_news_bubble_view.cc",
-      "views/brave_news/brave_news_bubble_view.h",
-      "views/brave_news/brave_news_feed_item_view.cc",
-      "views/brave_news/brave_news_feed_item_view.h",
-      "views/brave_news/brave_news_feeds_container_view.cc",
-      "views/brave_news/brave_news_feeds_container_view.h",
-      "views/brave_tab_search_bubble_host.cc",
-      "views/brave_tab_search_bubble_host.h",
+      "views/bookmarks/luxxle_bookmark_bar_view.cc",
+      "views/bookmarks/luxxle_bookmark_bar_view.h",
+      "views/bookmarks/luxxle_bookmark_context_menu.cc",
+      "views/bookmarks/luxxle_bookmark_context_menu.h",
+      "views/bookmarks/saved_tab_groups/luxxle_saved_tab_group_button.cc",
+      "views/bookmarks/saved_tab_groups/luxxle_saved_tab_group_button.h",
+      "views/luxxle_first_run_dialog.cc",
+      "views/luxxle_first_run_dialog.h",
+      "views/luxxle_javascript_tab_modal_dialog_view_views.cc",
+      "views/luxxle_javascript_tab_modal_dialog_view_views.h",
+      "views/luxxle_layout_provider.cc",
+      "views/luxxle_layout_provider.h",
+      "views/luxxle_news/luxxle_news_bubble_view.cc",
+      "views/luxxle_news/luxxle_news_bubble_view.h",
+      "views/luxxle_news/luxxle_news_feed_item_view.cc",
+      "views/luxxle_news/luxxle_news_feed_item_view.h",
+      "views/luxxle_news/luxxle_news_feeds_container_view.cc",
+      "views/luxxle_news/luxxle_news_feeds_container_view.h",
+      "views/luxxle_tab_search_bubble_host.cc",
+      "views/luxxle_tab_search_bubble_host.h",
       "views/commands/default_accelerators_views.cc",
       "views/crash_report_permission_ask_dialog_view.cc",
       "views/crash_report_permission_ask_dialog_view.h",
       "views/dialog_footnote_utils.cc",
       "views/dialog_footnote_utils.h",
-      "views/download/brave_download_item_view.cc",
-      "views/download/brave_download_item_view.h",
-      "views/extensions/brave_extension_menu_item_view.cc",
-      "views/extensions/brave_extension_menu_item_view.h",
-      "views/extensions/brave_extensions_menu_main_page_view.cc",
-      "views/extensions/brave_extensions_menu_main_page_view.h",
-      "views/frame/brave_browser_frame.cc",
-      "views/frame/brave_browser_frame.h",
-      "views/frame/brave_browser_root_view.cc",
-      "views/frame/brave_browser_root_view.h",
-      "views/frame/brave_browser_view.cc",
-      "views/frame/brave_browser_view.h",
-      "views/frame/brave_browser_view_layout.cc",
-      "views/frame/brave_browser_view_layout.h",
-      "views/frame/brave_contents_layout_manager.cc",
-      "views/frame/brave_contents_layout_manager.h",
-      "views/frame/brave_contents_view_util.cc",
-      "views/frame/brave_contents_view_util.h",
-      "views/frame/brave_non_client_hit_test_helper.cc",
-      "views/frame/brave_non_client_hit_test_helper.h",
-      "views/frame/brave_opaque_browser_frame_view.cc",
-      "views/frame/brave_opaque_browser_frame_view.h",
-      "views/frame/brave_system_menu_model_builder.cc",
-      "views/frame/brave_system_menu_model_builder.h",
-      "views/frame/brave_tab_strip_region_view.cc",
-      "views/frame/brave_tab_strip_region_view.h",
-      "views/frame/brave_window_frame_graphic.cc",
-      "views/frame/brave_window_frame_graphic.h",
-      "views/omnibox/brave_omnibox_popup_view_views.cc",
-      "views/omnibox/brave_omnibox_popup_view_views.h",
-      "views/omnibox/brave_omnibox_result_view.cc",
-      "views/omnibox/brave_omnibox_result_view.h",
-      "views/omnibox/brave_omnibox_view_views.cc",
-      "views/omnibox/brave_omnibox_view_views.h",
-      "views/omnibox/brave_rounded_omnibox_results_frame.cc",
-      "views/omnibox/brave_rounded_omnibox_results_frame.h",
-      "views/overlay/brave_back_to_tab_label_button.cc",
-      "views/overlay/brave_back_to_tab_label_button.h",
-      "views/overlay/brave_video_overlay_window_views.cc",
-      "views/overlay/brave_video_overlay_window_views.h",
-      "views/page_action/brave_page_action_icon_container_view.cc",
-      "views/page_action/brave_page_action_icon_container_view.h",
+      "views/download/luxxle_download_item_view.cc",
+      "views/download/luxxle_download_item_view.h",
+      "views/extensions/luxxle_extension_menu_item_view.cc",
+      "views/extensions/luxxle_extension_menu_item_view.h",
+      "views/extensions/luxxle_extensions_menu_main_page_view.cc",
+      "views/extensions/luxxle_extensions_menu_main_page_view.h",
+      "views/frame/luxxle_browser_frame.cc",
+      "views/frame/luxxle_browser_frame.h",
+      "views/frame/luxxle_browser_root_view.cc",
+      "views/frame/luxxle_browser_root_view.h",
+      "views/frame/luxxle_browser_view.cc",
+      "views/frame/luxxle_browser_view.h",
+      "views/frame/luxxle_browser_view_layout.cc",
+      "views/frame/luxxle_browser_view_layout.h",
+      "views/frame/luxxle_contents_layout_manager.cc",
+      "views/frame/luxxle_contents_layout_manager.h",
+      "views/frame/luxxle_contents_view_util.cc",
+      "views/frame/luxxle_contents_view_util.h",
+      "views/frame/luxxle_non_client_hit_test_helper.cc",
+      "views/frame/luxxle_non_client_hit_test_helper.h",
+      "views/frame/luxxle_opaque_browser_frame_view.cc",
+      "views/frame/luxxle_opaque_browser_frame_view.h",
+      "views/frame/luxxle_system_menu_model_builder.cc",
+      "views/frame/luxxle_system_menu_model_builder.h",
+      "views/frame/luxxle_tab_strip_region_view.cc",
+      "views/frame/luxxle_tab_strip_region_view.h",
+      "views/frame/luxxle_window_frame_graphic.cc",
+      "views/frame/luxxle_window_frame_graphic.h",
+      "views/omnibox/luxxle_omnibox_popup_view_views.cc",
+      "views/omnibox/luxxle_omnibox_popup_view_views.h",
+      "views/omnibox/luxxle_omnibox_result_view.cc",
+      "views/omnibox/luxxle_omnibox_result_view.h",
+      "views/omnibox/luxxle_omnibox_view_views.cc",
+      "views/omnibox/luxxle_omnibox_view_views.h",
+      "views/omnibox/luxxle_rounded_omnibox_results_frame.cc",
+      "views/omnibox/luxxle_rounded_omnibox_results_frame.h",
+      "views/overlay/luxxle_back_to_tab_label_button.cc",
+      "views/overlay/luxxle_back_to_tab_label_button.h",
+      "views/overlay/luxxle_video_overlay_window_views.cc",
+      "views/overlay/luxxle_video_overlay_window_views.h",
+      "views/page_action/luxxle_page_action_icon_container_view.cc",
+      "views/page_action/luxxle_page_action_icon_container_view.h",
       "views/rounded_separator.cc",
       "views/rounded_separator.h",
       "views/side_panel/ai_chat/ai_chat_side_panel_utils_views.cc",
-      "views/side_panel/bookmarks/brave_bookmarks_side_panel_coordinator.cc",
-      "views/side_panel/bookmarks/brave_bookmarks_side_panel_coordinator.h",
-      "views/side_panel/brave_bookmarks_side_panel_view.cc",
-      "views/side_panel/brave_bookmarks_side_panel_view.h",
-      "views/side_panel/brave_read_later_side_panel_view.cc",
-      "views/side_panel/brave_read_later_side_panel_view.h",
-      "views/side_panel/brave_side_panel.cc",
-      "views/side_panel/brave_side_panel.h",
-      "views/side_panel/brave_side_panel_coordinator.cc",
-      "views/side_panel/brave_side_panel_coordinator.h",
-      "views/side_panel/brave_side_panel_resize_widget.cc",
-      "views/side_panel/brave_side_panel_resize_widget.h",
-      "views/side_panel/brave_side_panel_utils.cc",
-      "views/side_panel/brave_side_panel_view_base.cc",
-      "views/side_panel/brave_side_panel_view_base.h",
+      "views/side_panel/bookmarks/luxxle_bookmarks_side_panel_coordinator.cc",
+      "views/side_panel/bookmarks/luxxle_bookmarks_side_panel_coordinator.h",
+      "views/side_panel/luxxle_bookmarks_side_panel_view.cc",
+      "views/side_panel/luxxle_bookmarks_side_panel_view.h",
+      "views/side_panel/luxxle_read_later_side_panel_view.cc",
+      "views/side_panel/luxxle_read_later_side_panel_view.h",
+      "views/side_panel/luxxle_side_panel.cc",
+      "views/side_panel/luxxle_side_panel.h",
+      "views/side_panel/luxxle_side_panel_coordinator.cc",
+      "views/side_panel/luxxle_side_panel_coordinator.h",
+      "views/side_panel/luxxle_side_panel_resize_widget.cc",
+      "views/side_panel/luxxle_side_panel_resize_widget.h",
+      "views/side_panel/luxxle_side_panel_utils.cc",
+      "views/side_panel/luxxle_side_panel_view_base.cc",
+      "views/side_panel/luxxle_side_panel_view_base.h",
       "views/split_view/split_view.cc",
       "views/split_view/split_view.h",
       "views/split_view/split_view_location_bar_model_delegate.cc",
@@ -565,28 +565,28 @@ source_set("ui") {
       "views/split_view/split_view_separator.cc",
       "views/split_view/split_view_separator.h",
       "views/split_view/split_view_separator_delegate.h",
-      "views/tabs/brave_browser_tab_strip_controller.cc",
-      "views/tabs/brave_browser_tab_strip_controller.h",
-      "views/tabs/brave_compound_tab_container.cc",
-      "views/tabs/brave_compound_tab_container.h",
-      "views/tabs/brave_tab.cc",
-      "views/tabs/brave_tab.h",
-      "views/tabs/brave_tab_container.cc",
-      "views/tabs/brave_tab_container.h",
-      "views/tabs/brave_tab_context_menu_contents.cc",
-      "views/tabs/brave_tab_context_menu_contents.h",
-      "views/tabs/brave_tab_group_header.cc",
-      "views/tabs/brave_tab_group_header.h",
-      "views/tabs/brave_tab_group_highlight.cc",
-      "views/tabs/brave_tab_group_highlight.h",
-      "views/tabs/brave_tab_group_underline.cc",
-      "views/tabs/brave_tab_group_underline.h",
-      "views/tabs/brave_tab_hover_card_controller.cc",
-      "views/tabs/brave_tab_hover_card_controller.h",
-      "views/tabs/brave_tab_strip.cc",
-      "views/tabs/brave_tab_strip.h",
-      "views/tabs/brave_tab_strip_layout_helper.cc",
-      "views/tabs/brave_tab_strip_layout_helper.h",
+      "views/tabs/luxxle_browser_tab_strip_controller.cc",
+      "views/tabs/luxxle_browser_tab_strip_controller.h",
+      "views/tabs/luxxle_compound_tab_container.cc",
+      "views/tabs/luxxle_compound_tab_container.h",
+      "views/tabs/luxxle_tab.cc",
+      "views/tabs/luxxle_tab.h",
+      "views/tabs/luxxle_tab_container.cc",
+      "views/tabs/luxxle_tab_container.h",
+      "views/tabs/luxxle_tab_context_menu_contents.cc",
+      "views/tabs/luxxle_tab_context_menu_contents.h",
+      "views/tabs/luxxle_tab_group_header.cc",
+      "views/tabs/luxxle_tab_group_header.h",
+      "views/tabs/luxxle_tab_group_highlight.cc",
+      "views/tabs/luxxle_tab_group_highlight.h",
+      "views/tabs/luxxle_tab_group_underline.cc",
+      "views/tabs/luxxle_tab_group_underline.h",
+      "views/tabs/luxxle_tab_hover_card_controller.cc",
+      "views/tabs/luxxle_tab_hover_card_controller.h",
+      "views/tabs/luxxle_tab_strip.cc",
+      "views/tabs/luxxle_tab_strip.h",
+      "views/tabs/luxxle_tab_strip_layout_helper.cc",
+      "views/tabs/luxxle_tab_strip_layout_helper.h",
       "views/tabs/dragging/dragging_tabs_session.cc",
       "views/tabs/dragging/dragging_tabs_session.h",
       "views/tabs/dragging/tab_drag_controller.cc",
@@ -600,10 +600,10 @@ source_set("ui") {
       "views/toolbar/ai_chat_button.h",
       "views/toolbar/bookmark_button.cc",
       "views/toolbar/bookmark_button.h",
-      "views/toolbar/brave_app_menu.cc",
-      "views/toolbar/brave_app_menu.h",
-      "views/toolbar/brave_browser_app_menu_button.cc",
-      "views/toolbar/brave_browser_app_menu_button.h",
+      "views/toolbar/luxxle_app_menu.cc",
+      "views/toolbar/luxxle_app_menu.h",
+      "views/toolbar/luxxle_browser_app_menu_button.cc",
+      "views/toolbar/luxxle_browser_app_menu_button.h",
       "views/toolbar/side_panel_button.cc",
       "views/toolbar/side_panel_button.h",
       "views/view_shadow.cc",
@@ -634,8 +634,8 @@ source_set("ui") {
 
       if (is_win) {
         sources += [
-          "webui/settings/brave_settings_secure_dns_handler.cc",
-          "webui/settings/brave_settings_secure_dns_handler.h",
+          "webui/settings/luxxle_settings_secure_dns_handler.cc",
+          "webui/settings/luxxle_settings_secure_dns_handler.h",
         ]
 
       }
@@ -643,15 +643,15 @@ source_set("ui") {
 
     if (use_aura) {
       sources += [
-        "views/renderer_context_menu/brave_render_view_context_menu_views.cc",
-        "views/renderer_context_menu/brave_render_view_context_menu_views.h",
+        "views/renderer_context_menu/luxxle_render_view_context_menu_views.cc",
+        "views/renderer_context_menu/luxxle_render_view_context_menu_views.h",
       ]
     }
 
     if (is_linux && use_dbus) {
       sources += [
-        "views/brave_dark_mode_manager_linux.cc",
-        "views/brave_dark_mode_manager_linux.h",
+        "views/luxxle_dark_mode_manager_linux.cc",
+        "views/luxxle_dark_mode_manager_linux.h",
       ]
       deps += [ "//ui/linux:linux_ui_factory" ]
     }
@@ -665,8 +665,8 @@ source_set("ui") {
 
     if (is_win) {
       sources += [
-        "views/frame/brave_browser_frame_view_win.cc",
-        "views/frame/brave_browser_frame_view_win.h",
+        "views/frame/luxxle_browser_frame_view_win.cc",
+        "views/frame/luxxle_browser_frame_view_win.h",
       ]
 
       deps += [ "//chrome/browser:titlebar_config" ]
@@ -674,8 +674,8 @@ source_set("ui") {
 
     if (is_linux) {
       sources += [
-        "views/frame/brave_browser_frame_view_linux_native.cc",
-        "views/frame/brave_browser_frame_view_linux_native.h",
+        "views/frame/luxxle_browser_frame_view_linux_native.cc",
+        "views/frame/luxxle_browser_frame_view_linux_native.h",
       ]
     }
 
@@ -683,20 +683,20 @@ source_set("ui") {
       sources += [
         "views/commands/default_accelerators_mac.h",
         "views/commands/default_accelerators_mac.mm",
-        "views/frame/brave_browser_frame_mac.h",
-        "views/frame/brave_browser_frame_mac.mm",
-        "views/frame/brave_browser_non_client_frame_view_mac.h",
-        "views/frame/brave_browser_non_client_frame_view_mac.mm",
+        "views/frame/luxxle_browser_frame_mac.h",
+        "views/frame/luxxle_browser_frame_mac.mm",
+        "views/frame/luxxle_browser_non_client_frame_view_mac.h",
+        "views/frame/luxxle_browser_non_client_frame_view_mac.mm",
       ]
     }
   }
 
   if (is_win || is_mac || is_linux) {
     sources += [
-      "views/profiles/brave_incognito_menu_view.cc",
-      "views/profiles/brave_incognito_menu_view.h",
-      "views/profiles/brave_profile_menu_view.cc",
-      "views/profiles/brave_profile_menu_view.h",
+      "views/profiles/luxxle_incognito_menu_view.cc",
+      "views/profiles/luxxle_incognito_menu_view.h",
+      "views/profiles/luxxle_profile_menu_view.cc",
+      "views/profiles/luxxle_profile_menu_view.h",
     ]
 
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -709,13 +709,13 @@ source_set("ui") {
 
   if (is_win || is_mac || is_linux) {
     sources += [
-      "geolocation/brave_geolocation_permission_tab_helper.cc",
-      "geolocation/brave_geolocation_permission_tab_helper.h",
+      "geolocation/luxxle_geolocation_permission_tab_helper.cc",
+      "geolocation/luxxle_geolocation_permission_tab_helper.h",
       "geolocation/geolocation_utils.h",
     ]
 
     # Commented out: removed components dependency - using Chromium defaults instead
-    # deps += [ "//luxxle/components/brave_geolocation_permission/common:brave_geolocation_permission" ]
+    # deps += [ "//luxxle/components/luxxle_geolocation_permission/common:luxxle_geolocation_permission" ]
 
     if (is_win) {
       sources += [ "geolocation/geolocation_utils_win.cc" ]
@@ -731,11 +731,11 @@ source_set("ui") {
     }
   }
 
-  # brave's obsolete infobar is only used on Windows and Mac now.
+  # luxxle's obsolete infobar is only used on Windows and Mac now.
   if (is_win || is_mac) {
     sources += [
-      "startup/brave_obsolete_system_infobar_delegate.cc",
-      "startup/brave_obsolete_system_infobar_delegate.h",
+      "startup/luxxle_obsolete_system_infobar_delegate.cc",
+      "startup/luxxle_obsolete_system_infobar_delegate.h",
     ]
 
     if (toolkit_views) {
@@ -752,16 +752,16 @@ source_set("ui") {
     "//luxxle/app/vector_icons:vector_icons",
     "//luxxle/browser:browser_process",
     "//luxxle/browser:sparkle_buildflags",
-    # Removed brave_rewards util dependency - no longer needed after brave_rewards cleanup
+    # Removed luxxle_rewards util dependency - no longer needed after luxxle_rewards cleanup
     "//luxxle/browser/misc_metrics",
     "//luxxle/browser/shell_integrations/buildflags",
     "//luxxle/browser/themes",
-    # Removed brave_ads dependency - using Chromium defaults instead
-    "//luxxle/browser/ui/brave_tooltips",
+    # Removed luxxle_ads dependency - using Chromium defaults instead
+    "//luxxle/browser/ui/luxxle_tooltips",
 
     # //chrome/browser/ui depends on //luxxle/browser/ui, add this target here
     # to pull in dependencies needed for the overwrite codes in chromium_src.
-    # Removed chromium_src/chrome/browser/ui - no longer needed after removing Brave overrides
+    # Removed chromium_src/chrome/browser/ui - no longer needed after removing Luxxle overrides
     # "//luxxle/chromium_src/chrome/browser/ui",
     "//luxxle/common",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -779,52 +779,52 @@ source_set("ui") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/ai_rewriter/common/buildflags",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_account/core/mojom",
+    # "//luxxle/components/luxxle_account/core/mojom",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_adaptive_captcha",
+    # "//luxxle/components/luxxle_adaptive_captcha",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_adblock_ui:generated_resources",
+    # "//luxxle/components/luxxle_adblock_ui:generated_resources",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_adblock_ui/adblock_internals:generated_resources",
+    # "//luxxle/components/luxxle_adblock_ui/adblock_internals:generated_resources",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_ads/browser",
+    # "//luxxle/components/luxxle_ads/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_ads/core",
+    # "//luxxle/components/luxxle_ads/core",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_news/browser",
+    # "//luxxle/components/luxxle_news/browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_news/common",
+    # "//luxxle/components/luxxle_news/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_perf_predictor/common",
+    # "//luxxle/components/luxxle_perf_predictor/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/content",
+    # "//luxxle/components/luxxle_rewards/content",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/core",
+    # "//luxxle/components/luxxle_rewards/core",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/core:features",
+    # "//luxxle/components/luxxle_rewards/core:features",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/core/engine:headers",
+    # "//luxxle/components/luxxle_rewards/core/engine:headers",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/core/mojom",
+    # "//luxxle/components/luxxle_rewards/core/mojom",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/core/mojom:webui",
+    # "//luxxle/components/luxxle_rewards/core/mojom:webui",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/resources",
+    # "//luxxle/components/luxxle_rewards/resources",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/resources:internals_generated_resources",
+    # "//luxxle/components/luxxle_rewards/resources:internals_generated_resources",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/resources/rewards_page:rewards_page_generated",
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/luxxle_rewards/resources/rewards_page:rewards_page_generated",
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:crypto",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:prefs",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:time_limited_codes",
+    # "//luxxle/components/luxxle_sync:crypto",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/luxxle_sync:prefs",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/luxxle_sync:time_limited_codes",
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -983,8 +983,8 @@ source_set("ui") {
 
   if (is_linux) {
     sources += [
-      "views/brave_views_delegate_linux.cc",
-      "views/brave_views_delegate_linux.h",
+      "views/luxxle_views_delegate_linux.cc",
+      "views/luxxle_views_delegate_linux.h",
     ]
 
     deps += [ "//chrome/app/theme:chrome_unscaled_resources_grit" ]
@@ -992,12 +992,12 @@ source_set("ui") {
 
   if (toolkit_views) {
     sources += [
-      "views/infobars/brave_confirm_infobar.cc",
-      "views/infobars/brave_confirm_infobar.h",
-      "views/infobars/brave_infobar_container_view.cc",
-      "views/infobars/brave_infobar_container_view.h",
-      "views/infobars/brave_sync_account_deleted_infobar.cc",
-      "views/infobars/brave_sync_account_deleted_infobar.h",
+      "views/infobars/luxxle_confirm_infobar.cc",
+      "views/infobars/luxxle_confirm_infobar.h",
+      "views/infobars/luxxle_infobar_container_view.cc",
+      "views/infobars/luxxle_infobar_container_view.h",
+      "views/infobars/luxxle_sync_account_deleted_infobar.cc",
+      "views/infobars/luxxle_sync_account_deleted_infobar.h",
       "views/infobars/custom_styled_label.cc",
       "views/infobars/custom_styled_label.h",
       "views/infobars/web_discovery_infobar_content_view.cc",
@@ -1007,8 +1007,8 @@ source_set("ui") {
     ]
 
     deps += [
-      # Removed brave_ads views dependency - using Chromium defaults instead
-      "//luxxle/browser/ui/views/brave_tooltips",
+      # Removed luxxle_ads views dependency - using Chromium defaults instead
+      "//luxxle/browser/ui/views/luxxle_tooltips",
       "//ui/views/controls/webview",
     ]
   }
@@ -1028,8 +1028,8 @@ source_set("ui") {
 
   if (!is_android && !is_ios) {
     deps += [
-      "//luxxle/app/theme:brave_theme_resources",
-      "//luxxle/app/theme:brave_unscaled_resources",
+      "//luxxle/app/theme:luxxle_theme_resources",
+      "//luxxle/app/theme:luxxle_unscaled_resources",
       # Commented out: removed components dependency - using Chromium defaults instead
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/webcompat_reporter/browser",
@@ -1132,32 +1132,32 @@ source_set("ui") {
 
   if (!is_android) {
     deps += [
-      "//luxxle/app:brave_generated_resources_grit",
+      "//luxxle/app:luxxle_generated_resources_grit",
       "//luxxle/browser/resources/settings:resources",
       "//luxxle/common/importer",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_new_tab_ui:generated_resources",
+      # "//luxxle/components/luxxle_new_tab_ui:generated_resources",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_new_tab_ui:mojom",
+      # "//luxxle/components/luxxle_new_tab_ui:mojom",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_private_new_tab_ui/common",
+      # "//luxxle/components/luxxle_private_new_tab_ui/common",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_private_new_tab_ui/common:mojom",
+      # "//luxxle/components/luxxle_private_new_tab_ui/common:mojom",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_private_new_tab_ui/resources/page:generated_resources",
+      # "//luxxle/components/luxxle_private_new_tab_ui/resources/page:generated_resources",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_rewards/content",
-      # Commented out: removed components dependency - using Chromium defaults instead
-      # Commented out: removed components dependency - using Chromium defaults instead
-      # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_sync",
-      # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_sync:sync_service_impl_helper",
+      # "//luxxle/components/luxxle_rewards/content",
       # Commented out: removed components dependency - using Chromium defaults instead
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_welcome/common",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_welcome_ui:generated_resources",
+      # "//luxxle/components/luxxle_sync",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/luxxle_sync:sync_service_impl_helper",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/luxxle_welcome/common",
+      # Commented out: removed components dependency - using Chromium defaults instead
+      # "//luxxle/components/luxxle_welcome_ui:generated_resources",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/commands/common",
       # Commented out: removed components dependency - using Chromium defaults instead
@@ -1181,39 +1181,39 @@ source_set("ui") {
 
   if (enable_extensions && toolkit_views) {
     sources += [
-      "toolbar/brave_location_bar_model_delegate.cc",
-      "toolbar/brave_location_bar_model_delegate.h",
-      "views/brave_actions/brave_actions_container.cc",
-      "views/brave_actions/brave_actions_container.h",
-      # Removed brave_rewards action view sources - no longer needed after brave_rewards cleanup
-      "views/brave_help_bubble/brave_help_bubble_delegate_view.cc",
-      "views/brave_help_bubble/brave_help_bubble_delegate_view.h",
-      "views/brave_help_bubble/brave_help_bubble_host_view.cc",
-      "views/brave_help_bubble/brave_help_bubble_host_view.h",
-      "views/brave_news/brave_news_action_icon_view.cc",
-      "views/brave_news/brave_news_action_icon_view.h",
-      "views/brave_news/brave_news_bubble_controller.cc",
-      "views/brave_news/brave_news_bubble_controller.h",
+      "toolbar/luxxle_location_bar_model_delegate.cc",
+      "toolbar/luxxle_location_bar_model_delegate.h",
+      "views/luxxle_actions/luxxle_actions_container.cc",
+      "views/luxxle_actions/luxxle_actions_container.h",
+      # Removed luxxle_rewards action view sources - no longer needed after luxxle_rewards cleanup
+      "views/luxxle_help_bubble/luxxle_help_bubble_delegate_view.cc",
+      "views/luxxle_help_bubble/luxxle_help_bubble_delegate_view.h",
+      "views/luxxle_help_bubble/luxxle_help_bubble_host_view.cc",
+      "views/luxxle_help_bubble/luxxle_help_bubble_host_view.h",
+      "views/luxxle_news/luxxle_news_action_icon_view.cc",
+      "views/luxxle_news/luxxle_news_action_icon_view.h",
+      "views/luxxle_news/luxxle_news_bubble_controller.cc",
+      "views/luxxle_news/luxxle_news_bubble_controller.h",
       "views/frame/vertical_tab_strip_region_view.cc",
       "views/frame/vertical_tab_strip_region_view.h",
       "views/frame/vertical_tab_strip_root_view.cc",
       "views/frame/vertical_tab_strip_root_view.h",
       "views/frame/vertical_tab_strip_widget_delegate_view.cc",
       "views/frame/vertical_tab_strip_widget_delegate_view.h",
-      "views/location_bar/brave_location_bar_view.cc",
-      "views/location_bar/brave_location_bar_view.h",
-      "views/location_bar/brave_star_view.cc",
-      "views/location_bar/brave_star_view.h",
-      "views/profiles/brave_avatar_toolbar_button.cc",
-      "views/profiles/brave_avatar_toolbar_button.h",
-      "views/profiles/brave_avatar_toolbar_button_delegate.cc",
-      "views/profiles/brave_avatar_toolbar_button_delegate.h",
-      "views/tabs/brave_new_tab_button.cc",
-      "views/tabs/brave_new_tab_button.h",
-      "views/tabs/brave_tab_search_button.cc",
-      "views/tabs/brave_tab_search_button.h",
-      "views/toolbar/brave_toolbar_view.cc",
-      "views/toolbar/brave_toolbar_view.h",
+      "views/location_bar/luxxle_location_bar_view.cc",
+      "views/location_bar/luxxle_location_bar_view.h",
+      "views/location_bar/luxxle_star_view.cc",
+      "views/location_bar/luxxle_star_view.h",
+      "views/profiles/luxxle_avatar_toolbar_button.cc",
+      "views/profiles/luxxle_avatar_toolbar_button.h",
+      "views/profiles/luxxle_avatar_toolbar_button_delegate.cc",
+      "views/profiles/luxxle_avatar_toolbar_button_delegate.h",
+      "views/tabs/luxxle_new_tab_button.cc",
+      "views/tabs/luxxle_new_tab_button.h",
+      "views/tabs/luxxle_tab_search_button.cc",
+      "views/tabs/luxxle_tab_search_button.h",
+      "views/toolbar/luxxle_toolbar_view.cc",
+      "views/toolbar/luxxle_toolbar_view.h",
     ]
 
     if (is_mac) {
@@ -1222,8 +1222,8 @@ source_set("ui") {
 
     if (enable_extensions) {
       sources += [
-        "webui/settings/brave_default_extensions_handler.cc",
-        "webui/settings/brave_default_extensions_handler.h",
+        "webui/settings/luxxle_default_extensions_handler.cc",
+        "webui/settings/luxxle_default_extensions_handler.h",
       ]
 
       deps += [
@@ -1256,9 +1256,9 @@ source_set("ui") {
     deps += [
       # "//luxxle/browser/extensions",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_extension:generated_resources",
+      # "//luxxle/components/luxxle_extension:generated_resources",
       # Commented out: removed components dependency - using Chromium defaults instead
-      # "//luxxle/components/brave_extension:static_resources",
+      # "//luxxle/components/luxxle_extension:static_resources",
       # Commented out: removed components dependency - using Chromium defaults instead
       # "//luxxle/components/decentralized_dns/content",
       # Commented out: removed components dependency - using Chromium defaults instead
@@ -1312,7 +1312,7 @@ source_set("ui") {
 
   if (!is_android) {
     sources += [
-      # Removed brave_rewards panel coordinator sources - no longer needed after brave_rewards cleanup
+      # Removed luxxle_rewards panel coordinator sources - no longer needed after luxxle_rewards cleanup
       "commands/accelerator_service.cc",
       "commands/accelerator_service.h",
       "commands/accelerator_service_factory.cc",
@@ -1387,19 +1387,19 @@ source_set("ui") {
   }
 }
 
-source_set("brave_tab_prefs") {
+source_set("luxxle_tab_prefs") {
   sources = [
-    "tabs/brave_tab_prefs.cc",
-    "tabs/brave_tab_prefs.h",
+    "tabs/luxxle_tab_prefs.cc",
+    "tabs/luxxle_tab_prefs.h",
   ]
   deps = [
-    ":brave_tab_features",
+    ":luxxle_tab_features",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//components/prefs",
   ]
 }
 
-source_set("brave_tab_features") {
+source_set("luxxle_tab_features") {
   sources = [
     "tabs/features.cc",
     "tabs/features.h",
@@ -1410,15 +1410,15 @@ source_set("brave_tab_features") {
   ]
 }
 
-# Removed brave_rewards_source target - no longer needed after brave_rewards cleanup
+# Removed luxxle_rewards_source target - no longer needed after luxxle_rewards cleanup
 
 source_set("unit_tests") {
   if (!is_android) {
     testonly = true
     sources = [
-      "brave_file_select_utils_unittest.cc",
-      "brave_layout_constants_unittest.cc",
-      "brave_scheme_utils_unittest.cc",
+      "luxxle_file_select_utils_unittest.cc",
+      "luxxle_layout_constants_unittest.cc",
+      "luxxle_scheme_utils_unittest.cc",
     ]
     deps = [
       "//base/test:test_support",
@@ -1456,8 +1456,8 @@ source_set("browser_tests") {
     defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]
 
     sources = [
-      "brave_browser_browsertest.cc",
-      "views/frame/brave_system_menu_model_builder_browsertest.cc",
+      "luxxle_browser_browsertest.cc",
+      "views/frame/luxxle_system_menu_model_builder_browsertest.cc",
       "window_closing_confirm_browsertest.cc",
     ]
 

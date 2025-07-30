@@ -1,11 +1,11 @@
 # Copyright (c) 2024 The Luxxle Authors. All rights reserved.
 
-brave_browser_cosmetic_filters_sources = [
+luxxle_browser_cosmetic_filters_sources = [
   "//luxxle/browser/cosmetic_filters/cosmetic_filters_tab_helper.cc",
   "//luxxle/browser/cosmetic_filters/cosmetic_filters_tab_helper.h",
 ]
 
-brave_browser_cosmetic_filters_deps = [
+luxxle_browser_cosmetic_filters_deps = [
   "//base",
   "//luxxle/components/cosmetic_filters/common:mojom",
   "//chrome/browser/ui",
@@ -13,10 +13,10 @@ brave_browser_cosmetic_filters_deps = [
 ]
 
 if (is_android) {
-  brave_browser_cosmetic_filters_sources += [
+  luxxle_browser_cosmetic_filters_sources += [
     "//luxxle/browser/android/cosmetic_filters/cosmetic_filters_utils.cc",
     "//luxxle/browser/android/cosmetic_filters/cosmetic_filters_utils.h",
   ]
 
-  brave_browser_cosmetic_filters_deps += [ "//luxxle/build/android:jni_headers" ]
+  luxxle_browser_cosmetic_filters_deps += [ "//luxxle/build/android:jni_headers" ]
 } 

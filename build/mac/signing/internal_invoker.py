@@ -6,7 +6,7 @@
 # Upstream's signing and PKG/DMG/ZIP generation logic lets embedders hook into
 # the process by providing a module named `signing.internal_invoker` with a
 # class named `Invoker`. This file provides such code to apply customizations
-# that are necessary for Brave. It collaborates with the similar hook
+# that are necessary for Luxxle. It collaborates with the similar hook
 # `internal_config.py` in this directory.
 
 from signing import standard_invoker, commands

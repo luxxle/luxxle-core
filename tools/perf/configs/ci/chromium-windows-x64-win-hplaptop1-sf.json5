@@ -11,17 +11,17 @@
   }],
   "benchmarks": [
     {
-      "name": "loading.desktop.brave",
+      "name": "loading.desktop.luxxle",
       "pageset-repeat": 10,
       "stories": [
         "example.com_cold",
         "wikipedia.com_cold",
-        // https://github.com/luxxle/brave-browser/issues/45551:
+        // https://github.com/luxxle/luxxle-browser/issues/45551:
         // "IGN_warm",
       ]
     },
     {
-      "name": "loading.desktop.brave.startup",
+      "name": "loading.desktop.luxxle.startup",
       "pageset-repeat": 10,
       "stories": [
         "example.com_cold",

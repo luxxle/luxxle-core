@@ -1,9 +1,9 @@
-/* Copyright (c) 2024 The Brave Authors. All rights reserved.
+/* Copyright (c) 2024 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/ios/web_view/public/cwv_web_view_extras.h"
+#include "luxxle/ios/web_view/public/cwv_web_view_extras.h"
 
 #include "base/apple/foundation_util.h"
 #include "base/json/json_writer.h"
@@ -40,8 +40,8 @@ const CWVUserAgentType CWVUserAgentTypeDesktop =
 - (void)updateScripts {
   // This runs `UpdateScripts` on the configuration provider which we will need
   // to call in-place of `-[WKUserContentController removeAllUserScripts]` until
-  // all Brave JavaScript features are ported over to actual Chromium
-  // JavascriptFeature types and added to BraveWebClient
+  // all Luxxle JavaScript features are ported over to actual Chromium
+  // JavascriptFeature types and added to LuxxleWebClient
   web::WKWebViewConfigurationProvider& config_provider =
       web::WKWebViewConfigurationProvider::FromBrowserState(
           self.webState->GetBrowserState());

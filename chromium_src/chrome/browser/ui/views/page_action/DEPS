@@ -1,0 +1,4 @@
+include_rules = [
+  "+luxxle/components/playlist/common/buildflags",
+  "+luxxle/components/speedreader/common/buildflags",
+]

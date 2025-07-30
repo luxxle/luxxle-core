@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script to fix IDR_BRAVE resource references and clean up .grd files.
+Script to fix IDR_LUXXLE resource references and clean up .grd files.
 This handles the resource definition files and usage.
 """
 
@@ -9,38 +9,38 @@ import re
 import argparse
 import xml.etree.ElementTree as ET
 
-# IDR_BRAVE resources that should be replaced with Chromium equivalents
+# IDR_LUXXLE resources that should be replaced with Chromium equivalents
 RESOURCE_REPLACEMENTS = {
-    'IDR_BRAVE_BOOKMARK_FOLDER_CLOSED_DARK': 'IDR_BOOKMARK_FOLDER_CLOSED',
-    'IDR_BRAVE_BOOKMARK_FOLDER_CLOSED_LIGHT': 'IDR_BOOKMARK_FOLDER_CLOSED',
-    'IDR_BRAVE_BOOKMARK_FOLDER_OPEN_LIN_DARK': 'IDR_BOOKMARK_FOLDER_OPEN',
-    'IDR_BRAVE_BOOKMARK_FOLDER_OPEN_LIN_LIGHT': 'IDR_BOOKMARK_FOLDER_OPEN',
-    'IDR_BRAVE_BOOKMARK_FOLDER_OPEN_WIN_DARK': 'IDR_BOOKMARK_FOLDER_OPEN',
-    'IDR_BRAVE_BOOKMARK_FOLDER_OPEN_WIN_LIGHT': 'IDR_BOOKMARK_FOLDER_OPEN',
-    'IDR_BRAVE_PASSWORD_MANAGER_LOGO': 'IDR_PASSWORD_MANAGER_LOGO',
+    'IDR_LUXXLE_BOOKMARK_FOLDER_CLOSED_DARK': 'IDR_BOOKMARK_FOLDER_CLOSED',
+    'IDR_LUXXLE_BOOKMARK_FOLDER_CLOSED_LIGHT': 'IDR_BOOKMARK_FOLDER_CLOSED',
+    'IDR_LUXXLE_BOOKMARK_FOLDER_OPEN_LIN_DARK': 'IDR_BOOKMARK_FOLDER_OPEN',
+    'IDR_LUXXLE_BOOKMARK_FOLDER_OPEN_LIN_LIGHT': 'IDR_BOOKMARK_FOLDER_OPEN',
+    'IDR_LUXXLE_BOOKMARK_FOLDER_OPEN_WIN_DARK': 'IDR_BOOKMARK_FOLDER_OPEN',
+    'IDR_LUXXLE_BOOKMARK_FOLDER_OPEN_WIN_LIGHT': 'IDR_BOOKMARK_FOLDER_OPEN',
+    'IDR_LUXXLE_PASSWORD_MANAGER_LOGO': 'IDR_PASSWORD_MANAGER_LOGO',
 }
 
-# IDR_BRAVE resources to remove completely (brave-specific)
+# IDR_LUXXLE resources to remove completely (luxxle-specific)
 RESOURCES_TO_REMOVE = [
-    'IDR_BRAVE_SHIELDS_ICON_64',
-    'IDR_BRAVE_SHIELDS_ICON_64_DISABLED', 
-    'IDR_BRAVE_PLAYER_ACTION_VIEW_ICON',
-    'IDR_BRAVE_WEB_DISCOVERY_INFOBAR_BG_GRAPHIC',
-    'IDR_BRAVE_WEB_DISCOVERY_INFOBAR_BG_GRAPHIC_DARK',
-    'IDR_BRAVE_WEB_DISCOVERY_INFOBAR_ICON',
-    'IDR_BRAVE_SEARCH_CONVERSION_BANNER_GRAPHIC',
-    'IDR_BRAVE_SEARCH_CONVERSION_BANNER_GRAPHIC_DARK',
-    'IDR_BRAVE_SEARCH_CONVERSION_BANNER_GRAPHIC_DDG',
-    'IDR_BRAVE_SEARCH_CONVERSION_BANNER_GRAPHIC_DDG_DARK',
-    'IDR_BRAVE_SEARCH_CONVERSION_BUTTON_BRAVE_SEARCH_ICON',
-    'IDR_BRAVE_SEARCH_LOGO_IN_SEARCH_PROMOTION',
-    'IDR_BRAVE_WEBUI_PAGE_SPECIFIC_BRAVE_HISTORY_ITEM_M_JS',
-    'IDR_BRAVE_WALLET_',  # All wallet resources
-    'IDR_BRAVE_REWARDS_',  # All rewards resources
-    'IDR_BRAVE_NEW_TAB_',  # All new tab resources
-    'IDR_BRAVE_EDUCATION_',  # All education resources
-    'IDR_BRAVE_NEWS_',  # All news resources
-    'IDR_BRAVE_ADBLOCK_',  # All adblock resources
+    'IDR_LUXXLE_SHIELDS_ICON_64',
+    'IDR_LUXXLE_SHIELDS_ICON_64_DISABLED', 
+    'IDR_LUXXLE_PLAYER_ACTION_VIEW_ICON',
+    'IDR_LUXXLE_WEB_DISCOVERY_INFOBAR_BG_GRAPHIC',
+    'IDR_LUXXLE_WEB_DISCOVERY_INFOBAR_BG_GRAPHIC_DARK',
+    'IDR_LUXXLE_WEB_DISCOVERY_INFOBAR_ICON',
+    'IDR_LUXXLE_SEARCH_CONVERSION_BANNER_GRAPHIC',
+    'IDR_LUXXLE_SEARCH_CONVERSION_BANNER_GRAPHIC_DARK',
+    'IDR_LUXXLE_SEARCH_CONVERSION_BANNER_GRAPHIC_DDG',
+    'IDR_LUXXLE_SEARCH_CONVERSION_BANNER_GRAPHIC_DDG_DARK',
+    'IDR_LUXXLE_SEARCH_CONVERSION_BUTTON_LUXXLE_SEARCH_ICON',
+    'IDR_LUXXLE_SEARCH_LOGO_IN_SEARCH_PROMOTION',
+    'IDR_LUXXLE_WEBUI_PAGE_SPECIFIC_LUXXLE_HISTORY_ITEM_M_JS',
+    'IDR_LUXXLE_WALLET_',  # All wallet resources
+    'IDR_LUXXLE_REWARDS_',  # All rewards resources
+    'IDR_LUXXLE_NEW_TAB_',  # All new tab resources
+    'IDR_LUXXLE_EDUCATION_',  # All education resources
+    'IDR_LUXXLE_NEWS_',  # All news resources
+    'IDR_LUXXLE_ADBLOCK_',  # All adblock resources
 ]
 
 def should_skip_file(filepath):
@@ -117,9 +117,9 @@ def fix_source_file(filepath):
     
     # Comment out references to resources that should be removed
     for resource_prefix in RESOURCES_TO_REMOVE:
-        # Handle partial matches (like IDR_BRAVE_WALLET_)
+        # Handle partial matches (like IDR_LUXXLE_WALLET_)
         if resource_prefix.endswith('_'):
-            pattern = r'IDR_BRAVE_\w*' + resource_prefix[10:-1] + r'\w*'
+            pattern = r'IDR_LUXXLE_\w*' + resource_prefix[10:-1] + r'\w*'
         else:
             pattern = r'\b' + resource_prefix + r'\b'
         
@@ -157,7 +157,7 @@ def find_resource_files(root_dir='.'):
     return grd_files, source_files
 
 def main():
-    parser = argparse.ArgumentParser(description='Fix IDR_BRAVE resource references')
+    parser = argparse.ArgumentParser(description='Fix IDR_LUXXLE resource references')
     parser.add_argument('--dry-run', action='store_true', help='Show what would be changed without modifying files')
     parser.add_argument('--directory', default='.', help='Root directory to search (default: current directory)')
     parser.add_argument('--grd-only', action='store_true', help='Only process .grd files')

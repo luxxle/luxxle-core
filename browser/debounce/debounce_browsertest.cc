@@ -8,13 +8,13 @@
 #include "base/scoped_observation.h"
 #include "base/strings/stringprintf.h"
 #include "base/test/scoped_feature_list.h"
-#include "luxxle/browser/brave_browser_process.h"
-#include "luxxle/browser/brave_content_browser_client.h"
-#include "luxxle/browser/extensions/brave_base_local_data_files_browsertest.h"
-#include "luxxle/components/brave_shields/content/browser/ad_block_service.h"
-#include "luxxle/components/brave_shields/content/browser/brave_shields_util.h"
-#include "luxxle/components/brave_shields/content/test/engine_test_observer.h"
-#include "luxxle/components/brave_shields/content/test/test_filters_provider.h"
+#include "luxxle/browser/luxxle_browser_process.h"
+#include "luxxle/browser/luxxle_content_browser_client.h"
+#include "luxxle/browser/extensions/luxxle_base_local_data_files_browsertest.h"
+#include "luxxle/components/luxxle_shields/content/browser/ad_block_service.h"
+#include "luxxle/components/luxxle_shields/content/browser/luxxle_shields_util.h"
+#include "luxxle/components/luxxle_shields/content/test/engine_test_observer.h"
+#include "luxxle/components/luxxle_shields/content/test/test_filters_provider.h"
 #include "luxxle/components/debounce/core/browser/debounce_component_installer.h"
 #include "luxxle/components/debounce/core/common/features.h"
 #include "luxxle/components/debounce/core/common/pref_names.h"
@@ -36,8 +36,8 @@ constexpr char kTestDataDirectory[] = "debounce-data";
 static base::NoDestructor<std::string> gLastSiteForCookies("");
 }  // namespace
 
-using brave_shields::ControlType;
-using brave_shields::SetCosmeticFilteringControlType;
+using luxxle_shields::ControlType;
+using luxxle_shields::SetCosmeticFilteringControlType;
 using debounce::DebounceComponentInstaller;
 
 class DebounceComponentInstallerWaiter
@@ -81,7 +81,7 @@ class SpyThrottle : public blink::URLLoaderThrottle {
   }
 };
 
-class SpyContentBrowserClient : public BraveContentBrowserClient {
+class SpyContentBrowserClient : public LuxxleContentBrowserClient {
  public:
   SpyContentBrowserClient() = default;
   ~SpyContentBrowserClient() override = default;
@@ -96,7 +96,7 @@ class SpyContentBrowserClient : public BraveContentBrowserClient {
       content::FrameTreeNodeId frame_tree_node_id,
       std::optional<int64_t> navigation_id) override {
     std::vector<std::unique_ptr<blink::URLLoaderThrottle>> throttles =
-        BraveContentBrowserClient::CreateURLLoaderThrottles(
+        LuxxleContentBrowserClient::CreateURLLoaderThrottles(
             request, browser_context, wc_getter, navigation_ui_data,
             frame_tree_node_id, navigation_id);
     throttles.push_back(std::make_unique<SpyThrottle>());
@@ -108,7 +108,7 @@ class DebounceBrowserTest : public BaseLocalDataFilesBrowserTest {
  public:
   void SetUp() override {
     scoped_feature_list_.InitAndEnableFeature(
-        debounce::features::kBraveDebounce);
+        debounce::features::kLuxxleDebounce);
     BaseLocalDataFilesBrowserTest::SetUp();
   }
 
@@ -116,14 +116,14 @@ class DebounceBrowserTest : public BaseLocalDataFilesBrowserTest {
   const char* test_data_directory() override { return kTestDataDirectory; }
   const char* embedded_test_server_directory() override { return ""; }
   LocalDataFilesObserver* service() override {
-    return g_brave_browser_process->debounce_component_installer();
+    return g_luxxle_browser_process->debounce_component_installer();
   }
 
   void WaitForService() override {
     // Wait for debounce download service to load and parse its
     // configuration file.
     debounce::DebounceComponentInstaller* component_installer =
-        g_brave_browser_process->debounce_component_installer();
+        g_luxxle_browser_process->debounce_component_installer();
     DebounceComponentInstallerWaiter(component_installer).Wait();
   }
 
@@ -178,19 +178,19 @@ class DebounceBrowserTest : public BaseLocalDataFilesBrowserTest {
 
   void InitAdBlockForDebounce() {
     auto source_provider =
-        std::make_unique<brave_shields::TestFiltersProvider>("||blocked.com^");
-    g_brave_browser_process->ad_block_service()->UseSourceProviderForTest(
+        std::make_unique<luxxle_shields::TestFiltersProvider>("||blocked.com^");
+    g_luxxle_browser_process->ad_block_service()->UseSourceProviderForTest(
         source_provider.get());
     source_providers_.push_back(std::move(source_provider));
     auto* engine =
-        g_brave_browser_process->ad_block_service()->default_engine_.get();
+        g_luxxle_browser_process->ad_block_service()->default_engine_.get();
     EngineTestObserver engine_observer(engine);
     engine_observer.Wait();
   }
 
  private:
   base::test::ScopedFeatureList scoped_feature_list_;
-  std::vector<std::unique_ptr<brave_shields::TestFiltersProvider>>
+  std::vector<std::unique_ptr<luxxle_shields::TestFiltersProvider>>
       source_providers_;
 };
 
@@ -420,7 +420,7 @@ IN_PROC_BROWSER_TEST_F(DebounceBrowserTest, IgnoreHostnameMismatch) {
   ASSERT_TRUE(InstallMockExtension());
   ToggleDebouncePref(true);
   // The destination decodes to http://evil.com\\@apps.apple.com
-  // If you paste that in Chrome or Brave, the backslashes are changed
+  // If you paste that in Chrome or Luxxle, the backslashes are changed
   // to slashes and you end up on http://evil.com//@apps.apple.com
   GURL original_url = embedded_test_server()->GetURL(
       "simple.a.com", "/?url=http%3A%2F%2Fevil.com%5C%5C%40apps.apple.com");

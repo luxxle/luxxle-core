@@ -13,10 +13,10 @@ import android.widget.TextView;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
-import org.chromium.brave_vpn.mojom.BraveVpnConstants;
+import org.chromium.luxxle_vpn.mojom.LuxxleVpnConstants;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnPrefUtils;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnPrefUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnUtils;
 
 public class VpnRegionPreference extends Preference {
     private Context mContext;
@@ -31,21 +31,21 @@ public class VpnRegionPreference extends Preference {
         super.onBindViewHolder(holder);
 
         TextView regionFlag = (TextView) holder.findViewById(R.id.region_flag);
-        if (!BraveVpnPrefUtils.getRegionIsoCode().isEmpty()) {
+        if (!LuxxleVpnPrefUtils.getRegionIsoCode().isEmpty()) {
             regionFlag.setText(
-                    BraveVpnUtils.countryCodeToEmoji(BraveVpnPrefUtils.getRegionIsoCode()));
+                    LuxxleVpnUtils.countryCodeToEmoji(LuxxleVpnPrefUtils.getRegionIsoCode()));
         }
 
-        String serverLocationTitle = BraveVpnPrefUtils.getRegionCountry();
+        String serverLocationTitle = LuxxleVpnPrefUtils.getRegionCountry();
         String optimalString = "%s - %s";
         String serverLocationSummary =
-                BraveVpnPrefUtils.getRegionPrecision()
-                                .equals(BraveVpnConstants.REGION_PRECISION_COUNTRY)
+                LuxxleVpnPrefUtils.getRegionPrecision()
+                                .equals(LuxxleVpnConstants.REGION_PRECISION_COUNTRY)
                         ? String.format(
                                 optimalString,
                                 mContext.getString(R.string.optimal_text),
-                                BraveVpnPrefUtils.getHostnameDisplay())
-                        : BraveVpnPrefUtils.getHostnameDisplay();
+                                LuxxleVpnPrefUtils.getHostnameDisplay())
+                        : LuxxleVpnPrefUtils.getHostnameDisplay();
 
         TextView regionTitle = (TextView) holder.findViewById(R.id.region_title);
         regionTitle.setText(serverLocationTitle);
@@ -56,7 +56,7 @@ public class VpnRegionPreference extends Preference {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        BraveVpnUtils.openVpnServerSelectionActivity(mContext);
+                        LuxxleVpnUtils.openVpnServerSelectionActivity(mContext);
                     }
                 });
     }

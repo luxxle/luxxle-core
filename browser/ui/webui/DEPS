@@ -6,8 +6,8 @@ include_rules += [
 ]
 
 specific_include_rules = {
-  "brave_adblock_internals_ui\.cc": [
+  "luxxle_adblock_internals_ui\.cc": [
   ],
-  "brave_rewards_page_ui\.cc": [
+  "luxxle_rewards_page_ui\.cc": [
   ],
 }

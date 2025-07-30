@@ -34,16 +34,16 @@ double g_testing_major_version = 0;
 
 // |version| has four components like 111.1.51.34.
 // First one is upstream's major version.
-// Brave's major version is second and third component like 1.51.
+// Luxxle's major version is second and third component like 1.51.
 // Ignored fourth number as it's build number.
-std::optional<double> GetBraveMajorVersionAsDouble(
+std::optional<double> GetLuxxleMajorVersionAsDouble(
     const base::Version& version) {
-  double brave_major_version;
+  double luxxle_major_version;
   CHECK(
       base::StringToDouble(base::StringPrintf("%d.%d", version.components()[1],
                                               version.components()[2]),
-                           &brave_major_version));
-  return brave_major_version;
+                           &luxxle_major_version));
+  return luxxle_major_version;
 }
 
 // Returns 1.xx or 2.xx as double.
@@ -56,7 +56,7 @@ std::optional<double> GetCurrentBrowserVersion() {
   CHECK(version.IsValid());
   CHECK_EQ(version.components().size(), 4ul);
 
-  return GetBraveMajorVersionAsDouble(version);
+  return GetLuxxleMajorVersionAsDouble(version);
 }
 
 bool DoesUserGetMajorUpdateSinceInstall() {
@@ -76,7 +76,7 @@ bool DoesUserGetMajorUpdateSinceInstall() {
   }
 
   const auto current_version = GetCurrentBrowserVersion();
-  const auto profile_created_version = GetBraveMajorVersionAsDouble(
+  const auto profile_created_version = GetLuxxleMajorVersionAsDouble(
       base::Version(ChromeVersionService::GetVersion(profile->GetPrefs())));
   if (!current_version || !profile_created_version) {
     return false;
@@ -132,7 +132,7 @@ void SetCurrentVersionForTesting(double major_version) {
   g_testing_major_version = major_version;
 }
 
-bool ShouldShowBraveWhatsNewForState(PrefService* local_state) {
+bool ShouldShowLuxxleWhatsNewForState(PrefService* local_state) {
   if (!DoesUserGetMajorUpdateSinceInstall()) {
     VLOG(2) << __func__ << " : This user doesn't get major update yet.";
     return false;
@@ -144,7 +144,7 @@ bool ShouldShowBraveWhatsNewForState(PrefService* local_state) {
   constexpr std::array<const char*, 8> kSupportedLanguages = {
       "en", "zh", "fr", "de", "ja", "ko", "pt", "es"};
   const std::string default_lang_code =
-      brave_l10n::GetDefaultISOLanguageCodeString();
+      luxxle_l10n::GetDefaultISOLanguageCodeString();
   if (std::ranges::find(kSupportedLanguages, default_lang_code) ==
       std::end(kSupportedLanguages)) {
     VLOG(2) << __func__ << " Not supported language - " << default_lang_code;
@@ -188,10 +188,10 @@ void RegisterLocalStatePrefs(PrefRegistrySimple* registry) {
   registry->RegisterDoublePref(prefs::kWhatsNewLastVersion, 0);
 }
 
-void StartBraveWhatsNew(Browser* browser) {
-  constexpr char kBraveWhatsNewURL[] = "https://brave.com/whats-new/";
+void StartLuxxleWhatsNew(Browser* browser) {
+  constexpr char kLuxxleWhatsNewURL[] = "https://luxxle.com/whats-new/";
   // Load whats-new url in the first foreground tab.
-  chrome::AddTabAt(browser, GURL(kBraveWhatsNewURL), 0, true);
+  chrome::AddTabAt(browser, GURL(kLuxxleWhatsNewURL), 0, true);
   browser->tab_strip_model()->ActivateTabAt(
       browser->tab_strip_model()->IndexOfFirstNonPinnedTab());
 }

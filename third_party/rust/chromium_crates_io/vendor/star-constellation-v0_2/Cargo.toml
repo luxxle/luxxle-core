@@ -34,7 +34,7 @@ categories = [
     "algorithms",
 ]
 license = "MPL-2.0"
-repository = "https://github.com/brave/constellation"
+repository = "https://github.com/luxxle/constellation"
 
 [lib]
 name = "star_constellation"

@@ -24,9 +24,9 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-import org.chromium.brave_wallet.mojom.BraveWalletP3a;
-import org.chromium.brave_wallet.mojom.KeyringService;
-import org.chromium.brave_wallet.mojom.OnboardingAction;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletP3a;
+import org.chromium.luxxle_wallet.mojom.KeyringService;
+import org.chromium.luxxle_wallet.mojom.OnboardingAction;
 import org.chromium.chrome.R;
 
 public class OnboardingVerifyRecoveryPhraseFragment extends BaseOnboardingWalletFragment {
@@ -157,11 +157,11 @@ public class OnboardingVerifyRecoveryPhraseFragment extends BaseOnboardingWallet
                         return;
                     }
                     if (mWordToMatch.second.equals(typedWord.toString())) {
-                        BraveWalletP3a braveWalletP3A = getBraveWalletP3A();
+                        LuxxleWalletP3a luxxleWalletP3A = getLuxxleWalletP3A();
                         KeyringService keyringService = getKeyringService();
                         if (mVerificationStep == VerificationStep.THIRD) {
-                            if (mIsOnboarding && braveWalletP3A != null) {
-                                braveWalletP3A.reportOnboardingAction(OnboardingAction.COMPLETE);
+                            if (mIsOnboarding && luxxleWalletP3A != null) {
+                                luxxleWalletP3A.reportOnboardingAction(OnboardingAction.COMPLETE);
                             }
                             if (keyringService != null) {
                                 keyringService.notifyWalletBackupComplete();

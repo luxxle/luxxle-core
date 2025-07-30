@@ -1,6 +1,6 @@
 # Sharks
 
-[![Build](https://github.com/brave/sta-rs/workflows/Tests/badge.svg?branch=main)](https://github.com/brave/sta-rs/actions)
+[![Build](https://github.com/luxxle/sta-rs/workflows/Tests/badge.svg?branch=main)](https://github.com/luxxle/sta-rs/actions)
 [![Crates](https://img.shields.io/crates/v/star-sharks.svg)](https://crates.io/crates/star-sharks)
 [![Docs](https://docs.rs/star-sharks/badge.svg)](https://docs.rs/star-sharks)
 
@@ -50,7 +50,7 @@ You can run them with `cargo test` and `cargo bench`.
 
 # Contributing
 
-If you find a bug or would like a new feature, [open a new issue](https://github.com/brave/sta-rs/issues/new). Please see the [security page](https://github.com/brave/sta-rs/sharks/SECURITY.md) for information on reporting vulnerabilities.
+If you find a bug or would like a new feature, [open a new issue](https://github.com/luxxle/sta-rs/issues/new). Please see the [security page](https://github.com/luxxle/sta-rs/sharks/SECURITY.md) for information on reporting vulnerabilities.
 
 # License
 

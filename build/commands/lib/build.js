@@ -10,7 +10,7 @@ const fs = require('fs-extra')
 const Log = require('../lib/logging')
 
 /**
- * Checks to make sure the src/chrome/VERSION matches brave-core's package.json version
+ * Checks to make sure the src/chrome/VERSION matches luxxle-core's package.json version
  */
 const checkVersionsMatch = () => {
   const srcChromeVersionDir = path.resolve(
@@ -19,13 +19,13 @@ const checkVersionsMatch = () => {
   const versionData = fs.readFileSync(srcChromeVersionDir, 'utf8')
   const re = /MAJOR=(\d+)\s+MINOR=(\d+)\s+BUILD=(\d+)\s+PATCH=(\d+)/
   const found = versionData.match(re)
-  const braveVersionFromChromeFile = `${found[2]}.${found[3]}.${found[4]}`
-  if (braveVersionFromChromeFile !== config.braveVersion) {
+  const luxxleVersionFromChromeFile = `${found[2]}.${found[3]}.${found[4]}`
+  if (luxxleVersionFromChromeFile !== config.luxxleVersion) {
     // Only a warning. The CI environment will choose to proceed or not within its own script.
     Log.warn(
       `Version files do not match!\n`
-        + `src/chrome/VERSION: ${braveVersionFromChromeFile}\n`
-        + `brave-core configured version: ${config.braveVersion}\n`
+        + `src/chrome/VERSION: ${luxxleVersionFromChromeFile}\n`
+        + `luxxle-core configured version: ${config.luxxleVersion}\n`
         + `Did you forget to sync?`,
     )
   }
@@ -37,7 +37,7 @@ const build = async (buildConfig = config.defaultBuildConfig, options = {}) => {
   checkVersionsMatch()
 
   util.touchOverriddenFiles()
-  // LUXXLE: Disable branding update to eliminate warnings about missing brave files
+  // LUXXLE: Disable branding update to eliminate warnings about missing luxxle files
   // util.updateBranding()
   await util.buildNativeRedirectCC()
 

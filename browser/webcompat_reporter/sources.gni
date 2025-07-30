@@ -3,14 +3,14 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-brave_browser_webcompat_reporter_sources = [
+luxxle_browser_webcompat_reporter_sources = [
   "//luxxle/browser/webcompat_reporter/webcompat_reporter_service_delegate.cc",
   "//luxxle/browser/webcompat_reporter/webcompat_reporter_service_delegate.h",
   "//luxxle/browser/webcompat_reporter/webcompat_reporter_service_factory.cc",
   "//luxxle/browser/webcompat_reporter/webcompat_reporter_service_factory.h",
 ]
 
-brave_browser_webcompat_reporter_deps = [
+luxxle_browser_webcompat_reporter_deps = [
   "//base",
   "//luxxle/browser:browser_process",
   "//luxxle/common",
@@ -26,8 +26,8 @@ brave_browser_webcompat_reporter_deps = [
 ]
 
 if (is_android) {
-  brave_browser_webcompat_reporter_sources += [ "//luxxle/browser/webcompat_reporter/android/webcompat_report_service_factory_android.cc" ]
-  brave_browser_webcompat_reporter_deps += [
+  luxxle_browser_webcompat_reporter_sources += [ "//luxxle/browser/webcompat_reporter/android/webcompat_report_service_factory_android.cc" ]
+  luxxle_browser_webcompat_reporter_deps += [
     "//luxxle/browser/android:android_browser_process",
     "//luxxle/build/android:jni_headers",
   ]

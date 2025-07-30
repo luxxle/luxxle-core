@@ -4,10 +4,10 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 ads_public_headers = [
-  "//luxxle/ios/browser/api/ads/brave_ads.h",
+  "//luxxle/ios/browser/api/ads/luxxle_ads.h",
   "//luxxle/ios/browser/api/ads/new_tab_page_ad_ios.h",
   "//luxxle/ios/browser/api/ads/notification_ad_ios.h",
   "//luxxle/ios/browser/api/ads/inline_content_ad_ios.h",
-  "$root_gen_dir/luxxle/ios/browser/api/ads/brave_ads.mojom.objc.h",
+  "$root_gen_dir/luxxle/ios/browser/api/ads/luxxle_ads.mojom.objc.h",
 ]
-ads_public_deps = [ "//luxxle/ios/browser/api/ads:brave_ads_mojom_wrappers" ]
+ads_public_deps = [ "//luxxle/ios/browser/api/ads:luxxle_ads_mojom_wrappers" ]

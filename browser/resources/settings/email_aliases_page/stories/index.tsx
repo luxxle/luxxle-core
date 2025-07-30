@@ -1,4 +1,4 @@
-// Copyright (c) 2025 The Brave Authors. All rights reserved.
+// Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -20,14 +20,14 @@ import { provideStrings } from '../../../../../.storybook/locale'
 provideStrings({
   emailAliasesShortDescription: 'Keep your personal email address private',
   emailAliasesDescription:
-    'Create unique, random addresses that forward to your Brave account ' +
+    'Create unique, random addresses that forward to your Luxxle account ' +
     'email and can be deleted at any time. Keep your actual email address ' +
     'from being disclosed or used by advertisers.',
   emailAliasesLearnMore: 'Learn More',
   emailAliasesSignOut: 'Sign Out',
   emailAliasesSignOutTitle: 'Sign Out of Email Aliases',
-  emailAliasesConnectingToBraveAccount: 'Connecting to Brave Account...',
-  emailAliasesBraveAccount: 'Brave Account',
+  emailAliasesConnectingToLuxxleAccount: 'Connecting to Luxxle Account...',
+  emailAliasesLuxxleAccount: 'Luxxle Account',
   emailAliasesCopiedToClipboard: 'Copied to clipboard',
   emailAliasesClickToCopyAlias: 'Click to copy alias',
   emailAliasesUsedBy: 'Used by $1',
@@ -54,10 +54,10 @@ provideStrings({
     'connection and try again.',
   emailAliasesSaveAliasButton: 'Save',
   emailAliasesSignInOrCreateAccount: 'To get started, sign in or create a ' +
-    'Brave account',
+    'Luxxle account',
   emailAliasesEnterEmailToGetLoginLink: 'Enter your email address to get a ' +
     'secure login link sent to your email. Clicking this link will either ' +
-    'create or access a Brave Account and let you use the free Email Aliases ' +
+    'create or access a Luxxle Account and let you use the free Email Aliases ' +
     'service.',
   emailAliasesGetLoginLinkButton: 'Get login link',
   emailAliasesRequestAuthenticationError:
@@ -83,17 +83,17 @@ const demoData = {
   email: 'aguscr182@gmail.com',
   aliases: [
     {
-      email: 'horse.radish.record57@bravealias.com',
+      email: 'horse.radish.record57@luxxlealias.com',
       note: 'Alias for all my newsletters',
       domains: undefined
     },
     {
-      email: 'start.plane.division.laser42@bravealias.com',
+      email: 'start.plane.division.laser42@luxxlealias.com',
       domains: ['x.com'],
       note: 'Twitter account'
     },
     {
-      email: 'racoon.pencil.test14@bravealias.com',
+      email: 'racoon.pencil.test14@luxxlealias.com',
       note: 'Marketplace email for Facebook',
       domains: undefined
     }
@@ -151,7 +151,7 @@ class StubEmailAliasesService implements EmailAliasesServiceInterface {
     let generatedAlias: string | undefined = undefined
     do {
       generatedAlias = "mock-" + Math.random().toString().slice(2,6) +
-        "@bravealias.com"
+        "@luxxlealias.com"
     } while (this.aliases.has(generatedAlias))
     await new Promise(resolve => setTimeout(resolve, 1000))
     const error : boolean = Math.random() < 1/3

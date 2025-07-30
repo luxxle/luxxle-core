@@ -13,12 +13,12 @@
 #include "base/feature_list.h"
 #include "base/functional/bind.h"
 #include "base/functional/callback_helpers.h"
-#include "luxxle/browser/brave_browser_features.h"
-#include "luxxle/browser/ui/brave_browser_window.h"
-#include "luxxle/browser/ui/brave_file_select_utils.h"
+#include "luxxle/browser/luxxle_browser_features.h"
+#include "luxxle/browser/ui/luxxle_browser_window.h"
+#include "luxxle/browser/ui/luxxle_file_select_utils.h"
 #include "luxxle/browser/ui/sidebar/sidebar.h"
 #include "luxxle/browser/ui/sidebar/sidebar_controller.h"
-#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/luxxle_tab_prefs.h"
 #include "luxxle/browser/ui/tabs/features.h"
 #include "luxxle/components/constants/pref_names.h"
 #include "chrome/browser/lifetime/browser_close_manager.h"
@@ -49,18 +49,18 @@ void LuxxleBrowser::SuppressBrowserWindowClosingDialogForTesting(bool suppress) 
 }
 
 // static
-bool LuxxleBrowser::ShouldUseBraveWebViewRoundedCorners(Browser* browser) {
-  return base::FeatureList::IsEnabled(features::kBraveWebViewRoundedCorners) &&
+bool LuxxleBrowser::ShouldUseLuxxleWebViewRoundedCorners(Browser* browser) {
+  return base::FeatureList::IsEnabled(features::kLuxxleWebViewRoundedCorners) &&
          browser->is_type_normal();
 }
 
 LuxxleBrowser::LuxxleBrowser(const CreateParams& params) : Browser(params) {
   if (auto* sidebar_controller = GetFeatures().sidebar_controller()) {
-    // TODO(https://github.com/luxxle/brave-browser/issues/45633): Cleanup this.
+    // TODO(https://github.com/luxxle/luxxle-browser/issues/45633): Cleanup this.
     // Below call order is important.
-    // When reaches here, Sidebar UI is setup in BraveBrowserView but
+    // When reaches here, Sidebar UI is setup in LuxxleBrowserView but
     // not initialized. It's just empty because sidebar controller/model is not
-    // ready yet. BraveBrowserView is instantiated by the ctor of Browser.
+    // ready yet. LuxxleBrowserView is instantiated by the ctor of Browser.
     // So, initializing sidebar controller/model here and then ask to initialize
     // sidebar UI. After that, UI will be updated for model's change.
     sidebar_controller->SetSidebar(luxxle_window()->InitSidebar());
@@ -122,7 +122,7 @@ void LuxxleBrowser::OnTabClosing(content::WebContents* contents) {
   }
 }
 
-void BraveBrowser::TabStripEmpty() {
+void LuxxleBrowser::TabStripEmpty() {
   if (unload_controller_.is_attempting_to_close_browser() ||
       !is_type_normal() || ignore_enable_closing_last_tab_pref_) {
     Browser::TabStripEmpty();
@@ -134,7 +134,7 @@ void BraveBrowser::TabStripEmpty() {
                                 true, std::nullopt));
 }
 
-void BraveBrowser::RunFileChooser(
+void LuxxleBrowser::RunFileChooser(
     content::RenderFrameHost* render_frame_host,
     scoped_refptr<content::FileSelectListener> listener,
     const blink::mojom::FileChooserParams& params) {
@@ -162,7 +162,7 @@ void BraveBrowser::RunFileChooser(
 #endif
 }
 
-bool BraveBrowser::ShouldDisplayFavicon(
+bool LuxxleBrowser::ShouldDisplayFavicon(
     content::WebContents* web_contents) const {
   // Override to not show favicon for NTP in tab.
 
@@ -185,7 +185,7 @@ bool BraveBrowser::ShouldDisplayFavicon(
   return Browser::ShouldDisplayFavicon(web_contents);
 }
 
-void BraveBrowser::OnTabStripModelChanged(
+void LuxxleBrowser::OnTabStripModelChanged(
     TabStripModel* tab_strip_model,
     const TabStripModelChange& change,
     const TabStripSelectionChange& selection) {
@@ -220,7 +220,7 @@ void BraveBrowser::OnTabStripModelChanged(
   }
 }
 
-void BraveBrowser::FinishWarnBeforeClosing(WarnBeforeClosingResult result) {
+void LuxxleBrowser::FinishWarnBeforeClosing(WarnBeforeClosingResult result) {
   // Clear user's choice because user cancelled window closing by some
   // warning(ex, download is in-progress).
   if (result == WarnBeforeClosingResult::kDoNotClose) {
@@ -229,7 +229,7 @@ void BraveBrowser::FinishWarnBeforeClosing(WarnBeforeClosingResult result) {
   Browser::FinishWarnBeforeClosing(result);
 }
 
-void BraveBrowser::BeforeUnloadFired(content::WebContents* source,
+void LuxxleBrowser::BeforeUnloadFired(content::WebContents* source,
                                      bool proceed,
                                      bool* proceed_to_fire_unload) {
   // Clear user's choice when user cancelled window closing by beforeunload
@@ -240,7 +240,7 @@ void BraveBrowser::BeforeUnloadFired(content::WebContents* source,
   Browser::BeforeUnloadFired(source, proceed, proceed_to_fire_unload);
 }
 
-bool BraveBrowser::TryToCloseWindow(
+bool LuxxleBrowser::TryToCloseWindow(
     bool skip_beforeunload,
     const base::RepeatingCallback<void(bool)>& on_close_confirmed) {
   // Window closing could be asked directly to browser object by this method.
@@ -254,23 +254,23 @@ bool BraveBrowser::TryToCloseWindow(
                                    std::move(on_close_confirmed));
 }
 
-void BraveBrowser::ResetTryToCloseWindow() {
+void LuxxleBrowser::ResetTryToCloseWindow() {
   confirmed_to_close_ = false;
   Browser::ResetTryToCloseWindow();
 }
 
-void BraveBrowser::UpdateTargetURL(content::WebContents* source,
+void LuxxleBrowser::UpdateTargetURL(content::WebContents* source,
                                    const GURL& url) {
   GURL target_url = url;
   if (url.SchemeIs(content::kChromeUIScheme)) {
     GURL::Replacements replacements;
-    replacements.SetSchemeStr(content::kBraveUIScheme);
+    replacements.SetSchemeStr(content::kLuxxleUIScheme);
     target_url = target_url.ReplaceComponents(replacements);
   }
   Browser::UpdateTargetURL(source, target_url);
 }
 
-bool BraveBrowser::ShouldAskForBrowserClosingBeforeHandlers() {
+bool LuxxleBrowser::ShouldAskForBrowserClosingBeforeHandlers() {
   if (g_suppress_dialog_for_testing) {
     return false;
   }
@@ -293,8 +293,8 @@ bool BraveBrowser::ShouldAskForBrowserClosingBeforeHandlers() {
   return tab_strip_model()->count() > 1;
 }
 
-bool BraveBrowser::AreAllTabsSharedPinnedTabs() {
-  if (!base::FeatureList::IsEnabled(tabs::features::kBraveSharedPinnedTabs)) {
+bool LuxxleBrowser::AreAllTabsSharedPinnedTabs() {
+  if (!base::FeatureList::IsEnabled(tabs::features::kLuxxleSharedPinnedTabs)) {
     return false;
   }
 
@@ -302,7 +302,7 @@ bool BraveBrowser::AreAllTabsSharedPinnedTabs() {
     return false;
   }
 
-  if (!profile()->GetPrefs()->GetBoolean(brave_tabs::kSharedPinnedTab)) {
+  if (!profile()->GetPrefs()->GetBoolean(luxxle_tabs::kSharedPinnedTab)) {
     return false;
   }
 

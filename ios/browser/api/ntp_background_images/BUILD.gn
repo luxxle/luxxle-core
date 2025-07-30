@@ -18,7 +18,7 @@ source_set("ntp_background_images") {
   deps = [
     "//base",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_ads/core/browser/service",
+    # "//luxxle/components/luxxle_ads/core/browser/service",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/ntp_background_images/browser",
     # Commented out: removed components dependency - using Chromium defaults instead

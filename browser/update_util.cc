@@ -6,17 +6,17 @@
 #include "luxxle/browser/update_util.h"
 
 #include "base/command_line.h"
-#include "luxxle/components/constants/brave_switches.h"
+#include "luxxle/components/constants/luxxle_switches.h"
 
 namespace luxxle {
 
 bool UpdateEnabled() {
 #if defined(OFFICIAL_BUILD)
   return !base::CommandLine::ForCurrentProcess()->HasSwitch(
-      switches::kDisableBraveUpdate);
+      switches::kDisableLuxxleUpdate);
 #else
   return false;
 #endif
 }
 
-}  // namespace brave
+}  // namespace luxxle

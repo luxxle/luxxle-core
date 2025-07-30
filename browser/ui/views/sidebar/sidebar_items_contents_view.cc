@@ -19,8 +19,8 @@
 #include "luxxle/browser/misc_metrics/profile_misc_metrics_service.h"
 #include "luxxle/browser/misc_metrics/profile_misc_metrics_service_factory.h"
 #include "luxxle/browser/profiles/profile_util.h"
-#include "luxxle/browser/ui/brave_browser.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/luxxle_browser.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/browser/ui/sidebar/sidebar_controller.h"
 #include "luxxle/browser/ui/sidebar/sidebar_model.h"
 #include "luxxle/browser/ui/sidebar/sidebar_service_factory.h"
@@ -35,7 +35,7 @@
 #include "luxxle/components/sidebar/browser/sidebar_item.h"
 #include "luxxle/components/sidebar/browser/sidebar_service.h"
 #include "luxxle/components/vector_icons/vector_icons.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "chrome/app/vector_icons/vector_icons.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser_list.h"
@@ -86,7 +86,7 @@ sidebar::SidebarService* GetSidebarService(Browser* browser) {
 }  // namespace
 
 SidebarItemsContentsView::SidebarItemsContentsView(
-    BraveBrowser* browser,
+    LuxxleBrowser* browser,
     views::DragController* drag_controller)
     : browser_(browser),
       drag_controller_(drag_controller),
@@ -152,10 +152,10 @@ void SidebarItemsContentsView::UpdateAllBuiltInItemsViewState() {
       continue;
     }
 
-    // If browser window has tab that loads brave talk, brave talk panel icon
+    // If browser window has tab that loads luxxle talk, luxxle talk panel icon
     // will use colored one for normal state also.
     if (item.built_in_item_type ==
-        sidebar::SidebarItem::BuiltInItemType::kBraveTalk) {
+        sidebar::SidebarItem::BuiltInItemType::kLuxxleTalk) {
       UpdateItemViewStateAt(item_index,
                             browser_->GetFeatures()
                                 .sidebar_controller()
@@ -553,9 +553,9 @@ ui::ImageModel SidebarItemsContentsView::GetImageForBuiltInItems(
 
   switch (type) {
     case sidebar::SidebarItem::BuiltInItemType::kWallet:
-      return get_image_model(kLeoProductBraveWalletIcon, state);
-    case sidebar::SidebarItem::BuiltInItemType::kBraveTalk:
-      return get_image_model(kLeoProductBraveTalkIcon, state);
+      return get_image_model(kLeoProductLuxxleWalletIcon, state);
+    case sidebar::SidebarItem::BuiltInItemType::kLuxxleTalk:
+      return get_image_model(kLeoProductLuxxleTalkIcon, state);
     case sidebar::SidebarItem::BuiltInItemType::kBookmarks:
       return get_image_model(kLeoProductBookmarksIcon, state);
     case sidebar::SidebarItem::BuiltInItemType::kReadingList:
@@ -565,7 +565,7 @@ ui::ImageModel SidebarItemsContentsView::GetImageForBuiltInItems(
     case sidebar::SidebarItem::BuiltInItemType::kPlaylist:
       return get_image_model(kLeoProductPlaylistIcon, state);
     case sidebar::SidebarItem::BuiltInItemType::kChatUI:
-      return get_image_model(kLeoProductBraveLeoIcon, state);
+      return get_image_model(kLeoProductLuxxleLeoIcon, state);
     default:
       break;
   }

@@ -12,11 +12,11 @@
 #include <string>
 #include <vector>
 
-#import "brave/components/brave_ads/core/public/ads_client/ads_client.h"
+#import "luxxle/components/luxxle_ads/core/public/ads_client/ads_client.h"
 
 @protocol AdsClientBridge;
 
-class AdsClientIOS : public brave_ads::AdsClient {
+class AdsClientIOS : public luxxle_ads::AdsClient {
  public:
   explicit AdsClientIOS(id<AdsClientBridge> bridge);
   ~AdsClientIOS() override;
@@ -24,29 +24,29 @@ class AdsClientIOS : public brave_ads::AdsClient {
  private:
   __weak id<AdsClientBridge> bridge_;
 
-  void AddObserver(brave_ads::AdsClientNotifierObserver* observer) override;
-  void RemoveObserver(brave_ads::AdsClientNotifierObserver* observer) override;
+  void AddObserver(luxxle_ads::AdsClientNotifierObserver* observer) override;
+  void RemoveObserver(luxxle_ads::AdsClientNotifierObserver* observer) override;
   void NotifyPendingObservers() override;
   bool IsNetworkConnectionAvailable() const override;
   bool IsBrowserActive() const override;
   bool IsBrowserInFullScreenMode() const override;
   bool CanShowNotificationAdsWhileBrowserIsBackgrounded() const override;
-  void ShowNotificationAd(const brave_ads::NotificationAdInfo& ad) override;
+  void ShowNotificationAd(const luxxle_ads::NotificationAdInfo& ad) override;
   bool CanShowNotificationAds() const override;
   void CloseNotificationAd(const std::string& placement_id) override;
   base::Value::Dict GetVirtualPrefs() const override;
-  void UrlRequest(brave_ads::mojom::UrlRequestInfoPtr mojom_url_request,
-                  brave_ads::UrlRequestCallback callback) override;
+  void UrlRequest(luxxle_ads::mojom::UrlRequestInfoPtr mojom_url_request,
+                  luxxle_ads::UrlRequestCallback callback) override;
   void Save(const std::string& name,
             const std::string& value,
-            brave_ads::SaveCallback callback) override;
-  void Load(const std::string& name, brave_ads::LoadCallback callback) override;
+            luxxle_ads::SaveCallback callback) override;
+  void Load(const std::string& name, luxxle_ads::LoadCallback callback) override;
   void LoadResourceComponent(const std::string& id,
                              int version,
-                             brave_ads::LoadFileCallback callback) override;
+                             luxxle_ads::LoadFileCallback callback) override;
   void GetSiteHistory(int max_count,
                       int days_ago,
-                      brave_ads::GetSiteHistoryCallback callback) override;
+                      luxxle_ads::GetSiteHistoryCallback callback) override;
   void ShowScheduledCaptcha(const std::string& payment_id,
                             const std::string& captcha_id) override;
   void Log(const char* file,

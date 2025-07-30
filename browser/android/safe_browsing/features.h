@@ -11,7 +11,7 @@
 namespace safe_browsing {
 namespace features {
 
-BASE_DECLARE_FEATURE(kBraveAndroidSafeBrowsing);
+BASE_DECLARE_FEATURE(kLuxxleAndroidSafeBrowsing);
 
 }  // namespace features
 }  // namespace safe_browsing

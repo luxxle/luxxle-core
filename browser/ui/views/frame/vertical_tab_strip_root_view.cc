@@ -32,8 +32,8 @@ bool VerticalTabStripRootView::OnMousePressed(const ui::MouseEvent& event) {
   // So as a workaround, resets the focused view state so that shortcuts can
   // be handled properly. This shouldn't change the actually focused view, and
   // is just reset the status.
-  // https://github.com/luxxle/brave-browser/issues/28090
-  // https://github.com/luxxle/brave-browser/issues/27812
+  // https://github.com/luxxle/luxxle-browser/issues/28090
+  // https://github.com/luxxle/luxxle-browser/issues/27812
   if (auto* focused_view = focus_manager->GetFocusedView();
       focused_view && views::IsViewClass<views::WebView>(focused_view)) {
     focus_manager->ClearFocus();
@@ -44,7 +44,7 @@ bool VerticalTabStripRootView::OnMousePressed(const ui::MouseEvent& event) {
 #else
   // On Mac, the parent widget doesn't get activated in this case. Then
   // shortcut handling could malfunction. So activate it.
-  // https://github.com/luxxle/brave-browser/issues/29993
+  // https://github.com/luxxle/luxxle-browser/issues/29993
   auto* widget = GetWidget();
   DCHECK(widget);
   widget = widget->GetTopLevelWidget();

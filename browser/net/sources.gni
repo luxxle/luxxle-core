@@ -9,37 +9,37 @@
 import("//build/config/features.gni")
 import("//extensions/buildflags/buildflags.gni")
 
-brave_browser_net_sources = [
-  "//luxxle/browser/net/brave_ad_block_csp_network_delegate_helper.cc",
-  "//luxxle/browser/net/brave_ad_block_csp_network_delegate_helper.h",
-  "//luxxle/browser/net/brave_ad_block_tp_network_delegate_helper.cc",
-  "//luxxle/browser/net/brave_ad_block_tp_network_delegate_helper.h",
-  "//luxxle/browser/net/brave_block_safebrowsing_urls.cc",
-  "//luxxle/browser/net/brave_block_safebrowsing_urls.h",
-  "//luxxle/browser/net/brave_common_static_redirect_network_delegate_helper.cc",
-  "//luxxle/browser/net/brave_common_static_redirect_network_delegate_helper.h",
-  "//luxxle/browser/net/brave_localhost_permission_network_delegate_helper.cc",
-  "//luxxle/browser/net/brave_localhost_permission_network_delegate_helper.h",
-  "//luxxle/browser/net/brave_proxying_url_loader_factory.cc",
-  "//luxxle/browser/net/brave_proxying_url_loader_factory.h",
-  "//luxxle/browser/net/brave_proxying_web_socket.cc",
-  "//luxxle/browser/net/brave_proxying_web_socket.h",
-  "//luxxle/browser/net/brave_reduce_language_network_delegate_helper.cc",
-  "//luxxle/browser/net/brave_reduce_language_network_delegate_helper.h",
-  "//luxxle/browser/net/brave_request_handler.cc",
-  "//luxxle/browser/net/brave_request_handler.h",
-  "//luxxle/browser/net/brave_service_key_network_delegate_helper.cc",
-  "//luxxle/browser/net/brave_service_key_network_delegate_helper.h",
-  "//luxxle/browser/net/brave_site_hacks_network_delegate_helper.cc",
-  "//luxxle/browser/net/brave_site_hacks_network_delegate_helper.h",
-  "//luxxle/browser/net/brave_speech_to_text_network_delegate_helper.cc",
-  "//luxxle/browser/net/brave_speech_to_text_network_delegate_helper.h",
-  "//luxxle/browser/net/brave_static_redirect_network_delegate_helper.cc",
-  "//luxxle/browser/net/brave_static_redirect_network_delegate_helper.h",
-  "//luxxle/browser/net/brave_stp_util.cc",
-  "//luxxle/browser/net/brave_stp_util.h",
-  "//luxxle/browser/net/brave_system_request_handler.cc",
-  "//luxxle/browser/net/brave_system_request_handler.h",
+luxxle_browser_net_sources = [
+  "//luxxle/browser/net/luxxle_ad_block_csp_network_delegate_helper.cc",
+  "//luxxle/browser/net/luxxle_ad_block_csp_network_delegate_helper.h",
+  "//luxxle/browser/net/luxxle_ad_block_tp_network_delegate_helper.cc",
+  "//luxxle/browser/net/luxxle_ad_block_tp_network_delegate_helper.h",
+  "//luxxle/browser/net/luxxle_block_safebrowsing_urls.cc",
+  "//luxxle/browser/net/luxxle_block_safebrowsing_urls.h",
+  "//luxxle/browser/net/luxxle_common_static_redirect_network_delegate_helper.cc",
+  "//luxxle/browser/net/luxxle_common_static_redirect_network_delegate_helper.h",
+  "//luxxle/browser/net/luxxle_localhost_permission_network_delegate_helper.cc",
+  "//luxxle/browser/net/luxxle_localhost_permission_network_delegate_helper.h",
+  "//luxxle/browser/net/luxxle_proxying_url_loader_factory.cc",
+  "//luxxle/browser/net/luxxle_proxying_url_loader_factory.h",
+  "//luxxle/browser/net/luxxle_proxying_web_socket.cc",
+  "//luxxle/browser/net/luxxle_proxying_web_socket.h",
+  "//luxxle/browser/net/luxxle_reduce_language_network_delegate_helper.cc",
+  "//luxxle/browser/net/luxxle_reduce_language_network_delegate_helper.h",
+  "//luxxle/browser/net/luxxle_request_handler.cc",
+  "//luxxle/browser/net/luxxle_request_handler.h",
+  "//luxxle/browser/net/luxxle_service_key_network_delegate_helper.cc",
+  "//luxxle/browser/net/luxxle_service_key_network_delegate_helper.h",
+  "//luxxle/browser/net/luxxle_site_hacks_network_delegate_helper.cc",
+  "//luxxle/browser/net/luxxle_site_hacks_network_delegate_helper.h",
+  "//luxxle/browser/net/luxxle_speech_to_text_network_delegate_helper.cc",
+  "//luxxle/browser/net/luxxle_speech_to_text_network_delegate_helper.h",
+  "//luxxle/browser/net/luxxle_static_redirect_network_delegate_helper.cc",
+  "//luxxle/browser/net/luxxle_static_redirect_network_delegate_helper.h",
+  "//luxxle/browser/net/luxxle_stp_util.cc",
+  "//luxxle/browser/net/luxxle_stp_util.h",
+  "//luxxle/browser/net/luxxle_system_request_handler.cc",
+  "//luxxle/browser/net/luxxle_system_request_handler.h",
   "//luxxle/browser/net/decentralized_dns_network_delegate_helper.cc",
   "//luxxle/browser/net/decentralized_dns_network_delegate_helper.h",
   "//luxxle/browser/net/global_privacy_control_network_delegate_helper.cc",
@@ -52,23 +52,23 @@ brave_browser_net_sources = [
   "//luxxle/browser/net/url_context.h",
 ]
 
-brave_browser_net_deps = [
+luxxle_browser_net_deps = [
   "//base",
-  "//luxxle/app:brave_generated_resources_grit",
+  "//luxxle/app:luxxle_generated_resources_grit",
   "//luxxle/browser:browser_process",
   "//luxxle/browser/profiles:util",
   "//luxxle/common",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_ads/browser",
+  # "//luxxle/components/luxxle_ads/browser",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_component_updater/browser",
+  # "//luxxle/components/luxxle_component_updater/browser",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_referrals/browser",
+  # "//luxxle/components/luxxle_referrals/browser",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_rewards/core",
+  # "//luxxle/components/luxxle_rewards/core",
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_service_keys",
+  # "//luxxle/components/luxxle_service_keys",
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead
@@ -79,7 +79,7 @@ brave_browser_net_deps = [
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/constants",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/constants:brave_service_key_helper",
+  # "//luxxle/components/constants:luxxle_service_key_helper",
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/decentralized_dns/content",
   # Commented out: removed components dependency - using Chromium defaults instead
@@ -128,15 +128,15 @@ brave_browser_net_deps = [
 ]
 
 if (enable_extensions) {
-  brave_browser_net_deps += [ "//extensions/common:common_constants" ]
+  luxxle_browser_net_deps += [ "//extensions/common:common_constants" ]
 }
 
-  brave_browser_net_sources += [
-    "//luxxle/browser/net/brave_torrent_redirect_network_delegate_helper.cc",
-    "//luxxle/browser/net/brave_torrent_redirect_network_delegate_helper.h",
+  luxxle_browser_net_sources += [
+    "//luxxle/browser/net/luxxle_torrent_redirect_network_delegate_helper.cc",
+    "//luxxle/browser/net/luxxle_torrent_redirect_network_delegate_helper.h",
   ]
 
-  brave_browser_net_deps += [
+  luxxle_browser_net_deps += [
     # Commented out: removed components dependency - using Chromium defaults instead
     "//extensions/browser",
   ]

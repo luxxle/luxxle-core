@@ -9,6 +9,6 @@ namespace luxxle {
 
 bool UpdateEnabled();
 
-}  // namespace brave
+}  // namespace luxxle
 
 #endif  // LUXXLE_BROWSER_UPDATE_UTIL_MAC_H_

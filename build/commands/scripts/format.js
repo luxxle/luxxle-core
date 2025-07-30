@@ -64,7 +64,7 @@ const runFormat = async (options = {}) => {
   const skipLogging = options.presubmit
 
   let cmdOptions = config.defaultOptions
-  cmdOptions.cwd = config.braveCoreDir
+  cmdOptions.cwd = config.luxxleCoreDir
   cmdOptions = util.mergeWithDefault(cmdOptions)
   const args = ['cl', 'format', '--upstream=' + options.base]
 
@@ -104,7 +104,7 @@ const runFormat = async (options = {}) => {
   }
 
   const changedFiles = util.getChangedFiles(
-    config.braveCoreDir,
+    config.luxxleCoreDir,
     options.base,
     skipLogging,
   )
@@ -155,8 +155,8 @@ const runPrettierForFile = async (file, dryRun, options, ignorePath) => {
   return null
 }
 const runPrettier = async (files, dryRun) => {
-  const options = require(path.join(config.braveCoreDir, '.prettierrc'))
-  const ignorePath = path.join(config.braveCoreDir, '.prettierignore')
+  const options = require(path.join(config.luxxleCoreDir, '.prettierrc'))
+  const ignorePath = path.join(config.luxxleCoreDir, '.prettierignore')
   if (!fs.existsSync(ignorePath)) {
     throw new RuntimeError(`${ignorePath} file not found`)
   }

@@ -9,8 +9,8 @@ import android.content.Context;
 
 import androidx.fragment.app.Fragment;
 
-import org.chromium.brave_wallet.mojom.SolanaInstruction;
-import org.chromium.brave_wallet.mojom.TransactionInfo;
+import org.chromium.luxxle_wallet.mojom.SolanaInstruction;
+import org.chromium.luxxle_wallet.mojom.TransactionInfo;
 import org.chromium.chrome.browser.crypto_wallet.adapters.TwoLineItemRecyclerViewAdapter;
 import org.chromium.chrome.browser.crypto_wallet.presenters.SolanaInstructionPresenter;
 import org.chromium.chrome.browser.crypto_wallet.util.TransactionUtils;

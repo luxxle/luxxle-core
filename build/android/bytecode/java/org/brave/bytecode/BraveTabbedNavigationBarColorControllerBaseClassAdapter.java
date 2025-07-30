@@ -3,22 +3,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveTabbedNavigationBarColorControllerBaseClassAdapter extends BraveClassVisitor {
+public class LuxxleTabbedNavigationBarColorControllerBaseClassAdapter extends LuxxleClassVisitor {
     static String sTabbedNavigationBarColorControllerClassName =
             "org/chromium/chrome/browser/tabbed_mode/TabbedNavigationBarColorController";
-    static String sBraveTabbedNavigationBarColorControllerBaseClassName =
-            "org/chromium/chrome/browser/tabbed_mode/BraveTabbedNavigationBarColorControllerBase";
+    static String sLuxxleTabbedNavigationBarColorControllerBaseClassName =
+            "org/chromium/chrome/browser/tabbed_mode/LuxxleTabbedNavigationBarColorControllerBase";
 
-    public BraveTabbedNavigationBarColorControllerBaseClassAdapter(ClassVisitor visitor) {
+    public LuxxleTabbedNavigationBarColorControllerBaseClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         changeSuperName(
                 sTabbedNavigationBarColorControllerClassName,
-                sBraveTabbedNavigationBarColorControllerBaseClassName);
+                sLuxxleTabbedNavigationBarColorControllerBaseClassName);
 
         deleteField(sTabbedNavigationBarColorControllerClassName, "mContext");
 
@@ -29,11 +29,11 @@ public class BraveTabbedNavigationBarColorControllerBaseClassAdapter extends Bra
         changeMethodOwner(
                 sTabbedNavigationBarColorControllerClassName,
                 "getNavigationBarColor",
-                sBraveTabbedNavigationBarColorControllerBaseClassName);
+                sLuxxleTabbedNavigationBarColorControllerBaseClassName);
 
         changeMethodOwner(
                 sTabbedNavigationBarColorControllerClassName,
                 "useActiveTabColor",
-                sBraveTabbedNavigationBarColorControllerBaseClassName);
+                sLuxxleTabbedNavigationBarColorControllerBaseClassName);
     }
 }

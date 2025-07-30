@@ -20,7 +20,7 @@ source_set("impl") {
 
   deps = [
     "//base",
-    "//luxxle/browser/ui:brave_tab_features",
+    "//luxxle/browser/ui:luxxle_tab_features",
     "//luxxle/browser/ui/sidebar",
     "//luxxle/browser/ui/tabs:split_view",
     # Commented out: removed components dependency - using Chromium defaults instead

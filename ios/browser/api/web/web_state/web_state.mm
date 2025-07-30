@@ -1,10 +1,10 @@
-/* Copyright (c) 2023 The Brave Authors. All rights reserved.
+/* Copyright (c) 2023 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#import "brave/ios/browser/api/web/web_state/web_state.h"
-#include "brave/ios/browser/api/web/web_state/web_state_native.h"
+#import "luxxle/ios/browser/api/web/web_state/web_state.h"
+#include "luxxle/ios/browser/api/web/web_state/web_state_native.h"
 
 #include <memory>
 

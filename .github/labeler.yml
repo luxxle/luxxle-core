@@ -26,16 +26,16 @@ CI/storybook-url:
 feature/web3/wallet:
 - android/java/org/chromium/chrome/browser/app/domain/**/*
 - android/java/org/chromium/chrome/browser/crypto_wallet/**/*
-- browser/brave_wallet/android/**/*
-- browser/resources/settings/brave_wallet_page/**/*
-- browser/ui/brave_wallet/**/*
-- browser/ui/webui/brave_wallet/**/*
-- components/brave_wallet/**/*
-- components/brave_wallet_ui/**/*
+- browser/luxxle_wallet/android/**/*
+- browser/resources/settings/luxxle_wallet_page/**/*
+- browser/ui/luxxle_wallet/**/*
+- browser/ui/webui/luxxle_wallet/**/*
+- components/luxxle_wallet/**/*
+- components/luxxle_wallet_ui/**/*
 
 feature/web3/wallet/core:
-- browser/brave_wallet/android/**/*
-- browser/resources/settings/brave_wallet_page/**/*
-- browser/ui/brave_wallet/**/*
-- browser/ui/webui/brave_wallet/**/*
-- components/brave_wallet/**/*
+- browser/luxxle_wallet/android/**/*
+- browser/resources/settings/luxxle_wallet_page/**/*
+- browser/ui/luxxle_wallet/**/*
+- browser/ui/webui/luxxle_wallet/**/*
+- components/luxxle_wallet/**/*

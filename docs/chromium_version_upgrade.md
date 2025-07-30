@@ -1,12 +1,12 @@
-# Upgrading `brave-core` to a newer version of Chromium
+# Upgrading `luxxle-core` to a newer version of Chromium
 
 This document describes the basics and the tooling available to have
-`brave-core` upstream tag selection chromium, also known as a *version bump*.
+`luxxle-core` upstream tag selection chromium, also known as a *version bump*.
 
 ## Understanding the basics
 
 In order to be able to depend on, and make changes to vanilla Chromium,
-`brave-core` has to pick a tag of Chromium to checkout and build against. This
+`luxxle-core` has to pick a tag of Chromium to checkout and build against. This
 tag is set in [`package`](../package.json) and saved as `tag`.
 
 ```json
@@ -16,7 +16,7 @@ tag is set in [`package`](../package.json) and saved as `tag`.
         "dir": "src",
         "tag": "134.0.6998.95",
         "repository": {
-          "url": "https://github.com/brave/chromium"
+          "url": "https://github.com/luxxle/chromium"
         }
       },
 ```
@@ -34,7 +34,7 @@ tag update.
 | `Update patches` | Regerated versions of all patches that applied cleanly. |
 | `Updated strings` | Translation strings may have had updates once regenerated under the new Chromium tag. |
 
-There may be many other changes necessary to get Brave to build with the tag
+There may be many other changes necessary to get Luxxle to build with the tag
 being picked, but these four changes are a common idiom when doing doing a
 version bump.
 
@@ -64,7 +64,7 @@ $ git commit -m "Update from Chromium 119.7049.17 to Chromium 120.0.7050.40."
 
 ### Dealing with patch failure and conflict resolution
 
-Depending what changed since the last time a tag was picked for `brave-core`,
+Depending what changed since the last time a tag was picked for `luxxle-core`,
 there could be any number of patches that can't apply anymore, for a variety of
 reason, be it due to merge conflicts, or because the source file being patched
 is no longer valid.
@@ -113,20 +113,20 @@ report above.
 chrome/browser/ui/views/frame/browser_view_layout.cc
 chrome/browser/ui/webui/settings/site_settings_helper.cc
 
-brave/patches/chrome-browser-ui-views-frame-browser_view_layout.cc.patch
-brave/patches/chrome-browser-ui-webui-settings-site_settings_helper.cc.patch
+luxxle/patches/chrome-browser-ui-views-frame-browser_view_layout.cc.patch
+luxxle/patches/chrome-browser-ui-webui-settings-site_settings_helper.cc.patch
 
 | Commit name | Purpose |
 | --- | --- |
-| `chrome/browser/ui/views/frame/browser_view_layout.cc` | `brave/patches/chrome-browser-ui-views-frame-browser_view_layout.cc.patch` |
-| `chrome/browser/ui/webui/settings/site_settings_helper.cc` | `brave/patches/chrome-browser-ui-webui-settings-site_settings_helper.cc.patch` |
+| `chrome/browser/ui/views/frame/browser_view_layout.cc` | `luxxle/patches/chrome-browser-ui-views-frame-browser_view_layout.cc.patch` |
+| `chrome/browser/ui/webui/settings/site_settings_helper.cc` | `luxxle/patches/chrome-browser-ui-webui-settings-site_settings_helper.cc.patch` |
 
 Therefore these patches should be applied as:
 ```shell
 # Applying patches in `chromium/src`
 $ git -C ../ apply --3way --ignore-space-change --ignore-whitespace \
-      brave/patches/chrome-browser-ui-views-frame-browser_view_layout.cc.patch \
-      brave/patches/chrome-browser-ui-webui-settings-site_settings_helper.cc.patch
+      luxxle/patches/chrome-browser-ui-views-frame-browser_view_layout.cc.patch \
+      luxxle/patches/chrome-browser-ui-webui-settings-site_settings_helper.cc.patch
 
 # Resetting state to avoid issues when trying to regenerate the patches
 $ git -C ../ reset HEAD
@@ -190,7 +190,7 @@ $ npm run init
 ### Regenerating l18n strings
 
 This last step consists of regenarating all string files that are replicated in
-`brave-core` from chromium.
+`luxxle-core` from chromium.
 
 ```shell
 $ npm run chromium_rebase_l10n

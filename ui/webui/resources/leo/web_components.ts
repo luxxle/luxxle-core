@@ -5,20 +5,20 @@
 
 // Import web components here. They will be available on the page
 // as <leo-{component}></leo-{component}>.
-import '@brave/leo/web-components/alert'
-import '@brave/leo/web-components/button'
-import '@brave/leo/web-components/checkbox'
-import '@brave/leo/web-components/dropdown'
-import '@brave/leo/web-components/icon'
-import '@brave/leo/web-components/input'
-import '@brave/leo/web-components/label'
-import '@brave/leo/web-components/progressRing'
-import '@brave/leo/web-components/textarea'
-import '@brave/leo/web-components/toggle'
-import '@brave/leo/web-components/tooltip'
-import '@brave/leo/web-components/radioButton'
-import { setIconBasePath } from '@brave/leo/web-components/icon'
-import iconsMeta from '@brave/leo/icons/meta'
+import '@luxxle/leo/web-components/alert'
+import '@luxxle/leo/web-components/button'
+import '@luxxle/leo/web-components/checkbox'
+import '@luxxle/leo/web-components/dropdown'
+import '@luxxle/leo/web-components/icon'
+import '@luxxle/leo/web-components/input'
+import '@luxxle/leo/web-components/label'
+import '@luxxle/leo/web-components/progressRing'
+import '@luxxle/leo/web-components/textarea'
+import '@luxxle/leo/web-components/toggle'
+import '@luxxle/leo/web-components/tooltip'
+import '@luxxle/leo/web-components/radioButton'
+import { setIconBasePath } from '@luxxle/leo/web-components/icon'
+import iconsMeta from '@luxxle/leo/icons/meta'
 
 // Note: This file is loaded for some extensions, and on those pages we fall back
 // to loading icons from the `chrome://` scheme.
@@ -27,7 +27,7 @@ const scheme = chromeSchemes.includes(window.location.protocol)
   ? `${window.location.protocol}//`
   : 'chrome://'
 
-setIconBasePath(`${scheme}resources/brave-icons`)
+setIconBasePath(`${scheme}resources/luxxle-icons`)
 
 // In Chromium UI Nala variables haven't necessarily been included. We
 // make sure the variables are imported so the controls look correct.

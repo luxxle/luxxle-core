@@ -112,7 +112,7 @@ class TransportSecurityState_DisableHSTSPartitionTest
     : public TransportSecurityStateTestBase {
  public:
   TransportSecurityState_DisableHSTSPartitionTest() {
-    scoped_feature_list_.InitAndDisableFeature(features::kBravePartitionHSTS);
+    scoped_feature_list_.InitAndDisableFeature(features::kLuxxlePartitionHSTS);
   }
 
  protected:
@@ -162,7 +162,7 @@ class TransportSecurityState_EnableHSTSPartitionTest
     : public TransportSecurityStateTestBase {
  public:
   TransportSecurityState_EnableHSTSPartitionTest() {
-    scoped_feature_list_.InitAndEnableFeature(features::kBravePartitionHSTS);
+    scoped_feature_list_.InitAndEnableFeature(features::kLuxxlePartitionHSTS);
   }
 
  protected:
@@ -172,7 +172,7 @@ class TransportSecurityState_EnableHSTSPartitionTest
 TEST_F(TransportSecurityState_EnableHSTSPartitionTest,
        PartitionedAddHSTSHeader) {
   base::test::ScopedFeatureList scoped_feature_list(
-      features::kBravePartitionHSTS);
+      features::kLuxxlePartitionHSTS);
   TransportSecurityState state;
 
   auto a_com_origin = url::Origin::Create(GURL("https://a.com"));
@@ -211,7 +211,7 @@ TEST_F(TransportSecurityState_EnableHSTSPartitionTest,
 TEST_F(TransportSecurityState_EnableHSTSPartitionTest,
        PartitionedSaveAllHSTSOnHTTP) {
   base::test::ScopedFeatureList scoped_feature_list(
-      features::kBravePartitionHSTS);
+      features::kLuxxlePartitionHSTS);
   TransportSecurityState state;
 
   auto a_com_origin = url::Origin::Create(GURL("http://a.com"));
@@ -232,7 +232,7 @@ TEST_F(TransportSecurityState_EnableHSTSPartitionTest,
 TEST_F(TransportSecurityState_EnableHSTSPartitionTest,
        PartitionedSaveHSTSForOnlyMatchedSameSiteForCookiesOnHTTPS) {
   base::test::ScopedFeatureList scoped_feature_list(
-      features::kBravePartitionHSTS);
+      features::kLuxxlePartitionHSTS);
   TransportSecurityState state;
 
   auto a_com_origin = url::Origin::Create(GURL("https://a.com"));

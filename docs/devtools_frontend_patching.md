@@ -9,7 +9,7 @@
 
 ### How It Works
 
-When `chromium_src/third_party/devtools-frontend/src/scripts/build/typescript/ts_library.py` detects a file starting with `//brave`, it copies this file to the corresponding upstream directory. When the compilation of the corresponding target is done, `ts_library.py` removes the copied file to preserve the upstream sources in their original state.
+When `chromium_src/third_party/devtools-frontend/src/scripts/build/typescript/ts_library.py` detects a file starting with `//luxxle`, it copies this file to the corresponding upstream directory. When the compilation of the corresponding target is done, `ts_library.py` removes the copied file to preserve the upstream sources in their original state.
 
 ## Patching an Existing File
 

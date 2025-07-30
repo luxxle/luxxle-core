@@ -3,26 +3,26 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveLogoMediatorClassAdapter extends BraveClassVisitor {
+public class LuxxleLogoMediatorClassAdapter extends LuxxleClassVisitor {
     static String sLogoMediator = "org/chromium/chrome/browser/logo/LogoMediator";
-    static String sBraveLogoMediator = "org/chromium/chrome/browser/logo/BraveLogoMediator";
+    static String sLuxxleLogoMediator = "org/chromium/chrome/browser/logo/LuxxleLogoMediator";
 
-    public BraveLogoMediatorClassAdapter(ClassVisitor visitor) {
+    public LuxxleLogoMediatorClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sLogoMediator, sBraveLogoMediator);
+        redirectConstructor(sLogoMediator, sLuxxleLogoMediator);
 
-        deleteField(sBraveLogoMediator, "mLogoModel");
+        deleteField(sLuxxleLogoMediator, "mLogoModel");
         makeProtectedField(sLogoMediator, "mLogoModel");
 
-        deleteField(sBraveLogoMediator, "mShouldShowLogo");
+        deleteField(sLuxxleLogoMediator, "mShouldShowLogo");
         makeProtectedField(sLogoMediator, "mShouldShowLogo");
 
         makePublicMethod(sLogoMediator, "updateVisibility");
-        addMethodAnnotation(sBraveLogoMediator, "updateVisibility", "Ljava/lang/Override;");
+        addMethodAnnotation(sLuxxleLogoMediator, "updateVisibility", "Ljava/lang/Override;");
     }
 }

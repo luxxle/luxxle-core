@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/base/process/process_launcher.h"
+#include "luxxle/base/process/process_launcher.h"
 
 #include <optional>
 #include <string>
@@ -78,4 +78,4 @@ std::optional<std::string> ProcessLauncher::ReadAppOutput(
   }
 }
 
-}  // namespace brave
+}  // namespace luxxle

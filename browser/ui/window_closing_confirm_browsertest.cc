@@ -5,8 +5,8 @@
 
 #include "base/functional/bind.h"
 #include "base/run_loop.h"
-#include "luxxle/browser/ui/brave_browser.h"
-#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
+#include "luxxle/browser/ui/luxxle_browser.h"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_view.h"
 #include "luxxle/browser/ui/views/window_closing_confirm_dialog_view.h"
 #include "luxxle/components/constants/pref_names.h"
 #include "chrome/browser/download/download_manager_utils.h"
@@ -57,7 +57,7 @@ class WindowClosingConfirmBrowserTest : public InProcessBrowserTest,
                                         public views::WidgetObserver {
  public:
   void SetUpOnMainThread() override {
-    BraveBrowser::SuppressBrowserWindowClosingDialogForTesting(false);
+    LuxxleBrowser::SuppressBrowserWindowClosingDialogForTesting(false);
 
     InProcessBrowserTest::SetUpOnMainThread();
 
@@ -69,7 +69,7 @@ class WindowClosingConfirmBrowserTest : public InProcessBrowserTest,
   }
 
   void TearDownOnMainThread() override {
-    BraveBrowser::SuppressBrowserWindowClosingDialogForTesting(true);
+    LuxxleBrowser::SuppressBrowserWindowClosingDialogForTesting(true);
 
     InProcessBrowserTest::TearDownOnMainThread();
   }
@@ -164,7 +164,7 @@ class WindowClosingConfirmBrowserTest : public InProcessBrowserTest,
   }
 
   void SetDownloadConfirmReturn(bool allow) {
-    BraveBrowserView::SetDownloadConfirmReturnForTesting(allow);
+    LuxxleBrowserView::SetDownloadConfirmReturnForTesting(allow);
   }
 
   content::TestDownloadResponseHandler test_response_handler_;
@@ -174,16 +174,16 @@ class WindowClosingConfirmBrowserTest : public InProcessBrowserTest,
 };
 
 IN_PROC_BROWSER_TEST_F(WindowClosingConfirmBrowserTest, TestWithTwoNTPTabs) {
-  BraveBrowser* brave_browser = static_cast<BraveBrowser*>(browser());
+  LuxxleBrowser* luxxle_browser = static_cast<LuxxleBrowser*>(browser());
   // One tab. Doesn't need to ask.
-  EXPECT_FALSE(brave_browser->ShouldAskForBrowserClosingBeforeHandlers());
+  EXPECT_FALSE(luxxle_browser->ShouldAskForBrowserClosingBeforeHandlers());
 
   // Two tabs. Need to ask browser closing.
   ui_test_utils::NavigateToURLWithDisposition(
-      brave_browser, GURL(url::kAboutBlankURL),
+      luxxle_browser, GURL(url::kAboutBlankURL),
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP);
-  EXPECT_TRUE(brave_browser->ShouldAskForBrowserClosingBeforeHandlers());
+  EXPECT_TRUE(luxxle_browser->ShouldAskForBrowserClosingBeforeHandlers());
 
   closing_confirm_dialog_created_ = false;
   allow_to_close_ = true;
@@ -191,20 +191,20 @@ IN_PROC_BROWSER_TEST_F(WindowClosingConfirmBrowserTest, TestWithTwoNTPTabs) {
   // Do quit request twice and check second quit request doesn't make
   // another dialog. If it's created, DCHECK() in
   // OnWindowClosingConfirmDialogCreated() can detect.
-  chrome::CloseWindow(brave_browser);
-  chrome::CloseWindow(brave_browser);
-  ui_test_utils::WaitForBrowserToClose(brave_browser);
+  chrome::CloseWindow(luxxle_browser);
+  chrome::CloseWindow(luxxle_browser);
+  ui_test_utils::WaitForBrowserToClose(luxxle_browser);
   EXPECT_TRUE(closing_confirm_dialog_created_);
 }
 
 IN_PROC_BROWSER_TEST_F(WindowClosingConfirmBrowserTest, TestWithQuit) {
-  BraveBrowser* brave_browser = static_cast<BraveBrowser*>(browser());
+  LuxxleBrowser* luxxle_browser = static_cast<LuxxleBrowser*>(browser());
   ui_test_utils::NavigateToURLWithDisposition(
-      brave_browser, GURL(url::kAboutBlankURL),
+      luxxle_browser, GURL(url::kAboutBlankURL),
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP);
   // Should ask closing.
-  EXPECT_TRUE(brave_browser->ShouldAskForBrowserClosingBeforeHandlers());
+  EXPECT_TRUE(luxxle_browser->ShouldAskForBrowserClosingBeforeHandlers());
 
   // Should not ask for quit command.
   closing_confirm_dialog_created_ = false;
@@ -221,7 +221,7 @@ IN_PROC_BROWSER_TEST_F(WindowClosingConfirmBrowserTest,
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP);
   // Should ask closing for this browser window as this has more than one tab.
-  EXPECT_TRUE(static_cast<BraveBrowser*>(browser())
+  EXPECT_TRUE(static_cast<LuxxleBrowser*>(browser())
                   ->ShouldAskForBrowserClosingBeforeHandlers());
 
   // However, should not ask for profile deletion.
@@ -236,41 +236,41 @@ IN_PROC_BROWSER_TEST_F(WindowClosingConfirmBrowserTest,
                        TestWithOnBeforeUnload) {
   ASSERT_TRUE(embedded_test_server()->Start());
 
-  BraveBrowser* brave_browser = static_cast<BraveBrowser*>(browser());
+  LuxxleBrowser* luxxle_browser = static_cast<LuxxleBrowser*>(browser());
   ASSERT_NO_FATAL_FAILURE(ASSERT_TRUE(ui_test_utils::NavigateToURL(
-      brave_browser, embedded_test_server()->GetURL("/beforeunload.html"))));
+      luxxle_browser, embedded_test_server()->GetURL("/beforeunload.html"))));
   ui_test_utils::NavigateToURLWithDisposition(
-      brave_browser, GURL(url::kAboutBlankURL),
+      luxxle_browser, GURL(url::kAboutBlankURL),
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP);
 
-  PrepareForBeforeUnloadDialog(brave_browser);
+  PrepareForBeforeUnloadDialog(luxxle_browser);
 
   // Check beforeunload dialog is launched after allowed to close window.
   allow_to_close_ = true;
-  chrome::CloseWindow(brave_browser);
+  chrome::CloseWindow(luxxle_browser);
   EXPECT_TRUE(closing_confirm_dialog_created_);
   ASSERT_NO_FATAL_FAILURE(CancelClose());
   SetClosingBrowserCallbackAndWait();
-  EXPECT_TRUE(brave_browser->ShouldAskForBrowserClosingBeforeHandlers());
+  EXPECT_TRUE(luxxle_browser->ShouldAskForBrowserClosingBeforeHandlers());
 
   // Check window closing dialog is launched again after cancelling
   // beforeunlaod handler.
   closing_confirm_dialog_created_ = false;
   allow_to_close_ = true;
-  chrome::CloseWindow(brave_browser);
+  chrome::CloseWindow(luxxle_browser);
   EXPECT_TRUE(closing_confirm_dialog_created_);
 
   // Close browser
   ASSERT_NO_FATAL_FAILURE(AcceptClose());
-  ui_test_utils::WaitForBrowserToClose(brave_browser);
+  ui_test_utils::WaitForBrowserToClose(luxxle_browser);
 }
 
 #if BUILDFLAG(IS_WIN) && defined(ADDRESS_SANITIZER)
 // Upstream issue.
 // Stack overflow on Win/ASan: http://crbug.com/367746304
 // TODO(simonhong): Enable when master has the fix.
-// https://github.com/luxxle/brave-browser/issues/41936
+// https://github.com/luxxle/luxxle-browser/issues/41936
 #define MAYBE_TestWithDownload DISABLED_TestWithDownload
 #else
 #define MAYBE_TestWithDownload TestWithDownload
@@ -283,11 +283,11 @@ IN_PROC_BROWSER_TEST_F(WindowClosingConfirmBrowserTest,
 // However, private profile window works like normal window of other platforms.
 // So, test with private profile window on macOS.
 #if BUILDFLAG(IS_MAC)
-  auto* brave_browser = static_cast<BraveBrowser*>(CreateIncognitoBrowser());
+  auto* luxxle_browser = static_cast<LuxxleBrowser*>(CreateIncognitoBrowser());
 #else
-  auto* brave_browser = static_cast<BraveBrowser*>(browser());
+  auto* luxxle_browser = static_cast<LuxxleBrowser*>(browser());
 #endif
-  brave_browser->profile()->GetPrefs()->SetBoolean(prefs::kPromptForDownload,
+  luxxle_browser->profile()->GetPrefs()->SetBoolean(prefs::kPromptForDownload,
                                                    false);
 
   test_response_handler()->RegisterToTestServer(embedded_test_server());
@@ -302,23 +302,23 @@ IN_PROC_BROWSER_TEST_F(WindowClosingConfirmBrowserTest,
   {
     base::ScopedAllowBlockingForTesting allow_blocking;
     int64_t free_space = base::SysInfo::AmountOfFreeDiskSpace(
-        GetDownloadDirectory(brave_browser));
+        GetDownloadDirectory(luxxle_browser));
     ASSERT_LE(parameters.size, free_space)
         << "Not enough disk space to download. Got " << free_space;
   }
 
   // Make browser has two tabs.
   ui_test_utils::NavigateToURLWithDisposition(
-      brave_browser, GURL(url::kAboutBlankURL),
+      luxxle_browser, GURL(url::kAboutBlankURL),
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP);
 
   std::unique_ptr<content::DownloadTestObserver> progress_waiter(
-      CreateInProgressWaiter(brave_browser, 1));
+      CreateInProgressWaiter(luxxle_browser, 1));
 
   // Start downloading a file, wait for it to be created.
   ui_test_utils::NavigateToURLWithDisposition(
-      brave_browser, url, WindowOpenDisposition::CURRENT_TAB,
+      luxxle_browser, url, WindowOpenDisposition::CURRENT_TAB,
       ui_test_utils::BROWSER_TEST_NO_WAIT);
   progress_waiter->WaitForFinished();
 
@@ -329,9 +329,9 @@ IN_PROC_BROWSER_TEST_F(WindowClosingConfirmBrowserTest,
   allow_to_close_ = false;
   closing_confirm_dialog_created_ = false;
   SetDownloadConfirmReturn(false);
-  chrome::CloseWindow(brave_browser);
+  chrome::CloseWindow(luxxle_browser);
   EXPECT_TRUE(closing_confirm_dialog_created_);
-  EXPECT_TRUE(brave_browser->ShouldAskForBrowserClosingBeforeHandlers());
+  EXPECT_TRUE(luxxle_browser->ShouldAskForBrowserClosingBeforeHandlers());
   WaitTillConfirmDialogClosed();
 
   // Allow window closing while downloading and don't cancel downloading.
@@ -339,17 +339,17 @@ IN_PROC_BROWSER_TEST_F(WindowClosingConfirmBrowserTest,
   allow_to_close_ = true;
   closing_confirm_dialog_created_ = false;
   SetDownloadConfirmReturn(false);
-  chrome::CloseWindow(brave_browser);
+  chrome::CloseWindow(luxxle_browser);
   EXPECT_TRUE(closing_confirm_dialog_created_);
   WaitTillConfirmDialogClosed();
   SetClosingBrowserCallbackAndWait();
-  EXPECT_TRUE(brave_browser->ShouldAskForBrowserClosingBeforeHandlers());
+  EXPECT_TRUE(luxxle_browser->ShouldAskForBrowserClosingBeforeHandlers());
 
   // Close window again by cancelling download to terminate test.
   allow_to_close_ = true;
   closing_confirm_dialog_created_ = false;
   SetDownloadConfirmReturn(true);
-  chrome::CloseWindow(brave_browser);
+  chrome::CloseWindow(luxxle_browser);
   EXPECT_TRUE(closing_confirm_dialog_created_);
   WaitTillConfirmDialogClosed();
 }

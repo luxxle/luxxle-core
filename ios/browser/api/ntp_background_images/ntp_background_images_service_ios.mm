@@ -1,21 +1,21 @@
-/* Copyright (c) 2023 The Brave Authors. All rights reserved.
+/* Copyright (c) 2023 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/ios/browser/api/ntp_background_images/ntp_background_images_service_ios.h"
+#include "luxxle/ios/browser/api/ntp_background_images/ntp_background_images_service_ios.h"
 
 #include <memory>
 
 #include "base/memory/raw_ptr.h"
 #include "base/strings/sys_string_conversions.h"
-// REMOVED: #include "luxxle/components/brave_ads/.*"
+// REMOVED: #include "luxxle/components/luxxle_ads/.*"
 #include "luxxle/components/ntp_background_images/browser/features.h"
 #include "luxxle/components/ntp_background_images/browser/ntp_background_images_data.h"
 #include "luxxle/components/ntp_background_images/browser/ntp_background_images_service.h"
 #include "luxxle/components/ntp_background_images/browser/ntp_sponsored_images_data.h"
-#include "brave/ios/browser/api/ntp_background_images/ntp_background_image+private.h"
-#include "brave/ios/browser/api/ntp_background_images/ntp_sponsored_image+private.h"
+#include "luxxle/ios/browser/api/ntp_background_images/ntp_background_image+private.h"
+#include "luxxle/ios/browser/api/ntp_background_images/ntp_sponsored_image+private.h"
 
 #if !defined(__has_feature) || !__has_feature(objc_arc)
 #error "This file requires ARC support."
@@ -57,7 +57,7 @@ class NTPBackgroundImagesServiceObserverBridge
 
 @interface NTPBackgroundImagesService () <NTPBackgroundImagesServiceObserver> {
   std::unique_ptr<ntp_background_images::NTPBackgroundImagesService> _service;
-  raw_ptr<brave_ads::AdsService> _adsService;  // Not owned.
+  raw_ptr<luxxle_ads::AdsService> _adsService;  // Not owned.
   std::unique_ptr<NTPBackgroundImagesServiceObserverBridge> _observerBridge;
 }
 @end
@@ -68,7 +68,7 @@ class NTPBackgroundImagesServiceObserverBridge
     initWithBackgroundImagesService:
         (std::unique_ptr<ntp_background_images::NTPBackgroundImagesService>)
             service
-                        ads_service:(brave_ads::AdsService*)ads_service {
+                        ads_service:(luxxle_ads::AdsService*)ads_service {
   if ((self = [super init])) {
     _service = std::move(service);
     _adsService = ads_service;

@@ -13,7 +13,7 @@ use crate::blocker::Blocker;
 use crate::cosmetic_filter_cache::CosmeticFilterCache;
 
 /// Newer formats start with this magic byte sequence.
-/// Calculated as the leading 4 bytes of `echo -n 'brave/adblock-rust' | sha512sum`.
+/// Calculated as the leading 4 bytes of `echo -n 'luxxle/adblock-rust' | sha512sum`.
 const ADBLOCK_RUST_DAT_MAGIC: [u8; 4] = [0xd1, 0xd9, 0x3a, 0xaf];
 
 /// Provides structural aggregration of referenced adblock engine data to allow for allocation-free
@@ -110,7 +110,7 @@ mod tests {
 
         let mut hasher = sha2::Sha512::new();
 
-        hasher.update("brave/adblock-rust");
+        hasher.update("luxxle/adblock-rust");
 
         let result = hasher.finalize();
 

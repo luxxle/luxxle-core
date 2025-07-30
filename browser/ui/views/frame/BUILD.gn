@@ -8,7 +8,7 @@ source_set("browser_tests") {
   defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]
 
   sources =
-      [ "//luxxle/browser/ui/views/frame/brave_browser_view_browsertest.cc" ]
+      [ "//luxxle/browser/ui/views/frame/luxxle_browser_view_browsertest.cc" ]
 
   deps = [
     "//base",

@@ -23,19 +23,19 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import org.chromium.base.Log;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.BlockchainToken;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.EthTxManagerProxy;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
-import org.chromium.brave_wallet.mojom.SolanaSendTransactionOptions;
-import org.chromium.brave_wallet.mojom.SolanaTxData;
-import org.chromium.brave_wallet.mojom.TransactionInfo;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.BlockchainToken;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.EthTxManagerProxy;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.SolanaSendTransactionOptions;
+import org.chromium.luxxle_wallet.mojom.SolanaTxData;
+import org.chromium.luxxle_wallet.mojom.TransactionInfo;
 import org.chromium.build.annotations.NullMarked;
 import org.chromium.build.annotations.Nullable;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.crypto_wallet.activities.AdvanceTxSettingActivity;
-import org.chromium.chrome.browser.crypto_wallet.activities.BraveWalletBaseActivity;
+import org.chromium.chrome.browser.crypto_wallet.activities.LuxxleWalletBaseActivity;
 import org.chromium.chrome.browser.crypto_wallet.presenters.Amount;
 import org.chromium.chrome.browser.crypto_wallet.util.AndroidUtils;
 import org.chromium.chrome.browser.crypto_wallet.util.ParsedTransaction;
@@ -89,8 +89,8 @@ public class TxFragment extends Fragment {
     @Nullable
     private EthTxManagerProxy getEthTxManagerProxy() {
         Activity activity = getActivity();
-        if (activity instanceof BraveWalletBaseActivity) {
-            return ((BraveWalletBaseActivity) activity).getEthTxManagerProxy();
+        if (activity instanceof LuxxleWalletBaseActivity) {
+            return ((LuxxleWalletBaseActivity) activity).getEthTxManagerProxy();
         }
         return null;
     }
@@ -153,7 +153,7 @@ public class TxFragment extends Fragment {
         editGasFee.setOnClickListener(
                 v -> {
                     final Dialog dialog = new Dialog(getActivity());
-                    dialog.setContentView(R.layout.brave_wallet_edit_gas);
+                    dialog.setContentView(R.layout.luxxle_wallet_edit_gas);
                     dialog.show();
                     mPreviousCheckedPriorityId = mCheckedPriorityId;
 
@@ -533,8 +533,8 @@ public class TxFragment extends Fragment {
             TextView gasTxTv = view.findViewById(R.id.frag_tx_tv_gas);
             TextView totalHeading = view.findViewById(R.id.frag_tx_tv_total_heading);
 
-            gasTxTv.setText(R.string.brave_wallet_allow_spend_transaction_fee);
-            totalHeading.setText(R.string.brave_wallet_confirm_transaction_amount_fee);
+            gasTxTv.setText(R.string.luxxle_wallet_allow_spend_transaction_fee);
+            totalHeading.setText(R.string.luxxle_wallet_confirm_transaction_amount_fee);
             SolanaTxData solanaTxData = TransactionUtils.safeSolData(mTxInfo.txDataUnion);
             if (solanaTxData != null && solanaTxData.sendOptions != null) {
                 SolanaSendTransactionOptions sendTxOptions = solanaTxData.sendOptions;
@@ -543,7 +543,7 @@ public class TxFragment extends Fragment {
                 if (sendTxOptions.maxRetries != null) {
                     TextView tvLabel = AndroidUtils.makeHeaderTv(requireContext());
                     TextView tvVal = AndroidUtils.makeSubHeaderTv(requireContext());
-                    tvLabel.setText(R.string.brave_wallet_solana_max_retries);
+                    tvLabel.setText(R.string.luxxle_wallet_solana_max_retries);
                     tvVal.setText(String.valueOf(sendTxOptions.maxRetries.maxRetries));
                     sendOptionsLinearLayout.addView(tvLabel);
                     sendOptionsLinearLayout.addView(tvVal);
@@ -551,7 +551,7 @@ public class TxFragment extends Fragment {
                 if (sendTxOptions.preflightCommitment != null) {
                     TextView tvLabel = AndroidUtils.makeHeaderTv(requireContext());
                     TextView tvVal = AndroidUtils.makeSubHeaderTv(requireContext());
-                    tvLabel.setText(R.string.brave_wallet_solana_preflight_commitment);
+                    tvLabel.setText(R.string.luxxle_wallet_solana_preflight_commitment);
                     tvVal.setText(sendTxOptions.preflightCommitment);
                     sendOptionsLinearLayout.addView(tvLabel);
                     sendOptionsLinearLayout.addView(tvVal);
@@ -559,7 +559,7 @@ public class TxFragment extends Fragment {
                 if (sendTxOptions.skipPreflight != null) {
                     TextView tvLabel = AndroidUtils.makeHeaderTv(requireContext());
                     TextView tvVal = AndroidUtils.makeSubHeaderTv(requireContext());
-                    tvLabel.setText(R.string.brave_wallet_solana_skip_preflight);
+                    tvLabel.setText(R.string.luxxle_wallet_solana_skip_preflight);
                     tvVal.setText(String.valueOf(sendTxOptions.skipPreflight.skipPreflight));
                     sendOptionsLinearLayout.addView(tvLabel);
                     sendOptionsLinearLayout.addView(tvVal);

@@ -4,7 +4,7 @@ component("cpp") {
     "//services/network/public/cpp:cpp",
   ]
 
-  output_name = "brave_network_cpp"
+  output_name = "luxxle_network_cpp"
 
   sources = [
     "system_request_handler.cc",

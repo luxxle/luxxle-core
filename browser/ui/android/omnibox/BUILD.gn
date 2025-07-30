@@ -9,19 +9,19 @@ import("//chrome/browser/buildflags.gni")
 
 android_library("java") {
   sources = [
-    "java/src/org/chromium/chrome/browser/omnibox/BraveAutocompleteEditText.java",
+    "java/src/org/chromium/chrome/browser/omnibox/LuxxleAutocompleteEditText.java",
     "java/src/org/chromium/chrome/browser/omnibox/OmniboxPrefManager.java",
-    "java/src/org/chromium/chrome/browser/omnibox/status/BraveStatusMediator.java",
-    "java/src/org/chromium/chrome/browser/omnibox/suggestions/BraveAutocompleteCoordinator.java",
-    "java/src/org/chromium/chrome/browser/omnibox/suggestions/BraveDropdownItemViewInfoListBuilder.java",
-    "java/src/org/chromium/chrome/browser/omnibox/suggestions/BraveDropdownItemViewInfoListManager.java",
-    "java/src/org/chromium/chrome/browser/omnibox/suggestions/BraveLeoAutocompleteDelegate.java",
-    "java/src/org/chromium/chrome/browser/omnibox/suggestions/BraveOmniboxSuggestionUiType.java",
-    "java/src/org/chromium/chrome/browser/omnibox/suggestions/BraveSuggestionHost.java",
-    "java/src/org/chromium/chrome/browser/omnibox/suggestions/brave_leo/BraveLeoSuggestionProcessor.java",
-    "java/src/org/chromium/chrome/browser/omnibox/suggestions/brave_leo/BraveLeoSuggestionViewBinder.java",
-    "java/src/org/chromium/chrome/browser/omnibox/suggestions/editurl/BraveEditUrlSuggestionProcessor.java",
-    "java/src/org/chromium/chrome/browser/omnibox/suggestions/editurl/BraveEditUrlSuggestionProcessorBase.java",
+    "java/src/org/chromium/chrome/browser/omnibox/status/LuxxleStatusMediator.java",
+    "java/src/org/chromium/chrome/browser/omnibox/suggestions/LuxxleAutocompleteCoordinator.java",
+    "java/src/org/chromium/chrome/browser/omnibox/suggestions/LuxxleDropdownItemViewInfoListBuilder.java",
+    "java/src/org/chromium/chrome/browser/omnibox/suggestions/LuxxleDropdownItemViewInfoListManager.java",
+    "java/src/org/chromium/chrome/browser/omnibox/suggestions/LuxxleLeoAutocompleteDelegate.java",
+    "java/src/org/chromium/chrome/browser/omnibox/suggestions/LuxxleOmniboxSuggestionUiType.java",
+    "java/src/org/chromium/chrome/browser/omnibox/suggestions/LuxxleSuggestionHost.java",
+    "java/src/org/chromium/chrome/browser/omnibox/suggestions/luxxle_leo/LuxxleLeoSuggestionProcessor.java",
+    "java/src/org/chromium/chrome/browser/omnibox/suggestions/luxxle_leo/LuxxleLeoSuggestionViewBinder.java",
+    "java/src/org/chromium/chrome/browser/omnibox/suggestions/editurl/LuxxleEditUrlSuggestionProcessor.java",
+    "java/src/org/chromium/chrome/browser/omnibox/suggestions/editurl/LuxxleEditUrlSuggestionProcessorBase.java",
   ]
 
   deps = [
@@ -29,7 +29,7 @@ android_library("java") {
     "//base:base_java",
     "//base:base_shared_preferences_java",
     "//luxxle/android/java/org/chromium/chrome/browser/search_engines:java",
-    "//luxxle/build/android:android_brave_strings_grd",
+    "//luxxle/build/android:android_luxxle_strings_grd",
     "//chrome/browser/commerce/merchant_viewer/android:java",
     "//chrome/browser/flags:java",
     "//chrome/browser/preferences:java",
@@ -66,7 +66,7 @@ android_library("java") {
 android_resources("java_resources") {
   sources = [
     "java/res/drawable-night/ic_search_omnibox_promo.xml",
-    "java/res/drawable/ic_brave_ai_color.xml",
+    "java/res/drawable/ic_luxxle_ai_color.xml",
     "java/res/drawable/ic_search_omnibox_promo.xml",
     "java/res/values-night/colors.xml",
     "java/res/values/colors.xml",

@@ -15,7 +15,7 @@ name = "ppoprf"
 version = "0.4.2"
 authors = [
     "Alex Davidson <coela@alxdavids.xyz>",
-    "Ralph Ankele <rankele@brave.com>",
+    "Ralph Ankele <rankele@luxxle.com>",
 ]
 build = false
 autolib = false
@@ -33,7 +33,7 @@ keywords = [
 ]
 categories = ["cryptography"]
 license = "MPL-2.0"
-repository = "https://github.com/brave/sta-rs"
+repository = "https://github.com/luxxle/sta-rs"
 
 [lib]
 name = "ppoprf"

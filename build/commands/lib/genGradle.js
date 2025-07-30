@@ -17,7 +17,7 @@ const genGradle = (
   config.buildConfig = buildConfig
   config.update(options)
   Log.progressScope('Generating Gradle files', () => {
-    braveArgs = [
+    luxxleArgs = [
       'build/android/gradle/generate_gradle.py',
       '--output-directory',
       config.outputDir,
@@ -26,9 +26,9 @@ const genGradle = (
     const filteredArgs = passthroughArgs.filter(
       (arg) => !arg.includes('target_arch'),
     )
-    braveArgs = braveArgs.concat(filteredArgs)
+    luxxleArgs = luxxleArgs.concat(filteredArgs)
 
-    util.run('python3', braveArgs, config.defaultOptions)
+    util.run('python3', luxxleArgs, config.defaultOptions)
   })
 }
 

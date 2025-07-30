@@ -1,10 +1,10 @@
 [package]
 name = "ppoprf"
 version = "0.4.2"
-authors = ["Alex Davidson <coela@alxdavids.xyz>", "Ralph Ankele <rankele@brave.com>"]
+authors = ["Alex Davidson <coela@alxdavids.xyz>", "Ralph Ankele <rankele@luxxle.com>"]
 description = "Puncturable Partially-Oblivious Pseudo-Random Function"
 documentation = "https://docs.rs/ppoprf"
-repository = "https://github.com/brave/sta-rs"
+repository = "https://github.com/luxxle/sta-rs"
 keywords = ["crypto", "oprf", "protocol"]
 categories = ["cryptography"]
 license = "MPL-2.0"

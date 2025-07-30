@@ -10,9 +10,9 @@
 #include <string>
 #include <utility>
 
-#include "luxxle/browser/net/brave_proxying_url_loader_factory.h"
-#include "luxxle/browser/net/brave_proxying_web_socket.h"
-#include "luxxle/browser/net/brave_request_handler.h"
+#include "luxxle/browser/net/luxxle_proxying_url_loader_factory.h"
+#include "luxxle/browser/net/luxxle_proxying_web_socket.h"
+#include "luxxle/browser/net/luxxle_request_handler.h"
 #include "content/public/browser/browser_context.h"
 #include "net/cookies/site_for_cookies.h"
 
@@ -44,10 +44,10 @@ void ResourceContextData::StartProxying(
   }
 
   if (!self->request_handler_) {
-    self->request_handler_ = std::make_unique<BraveRequestHandler>();
+    self->request_handler_ = std::make_unique<LuxxleRequestHandler>();
   }
 
-  auto proxy = std::make_unique<BraveProxyingURLLoaderFactory>(
+  auto proxy = std::make_unique<LuxxleProxyingURLLoaderFactory>(
       *self->request_handler_, browser_context, frame_tree_node_id,
       factory_builder, self->request_id_generator_,
       base::BindOnce(&ResourceContextData::RemoveProxy,
@@ -58,7 +58,7 @@ void ResourceContextData::StartProxying(
 }
 
 // static
-BraveProxyingWebSocket* ResourceContextData::CreateProxyingWebSocket(
+LuxxleProxyingWebSocket* ResourceContextData::CreateProxyingWebSocket(
     content::ContentBrowserClient::WebSocketFactory factory,
     const GURL& url,
     const net::SiteForCookies& site_for_cookies,
@@ -78,7 +78,7 @@ BraveProxyingWebSocket* ResourceContextData::CreateProxyingWebSocket(
   }
 
   if (!self->request_handler_) {
-    self->request_handler_ = std::make_unique<BraveRequestHandler>();
+    self->request_handler_ = std::make_unique<LuxxleRequestHandler>();
   }
 
   network::ResourceRequest request;
@@ -91,7 +91,7 @@ BraveProxyingWebSocket* ResourceContextData::CreateProxyingWebSocket(
   }
   request.request_initiator = origin;
 
-  auto proxy = std::make_unique<BraveProxyingWebSocket>(
+  auto proxy = std::make_unique<LuxxleProxyingWebSocket>(
       std::move(factory), request, frame_tree_node_id, browser_context,
       self->request_id_generator_, *self->request_handler_,
       base::BindOnce(&ResourceContextData::RemoveProxyWebSocket,
@@ -102,13 +102,13 @@ BraveProxyingWebSocket* ResourceContextData::CreateProxyingWebSocket(
   return raw_proxy;
 }
 
-void ResourceContextData::RemoveProxy(BraveProxyingURLLoaderFactory* proxy) {
+void ResourceContextData::RemoveProxy(LuxxleProxyingURLLoaderFactory* proxy) {
   auto it = proxies_.find(proxy);
   DCHECK(it != proxies_.end());
   proxies_.erase(it);
 }
 
-void ResourceContextData::RemoveProxyWebSocket(BraveProxyingWebSocket* proxy) {
+void ResourceContextData::RemoveProxyWebSocket(LuxxleProxyingWebSocket* proxy) {
   auto it = websocket_proxies_.find(proxy);
   DCHECK(it != websocket_proxies_.end());
   websocket_proxies_.erase(it);

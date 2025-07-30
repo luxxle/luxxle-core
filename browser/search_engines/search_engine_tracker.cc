@@ -11,10 +11,10 @@
 #include "base/metrics/histogram_macros.h"
 #include "base/no_destructor.h"
 #include "base/strings/string_util.h"
-// REMOVED: #include "luxxle/components/brave_ads/.*"
-#include "luxxle/components/brave_search_conversion/features.h"
-#include "luxxle/components/brave_search_conversion/p3a.h"
-#include "luxxle/components/brave_search_conversion/utils.h"
+// REMOVED: #include "luxxle/components/luxxle_ads/.*"
+#include "luxxle/components/luxxle_search_conversion/features.h"
+#include "luxxle/components/luxxle_search_conversion/p3a.h"
+#include "luxxle/components/luxxle_search_conversion/utils.h"
 #include "luxxle/components/constants/pref_names.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/profile.h"
@@ -26,13 +26,13 @@ namespace {
 
 // Preference name switch events are stored under.
 constexpr char kSwitchSearchEngineP3AStorage[] =
-    "brave.search.p3a_default_switch";
+    "luxxle.search.p3a_default_switch";
 constexpr char kLuxxleDomain[] = "luxxle.com";
 constexpr char kGoogleDomain[] = "google.com";
 constexpr char kDDGDomain[] = "duckduckgo.com";
 
 // Deduces the search engine from |type|, if nothing is found - from |url|.
-// Not all engines added by Brave are present in |SearchEngineType| enumeration.
+// Not all engines added by Luxxle are present in |SearchEngineType| enumeration.
 SearchEngineP3A GetSearchEngineProvider(const GURL& search_engine_url,
                                         SearchEngineType type) {
   SearchEngineP3A result = SearchEngineP3A::kOther;
@@ -190,7 +190,7 @@ SearchEngineTracker::SearchEngineTracker(
       base::BindRepeating(&SearchEngineTracker::RecordWebDiscoveryEnabledP3A,
                           base::Unretained(this)));
   pref_change_registrar_.Add(
-      brave_ads::prefs::kOptedInToNotificationAds,
+      luxxle_ads::prefs::kOptedInToNotificationAds,
       base::BindRepeating(&SearchEngineTracker::RecordWebDiscoveryEnabledP3A,
                           base::Unretained(this)));
 #endif
@@ -200,7 +200,7 @@ SearchEngineTracker::~SearchEngineTracker() = default;
 
 void SearchEngineTracker::RecordLocationBarQuery() {
   if (current_default_engine_ == SearchEngineP3A::kLuxxle) {
-    brave_search_conversion::p3a::RecordLocationBarQuery(local_state_);
+    luxxle_search_conversion::p3a::RecordLocationBarQuery(local_state_);
   }
 }
 
@@ -223,7 +223,7 @@ void SearchEngineTracker::OnTemplateURLServiceChanged() {
 
       if (last_default_engine != current_default_engine_ &&
           last_default_engine == SearchEngineP3A::kLuxxle) {
-        brave_search_conversion::p3a::RecordDefaultEngineChurn(local_state_);
+        luxxle_search_conversion::p3a::RecordDefaultEngineChurn(local_state_);
       }
     }
     RecordSwitchP3A(url);
@@ -237,7 +237,7 @@ void SearchEngineTracker::RecordWebDiscoveryEnabledP3A() {
   UMA_HISTOGRAM_BOOLEAN(
       kWebDiscoveryAndAdsMetric,
       enabled && profile_prefs_->GetBoolean(
-                     brave_ads::prefs::kOptedInToNotificationAds));
+                     luxxle_ads::prefs::kOptedInToNotificationAds));
 }
 #endif
 
@@ -259,12 +259,12 @@ void SearchEngineTracker::RecordSwitchP3A(const GURL& url) {
     switch_record_.Add(static_cast<int>(answer));
 
     if (url.DomainIs(kLuxxleDomain)) {
-      brave_search_conversion::p3a::RecordDefaultEngineConversion(local_state_);
+      luxxle_search_conversion::p3a::RecordDefaultEngineConversion(local_state_);
     }
   }
 
-  if (brave_search_conversion::IsBraveSearchConversionFeatureEnabled() ||
-      base::FeatureList::IsEnabled(brave_search_conversion::features::kNTP)) {
+  if (luxxle_search_conversion::IsLuxxleSearchConversionFeatureEnabled() ||
+      base::FeatureList::IsEnabled(luxxle_search_conversion::features::kNTP)) {
     // Do not report if search conversion promo is enabled, to prevent metric
     // overlap with conversion metrics.
     UMA_HISTOGRAM_EXACT_LINEAR(kSwitchSearchEngineMetric, INT_MAX - 1, 8);

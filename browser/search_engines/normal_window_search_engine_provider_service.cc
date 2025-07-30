@@ -11,7 +11,7 @@
 #include "luxxle/browser/search_engines/pref_names.h"
 #include "luxxle/browser/search_engines/search_engine_provider_util.h"
 #include "luxxle/components/l10n/common/country_code_util.h"
-#include "luxxle/components/search_engines/brave_prepopulated_engines.h"
+#include "luxxle/components/search_engines/luxxle_prepopulated_engines.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/search_engines/template_url_prepopulate_data_resolver_factory.h"
@@ -79,7 +79,7 @@ void NormalWindowSearchEngineProviderService::MigrateSearchEnginePrefsInJP() {
   prefs->SetBoolean(kMigratedSearchDefaultInJP, true);
 
   const std::string country_string =
-      brave_l10n::GetCountryCode(g_browser_process->local_state());
+      luxxle_l10n::GetCountryCode(g_browser_process->local_state());
   if (country_string != "JP") {
     return;
   }

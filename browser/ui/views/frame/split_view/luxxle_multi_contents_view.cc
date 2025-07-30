@@ -1,0 +1,151 @@
+/* Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+#include "luxxle/browser/ui/views/frame/split_view/luxxle_multi_contents_view.h"
+
+#include "luxxle/browser/ui/luxxle_browser.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
+#include "luxxle/browser/ui/views/frame/luxxle_contents_view_util.h"
+#include "luxxle/browser/ui/views/split_view/split_view_location_bar.h"
+#include "luxxle/browser/ui/views/split_view/split_view_separator.h"
+#include "chrome/browser/profiles/profile.h"
+#include "chrome/browser/ui/views/frame/browser_view.h"
+#include "chrome/browser/ui/views/frame/contents_web_view.h"
+#include "chrome/browser/ui/views/frame/multi_contents_resize_area.h"
+#include "ui/base/metadata/metadata_impl_macros.h"
+#include "ui/color/color_provider.h"
+#include "ui/compositor/layer.h"
+#include "ui/views/border.h"
+#include "ui/views/widget/widget.h"
+
+namespace {
+constexpr auto kSpacingBetweenContentsWebViews = 4;
+}  // namespace
+
+LuxxleMultiContentsView::LuxxleMultiContentsView(
+    BrowserView* browser_view,
+    WebContentsFocusedCallback inactive_contents_focused_callback,
+    WebContentsResizeCallback contents_resize_callback)
+    : MultiContentsView(browser_view,
+                        inactive_contents_focused_callback,
+                        contents_resize_callback) {
+  // Replace upstream's resize area with ours.
+  // To prevent making |resize_area_| dangling pointer,
+  // reset it after setting null to |resize_area_|.
+  {
+    std::unique_ptr<views::View> resize_area = RemoveChildViewT(resize_area_);
+    resize_area_ = nullptr;
+  }
+  auto* separator = AddChildView(
+      std::make_unique<SplitViewSeparator>(browser_view_->browser()));
+  separator->set_resize_delegate(this);
+  separator->set_separator_delegate(this);
+  separator->SetPreferredSize(gfx::Size(kSpacingBetweenContentsWebViews, 0));
+  resize_area_ = separator;
+}
+
+LuxxleMultiContentsView::~LuxxleMultiContentsView() = default;
+
+void LuxxleMultiContentsView::UpdateContentsBorder() {
+  if (!IsInSplitView()) {
+    MultiContentsView::UpdateContentsBorder();
+    return;
+  }
+
+  auto* cp = GetColorProvider();
+  if (!cp) {
+    return;
+  }
+
+  // Draw active/inactive outlines around the contents areas.
+  const auto set_contents_border =
+      [this, cp](ContentsContainerView* contents_container_view) {
+        const bool is_active = contents_container_view->GetContentsView() ==
+                               GetActiveContentsView();
+        const float corner_radius = GetCornerRadius();
+        if (is_active) {
+          contents_container_view->SetBorder(views::CreateRoundedRectBorder(
+              kBorderThickness, corner_radius,
+              kColorLuxxleSplitViewActiveWebViewBorder));
+        } else {
+          contents_container_view->SetBorder(views::CreateBorderPainter(
+              views::Painter::CreateRoundRectWith1PxBorderPainter(
+                  cp->GetColor(kColorLuxxleSplitViewInactiveWebViewBorder),
+                  cp->GetColor(kColorToolbar), corner_radius, SkBlendMode::kSrc,
+                  /*anti_alias*/ true,
+                  /*should_border_scale*/ true),
+              gfx::Insets(kBorderThickness)));
+        }
+      };
+  for (auto* contents_container_view : contents_container_views_) {
+    set_contents_border(contents_container_view);
+  }
+}
+
+void LuxxleMultiContentsView::Layout(PassKey) {
+  // It's similar with upstream layout logic but replaced as we need to apply
+  // different radius on each view.
+  const gfx::Rect available_space(GetContentsBounds());
+  ViewWidths widths = GetViewWidths(available_space);
+  gfx::Rect start_rect(available_space.origin(),
+                       gfx::Size(widths.start_width, available_space.height()));
+  const gfx::Rect resize_rect(
+      start_rect.top_right(),
+      gfx::Size(widths.resize_width, available_space.height()));
+  gfx::Rect end_rect(resize_rect.top_right(),
+                     gfx::Size(widths.end_width, available_space.height()));
+  gfx::RoundedCornersF corners(GetCornerRadius());
+  for (auto* contents_container_view : contents_container_views_) {
+    auto* contents_web_view = contents_container_view->GetContentsView();
+    contents_web_view->layer()->SetRoundedCornerRadius(corners);
+    contents_web_view->holder()->SetCornerRadii(corners);
+    contents_web_view->holder()->SetCornerRadii(corners);
+  }
+  CHECK(contents_container_views_.size() == 2);
+  contents_container_views_[0]->SetBoundsRect(start_rect);
+  resize_area_->SetBoundsRect(resize_rect);
+  contents_container_views_[1]->SetBoundsRect(end_rect);
+}
+
+void LuxxleMultiContentsView::SetActiveIndex(int index) {
+  MultiContentsView::SetActiveIndex(index);
+
+  UpdateSecondaryLocationBar();
+}
+
+float LuxxleMultiContentsView::GetCornerRadius() const {
+  return LuxxleBrowser::ShouldUseLuxxleWebViewRoundedCorners(
+             browser_view_->browser())
+             ? LuxxleContentsViewUtil::kBorderRadius + kBorderThickness
+             : 0;
+}
+
+void LuxxleMultiContentsView::OnDoubleClicked() {
+  // Give same width on both contents view.
+  contents_resize_callback_.Run(0.5);
+}
+
+void LuxxleMultiContentsView::UpdateSecondaryLocationBar() {
+  if (!secondary_location_bar_) {
+    secondary_location_bar_ = std::make_unique<SplitViewLocationBar>(
+        browser_view_->browser()->profile()->GetPrefs());
+    secondary_location_bar_widget_ = std::make_unique<views::Widget>();
+
+    secondary_location_bar_widget_->Init(
+        SplitViewLocationBar::GetWidgetInitParams(
+            GetWidget()->GetNativeView(), secondary_location_bar_.get()));
+  }
+
+  // Inactive web contents/view should be set to secondary location bar
+  // as it's attached to inactive contents view.
+  int inactive_index = active_index_ == 0 ? 1 : 0;
+  secondary_location_bar_->SetWebContents(
+      GetInactiveContentsView()->GetWebContents());
+  secondary_location_bar_->SetParentWebView(
+      contents_container_views_[inactive_index]);
+}
+
+BEGIN_METADATA(LuxxleMultiContentsView)
+END_METADATA

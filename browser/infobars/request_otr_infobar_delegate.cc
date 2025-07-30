@@ -12,8 +12,8 @@
 #include "build/build_config.h"
 #include "chrome/browser/infobars/confirm_infobar_creator.h"
 #include "chrome/grit/generated_resources.h"
-#include "components/grit/brave_components_resources.h"
-#include "components/grit/brave_components_strings.h"
+#include "components/grit/luxxle_components_resources.h"
+#include "components/grit/luxxle_components_strings.h"
 #include "components/infobars/content/content_infobar_manager.h"
 #include "components/infobars/core/infobar.h"
 #include "components/vector_icons/vector_icons.h"
@@ -38,7 +38,7 @@ RequestOTRInfoBarDelegate::~RequestOTRInfoBarDelegate() {}
 
 infobars::InfoBarDelegate::InfoBarIdentifier
 RequestOTRInfoBarDelegate::GetIdentifier() const {
-  return BRAVE_REQUEST_OTR_INFOBAR_DELEGATE;
+  return LUXXLE_REQUEST_OTR_INFOBAR_DELEGATE;
 }
 
 const gfx::VectorIcon& RequestOTRInfoBarDelegate::GetVectorIcon() const {

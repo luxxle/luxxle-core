@@ -3,10 +3,10 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-# This target should be included into all Brave test binaries to make
-# base::CurrentTestVendor::Get() return kBrave.
-source_set("test_vendor_is_brave") {
+# This target should be included into all Luxxle test binaries to make
+# base::CurrentTestVendor::Get() return kLuxxle.
+source_set("test_vendor_is_luxxle") {
   testonly = true
-  sources = [ "test_vendor_is_brave.cc" ]
+  sources = [ "test_vendor_is_luxxle.cc" ]
   deps = [ "//base/test:test_support" ]
 }

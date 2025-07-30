@@ -1,7 +1,7 @@
 source_set("util") {
   sources = [
-    "brave_shell_util.cc",
-    "brave_shell_util.h",
+    "luxxle_shell_util.cc",
+    "luxxle_shell_util.h",
   ]
 
   deps = [

@@ -23,13 +23,13 @@ import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import org.chromium.brave_wallet.mojom.BraveWalletP3a;
-import org.chromium.brave_wallet.mojom.JsonRpcService;
-import org.chromium.brave_wallet.mojom.KeyringService;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletP3a;
+import org.chromium.luxxle_wallet.mojom.JsonRpcService;
+import org.chromium.luxxle_wallet.mojom.KeyringService;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.app.domain.KeyringModel;
 import org.chromium.chrome.browser.app.domain.NetworkModel;
-import org.chromium.chrome.browser.crypto_wallet.activities.BraveWalletActivity;
+import org.chromium.chrome.browser.crypto_wallet.activities.LuxxleWalletActivity;
 import org.chromium.chrome.browser.crypto_wallet.listeners.OnNextPage;
 import org.chromium.chrome.browser.crypto_wallet.util.KeystoreHelper;
 import org.chromium.chrome.browser.crypto_wallet.util.Utils;
@@ -50,7 +50,7 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
 /**
- * Base Brave Wallet fragment that performs a cast on the host activity to extract {@link
+ * Base Luxxle Wallet fragment that performs a cast on the host activity to extract {@link
  * OnNextPage} interface used for basic navigation actions.
  */
 public abstract class BaseWalletNextPageFragment extends Fragment {
@@ -99,8 +99,8 @@ public abstract class BaseWalletNextPageFragment extends Fragment {
     @Nullable
     protected NetworkModel getNetworkModel() {
         Activity activity = getActivity();
-        if (activity instanceof BraveWalletActivity) {
-            return ((BraveWalletActivity) activity).getNetworkModel();
+        if (activity instanceof LuxxleWalletActivity) {
+            return ((LuxxleWalletActivity) activity).getNetworkModel();
         }
 
         return null;
@@ -109,8 +109,8 @@ public abstract class BaseWalletNextPageFragment extends Fragment {
     @Nullable
     protected KeyringModel getKeyringModel() {
         Activity activity = getActivity();
-        if (activity instanceof BraveWalletActivity) {
-            return ((BraveWalletActivity) activity).getKeyringModel();
+        if (activity instanceof LuxxleWalletActivity) {
+            return ((LuxxleWalletActivity) activity).getKeyringModel();
         }
 
         return null;
@@ -119,8 +119,8 @@ public abstract class BaseWalletNextPageFragment extends Fragment {
     @Nullable
     protected KeyringService getKeyringService() {
         Activity activity = getActivity();
-        if (activity instanceof BraveWalletActivity) {
-            return ((BraveWalletActivity) activity).getKeyringService();
+        if (activity instanceof LuxxleWalletActivity) {
+            return ((LuxxleWalletActivity) activity).getKeyringService();
         }
 
         return null;
@@ -129,18 +129,18 @@ public abstract class BaseWalletNextPageFragment extends Fragment {
     @Nullable
     protected JsonRpcService getJsonRpcService() {
         Activity activity = getActivity();
-        if (activity instanceof BraveWalletActivity) {
-            return ((BraveWalletActivity) activity).getJsonRpcService();
+        if (activity instanceof LuxxleWalletActivity) {
+            return ((LuxxleWalletActivity) activity).getJsonRpcService();
         }
 
         return null;
     }
 
     @Nullable
-    protected BraveWalletP3a getBraveWalletP3A() {
+    protected LuxxleWalletP3a getLuxxleWalletP3A() {
         Activity activity = getActivity();
-        if (activity instanceof BraveWalletActivity) {
-            return ((BraveWalletActivity) activity).getBraveWalletP3A();
+        if (activity instanceof LuxxleWalletActivity) {
+            return ((LuxxleWalletActivity) activity).getLuxxleWalletP3A();
         }
 
         return null;

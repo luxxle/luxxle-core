@@ -853,7 +853,7 @@ impl NetworkFilter {
         // - example.com
         // - https://example.com
         // However, it relies on checking the URL post-match against information from the matched
-        // filter, which isn't saved in Brave unless running with filter lists compiled in "debug"
+        // filter, which isn't saved in Luxxle unless running with filter lists compiled in "debug"
         // mode. Instead, we apply the implicit document matching more strictly, only for hostname
         // filters of the form `||example.com^`.
         if (cpt_mask_positive & NetworkFilterMask::FROM_ALL_TYPES).is_empty() &&

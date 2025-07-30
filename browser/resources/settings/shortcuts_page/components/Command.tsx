@@ -1,4 +1,4 @@
-// Copyright (c) 2023 The Brave Authors. All rights reserved.
+// Copyright (c) 2023 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -10,9 +10,9 @@ import Keys from './Keys'
 import ConfigureShortcut from './ConfigureShortcut'
 import { commandsCache } from '../commands'
 import { stringToKeys } from '../utils/accelerator'
-import Button from '@brave/leo/react/button'
-import Icon from '@brave/leo/react/icon'
-import { color, spacing } from '@brave/leo/tokens/css/variables'
+import Button from '@luxxle/leo/react/button'
+import Icon from '@luxxle/leo/react/icon'
+import { color, spacing } from '@luxxle/leo/tokens/css/variables'
 import { getLocale } from '$web-common/locale'
 
 const Grid = styled.div`

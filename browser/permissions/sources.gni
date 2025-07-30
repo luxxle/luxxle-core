@@ -3,14 +3,14 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-brave_browser_permissions_sources = [
+luxxle_browser_permissions_sources = [
   "//luxxle/browser/permissions/permission_lifetime_manager_factory.cc",
   "//luxxle/browser/permissions/permission_lifetime_manager_factory.h",
   "//luxxle/browser/permissions/permission_origin_lifetime_monitor_impl.cc",
   "//luxxle/browser/permissions/permission_origin_lifetime_monitor_impl.h",
 ]
 
-brave_browser_permissions_deps = [
+luxxle_browser_permissions_deps = [
   "//base",
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead

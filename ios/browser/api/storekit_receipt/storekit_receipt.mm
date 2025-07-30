@@ -1,9 +1,9 @@
-/* Copyright (c) 2024 The Brave Authors. All rights reserved.
+/* Copyright (c) 2024 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/ios/browser/api/storekit_receipt/storekit_receipt.h"
+#include "luxxle/ios/browser/api/storekit_receipt/storekit_receipt.h"
 
 #include <vector>
 
@@ -189,9 +189,9 @@ bool pkcs7_get_signed_content(
   return true;
 }
 }  // namespace storekit_receipt
-}  // namespace brave
+}  // namespace luxxle
 
-@implementation BraveStoreKitPurchase
+@implementation LuxxleStoreKitPurchase
 - (instancetype)initWithData:(bssl::der::Input)data {
   if ((self = [super init])) {
     _quantity = 0;
@@ -290,7 +290,7 @@ bool pkcs7_get_signed_content(
 }
 @end
 
-@implementation BraveStoreKitReceipt
+@implementation LuxxleStoreKitReceipt
 - (nullable instancetype)initWithData:(NSData*)data {
   if ((self = [super init])) {
     _bundleId = @"";
@@ -387,8 +387,8 @@ bool pkcs7_get_signed_content(
           } break;
 
           case 17: {
-            BraveStoreKitPurchase* purchase =
-                [[BraveStoreKitPurchase alloc] initWithData:value];
+            LuxxleStoreKitPurchase* purchase =
+                [[LuxxleStoreKitPurchase alloc] initWithData:value];
             if (purchase) {
               NSMutableArray* purchases =
                   static_cast<NSMutableArray*>(_inAppPurchaseReceipts);

@@ -13,7 +13,7 @@ import { getCss } from './br_toolbar_search_field.css.js'
 
 import type { PropertyValues } from '//resources/lit/v3_0/lit.rollup.js'
 
-const BraveToolbarSearchFieldBase = CrSearchFieldMixinLit(CrLitElement)
+const LuxxleToolbarSearchFieldBase = CrSearchFieldMixinLit(CrLitElement)
 
 export interface BrToolbarSearchFieldElement {
   $: {
@@ -23,7 +23,7 @@ export interface BrToolbarSearchFieldElement {
   }
 }
 
-export class BrToolbarSearchFieldElement extends BraveToolbarSearchFieldBase {
+export class BrToolbarSearchFieldElement extends LuxxleToolbarSearchFieldBase {
   static get is() {
     return 'br-toolbar-search-field'
   }
@@ -103,7 +103,7 @@ export class BrToolbarSearchFieldElement extends BraveToolbarSearchFieldBase {
   }
 
   computeIsSpinnerShown_() {
-    // TODO(petemill): Show a spinner for brave version of toolbar
+    // TODO(petemill): Show a spinner for luxxle version of toolbar
     const showSpinner = this.spinnerActive && this.showingSearch
     return showSpinner
   }

@@ -13,7 +13,7 @@
 #include "base/task/sequenced_task_runner.h"
 #include "base/task/task_runner.h"
 #include "base/time/time.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/browser/ui/views/playlist/playlist_action_icon_view.h"
 #include "luxxle/browser/ui/views/playlist/playlist_bubbles_controller.h"
 #include "luxxle/browser/ui/views/playlist/playlist_edit_bubble_view.h"
@@ -131,7 +131,7 @@ PlaylistAddBubbleView::PlaylistAddBubbleView(
   scroll_view_->SetDrawOverflowIndicator(false);
   scroll_view_->SetBorder(views::CreateRoundedRectBorder(
       /*thickness=*/1,
-      /*corner_radius=*/4.f, kColorBravePlaylistListBorder));
+      /*corner_radius=*/4.f, kColorLuxxlePlaylistListBorder));
   scroll_view_->SetVisible(false);
   scroll_view_->SetContents(std::make_unique<views::View>());
   // Fix preferred width. This is for ignoring insets that could be added by

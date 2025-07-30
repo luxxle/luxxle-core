@@ -3,22 +3,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveTopToolbarCoordinatorClassAdapter extends BraveClassVisitor {
+public class LuxxleTopToolbarCoordinatorClassAdapter extends LuxxleClassVisitor {
     static String sTopToolbarCoordinatorClassName =
             "org/chromium/chrome/browser/toolbar/top/TopToolbarCoordinator";
-    static String sBraveTopToolbarCoordinatorClassName =
-            "org/chromium/chrome/browser/toolbar/top/BraveTopToolbarCoordinator";
+    static String sLuxxleTopToolbarCoordinatorClassName =
+            "org/chromium/chrome/browser/toolbar/top/LuxxleTopToolbarCoordinator";
 
-    public BraveTopToolbarCoordinatorClassAdapter(ClassVisitor visitor) {
+    public LuxxleTopToolbarCoordinatorClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sTopToolbarCoordinatorClassName, sBraveTopToolbarCoordinatorClassName);
+        redirectConstructor(sTopToolbarCoordinatorClassName, sLuxxleTopToolbarCoordinatorClassName);
 
-        deleteField(sBraveTopToolbarCoordinatorClassName, "mOptionalButtonController");
+        deleteField(sLuxxleTopToolbarCoordinatorClassName, "mOptionalButtonController");
         makeProtectedField(sTopToolbarCoordinatorClassName, "mOptionalButtonController");
     }
 }

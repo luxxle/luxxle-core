@@ -1,4 +1,4 @@
-// Copyright (c) 2025 The Brave Authors. All rights reserved.
+// Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -10,7 +10,7 @@ import {
   Alias,
   EmailAliasesServiceInterface,
   MAX_ALIASES
-} from 'gen/brave/components/email_aliases/email_aliases.mojom.m'
+} from 'gen/luxxle/components/email_aliases/email_aliases.mojom.m'
 import { clickLeoButton } from './test_utils'
 
 jest.mock('$web-common/locale', () => ({
@@ -44,18 +44,18 @@ const mockEmailAliasesService: EmailAliasesServiceInterface = {
 }
 
 describe('AliasList', () => {
-  const mockAuthEmail = 'test@brave.com'
+  const mockAuthEmail = 'test@luxxle.com'
 
   const mockAliases: Alias[] = [
     {
-      email: 'test1@brave.com',
+      email: 'test1@luxxle.com',
       note: 'Test Alias 1',
-      domains: ['brave.com']
+      domains: ['luxxle.com']
     },
     {
-      email: 'test2@brave.com',
+      email: 'test2@luxxle.com',
       note: 'Test Alias 2',
-      domains: ['brave.com']
+      domains: ['luxxle.com']
     }
   ]
 
@@ -73,9 +73,9 @@ describe('AliasList', () => {
     )
 
     // Check if alias information is displayed correctly
-    expect(screen.getByText(/test1@brave\.com/)).toBeInTheDocument()
+    expect(screen.getByText(/test1@luxxle\.com/)).toBeInTheDocument()
     expect(screen.getByText(/Test Alias 1/)).toBeInTheDocument()
-    expect(screen.getByText(/test2@brave\.com/)).toBeInTheDocument()
+    expect(screen.getByText(/test2@luxxle\.com/)).toBeInTheDocument()
     expect(screen.getByText(/Test Alias 2/)).toBeInTheDocument()
   })
 

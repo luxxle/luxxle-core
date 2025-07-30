@@ -14,18 +14,18 @@ source_set("features") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/ai_chat/core/common:common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_component_updater/browser:browser",
+    # "//luxxle/components/luxxle_component_updater/browser:browser",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_news/common:common",
+    # "//luxxle/components/luxxle_news/common:common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/core:features",
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/luxxle_rewards/core:features",
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:features",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_user_agent/common",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/luxxle_sync:features",
+    # Commented out: removed components dependency - using Chromium defaults instead
+    # "//luxxle/components/luxxle_user_agent/common",
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead

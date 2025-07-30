@@ -48,7 +48,7 @@ hooks = [
     'action': ['python3', 'third_party/reclient_configs/src/configure_reclient.py',
                '--src_dir=..',
                '--exec_root=../..',
-               '--custom_py=third_party/reclient_configs/brave_custom/brave_custom.py'],
+               '--custom_py=third_party/reclient_configs/luxxle_custom/luxxle_custom.py'],
   },
   {
     'name': 'update_pip',
@@ -96,7 +96,7 @@ hooks = [
 
 include_rules = [
   "-chrome",
-  "-brave",
+  "-luxxle",
   "-third_party/rust",
 
   # Everybody can use some things.

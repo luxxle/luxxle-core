@@ -4,5 +4,5 @@
 # This file provides variables for components/update_client/BUILD.gn
 
 # Define empty update client variables to use Chromium defaults
-brave_components_update_client_deps = []
-brave_components_update_client_public_deps = [] 
+luxxle_components_update_client_deps = []
+luxxle_components_update_client_public_deps = [] 

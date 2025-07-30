@@ -9,11 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.chromium.base.Callbacks;
-import org.chromium.brave_wallet.mojom.BlockchainRegistry;
-import org.chromium.brave_wallet.mojom.BlockchainToken;
-import org.chromium.brave_wallet.mojom.BraveWalletService;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.BlockchainRegistry;
+import org.chromium.luxxle_wallet.mojom.BlockchainToken;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletService;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,7 +53,7 @@ public class TokenUtils {
      * Filter tokens by type and add native token (when needed).
      *
      * <p>BlockchainRegistry.getAllTokens does not return the chain's native token;
-     * BraveWalletService.getUserAssets contains the native asset on init, but:
+     * LuxxleWalletService.getUserAssets contains the native asset on init, but:
      *
      * <ul>
      *   <li>The returned BlockchainToken object has no logo
@@ -70,7 +70,7 @@ public class TokenUtils {
      *       front
      * </ul>
      *
-     * <p>See `refreshVisibleTokenInfo` in components/brave_wallet_ui/common/async/lib.ts.
+     * <p>See `refreshVisibleTokenInfo` in components/luxxle_wallet_ui/common/async/lib.ts.
      */
     @SuppressWarnings("NoStreams")
     private static BlockchainToken[] filterTokens(
@@ -121,12 +121,12 @@ public class TokenUtils {
     }
 
     public static void getVisibleUserAssetsFiltered(
-            BraveWalletService braveWalletService,
+            LuxxleWalletService luxxleWalletService,
             NetworkInfo selectedNetwork,
             int coinType,
             TokenType tokenType,
             Callbacks.Callback1<BlockchainToken[]> callback) {
-        braveWalletService.getUserAssets(
+        luxxleWalletService.getUserAssets(
                 selectedNetwork.chainId,
                 coinType,
                 (BlockchainToken[] tokens) -> {
@@ -140,26 +140,26 @@ public class TokenUtils {
      * Gets all tokens from a given single network, includes user assets and filters out tokens
      * different from a given type.
      *
-     * @param braveWalletService BraveWalletService to retrieve user asset from core.
-     * @param blockchainRegistry BraveChainRegistry to retrieve all tokens from core.
+     * @param luxxleWalletService LuxxleWalletService to retrieve user asset from core.
+     * @param blockchainRegistry LuxxleChainRegistry to retrieve all tokens from core.
      * @param selectedNetwork Selected network whose tokens will be retrieved.
      * @param tokenType Token type used for filtering.
      * @param callback Callback containing a filtered array of tokens for the given network.
      */
     public static void getAllTokensFiltered(
-            @Nullable BraveWalletService braveWalletService,
+            @Nullable LuxxleWalletService luxxleWalletService,
             @Nullable BlockchainRegistry blockchainRegistry,
             @Nullable NetworkInfo selectedNetwork,
             TokenType tokenType,
             Callbacks.Callback1<BlockchainToken[]> callback) {
-        if (braveWalletService == null || blockchainRegistry == null || selectedNetwork == null) {
+        if (luxxleWalletService == null || blockchainRegistry == null || selectedNetwork == null) {
             return;
         }
         blockchainRegistry.getAllTokens(
                 selectedNetwork.chainId,
                 selectedNetwork.coin,
                 tokens ->
-                        braveWalletService.getUserAssets(
+                        luxxleWalletService.getUserAssets(
                                 selectedNetwork.chainId,
                                 selectedNetwork.coin,
                                 userTokens -> {
@@ -175,20 +175,20 @@ public class TokenUtils {
     }
 
     public static void getUserOrAllTokensFiltered(
-            BraveWalletService braveWalletService,
+            LuxxleWalletService luxxleWalletService,
             BlockchainRegistry blockchainRegistry,
             NetworkInfo selectedNetwork,
             int coinType,
             TokenType tokenType,
             boolean userAssetsOnly,
             Callbacks.Callback1<BlockchainToken[]> callback) {
-        if (JavaUtils.anyNull(braveWalletService, blockchainRegistry)) return;
+        if (JavaUtils.anyNull(luxxleWalletService, blockchainRegistry)) return;
         if (userAssetsOnly) {
             getVisibleUserAssetsFiltered(
-                    braveWalletService, selectedNetwork, coinType, tokenType, callback);
+                    luxxleWalletService, selectedNetwork, coinType, tokenType, callback);
         } else {
             getAllTokensFiltered(
-                    braveWalletService, blockchainRegistry, selectedNetwork, tokenType, callback);
+                    luxxleWalletService, blockchainRegistry, selectedNetwork, tokenType, callback);
         }
     }
 

@@ -1,9 +1,9 @@
-// Copyright (c) 2024 The Brave Authors. All rights reserved.
+// Copyright (c) 2024 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/ios/browser/api/omnibox/autocomplete_classifier.h"
+#include "luxxle/ios/browser/api/omnibox/autocomplete_classifier.h"
 
 #include "base/strings/sys_string_conversions.h"
 #include "base/strings/utf_string_conversions.h"
@@ -18,65 +18,65 @@
 #include "net/base/apple/url_conversions.h"
 
 namespace luxxle {
-AutocompleteMatch::Type MatchTypeFromBraveType(
-    BraveIOSAutocompleteMatchType type) {
+AutocompleteMatch::Type MatchTypeFromLuxxleType(
+    LuxxleIOSAutocompleteMatchType type) {
   switch (type) {
-    case BraveIOSAutocompleteMatchTypeUrlWhatYouTyped:
+    case LuxxleIOSAutocompleteMatchTypeUrlWhatYouTyped:
       return AutocompleteMatch::Type::URL_WHAT_YOU_TYPED;
-    case BraveIOSAutocompleteMatchTypeHistoryUrl:
+    case LuxxleIOSAutocompleteMatchTypeHistoryUrl:
       return AutocompleteMatch::Type::HISTORY_URL;
-    case BraveIOSAutocompleteMatchTypeNavSuggest:
+    case LuxxleIOSAutocompleteMatchTypeNavSuggest:
       return AutocompleteMatch::Type::NAVSUGGEST;
-    case BraveIOSAutocompleteMatchTypeSearchWhatYouTyped:
+    case LuxxleIOSAutocompleteMatchTypeSearchWhatYouTyped:
       return AutocompleteMatch::Type::SEARCH_WHAT_YOU_TYPED;
-    case BraveIOSAutocompleteMatchTypeSearchHistory:
+    case LuxxleIOSAutocompleteMatchTypeSearchHistory:
       return AutocompleteMatch::Type::SEARCH_HISTORY;
-    case BraveIOSAutocompleteMatchTypeSearchOtherEngine:
+    case LuxxleIOSAutocompleteMatchTypeSearchOtherEngine:
       return AutocompleteMatch::Type::SEARCH_OTHER_ENGINE;
-    case BraveIOSAutocompleteMatchTypeBookmarkTitle:
+    case LuxxleIOSAutocompleteMatchTypeBookmarkTitle:
       return AutocompleteMatch::Type::BOOKMARK_TITLE;
-    case BraveIOSAutocompleteMatchTypeClipboardUrl:
+    case LuxxleIOSAutocompleteMatchTypeClipboardUrl:
       return AutocompleteMatch::Type::CLIPBOARD_URL;
-    case BraveIOSAutocompleteMatchTypeClipboardText:
+    case LuxxleIOSAutocompleteMatchTypeClipboardText:
       return AutocompleteMatch::Type::CLIPBOARD_TEXT;
-    case BraveIOSAutocompleteMatchTypeOpenTab:
+    case LuxxleIOSAutocompleteMatchTypeOpenTab:
       return AutocompleteMatch::Type::OPEN_TAB;
   }
-  NOTREACHED() << "Unknown BraveIOSAutocompleteMatchType: " << type;
+  NOTREACHED() << "Unknown LuxxleIOSAutocompleteMatchType: " << type;
 }
 
-BraveIOSAutocompleteMatchType BraveTypeFromMatchType(
+LuxxleIOSAutocompleteMatchType LuxxleTypeFromMatchType(
     AutocompleteMatch::Type type) {
   switch (type) {
     case AutocompleteMatch::Type::URL_WHAT_YOU_TYPED:
-      return BraveIOSAutocompleteMatchTypeUrlWhatYouTyped;
+      return LuxxleIOSAutocompleteMatchTypeUrlWhatYouTyped;
     case AutocompleteMatch::Type::HISTORY_URL:
-      return BraveIOSAutocompleteMatchTypeHistoryUrl;
+      return LuxxleIOSAutocompleteMatchTypeHistoryUrl;
     case AutocompleteMatch::Type::NAVSUGGEST:
-      return BraveIOSAutocompleteMatchTypeNavSuggest;
+      return LuxxleIOSAutocompleteMatchTypeNavSuggest;
     case AutocompleteMatch::Type::SEARCH_WHAT_YOU_TYPED:
-      return BraveIOSAutocompleteMatchTypeSearchWhatYouTyped;
+      return LuxxleIOSAutocompleteMatchTypeSearchWhatYouTyped;
     case AutocompleteMatch::Type::SEARCH_HISTORY:
-      return BraveIOSAutocompleteMatchTypeSearchHistory;
+      return LuxxleIOSAutocompleteMatchTypeSearchHistory;
     case AutocompleteMatch::Type::SEARCH_OTHER_ENGINE:
-      return BraveIOSAutocompleteMatchTypeSearchOtherEngine;
+      return LuxxleIOSAutocompleteMatchTypeSearchOtherEngine;
     case AutocompleteMatch::Type::BOOKMARK_TITLE:
-      return BraveIOSAutocompleteMatchTypeBookmarkTitle;
+      return LuxxleIOSAutocompleteMatchTypeBookmarkTitle;
     case AutocompleteMatch::Type::CLIPBOARD_URL:
-      return BraveIOSAutocompleteMatchTypeClipboardUrl;
+      return LuxxleIOSAutocompleteMatchTypeClipboardUrl;
     case AutocompleteMatch::Type::CLIPBOARD_TEXT:
-      return BraveIOSAutocompleteMatchTypeClipboardText;
+      return LuxxleIOSAutocompleteMatchTypeClipboardText;
     case AutocompleteMatch::Type::OPEN_TAB:
-      return BraveIOSAutocompleteMatchTypeOpenTab;
+      return LuxxleIOSAutocompleteMatchTypeOpenTab;
     default:
       NOTREACHED() << "Unknown AutocompleteMatch::Type: " << type;
   }
 }
-}  // namespace brave
+}  // namespace luxxle
 
-@implementation BraveIOSAutocompleteMatch
+@implementation LuxxleIOSAutocompleteMatch
 - (instancetype)initWithText:(NSString*)text
-                        type:(BraveIOSAutocompleteMatchType)type
+                        type:(LuxxleIOSAutocompleteMatchType)type
               destinationURL:(NSURL*)destinationURL {
   if ((self = [super init])) {
     _text = text;
@@ -87,9 +87,9 @@ BraveIOSAutocompleteMatchType BraveTypeFromMatchType(
 }
 @end
 
-@implementation BraveIOSAutocompleteClassifier
+@implementation LuxxleIOSAutocompleteClassifier
 
-+ (BraveIOSAutocompleteMatch*)classify:(NSString*)text {
++ (LuxxleIOSAutocompleteMatch*)classify:(NSString*)text {
   std::vector<ProfileIOS*> profiles =
       GetApplicationContext()->GetProfileManager()->GetLoadedProfiles();
   ProfileIOS* last_used_profile = profiles.at(0);
@@ -106,16 +106,16 @@ BraveIOSAutocompleteMatchType BraveTypeFromMatchType(
       return nil;
     }
 
-    return [[BraveIOSAutocompleteMatch alloc]
+    return [[LuxxleIOSAutocompleteMatch alloc]
           initWithText:text
-                  type:luxxle::BraveTypeFromMatchType(match.type)
+                  type:luxxle::LuxxleTypeFromMatchType(match.type)
         destinationURL:net::NSURLWithGURL(match.destination_url)];
   }
   return nil;
 }
 
-+ (bool)isSearchType:(BraveIOSAutocompleteMatchType)type {
-  return AutocompleteMatch::IsSearchType(luxxle::MatchTypeFromBraveType(type));
++ (bool)isSearchType:(LuxxleIOSAutocompleteMatchType)type {
+  return AutocompleteMatch::IsSearchType(luxxle::MatchTypeFromLuxxleType(type));
 }
 
 @end

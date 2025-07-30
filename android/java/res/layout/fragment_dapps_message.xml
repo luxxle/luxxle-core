@@ -35,14 +35,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:textSize="16sp"
-            android:textColor="@color/brave_link"
+            android:textColor="@color/luxxle_link"
             android:text="@string/wallet_non_ascii_characters_original"/>
 
     </LinearLayout>
 
     <EditText
         android:id="@+id/sign_message_text"
-        style="@style/BraveWalletEditTextBordered"
+        style="@style/LuxxleWalletEditTextBordered"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="100dp"

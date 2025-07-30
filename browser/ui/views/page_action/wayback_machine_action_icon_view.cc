@@ -9,10 +9,10 @@
 #include <optional>
 
 #include "base/notreached.h"
-#include "luxxle/app/brave_command_ids.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
-#include "luxxle/components/brave_wayback_machine/brave_wayback_machine_tab_helper.h"
-#include "luxxle/components/brave_wayback_machine/wayback_state.h"
+#include "luxxle/app/luxxle_command_ids.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
+#include "luxxle/components/luxxle_wayback_machine/luxxle_wayback_machine_tab_helper.h"
+#include "luxxle/components/luxxle_wayback_machine/wayback_state.h"
 #include "luxxle/components/vector_icons/vector_icons.h"
 #include "chrome/browser/ui/views/page_action/page_action_icon_loading_indicator_view.h"
 #include "ui/base/metadata/metadata_impl_macros.h"
@@ -103,7 +103,7 @@ views::BubbleDialogDelegate* WaybackMachineActionIconView::GetBubble() const {
 
   // tab helper knows current bubble window.
   auto* tab_helper =
-      BraveWaybackMachineTabHelper::FromWebContents(GetWebContents());
+      LuxxleWaybackMachineTabHelper::FromWebContents(GetWebContents());
   if (!tab_helper) {
     return nullptr;
   }

@@ -18,7 +18,7 @@
 #include "base/time/time.h"
 #include "luxxle/browser/ui/views/text_recognition_dialog_tracker.h"
 #include "luxxle/components/text_recognition/browser/text_recognition.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "build/build_config.h"
 #include "components/constrained_window/constrained_window_views.h"
 #include "ui/base/clipboard/scoped_clipboard_writer.h"
@@ -93,7 +93,7 @@ void ShowTextRecognitionDialog(content::WebContents* web_contents,
   new_dialog->Show();
 }
 
-}  // namespace brave
+}  // namespace luxxle
 
 TextRecognitionDialogView::TextRecognitionDialogView(const SkBitmap& image)
     : image_(image),

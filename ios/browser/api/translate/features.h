@@ -10,11 +10,11 @@
 
 namespace luxxle::features {
 
-// Whether or not to use the new Brave-Translate feature
-BASE_DECLARE_FEATURE(kBraveTranslateEnabled);
+// Whether or not to use the new Luxxle-Translate feature
+BASE_DECLARE_FEATURE(kLuxxleTranslateEnabled);
 
-// Whether or not to use the new Brave-Translate with Apple feature
-BASE_DECLARE_FEATURE(kBraveAppleTranslateEnabled);
+// Whether or not to use the new Luxxle-Translate with Apple feature
+BASE_DECLARE_FEATURE(kLuxxleAppleTranslateEnabled);
 
 }  // namespace luxxle::features
 

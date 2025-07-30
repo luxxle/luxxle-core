@@ -2,7 +2,7 @@
   const W = window
   const C = W.Cookies
   const D = W.document
-  const BU = W.BRAVE
+  const BU = W.LUXXLE
   const IDB = W.idbKeyval
   const exceptionEncoding = '*exception*'
 

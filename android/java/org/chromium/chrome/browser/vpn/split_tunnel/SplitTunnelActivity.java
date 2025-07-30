@@ -27,8 +27,8 @@ import org.chromium.chrome.R;
 import org.chromium.chrome.browser.init.ActivityProfileProvider;
 import org.chromium.chrome.browser.init.AsyncInitializationActivity;
 import org.chromium.chrome.browser.profiles.ProfileProvider;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnPrefUtils;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnPrefUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnUtils;
 
 public class SplitTunnelActivity extends AsyncInitializationActivity
         implements LifecycleOwner, ApplicationListAdapter.OnApplicationClickListener {
@@ -116,9 +116,9 @@ public class SplitTunnelActivity extends AsyncInitializationActivity
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_save) {
             if (mRecyclerViewAdapterExcludedApps != null) {
-                BraveVpnPrefUtils.setExcludedPackages(
+                LuxxleVpnPrefUtils.setExcludedPackages(
                         mRecyclerViewAdapterExcludedApps.getApplicationPackages());
-                BraveVpnUtils.mUpdateProfileAfterSplitTunnel = true;
+                LuxxleVpnUtils.mUpdateProfileAfterSplitTunnel = true;
                 finish();
                 return true;
             }

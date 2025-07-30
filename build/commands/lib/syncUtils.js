@@ -44,7 +44,7 @@ function buildDefaultGClientConfig(
         'src/third_party/chromium-variations': null,
       },
       custom_vars: {
-        'checkout_pgo_profiles': config.isBraveReleaseBuild(),
+        'checkout_pgo_profiles': config.isLuxxleReleaseBuild(),
       },
     },
   ]
@@ -52,10 +52,10 @@ function buildDefaultGClientConfig(
   if (!onlyChromium) {
     items.push({
       managed: false,
-      name: 'src/brave',
-      // We do not use gclient to manage brave-core, so this should not
+      name: 'src/luxxle',
+      // We do not use gclient to manage luxxle-core, so this should not
       // actually get used.
-      url: 'https://github.com/brave/brave-core.git',
+      url: 'https://github.com/luxxle/luxxle-core.git',
     })
   }
 
@@ -136,7 +136,7 @@ function syncChromium(program) {
 
   const latestSyncInfoFilePath = path.join(
     config.rootDir,
-    '.brave_latest_successful_sync.json',
+    '.luxxle_latest_successful_sync.json',
   )
   const latestSyncInfo = util.readJSON(latestSyncInfoFilePath, {})
   const expectedSyncInfo = {
@@ -160,12 +160,12 @@ function syncChromium(program) {
   }
 
   if (deleteUnusedDeps) {
-    if (util.isGitExclusionExists(config.srcDir, 'brave/')) {
+    if (util.isGitExclusionExists(config.srcDir, 'luxxle/')) {
       args.push('-D')
     } else if (!config.isCI) {
       Log.warn(
         '--delete_unused_deps is ignored because sync has not yet added '
-          + 'the exclusion for the src/brave/ directory, likely because sync '
+          + 'the exclusion for the src/luxxle/ directory, likely because sync '
           + 'has not previously successfully run before.',
       )
     }
@@ -206,7 +206,7 @@ function syncChromium(program) {
   }
 
   util.runGClient(args)
-  util.addGitExclusion(config.srcDir, 'brave/')
+  util.addGitExclusion(config.srcDir, 'luxxle/')
   util.writeJSON(latestSyncInfoFilePath, expectedSyncInfo)
 
   const postSyncChromiumRef = util.getGitReadableLocalRef(config.srcDir)
@@ -215,7 +215,7 @@ function syncChromium(program) {
 }
 
 async function checkInternalDepsEndpoint() {
-  if (!config.useBraveHermeticToolchain) {
+  if (!config.useLuxxleHermeticToolchain) {
     return true
   }
 

@@ -7,17 +7,17 @@ package org.chromium.chrome.browser.crypto_wallet.fragments.dapps;
 
 import android.app.Activity;
 
-import org.chromium.brave_wallet.mojom.BraveWalletService;
-import org.chromium.brave_wallet.mojom.JsonRpcService;
-import org.chromium.brave_wallet.mojom.KeyringService;
-import org.chromium.chrome.browser.crypto_wallet.activities.BraveWalletBaseActivity;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletService;
+import org.chromium.luxxle_wallet.mojom.JsonRpcService;
+import org.chromium.luxxle_wallet.mojom.KeyringService;
+import org.chromium.chrome.browser.crypto_wallet.activities.LuxxleWalletBaseActivity;
 import org.chromium.chrome.browser.crypto_wallet.fragments.WalletBottomSheetDialogFragment;
 
 public class BaseDAppsBottomSheetDialogFragment extends WalletBottomSheetDialogFragment {
-    public BraveWalletService getBraveWalletService() {
+    public LuxxleWalletService getLuxxleWalletService() {
         Activity activity = getActivity();
-        if (activity instanceof BraveWalletBaseActivity) {
-            return ((BraveWalletBaseActivity) activity).getBraveWalletService();
+        if (activity instanceof LuxxleWalletBaseActivity) {
+            return ((LuxxleWalletBaseActivity) activity).getLuxxleWalletService();
         }
 
         return null;
@@ -25,8 +25,8 @@ public class BaseDAppsBottomSheetDialogFragment extends WalletBottomSheetDialogF
 
     public KeyringService getKeyringService() {
         Activity activity = getActivity();
-        if (activity instanceof BraveWalletBaseActivity) {
-            return ((BraveWalletBaseActivity) activity).getKeyringService();
+        if (activity instanceof LuxxleWalletBaseActivity) {
+            return ((LuxxleWalletBaseActivity) activity).getKeyringService();
         }
 
         return null;
@@ -34,8 +34,8 @@ public class BaseDAppsBottomSheetDialogFragment extends WalletBottomSheetDialogF
 
     public JsonRpcService getJsonRpcService() {
         Activity activity = getActivity();
-        if (activity instanceof BraveWalletBaseActivity) {
-            return ((BraveWalletBaseActivity) activity).getJsonRpcService();
+        if (activity instanceof LuxxleWalletBaseActivity) {
+            return ((LuxxleWalletBaseActivity) activity).getJsonRpcService();
         }
 
         return null;

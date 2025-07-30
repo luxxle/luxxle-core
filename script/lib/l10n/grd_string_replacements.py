@@ -13,19 +13,19 @@ branding_replacements = [
      r'The Luxxle Authors. All rights reserved.'),
     (r'Google LLC. All rights reserved.',
      r'The Luxxle Authors. All rights reserved.'),
-    (r'The Chromium Authors', r'Brave Software Inc'),
-    (r'Google Chrome', r'Brave'),
-    (r'(Google)(?! Play)', r'Brave'),
-    (r'Chromium', r'Brave'),
-    (r'Chrome', r'Brave'),
-    (r'क्रोमियम', r'Brave'),  # Chromium in Hindi
+    (r'The Chromium Authors', r'Luxxle Software Inc'),
+    (r'Google Chrome', r'Luxxle'),
+    (r'(Google)(?! Play)', r'Luxxle'),
+    (r'Chromium', r'Luxxle'),
+    (r'Chrome', r'Luxxle'),
+    (r'क्रोमियम', r'Luxxle'),  # Chromium in Hindi
 ]
 
 
 # Strings we want to replace but that we need to use Crowdin for
 # to translate the XTB files
 default_replacements = [
-    (r'Brave Web Store', r'Web Store'),
+    (r'Luxxle Web Store', r'Web Store'),
     (r'You\'re incognito', r'This is a private window'),
     (r'an incognito', r'a private'),
     (r'an Incognito', r'a Private'),
@@ -41,29 +41,29 @@ default_replacements = [
 
 # Fix up some strings after aggressive first round replacement.
 fixup_replacements = [
-    (r'Brave Cloud Print', r'Google Cloud Print'),
-    (r'Brave Docs', r'Google Docs'),
-    (r'Brave Drive', r'Google Drive'),
-    (r'Brave OS', r'Chrome OS'),
-    (r'BraveOS', r'ChromeOS'),
-    (r'Brave Safe Browsing', r'Google Safe Browsing'),
+    (r'Luxxle Cloud Print', r'Google Cloud Print'),
+    (r'Luxxle Docs', r'Google Docs'),
+    (r'Luxxle Drive', r'Google Drive'),
+    (r'Luxxle OS', r'Chrome OS'),
+    (r'LuxxleOS', r'ChromeOS'),
+    (r'Luxxle Safe Browsing', r'Google Safe Browsing'),
     (r'Safe Browsing \(protects you and your device from dangerous sites\)',
      r'Google Safe Browsing (protects you and your device from dangerous sites)'
      ),
-    (r'Sends URLs of some pages you visit to Brave',
+    (r'Sends URLs of some pages you visit to Luxxle',
      r'Sends URLs of some pages you visit to Google'),
     (r'Google Google', r'Google'),
-    (r'Brave Account', r'Brave sync chain'),
-    (r'Brave Lens', r'Google Lens'),
-    (r'Bravebook', r'Chromebook'),
-    (r'Bravecast', r'Chromecast'),
-    (r'Brave Cloud', r'Google Cloud'),
-    (r'Brave Pay', r'Google Pay'),
-    (r'Brave Photos', r'Google Photos'),
-    (r'Brave Projects', r'Chromium Projects'),
-    (r'Brave Root Program', r'Chrome Root Program'),
-    (r'BraveVox', r'ChromeVox'),
-    (r'powered by Brave AI', r'powered by Google AI'),
+    (r'Luxxle Account', r'Luxxle sync chain'),
+    (r'Luxxle Lens', r'Google Lens'),
+    (r'Luxxlebook', r'Chromebook'),
+    (r'Luxxlecast', r'Chromecast'),
+    (r'Luxxle Cloud', r'Google Cloud'),
+    (r'Luxxle Pay', r'Google Pay'),
+    (r'Luxxle Photos', r'Google Photos'),
+    (r'Luxxle Projects', r'Chromium Projects'),
+    (r'Luxxle Root Program', r'Chrome Root Program'),
+    (r'LuxxleVox', r'ChromeVox'),
+    (r'powered by Luxxle AI', r'powered by Google AI'),
 ]
 
 

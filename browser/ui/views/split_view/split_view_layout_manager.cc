@@ -38,7 +38,7 @@ SplitViewLayoutManager::SplitViewLayoutManager(
     : contents_container_(contents_container),
       secondary_contents_container_(secondary_contents_container),
       split_view_separator_(split_view_separator) {
-  CHECK(tabs::features::IsBraveSplitViewEnabled());
+  CHECK(tabs::features::IsLuxxleSplitViewEnabled());
   split_view_separator_->set_resize_delegate(this);
   split_view_separator_->set_separator_delegate(this);
 }

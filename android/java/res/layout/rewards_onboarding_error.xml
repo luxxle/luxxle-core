@@ -76,7 +76,7 @@
         android:background="@android:color/transparent"
         android:fontFamily="sans-serif-medium"
         android:textAllCaps="false"
-        android:textColor="@color/brave_rating_not_now_text_color"
+        android:textColor="@color/luxxle_rating_not_now_text_color"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

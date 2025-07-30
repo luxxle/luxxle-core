@@ -26,14 +26,8 @@ source_set("browser_process") {
     "//chrome/browser/*",
   ]
 
-
   deps = [
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/request_otr/common/buildflags",
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/tor/buildflags",
+    # Minimal browser configuration - using Chromium defaults
     "//chrome/browser:browser_process",
     "//extensions/buildflags",
   ]
@@ -43,15 +37,7 @@ group("browser") {
   visibility = [
     "//luxxle:browser_dependencies",
     "//luxxle/browser/*",
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/core/engine:headers",
     "//luxxle/test:*",
-
-    # these are layering violation and need to be fixed
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/content:testutil",
-    # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/test:brave_rewards_unit_tests",
   ]
 
   if (enable_sparkle) {
@@ -62,9 +48,7 @@ group("browser") {
     }
   }
 
-  # Group depending on upstream's counterpart to make it easier to manage
-  # dependencies in brave/ (//chrome/browser does not depend on this target
-  # so //luxxle/browser becomes essentially an alias for //chrome/browser now).
+  # Minimal browser - essentially an alias for Chrome browser with Luxxle branding
   public_deps = [ "//chrome/browser" ]
 }
 

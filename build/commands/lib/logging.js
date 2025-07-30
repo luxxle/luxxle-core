@@ -128,7 +128,7 @@ function command(dir, cmd, args) {
   status(`${cmdArrowStyle('>')} ${cmdCmdStyle(cmd)} ${args.join(' ')}`, true)
 }
 
-function printFailedPatchesInJsonFormat(allPatchStatus, bravePath) {
+function printFailedPatchesInJsonFormat(allPatchStatus, luxxlePath) {
   const failedPatches = allPatchStatus.filter((patch) => patch.error)
   if (!failedPatches.length) {
     return
@@ -139,10 +139,10 @@ function printFailedPatchesInJsonFormat(allPatchStatus, bravePath) {
   const patchFailuresOutput = failedPatches.map(
     ({ path, patchPath, reason }) => {
       return {
-        // Trimming the patch path to be relative to the brave core repo. We skip
+        // Trimming the patch path to be relative to the luxxle core repo. We skip
         // the first character to avoid the trailing slash from the absolute
         // path.
-        patchPath: patchPath.replace(bravePath, '').substring(1),
+        patchPath: patchPath.replace(luxxlePath, '').substring(1),
         reason: GitPatcher.getReasonName(reason),
         path: path,
       }

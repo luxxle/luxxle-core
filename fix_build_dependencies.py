@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script to clean up BUILD.gn files by removing Brave-specific dependencies
+Script to clean up BUILD.gn files by removing Luxxle-specific dependencies
 and replacing them with appropriate Luxxle/Chromium alternatives.
 """
 
@@ -10,28 +10,28 @@ import glob
 import argparse
 
 # Dependencies to remove (will be commented out)
-BRAVE_DEPS_TO_REMOVE = [
-    "//luxxle/browser/brave_ads",
-    "//luxxle/browser/brave_rewards", 
-    "//luxxle/browser/brave_adaptive_captcha",
-    "//luxxle/browser/brave_wallet",
-    "//luxxle/browser/brave_vpn",
-    "//luxxle/browser/brave_news",
-    "//luxxle/browser/brave_search_engines",
-    "//luxxle/components/brave_ads",
-    "//luxxle/components/brave_rewards",
-    "//luxxle/components/brave_wallet",
-    "//luxxle/components/brave_vpn",
+LUXXLE_DEPS_TO_REMOVE = [
+    "//luxxle/browser/luxxle_ads",
+    "//luxxle/browser/luxxle_rewards", 
+    "//luxxle/browser/luxxle_adaptive_captcha",
+    "//luxxle/browser/luxxle_wallet",
+    "//luxxle/browser/luxxle_vpn",
+    "//luxxle/browser/luxxle_news",
+    "//luxxle/browser/luxxle_search_engines",
+    "//luxxle/components/luxxle_ads",
+    "//luxxle/components/luxxle_rewards",
+    "//luxxle/components/luxxle_wallet",
+    "//luxxle/components/luxxle_vpn",
 ]
 
 # Test files/directories to remove from BUILD.gn
-BRAVE_TEST_PATTERNS = [
-    r'"//luxxle/browser/brave_.*"',
-    r'"//luxxle/components/brave_.*"', 
+LUXXLE_TEST_PATTERNS = [
+    r'"//luxxle/browser/luxxle_.*"',
+    r'"//luxxle/components/luxxle_.*"', 
 ]
 
 def process_build_file(filepath):
-    """Process a single BUILD.gn file to remove Brave dependencies."""
+    """Process a single BUILD.gn file to remove Luxxle dependencies."""
     print(f"Processing: {filepath}")
     
     with open(filepath, 'r', encoding='utf-8') as f:
@@ -44,8 +44,8 @@ def process_build_file(filepath):
     for line in lines:
         line_modified = False
         
-        # Check if line contains a Brave dependency to remove
-        for dep in BRAVE_DEPS_TO_REMOVE:
+        # Check if line contains a Luxxle dependency to remove
+        for dep in LUXXLE_DEPS_TO_REMOVE:
             if dep in line and not line.strip().startswith('#'):
                 # Comment out the line
                 indentation = len(line) - len(line.lstrip())
@@ -55,7 +55,7 @@ def process_build_file(filepath):
         
         # Check for test patterns to remove
         if not line_modified:
-            for pattern in BRAVE_TEST_PATTERNS:
+            for pattern in LUXXLE_TEST_PATTERNS:
                 if re.search(pattern, line) and not line.strip().startswith('#'):
                     indentation = len(line) - len(line.lstrip())
                     modified_lines.append(' ' * indentation + '# REMOVED: ' + line.strip())
@@ -89,7 +89,7 @@ def find_build_files(root_dir='.'):
     return build_files
 
 def main():
-    parser = argparse.ArgumentParser(description='Fix BUILD.gn files by removing Brave dependencies')
+    parser = argparse.ArgumentParser(description='Fix BUILD.gn files by removing Luxxle dependencies')
     parser.add_argument('--dry-run', action='store_true', help='Show what would be changed without modifying files')
     parser.add_argument('--directory', default='.', help='Root directory to search (default: current directory)')
     

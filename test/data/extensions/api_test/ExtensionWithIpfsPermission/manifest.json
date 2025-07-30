@@ -1,8 +1,8 @@
 {
   "version": "1.0.0",
-  "name": "Brave",
+  "name": "Luxxle",
   "manifest_version": 2,
-  "description": "API test for something that is not braveShields",
+  "description": "API test for something that is not luxxleShields",
   "web_accessible_resources": [
   ],
   "background": {

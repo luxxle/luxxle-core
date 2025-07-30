@@ -3,23 +3,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveBookmarkToolbarCoordinatorClassAdapter extends BraveClassVisitor {
+public class LuxxleBookmarkToolbarCoordinatorClassAdapter extends LuxxleClassVisitor {
     static String sBookmarkToolbarCoordinatorClassName =
             "org/chromium/chrome/browser/bookmarks/BookmarkToolbarCoordinator";
-    static String sBraveBookmarkToolbarCoordinatorClassName =
-            "org/chromium/chrome/browser/bookmarks/BraveBookmarkToolbarCoordinator";
+    static String sLuxxleBookmarkToolbarCoordinatorClassName =
+            "org/chromium/chrome/browser/bookmarks/LuxxleBookmarkToolbarCoordinator";
 
-    public BraveBookmarkToolbarCoordinatorClassAdapter(ClassVisitor visitor) {
+    public LuxxleBookmarkToolbarCoordinatorClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         redirectConstructor(
-                sBookmarkToolbarCoordinatorClassName, sBraveBookmarkToolbarCoordinatorClassName);
+                sBookmarkToolbarCoordinatorClassName, sLuxxleBookmarkToolbarCoordinatorClassName);
 
-        deleteField(sBraveBookmarkToolbarCoordinatorClassName, "mToolbar");
+        deleteField(sLuxxleBookmarkToolbarCoordinatorClassName, "mToolbar");
         makeProtectedField(sBookmarkToolbarCoordinatorClassName, "mToolbar");
     }
 }

@@ -1,0 +1,5 @@
+include_rules = [
+  "+luxxle/components/luxxle_shields/content/browser",
+  "+luxxle/components/luxxle_shields/core/common",
+  "+luxxle/components/content_settings/core/browser",
+]

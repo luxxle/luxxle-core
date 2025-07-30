@@ -15,15 +15,15 @@ import android.os.IBinder;
 import androidx.annotation.Nullable;
 import androidx.media3.exoplayer.hls.playlist.HlsMediaPlaylist.Segment;
 
-import com.brave.playlist.local_database.PlaylistRepository;
-import com.brave.playlist.model.HlsContentProgressModel;
-import com.brave.playlist.model.HlsContentQueueModel;
-import com.brave.playlist.model.PlaylistItemModel;
-import com.brave.playlist.playback_service.VideoPlaybackService;
-import com.brave.playlist.util.MediaUtils;
-import com.brave.playlist.util.PlaylistUtils;
+import com.luxxle.playlist.local_database.PlaylistRepository;
+import com.luxxle.playlist.model.HlsContentProgressModel;
+import com.luxxle.playlist.model.HlsContentQueueModel;
+import com.luxxle.playlist.model.PlaylistItemModel;
+import com.luxxle.playlist.playback_service.VideoPlaybackService;
+import com.luxxle.playlist.util.MediaUtils;
+import com.luxxle.playlist.util.PlaylistUtils;
 
-import org.chromium.base.BravePreferenceKeys;
+import org.chromium.base.LuxxlePreferenceKeys;
 import org.chromium.base.ContextUtils;
 import org.chromium.base.task.PostTask;
 import org.chromium.base.task.TaskTraits;
@@ -212,7 +212,7 @@ public class HlsServiceImpl extends HlsService.Impl implements ConnectionErrorHa
             mPlaylistService = null;
         }
         if (ChromeSharedPreferences.getInstance()
-                .readBoolean(BravePreferenceKeys.PREF_ENABLE_PLAYLIST, true)) {
+                .readBoolean(LuxxlePreferenceKeys.PREF_ENABLE_PLAYLIST, true)) {
             mPlaylistService = null;
             initPlaylistService();
         }

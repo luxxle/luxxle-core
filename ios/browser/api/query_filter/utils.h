@@ -25,7 +25,7 @@ OBJC_EXPORT
 /// an internal redirect or not. This function returns the url we should
 /// redirect to or a `std::nullopt` value if nothing is changed.
 - (nullable NSURL*)
-    brave_applyingQueryStringFilterWithInitiatorURL:
+    luxxle_applyingQueryStringFilterWithInitiatorURL:
         (nullable NSURL*)initiatorURL
                                   redirectSourceURL:
                                       (nullable NSURL*)redirectSourceURL

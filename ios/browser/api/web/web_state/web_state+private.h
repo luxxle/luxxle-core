@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 #include "base/memory/weak_ptr.h"
-#import "brave/ios/browser/api/web/web_state/web_state.h"
+#import "luxxle/ios/browser/api/web/web_state/web_state.h"
 
 #ifndef LUXXLE_IOS_BROWSER_API_WEB_WEB_STATE_WEB_STATE_PRIVATE_H_
 #define LUXXLE_IOS_BROWSER_API_WEB_WEB_STATE_WEB_STATE_PRIVATE_H_

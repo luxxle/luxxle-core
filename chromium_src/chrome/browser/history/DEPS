@@ -1,0 +1,4 @@
+include_rules = [
+  "+luxxle/components/request_otr/common",
+  "+luxxle/components/request_otr/browser",
+]

@@ -31,24 +31,24 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.tabs.TabLayout;
 
 import org.chromium.base.Log;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.BlockchainRegistry;
-import org.chromium.brave_wallet.mojom.BlockchainToken;
-import org.chromium.brave_wallet.mojom.BraveWalletService;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.JsonRpcService;
-import org.chromium.brave_wallet.mojom.KeyringService;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
-import org.chromium.brave_wallet.mojom.ProviderErrorUnion;
-import org.chromium.brave_wallet.mojom.TransactionInfo;
-import org.chromium.brave_wallet.mojom.TransactionType;
-import org.chromium.brave_wallet.mojom.TxService;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.BlockchainRegistry;
+import org.chromium.luxxle_wallet.mojom.BlockchainToken;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletService;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.JsonRpcService;
+import org.chromium.luxxle_wallet.mojom.KeyringService;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.ProviderErrorUnion;
+import org.chromium.luxxle_wallet.mojom.TransactionInfo;
+import org.chromium.luxxle_wallet.mojom.TransactionType;
+import org.chromium.luxxle_wallet.mojom.TxService;
 import org.chromium.build.annotations.NullMarked;
 import org.chromium.build.annotations.Nullable;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.app.domain.WalletModel;
-import org.chromium.chrome.browser.crypto_wallet.activities.BraveWalletBaseActivity;
+import org.chromium.chrome.browser.crypto_wallet.activities.LuxxleWalletBaseActivity;
 import org.chromium.chrome.browser.crypto_wallet.adapters.ApproveTxFragmentPageAdapter;
 import org.chromium.chrome.browser.crypto_wallet.listeners.TransactionConfirmationListener;
 import org.chromium.chrome.browser.crypto_wallet.util.AndroidUtils;
@@ -106,8 +106,8 @@ public class ApproveTxBottomSheetDialogFragment extends WalletBottomSheetDialogF
     @Nullable
     private TxService getTxService() {
         Activity activity = getActivity();
-        if (activity instanceof BraveWalletBaseActivity) {
-            return ((BraveWalletBaseActivity) activity).getTxService();
+        if (activity instanceof LuxxleWalletBaseActivity) {
+            return ((LuxxleWalletBaseActivity) activity).getTxService();
         }
         return null;
     }
@@ -115,8 +115,8 @@ public class ApproveTxBottomSheetDialogFragment extends WalletBottomSheetDialogF
     @Nullable
     private JsonRpcService getJsonRpcService() {
         Activity activity = getActivity();
-        if (activity instanceof BraveWalletBaseActivity) {
-            return ((BraveWalletBaseActivity) activity).getJsonRpcService();
+        if (activity instanceof LuxxleWalletBaseActivity) {
+            return ((LuxxleWalletBaseActivity) activity).getJsonRpcService();
         }
         return null;
     }
@@ -124,17 +124,17 @@ public class ApproveTxBottomSheetDialogFragment extends WalletBottomSheetDialogF
     @Nullable
     private BlockchainRegistry getBlockchainRegistry() {
         Activity activity = getActivity();
-        if (activity instanceof BraveWalletBaseActivity) {
-            return ((BraveWalletBaseActivity) activity).getBlockchainRegistry();
+        if (activity instanceof LuxxleWalletBaseActivity) {
+            return ((LuxxleWalletBaseActivity) activity).getBlockchainRegistry();
         }
         return null;
     }
 
     @Nullable
-    private BraveWalletService getBraveWalletService() {
+    private LuxxleWalletService getLuxxleWalletService() {
         Activity activity = getActivity();
-        if (activity instanceof BraveWalletBaseActivity) {
-            return ((BraveWalletBaseActivity) activity).getBraveWalletService();
+        if (activity instanceof LuxxleWalletBaseActivity) {
+            return ((LuxxleWalletBaseActivity) activity).getLuxxleWalletService();
         }
         return null;
     }
@@ -142,8 +142,8 @@ public class ApproveTxBottomSheetDialogFragment extends WalletBottomSheetDialogF
     @Nullable
     private KeyringService getKeyringService() {
         Activity activity = getActivity();
-        if (activity instanceof BraveWalletBaseActivity) {
-            return ((BraveWalletBaseActivity) activity).getKeyringService();
+        if (activity instanceof LuxxleWalletBaseActivity) {
+            return ((LuxxleWalletBaseActivity) activity).getKeyringService();
         }
         return null;
     }
@@ -173,12 +173,12 @@ public class ApproveTxBottomSheetDialogFragment extends WalletBottomSheetDialogF
                 new BottomSheetDialog(requireContext(), R.style.ApproveTxBottomSheetDialogTheme);
         bottomSheetDialog.setOnShowListener(dialog -> setupFullHeight((BottomSheetDialog) dialog));
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             mWalletModel = activity.getWalletModel();
             if (mWalletModel != null) {
                 registerKeyringObserver(mWalletModel.getKeyringModel());
             }
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "onCreateDialog", e);
         }
         return bottomSheetDialog;
@@ -210,9 +210,9 @@ public class ApproveTxBottomSheetDialogFragment extends WalletBottomSheetDialogF
             Spanned associatedSPLTokenAccountInfo =
                     Utils.createSpanForSurroundedPhrase(
                             requireContext(),
-                            R.string.brave_wallet_confirm_transaction_account_creation_fee,
+                            R.string.luxxle_wallet_confirm_transaction_account_creation_fee,
                             (v) -> {
-                                TabUtils.openUrlInNewTab(false, Utils.BRAVE_SUPPORT_URL);
+                                TabUtils.openUrlInNewTab(false, Utils.LUXXLE_SUPPORT_URL);
                                 TabUtils.bringChromeTabbedActivityToTheTop(getActivity());
                             });
             associatedSplTokenInfo.setMovementMethod(LinkMovementMethod.getInstance());
@@ -246,14 +246,14 @@ public class ApproveTxBottomSheetDialogFragment extends WalletBottomSheetDialogF
 
                     // First fill in data that does not require remote queries
                     TokenUtils.getAllTokensFiltered(
-                            getBraveWalletService(),
+                            getLuxxleWalletService(),
                             getBlockchainRegistry(),
                             txNetwork,
                             TokenUtils.TokenType.ALL,
                             tokenList -> {
                                 SolanaTransactionsGasHelper solanaTransactionsGasHelper =
                                         new SolanaTransactionsGasHelper(
-                                                (BraveWalletBaseActivity) getActivity(),
+                                                (LuxxleWalletBaseActivity) getActivity(),
                                                 new TransactionInfo[] {mTxInfo});
                                 solanaTransactionsGasHelper.maybeGetSolanaGasEstimations(
                                         () -> {
@@ -359,7 +359,7 @@ public class ApproveTxBottomSheetDialogFragment extends WalletBottomSheetDialogF
                 mWalletModel.getCryptoModel().getNetworkModel().mCryptoNetworks,
                 allNetworks -> {
                     Utils.getTxExtraInfo(
-                            new WeakReference<>((BraveWalletBaseActivity) getActivity()),
+                            new WeakReference<>((LuxxleWalletBaseActivity) getActivity()),
                             TokenUtils.TokenType.ALL,
                             allNetworks,
                             txNetwork,
@@ -389,7 +389,7 @@ public class ApproveTxBottomSheetDialogFragment extends WalletBottomSheetDialogF
         }
         mRejectAllTx.setText(
                 getString(
-                        R.string.brave_wallet_queue_reject_all,
+                        R.string.luxxle_wallet_queue_reject_all,
                         String.valueOf(mTransactionInfos.size())));
     }
 
@@ -418,13 +418,13 @@ public class ApproveTxBottomSheetDialogFragment extends WalletBottomSheetDialogF
         } else if (parsedTx.getIsSwap()) {
             txType.setText(getResources().getString(R.string.swap));
         } else if (parsedTx.isSolanaDappTransaction) {
-            txType.setText(R.string.brave_wallet_approve_transaction);
+            txType.setText(R.string.luxxle_wallet_approve_transaction);
             if (parsedTx.isSolChangeOfOwnership()) {
                 view.findViewById(R.id.warning_container).setVisibility(View.VISIBLE);
                 view.findViewById(R.id.tab_top_space).setVisibility(View.GONE);
             }
         } else if (parsedTx.isShielded()) {
-            txType.setText(getResources().getString(R.string.brave_wallet_shielding));
+            txType.setText(getResources().getString(R.string.luxxle_wallet_shielding));
         } else {
             txType.setText(getResources().getString(R.string.send));
         }
@@ -575,9 +575,9 @@ public class ApproveTxBottomSheetDialogFragment extends WalletBottomSheetDialogF
             mTransactionConfirmationListener.onCancel();
         }
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             activity.showWalletPanel(false, true);
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "onHide", e);
         }
     }

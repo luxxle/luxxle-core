@@ -17,7 +17,7 @@ source_set("importer") {
 if (!is_android) {
   source_set("unit_tests") {
     testonly = true
-    sources = [ "brave_external_process_importer_host_unittest.cc" ]
+    sources = [ "luxxle_external_process_importer_host_unittest.cc" ]
 
     deps = [
       "//base",
@@ -38,7 +38,7 @@ if (!is_android) {
     testonly = true
     defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]
 
-    sources = [ "brave_importer_browsertest.cc" ]
+    sources = [ "luxxle_importer_browsertest.cc" ]
 
     deps = [
       "//base",

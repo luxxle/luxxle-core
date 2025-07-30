@@ -3,22 +3,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveStatusMediatorClassAdapter extends BraveClassVisitor {
+public class LuxxleStatusMediatorClassAdapter extends LuxxleClassVisitor {
     static String sStatusMediatorClassName =
             "org/chromium/chrome/browser/omnibox/status/StatusMediator";
-    static String sBraveStatusMediatorClassName =
-            "org/chromium/chrome/browser/omnibox/status/BraveStatusMediator";
+    static String sLuxxleStatusMediatorClassName =
+            "org/chromium/chrome/browser/omnibox/status/LuxxleStatusMediator";
 
-    public BraveStatusMediatorClassAdapter(ClassVisitor visitor) {
+    public LuxxleStatusMediatorClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sStatusMediatorClassName, sBraveStatusMediatorClassName);
+        redirectConstructor(sStatusMediatorClassName, sLuxxleStatusMediatorClassName);
 
-        deleteField(sBraveStatusMediatorClassName, "mUrlHasFocus");
+        deleteField(sLuxxleStatusMediatorClassName, "mUrlHasFocus");
         makeProtectedField(sStatusMediatorClassName, "mUrlHasFocus");
     }
 }

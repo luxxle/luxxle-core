@@ -4,33 +4,33 @@
 # You can obtain one at http://mozilla.org/MPL/2.0/.
 
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_education/buildflags.gni")
+# import("//luxxle/components/luxxle_education/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # Commented out: removed components dependency - using Chromium defaults instead
 
 # This is required for chromium_src overrides.
-brave_browser_ui_webui_configs_deps = [
+luxxle_browser_ui_webui_configs_deps = [
   "//base",
   "//luxxle/luxxle_domains",
   "//luxxle/browser/ui",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_education:buildflags",
+  # "//luxxle/components/luxxle_education:buildflags",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_private_cdn",
+  # "//luxxle/components/luxxle_private_cdn",
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead
 ]
 
-  brave_browser_ui_webui_configs_deps +=
+  luxxle_browser_ui_webui_configs_deps +=
       # Commented out: removed components dependency - using Chromium defaults instead
 }
 
-  brave_browser_ui_webui_configs_deps +=
+  luxxle_browser_ui_webui_configs_deps +=
       # Commented out: removed components dependency - using Chromium defaults instead
 }
 
-if (enable_brave_education) {
-  brave_browser_ui_webui_configs_deps +=
-      [ "//luxxle/browser/ui/webui/brave_education" ]
+if (enable_luxxle_education) {
+  luxxle_browser_ui_webui_configs_deps +=
+      [ "//luxxle/browser/ui/webui/luxxle_education" ]
 }

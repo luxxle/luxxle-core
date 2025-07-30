@@ -24,8 +24,8 @@ nala_icons = [
   "leo.audio.active.svg",
   "leo.biometric.login.svg",
   "leo.bitcoin.svg",
-  "leo.brave.icon-monochrome.svg",
-  "leo.brave.icon-outline.svg",
+  "leo.luxxle.icon-monochrome.svg",
+  "leo.luxxle.icon-outline.svg",
   "leo.broom.svg",
   "leo.browser.back.svg",
   "leo.browser.bookmark-add.svg",
@@ -127,7 +127,7 @@ nala_icons = [
   "leo.more.vertical.svg",
   "leo.music.tones.svg",
   "leo.network.speed-fast.svg",
-  "leo.news.brave.svg",
+  "leo.news.luxxle.svg",
   "leo.news.business.svg",
   "leo.news.car.svg",
   "leo.news.culture.svg",
@@ -167,10 +167,10 @@ nala_icons = [
   "leo.print.svg",
   "leo.product.bat-outline.svg",
   "leo.product.bookmarks.svg",
-  "leo.product.brave-leo.svg",
-  "leo.product.brave-news.svg",
-  "leo.product.brave-talk.svg",
-  "leo.product.brave-wallet.svg",
+  "leo.product.luxxle-leo.svg",
+  "leo.product.luxxle-news.svg",
+  "leo.product.luxxle-talk.svg",
+  "leo.product.luxxle-wallet.svg",
   "leo.product.private-window.svg",
   "leo.product.sync.svg",
   "leo.product.translate.svg",
@@ -241,14 +241,14 @@ action("make_symbols_asset_catalog") {
     "--output",
     rebase_path("$target_gen_dir/NalaSymbols.xcassets"),
     "--leo_sf_symbols_directory",
-    rebase_path("//luxxle/node_modules/@brave/leo-sf-symbols"),
+    rebase_path("//luxxle/node_modules/@luxxle/leo-sf-symbols"),
     "--icons",
     string_join(",", nala_icons),
   ]
   outputs = [ "$target_gen_dir/NalaSymbols.xcassets" ]
   inputs = rebase_path(nala_icons,
                        ".",
-                       "//luxxle/node_modules/@brave/leo-sf-symbols/symbols")
+                       "//luxxle/node_modules/@luxxle/leo-sf-symbols/symbols")
 }
 
 nala_assets_public_headers = [ "public/nala_bundle.h" ]
@@ -286,7 +286,7 @@ ios_framework_bundle("nala_assets_framework") {
 bundle_data("nala_assets") {
   sources = get_target_outputs(":make_symbols_asset_catalog")
   sources += [ rebase_path(
-          "//luxxle/node_modules/@brave/leo/tokens/ios-swift/Colors.xcassets") ]
+          "//luxxle/node_modules/@luxxle/leo/tokens/ios-swift/Colors.xcassets") ]
   outputs = [ "{{bundle_contents_dir}}/{{source_file_part}}" ]
   public_deps = [ ":make_symbols_asset_catalog" ]
 }

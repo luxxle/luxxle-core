@@ -18,8 +18,8 @@ source_set("ads") {
     "ads_client_bridge.h",
     "ads_client_ios.h",
     "ads_client_ios.mm",
-    "brave_ads.h",
-    "brave_ads.mm",
+    "luxxle_ads.h",
+    "luxxle_ads.mm",
     "inline_content_ad_ios.h",
     "inline_content_ad_ios.mm",
     "new_tab_page_ad_ios.h",
@@ -29,14 +29,14 @@ source_set("ads") {
   ]
 
   deps = [
-    ":brave_ads_mojom_wrappers",
+    ":luxxle_ads_mojom_wrappers",
     "//base",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_ads/core",
+    # "//luxxle/components/luxxle_ads/core",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_news/common",
+    # "//luxxle/components/luxxle_news/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/core",
+    # "//luxxle/components/luxxle_rewards/core",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/l10n/common",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -44,7 +44,7 @@ source_set("ads") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/ntp_background_images/common",
     "//luxxle/ios/browser/api/common",
-    "//luxxle/ios/browser/brave_ads",
+    "//luxxle/ios/browser/luxxle_ads",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//components/prefs",
     "//ios/chrome/browser/shared/model/application_context",
@@ -58,11 +58,11 @@ source_set("ads") {
   ]
 }
 
-ios_objc_mojom_wrappers("brave_ads_mojom_wrappers") {
+ios_objc_mojom_wrappers("luxxle_ads_mojom_wrappers") {
   # Commented out: removed components dependency - using Chromium defaults instead
-  # mojom_target = "//luxxle/components/brave_ads/core/mojom"
+  # mojom_target = "//luxxle/components/luxxle_ads/core/mojom"
   # Commented out: removed components dependency - using Chromium defaults instead
-  # sources = [ "//luxxle/components/brave_ads/core/mojom/brave_ads.mojom" ]
+  # sources = [ "//luxxle/components/luxxle_ads/core/mojom/luxxle_ads.mojom" ]
   exclude_types = [
     "DBActionInfo",
     "DBBindColumnInfo",
@@ -73,6 +73,6 @@ ios_objc_mojom_wrappers("brave_ads_mojom_wrappers") {
     "DBColumnValueUnion",
   ]
 
-  # The module name is `BraveAds` now which matches the class we already have
+  # The module name is `LuxxleAds` now which matches the class we already have
   generate_namespace = false
 }

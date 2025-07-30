@@ -1,7 +1,7 @@
 #!/bin/bash
 # This postinstall script is run on macOS pkg installers
 
-# Extract a referral / promo code from the installer path of the format /dir/path/Setup-Brave-Anything-xxx001.pkg
+# Extract a referral / promo code from the installer path of the format /dir/path/Setup-Luxxle-Anything-xxx001.pkg
 # where the promo code would be xxx001
 installerPath=$1
 installationPath=$2
@@ -33,7 +33,7 @@ fi
 
 appNameNoDash=$(echo $appName | sed "s/-/ /g")
 installationAppPath="$installationPath/${appNameNoDash}.app"
-userDataDir="$HOME/Library/Application Support/BraveSoftware"
+userDataDir="$HOME/Library/Application Support/LuxxleSoftware"
 appDataDir="$userDataDir/${appName}"
 promoCodePath="$appDataDir/promoCode"
 

@@ -173,9 +173,9 @@ INSTANTIATE_TEST_SUITE_P(
 
 TEST_P(AIChatTabHelperUnitTest, OnNewPage) {
   EXPECT_CALL(*observer_, OnNavigated).Times(3);
-  NavigateTo(GURL("https://www.brave.com"));
-  NavigateTo(GURL("https://www.brave.com/1"));
-  NavigateTo(GURL("https://www.brave.com/2"));
+  NavigateTo(GURL("https://www.luxxle.com"));
+  NavigateTo(GURL("https://www.luxxle.com/1"));
+  NavigateTo(GURL("https://www.luxxle.com/2"));
 
   // Going back should notify navigated
   EXPECT_CALL(*observer_, OnNavigated).Times(1);
@@ -188,7 +188,7 @@ TEST_P(AIChatTabHelperUnitTest, OnNewPage) {
   // Same-document navigation should not call OnNewPage if page title is the
   // same
   EXPECT_CALL(*observer_, OnNavigated).Times(0);
-  NavigateTo(GURL("https://www.brave.com/2/3"), false, true, "www.brave.com/2");
+  NavigateTo(GURL("https://www.luxxle.com/2/3"), false, true, "www.luxxle.com/2");
   testing::Mock::VerifyAndClearExpectations(&observer_);
   // ...unless the page title changes before the next navigation.
   EXPECT_CALL(*observer_, OnNavigated).Times(1);
@@ -205,7 +205,7 @@ TEST_P(AIChatTabHelperUnitTest, OnNewPage) {
   // trigger OnNewPage.
   EXPECT_CALL(*observer_, OnNavigated(_)).Times(1);
   content::NavigationSimulator::NavigateAndCommitFromBrowser(
-      web_contents(), GURL("https://www.brave.com/3"));
+      web_contents(), GURL("https://www.luxxle.com/3"));
   testing::Mock::VerifyAndClearExpectations(&observer_);
   EXPECT_CALL(*observer_, OnNavigated(_)).Times(0);
   SimulateTitleChange(u"Another New Title");
@@ -217,7 +217,7 @@ TEST_P(AIChatTabHelperUnitTest, GetPageContent_HasContent) {
   // Add whitespace to ensure it's trimmed
   constexpr char kSuppliedText[] = "   \n    This is the way.   \n  ";
   // A url that doesn't by itself trigger print preview extraction.
-  NavigateTo(GURL("https://www.brave.com"));
+  NavigateTo(GURL("https://www.luxxle.com"));
   EXPECT_CALL(*page_content_fetcher_, FetchPageContent)
       .WillOnce(base::test::RunOnceCallback<1>(kSuppliedText, false, ""));
   if (print_preview_extractor_) {
@@ -232,7 +232,7 @@ TEST_P(AIChatTabHelperUnitTest, GetPageContent_HasContent) {
 TEST_P(AIChatTabHelperUnitTest, GetPageContent_FallbackPrintPreview) {
   constexpr char kExpectedText[] = "This is the way.";
   // A url that doesn't by itself trigger print preview extraction.
-  NavigateTo(GURL("https://www.brave.com"));
+  NavigateTo(GURL("https://www.luxxle.com"));
   EXPECT_CALL(*page_content_fetcher_, FetchPageContent)
       .WillOnce(base::test::RunOnceCallback<1>("", false, ""));
   if (print_preview_extractor_) {
@@ -249,7 +249,7 @@ TEST_P(AIChatTabHelperUnitTest, GetPageContent_FallbackPrintPreview) {
 TEST_P(AIChatTabHelperUnitTest, GetPageContent_OnlyWhitespace) {
   constexpr char kExpectedText[] = "This is the way.";
   // A url that doesn't by itself trigger print preview extraction.
-  NavigateTo(GURL("https://www.brave.com"));
+  NavigateTo(GURL("https://www.luxxle.com"));
   EXPECT_CALL(*page_content_fetcher_, FetchPageContent)
       .WillOnce(
           base::test::RunOnceCallback<1>("       \n     \n  ", false, ""));
@@ -266,7 +266,7 @@ TEST_P(AIChatTabHelperUnitTest, GetPageContent_OnlyWhitespace) {
 
 TEST_P(AIChatTabHelperUnitTest, GetPageContent_FallbackPrintPreviewFailed) {
   // A url that doesn't by itself trigger print preview extraction.
-  NavigateTo(GURL("https://www.brave.com"));
+  NavigateTo(GURL("https://www.luxxle.com"));
   // Fallback failed will not retrigger another fallback.
   EXPECT_CALL(*page_content_fetcher_, FetchPageContent)
       .WillOnce(base::test::RunOnceCallback<1>("", false, ""));
@@ -281,7 +281,7 @@ TEST_P(AIChatTabHelperUnitTest, GetPageContent_FallbackPrintPreviewFailed) {
 
 TEST_P(AIChatTabHelperUnitTest, GetPageContent_VideoContent) {
   // A url that doesn't by itself trigger print preview extraction.
-  NavigateTo(GURL("https://www.brave.com"));
+  NavigateTo(GURL("https://www.luxxle.com"));
   EXPECT_CALL(*page_content_fetcher_, FetchPageContent)
       .WillOnce(base::test::RunOnceCallback<1>("", true, ""));
   if (print_preview_extractor_) {

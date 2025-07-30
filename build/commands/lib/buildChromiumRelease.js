@@ -16,7 +16,7 @@ const depotTools = require('./depotTools')
 const syncUtil = require('./syncUtils')
 const Log = require('./logging')
 
-// Use the same filename as for Brave archive.
+// Use the same filename as for Luxxle archive.
 const getOutputFilename = () => {
   const platform = (() => {
     if (config.getTargetOS() === 'win') {
@@ -40,7 +40,7 @@ const chromiumConfigs = {
       util.run(
         'python3',
         [
-          path.join(config.braveCoreDir, 'script', 'repack-archive.py'),
+          path.join(config.luxxleCoreDir, 'script', 'repack-archive.py'),
           `--input=${input}`,
           `--output=${output}`,
           '--target_dir=Chrome-bin',
@@ -75,7 +75,7 @@ const chromiumConfigs = {
           'vpython3',
           [
             path.join(
-              config.braveCoreDir,
+              config.luxxleCoreDir,
               'build',
               'mac',
               'download_hermetic_xcode.py',
@@ -107,7 +107,7 @@ const chromiumConfigs = {
 // A function to make gn args to build a release Chromium build.
 // There is two primarily sources:
 // 1. Chromium perf builds: tools/mb/mb_config_expectations/chromium.perf.json
-// 2. Brave Release build configuration
+// 2. Luxxle Release build configuration
 function getChromiumGnArgs() {
   const targetOs = config.getTargetOS()
   const targetArch = config.targetArch
@@ -141,7 +141,7 @@ function buildChromiumRelease(buildOptions = {}) {
   if (!config.isCI && !buildOptions.force) {
     console.error(
       'Warning: the command resets all changes in src/ folder.\n'
-        + 'src/brave stays untouched. Pass --force to continue.',
+        + 'src/luxxle stays untouched. Pass --force to continue.',
     )
     return 1
   }
@@ -178,13 +178,13 @@ function buildChromiumRelease(buildOptions = {}) {
   util.runGnGen(config.outputDir, getChromiumGnArgs())
 
   Log.progressScope(`remove recursive symlinks`, () => {
-    // node_modules could have a symlink to src/brave. The recursive symlinks
+    // node_modules could have a symlink to src/luxxle. The recursive symlinks
     // break the logic of some chromium scripts and should be remove before
     // the build.
     const linkPath = path.join(
-      config.braveCoreDir,
+      config.luxxleCoreDir,
       'node_modules',
-      'brave-core',
+      'luxxle-core',
     )
     if (fs.existsSync(linkPath)) {
       fs.unlinkSync(linkPath)

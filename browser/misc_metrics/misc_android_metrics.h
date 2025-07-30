@@ -15,8 +15,8 @@ class SearchEngineTracker;
 
 namespace misc_metrics {
 
-inline constexpr char kBraveCoreIsDefaultHistogramName[] =
-    "Brave.Core.IsDefault";
+inline constexpr char kLuxxleCoreIsDefaultHistogramName[] =
+    "Luxxle.Core.IsDefault";
 
 class ProcessMiscMetrics;
 

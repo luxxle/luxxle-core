@@ -15,8 +15,8 @@
 #include "luxxle/browser/ui/browser_commands.h"
 #include "luxxle/browser/ui/tabs/features.h"
 #include "luxxle/browser/ui/tabs/split_view_browser_data.h"
-#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
-#include "luxxle/browser/ui/views/frame/split_view/brave_multi_contents_view.h"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_view.h"
+#include "luxxle/browser/ui/views/frame/split_view/luxxle_multi_contents_view.h"
 #include "luxxle/browser/ui/views/split_view/split_view.h"
 #include "chrome/browser/ui/browser_commands.h"
 #include "chrome/browser/ui/browser_tabstrip.h"
@@ -28,7 +28,7 @@
 #include "content/public/test/browser_test_utils.h"
 #include "net/dns/mock_host_resolver.h"
 
-// Run with two modes(brave split view or chromium side by side).
+// Run with two modes(luxxle split view or chromium side by side).
 class SplitViewLocationBarBrowserTest
     : public InProcessBrowserTest,
       public testing::WithParamInterface<bool> {
@@ -45,11 +45,11 @@ class SplitViewLocationBarBrowserTest
   SplitViewLocationBar& split_view_location_bar() {
     auto* browser_view = BrowserView::GetBrowserViewForBrowser(browser());
     if (IsSideBySideEnabled()) {
-      return *static_cast<BraveMultiContentsView*>(
+      return *static_cast<LuxxleMultiContentsView*>(
                   browser_view->multi_contents_view_for_testing())
                   ->secondary_location_bar_;
     }
-    return *static_cast<BraveBrowserView*>(browser_view)
+    return *static_cast<LuxxleBrowserView*>(browser_view)
                 ->split_view()
                 ->secondary_location_bar_;
   }
@@ -91,7 +91,7 @@ class SplitViewLocationBarBrowserTest
 IN_PROC_BROWSER_TEST_P(SplitViewLocationBarBrowserTest,
                        VisibilityChangesWhenActiveTabChanges) {
   // Initially, the secondary location bar should be hidden
-  // In BraveMultiContentsView, location bar is initialized when
+  // In LuxxleMultiContentsView, location bar is initialized when
   // first split view is opened.
   if (!IsSideBySideEnabled()) {
     EXPECT_FALSE(split_view_location_bar().GetWidget()->IsVisible());

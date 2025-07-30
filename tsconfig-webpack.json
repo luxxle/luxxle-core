@@ -10,6 +10,6 @@
   },
   "include": [
     "./components/definitions/*",
-    "./components/brave_extension/extension/brave_extension/types/**/*"
+    "./components/luxxle_extension/extension/luxxle_extension/types/**/*"
   ]
 }

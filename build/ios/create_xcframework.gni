@@ -29,7 +29,7 @@ _ios_create_xcframework_output = "$_root_dir/" + _framework_name + ".xcframework
                              "deps",
                              "public_deps",
                            ])
-    script = "//brave/build/ios/create_xcframework.py"
+    script = "//luxxle/build/ios/create_xcframework.py"
     args = [
       "--framework_dir",
       rebase_path(_ios_create_xcframework_input),

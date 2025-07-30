@@ -7,17 +7,17 @@ import("//luxxle/browser/shell_integrations/buildflags/buildflags.gni")
 import("//chrome/browser/resources/settings/settings.gni")
 
 settings_namespace_rewrites = [
-  "settings.BraveAppearanceBrowserProxyImpl|BraveAppearanceBrowserProxyImpl",
-  "settings.BraveLeoAssistantBrowserProxyImpl|BraveLeoAssistantBrowserProxyImpl",
-  "settings.BraveVPNBrowserProxyImpl|BraveVPNBrowserProxyImpl",
-  "settings.BraveWalletBrowserProxyImpl|BraveWalletBrowserProxyImpl",
-  "settings.BraveDefaultExtensionsBrowserProxyImpl|BraveDefaultExtensionsBrowserProxyImpl",
-  "settings.BraveNewTabBrowserProxyImpl|BraveNewTabBrowserProxyImpl",
-  "settings.BravePrivacyBrowserProxyImpl|BravePrivacyBrowserProxyImpl",
-  "settings.BraveRewardsBrowserProxyImpl|BraveRewardsBrowserProxyImpl",
-  "settings.BraveSearchEnginesPageBrowserProxyImpl|BraveSearchEnginesPageBrowserProxyImpl",
-  "settings.BraveSyncBrowserProxy|BraveSyncBrowserProxy",
-  "settings.DefaultBraveShieldsBrowserProxyImpl|DefaultBraveShieldsBrowserProxyImpl",
+  "settings.LuxxleAppearanceBrowserProxyImpl|LuxxleAppearanceBrowserProxyImpl",
+  "settings.LuxxleLeoAssistantBrowserProxyImpl|LuxxleLeoAssistantBrowserProxyImpl",
+  "settings.LuxxleVPNBrowserProxyImpl|LuxxleVPNBrowserProxyImpl",
+  "settings.LuxxleWalletBrowserProxyImpl|LuxxleWalletBrowserProxyImpl",
+  "settings.LuxxleDefaultExtensionsBrowserProxyImpl|LuxxleDefaultExtensionsBrowserProxyImpl",
+  "settings.LuxxleNewTabBrowserProxyImpl|LuxxleNewTabBrowserProxyImpl",
+  "settings.LuxxlePrivacyBrowserProxyImpl|LuxxlePrivacyBrowserProxyImpl",
+  "settings.LuxxleRewardsBrowserProxyImpl|LuxxleRewardsBrowserProxyImpl",
+  "settings.LuxxleSearchEnginesPageBrowserProxyImpl|LuxxleSearchEnginesPageBrowserProxyImpl",
+  "settings.LuxxleSyncBrowserProxy|LuxxleSyncBrowserProxy",
+  "settings.DefaultLuxxleShieldsBrowserProxyImpl|DefaultLuxxleShieldsBrowserProxyImpl",
   "settings.SocialBlockingPageProxyImpl|SocialBlockingPageProxyImpl",
   "settings.Router|Router",
 ]

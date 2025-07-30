@@ -16,7 +16,7 @@
 class AcceleratorServiceUnitTest : public testing::Test {
  public:
   AcceleratorServiceUnitTest() {
-    features_.InitAndEnableFeature(commands::features::kBraveCommands);
+    features_.InitAndEnableFeature(commands::features::kLuxxleCommands);
   }
 
   ~AcceleratorServiceUnitTest() override = default;

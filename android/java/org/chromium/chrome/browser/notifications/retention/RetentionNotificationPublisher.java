@@ -15,10 +15,10 @@ import android.content.Intent;
 import org.chromium.base.ApplicationStatus;
 import org.chromium.base.ThreadUtils;
 import org.chromium.base.task.AsyncTask;
-import org.chromium.chrome.browser.BraveRewardsNativeWorker;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.LuxxleRewardsNativeWorker;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.onboarding.OnboardingPrefManager;
-import org.chromium.chrome.browser.set_default_browser.BraveSetDefaultBrowserUtils;
+import org.chromium.chrome.browser.set_default_browser.LuxxleSetDefaultBrowserUtils;
 import org.chromium.chrome.browser.tab.TabLaunchType;
 import org.chromium.components.embedder_support.util.UrlConstants;
 import org.chromium.components.embedder_support.util.UrlUtilities;
@@ -33,9 +33,9 @@ public class RetentionNotificationPublisher extends BroadcastReceiver {
             String action = intent.getAction();
             String notificationType =
                     intent.getStringExtra(RetentionNotificationUtil.NOTIFICATION_TYPE);
-            BraveActivity braveActivity = BraveActivity.getBraveActivity();
+            LuxxleActivity luxxleActivity = LuxxleActivity.getLuxxleActivity();
             if (action != null && action.equals(RETENTION_NOTIFICATION_ACTION)) {
-                if (braveActivity != null) {
+                if (luxxleActivity != null) {
                     Intent launchIntent = new Intent(Intent.ACTION_MAIN);
                     launchIntent.setPackage(context.getPackageName());
                     launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -44,21 +44,21 @@ public class RetentionNotificationPublisher extends BroadcastReceiver {
                         case RetentionNotificationUtil.HOUR_3:
                         case RetentionNotificationUtil.HOUR_24:
                         case RetentionNotificationUtil.EVERY_SUNDAY:
-                            braveActivity.checkForBraveStats();
+                            luxxleActivity.checkForLuxxleStats();
                             break;
                         case RetentionNotificationUtil.DAY_6:
-                            if (braveActivity.getActivityTab() != null
-                                    && braveActivity.getActivityTab().getUrl().getSpec() != null
+                            if (luxxleActivity.getActivityTab() != null
+                                    && luxxleActivity.getActivityTab().getUrl().getSpec() != null
                                     && !UrlUtilities.isNtpUrl(
-                                            braveActivity.getActivityTab().getUrl().getSpec())) {
-                                braveActivity.getTabCreator(false).launchUrl(
+                                            luxxleActivity.getActivityTab().getUrl().getSpec())) {
+                                luxxleActivity.getTabCreator(false).launchUrl(
                                         UrlConstants.NTP_URL, TabLaunchType.FROM_CHROME_UI);
                             }
                             break;
                         case RetentionNotificationUtil.DAY_10:
                         case RetentionNotificationUtil.DAY_30:
                         case RetentionNotificationUtil.DAY_35:
-                            braveActivity.openRewardsPanel();
+                            luxxleActivity.openRewardsPanel();
                             break;
                         case RetentionNotificationUtil.DORMANT_USERS_DAY_14:
                         case RetentionNotificationUtil.DORMANT_USERS_DAY_25:
@@ -66,7 +66,7 @@ public class RetentionNotificationPublisher extends BroadcastReceiver {
                             if (System.currentTimeMillis()
                                     > OnboardingPrefManager.getInstance()
                                               .getDormantUsersNotificationTime(notificationType)) {
-                                braveActivity.showDormantUsersEngagementDialog(notificationType);
+                                luxxleActivity.showDormantUsersEngagementDialog(notificationType);
                             } else {
                                 RetentionNotificationUtil.scheduleNotificationWithTime(
                                         context,
@@ -91,9 +91,9 @@ public class RetentionNotificationPublisher extends BroadcastReceiver {
                     case RetentionNotificationUtil.DAY_35:
                         // Can't check for rewards code in background
                         try {
-                            BraveRewardsNativeWorker rewardsNativeWorker =
-                                    BraveRewardsNativeWorker.getInstance();
-                            if (braveActivity != null
+                            LuxxleRewardsNativeWorker rewardsNativeWorker =
+                                    LuxxleRewardsNativeWorker.getInstance();
+                            if (luxxleActivity != null
                                     && rewardsNativeWorker != null
                                     && !rewardsNativeWorker.isRewardsEnabled()
                                     && rewardsNativeWorker.isSupported()) {
@@ -107,7 +107,7 @@ public class RetentionNotificationPublisher extends BroadcastReceiver {
                         }
                         break;
                     case RetentionNotificationUtil.EVERY_SUNDAY:
-                        if (OnboardingPrefManager.getInstance().isBraveStatsNotificationEnabled()) {
+                        if (OnboardingPrefManager.getInstance().isLuxxleStatsNotificationEnabled()) {
                             createNotification(context, intent);
                         }
                         break;
@@ -117,8 +117,8 @@ public class RetentionNotificationPublisher extends BroadcastReceiver {
                         if (System.currentTimeMillis()
                                         > OnboardingPrefManager.getInstance()
                                                 .getDormantUsersNotificationTime(notificationType)
-                                && !BraveSetDefaultBrowserUtils.isBraveSetAsDefaultBrowser(
-                                        braveActivity)) {
+                                && !LuxxleSetDefaultBrowserUtils.isLuxxleSetAsDefaultBrowser(
+                                        luxxleActivity)) {
                             createNotification(context, intent);
                         } else {
                             RetentionNotificationUtil.scheduleNotificationWithTime(

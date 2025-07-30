@@ -14,7 +14,7 @@ import org.chromium.chrome.R;
 import org.chromium.chrome.browser.crypto_wallet.util.Utils;
 import org.chromium.chrome.browser.crypto_wallet.util.WalletConstants;
 
-public class AdvanceTxSettingActivity extends BraveWalletBaseActivity {
+public class AdvanceTxSettingActivity extends LuxxleWalletBaseActivity {
     private static final String TAG = AdvanceTxSettingActivity.class.getSimpleName();
     private EditText mEtCustomNonce;
     private String newNonce;
@@ -22,7 +22,7 @@ public class AdvanceTxSettingActivity extends BraveWalletBaseActivity {
     @Override
     protected void triggerLayoutInflation() {
         setContentView(R.layout.activity_advance_tx_setting);
-        setupBraveToolBar(R.string.brave_wallet_advanced_settings);
+        setupLuxxleToolBar(R.string.luxxle_wallet_advanced_settings);
 
         mEtCustomNonce = findViewById(R.id.activity_advance_setting_et_nonce);
         String txId = getIntent().getStringExtra(WalletConstants.ADVANCE_TX_SETTING_INTENT_TX_ID);
@@ -62,7 +62,7 @@ public class AdvanceTxSettingActivity extends BraveWalletBaseActivity {
         onInitialLayoutInflationComplete();
     }
 
-    private void setupBraveToolBar(@StringRes int title) {
+    private void setupLuxxleToolBar(@StringRes int title) {
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(title);
         setSupportActionBar(toolbar);

@@ -24,11 +24,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
-import org.chromium.chrome.browser.brave_stats.BraveStatsUtil;
+import org.chromium.chrome.browser.app.LuxxleActivity;
+import org.chromium.chrome.browser.luxxle_stats.LuxxleStatsUtil;
 import org.chromium.chrome.browser.notifications.retention.RetentionNotificationUtil;
 import org.chromium.chrome.browser.onboarding.OnboardingPrefManager;
-import org.chromium.chrome.browser.util.BraveConstants;
+import org.chromium.chrome.browser.util.LuxxleConstants;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,7 +36,7 @@ import java.util.Locale;
 
 public class HighlightDialogFragment extends DialogFragment {
     public static final String TAG_FRAGMENT = "HIGHLIGHT_FRAG";
-    private static final String NTP_TUTORIAL_PAGE = "https://brave.com/ja/android-ntp-tutorial";
+    private static final String NTP_TUTORIAL_PAGE = "https://luxxle.com/ja/android-ntp-tutorial";
 
     public interface HighlightDialogListener {
         void onNextPage();
@@ -46,9 +46,9 @@ public class HighlightDialogFragment extends DialogFragment {
 
     private static final List<Integer> sHighlightViews =
             Arrays.asList(
-                    R.id.brave_stats_ads,
-                    R.id.brave_stats_data_saved,
-                    R.id.brave_stats_time,
+                    R.id.luxxle_stats_ads,
+                    R.id.luxxle_stats_data_saved,
+                    R.id.luxxle_stats_time,
                     R.id.ntp_stats_layout);
 
     private HighlightView highlightView;
@@ -174,19 +174,19 @@ public class HighlightDialogFragment extends DialogFragment {
         @Override
         public void onNextPage() {
             if (viewpager != null) {
-                if (!OnboardingPrefManager.getInstance().isBraveStatsEnabled()) {
-                    OnboardingPrefManager.getInstance().setBraveStatsEnabled(true);
+                if (!OnboardingPrefManager.getInstance().isLuxxleStatsEnabled()) {
+                    OnboardingPrefManager.getInstance().setLuxxleStatsEnabled(true);
                     RetentionNotificationUtil.scheduleNotificationForEverySunday(getActivity(), RetentionNotificationUtil.EVERY_SUNDAY);
                     if (onboardingV2PagerAdapter != null) {
                         onboardingV2PagerAdapter.notifyDataSetChanged();
                     }
                 }
                 int currentPage = viewpager.getCurrentItem();
-                if ((OnboardingPrefManager.getInstance().isBraveStatsEnabled() && currentPage == 2)
+                if ((OnboardingPrefManager.getInstance().isLuxxleStatsEnabled() && currentPage == 2)
                         || currentPage == 3
                         || isFromStats) {
                     dismiss();
-                    BraveStatsUtil.showBraveStats();
+                    LuxxleStatsUtil.showLuxxleStats();
                     checkAndOpenNtpPage();
                 } else {
                     viewpager.setCurrentItem(currentPage + 1);
@@ -198,15 +198,15 @@ public class HighlightDialogFragment extends DialogFragment {
         public void onLearnMore() {
             dismiss();
             //Start from beginning
-            ((BraveActivity)getActivity()).showOnboardingV2(false);
+            ((LuxxleActivity)getActivity()).showOnboardingV2(false);
         }
     };
 
     private void checkAndOpenNtpPage() {
         String countryCode = Locale.getDefault().getCountry();
-        if (((BraveActivity) getActivity()) != null
-                && countryCode.equals(BraveConstants.JAPAN_COUNTRY_CODE)) {
-            ((BraveActivity) getActivity()).openNewOrSelectExistingTab(NTP_TUTORIAL_PAGE);
+        if (((LuxxleActivity) getActivity()) != null
+                && countryCode.equals(LuxxleConstants.JAPAN_COUNTRY_CODE)) {
+            ((LuxxleActivity) getActivity()).openNewOrSelectExistingTab(NTP_TUTORIAL_PAGE);
         }
     }
 }

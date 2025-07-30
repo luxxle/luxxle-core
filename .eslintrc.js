@@ -13,7 +13,7 @@ module.exports = {
     '*.js',
     '*.d.ts',
     'tools/chromium_src/lit_mangler/*.ts',
-    '!build/**/*.js', // check brave/build/ js files
+    '!build/**/*.js', // check luxxle/build/ js files
     '!components/playlist/resources/media_detector/*.js' /* allow js scripts which will be bundled into playlist */
   ],
   'env': {
@@ -135,12 +135,12 @@ module.exports = {
     // opt-in directories react-hooks linting
     {
       'files': [
-        'components/brave_wallet/**/*.js',
-        'components/brave_wallet/**/*.ts',
-        'components/brave_wallet/**/*.tsx',
-        'components/brave_wallet_ui/**/*.js',
-        'components/brave_wallet_ui/**/*.ts',
-        'components/brave_wallet_ui/**/*.tsx'
+        'components/luxxle_wallet/**/*.js',
+        'components/luxxle_wallet/**/*.ts',
+        'components/luxxle_wallet/**/*.tsx',
+        'components/luxxle_wallet_ui/**/*.js',
+        'components/luxxle_wallet_ui/**/*.ts',
+        'components/luxxle_wallet_ui/**/*.tsx'
       ],
       'rules': {
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks

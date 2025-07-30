@@ -3,8 +3,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-brave_common_importer_deps = []
+luxxle_common_importer_deps = []
 
 if (is_android) {
-  brave_common_importer_deps += [ "//luxxle/app:brave_generated_resources_grit" ]
+  luxxle_common_importer_deps += [ "//luxxle/app:luxxle_generated_resources_grit" ]
 }

@@ -12,10 +12,10 @@ if (should_generate_symbols) {
     # See chrome/updater/mac:syms
     dump_syms =
         "//third_party/breakpad:dump_syms($host_system_allocator_toolchain)"
-    symbols_dir = "$brave_dist_dir/$brave_product_name.breakpad.syms"
+    symbols_dir = "$luxxle_dist_dir/$luxxle_product_name.breakpad.syms"
     outputs = [ symbols_dir ]
 
-    start = [ brave_product_name ]
+    start = [ luxxle_product_name ]
 
     script = "//luxxle/tools/posix/generate_breakpad_symbols.py"
     args = [
@@ -31,7 +31,7 @@ if (should_generate_symbols) {
     ]
 
     deps = [
-      "//chrome",  # To be sure brave executable is ready now
+      "//chrome",  # To be sure luxxle executable is ready now
       dump_syms,
     ]
   }
@@ -42,7 +42,7 @@ if (should_generate_symbols) {
 
 group("symbol_dist_resources") {
   public_deps = [
-    ":brave_symbols",
+    ":luxxle_symbols",
     ":generate_breakpad_symbols",
   ]
 }
@@ -50,15 +50,15 @@ group("symbol_dist_resources") {
 group("dist_resources") {
 }
 
-extract_symbols("brave_symbols") {
-  binary = "$brave_dist_dir/brave"
+extract_symbols("luxxle_symbols") {
+  binary = "$luxxle_dist_dir/luxxle"
 
   if (current_cpu == "x86") {
     # Use "ia32" instead of "x86" for GYP compat.
-    symbol_file = "$root_out_dir/brave.breakpad.ia32"
+    symbol_file = "$root_out_dir/luxxle.breakpad.ia32"
   } else {
-    symbol_file = "$root_out_dir/brave.breakpad.$current_cpu"
+    symbol_file = "$root_out_dir/luxxle.breakpad.$current_cpu"
   }
 
-  deps = [ "//luxxle:brave_dist_resources" ]
+  deps = [ "//luxxle:luxxle_dist_resources" ]
 }

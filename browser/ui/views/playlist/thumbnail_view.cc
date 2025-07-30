@@ -8,7 +8,7 @@
 #include <memory>
 
 #include "base/auto_reset.h"
-#include "brave/grit/brave_theme_resources.h"
+#include "luxxle/grit/luxxle_theme_resources.h"
 #include "ui/base/metadata/metadata_impl_macros.h"
 #include "ui/gfx/canvas.h"
 #include "ui/gfx/image/image.h"

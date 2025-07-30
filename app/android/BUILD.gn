@@ -2,10 +2,10 @@ import("//luxxle/build/config.gni")
 
 if (should_generate_symbols) {
   action("generate_breakpad_symbols") {
-    symbols_dir = "$brave_dist_dir/$brave_product_name.breakpad.syms"
+    symbols_dir = "$luxxle_dist_dir/$luxxle_product_name.breakpad.syms"
     outputs = [ symbols_dir ]
 
-    package_path = rebase_path(brave_android_output)
+    package_path = rebase_path(luxxle_android_output)
 
     script = "//luxxle/tools/android/generate_breakpad_symbols.py"
     args = [
@@ -19,7 +19,7 @@ if (should_generate_symbols) {
     ]
 
     deps = [
-      "//luxxle/build/android:brave",
+      "//luxxle/build/android:luxxle",
       "//third_party/breakpad:dump_syms",
     ]
   }
@@ -45,7 +45,7 @@ action("create_symbol_archive") {
   script = "//build/gn_run_binary.py"
   shell_script = "//luxxle/build/android/pack_symbols.sh"
 
-  deps = [ "//luxxle/build/android:brave" ]
+  deps = [ "//luxxle/build/android:luxxle" ]
 
   archive_dir_path = "$root_out_dir/dist"
   archive_file_name = "Default$target_cpu$target_android_base.tar"
@@ -54,7 +54,7 @@ action("create_symbol_archive") {
   inputs = [
     script,
     shell_script,
-    brave_android_output,
+    luxxle_android_output,
   ]
 
   outputs = [ archive_file_path ]

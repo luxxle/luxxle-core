@@ -11,18 +11,18 @@ import("//components/vector_icons/vector_icons.gni")
 
 # Local definitions for removed component flags
 
-aggregate_vector_icons("brave_vector_icons") {
+aggregate_vector_icons("luxxle_vector_icons") {
   icon_directory = "."
 
   # Note: Before adding another icon here, check if the icon is available in Leo
-  # https://leo.bravesoftware.com/?path=/story/icon--all-icons
+  # https://leo.luxxlesoftware.com/?path=/story/icon--all-icons
   sources = [
     "bat.icon",
-    "brave_ads_close_button.icon",
-    "brave_ads_dark_mode_info_button.icon",
-    "brave_ads_light_mode_info_button.icon",
-    "brave_sad.icon",
-    "brave_tooltips_stopwatch.icon",
+    "luxxle_ads_close_button.icon",
+    "luxxle_ads_dark_mode_info_button.icon",
+    "luxxle_ads_light_mode_info_button.icon",
+    "luxxle_sad.icon",
+    "luxxle_tooltips_stopwatch.icon",
     "download_unlock.icon",
     "sidebar_toolbar_button.icon",
     "sidebar_toolbar_button_right.icon",
@@ -54,10 +54,10 @@ aggregate_vector_icons("brave_vector_icons") {
 }
 
 source_set("vector_icons") {
-  sources = get_target_outputs(":brave_vector_icons")
+  sources = get_target_outputs(":luxxle_vector_icons")
 
   deps = [
-    ":brave_vector_icons",
+    ":luxxle_vector_icons",
     "//base",
     "//skia",
     "//ui/gfx",

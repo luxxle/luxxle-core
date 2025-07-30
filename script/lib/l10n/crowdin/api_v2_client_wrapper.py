@@ -21,16 +21,16 @@ class CrowdinClientWrapper():
        https://github.com/crowdin/crowdin-api-client-python"""
 
     def __init__(self, project_id):
-        self._organization = 'Brave-Software'
+        self._organization = 'Luxxle-Software'
         self._project_id = project_id
         self._auth_token = get_env_var('CROWDIN_API_KEY')
         self._timeout = 300
         assert self._project_id, \
             'CrowdinClientWrapper: project_id is not set.'
         assert self._auth_token, \
-            'BRAVE_CROWDIN_API_KEY environmental var is not set.'
+            'LUXXLE_CROWDIN_API_KEY environmental var is not set.'
         # Set up CrowdinClient using an API token. You can generate one at
-        # https://brave-software.crowdin.com/u/user_settings/access-tokens
+        # https://luxxle-software.crowdin.com/u/user_settings/access-tokens
         self._client = CrowdinClient(organization=self._organization,
                                      project_id=self.project_id,
                                      token=self._auth_token,

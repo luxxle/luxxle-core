@@ -1,4 +1,4 @@
-// Copyright (c) 2023 The Brave Authors. All rights reserved.
+// Copyright (c) 2023 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -62,7 +62,7 @@ std::optional<AcceleratorMapping> ToAcceleratorMapping(NSMenuItem* item) {
 
     // We can't parse keyEquivalent into keycode properly when it's unicode
     // character. So before starting parsing, disable l10n for a while.
-    // https://github.com/luxxle/brave-browser/issues/31770
+    // https://github.com/luxxle/luxxle-browser/issues/31770
     if (keyEquivalentLocalizationEnabled) {
       // Setting this to NO will change allowsAutomaticKeyEquivalentMirroring to
       // NO too.
@@ -124,7 +124,7 @@ std::optional<AcceleratorMapping> ToAcceleratorMapping(NSMenuItem* item) {
   // They are dynamically changed based on the context. e.g. has tab or not,
   // is pwa or not. And also the value is hard coded.
   // https://github.com/chromium/chromium/blob/299385e09d41d5ce3abd434879b5f9b0a8880cd7/chrome/browser/app_controller_mac.mm#L772
-  // Here we're to provide brave commands, manually add shift modifier for
+  // Here we're to provide luxxle commands, manually add shift modifier for
   // the "Close Window" item.
   // TODO(sko) As the shortcut is hard coded in the file above, we might need to
   // forbid to adjust default key for IDC_CLOSE_TAB and IDC_CLOSE_WINDOW.

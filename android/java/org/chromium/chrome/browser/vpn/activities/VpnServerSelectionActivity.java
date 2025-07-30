@@ -20,24 +20,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.materialswitch.MaterialSwitch;
 
-import org.chromium.brave_vpn.mojom.BraveVpnConstants;
-import org.chromium.brave_vpn.mojom.Region;
-import org.chromium.brave_vpn.mojom.ServiceHandler;
+import org.chromium.luxxle_vpn.mojom.LuxxleVpnConstants;
+import org.chromium.luxxle_vpn.mojom.Region;
+import org.chromium.luxxle_vpn.mojom.ServiceHandler;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.vpn.BraveVpnServiceFactoryAndroid;
-import org.chromium.chrome.browser.vpn.adapters.BraveVpnServerSelectionAdapter;
-import org.chromium.chrome.browser.vpn.models.BraveVpnServerRegion;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnPrefUtils;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnUtils;
+import org.chromium.chrome.browser.vpn.LuxxleVpnServiceFactoryAndroid;
+import org.chromium.chrome.browser.vpn.adapters.LuxxleVpnServerSelectionAdapter;
+import org.chromium.chrome.browser.vpn.models.LuxxleVpnServerRegion;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnPrefUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnUtils;
 import org.chromium.mojo.bindings.ConnectionErrorHandler;
 import org.chromium.mojo.system.MojoException;
 import org.chromium.ui.widget.Toast;
 
 import java.util.Arrays;
 
-public class VpnServerSelectionActivity extends BraveVpnParentActivity
+public class VpnServerSelectionActivity extends LuxxleVpnParentActivity
         implements ConnectionErrorHandler {
-    private BraveVpnServerSelectionAdapter mBraveVpnServerSelectionAdapter;
+    private LuxxleVpnServerSelectionAdapter mLuxxleVpnServerSelectionAdapter;
     private LinearLayout mServerSelectionListLayout;
     private ProgressBar mServerSelectionProgress;
     private RecyclerView mServerRegionList;
@@ -60,7 +60,7 @@ public class VpnServerSelectionActivity extends BraveVpnParentActivity
             mServiceHandler = null;
         }
         mServiceHandler =
-                BraveVpnServiceFactoryAndroid.getInstance()
+                LuxxleVpnServiceFactoryAndroid.getInstance()
                         .getVpnService(
                                 getProfileProviderSupplier().get().getOriginalProfile(), this);
     }
@@ -96,18 +96,18 @@ public class VpnServerSelectionActivity extends BraveVpnParentActivity
                     @Override
                     public void onClick(View v) {
                         if (mAutomaticSwitch.isChecked()) {
-                            BraveVpnUtils.selectedServerRegion =
-                                    new BraveVpnServerRegion(
+                            LuxxleVpnUtils.selectedServerRegion =
+                                    new LuxxleVpnServerRegion(
                                             true,
                                             "",
                                             "",
                                             "",
-                                            BraveVpnPrefUtils.PREF_BRAVE_VPN_AUTOMATIC,
+                                            LuxxleVpnPrefUtils.PREF_LUXXLE_VPN_AUTOMATIC,
                                             "",
-                                            BraveVpnConstants.REGION_PRECISION_COUNTRY);
+                                            LuxxleVpnConstants.REGION_PRECISION_COUNTRY);
                             changeServerRegion();
                         } else {
-                            BraveVpnPrefUtils.setAutomaticServerSelection(
+                            LuxxleVpnPrefUtils.setAutomaticServerSelection(
                                     mAutomaticSwitch.isChecked());
                         }
 
@@ -137,7 +137,7 @@ public class VpnServerSelectionActivity extends BraveVpnParentActivity
                     }
                 });
         mServerRegionList.setLayoutManager(linearLayoutManager);
-        boolean isAutomatic = BraveVpnPrefUtils.isAutomaticServerSelection();
+        boolean isAutomatic = LuxxleVpnPrefUtils.isAutomaticServerSelection();
         mAutomaticSwitch.setChecked(isAutomatic);
     }
 
@@ -155,22 +155,22 @@ public class VpnServerSelectionActivity extends BraveVpnParentActivity
             mServiceHandler.getAllRegions(
                     regions -> {
                         if (regions.length > 0) {
-                            mBraveVpnServerSelectionAdapter =
-                                    new BraveVpnServerSelectionAdapter(
+                            mLuxxleVpnServerSelectionAdapter =
+                                    new LuxxleVpnServerSelectionAdapter(
                                             VpnServerSelectionActivity.this);
-                            mBraveVpnServerSelectionAdapter.setVpnServerRegions(
+                            mLuxxleVpnServerSelectionAdapter.setVpnServerRegions(
                                     Arrays.asList(regions));
-                            mBraveVpnServerSelectionAdapter.setOnServerRegionSelection(
+                            mLuxxleVpnServerSelectionAdapter.setOnServerRegionSelection(
                                     new OnServerRegionSelection() {
                                         @Override
                                         public void onServerRegionClick(Region region) {
-                                            BraveVpnUtils.selectedRegion = region;
-                                            BraveVpnUtils.openVpnServerActivity(
+                                            LuxxleVpnUtils.selectedRegion = region;
+                                            LuxxleVpnUtils.openVpnServerActivity(
                                                     VpnServerSelectionActivity.this, region);
                                         }
                                     });
-                            mServerRegionList.setAdapter(mBraveVpnServerSelectionAdapter);
-                            boolean isAutomatic = BraveVpnPrefUtils.isAutomaticServerSelection();
+                            mServerRegionList.setAdapter(mLuxxleVpnServerSelectionAdapter);
+                            boolean isAutomatic = LuxxleVpnPrefUtils.isAutomaticServerSelection();
                             updateAutomaticSelection(isAutomatic);
                             hideProgress();
                         } else {

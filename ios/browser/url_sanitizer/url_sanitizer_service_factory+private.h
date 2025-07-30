@@ -8,7 +8,7 @@
 
 #include <memory>
 
-#include "brave/ios/browser/keyed_service/keyed_service_factory_wrapper.h"
+#include "luxxle/ios/browser/keyed_service/keyed_service_factory_wrapper.h"
 #include "ios/chrome/browser/shared/model/profile/profile_keyed_service_factory_ios.h"
 
 namespace base {
@@ -43,6 +43,6 @@ class URLSanitizerServiceFactory : public ProfileKeyedServiceFactoryIOS {
       web::BrowserState* context) const override;
 };
 
-}  // namespace brave
+}  // namespace luxxle
 
 #endif  // LUXXLE_IOS_BROWSER_URL_SANITIZER_URL_SANITIZER_SERVICE_FACTORY_PRIVATE_H_

@@ -8,7 +8,7 @@
 #include "base/logging.h"
 #include "base/notreached.h"
 #include "base/types/cxx23_to_underlying.h"
-#include "luxxle/browser/metrics/brave_metrics_service_accessor.h"
+#include "luxxle/browser/metrics/luxxle_metrics_service_accessor.h"
 #include "luxxle/browser/metrics/buildflags/buildflags.h"
 #include "luxxle/components/constants/pref_names.h"
 #include "chrome/browser/browser_process.h"
@@ -42,7 +42,7 @@ bool ShouldShowCrashReportPermissionAskDialog() {
   if (IsMetricsReportingPolicyManaged())
     return false;
 
-  if (BraveMetricsServiceAccessor::IsMetricsAndCrashReportingEnabled())
+  if (LuxxleMetricsServiceAccessor::IsMetricsAndCrashReportingEnabled())
     return false;
 
   return true;

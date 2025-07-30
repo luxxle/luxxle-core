@@ -27,7 +27,7 @@
 #endif  // defined(REDIRECT_CC_AS_REWRAPPER)
 
 const base::FilePath::StringViewType kIncludeFlag = FILE_PATH_LITERAL("-I");
-const base::FilePath::StringViewType kBraveChromiumSrc =
+const base::FilePath::StringViewType kLuxxleChromiumSrc =
     FILE_PATH_LITERAL("luxxle/chromium_src");
 const base::FilePath::StringViewType kGen = FILE_PATH_LITERAL("gen");
 const base::FilePath::StringViewType kCompileFileFlags[] = {
@@ -85,7 +85,7 @@ class RedirectCC {
     launch_argv.push_back(compiler_executable);
 
     // Path to `src/luxxle/chromium_src`.
-    base::FilePath::StringType brave_chromium_src_dir;
+    base::FilePath::StringType luxxle_chromium_src_dir;
     // Path to `src/`.
     base::FilePath::StringType chromium_src_dir_with_slash;
 
@@ -93,10 +93,10 @@ class RedirectCC {
     for (const auto* arg : args_.subspan(first_compiler_arg_idx)) {
       base::FilePath::StringViewType arg_piece(arg);
       if (arg_piece.starts_with(kIncludeFlag) &&
-          arg_piece.ends_with(kBraveChromiumSrc)) {
+          arg_piece.ends_with(kLuxxleChromiumSrc)) {
         arg_piece.remove_prefix(kIncludeFlag.size());
-        brave_chromium_src_dir = base::FilePath::StringType(arg_piece);
-        arg_piece.remove_suffix(kBraveChromiumSrc.size());
+        luxxle_chromium_src_dir = base::FilePath::StringType(arg_piece);
+        arg_piece.remove_suffix(kLuxxleChromiumSrc.size());
         chromium_src_dir_with_slash = base::FilePath::StringType(arg_piece);
         break;
       }
@@ -116,7 +116,7 @@ class RedirectCC {
     }
 
     bool compile_file_found = false;
-    base::FilePath::StringType brave_path;
+    base::FilePath::StringType luxxle_path;
     bool has_show_includes_flag = false;
 
     for (size_t arg_idx = first_compiler_arg_idx; arg_idx < args_.size();
@@ -163,15 +163,15 @@ class RedirectCC {
         }
 
         if (!path_cc.empty()) {
-          brave_path = base::StrCat(
-              {brave_chromium_src_dir, FILE_PATH_LITERAL("/"), path_cc});
-          if (base::PathExists(base::FilePath(brave_path))) {
+          luxxle_path = base::StrCat(
+              {luxxle_chromium_src_dir, FILE_PATH_LITERAL("/"), path_cc});
+          if (base::PathExists(base::FilePath(luxxle_path))) {
             launch_argv.emplace_back(arg_piece);
-            launch_argv.push_back(brave_path);
+            launch_argv.push_back(luxxle_path);
             ++arg_idx;
             continue;
           } else {
-            brave_path.clear();
+            luxxle_path.clear();
           }
         }
       } else {
@@ -187,11 +187,11 @@ class RedirectCC {
     // Windows msvc deps format does not include it, so we do it manually here.
     // This is a specially crafted string that ninja will look for to create
     // deps.
-    if (exit_code == 0 && !brave_path.empty() && has_show_includes_flag) {
+    if (exit_code == 0 && !luxxle_path.empty() && has_show_includes_flag) {
 #if BUILDFLAG(IS_WIN)
-      std::wcerr << L"Note: including file: " << brave_path << L"\n";
+      std::wcerr << L"Note: including file: " << luxxle_path << L"\n";
 #else   // BUILDFLAG(IS_WIN)
-      std::cerr << "Note: including file: " << brave_path << "\n";
+      std::cerr << "Note: including file: " << luxxle_path << "\n";
 #endif  // BUILDFLAG(IS_WIN)
     }
 

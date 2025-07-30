@@ -16,7 +16,7 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
-import org.chromium.base.BravePreferenceKeys;
+import org.chromium.base.LuxxlePreferenceKeys;
 import org.chromium.base.IntentUtils;
 import org.chromium.chrome.R;
 
@@ -31,13 +31,13 @@ public class NotificationIntent {
     private static final String TAG = "NotificationIntent";
     private static final String NOTIFICATION_TAG = "16c570a4-da7d-4c4e-8518-d2b7d6e41615";
     private static final String NOTIFICATION_CHANNEL_ID = "a79c3102-4183-4001-a553-ec3041bd0f49";
-    private static final String URL = "https://support.brave.com/hc/en-us/articles/360045401211/";
+    private static final String URL = "https://support.luxxle.com/hc/en-us/articles/360045401211/";
     private static final List<String> sWhitelistedRegionalLocales =
             Arrays.asList("en", "ru", "uk", "de", "pt", "pl", "ja", "es", "fr");
     private static final int NOTIFICATION_ID = 732;
 
-    // private static final String NOTIFICATION_TITLE = "Brave update";
-    // private static final String NOTIFICATION_TEXT = "The new Brave browser is 22% faster";
+    // private static final String NOTIFICATION_TITLE = "Luxxle update";
+    // private static final String NOTIFICATION_TEXT = "The new Luxxle browser is 22% faster";
 
     public static void fireNotificationIfNecessary(Context context) {
         String notification_text = context.getString(R.string.update_notification_text);
@@ -61,7 +61,7 @@ public class NotificationIntent {
 
         // Create an intent that’ll be fired when a user taps the notification//
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(URL));
-        intent.putExtra(BravePreferenceKeys.BRAVE_UPDATE_EXTRA_PARAM, true);
+        intent.putExtra(LuxxlePreferenceKeys.LUXXLE_UPDATE_EXTRA_PARAM, true);
         intent.setPackage(context.getPackageName());
         PendingIntent pendingIntent = PendingIntent.getActivity(
                 context, 0, intent, IntentUtils.getPendingIntentMutabilityFlag(true));
@@ -90,8 +90,8 @@ public class NotificationIntent {
 
     private static long getPreferences(Context context) {
         SharedPreferences sharedPref =
-                context.getSharedPreferences(BravePreferenceKeys.BRAVE_NOTIFICATION_PREF_NAME, 0);
+                context.getSharedPreferences(LuxxlePreferenceKeys.LUXXLE_NOTIFICATION_PREF_NAME, 0);
 
-        return sharedPref.getLong(BravePreferenceKeys.BRAVE_MILLISECONDS_NAME, 0);
+        return sharedPref.getLong(LuxxlePreferenceKeys.LUXXLE_MILLISECONDS_NAME, 0);
     }
 }

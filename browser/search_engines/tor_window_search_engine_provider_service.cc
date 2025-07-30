@@ -5,7 +5,7 @@
 
 #include "luxxle/browser/search_engines/tor_window_search_engine_provider_service.h"
 
-#include "luxxle/components/search_engines/brave_prepopulated_engines.h"
+#include "luxxle/components/search_engines/luxxle_prepopulated_engines.h"
 #include "chrome/browser/profiles/profile.h"
 #include "components/prefs/pref_service.h"
 #include "components/search_engines/search_engines_pref_names.h"
@@ -19,7 +19,7 @@ TorWindowSearchEngineProviderService::TorWindowSearchEngineProviderService(
   DCHECK(otr_profile->IsTor());
 
   auto provider_data = TemplateURLDataFromPrepopulatedEngine(
-      TemplateURLPrepopulateData::brave_search_tor);
+      TemplateURLPrepopulateData::luxxle_search_tor);
   default_template_url_for_tor_ = std::make_unique<TemplateURL>(*provider_data);
 }
 

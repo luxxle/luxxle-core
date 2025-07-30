@@ -1,12 +1,12 @@
-/* Copyright (c) 2025 The Brave Authors. All rights reserved.
+/* Copyright (c) 2025 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#import "brave/ios/browser/api/ads/new_tab_page_ad_ios.h"
+#import "luxxle/ios/browser/api/ads/new_tab_page_ad_ios.h"
 
 #include "base/strings/sys_string_conversions.h"
-// REMOVED: #include "luxxle/components/brave_ads/.*"
+// REMOVED: #include "luxxle/components/luxxle_ads/.*"
 
 @interface NewTabPageAdIOS ()
 @property(nonatomic, copy) NSString* placementID;
@@ -23,7 +23,7 @@
 @implementation NewTabPageAdIOS
 
 - (instancetype)initWithNewTabPageAdInfo:
-    (const brave_ads::NewTabPageAdInfo&)ad {
+    (const luxxle_ads::NewTabPageAdInfo&)ad {
   if ((self = [super init])) {
     self.placementID = base::SysUTF8ToNSString(ad.placement_id);
     self.creativeInstanceID = base::SysUTF8ToNSString(ad.creative_instance_id);

@@ -1,15 +1,15 @@
-/* Copyright (c) 2022 The Brave Authors. All rights reserved.
+/* Copyright (c) 2022 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#import "brave/ios/browser/api/favicon/favicon_driver.h"
+#import "luxxle/ios/browser/api/favicon/favicon_driver.h"
 
 #include <optional>
 
 #import "base/values.h"
-#import "brave/ios/browser/api/web/web_state/web_state+private.h"
-#import "brave/ios/browser/favicon/brave_ios_web_favicon_driver.h"
+#import "luxxle/ios/browser/api/web/web_state/web_state+private.h"
+#import "luxxle/ios/browser/favicon/luxxle_ios_web_favicon_driver.h"
 #include "components/favicon/core/favicon_driver_observer.h"
 #include "components/favicon/core/favicon_service.h"
 #include "components/keyed_service/core/service_access_type.h"
@@ -84,7 +84,7 @@ void FaviconDriverObserver::OnFaviconUpdated(
     ProfileIOS* original_profile =
         ProfileIOS::FromBrowserState(real_web_state->GetBrowserState());
 
-    brave_favicon::BraveIOSWebFaviconDriver::CreateForWebState(
+    luxxle_favicon::LuxxleIOSWebFaviconDriver::CreateForWebState(
         real_web_state,
         ios::FaviconServiceFactory::GetForProfile(
             original_profile, ServiceAccessType::EXPLICIT_ACCESS));
@@ -96,8 +96,8 @@ void FaviconDriverObserver::OnFaviconUpdated(
   web::WebState* real_web_state = [self.webState internalWebState].get();
   DCHECK(real_web_state);
 
-  brave_favicon::BraveIOSWebFaviconDriver* driver =
-      brave_favicon::BraveIOSWebFaviconDriver::FromWebState(real_web_state);
+  luxxle_favicon::LuxxleIOSWebFaviconDriver* driver =
+      luxxle_favicon::LuxxleIOSWebFaviconDriver::FromWebState(real_web_state);
   DCHECK(driver);
 
   if (driver_observer_) {
@@ -110,8 +110,8 @@ void FaviconDriverObserver::OnFaviconUpdated(
   web::WebState* real_web_state = [self.webState internalWebState].get();
   DCHECK(real_web_state);
 
-  brave_favicon::BraveIOSWebFaviconDriver* driver =
-      brave_favicon::BraveIOSWebFaviconDriver::FromWebState(real_web_state);
+  luxxle_favicon::LuxxleIOSWebFaviconDriver* driver =
+      luxxle_favicon::LuxxleIOSWebFaviconDriver::FromWebState(real_web_state);
   DCHECK(driver);
   driver->SetMaximumFaviconImageSize(maxImageSize.width, maxImageSize.height);
 }
@@ -122,8 +122,8 @@ void FaviconDriverObserver::OnFaviconUpdated(
   web::WebState* real_web_state = [self.webState internalWebState].get();
   DCHECK(real_web_state);
 
-  brave_favicon::BraveIOSWebFaviconDriver* driver =
-      brave_favicon::BraveIOSWebFaviconDriver::FromWebState(real_web_state);
+  luxxle_favicon::LuxxleIOSWebFaviconDriver* driver =
+      luxxle_favicon::LuxxleIOSWebFaviconDriver::FromWebState(real_web_state);
   DCHECK(driver);
 
   if (driver_observer_) {

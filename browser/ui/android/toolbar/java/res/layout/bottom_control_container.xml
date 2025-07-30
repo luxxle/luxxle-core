@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright 2020 The Brave Authors. All rights reserved.
+<!-- Copyright 2020 The Luxxle Authors. All rights reserved.
      Use of this source code is governed by a BSD-style license that can be
      found in the LICENSE file. -->
 
-<org.chromium.chrome.browser.toolbar.bottom.BraveScrollingBottomViewResourceFrameLayout
+<org.chromium.chrome.browser.toolbar.bottom.LuxxleScrollingBottomViewResourceFrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -33,4 +33,4 @@
 
     </LinearLayout>
 
-</org.chromium.chrome.browser.toolbar.bottom.BraveScrollingBottomViewResourceFrameLayout>
+</org.chromium.chrome.browser.toolbar.bottom.LuxxleScrollingBottomViewResourceFrameLayout>

@@ -5,7 +5,7 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 # update.py vendors the CLI tools in versions.py and their deps.
-# Run this script via npm run update_brave_tools_crates
+# Run this script via npm run update_luxxle_tools_crates
 # whenever you need to add a new CLI tool,
 # or bump the version of an existing one.
 
@@ -18,10 +18,10 @@ import subprocess
 import sys
 import toml
 
-import brave_chromium_utils
+import luxxle_chromium_utils
 import versions
 
-with brave_chromium_utils.sys_path('//tools/rust'):
+with luxxle_chromium_utils.sys_path('//tools/rust'):
     import update_rust
     CARGO = os.path.join(update_rust.RUST_TOOLCHAIN_OUT_DIR, 'bin',
                          'cargo' + ('.exe' if sys.platform == 'win32' else ''))
@@ -45,7 +45,7 @@ def setup_workspace():
     # Write content to Cargo.toml
     cargo_toml = {
         'package': {
-            'name': 'brave-tools-crates',
+            'name': 'luxxle-tools-crates',
             'version': '0.1.0',
             'edition': '2021'
         }

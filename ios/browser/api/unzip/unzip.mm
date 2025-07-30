@@ -1,9 +1,9 @@
-// Copyright (c) 2025 The Brave Authors. All rights reserved.
+// Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/ios/browser/api/unzip/unzip.h"
+#include "luxxle/ios/browser/api/unzip/unzip.h"
 
 #include "base/apple/foundation_util.h"
 #include "base/files/file_path.h"
@@ -19,7 +19,7 @@
 #include "components/services/unzip/public/cpp/unzip.h"
 #include "net/base/apple/url_conversions.h"
 
-@implementation BraveUnzip
+@implementation LuxxleUnzip
 + (NSString*)jszipScriptPath {
   NSBundle* bundle = [NSBundle bundleForClass:self];
   return [bundle pathForResource:@"jszip" ofType:@"js"];

@@ -4,7 +4,7 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 #include "luxxle/browser/metrics/metrics_reporting_util.h"
-#include "luxxle/browser/ui/brave_browser.h"
+#include "luxxle/browser/ui/luxxle_browser.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/ui/session_crashed_bubble.h"
 #include "chrome/browser/ui/test/test_browser_dialog.h"
@@ -19,7 +19,7 @@ class CrashReportPermissionAskDialogTest : public DialogBrowserTest {
 
   // TestBrowserUi:
   void ShowUi(const std::string& name) override {
-    SessionCrashedBubble::ShowIfNotOffTheRecordProfileBrave(
+    SessionCrashedBubble::ShowIfNotOffTheRecordProfileLuxxle(
         browser(), /*skip_tab_checking=*/false);
   }
 };

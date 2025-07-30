@@ -1,4 +1,4 @@
-// Copyright (c) 2023 The Brave Authors. All rights reserved.
+// Copyright (c) 2023 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -8,26 +8,26 @@
 #include "base/memory/raw_ptr.h"
 #include "base/strings/sys_string_conversions.h"
 #include "luxxle/components/ai_chat/core/common/features.h"
-#include "luxxle/components/brave_component_updater/browser/features.h"
-#include "luxxle/components/brave_news/common/features.h"
-// REMOVED: #include "luxxle/components/brave_rewards/.*"
-#include "luxxle/components/brave_search/common/features.h"
-#include "luxxle/components/brave_search_conversion/features.h"
-#include "luxxle/components/brave_shields/core/common/features.h"
-#include "luxxle/components/brave_sync/features.h"
-#include "luxxle/components/brave_user_agent/common/features.h"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
+#include "luxxle/components/luxxle_component_updater/browser/features.h"
+#include "luxxle/components/luxxle_news/common/features.h"
+// REMOVED: #include "luxxle/components/luxxle_rewards/.*"
+#include "luxxle/components/luxxle_search/common/features.h"
+#include "luxxle/components/luxxle_search_conversion/features.h"
+#include "luxxle/components/luxxle_shields/core/common/features.h"
+#include "luxxle/components/luxxle_sync/features.h"
+#include "luxxle/components/luxxle_user_agent/common/features.h"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
 #include "luxxle/components/de_amp/common/features.h"
 #include "luxxle/components/debounce/core/common/features.h"
 #include "luxxle/components/ntp_background_images/browser/features.h"
 #include "luxxle/components/p3a/features.h"
 #include "luxxle/components/playlist/common/features.h"
 #include "luxxle/components/skus/common/features.h"
-#include "brave/ios/browser/api/translate/features.h"
-#include "brave/ios/browser/playlist/features.h"
-#include "brave/ios/browser/ui/browser_menu/features.h"
-#include "brave/ios/browser/ui/web_view/features.h"
+#include "luxxle/ios/browser/api/translate/features.h"
+#include "luxxle/ios/browser/playlist/features.h"
+#include "luxxle/ios/browser/ui/browser_menu/features.h"
+#include "luxxle/ios/browser/ui/web_view/features.h"
 #import "build/blink_buildflags.h"
 #include "build/build_config.h"
 #include "net/base/features.h"
@@ -67,7 +67,7 @@
 
 @implementation FeatureList
 
-// MARK: - Brave Features
+// MARK: - Luxxle Features
 
 + (Feature*)kAIChat {
   return [[Feature alloc] initWithFeature:&ai_chat::features::kAIChat];
@@ -79,169 +79,169 @@
 
 + (Feature*)kAdblockOverrideRegexDiscardPolicy {
   return
-      [[Feature alloc] initWithFeature:&brave_shields::features::
+      [[Feature alloc] initWithFeature:&luxxle_shields::features::
                                            kAdblockOverrideRegexDiscardPolicy];
 }
 
 + (Feature*)kAllowUnsupportedWalletProvidersFeature {
   return [[Feature alloc]
-      initWithFeature:&brave_rewards::features::
+      initWithFeature:&luxxle_rewards::features::
                           kAllowUnsupportedWalletProvidersFeature];
 }
 
-+ (Feature*)kBraveAdblockCnameUncloaking {
++ (Feature*)kLuxxleAdblockCnameUncloaking {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::kBraveAdblockCnameUncloaking];
+      initWithFeature:&luxxle_shields::features::kLuxxleAdblockCnameUncloaking];
 }
 
-+ (Feature*)kBraveAdblockCollapseBlockedElements {
++ (Feature*)kLuxxleAdblockCollapseBlockedElements {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::
-                          kBraveAdblockCollapseBlockedElements];
+      initWithFeature:&luxxle_shields::features::
+                          kLuxxleAdblockCollapseBlockedElements];
 }
 
-+ (Feature*)kBraveAdblockCookieListDefault {
++ (Feature*)kLuxxleAdblockCookieListDefault {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::kBraveAdblockCookieListDefault];
+      initWithFeature:&luxxle_shields::features::kLuxxleAdblockCookieListDefault];
 }
 
-+ (Feature*)kBraveAdblockCookieListOptIn {
++ (Feature*)kLuxxleAdblockCookieListOptIn {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::kBraveAdblockCookieListOptIn];
+      initWithFeature:&luxxle_shields::features::kLuxxleAdblockCookieListOptIn];
 }
 
-+ (Feature*)kBraveAdblockCosmeticFiltering {
++ (Feature*)kLuxxleAdblockCosmeticFiltering {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::kBraveAdblockCosmeticFiltering];
+      initWithFeature:&luxxle_shields::features::kLuxxleAdblockCosmeticFiltering];
 }
 
-+ (Feature*)kBraveAdblockCspRules {
++ (Feature*)kLuxxleAdblockCspRules {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::kBraveAdblockCspRules];
+      initWithFeature:&luxxle_shields::features::kLuxxleAdblockCspRules];
 }
 
-+ (Feature*)kBraveAdblockDefault1pBlocking {
++ (Feature*)kLuxxleAdblockDefault1pBlocking {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::kBraveAdblockDefault1pBlocking];
+      initWithFeature:&luxxle_shields::features::kLuxxleAdblockDefault1pBlocking];
 }
 
-+ (Feature*)kBraveAdblockMobileNotificationsListDefault {
++ (Feature*)kLuxxleAdblockMobileNotificationsListDefault {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::
-                          kBraveAdblockMobileNotificationsListDefault];
+      initWithFeature:&luxxle_shields::features::
+                          kLuxxleAdblockMobileNotificationsListDefault];
 }
 
-+ (Feature*)kBraveAdblockScriptletDebugLogs {
-  return [[Feature alloc] initWithFeature:&brave_shields::features::
-                                              kBraveAdblockScriptletDebugLogs];
++ (Feature*)kLuxxleAdblockScriptletDebugLogs {
+  return [[Feature alloc] initWithFeature:&luxxle_shields::features::
+                                              kLuxxleAdblockScriptletDebugLogs];
 }
 
-+ (Feature*)kBraveDarkModeBlock {
++ (Feature*)kLuxxleDarkModeBlock {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::kBraveDarkModeBlock];
+      initWithFeature:&luxxle_shields::features::kLuxxleDarkModeBlock];
 }
 
-+ (Feature*)kBraveDeAMP {
-  return [[Feature alloc] initWithFeature:&de_amp::features::kBraveDeAMP];
++ (Feature*)kLuxxleDeAMP {
+  return [[Feature alloc] initWithFeature:&de_amp::features::kLuxxleDeAMP];
 }
 
-+ (Feature*)kBraveDebounce {
-  return [[Feature alloc] initWithFeature:&debounce::features::kBraveDebounce];
++ (Feature*)kLuxxleDebounce {
+  return [[Feature alloc] initWithFeature:&debounce::features::kLuxxleDebounce];
 }
 
-+ (Feature*)kBraveDomainBlock {
++ (Feature*)kLuxxleDomainBlock {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::kBraveDomainBlock];
+      initWithFeature:&luxxle_shields::features::kLuxxleDomainBlock];
 }
 
-+ (Feature*)kBraveDomainBlock1PES {
++ (Feature*)kLuxxleDomainBlock1PES {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::kBraveDomainBlock1PES];
+      initWithFeature:&luxxle_shields::features::kLuxxleDomainBlock1PES];
 }
 
-+ (Feature*)kBraveLocalhostAccessPermission {
-  return [[Feature alloc] initWithFeature:&brave_shields::features::
-                                              kBraveLocalhostAccessPermission];
++ (Feature*)kLuxxleLocalhostAccessPermission {
+  return [[Feature alloc] initWithFeature:&luxxle_shields::features::
+                                              kLuxxleLocalhostAccessPermission];
 }
 
-+ (Feature*)kBraveNTPBrandedWallpaper {
++ (Feature*)kLuxxleNTPBrandedWallpaper {
   return [[Feature alloc] initWithFeature:&ntp_background_images::features::
-                                              kBraveNTPBrandedWallpaper];
+                                              kLuxxleNTPBrandedWallpaper];
 }
 
-+ (Feature*)kBraveNTPBrandedWallpaperDemo {
++ (Feature*)kLuxxleNTPBrandedWallpaperDemo {
   return [[Feature alloc] initWithFeature:&ntp_background_images::features::
-                                              kBraveNTPBrandedWallpaperDemo];
+                                              kLuxxleNTPBrandedWallpaperDemo];
 }
 
-+ (Feature*)kBraveNTPSuperReferralWallpaper {
++ (Feature*)kLuxxleNTPSuperReferralWallpaper {
   return [[Feature alloc] initWithFeature:&ntp_background_images::features::
-                                              kBraveNTPSuperReferralWallpaper];
+                                              kLuxxleNTPSuperReferralWallpaper];
 }
 
-+ (Feature*)kBraveNewsCardPeekFeature {
++ (Feature*)kLuxxleNewsCardPeekFeature {
   return [[Feature alloc]
-      initWithFeature:&brave_news::features::kBraveNewsCardPeekFeature];
+      initWithFeature:&luxxle_news::features::kLuxxleNewsCardPeekFeature];
 }
 
-+ (Feature*)kBraveNewsFeedUpdate {
++ (Feature*)kLuxxleNewsFeedUpdate {
   return [[Feature alloc]
-      initWithFeature:&brave_news::features::kBraveNewsFeedUpdate];
+      initWithFeature:&luxxle_news::features::kLuxxleNewsFeedUpdate];
 }
 
-+ (Feature*)kBraveReduceLanguage {
++ (Feature*)kLuxxleReduceLanguage {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::kBraveReduceLanguage];
+      initWithFeature:&luxxle_shields::features::kLuxxleReduceLanguage];
 }
 
-+ (Feature*)kBraveSearchDefaultAPIFeature {
++ (Feature*)kLuxxleSearchDefaultAPIFeature {
   return [[Feature alloc]
-      initWithFeature:&brave_search::features::kBraveSearchDefaultAPIFeature];
+      initWithFeature:&luxxle_search::features::kLuxxleSearchDefaultAPIFeature];
 }
 
-+ (Feature*)kBraveShredFeature {
++ (Feature*)kLuxxleShredFeature {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::kBraveShredFeature];
+      initWithFeature:&luxxle_shields::features::kLuxxleShredFeature];
 }
 
-+ (Feature*)kBraveShredCacheData {
++ (Feature*)kLuxxleShredCacheData {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::kBraveShredCacheData];
+      initWithFeature:&luxxle_shields::features::kLuxxleShredCacheData];
 }
 
-+ (Feature*)kBraveIOSDebugAdblock {
++ (Feature*)kLuxxleIOSDebugAdblock {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::kBraveIOSDebugAdblock];
+      initWithFeature:&luxxle_shields::features::kLuxxleIOSDebugAdblock];
 }
 
-+ (Feature*)kBraveIOSEnableFarblingPlugins {
++ (Feature*)kLuxxleIOSEnableFarblingPlugins {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::kBraveIOSEnableFarblingPlugins];
+      initWithFeature:&luxxle_shields::features::kLuxxleIOSEnableFarblingPlugins];
 }
 
-+ (Feature*)kBraveShowStrictFingerprintingMode {
++ (Feature*)kLuxxleShowStrictFingerprintingMode {
   return
-      [[Feature alloc] initWithFeature:&brave_shields::features::
-                                           kBraveShowStrictFingerprintingMode];
+      [[Feature alloc] initWithFeature:&luxxle_shields::features::
+                                           kLuxxleShowStrictFingerprintingMode];
 }
 
-+ (Feature*)kBraveSync {
-  return [[Feature alloc] initWithFeature:&brave_sync::features::kBraveSync];
++ (Feature*)kLuxxleSync {
+  return [[Feature alloc] initWithFeature:&luxxle_sync::features::kLuxxleSync];
 }
 
-+ (Feature*)kBraveWalletAnkrBalancesFeature {
++ (Feature*)kLuxxleWalletAnkrBalancesFeature {
   return [[Feature alloc]
-      initWithFeature:&brave_wallet::features::kBraveWalletAnkrBalancesFeature];
+      initWithFeature:&luxxle_wallet::features::kLuxxleWalletAnkrBalancesFeature];
 }
 
-+ (Feature*)kBraveWalletBitcoinFeature {
++ (Feature*)kLuxxleWalletBitcoinFeature {
   return [[Feature alloc]
-      initWithFeature:&brave_wallet::features::kBraveWalletBitcoinFeature];
+      initWithFeature:&luxxle_wallet::features::kLuxxleWalletBitcoinFeature];
 }
 
-+ (Feature*)kBraveWalletZCashFeature {
++ (Feature*)kLuxxleWalletZCashFeature {
   return [[Feature alloc]
-      initWithFeature:&brave_wallet::features::kBraveWalletZCashFeature];
+      initWithFeature:&luxxle_wallet::features::kLuxxleWalletZCashFeature];
 }
 
 + (Feature*)kConstellation {
@@ -255,18 +255,18 @@
 
 + (Feature*)kCosmeticFilteringExtraPerfMetrics {
   return
-      [[Feature alloc] initWithFeature:&brave_shields::features::
+      [[Feature alloc] initWithFeature:&luxxle_shields::features::
                                            kCosmeticFilteringExtraPerfMetrics];
 }
 
 + (Feature*)kCosmeticFilteringJsPerformance {
-  return [[Feature alloc] initWithFeature:&brave_shields::features::
+  return [[Feature alloc] initWithFeature:&luxxle_shields::features::
                                               kCosmeticFilteringJsPerformance];
 }
 
 + (Feature*)kCosmeticFilteringSyncLoad {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::kCosmeticFilteringSyncLoad];
+      initWithFeature:&luxxle_shields::features::kCosmeticFilteringSyncLoad];
 }
 
 #if BUILDFLAG(ENABLE_GEMINI_WALLET)
@@ -281,12 +281,12 @@
 
 + (Feature*)kNTP {
   return [[Feature alloc]
-      initWithFeature:&brave_search_conversion::features::kNTP];
+      initWithFeature:&luxxle_search_conversion::features::kNTP];
 }
 
-+ (Feature*)kNativeBraveWalletFeature {
++ (Feature*)kNativeLuxxleWalletFeature {
   return [[Feature alloc]
-      initWithFeature:&brave_wallet::features::kNativeBraveWalletFeature];
+      initWithFeature:&luxxle_wallet::features::kNativeLuxxleWalletFeature];
 }
 
 + (Feature*)kOtherJSONDeprecation {
@@ -305,25 +305,25 @@
 
 + (Feature*)kUseDevUpdaterUrl {
   return [[Feature alloc]
-      initWithFeature:&brave_component_updater::kUseDevUpdaterUrl];
+      initWithFeature:&luxxle_component_updater::kUseDevUpdaterUrl];
 }
 
 + (Feature*)kVerboseLoggingFeature {
   return [[Feature alloc]
-      initWithFeature:&brave_rewards::features::kVerboseLoggingFeature];
+      initWithFeature:&luxxle_rewards::features::kVerboseLoggingFeature];
 }
 
 + (Feature*)kNewPlaylistUI {
   return [[Feature alloc] initWithFeature:&playlist::features::kNewPlaylistUI];
 }
 
-+ (Feature*)kBraveHttpsByDefault {
-  return [[Feature alloc] initWithFeature:&net::features::kBraveHttpsByDefault];
++ (Feature*)kLuxxleHttpsByDefault {
+  return [[Feature alloc] initWithFeature:&net::features::kLuxxleHttpsByDefault];
 }
 
 + (Feature*)kBlockAllCookiesToggle {
   return [[Feature alloc]
-      initWithFeature:&brave_shields::features::kBlockAllCookiesToggle];
+      initWithFeature:&luxxle_shields::features::kBlockAllCookiesToggle];
 }
 
 + (Feature*)kModernBrowserMenuEnabled {
@@ -331,19 +331,19 @@
       initWithFeature:&luxxle::features::kModernBrowserMenuEnabled];
 }
 
-+ (Feature*)kBraveTranslateEnabled {
++ (Feature*)kLuxxleTranslateEnabled {
   return [[Feature alloc]
-      initWithFeature:&luxxle::features::kBraveTranslateEnabled];
+      initWithFeature:&luxxle::features::kLuxxleTranslateEnabled];
 }
 
-+ (Feature*)kBraveAppleTranslateEnabled {
++ (Feature*)kLuxxleAppleTranslateEnabled {
   return [[Feature alloc]
-      initWithFeature:&luxxle::features::kBraveAppleTranslateEnabled];
+      initWithFeature:&luxxle::features::kLuxxleAppleTranslateEnabled];
 }
 
-+ (Feature*)kUseBraveUserAgent {
++ (Feature*)kUseLuxxleUserAgent {
   return [[Feature alloc]
-      initWithFeature:&brave_user_agent::features::kUseBraveUserAgent];
+      initWithFeature:&luxxle_user_agent::features::kUseLuxxleUserAgent];
 }
 
 + (Feature*)kUseChromiumWebViews {

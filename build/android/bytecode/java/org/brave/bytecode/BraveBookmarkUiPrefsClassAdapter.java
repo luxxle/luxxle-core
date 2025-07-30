@@ -3,19 +3,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveBookmarkUiPrefsClassAdapter extends BraveClassVisitor {
+public class LuxxleBookmarkUiPrefsClassAdapter extends LuxxleClassVisitor {
     static String sBookmarkUiPrefsClassName =
             "org/chromium/chrome/browser/bookmarks/BookmarkUiPrefs";
-    static String sBraveBookmarkUiPrefsClassName =
-            "org/chromium/chrome/browser/bookmarks/BraveBookmarkUiPrefs";
+    static String sLuxxleBookmarkUiPrefsClassName =
+            "org/chromium/chrome/browser/bookmarks/LuxxleBookmarkUiPrefs";
 
-    public BraveBookmarkUiPrefsClassAdapter(ClassVisitor visitor) {
+    public LuxxleBookmarkUiPrefsClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sBookmarkUiPrefsClassName, sBraveBookmarkUiPrefsClassName);
+        redirectConstructor(sBookmarkUiPrefsClassName, sLuxxleBookmarkUiPrefsClassName);
     }
 }

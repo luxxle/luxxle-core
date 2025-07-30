@@ -8,15 +8,15 @@ import("//third_party/libprotobuf-mutator/fuzzable_proto_library.gni")
 
 assert(use_libfuzzer)
 
-fuzzer_test("brave_news_parse_feed_bytes_fuzzer") {
-  sources = [ "brave_news/parse_feed_bytes_fuzzer.cc" ]
+fuzzer_test("luxxle_news_parse_feed_bytes_fuzzer") {
+  sources = [ "luxxle_news/parse_feed_bytes_fuzzer.cc" ]
   deps = [
     "//base",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_news/browser:rust_lib",
+    # "//luxxle/components/luxxle_news/browser:rust_lib",
   ]
 
-  seed_corpus = "brave_news/corpus/parse_feed_bytes_fuzzer/"
+  seed_corpus = "luxxle_news/corpus/parse_feed_bytes_fuzzer/"
   dict = "//third_party/libxml/fuzz/xml.dict"
 }
 
@@ -43,7 +43,7 @@ fuzzer_test("adblock_engine_matches_fuzzer") {
     "//base",
     "//base:i18n",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_component_updater/browser:browser",
+    # "//luxxle/components/luxxle_component_updater/browser:browser",
     # Commented out: removed components dependency - using Chromium defaults instead
     "//testing/libfuzzer/proto:url_proto",
     "//testing/libfuzzer/proto:url_proto_converter",
@@ -69,12 +69,12 @@ fuzzer_test("adblock_engine_useresources_fuzzer") {
   dict = "//third_party/libxml/src/fuzz/html.dict"
 }
 
-group("brave_fuzzers") {
+group("luxxle_fuzzers") {
   testonly = true
 
   deps = [
     ":adblock_engine_matches_fuzzer",
     ":adblock_engine_useresources_fuzzer",
-    ":brave_news_parse_feed_bytes_fuzzer",
+    ":luxxle_news_parse_feed_bytes_fuzzer",
   ]
 }

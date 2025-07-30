@@ -26,11 +26,11 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 
 import org.chromium.base.Log;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.BraveWalletConstants;
-import org.chromium.brave_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletConstants;
+import org.chromium.luxxle_wallet.mojom.CoinType;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.app.domain.KeyringModel.FilecoinNetworkType;
 import org.chromium.chrome.browser.app.domain.WalletModel;
 import org.chromium.chrome.browser.crypto_wallet.util.Utils;
@@ -42,7 +42,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class AddAccountActivity extends BraveWalletBaseActivity {
+public class AddAccountActivity extends LuxxleWalletBaseActivity {
     private static final String TAG = "AddAccountActivity";
 
     private static final int FILECOIN_MAINNET_POSITION = 0;
@@ -74,7 +74,7 @@ public class AddAccountActivity extends BraveWalletBaseActivity {
             mCoinForNewAccount = intent.getIntExtra(Utils.COIN_TYPE, -1);
             mEditedAccountInfo = WalletUtils.getAccountInfoFromIntent(intent);
         }
-        mSelectedFilecoinNetwork = BraveWalletConstants.FILECOIN_MAINNET;
+        mSelectedFilecoinNetwork = LuxxleWalletConstants.FILECOIN_MAINNET;
     }
 
     @Override
@@ -97,9 +97,9 @@ public class AddAccountActivity extends BraveWalletBaseActivity {
 
         btnAdd.setEnabled(false);
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             mWalletModel = activity.getWalletModel();
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "Error during triggerLayoutInflation", e);
         }
 
@@ -311,10 +311,10 @@ public class AddAccountActivity extends BraveWalletBaseActivity {
                             AdapterView<?> parent, View view, int position, long id) {
                         switch (position) {
                             case FILECOIN_MAINNET_POSITION:
-                                mSelectedFilecoinNetwork = BraveWalletConstants.FILECOIN_MAINNET;
+                                mSelectedFilecoinNetwork = LuxxleWalletConstants.FILECOIN_MAINNET;
                                 break;
                             case FILECOIN_TESTNET_POSITION:
-                                mSelectedFilecoinNetwork = BraveWalletConstants.FILECOIN_TESTNET;
+                                mSelectedFilecoinNetwork = LuxxleWalletConstants.FILECOIN_TESTNET;
                                 break;
                             default:
                                 throw new IllegalStateException(

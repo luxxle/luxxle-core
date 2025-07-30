@@ -1,8 +1,8 @@
 browser_api_certificate_public_headers = [
-  "//luxxle/ios/browser/api/certificate/brave_certificate.h",
-  "//luxxle/ios/browser/api/certificate/models/brave_certificate_enums.h",
-  "//luxxle/ios/browser/api/certificate/models/brave_certificate_fingerprint.h",
-  "//luxxle/ios/browser/api/certificate/models/brave_certificate_public_key_info.h",
-  "//luxxle/ios/browser/api/certificate/models/brave_certificate_rdns_sequence.h",
-  "//luxxle/ios/browser/api/certificate/models/brave_certificate_signature.h",
+  "//luxxle/ios/browser/api/certificate/luxxle_certificate.h",
+  "//luxxle/ios/browser/api/certificate/models/luxxle_certificate_enums.h",
+  "//luxxle/ios/browser/api/certificate/models/luxxle_certificate_fingerprint.h",
+  "//luxxle/ios/browser/api/certificate/models/luxxle_certificate_public_key_info.h",
+  "//luxxle/ios/browser/api/certificate/models/luxxle_certificate_rdns_sequence.h",
+  "//luxxle/ios/browser/api/certificate/models/luxxle_certificate_signature.h",
 ]

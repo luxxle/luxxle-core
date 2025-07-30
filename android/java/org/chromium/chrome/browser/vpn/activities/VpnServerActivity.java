@@ -17,20 +17,20 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.chromium.brave_vpn.mojom.BraveVpnConstants;
-import org.chromium.brave_vpn.mojom.Region;
+import org.chromium.luxxle_vpn.mojom.LuxxleVpnConstants;
+import org.chromium.luxxle_vpn.mojom.Region;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.vpn.adapters.VpnServerAdapter;
-import org.chromium.chrome.browser.vpn.models.BraveVpnServerRegion;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnPrefUtils;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnUtils;
+import org.chromium.chrome.browser.vpn.models.LuxxleVpnServerRegion;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnPrefUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnUtils;
 import org.chromium.ui.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class VpnServerActivity extends BraveVpnParentActivity {
+public class VpnServerActivity extends LuxxleVpnParentActivity {
     private VpnServerAdapter mVpnServerAdapter;
 
     private LinearLayout mServerListLayout;
@@ -49,10 +49,10 @@ public class VpnServerActivity extends BraveVpnParentActivity {
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
-        assert BraveVpnUtils.selectedRegion != null;
+        assert LuxxleVpnUtils.selectedRegion != null;
         actionBar.setTitle(
                 getResources()
-                        .getString(R.string.region_text, BraveVpnUtils.selectedRegion.namePretty));
+                        .getString(R.string.region_text, LuxxleVpnUtils.selectedRegion.namePretty));
 
         mServerRegionList = (RecyclerView) findViewById(R.id.server_list);
 
@@ -92,7 +92,7 @@ public class VpnServerActivity extends BraveVpnParentActivity {
     @Override
     public void finishNativeInitialization() {
         super.finishNativeInitialization();
-        Region region = BraveVpnUtils.selectedRegion;
+        Region region = LuxxleVpnUtils.selectedRegion;
         showProgress();
         List<Region> cities = new ArrayList<Region>(Arrays.asList(region.cities));
 
@@ -108,15 +108,15 @@ public class VpnServerActivity extends BraveVpnParentActivity {
                 new OnCitySelection() {
                     @Override
                     public void onCityClick(Region city, int position) {
-                        if (BraveVpnPrefUtils.getRegionName().equals(city.name)) {
+                        if (LuxxleVpnPrefUtils.getRegionName().equals(city.name)) {
                             Toast.makeText(
                                             VpnServerActivity.this,
                                             R.string.already_selected_the_server,
                                             Toast.LENGTH_SHORT)
                                     .show();
                         } else {
-                            BraveVpnUtils.selectedServerRegion =
-                                    new BraveVpnServerRegion(
+                            LuxxleVpnUtils.selectedServerRegion =
+                                    new LuxxleVpnServerRegion(
                                             false,
                                             position == 0 ? region.country : city.country,
                                             position == 0 ? region.continent : city.continent,
@@ -126,8 +126,8 @@ public class VpnServerActivity extends BraveVpnParentActivity {
                                             position == 0 ? region.name : city.name,
                                             position == 0 ? region.namePretty : city.namePretty,
                                             position == 0
-                                                    ? BraveVpnConstants.REGION_PRECISION_COUNTRY
-                                                    : BraveVpnConstants.REGION_PRECISION_CITY);
+                                                    ? LuxxleVpnConstants.REGION_PRECISION_COUNTRY
+                                                    : LuxxleVpnConstants.REGION_PRECISION_CITY);
                             changeServerRegion();
                         }
                     }

@@ -3,24 +3,24 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveAppMenuClassAdapter extends BraveClassVisitor {
+public class LuxxleAppMenuClassAdapter extends LuxxleClassVisitor {
     static String sAppMenuClassName = "org/chromium/chrome/browser/ui/appmenu/AppMenu";
 
-    static String sBraveAppMenuClassName = "org/chromium/chrome/browser/ui/appmenu/BraveAppMenu";
+    static String sLuxxleAppMenuClassName = "org/chromium/chrome/browser/ui/appmenu/LuxxleAppMenu";
 
-    public BraveAppMenuClassAdapter(ClassVisitor visitor) {
+    public LuxxleAppMenuClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sAppMenuClassName, sBraveAppMenuClassName);
+        redirectConstructor(sAppMenuClassName, sLuxxleAppMenuClassName);
 
-        changeMethodOwner(sAppMenuClassName, "getPopupPosition", sBraveAppMenuClassName);
+        changeMethodOwner(sAppMenuClassName, "getPopupPosition", sLuxxleAppMenuClassName);
 
         makePublicMethod(sAppMenuClassName, "runMenuItemEnterAnimations");
         addMethodAnnotation(
-                sBraveAppMenuClassName, "runMenuItemEnterAnimations", "Ljava/lang/Override;");
+                sLuxxleAppMenuClassName, "runMenuItemEnterAnimations", "Ljava/lang/Override;");
     }
 }

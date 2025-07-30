@@ -5,7 +5,7 @@
 
 #include "base/test/metrics/histogram_tester.h"
 #include "luxxle/browser/misc_metrics/vertical_tab_metrics.h"
-#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/luxxle_tab_prefs.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_tabstrip.h"
@@ -21,7 +21,7 @@ class VerticalTabMetricsTest : public InProcessBrowserTest {
  protected:
   void SetVerticalTabsEnabled(bool enabled) {
     return browser()->profile()->GetPrefs()->SetBoolean(
-        brave_tabs::kVerticalTabsEnabled, enabled);
+        luxxle_tabs::kVerticalTabsEnabled, enabled);
   }
 
   base::HistogramTester histogram_tester_;

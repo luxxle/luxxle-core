@@ -1,9 +1,9 @@
-/* Copyright (c) 2021 The Brave Authors. All rights reserved.
+/* Copyright (c) 2021 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#import "brave/ios/browser/api/net/certificate_utility.h"
+#import "luxxle/ios/browser/api/net/certificate_utility.h"
 
 #include <limits>
 #include <memory>
@@ -48,15 +48,15 @@ namespace {
 }  // namespace
 }  // namespace net
 
-@implementation BraveCertificateUtility
+@implementation LuxxleCertificateUtility
 + (NSArray<NSData*>*)acceptableSPKIHashes {
   NSMutableArray* result = [[NSMutableArray alloc] init];
-  for (std::size_t i = 0; i < sizeof(net::kBraveAcceptableCerts) /
-                                  sizeof(net::kBraveAcceptableCerts[0]);
+  for (std::size_t i = 0; i < sizeof(net::kLuxxleAcceptableCerts) /
+                                  sizeof(net::kLuxxleAcceptableCerts[0]);
        ++i) {
-    if (UNSAFE_TODO(net::kBraveAcceptableCerts[i])) {
+    if (UNSAFE_TODO(net::kLuxxleAcceptableCerts[i])) {
       std::string data =
-          std::string(UNSAFE_TODO(net::kBraveAcceptableCerts[i]));
+          std::string(UNSAFE_TODO(net::kLuxxleAcceptableCerts[i]));
       if (data.size() > 0) {
         [result addObject:[NSData dataWithBytes:&data[0] length:data.size()]];
       }

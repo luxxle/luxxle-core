@@ -5,9 +5,9 @@
 
 #include "luxxle/browser/profiles/profile_util.h"
 
-#include "luxxle/components/brave_shields/content/browser/brave_shields_p3a.h"
+#include "luxxle/components/luxxle_shields/content/browser/luxxle_shields_p3a.h"
 #include "luxxle/components/constants/pref_names.h"
-#include "luxxle/components/search_engines/brave_prepopulated_engines.h"
+#include "luxxle/components/search_engines/luxxle_prepopulated_engines.h"
 #include "chrome/browser/profiles/profile.h"
 #include "components/content_settings/core/browser/cookie_settings.h"
 #include "components/content_settings/core/common/pref_names.h"
@@ -18,13 +18,13 @@ namespace luxxle {
 
 void SetDefaultSearchVersion(Profile* profile, bool is_new_profile) {
   const PrefService::Preference* pref_default_search_version =
-      profile->GetPrefs()->FindPreference(prefs::kBraveDefaultSearchVersion);
+      profile->GetPrefs()->FindPreference(prefs::kLuxxleDefaultSearchVersion);
   if (!pref_default_search_version->HasUserSetting()) {
     profile->GetPrefs()->SetInteger(
-        prefs::kBraveDefaultSearchVersion,
+        prefs::kLuxxleDefaultSearchVersion,
         is_new_profile
-            ? TemplateURLPrepopulateData::kBraveCurrentDataVersion
-            : TemplateURLPrepopulateData::kBraveFirstTrackedDataVersion);
+            ? TemplateURLPrepopulateData::kLuxxleCurrentDataVersion
+            : TemplateURLPrepopulateData::kLuxxleFirstTrackedDataVersion);
   }
 }
 
@@ -35,7 +35,7 @@ void SetDefaultThirdPartyCookieBlockValue(Profile* profile) {
           content_settings::CookieControlsMode::kBlockThirdParty)));
 }
 
-#if BUILDFLAG(ENABLE_BRAVE_WEBTORRENT)
+#if BUILDFLAG(ENABLE_LUXXLE_WEBTORRENT)
 void SetWebTorrentEnabled(Profile* profile, bool is_new_profile) {
   const PrefService::Preference* pref_webtorrent_enabled =
       profile->GetPrefs()->FindPreference(kWebTorrentEnabled);
@@ -48,4 +48,4 @@ void SetWebTorrentEnabled(Profile* profile, bool is_new_profile) {
 }
 #endif
 
-}  // namespace brave
+}  // namespace luxxle

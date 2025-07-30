@@ -10,7 +10,7 @@ import shutil
 import sys
 
 from distutils.dir_util import copy_tree
-from brave_chromium_utils import wspath
+from luxxle_chromium_utils import wspath
 from lib.config import PLATFORM, enable_verbose_mode, is_verbose_mode
 from lib.util import execute_stdout
 from pathlib import Path
@@ -62,7 +62,7 @@ def create_required_spm_resources(force=False):
     # These are essentially the bare-essential requirements for SPM to validate
     # the Package.swift manifest: The existence of the xcframework directory
     # itself, plus a valid Info.plist inside it.
-    frameworks = ['BraveCore', 'MaterialComponents', 'NalaAssets']
+    frameworks = ['LuxxleCore', 'MaterialComponents', 'NalaAssets']
     for frmk in frameworks:
         framework_dir = os.path.join(ios_current_link, f'{frmk}.xcframework')
         if force and os.path.exists(framework_dir):
@@ -70,7 +70,7 @@ def create_required_spm_resources(force=False):
         if not os.path.exists(framework_dir):
             Path(framework_dir).mkdir(parents=True)
             info_plist = wspath(
-                "//luxxle/ios/brave-ios/BraveCore/placeholders/xcframework.plist"
+                "//luxxle/ios/luxxle-ios/LuxxleCore/placeholders/xcframework.plist"
             )
             shutil.copyfile(info_plist, os.path.join(framework_dir,
                                                      'Info.plist'))
@@ -89,7 +89,7 @@ def generate_lldbinit(force=False):
     # strip_absolute_paths_from_debug_symbols set to true.
     settings set target.source-map "../.." "{wspath("//")}"
     """)
-    lldbinit_file = wspath("//luxxle/ios/brave-ios/App/Configuration/LLDBInit")
+    lldbinit_file = wspath("//luxxle/ios/luxxle-ios/App/Configuration/LLDBInit")
     if force or not os.path.exists(lldbinit_file):
         with open(lldbinit_file, 'w') as f:
             f.write(contents)

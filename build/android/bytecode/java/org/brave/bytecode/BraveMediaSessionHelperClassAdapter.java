@@ -3,29 +3,29 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveMediaSessionHelperClassAdapter extends BraveClassVisitor {
+public class LuxxleMediaSessionHelperClassAdapter extends LuxxleClassVisitor {
     static String sMediaSessionHelperClassName =
             "org/chromium/components/browser_ui/media/MediaSessionHelper";
 
-    static String sBraveMediaSessionHelperClassName =
-            "org/chromium/components/browser_ui/media/BraveMediaSessionHelper";
+    static String sLuxxleMediaSessionHelperClassName =
+            "org/chromium/components/browser_ui/media/LuxxleMediaSessionHelper";
 
-    public BraveMediaSessionHelperClassAdapter(ClassVisitor visitor) {
+    public LuxxleMediaSessionHelperClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        changeSuperName(sMediaSessionHelperClassName, sBraveMediaSessionHelperClassName);
+        changeSuperName(sMediaSessionHelperClassName, sLuxxleMediaSessionHelperClassName);
 
         changeMethodOwner(
                 sMediaSessionHelperClassName,
                 "showNotification",
-                sBraveMediaSessionHelperClassName);
+                sLuxxleMediaSessionHelperClassName);
         changeMethodOwner(
                 sMediaSessionHelperClassName,
                 "createMediaSessionObserver",
-                sBraveMediaSessionHelperClassName);
+                sLuxxleMediaSessionHelperClassName);
     }
 }

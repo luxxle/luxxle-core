@@ -1,0 +1,20 @@
+<link rel="import" href="chrome://resources/cr_elements/md_select.css.html">
+<style include="settings-shared md-select">
+</style>
+<div class="settings-box first">
+  <div class="flex cr-padded-text" aria-hidden="true">
+    $i18n{luxxleNewTabNewTabPageShows}
+  </div>
+  <settings-dropdown-menu label="$i18n{luxxleNewTabNewTabPageShows}"
+      pref="{{prefs.luxxle.new_tab_page.shows_options}}"
+      menu-options="[[newTabShowOptions_]]">
+  </settings-dropdown-menu>
+</div>
+<template is="dom-if" if="[[showNewTabDashboardSettings_]]">
+  <div class="settings-row">
+    <cr-link-row class="hr"
+      label="$i18n{luxxleNewTabNewTabCustomizeWidgets}"
+      on-click="openNewTabPage_" external>
+    </cr-link-row>
+  </div>
+</template>

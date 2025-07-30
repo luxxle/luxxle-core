@@ -3,13 +3,13 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-brave_third_party_rust_hashbrown_v0_15_deps = [
+luxxle_third_party_rust_hashbrown_v0_15_deps = [
   "//luxxle/third_party/rust/allocator_api2/v0_2:lib",
   "//luxxle/third_party/rust/equivalent/v1:lib",
   "//luxxle/third_party/rust/foldhash/v0_1:lib",
 ]
 
-brave_third_party_rust_hashbrown_v0_15_features = [
+luxxle_third_party_rust_hashbrown_v0_15_features = [
   "allocator-api2",
   "default",
   "default-hasher",

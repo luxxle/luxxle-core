@@ -169,7 +169,7 @@ def main():
         print("2. Test compilation: ninja -C out/Default chrome")
         print("3. Fix any remaining compilation errors manually")
         print("4. Update search engine to luxxle.com in browser/search_engines/")
-        print("5. Commit changes: git add . && git commit -m 'Clean up Brave dependencies'")
+        print("5. Commit changes: git add . && git commit -m 'Clean up Luxxle dependencies'")
     elif args.dry_run:
         print("\n🔍 Dry run completed. Run without --dry-run to apply changes.")
     

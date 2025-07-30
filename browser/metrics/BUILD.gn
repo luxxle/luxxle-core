@@ -27,7 +27,7 @@ source_set("browser_tests") {
   ]
 }
 
-source_set("brave_metrics_unit_tests") {
+source_set("luxxle_metrics_unit_tests") {
   testonly = true
 
   sources = [

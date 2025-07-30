@@ -3,19 +3,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveFullscreenHtmlApiHandlerBaseClassAdapter extends BraveClassVisitor {
+public class LuxxleFullscreenHtmlApiHandlerBaseClassAdapter extends LuxxleClassVisitor {
     static String sFullscreenHtmlApiHandlerBase =
             "org/chromium/chrome/browser/fullscreen/FullscreenHtmlApiHandlerBase";
-    static String sBraveFullscreenHtmlApiHandlerBase =
-            "org/chromium/chrome/browser/fullscreen/BraveFullscreenHtmlApiHandlerBase";
+    static String sLuxxleFullscreenHtmlApiHandlerBase =
+            "org/chromium/chrome/browser/fullscreen/LuxxleFullscreenHtmlApiHandlerBase";
 
-    public BraveFullscreenHtmlApiHandlerBaseClassAdapter(ClassVisitor visitor) {
+    public LuxxleFullscreenHtmlApiHandlerBaseClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        changeSuperName(sFullscreenHtmlApiHandlerBase, sBraveFullscreenHtmlApiHandlerBase);
+        changeSuperName(sFullscreenHtmlApiHandlerBase, sLuxxleFullscreenHtmlApiHandlerBase);
     }
 }

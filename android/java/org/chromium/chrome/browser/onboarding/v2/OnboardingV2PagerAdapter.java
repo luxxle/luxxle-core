@@ -35,7 +35,7 @@ public class OnboardingV2PagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        if (OnboardingPrefManager.getInstance().isBraveStatsEnabled()) {
+        if (OnboardingPrefManager.getInstance().isLuxxleStatsEnabled()) {
             return 3;
         } else {
             return 4;

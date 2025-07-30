@@ -3,19 +3,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveTileViewClassAdapter extends BraveClassVisitor {
+public class LuxxleTileViewClassAdapter extends LuxxleClassVisitor {
     static String sSuggestionsTileViewClassName =
             "org/chromium/chrome/browser/suggestions/tile/SuggestionsTileView";
 
-    static String sBraveSuggestionsTileViewBaseClassName =
-            "org/chromium/chrome/browser/suggestions/tile/BraveTileView";
+    static String sLuxxleSuggestionsTileViewBaseClassName =
+            "org/chromium/chrome/browser/suggestions/tile/LuxxleTileView";
 
-    public BraveTileViewClassAdapter(ClassVisitor visitor) {
+    public LuxxleTileViewClassAdapter(ClassVisitor visitor) {
         super(visitor);
-        changeSuperName(sSuggestionsTileViewClassName, sBraveSuggestionsTileViewBaseClassName);
+        changeSuperName(sSuggestionsTileViewClassName, sLuxxleSuggestionsTileViewBaseClassName);
     }
 }

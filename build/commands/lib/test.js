@@ -26,14 +26,14 @@ const getChromiumUnitTestsSuites = () => {
 
 const getTestsToRun = (config, suite) => {
   let testsToRun = [suite]
-  if (suite === 'brave_unit_tests') {
+  if (suite === 'luxxle_unit_tests') {
     if (config.targetOS !== 'android') {
-      testsToRun.push('brave_installer_unittests')
+      testsToRun.push('luxxle_installer_unittests')
     }
-  } else if (suite === 'brave_java_unit_tests') {
-    testsToRun = ['bin/run_brave_java_unit_tests']
-  } else if (suite === 'brave_junit_tests') {
-    testsToRun = ['bin/run_brave_junit_tests']
+  } else if (suite === 'luxxle_java_unit_tests') {
+    testsToRun = ['bin/run_luxxle_java_unit_tests']
+  } else if (suite === 'luxxle_junit_tests') {
+    testsToRun = ['bin/run_luxxle_junit_tests']
   } else if (suite === 'chromium_unit_tests') {
     testsToRun = getChromiumUnitTestsSuites()
   }
@@ -65,7 +65,7 @@ const getApplicableFilters = (suite) => {
   ]
   possibleFilters.forEach((filterName) => {
     let filterFilePath = path.join(
-      config.braveCoreDir,
+      config.luxxleCoreDir,
       'test',
       'filters',
       `${filterName}.filter`,
@@ -97,14 +97,14 @@ const buildTests = async (
   config.update(options)
 
   let testSuites = [
-    'brave_unit_tests',
-    'brave_browser_tests',
-    'brave_java_unit_tests',
-    'brave_junit_tests',
-    'brave_network_audit_tests',
+    'luxxle_unit_tests',
+    'luxxle_browser_tests',
+    'luxxle_java_unit_tests',
+    'luxxle_junit_tests',
+    'luxxle_network_audit_tests',
   ]
   if (testSuites.includes(suite)) {
-    config.buildTargets = ['brave/test:' + suite]
+    config.buildTargets = ['luxxle/test:' + suite]
   } else if (suite === 'chromium_unit_tests') {
     config.buildTargets = getChromiumUnitTestsSuites()
   } else {
@@ -121,51 +121,51 @@ const runTests = (passthroughArgs, suite, buildConfig, options) => {
 
   const isJunitTestSuite = suite.endsWith('_junit_tests')
 
-  let braveArgs = []
+  let luxxleArgs = []
 
   if (!isJunitTestSuite) {
-    braveArgs.push('--enable-logging=stderr')
+    luxxleArgs.push('--enable-logging=stderr')
   }
 
   // Android doesn't support --v
   if (config.targetOS !== 'android') {
-    braveArgs.push('--v=' + options.v)
+    luxxleArgs.push('--v=' + options.v)
 
     if (options.vmodule) {
-      braveArgs.push('--vmodule=' + options.vmodule)
+      luxxleArgs.push('--vmodule=' + options.vmodule)
     }
   }
 
   if (options.filter) {
-    braveArgs.push('--gtest_filter=' + options.filter)
+    luxxleArgs.push('--gtest_filter=' + options.filter)
   }
 
   if (options.run_disabled_tests) {
-    braveArgs.push('--gtest_also_run_disabled_tests')
+    luxxleArgs.push('--gtest_also_run_disabled_tests')
   }
 
   if (options.output) {
-    braveArgs.push('--gtest_output=xml:' + options.output)
+    luxxleArgs.push('--gtest_output=xml:' + options.output)
   }
 
-  if (options.disable_brave_extension) {
-    braveArgs.push('--disable-brave-extension')
+  if (options.disable_luxxle_extension) {
+    luxxleArgs.push('--disable-luxxle-extension')
   }
 
   if (options.single_process) {
-    braveArgs.push('--single_process')
+    luxxleArgs.push('--single_process')
   }
 
   if (!isJunitTestSuite && options.test_launcher_jobs) {
-    braveArgs.push('--test-launcher-jobs=' + options.test_launcher_jobs)
+    luxxleArgs.push('--test-launcher-jobs=' + options.test_launcher_jobs)
   }
 
   if (!isJunitTestSuite) {
-    braveArgs = braveArgs.concat(passthroughArgs)
+    luxxleArgs = luxxleArgs.concat(passthroughArgs)
   }
 
   if (
-    suite === 'brave_unit_tests'
+    suite === 'luxxle_unit_tests'
     && config.isTeamcity
     && config.targetOS !== 'android'
     && config.targetOS !== 'ios'
@@ -194,36 +194,36 @@ const runTests = (passthroughArgs, suite, buildConfig, options) => {
     ]
     // Run the tests
     getTestsToRun(config, suite).every((testSuite) => {
-      // Filter out upstream tests that are known to fail for Brave
+      // Filter out upstream tests that are known to fail for Luxxle
       if (upstreamTestSuites.includes(testSuite)) {
-        const previousFilters = braveArgs.findIndex((arg) => {
+        const previousFilters = luxxleArgs.findIndex((arg) => {
           return arg.startsWith('--test-launcher-filter-file=')
         })
         if (previousFilters !== -1) {
-          braveArgs.splice(previousFilters, 1)
+          luxxleArgs.splice(previousFilters, 1)
         }
         const filterFilePaths = getApplicableFilters(testSuite)
         if (filterFilePaths.length > 0) {
-          braveArgs.push(
+          luxxleArgs.push(
             `--test-launcher-filter-file=${filterFilePaths.join(';')}`,
           )
         }
         if (config.isTeamcity) {
           const ignorePreliminaryFailures =
             '--test-launcher-teamcity-reporter-ignore-preliminary-failures'
-          if (!braveArgs.includes(ignorePreliminaryFailures)) {
-            braveArgs.push(ignorePreliminaryFailures)
+          if (!luxxleArgs.includes(ignorePreliminaryFailures)) {
+            luxxleArgs.push(ignorePreliminaryFailures)
           }
         }
       }
       if (options.output) {
-        const previousOutput = braveArgs.findIndex((arg) => {
+        const previousOutput = luxxleArgs.findIndex((arg) => {
           return arg.startsWith('--gtest_output=xml:')
         })
         if (previousOutput !== -1) {
-          braveArgs.splice(previousOutput, 1)
+          luxxleArgs.splice(previousOutput, 1)
         }
-        braveArgs.push(`--gtest_output=xml:${testSuite}.xml`)
+        luxxleArgs.push(`--gtest_output=xml:${testSuite}.xml`)
       }
       if (config.targetOS === 'android' && !isJunitTestSuite) {
         assert(
@@ -239,7 +239,7 @@ const runTests = (passthroughArgs, suite, buildConfig, options) => {
         && !options.manual_android_test_device
       ) {
         // Specify emulator to run tests on
-        braveArgs.push(
+        luxxleArgs.push(
           `--avd-config=tools/android/avd/proto/${options.android_test_emulator_name}.textpb`,
         )
       }
@@ -261,7 +261,7 @@ const runTests = (passthroughArgs, suite, buildConfig, options) => {
       }
       let prog = util.run(
         path.join(config.outputDir, getTestBinary(testSuite)),
-        braveArgs,
+        luxxleArgs,
         runOptions,
       )
       // Don't run other tests if one has failed already, especially because
@@ -283,7 +283,7 @@ const runChromiumTestLauncherTeamcityReporterIntegrationTests = () => {
     ],
 
     expectedLines: [
-      "##teamcity[testSuiteStarted name='brave_unit_tests']",
+      "##teamcity[testSuiteStarted name='luxxle_unit_tests']",
       "##teamcity[testRetrySupport enabled='true']",
       "##teamcity[testStarted name='DISABLED_TeamcityReporterIntegrationTest.Success'",
       "##teamcity[testFinished name='DISABLED_TeamcityReporterIntegrationTest.Success'",
@@ -304,7 +304,7 @@ const runChromiumTestLauncherTeamcityReporterIntegrationTests = () => {
       "##teamcity[testFinished name='DISABLED_TeamcityReporterIntegrationTest.CheckFailure'",
       "##teamcity[testStarted name='DISABLED_TeamcityReporterIntegrationTest.Skipped'",
       "##teamcity[testFinished name='DISABLED_TeamcityReporterIntegrationTest.Skipped'",
-      "##teamcity[testSuiteFinished name='brave_unit_tests']",
+      "##teamcity[testSuiteFinished name='luxxle_unit_tests']",
     ],
   }
 
@@ -315,7 +315,7 @@ const runChromiumTestLauncherTeamcityReporterIntegrationTests = () => {
     ],
 
     expectedLines: [
-      "##teamcity[testSuiteStarted name='brave_unit_tests']",
+      "##teamcity[testSuiteStarted name='luxxle_unit_tests']",
       "##teamcity[testRetrySupport enabled='true']",
       "##teamcity[testStarted name='DISABLED_TeamcityReporterIntegrationTest.Success'",
       "##teamcity[testFinished name='DISABLED_TeamcityReporterIntegrationTest.Success'",
@@ -336,7 +336,7 @@ const runChromiumTestLauncherTeamcityReporterIntegrationTests = () => {
       "##teamcity[testFinished name='DISABLED_TeamcityReporterIntegrationTest.CheckFailure'",
       "##teamcity[testStarted name='DISABLED_TeamcityReporterIntegrationTest.Skipped'",
       "##teamcity[testFinished name='DISABLED_TeamcityReporterIntegrationTest.Skipped'",
-      "##teamcity[testSuiteFinished name='brave_unit_tests']",
+      "##teamcity[testSuiteFinished name='luxxle_unit_tests']",
     ],
   }
 
@@ -346,7 +346,7 @@ const runChromiumTestLauncherTeamcityReporterIntegrationTests = () => {
 
   for (const testCase of [generalTestCase, ignorePreliminaryFailuresTestCase]) {
     const prog = util.run(
-      path.join(config.outputDir, 'brave_unit_tests'),
+      path.join(config.outputDir, 'luxxle_unit_tests'),
       testCase.args,
       runOptions,
     )

@@ -8,7 +8,7 @@
 #include "base/feature_list.h"
 #include "base/path_service.h"
 #include "base/thread_annotations.h"
-#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/constants/luxxle_paths.h"
 #include "luxxle/components/constants/network_constants.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/test/base/in_process_browser_test.h"
@@ -19,7 +19,7 @@
 #include "net/test/embedded_test_server/http_request.h"
 #include "third_party/blink/public/common/features.h"
 
-using blink::features::kBraveGlobalPrivacyControl;
+using blink::features::kLuxxleGlobalPrivacyControl;
 
 enum class GPCHeaderResult {
   kOk,
@@ -108,7 +108,7 @@ IN_PROC_BROWSER_TEST_F(GlobalPrivacyControlNetworkDelegateBrowserTest,
 }
 
 // The Global Privacy Control spec also defines the
-// `navigator.globalPrivacyControl` JS property, which is read-only. In Brave
+// `navigator.globalPrivacyControl` JS property, which is read-only. In Luxxle
 // it will always return `true`.
 IN_PROC_BROWSER_TEST_F(GlobalPrivacyControlNetworkDelegateBrowserTest,
                        NavigatorGlobalPrivacyAPI) {
@@ -129,7 +129,7 @@ IN_PROC_BROWSER_TEST_F(GlobalPrivacyControlNetworkDelegateBrowserTest,
 }
 
 // The Global Privacy Control spec also defines the
-// `navigator.globalPrivacyControl` JS property, which is read-only. In Brave
+// `navigator.globalPrivacyControl` JS property, which is read-only. In Luxxle
 // it will always return `true`.
 IN_PROC_BROWSER_TEST_F(GlobalPrivacyControlNetworkDelegateBrowserTest,
                        ServiceWorkerGPCAvailable) {
@@ -157,7 +157,7 @@ class GlobalPrivacyControlFlagDisabledTest
     : public GlobalPrivacyControlNetworkDelegateBrowserTest {
  public:
   GlobalPrivacyControlFlagDisabledTest() {
-    feature_list_.InitAndDisableFeature(kBraveGlobalPrivacyControl);
+    feature_list_.InitAndDisableFeature(kLuxxleGlobalPrivacyControl);
   }
 
  private:

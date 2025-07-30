@@ -1,0 +1,93 @@
+/* Copyright (c) 2023 The Luxxle Authors. All rights reserved.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+#ifndef LUXXLE_IOS_BROWSER_API_LUXXLE_REWARDS_REWARDS_CLIENT_BRIDGE_H_
+#define LUXXLE_IOS_BROWSER_API_LUXXLE_REWARDS_REWARDS_CLIENT_BRIDGE_H_
+
+#import <Foundation/Foundation.h>
+
+#include <string>
+#include <vector>
+
+// REMOVED: #include "luxxle/components/luxxle_rewards/.*"
+
+NS_ASSUME_NONNULL_BEGIN
+
+@protocol RewardsClientBridge
+@required
+
+- (void)onReconcileComplete:(luxxle_rewards::mojom::Result)result
+               contribution:
+                   (luxxle_rewards::mojom::ContributionInfoPtr)contribution;
+- (void)onPanelPublisherInfo:(luxxle_rewards::mojom::Result)result
+               publisherInfo:
+                   (luxxle_rewards::mojom::PublisherInfoPtr)publisherInfo
+                    windowId:(uint64_t)windowId;
+- (void)
+    fetchFavIcon:(const std::string&)url
+      faviconKey:(const std::string&)faviconKey
+        callback:
+            (luxxle_rewards::mojom::RewardsEngineClient::FetchFavIconCallback)
+                callback;
+- (void)loadUrl:(luxxle_rewards::mojom::UrlRequestPtr)request
+       callback:
+           (luxxle_rewards::mojom::RewardsEngineClient::LoadURLCallback)callback;
+- (void)publisherListNormalized:
+    (std::vector<luxxle_rewards::mojom::PublisherInfoPtr>)list;
+- (void)onPublisherRegistryUpdated;
+- (void)onPublisherUpdated:(const std::string&)publisherId;
+- (void)userPreferenceValue:(const std::string&)path
+                   callback:(luxxle_rewards::mojom::RewardsEngineClient::
+                                 GetUserPreferenceValueCallback)callback;
+- (void)setUserPreferenceValue:(const std::string&)path
+                         value:(base::Value)value
+                      callback:(luxxle_rewards::mojom::RewardsEngineClient::
+                                    SetUserPreferenceValueCallback)callback;
+- (void)clearUserPreferenceValue:(const std::string&)path
+                        callback:(luxxle_rewards::mojom::RewardsEngineClient::
+                                      ClearUserPreferenceValueCallback)callback;
+- (void)showNotification:(const std::string&)type
+                    args:(std::vector<std::string>)args
+                callback:(luxxle_rewards::mojom::RewardsEngineClient::
+                              ShowNotificationCallback)callback;
+- (void)reconcileStampReset;
+- (void)runDbTransaction:(luxxle_rewards::mojom::DBTransactionPtr)transaction
+                callback:(luxxle_rewards::mojom::RewardsEngineClient::
+                              RunDBTransactionCallback)callback;
+- (void)updateCreatorPrefixStore:
+            (luxxle_rewards::mojom::HashPrefixDataPtr)prefix_data
+                        callback:(luxxle_rewards::mojom::RewardsEngineClient::
+                                      UpdateCreatorPrefixStoreCallback)callback;
+- (void)creatorPrefixStoreContains:(const std::string&)value
+                          callback:
+                              (luxxle_rewards::mojom::RewardsEngineClient::
+                                   CreatorPrefixStoreContainsCallback)callback;
+- (void)log:(const std::string&)file
+            line:(int32_t)line
+    verboseLevel:(int32_t)verboseLevel
+         message:(const std::string&)message;
+- (void)clearAllNotifications;
+- (void)externalWalletConnected;
+- (void)externalWalletLoggedOut;
+- (void)externalWalletReconnected;
+- (void)externalWalletDisconnected;
+- (void)deleteLog:
+    (luxxle_rewards::mojom::RewardsEngineClient::DeleteLogCallback)callback;
+- (void)
+    encryptString:(const std::string&)value
+         callback:
+             (luxxle_rewards::mojom::RewardsEngineClient::EncryptStringCallback)
+                 callback;
+- (void)
+    decryptString:(const std::string&)value
+         callback:
+             (luxxle_rewards::mojom::RewardsEngineClient::DecryptStringCallback)
+                 callback;
+
+@end
+
+NS_ASSUME_NONNULL_END
+
+#endif  // LUXXLE_IOS_BROWSER_API_LUXXLE_REWARDS_REWARDS_CLIENT_BRIDGE_H_

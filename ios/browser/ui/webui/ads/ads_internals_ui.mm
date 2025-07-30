@@ -1,9 +1,9 @@
-// Copyright (c) 2024 The Brave Authors. All rights reserved.
+// Copyright (c) 2024 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include "brave/ios/browser/ui/webui/ads/ads_internals_ui.h"
+#include "luxxle/ios/browser/ui/webui/ads/ads_internals_ui.h"
 
 #include <cstddef>
 #include <string>
@@ -12,11 +12,11 @@
 #include "base/check.h"
 #include "base/containers/span.h"
 #include "base/functional/bind.h"
-// REMOVED: #include "luxxle/components/brave_ads/.*"
+// REMOVED: #include "luxxle/components/luxxle_ads/.*"
 #include "luxxle/components/constants/webui_url_constants.h"
-#include "brave/ios/browser/brave_ads/ads_service_factory_ios.h"
-#include "brave/ios/browser/brave_ads/ads_service_impl_ios.h"
-#include "components/grit/brave_components_resources.h"
+#include "luxxle/ios/browser/luxxle_ads/ads_service_factory_ios.h"
+#include "luxxle/ios/browser/luxxle_ads/ads_service_impl_ios.h"
+#include "components/grit/luxxle_components_resources.h"
 #include "components/prefs/pref_service.h"
 #include "ios/chrome/browser/shared/model/profile/profile_ios.h"
 #include "ios/web/public/web_state.h"
@@ -52,7 +52,7 @@ ProfileIOS* GetProfile(web::WebUIIOS* web_ui) {
 AdsInternalsUI::AdsInternalsUI(web::WebUIIOS* web_ui, const GURL& url)
     : web::WebUIIOSController(web_ui, url.host()),
       handler_(
-          brave_ads::AdsServiceFactoryIOS::GetForProfile(GetProfile(web_ui)),
+          luxxle_ads::AdsServiceFactoryIOS::GetForProfile(GetProfile(web_ui)),
           *GetProfile(web_ui)->GetPrefs()) {
   CreateAndAddWebUIDataSource(web_ui, url.host(),
                               base::span(kAdsInternalsGenerated),

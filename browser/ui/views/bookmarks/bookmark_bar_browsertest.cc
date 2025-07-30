@@ -5,7 +5,7 @@
 
 #include "base/run_loop.h"
 #include "base/scoped_observation.h"
-#include "luxxle/browser/ui/brave_view_ids.h"
+#include "luxxle/browser/ui/luxxle_view_ids.h"
 #include "luxxle/browser/ui/browser_commands.h"
 #include "luxxle/browser/ui/views/bookmarks/bookmark_bar_instructions_view.h"
 #include "chrome/app/chrome_command_ids.h"
@@ -86,7 +86,7 @@ class BookmarkBarTest : public InProcessBrowserTest {
 
   BookmarkBarInstructionsView* GetInstructionView() {
     for (views::View* child : bookmark_bar()->children()) {
-      if (child->GetID() == BRAVE_VIEW_ID_BOOKMARK_IMPORT_INSTRUCTION_VIEW) {
+      if (child->GetID() == LUXXLE_VIEW_ID_BOOKMARK_IMPORT_INSTRUCTION_VIEW) {
         return static_cast<BookmarkBarInstructionsView*>(child);
       }
     }

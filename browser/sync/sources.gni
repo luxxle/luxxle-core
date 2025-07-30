@@ -3,11 +3,11 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-brave_browser_sync_sources = [
-  "//luxxle/browser/sync/brave_sync_alerts_service.cc",
-  "//luxxle/browser/sync/brave_sync_alerts_service.h",
-  "//luxxle/browser/sync/brave_sync_alerts_service_factory.cc",
-  "//luxxle/browser/sync/brave_sync_alerts_service_factory.h",
+luxxle_browser_sync_sources = [
+  "//luxxle/browser/sync/luxxle_sync_alerts_service.cc",
+  "//luxxle/browser/sync/luxxle_sync_alerts_service.h",
+  "//luxxle/browser/sync/luxxle_sync_alerts_service_factory.cc",
+  "//luxxle/browser/sync/luxxle_sync_alerts_service_factory.h",
 ]
 
-brave_browser_sync_deps = []
+luxxle_browser_sync_deps = []

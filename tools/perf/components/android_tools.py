@@ -26,7 +26,7 @@ def SetupAndroidDevice() -> None:
   GetProcessOutput([
       path_util.GetAdbPath(),
       'push',
-      os.path.join(path_util.GetBravePerfDir(), 'setup_android_device.sh'),
+      os.path.join(path_util.GetLuxxlePerfDir(), 'setup_android_device.sh'),
       tmp_file,
   ],
                    check=True)
@@ -101,7 +101,7 @@ def InstallApk(apk_path: str, expected_version: Optional[str]) -> str:
   GetProcessOutput([
       adb, 'shell',
       ('ps -o NAME -A' +
-       '| grep -e com.brave -e com.chrome -e com.chromium -e android.chrome' +
+       '| grep -e com.luxxle -e com.chrome -e com.chromium -e android.chrome' +
        '| xargs -r -n 1 am force-stop')
   ],
                    check=True)

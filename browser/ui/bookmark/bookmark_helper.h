@@ -19,6 +19,6 @@ enum class BookmarkBarState { kAlways, kNever, kNtp };
 BookmarkBarState GetBookmarkBarState(PrefService* prefs);
 void SetBookmarkState(BookmarkBarState state, PrefService* prefs);
 
-}  // namespace brave
+}  // namespace luxxle
 
 #endif  // LUXXLE_BROWSER_UI_BOOKMARK_BOOKMARK_HELPER_H_

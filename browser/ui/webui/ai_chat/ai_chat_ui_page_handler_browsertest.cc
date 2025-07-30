@@ -16,7 +16,7 @@
 #include "luxxle/components/ai_chat/core/browser/ai_chat_service.h"
 #include "luxxle/components/ai_chat/core/browser/tab_tracker_service.h"
 #include "luxxle/components/ai_chat/core/common/mojom/tab_tracker.mojom.h"
-#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/constants/luxxle_paths.h"
 #include "chrome/test/base/chrome_test_utils.h"
 #include "chrome/test/base/in_process_browser_test.h"
 #include "chrome/test/base/platform_browser_test.h"

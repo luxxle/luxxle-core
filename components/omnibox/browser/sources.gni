@@ -4,5 +4,5 @@
 # This file provides variables for components/omnibox/browser/BUILD.gn
 
 # Define empty omnibox browser variables to use Chromium defaults
-brave_components_omnibox_browser_sources = []
-brave_components_omnibox_browser_deps = [] 
+luxxle_components_omnibox_browser_sources = []
+luxxle_components_omnibox_browser_deps = [] 

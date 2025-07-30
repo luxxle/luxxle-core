@@ -8,8 +8,8 @@ source_set("browser_tests") {
 
   if (!is_android) {
     sources = [
-      "//luxxle/browser/browsing_data/brave_browsing_data_remover_browsertest.cc",
-      "//luxxle/browser/browsing_data/brave_clear_browsing_data_browsertest.cc",
+      "//luxxle/browser/browsing_data/luxxle_browsing_data_remover_browsertest.cc",
+      "//luxxle/browser/browsing_data/luxxle_clear_browsing_data_browsertest.cc",
     ]
 
     defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]

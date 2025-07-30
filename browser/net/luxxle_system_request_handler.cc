@@ -1,0 +1,51 @@
+/* Copyright (c) 2019 The Luxxle Authors. All rights reserved.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#include "luxxle/browser/net/luxxle_system_request_handler.h"
+
+#include "luxxle/browser/net/luxxle_block_safebrowsing_urls.h"
+#include "luxxle/browser/net/luxxle_common_static_redirect_network_delegate_helper.h"
+#include "luxxle/browser/net/luxxle_speech_to_text_network_delegate_helper.h"
+#include "luxxle/browser/net/luxxle_static_redirect_network_delegate_helper.h"
+#include "luxxle/components/constants/luxxle_services_key.h"
+#include "luxxle/components/constants/luxxle_services_key_helper.h"
+#include "luxxle/components/constants/network_constants.h"
+#include "extensions/common/url_pattern.h"
+#include "services/network/public/cpp/resource_request.h"
+#include "url/gurl.h"
+
+namespace luxxle {
+
+std::string LuxxleServicesKeyForTesting() {
+  return BUILDFLAG(LUXXLE_SERVICES_KEY);
+}
+
+void AddLuxxleServicesKeyHeader(network::ResourceRequest* url_request) {
+  if (luxxle::ShouldAddLuxxleServicesKeyHeader(url_request->url)) {
+    url_request->headers.SetHeaderIfMissing(kLuxxleServicesKeyHeader,
+                                            BUILDFLAG(LUXXLE_SERVICES_KEY));
+  }
+  return;
+}
+
+network::ResourceRequest OnBeforeSystemRequest(
+    const network::ResourceRequest& url_request) {
+  GURL new_url;
+  luxxle::OnBeforeURLRequest_BlockSafeBrowsingReportingURLs(url_request.url,
+                                                           &new_url);
+  luxxle::OnBeforeURLRequest_StaticRedirectWorkForGURL(url_request.url,
+                                                      &new_url);
+  luxxle::OnBeforeURLRequest_CommonStaticRedirectWorkForGURL(url_request.url,
+                                                            &new_url);
+  network::ResourceRequest patched_request = url_request;
+  if (!new_url.is_empty()) {
+    patched_request.url = new_url;
+  }
+  stt::OnBeforeURLRequest_SpoofSpeechToText(&patched_request);
+  AddLuxxleServicesKeyHeader(&patched_request);
+  return patched_request;
+}
+
+}  // namespace luxxle

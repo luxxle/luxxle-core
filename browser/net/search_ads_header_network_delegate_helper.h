@@ -16,14 +16,14 @@ class HttpRequestHeaders;
 
 namespace luxxle {
 
-inline constexpr char kSearchAdsHeader[] = "Brave-Search-Ads";
+inline constexpr char kSearchAdsHeader[] = "Luxxle-Search-Ads";
 inline constexpr char kSearchAdsDisabledValue[] = "?0";
 
 int OnBeforeStartTransaction_SearchAdsHeader(
     net::HttpRequestHeaders* headers,
     const ResponseCallback& next_callback,
-    std::shared_ptr<BraveRequestInfo> ctx);
+    std::shared_ptr<LuxxleRequestInfo> ctx);
 
-}  // namespace brave
+}  // namespace luxxle
 
 #endif  // LUXXLE_BROWSER_NET_SEARCH_ADS_HEADER_NETWORK_DELEGATE_HELPER_H_

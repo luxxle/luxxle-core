@@ -23,7 +23,7 @@ class LuxxleBrowser : public Browser {
   LuxxleBrowser(const LuxxleBrowser&) = delete;
   LuxxleBrowser& operator=(const LuxxleBrowser&) = delete;
 
-  static bool ShouldUseBraveWebViewRoundedCorners(Browser* browser);
+  static bool ShouldUseLuxxleWebViewRoundedCorners(Browser* browser);
 
   // Browser overrides:
   void ScheduleUIUpdate(content::WebContents* source,
@@ -63,7 +63,7 @@ class LuxxleBrowser : public Browser {
   }
 
  private:
-  friend class BraveTestLauncherDelegate;
+  friend class LuxxleTestLauncherDelegate;
   friend class WindowClosingConfirmBrowserTest;
   friend class InProcessBrowserTest;
 

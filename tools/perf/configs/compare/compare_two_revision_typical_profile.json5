@@ -6,7 +6,7 @@
       "target" : "v1.37.5",
       "label": "good_1.37.5",
       "browser-type": "luxxle",
-      "profile": "brave-typical-win",
+      "profile": "luxxle-typical-win",
       "extra-browser-args": [
         "--disable-component-update",
         "--disable-backgrounding-occluded-windows",
@@ -17,7 +17,7 @@
       "target" : "v1.37.6",
       "label": "bad_1.37.6",
       "browser-type": "luxxle",
-      "profile": "brave-typical-win",
+      "profile": "luxxle-typical-win",
       "extra-browser-args": [
         "--disable-component-update",
         "--disable-backgrounding-occluded-windows",
@@ -27,7 +27,7 @@
   ],
   "benchmarks": [
     {
-      "name": "loading.desktop.brave",
+      "name": "loading.desktop.luxxle",
       "pageset-repeat": 10,
       "stories": [
         "example.com_cold",

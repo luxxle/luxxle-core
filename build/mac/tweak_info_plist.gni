@@ -15,7 +15,7 @@
 #
 # Callers should use get_target_outputs() to get the output name. One of
 # info_plist or info_plists must be specified.
-template("brave_tweak_info_plist") {
+template("luxxle_tweak_info_plist") {
   _output_name = "$target_gen_dir/${target_name}_tweaked.plist"
 
   assert(defined(invoker.info_plist),
@@ -30,7 +30,7 @@ template("brave_tweak_info_plist") {
                              "args",
                              "testonly",
                            ])
-    script = "//brave/build/mac/tweak_info_plist.py"
+    script = "//luxxle/build/mac/tweak_info_plist.py"
     sources = [
       _source_name,
     ]

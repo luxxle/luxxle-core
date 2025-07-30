@@ -3,21 +3,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveHelpAndFeedbackLauncherImplClassAdapter extends BraveClassVisitor {
+public class LuxxleHelpAndFeedbackLauncherImplClassAdapter extends LuxxleClassVisitor {
     static String sHelpAndFeedbackLauncherImplClassName =
             "org/chromium/chrome/browser/feedback/HelpAndFeedbackLauncherImpl";
 
-    static String sBraveHelpAndFeedbackLauncherImplClassName =
-            "org/chromium/chrome/browser/feedback/BraveHelpAndFeedbackLauncherImpl";
+    static String sLuxxleHelpAndFeedbackLauncherImplClassName =
+            "org/chromium/chrome/browser/feedback/LuxxleHelpAndFeedbackLauncherImpl";
 
-    public BraveHelpAndFeedbackLauncherImplClassAdapter(ClassVisitor visitor) {
+    public LuxxleHelpAndFeedbackLauncherImplClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         redirectConstructor(
-                sHelpAndFeedbackLauncherImplClassName, sBraveHelpAndFeedbackLauncherImplClassName);
+                sHelpAndFeedbackLauncherImplClassName, sLuxxleHelpAndFeedbackLauncherImplClassName);
     }
 }

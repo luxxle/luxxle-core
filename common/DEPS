@@ -14,7 +14,7 @@ specific_include_rules = {
     "+chrome/test",
     "+content/public/test",
   ],
-  "brave_content_client_unittest\.cc": [
+  "luxxle_content_client_unittest\.cc": [
     "+content/common/url_schemes.h",
   ],
 }

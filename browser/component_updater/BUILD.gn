@@ -5,8 +5,8 @@
 
 source_set("component_updater") {
   sources = [
-    "brave_component_updater_configurator.cc",
-    "brave_component_updater_configurator.h",
+    "luxxle_component_updater_configurator.cc",
+    "luxxle_component_updater_configurator.h",
   ]
 
   deps = [

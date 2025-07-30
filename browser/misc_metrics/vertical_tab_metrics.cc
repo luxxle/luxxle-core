@@ -7,7 +7,7 @@
 
 #include <utility>
 
-#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/luxxle_tab_prefs.h"
 #include "luxxle/components/misc_metrics/pref_names.h"
 #include "luxxle/components/p3a_utils/bucket.h"
 #include "chrome/browser/profiles/profile.h"
@@ -73,7 +73,7 @@ VerticalTabBrowserMetrics::VerticalTabBrowserMetrics(
   }
   pref_change_registrar_.Init(profile_prefs);
   pref_change_registrar_.Add(
-      brave_tabs::kVerticalTabsEnabled,
+      luxxle_tabs::kVerticalTabsEnabled,
       base::BindRepeating(&VerticalTabBrowserMetrics::UpdateEnabledStatus,
                           base::Unretained(this)));
   UpdateEnabledStatus();
@@ -106,7 +106,7 @@ size_t VerticalTabBrowserMetrics::GetTabCount(TabCountType count_type) const {
 
 void VerticalTabBrowserMetrics::UpdateEnabledStatus() {
   vertical_tabs_enabled_ =
-      profile_prefs_->GetBoolean(brave_tabs::kVerticalTabsEnabled);
+      profile_prefs_->GetBoolean(luxxle_tabs::kVerticalTabsEnabled);
 }
 
 VerticalTabMetrics::VerticalTabMetrics(PrefService* local_state) {

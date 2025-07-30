@@ -5,7 +5,7 @@ if (should_generate_symbols) {
   action("generate_breakpad_symbols") {
     script = "//luxxle/tools/mac/generate_breakpad_symbols.py"
 
-    symbols_dir = "$brave_dist_dir/$brave_product_name.breakpad.syms"
+    symbols_dir = "$luxxle_dist_dir/$luxxle_product_name.breakpad.syms"
     outputs = [ symbols_dir ]
     breakpad_files_glob =
         rebase_path(root_out_dir) + "/*-$chrome_version_full.breakpad"

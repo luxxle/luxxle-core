@@ -8,18 +8,18 @@ package org.chromium.chrome.browser.crypto_wallet.util;
 import static org.chromium.chrome.browser.crypto_wallet.util.Utils.warnWhenError;
 
 import org.chromium.base.Callbacks;
-import org.chromium.brave_wallet.mojom.AssetPrice;
-import org.chromium.brave_wallet.mojom.AssetRatioService;
-import org.chromium.brave_wallet.mojom.AssetTimePrice;
-import org.chromium.brave_wallet.mojom.BlockchainRegistry;
-import org.chromium.brave_wallet.mojom.BlockchainToken;
-import org.chromium.brave_wallet.mojom.BraveWalletConstants;
-import org.chromium.brave_wallet.mojom.JsonRpcService;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
-import org.chromium.brave_wallet.mojom.SolanaFeeEstimation;
-import org.chromium.brave_wallet.mojom.SolanaTxManagerProxy;
-import org.chromium.brave_wallet.mojom.TransactionInfo;
-import org.chromium.brave_wallet.mojom.TxService;
+import org.chromium.luxxle_wallet.mojom.AssetPrice;
+import org.chromium.luxxle_wallet.mojom.AssetRatioService;
+import org.chromium.luxxle_wallet.mojom.AssetTimePrice;
+import org.chromium.luxxle_wallet.mojom.BlockchainRegistry;
+import org.chromium.luxxle_wallet.mojom.BlockchainToken;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletConstants;
+import org.chromium.luxxle_wallet.mojom.JsonRpcService;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.SolanaFeeEstimation;
+import org.chromium.luxxle_wallet.mojom.SolanaTxManagerProxy;
+import org.chromium.luxxle_wallet.mojom.TransactionInfo;
+import org.chromium.luxxle_wallet.mojom.TxService;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -337,7 +337,7 @@ public class AsyncUtils {
             this.fee =
                     fee.baseFee
                             + (((long) fee.computeUnits * fee.feePerComputeUnit)
-                                    / BraveWalletConstants.MICRO_LAMPORTS_PER_LAMPORT);
+                                    / LuxxleWalletConstants.MICRO_LAMPORTS_PER_LAMPORT);
             this.error = error;
             this.errorMessage = errorMessage;
             super.fireResponseCompleteCallback();

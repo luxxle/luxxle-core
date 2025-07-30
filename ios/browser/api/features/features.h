@@ -18,7 +18,7 @@ OBJC_EXPORT
 
 OBJC_EXPORT
 @interface FeatureList : NSObject
-// MARK: - Brave Features
+// MARK: - Luxxle Features
 
 @property(class, nonatomic, readonly) Feature* kAIChat;
 @property(class, nonatomic, readonly) Feature* kAIChatHistory;
@@ -26,40 +26,40 @@ OBJC_EXPORT
     Feature* kAdblockOverrideRegexDiscardPolicy;
 @property(class, nonatomic, readonly)
     Feature* kAllowUnsupportedWalletProvidersFeature;
-@property(class, nonatomic, readonly) Feature* kBraveAdblockCnameUncloaking;
+@property(class, nonatomic, readonly) Feature* kLuxxleAdblockCnameUncloaking;
 @property(class, nonatomic, readonly)
-    Feature* kBraveAdblockCollapseBlockedElements;
-@property(class, nonatomic, readonly) Feature* kBraveAdblockCookieListDefault;
-@property(class, nonatomic, readonly) Feature* kBraveAdblockCookieListOptIn;
-@property(class, nonatomic, readonly) Feature* kBraveAdblockCosmeticFiltering;
-@property(class, nonatomic, readonly) Feature* kBraveAdblockCspRules;
-@property(class, nonatomic, readonly) Feature* kBraveAdblockDefault1pBlocking;
+    Feature* kLuxxleAdblockCollapseBlockedElements;
+@property(class, nonatomic, readonly) Feature* kLuxxleAdblockCookieListDefault;
+@property(class, nonatomic, readonly) Feature* kLuxxleAdblockCookieListOptIn;
+@property(class, nonatomic, readonly) Feature* kLuxxleAdblockCosmeticFiltering;
+@property(class, nonatomic, readonly) Feature* kLuxxleAdblockCspRules;
+@property(class, nonatomic, readonly) Feature* kLuxxleAdblockDefault1pBlocking;
 @property(class, nonatomic, readonly)
-    Feature* kBraveAdblockMobileNotificationsListDefault;
-@property(class, nonatomic, readonly) Feature* kBraveAdblockScriptletDebugLogs;
-@property(class, nonatomic, readonly) Feature* kBraveDarkModeBlock;
-@property(class, nonatomic, readonly) Feature* kBraveDeAMP;
-@property(class, nonatomic, readonly) Feature* kBraveDebounce;
-@property(class, nonatomic, readonly) Feature* kBraveDomainBlock;
-@property(class, nonatomic, readonly) Feature* kBraveDomainBlock1PES;
-@property(class, nonatomic, readonly) Feature* kBraveLocalhostAccessPermission;
-@property(class, nonatomic, readonly) Feature* kBraveNTPBrandedWallpaper;
-@property(class, nonatomic, readonly) Feature* kBraveNTPBrandedWallpaperDemo;
-@property(class, nonatomic, readonly) Feature* kBraveNTPSuperReferralWallpaper;
-@property(class, nonatomic, readonly) Feature* kBraveNewsCardPeekFeature;
-@property(class, nonatomic, readonly) Feature* kBraveNewsFeedUpdate;
-@property(class, nonatomic, readonly) Feature* kBraveReduceLanguage;
-@property(class, nonatomic, readonly) Feature* kBraveSearchDefaultAPIFeature;
-@property(class, nonatomic, readonly) Feature* kBraveShredFeature;
-@property(class, nonatomic, readonly) Feature* kBraveShredCacheData;
-@property(class, nonatomic, readonly) Feature* kBraveIOSDebugAdblock;
-@property(class, nonatomic, readonly) Feature* kBraveIOSEnableFarblingPlugins;
+    Feature* kLuxxleAdblockMobileNotificationsListDefault;
+@property(class, nonatomic, readonly) Feature* kLuxxleAdblockScriptletDebugLogs;
+@property(class, nonatomic, readonly) Feature* kLuxxleDarkModeBlock;
+@property(class, nonatomic, readonly) Feature* kLuxxleDeAMP;
+@property(class, nonatomic, readonly) Feature* kLuxxleDebounce;
+@property(class, nonatomic, readonly) Feature* kLuxxleDomainBlock;
+@property(class, nonatomic, readonly) Feature* kLuxxleDomainBlock1PES;
+@property(class, nonatomic, readonly) Feature* kLuxxleLocalhostAccessPermission;
+@property(class, nonatomic, readonly) Feature* kLuxxleNTPBrandedWallpaper;
+@property(class, nonatomic, readonly) Feature* kLuxxleNTPBrandedWallpaperDemo;
+@property(class, nonatomic, readonly) Feature* kLuxxleNTPSuperReferralWallpaper;
+@property(class, nonatomic, readonly) Feature* kLuxxleNewsCardPeekFeature;
+@property(class, nonatomic, readonly) Feature* kLuxxleNewsFeedUpdate;
+@property(class, nonatomic, readonly) Feature* kLuxxleReduceLanguage;
+@property(class, nonatomic, readonly) Feature* kLuxxleSearchDefaultAPIFeature;
+@property(class, nonatomic, readonly) Feature* kLuxxleShredFeature;
+@property(class, nonatomic, readonly) Feature* kLuxxleShredCacheData;
+@property(class, nonatomic, readonly) Feature* kLuxxleIOSDebugAdblock;
+@property(class, nonatomic, readonly) Feature* kLuxxleIOSEnableFarblingPlugins;
 @property(class, nonatomic, readonly)
-    Feature* kBraveShowStrictFingerprintingMode;
-@property(class, nonatomic, readonly) Feature* kBraveSync;
-@property(class, nonatomic, readonly) Feature* kBraveWalletAnkrBalancesFeature;
-@property(class, nonatomic, readonly) Feature* kBraveWalletBitcoinFeature;
-@property(class, nonatomic, readonly) Feature* kBraveWalletZCashFeature;
+    Feature* kLuxxleShowStrictFingerprintingMode;
+@property(class, nonatomic, readonly) Feature* kLuxxleSync;
+@property(class, nonatomic, readonly) Feature* kLuxxleWalletAnkrBalancesFeature;
+@property(class, nonatomic, readonly) Feature* kLuxxleWalletBitcoinFeature;
+@property(class, nonatomic, readonly) Feature* kLuxxleWalletZCashFeature;
 @property(class, nonatomic, readonly) Feature* kConstellation;
 @property(class, nonatomic, readonly) Feature* kConstellationEnclaveAttestation;
 @property(class, nonatomic, readonly)
@@ -68,19 +68,19 @@ OBJC_EXPORT
 @property(class, nonatomic, readonly) Feature* kCosmeticFilteringSyncLoad;
 @property(class, nonatomic, readonly, nullable) Feature* kGeminiFeature;
 @property(class, nonatomic, readonly) Feature* kNTP;
-@property(class, nonatomic, readonly) Feature* kNativeBraveWalletFeature;
+@property(class, nonatomic, readonly) Feature* kNativeLuxxleWalletFeature;
 @property(class, nonatomic, readonly) Feature* kOtherJSONDeprecation;
 @property(class, nonatomic, readonly) Feature* kSkusFeature;
 @property(class, nonatomic, readonly) Feature* kTypicalJSONDeprecation;
 @property(class, nonatomic, readonly) Feature* kUseDevUpdaterUrl;
 @property(class, nonatomic, readonly) Feature* kVerboseLoggingFeature;
 @property(class, nonatomic, readonly) Feature* kNewPlaylistUI;
-@property(class, nonatomic, readonly) Feature* kBraveHttpsByDefault;
+@property(class, nonatomic, readonly) Feature* kLuxxleHttpsByDefault;
 @property(class, nonatomic, readonly) Feature* kBlockAllCookiesToggle;
 @property(class, nonatomic, readonly) Feature* kModernBrowserMenuEnabled;
-@property(class, nonatomic, readonly) Feature* kBraveTranslateEnabled;
-@property(class, nonatomic, readonly) Feature* kBraveAppleTranslateEnabled;
-@property(class, nonatomic, readonly) Feature* kUseBraveUserAgent;
+@property(class, nonatomic, readonly) Feature* kLuxxleTranslateEnabled;
+@property(class, nonatomic, readonly) Feature* kLuxxleAppleTranslateEnabled;
+@property(class, nonatomic, readonly) Feature* kUseLuxxleUserAgent;
 @property(class, nonatomic, readonly) Feature* kUseChromiumWebViews;
 @end
 

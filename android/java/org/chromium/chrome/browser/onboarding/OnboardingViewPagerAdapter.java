@@ -25,15 +25,15 @@ public class OnboardingViewPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
         case 0:
-            BraveRewardsOnboardingFragment braveRewardsOnboardingFragment =
-                new BraveRewardsOnboardingFragment();
-            braveRewardsOnboardingFragment.setOnViewPagerAction(onViewPagerAction);
-            return braveRewardsOnboardingFragment;
+            LuxxleRewardsOnboardingFragment luxxleRewardsOnboardingFragment =
+                new LuxxleRewardsOnboardingFragment();
+            luxxleRewardsOnboardingFragment.setOnViewPagerAction(onViewPagerAction);
+            return luxxleRewardsOnboardingFragment;
         case 1:
-            BraveAdsOnboardingFragment braveAdsOnboardingFragment =
-                new BraveAdsOnboardingFragment();
-            braveAdsOnboardingFragment.setOnViewPagerAction(onViewPagerAction);
-            return braveAdsOnboardingFragment;
+            LuxxleAdsOnboardingFragment luxxleAdsOnboardingFragment =
+                new LuxxleAdsOnboardingFragment();
+            luxxleAdsOnboardingFragment.setOnViewPagerAction(onViewPagerAction);
+            return luxxleAdsOnboardingFragment;
         case 2:
             TroubleshootingOnboardingFragment troubleshootingOnboardingFragment =
                 new TroubleshootingOnboardingFragment();

@@ -31,13 +31,13 @@ import com.android.billingclient.api.QueryPurchasesParams;
 import org.chromium.base.ContextUtils;
 import org.chromium.base.Log;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
-import org.chromium.chrome.browser.brave_leo.BraveLeoPrefUtils;
-import org.chromium.chrome.browser.brave_leo.BraveLeoUtils;
-import org.chromium.chrome.browser.util.BraveConstants;
+import org.chromium.chrome.browser.app.LuxxleActivity;
+import org.chromium.chrome.browser.luxxle_leo.LuxxleLeoPrefUtils;
+import org.chromium.chrome.browser.luxxle_leo.LuxxleLeoUtils;
+import org.chromium.chrome.browser.util.LuxxleConstants;
 import org.chromium.chrome.browser.util.LiveDataUtil;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnPrefUtils;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnPrefUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnUtils;
 import org.chromium.ui.widget.Toast;
 
 import java.util.ArrayList;
@@ -51,17 +51,17 @@ public class InAppPurchaseWrapper {
     public static final String MANAGE_SUBSCRIPTION_PAGE =
             "https://play.google.com/store/account/subscriptions";
     private static final String TAG = "InAppPurchaseWrapper";
-    private static final String LEO_MONTHLY_SUBSCRIPTION = "brave.leo.monthly";
-    private static final String LEO_YEARLY_SUBSCRIPTION = "brave.leo.yearly";
+    private static final String LEO_MONTHLY_SUBSCRIPTION = "luxxle.leo.monthly";
+    private static final String LEO_YEARLY_SUBSCRIPTION = "luxxle.leo.yearly";
 
-    private static final String VPN_NIGHTLY_MONTHLY_SUBSCRIPTION = "nightly.bravevpn.monthly";
-    private static final String VPN_NIGHTLY_YEARLY_SUBSCRIPTION = "nightly.bravevpn.yearly";
+    private static final String VPN_NIGHTLY_MONTHLY_SUBSCRIPTION = "nightly.luxxlevpn.monthly";
+    private static final String VPN_NIGHTLY_YEARLY_SUBSCRIPTION = "nightly.luxxlevpn.yearly";
 
-    private static final String VPN_BETA_MONTHLY_SUBSCRIPTION = "beta.bravevpn.monthly";
-    private static final String VPN_BETA_YEARLY_SUBSCRIPTION = "beta.bravevpn.yearly";
+    private static final String VPN_BETA_MONTHLY_SUBSCRIPTION = "beta.luxxlevpn.monthly";
+    private static final String VPN_BETA_YEARLY_SUBSCRIPTION = "beta.luxxlevpn.yearly";
 
-    public static final String VPN_RELEASE_MONTHLY_SUBSCRIPTION = "brave.vpn.monthly";
-    public static final String VPN_RELEASE_YEARLY_SUBSCRIPTION = "brave.vpn.yearly";
+    public static final String VPN_RELEASE_MONTHLY_SUBSCRIPTION = "luxxle.vpn.monthly";
+    public static final String VPN_RELEASE_YEARLY_SUBSCRIPTION = "luxxle.vpn.yearly";
     private BillingClient mBillingClient;
 
     private static final long MICRO_UNITS =
@@ -176,7 +176,7 @@ public class InAppPurchaseWrapper {
                 });
             } catch (IllegalStateException exc) {
                 // That prevents a crash that some users experience
-                // https://github.com/luxxle/brave-browser/issues/27751.
+                // https://github.com/luxxle/luxxle-browser/issues/27751.
                 // It's unknown what causes it, we tried to add retries, but it
                 // didn't help.
                 Log.e(TAG, "startBillingServiceConnection " + exc.getMessage());
@@ -198,12 +198,12 @@ public class InAppPurchaseWrapper {
 
     public String getProductId(SubscriptionProduct product, SubscriptionType subscriptionType) {
         if (product.equals(SubscriptionProduct.VPN)) {
-            String bravePackageName = ContextUtils.getApplicationContext().getPackageName();
-            if (bravePackageName.equals(BraveConstants.BRAVE_PRODUCTION_PACKAGE_NAME)) {
+            String luxxlePackageName = ContextUtils.getApplicationContext().getPackageName();
+            if (luxxlePackageName.equals(LuxxleConstants.LUXXLE_PRODUCTION_PACKAGE_NAME)) {
                 return subscriptionType == SubscriptionType.MONTHLY ?
                         VPN_RELEASE_MONTHLY_SUBSCRIPTION
                         : VPN_RELEASE_YEARLY_SUBSCRIPTION;
-            } else if (bravePackageName.equals(BraveConstants.BRAVE_BETA_PACKAGE_NAME)) {
+            } else if (luxxlePackageName.equals(LuxxleConstants.LUXXLE_BETA_PACKAGE_NAME)) {
                 return subscriptionType == SubscriptionType.MONTHLY
                         ? VPN_BETA_MONTHLY_SUBSCRIPTION
                         : VPN_BETA_YEARLY_SUBSCRIPTION;
@@ -403,7 +403,7 @@ public class InAppPurchaseWrapper {
                     });
         } else {
             if (isVPNProduct) {
-                BraveVpnPrefUtils.setSubscriptionPurchase(true);
+                LuxxleVpnPrefUtils.setSubscriptionPurchase(true);
             } else if (isLeoProduct) {
                 receiptAcknowledged(context, purchase, false, true);
             }
@@ -412,28 +412,28 @@ public class InAppPurchaseWrapper {
 
     private void receiptAcknowledged(
             Context context, Purchase purchase, boolean isVPNProduct, boolean isLeoProduct) {
-        BraveActivity activity = null;
+        LuxxleActivity activity = null;
         try {
-            activity = BraveActivity.getBraveActivity();
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+            activity = LuxxleActivity.getLuxxleActivity();
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "acknowledgePurchase " + e.getMessage());
         }
         if (isVPNProduct) {
-            BraveVpnPrefUtils.setSubscriptionPurchase(true);
+            LuxxleVpnPrefUtils.setSubscriptionPurchase(true);
             if (activity != null) {
-                BraveVpnUtils.openBraveVpnProfileActivity(activity);
+                LuxxleVpnUtils.openLuxxleVpnProfileActivity(activity);
             }
         } else if (isLeoProduct && activity != null) {
             activity.runOnUiThread(
                     new Runnable() {
                         @Override
                         public void run() {
-                            BraveLeoPrefUtils.setIsSubscriptionActive(true);
-                            BraveLeoPrefUtils.setChatPackageName();
-                            BraveLeoPrefUtils.setChatProductId(
+                            LuxxleLeoPrefUtils.setIsSubscriptionActive(true);
+                            LuxxleLeoPrefUtils.setChatPackageName();
+                            LuxxleLeoPrefUtils.setChatProductId(
                                     purchase.getProducts().get(0).toString());
-                            BraveLeoPrefUtils.setChatPurchaseToken(purchase.getPurchaseToken());
-                            BraveLeoUtils.bringMainActivityOnTop();
+                            LuxxleLeoPrefUtils.setChatPurchaseToken(purchase.getPurchaseToken());
+                            LuxxleLeoUtils.bringMainActivityOnTop();
                         }
                     });
         }

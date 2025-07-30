@@ -31,13 +31,13 @@ import org.json.JSONException;
 
 import org.chromium.base.Log;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.BraveRewardsExternalWallet;
-import org.chromium.chrome.browser.BraveRewardsNativeWorker;
-import org.chromium.chrome.browser.BraveRewardsObserver;
-import org.chromium.chrome.browser.BraveWalletProvider;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.LuxxleRewardsExternalWallet;
+import org.chromium.chrome.browser.LuxxleRewardsNativeWorker;
+import org.chromium.chrome.browser.LuxxleRewardsObserver;
+import org.chromium.chrome.browser.LuxxleWalletProvider;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.app.helpers.ImageLoader;
-import org.chromium.chrome.browser.rewards.BraveRewardsBannerInfo;
+import org.chromium.chrome.browser.rewards.LuxxleRewardsBannerInfo;
 import org.chromium.chrome.browser.util.TabUtils;
 import org.chromium.ui.base.DeviceFormFactor;
 import org.chromium.ui.base.ViewUtils;
@@ -45,14 +45,14 @@ import org.chromium.ui.base.ViewUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RewardsTippingBannerFragment extends Fragment implements BraveRewardsObserver {
+public class RewardsTippingBannerFragment extends Fragment implements LuxxleRewardsObserver {
     public static final String TAB_ID_EXTRA = "currentTabId";
     public static final String TIP_MONTHLY_EXTRA = "tipMonthly";
     public static final String TIP_AMOUNT_EXTRA = "tipAmount";
-    private BraveRewardsNativeWorker mBraveRewardsNativeWorker;
+    private LuxxleRewardsNativeWorker mLuxxleRewardsNativeWorker;
     private static final String TAG = "TippingBanner";
     private int mCurrentTabId = -1;
-    private BraveRewardsBannerInfo mBannerInfo;
+    private LuxxleRewardsBannerInfo mBannerInfo;
 
     private static final String TWITTER = "twitter";
     private static final String YOUTUBE = "youtube";
@@ -83,10 +83,10 @@ public class RewardsTippingBannerFragment extends Fragment implements BraveRewar
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.rewards_tipping_banner_fragment, container, false);
         mCurrentTabId = getArguments().getInt(TAB_ID_EXTRA);
-        mBraveRewardsNativeWorker = BraveRewardsNativeWorker.getInstance();
-        mBraveRewardsNativeWorker.addObserver(this);
-        mBraveRewardsNativeWorker.getPublisherBanner(
-                mBraveRewardsNativeWorker.getPublisherId(mCurrentTabId));
+        mLuxxleRewardsNativeWorker = LuxxleRewardsNativeWorker.getInstance();
+        mLuxxleRewardsNativeWorker.addObserver(this);
+        mLuxxleRewardsNativeWorker.getPublisherBanner(
+                mLuxxleRewardsNativeWorker.getPublisherId(mCurrentTabId));
         mContentView = view;
         return view;
     }
@@ -149,13 +149,13 @@ public class RewardsTippingBannerFragment extends Fragment implements BraveRewar
     @Override
     public void onPublisherBanner(String jsonBannerInfo) {
         try {
-            mBannerInfo = new BraveRewardsBannerInfo(jsonBannerInfo);
+            mBannerInfo = new LuxxleRewardsBannerInfo(jsonBannerInfo);
             setTitle();
             setDescription();
             setLogo();
             background();
             checkForShowSocialLinkIcons();
-            mBraveRewardsNativeWorker.getExternalWallet();
+            mLuxxleRewardsNativeWorker.getExternalWallet();
         } catch (JSONException e) {
             Log.e(TAG, "TippingBanner -> CreatorPanel:onAttach JSONException error " + e);
         }
@@ -165,12 +165,12 @@ public class RewardsTippingBannerFragment extends Fragment implements BraveRewar
     public void onGetExternalWallet(String externalWallet) {
         if (!TextUtils.isEmpty(externalWallet)) {
             try {
-                BraveRewardsExternalWallet braveRewardsExternalWallet =
-                        new BraveRewardsExternalWallet(externalWallet);
-                String custodianType = braveRewardsExternalWallet.getType();
+                LuxxleRewardsExternalWallet luxxleRewardsExternalWallet =
+                        new LuxxleRewardsExternalWallet(externalWallet);
+                String custodianType = luxxleRewardsExternalWallet.getType();
                 boolean isSolanaWallet =
                         (!TextUtils.isEmpty(custodianType)
-                                && custodianType.equals(BraveWalletProvider.SOLANA));
+                                && custodianType.equals(LuxxleWalletProvider.SOLANA));
                 Button sendTipButton = mContentView.findViewById(R.id.send_tip_button);
                 Button web3Button = mContentView.findViewById(R.id.use_web3_wallet_button);
                 if (mBannerInfo != null) {
@@ -347,8 +347,8 @@ public class RewardsTippingBannerFragment extends Fragment implements BraveRewar
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (null != mBraveRewardsNativeWorker) {
-            mBraveRewardsNativeWorker.removeObserver(this);
+        if (null != mLuxxleRewardsNativeWorker) {
+            mLuxxleRewardsNativeWorker.removeObserver(this);
         }
     }
 
@@ -357,9 +357,9 @@ public class RewardsTippingBannerFragment extends Fragment implements BraveRewar
 
         if (isTablet) {
             try {
-                BraveActivity braveActivity = BraveActivity.getBraveActivity();
-                braveActivity.dismissRewardsPanel();
-            } catch (BraveActivity.BraveActivityNotFoundException e) {
+                LuxxleActivity luxxleActivity = LuxxleActivity.getLuxxleActivity();
+                luxxleActivity.dismissRewardsPanel();
+            } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
                 Log.e(TAG, "setShareYourSupportClickListener " + e);
             }
         } else {

@@ -12,8 +12,8 @@ import components.path_util as path_util
 with path_util.SysPath(path_util.GetDepotToolsDir()):
   from download_from_google_storage import get_sha1
 
-_CLOUD_BUCKET = 'brave-perf-data'
-_CLOUD_HTTPS_URL = 'https://perf-data.s3.brave.com'
+_CLOUD_BUCKET = 'luxxle-perf-data'
+_CLOUD_HTTPS_URL = 'https://perf-data.s3.luxxle.com'
 
 
 class CloudFolder(str, Enum):

@@ -12,7 +12,7 @@
 
 #include "base/strings/stringprintf.h"
 #include "base/values.h"
-#include "luxxle/browser/ui/webui/brave_webui_source.h"
+#include "luxxle/browser/ui/webui/luxxle_webui_source.h"
 #include "luxxle/components/constants/webui_url_constants.h"
 #include "luxxle/components/new_tab_takeover/grit/new_tab_takeover_generated_map.h"
 #include "luxxle/components/ntp_background_images/browser/ntp_sponsored_rich_media_ad_event_handler.h"
@@ -20,7 +20,7 @@
 #include "luxxle/components/ntp_background_images/browser/view_counter_service.h"
 #include "chrome/browser/ui/android/tab_model/tab_model.h"
 #include "chrome/browser/ui/android/tab_model/tab_model_list.h"
-#include "components/grit/brave_components_resources.h"
+#include "components/grit/luxxle_components_resources.h"
 #include "content/public/browser/web_contents.h"
 #include "content/public/browser/web_ui.h"
 #include "content/public/browser/web_ui_data_source.h"

@@ -10,12 +10,12 @@ assert(is_android)
 
 android_library("java") {
   sources = [
-    "java/src/org/chromium/chrome/browser/notifications/BraveNotificationBuilder.java",
-    "java/src/org/chromium/chrome/browser/notifications/BraveNotificationManagerProxyImpl.java",
+    "java/src/org/chromium/chrome/browser/notifications/LuxxleNotificationBuilder.java",
+    "java/src/org/chromium/chrome/browser/notifications/LuxxleNotificationManagerProxyImpl.java",
   ]
 
   deps = [
-    ":brave_java",
+    ":luxxle_java",
     ":java_resources",
     "//base:base_java",
     "//chrome/android:chrome_base_module_resources",
@@ -33,9 +33,9 @@ android_library("java") {
 # TODO(samartnik): we are unable to avoid this patch since we directly patch
 # `ChromeChannelDefinitions.java`. There is no straightforward conversion of
 # those patches to bytecode patching so we need to find a way to
-# workaround those patches https://github.com/luxxle/brave-browser/issues/15867.
-android_library("brave_java") {
-  sources = [ "java/src/org/chromium/chrome/browser/notifications/channels/BraveChannelDefinitions.java" ]
+# workaround those patches https://github.com/luxxle/luxxle-browser/issues/15867.
+android_library("luxxle_java") {
+  sources = [ "java/src/org/chromium/chrome/browser/notifications/channels/LuxxleChannelDefinitions.java" ]
 
   deps = [
     ":java_resources",
@@ -49,9 +49,9 @@ android_library("brave_java") {
 
 android_resources("java_resources") {
   sources = [
-    "java/res/layout/web_notification_big_brave_ads.xml",
-    "java/res/layout/web_notification_brave_ads.xml",
+    "java/res/layout/web_notification_big_luxxle_ads.xml",
+    "java/res/layout/web_notification_luxxle_ads.xml",
   ]
 
-  deps = [ "//luxxle/build/android:android_brave_strings_grd" ]
+  deps = [ "//luxxle/build/android:android_luxxle_strings_grd" ]
 }

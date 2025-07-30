@@ -11,39 +11,39 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSInteger, BraveQRCodeGeneratorLocatorStyle) {
-  BraveQRCodeGeneratorLocatorStyleDefaultSquare,
-  BraveQRCodeGeneratorLocatorStyleRounded
+typedef NS_ENUM(NSInteger, LuxxleQRCodeGeneratorLocatorStyle) {
+  LuxxleQRCodeGeneratorLocatorStyleDefaultSquare,
+  LuxxleQRCodeGeneratorLocatorStyleRounded
 } NS_SWIFT_NAME(QRCodeGenerator.LocatorStyle);
 
-typedef NS_ENUM(NSInteger, BraveQRCodeGeneratorModuleStyle) {
-  BraveQRCodeGeneratorModuleStyleDefaultSquares,
-  BraveQRCodeGeneratorModuleStyleCircles
+typedef NS_ENUM(NSInteger, LuxxleQRCodeGeneratorModuleStyle) {
+  LuxxleQRCodeGeneratorModuleStyleDefaultSquares,
+  LuxxleQRCodeGeneratorModuleStyleCircles
 } NS_SWIFT_NAME(QRCodeGenerator.LocatorStyle);
 
-typedef NS_ENUM(NSInteger, BraveQRCodeGeneratorError) {
-  BraveQRCodeGeneratorErrorNone,
-  BraveQRCodeGeneratorErrorInputTooLong,
-  BraveQRCodeGeneratorErrorUnknown,
+typedef NS_ENUM(NSInteger, LuxxleQRCodeGeneratorError) {
+  LuxxleQRCodeGeneratorErrorNone,
+  LuxxleQRCodeGeneratorErrorInputTooLong,
+  LuxxleQRCodeGeneratorErrorUnknown,
 } NS_SWIFT_NAME(QRCodeGenerator.Error);
 
 OBJC_EXPORT
 NS_SWIFT_NAME(QRCodeGenerator.Options)
-@interface BraveQRCodeGeneratorOptions : NSObject
+@interface LuxxleQRCodeGeneratorOptions : NSObject
 - (instancetype)initWithData:(NSString*)data
                 shouldRender:(bool)shouldRender
           renderLogoInCenter:(bool)renderLogoInCenter
-           renderModuleStyle:(BraveQRCodeGeneratorModuleStyle)renderModuleStyle
+           renderModuleStyle:(LuxxleQRCodeGeneratorModuleStyle)renderModuleStyle
           renderLocatorStyle:
-              (BraveQRCodeGeneratorLocatorStyle)renderLocatorStyle;
+              (LuxxleQRCodeGeneratorLocatorStyle)renderLocatorStyle;
 @end
 
 // Structure for returning QR Code image data.
 OBJC_EXPORT
 NS_SWIFT_NAME(QRCodeGenerator.Result)
-@interface BraveQRCodeGeneratorResult : NSObject
+@interface LuxxleQRCodeGeneratorResult : NSObject
 // Return code stating success or failure.
-@property(nonatomic, readonly) BraveQRCodeGeneratorError errorCode;
+@property(nonatomic, readonly) LuxxleQRCodeGeneratorError errorCode;
 // Image data for generated QR code. May be null on error, or if rendering
 // was not requested.
 @property(nullable, nonatomic, readonly) UIImage* image;
@@ -56,9 +56,9 @@ NS_SWIFT_NAME(QRCodeGenerator.Result)
 
 OBJC_EXPORT
 NS_SWIFT_NAME(QRCodeGenerator)
-@interface BraveQRCodeGenerator : NSObject
-- (BraveQRCodeGeneratorResult*)generateQRCode:
-    (BraveQRCodeGeneratorOptions*)options;
+@interface LuxxleQRCodeGenerator : NSObject
+- (LuxxleQRCodeGeneratorResult*)generateQRCode:
+    (LuxxleQRCodeGeneratorOptions*)options;
 @end
 
 NS_ASSUME_NONNULL_END

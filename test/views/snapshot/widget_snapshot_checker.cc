@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/test/views/snapshot/widget_snapshot_checker.h"
+#include "luxxle/test/views/snapshot/widget_snapshot_checker.h"
 
 #include <string>
 #include <string_view>
@@ -12,7 +12,7 @@
 #include "base/path_service.h"
 #include "base/strings/string_number_conversions.h"
 #include "base/threading/thread_restrictions.h"
-#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/constants/luxxle_paths.h"
 #include "build/build_config.h"
 #include "cc/test/pixel_comparator.h"
 #include "cc/test/pixel_test_utils.h"
@@ -40,7 +40,7 @@ std::string_view GetPlatformName() {
 }
 
 bool IsSnapshotCheckingSupported() {
-  // TODO(https://github.com/brave/brave-browser/issues/17024): Add snapshots
+  // TODO(https://github.com/luxxle/luxxle-browser/issues/17024): Add snapshots
   // checking support for MacOS.
 #if BUILDFLAG(IS_MAC)
   return false;

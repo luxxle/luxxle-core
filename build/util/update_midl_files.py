@@ -8,7 +8,7 @@ import os
 import shutil
 import hashlib
 
-from brave_chromium_utils import wspath
+from luxxle_chromium_utils import wspath
 
 # Chromium compares pre-installed midl files and generated midl files from IDL
 # during the build to check integrity. Generated files during the build time and

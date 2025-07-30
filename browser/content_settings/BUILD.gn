@@ -7,8 +7,8 @@ source_set("unit_tests") {
   testonly = true
 
   sources = [
-    "brave_content_settings_default_provider_unittest.cc",
-    "brave_content_settings_registry_unittest.cc",
+    "luxxle_content_settings_default_provider_unittest.cc",
+    "luxxle_content_settings_registry_unittest.cc",
   ]
 
   deps = [

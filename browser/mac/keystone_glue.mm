@@ -1,9 +1,9 @@
-/* Copyright (c) 2019 The Brave Authors. All rights reserved.
+/* Copyright (c) 2019 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#import "brave/browser/mac/keystone_glue.h"
+#import "luxxle/browser/mac/keystone_glue.h"
 
 #include <sys/mount.h>
 #include <sys/param.h>
@@ -27,7 +27,7 @@
 #include "base/strings/sys_string_conversions.h"
 #include "base/task/thread_pool.h"
 #include "base/version.h"
-#import "brave/browser/mac/keystone_registration.h"
+#import "luxxle/browser/mac/keystone_registration.h"
 #include "luxxle/browser/sparkle_buildflags.h"
 #include "build/branding_buildflags.h"
 #include "build/build_config.h"

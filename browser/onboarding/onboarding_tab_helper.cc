@@ -13,13 +13,13 @@
 #include "base/functional/bind.h"
 #include "base/functional/callback.h"
 #include "base/task/thread_pool.h"
-#include "luxxle/browser/brave_shields/brave_shields_tab_helper.h"
+#include "luxxle/browser/luxxle_shields/luxxle_shields_tab_helper.h"
 #include "luxxle/browser/onboarding/pref_names.h"
-#include "luxxle/browser/ui/brave_browser_window.h"
+#include "luxxle/browser/ui/luxxle_browser_window.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/first_run/first_run.h"
 #include "chrome/browser/ui/browser_finder.h"
-#include "components/grit/brave_components_strings.h"
+#include "components/grit/luxxle_components_strings.h"
 #include "components/permissions/permission_request_manager.h"
 #include "components/prefs/pref_registry_simple.h"
 #include "content/public/browser/navigation_handle.h"
@@ -136,22 +136,22 @@ void OnboardingTabHelper::DidStopLoading() {
     return;
   }
 
-  PerformBraveShieldsChecksAndShowHelpBubble();
+  PerformLuxxleShieldsChecksAndShowHelpBubble();
 }
 
-void OnboardingTabHelper::PerformBraveShieldsChecksAndShowHelpBubble() {
+void OnboardingTabHelper::PerformLuxxleShieldsChecksAndShowHelpBubble() {
   auto* shields_data_controller =
-      brave_shields::BraveShieldsTabHelper::FromWebContents(web_contents());
+      luxxle_shields::LuxxleShieldsTabHelper::FromWebContents(web_contents());
   DCHECK(shields_data_controller);
 
-  if (shields_data_controller->GetBraveShieldsEnabled() &&
+  if (shields_data_controller->GetLuxxleShieldsEnabled() &&
       shields_data_controller->GetTotalBlockedCount() > 0 &&
-      CanHighlightBraveShields()) {
-    ShowBraveHelpBubbleView();
+      CanHighlightLuxxleShields()) {
+    ShowLuxxleHelpBubbleView();
   }
 }
 
-bool OnboardingTabHelper::CanHighlightBraveShields() {
+bool OnboardingTabHelper::CanHighlightLuxxleShields() {
   base::Time last_shields_icon_highlight_time =
       g_browser_process->local_state()->GetTime(
           onboarding::prefs::kLastShieldsIconHighlightTime);
@@ -172,15 +172,15 @@ bool OnboardingTabHelper::CanHighlightBraveShields() {
   return !IsSevenDaysPassedSinceFirstRun();
 }
 
-void OnboardingTabHelper::ShowBraveHelpBubbleView() {
+void OnboardingTabHelper::ShowLuxxleHelpBubbleView() {
   Browser* browser = chrome::FindBrowserWithTab(web_contents());
   DCHECK(browser);
   if (!browser) {
     return;
   }
 
-  if (!BraveBrowserWindow::From(browser->window())
-           ->ShowBraveHelpBubbleView(GetTextForOnboardingShieldsBubble())) {
+  if (!LuxxleBrowserWindow::From(browser->window())
+           ->ShowLuxxleHelpBubbleView(GetTextForOnboardingShieldsBubble())) {
     return;
   }
 
@@ -192,7 +192,7 @@ void OnboardingTabHelper::ShowBraveHelpBubbleView() {
 
 std::string OnboardingTabHelper::GetTextForOnboardingShieldsBubble() {
   auto* shields_data_controller =
-      brave_shields::BraveShieldsTabHelper::FromWebContents(web_contents());
+      luxxle_shields::LuxxleShieldsTabHelper::FromWebContents(web_contents());
 
   if (!shields_data_controller) {
     return std::string();
@@ -200,7 +200,7 @@ std::string OnboardingTabHelper::GetTextForOnboardingShieldsBubble() {
 
   std::vector<std::string> replacements;
   std::string label_text = l10n_util::GetPluralStringFUTF8(
-      IDS_BRAVE_SHIELDS_ONBOARDING_LABEL_WITHOUT_COMPANIES,
+      IDS_LUXXLE_SHIELDS_ONBOARDING_LABEL_WITHOUT_COMPANIES,
       shields_data_controller->GetTotalBlockedCount());
   replacements.push_back(shields_data_controller->GetCurrentSiteURL().host());
 

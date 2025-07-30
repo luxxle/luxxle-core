@@ -20,7 +20,7 @@ if os.environ.get('DEBUG_HTTP_HEADERS') == 'true':
 
 def main():
     """
-    Download the brave-browser/CHANGELOG.md file, parse it and
+    Download the luxxle-browser/CHANGELOG.md file, parse it and
     convert to markdown, then update the release notes for the
     release specified.
 
@@ -72,8 +72,8 @@ def main():
         logging.error("Unable to locate release notes!")
         exit(1)
 
-    # BRAVE_REPO is defined in lib/helpers.py
-    repo = GitHub(os.environ.get('GITHUB_TOKEN')).repos(BRAVE_REPO)
+    # LUXXLE_REPO is defined in lib/helpers.py
+    repo = GitHub(os.environ.get('GITHUB_TOKEN')).repos(LUXXLE_REPO)
     release = get_release(repo, tag, allow_published_release_updates=True)
 
     logging.debug(
@@ -117,7 +117,7 @@ def debug_requests_off():
 
 
 def parse_args():
-    desc = "Parse Brave Browser changelog and add markdown to release notes for tag" \
+    desc = "Parse Luxxle Browser changelog and add markdown to release notes for tag" \
         "\n\nRequires the following ENVIRONMENT VARIABLES be set:" \
         "\n\nGITHUB_TOKEN: Github token to update draft release if not published yet. "
 
@@ -126,10 +126,10 @@ def parse_args():
     parser.add_argument('-d', '--debug', action='store_true',
                         help='Print debug statements')
     parser.add_argument('-t', '--tag',
-                        help='Brave version tag (allowed format: "v1.5.45" or "refs/tags/v1.5.45") (required)',
+                        help='Luxxle version tag (allowed format: "v1.5.45" or "refs/tags/v1.5.45") (required)',
                         required=True)
     parser.add_argument(
-        '-u', '--url', help='URL for Brave Browser raw markdown file (required)', required=True)
+        '-u', '--url', help='URL for Luxxle Browser raw markdown file (required)', required=True)
     return parser.parse_args()
 
 

@@ -1,0 +1,38 @@
+/* Copyright (c) 2019 The Luxxle Authors. All rights reserved.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#ifndef LUXXLE_BROWSER_THEMES_LUXXLE_THEME_SERVICE_H_
+#define LUXXLE_BROWSER_THEMES_LUXXLE_THEME_SERVICE_H_
+
+#include <memory>
+
+#include "base/gtest_prod_util.h"
+#include "chrome/browser/themes/theme_service.h"
+
+namespace extensions {
+class LuxxleThemeEventRouter;
+}  // namespace extensions
+
+class Profile;
+
+class LuxxleThemeService : public ThemeService {
+ public:
+  explicit LuxxleThemeService(Profile* profile, const ThemeHelper& theme_helper);
+  ~LuxxleThemeService() override;
+
+  // ThemeService:
+  bool GetIsGrayscale() const override;
+
+ private:
+  FRIEND_TEST_ALL_PREFIXES(LuxxleThemeEventRouterBrowserTest, ThemeChangeTest);
+
+  // Own |mock_router|.
+  void SetLuxxleThemeEventRouterForTesting(
+      extensions::LuxxleThemeEventRouter* mock_router);
+
+  std::unique_ptr<extensions::LuxxleThemeEventRouter> luxxle_theme_event_router_;
+};
+
+#endif  // LUXXLE_BROWSER_THEMES_LUXXLE_THEME_SERVICE_H_

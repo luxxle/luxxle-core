@@ -3,20 +3,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveWebsitePermissionsFetcherClassAdapter extends BraveClassVisitor {
+public class LuxxleWebsitePermissionsFetcherClassAdapter extends LuxxleClassVisitor {
     static String sWebsitePermissionsFetcherClassName =
             "org/chromium/components/browser_ui/site_settings/WebsitePermissionsFetcher";
-    static String sBraveWebsitePermissionsFetcherClassName =
-            "org/chromium/components/browser_ui/site_settings/BraveWebsitePermissionsFetcher";
+    static String sLuxxleWebsitePermissionsFetcherClassName =
+            "org/chromium/components/browser_ui/site_settings/LuxxleWebsitePermissionsFetcher";
 
-    public BraveWebsitePermissionsFetcherClassAdapter(ClassVisitor visitor) {
+    public LuxxleWebsitePermissionsFetcherClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         changeMethodOwner(sWebsitePermissionsFetcherClassName, "getPermissionsType",
-                sBraveWebsitePermissionsFetcherClassName);
+                sLuxxleWebsitePermissionsFetcherClassName);
     }
 }

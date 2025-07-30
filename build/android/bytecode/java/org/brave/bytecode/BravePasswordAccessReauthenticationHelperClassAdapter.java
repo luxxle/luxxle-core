@@ -3,26 +3,26 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
 /**
  * Adapter, used to make some fields from upstream's PasswordAccessReauthenticationHelper be public
  */
-public class BravePasswordAccessReauthenticationHelperClassAdapter extends BraveClassVisitor {
+public class LuxxlePasswordAccessReauthenticationHelperClassAdapter extends LuxxleClassVisitor {
     static String sHelperClassName =
             "org/chromium/chrome/browser/password_manager/settings/PasswordAccessReauthenticationHelper"; // presubmit: ignore-long-line
-    static String sBraveHelperClassName =
-            "org/chromium/chrome/browser/sync/settings/BravePasswordAccessReauthenticationHelper";
+    static String sLuxxleHelperClassName =
+            "org/chromium/chrome/browser/sync/settings/LuxxlePasswordAccessReauthenticationHelper";
 
-    BravePasswordAccessReauthenticationHelperClassAdapter(ClassVisitor visitor) {
+    LuxxlePasswordAccessReauthenticationHelperClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        deleteField(sBraveHelperClassName, "mCallback");
+        deleteField(sLuxxleHelperClassName, "mCallback");
         makeProtectedField(sHelperClassName, "mCallback");
 
-        deleteField(sBraveHelperClassName, "mFragmentManager");
+        deleteField(sLuxxleHelperClassName, "mFragmentManager");
         makeProtectedField(sHelperClassName, "mFragmentManager");
     }
 }

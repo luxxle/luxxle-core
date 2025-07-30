@@ -60,7 +60,7 @@ inline constexpr auto kUnstoppableDomains =
         {".altimist",   ".anime",       ".ask",       ".austin",
          ".bald",       ".basenji",     ".bay",       ".benji",
          ".binanceus",  ".bitcoin",     ".bitget",    ".bitscrunch",
-         ".blockchain", ".boomer",      ".brave",     ".calicoin",
+         ".blockchain", ".boomer",      ".luxxle",     ".calicoin",
          ".caw",        ".chomp",       ".clay",      ".crypto",
          ".dao",        ".dfz",         ".doga",      ".donut",
          ".dream",      ".emir",        ".ethermail", ".farms",

@@ -8,11 +8,11 @@ package org.chromium.chrome.browser.crypto_wallet.util;
 import android.text.TextUtils;
 
 import org.chromium.base.Log;
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.BlockchainToken;
-import org.chromium.brave_wallet.mojom.BraveWalletConstants;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.KeyringId;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.BlockchainToken;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletConstants;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.KeyringId;
 import org.chromium.build.annotations.NullMarked;
 import org.chromium.build.annotations.Nullable;
 
@@ -26,10 +26,10 @@ public class AssetUtils {
     public static @KeyringId.EnumType int getKeyring(
             @CoinType.EnumType int coinType, @Nullable String chainId) {
         if (coinType == CoinType.ZEC) {
-            if (BraveWalletConstants.Z_CASH_MAINNET.equals(chainId)) {
+            if (LuxxleWalletConstants.Z_CASH_MAINNET.equals(chainId)) {
                 return KeyringId.Z_CASH_MAINNET;
             }
-            if (BraveWalletConstants.Z_CASH_TESTNET.equals(chainId)) {
+            if (LuxxleWalletConstants.Z_CASH_TESTNET.equals(chainId)) {
                 return KeyringId.Z_CASH_TESTNET;
             }
             throw new IllegalStateException(
@@ -37,11 +37,11 @@ public class AssetUtils {
         } else if (coinType == CoinType.FIL) {
             assert chainId != null;
             switch (chainId) {
-                case BraveWalletConstants.FILECOIN_MAINNET:
-                case BraveWalletConstants.LOCALHOST_CHAIN_ID:
+                case LuxxleWalletConstants.FILECOIN_MAINNET:
+                case LuxxleWalletConstants.LOCALHOST_CHAIN_ID:
                     return KeyringId.FILECOIN;
 
-                case BraveWalletConstants.FILECOIN_TESTNET:
+                case LuxxleWalletConstants.FILECOIN_TESTNET:
                     return KeyringId.FILECOIN_TESTNET;
 
                 default:
@@ -49,10 +49,10 @@ public class AssetUtils {
                             String.format("No Filecoin keyring found for chain Id %s.", chainId));
             }
         } else if (coinType == CoinType.BTC) {
-            if (BraveWalletConstants.BITCOIN_MAINNET.equals(chainId)) {
+            if (LuxxleWalletConstants.BITCOIN_MAINNET.equals(chainId)) {
                 return KeyringId.BITCOIN84;
             }
-            if (BraveWalletConstants.BITCOIN_TESTNET.equals(chainId)) {
+            if (LuxxleWalletConstants.BITCOIN_TESTNET.equals(chainId)) {
                 return KeyringId.BITCOIN84_TESTNET;
             }
             throw new IllegalStateException(
@@ -105,7 +105,7 @@ public class AssetUtils {
         if (!TextUtils.isEmpty(token.coingeckoId)) {
             return token.coingeckoId;
         }
-        if (BraveWalletConstants.MAINNET_CHAIN_ID.equals(token.chainId)
+        if (LuxxleWalletConstants.MAINNET_CHAIN_ID.equals(token.chainId)
                 || TextUtils.isEmpty(token.contractAddress)) {
             return token.symbol;
         }

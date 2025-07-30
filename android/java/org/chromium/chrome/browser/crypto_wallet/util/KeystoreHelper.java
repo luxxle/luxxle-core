@@ -13,7 +13,7 @@ import android.util.Base64;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.chromium.base.BravePreferenceKeys;
+import org.chromium.base.LuxxlePreferenceKeys;
 import org.chromium.chrome.browser.preferences.ChromeSharedPreferences;
 
 import java.io.IOException;
@@ -37,7 +37,7 @@ import javax.crypto.spec.GCMParameterSpec;
 
 public class KeystoreHelper {
     private static final String TRANSFORMATION = "AES/GCM/NoPadding";
-    private static final String BRAVE_WALLET_ALIAS = "BRAVE_WALLET_ALIAS";
+    private static final String LUXXLE_WALLET_ALIAS = "LUXXLE_WALLET_ALIAS";
     private static final String ANDROID_KEY_STORE = "AndroidKeyStore";
 
     @Nullable
@@ -63,7 +63,7 @@ public class KeystoreHelper {
 
             String ivBase64 =
                     ChromeSharedPreferences.getInstance()
-                            .readString(BravePreferenceKeys.BRAVE_BIOMETRICS_FOR_WALLET_IV, "");
+                            .readString(LuxxlePreferenceKeys.LUXXLE_BIOMETRICS_FOR_WALLET_IV, "");
             if (TextUtils.isEmpty(ivBase64)) {
                 return null;
             }
@@ -71,7 +71,7 @@ public class KeystoreHelper {
                     new GCMParameterSpec(128, Base64.decode(ivBase64, Base64.DEFAULT));
 
             KeyStore.SecretKeyEntry secretKeyEntry =
-                    (KeyStore.SecretKeyEntry) keyStore.getEntry(BRAVE_WALLET_ALIAS, null);
+                    (KeyStore.SecretKeyEntry) keyStore.getEntry(LUXXLE_WALLET_ALIAS, null);
             if (secretKeyEntry == null) {
                 return null;
             }
@@ -97,7 +97,7 @@ public class KeystoreHelper {
         }
 
         ChromeSharedPreferences.getInstance()
-                .writeBoolean(BravePreferenceKeys.BRAVE_USE_BIOMETRICS_FOR_WALLET, true);
+                .writeBoolean(LuxxlePreferenceKeys.LUXXLE_USE_BIOMETRICS_FOR_WALLET, true);
     }
 
     private static boolean encryptText(String text, @NonNull final Cipher cipher) {
@@ -122,7 +122,7 @@ public class KeystoreHelper {
 
         keyGenerator.init(
                 new KeyGenParameterSpec.Builder(
-                                BRAVE_WALLET_ALIAS,
+                                LUXXLE_WALLET_ALIAS,
                                 KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
                         .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
                         .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
@@ -136,15 +136,15 @@ public class KeystoreHelper {
         String encryptedBase64 = Base64.encodeToString(encrypted, Base64.DEFAULT);
 
         ChromeSharedPreferences.getInstance()
-                .writeString(BravePreferenceKeys.BRAVE_BIOMETRICS_FOR_WALLET_IV, ivBase64);
+                .writeString(LuxxlePreferenceKeys.LUXXLE_BIOMETRICS_FOR_WALLET_IV, ivBase64);
         ChromeSharedPreferences.getInstance()
                 .writeString(
-                        BravePreferenceKeys.BRAVE_BIOMETRICS_FOR_WALLET_ENCRYPTED, encryptedBase64);
+                        LuxxlePreferenceKeys.LUXXLE_BIOMETRICS_FOR_WALLET_ENCRYPTED, encryptedBase64);
     }
 
     public static boolean shouldUseBiometricToUnlock() {
         return ChromeSharedPreferences.getInstance()
-                .readBoolean(BravePreferenceKeys.BRAVE_USE_BIOMETRICS_FOR_WALLET, false);
+                .readBoolean(LuxxlePreferenceKeys.LUXXLE_USE_BIOMETRICS_FOR_WALLET, false);
     }
 
     @NonNull
@@ -162,7 +162,7 @@ public class KeystoreHelper {
 
         String encryptedBase64 =
                 ChromeSharedPreferences.getInstance()
-                        .readString(BravePreferenceKeys.BRAVE_BIOMETRICS_FOR_WALLET_ENCRYPTED, "");
+                        .readString(LuxxlePreferenceKeys.LUXXLE_BIOMETRICS_FOR_WALLET_ENCRYPTED, "");
         if (TextUtils.isEmpty(encryptedBase64)) {
             return "";
         }
@@ -174,10 +174,10 @@ public class KeystoreHelper {
 
     public static void resetBiometric() {
         ChromeSharedPreferences.getInstance()
-                .removeKey(BravePreferenceKeys.BRAVE_USE_BIOMETRICS_FOR_WALLET);
+                .removeKey(LuxxlePreferenceKeys.LUXXLE_USE_BIOMETRICS_FOR_WALLET);
         ChromeSharedPreferences.getInstance()
-                .removeKey(BravePreferenceKeys.BRAVE_BIOMETRICS_FOR_WALLET_ENCRYPTED);
+                .removeKey(LuxxlePreferenceKeys.LUXXLE_BIOMETRICS_FOR_WALLET_ENCRYPTED);
         ChromeSharedPreferences.getInstance()
-                .removeKey(BravePreferenceKeys.BRAVE_BIOMETRICS_FOR_WALLET_IV);
+                .removeKey(LuxxlePreferenceKeys.LUXXLE_BIOMETRICS_FOR_WALLET_IV);
     }
 }

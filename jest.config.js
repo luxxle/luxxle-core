@@ -97,15 +97,15 @@ module.exports = {
     '\\.(css|less|scss)$': 'identity-obj-proxy',
     '^\\$web-common\\/(.*)': '<rootDir>/components/common/$1',
     '^\\$web-components\\/(.*)': '<rootDir>/components/web-components/$1',
-    '^brave-ui$': '<rootDir>/node_modules/@brave/brave-ui',
-    '^brave-ui\\/(.*)': '<rootDir>/node_modules/@brave/brave-ui/$1',
+    '^luxxle-ui$': '<rootDir>/node_modules/@luxxle/luxxle-ui',
+    '^luxxle-ui\\/(.*)': '<rootDir>/node_modules/@luxxle/luxxle-ui/$1',
 
-    // mocks for brave-wallet and brave-rewards proxies
-    '\\/brave_rewards_api_proxy$':
-      '<rootDir>/components/brave_wallet_ui/' +
-      'common/async/__mocks__/brave_rewards_api_proxy.ts',
+    // mocks for luxxle-wallet and luxxle-rewards proxies
+    '\\/luxxle_rewards_api_proxy$':
+      '<rootDir>/components/luxxle_wallet_ui/' +
+      'common/async/__mocks__/luxxle_rewards_api_proxy.ts',
     '\\/bridge$':
-      '<rootDir>/components/brave_wallet_ui/common/async/__mocks__/bridge.ts',
+      '<rootDir>/components/luxxle_wallet_ui/common/async/__mocks__/bridge.ts',
 
     // TODO(petemill): The ordering here can get problematic for devs
     // who have more than 1 build type at a time, since if the file exists

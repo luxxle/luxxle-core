@@ -67,7 +67,7 @@ IN_PROC_BROWSER_TEST_P(ModuleFileNameBrowserTest, CheckPath) {
   WCHAR main_path[MAX_PATH] = {0};
   GetModuleFileNameW(nullptr, main_path, MAX_PATH);
   EXPECT_TRUE(
-      std::wstring_view(main_path).ends_with(L"brave_browser_tests.exe"))
+      std::wstring_view(main_path).ends_with(L"luxxle_browser_tests.exe"))
       << main_path;
 
   static constexpr size_t kInterceptedFunctions = 4u;
@@ -79,12 +79,12 @@ IN_PROC_BROWSER_TEST_P(ModuleFileNameBrowserTest, CheckPath) {
 
   if (GetParam()) {
     EXPECT_EQ(kInterceptedFunctions - kExpectedReplacements,
-              GetSubStringsCount(path, "brave_browser_tests.exe"));
+              GetSubStringsCount(path, "luxxle_browser_tests.exe"));
     EXPECT_EQ(kExpectedReplacements,
               GetSubStringsCount(path, "chrome_browser_tests.exe"));
   } else {
     EXPECT_EQ(kInterceptedFunctions,
-              GetSubStringsCount(path, "brave_browser_tests.exe"));
+              GetSubStringsCount(path, "luxxle_browser_tests.exe"));
     EXPECT_EQ(0u, GetSubStringsCount(path, "chrome_browser_tests.exe"));
   }
 }

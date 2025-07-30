@@ -3,24 +3,24 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveTabUiThemeUtilsClassAdapter extends BraveClassVisitor {
+public class LuxxleTabUiThemeUtilsClassAdapter extends LuxxleClassVisitor {
     static String sTabUiThemeUtilsClassName = "org/chromium/chrome/browser/tab_ui/TabUiThemeUtils";
-    static String sBraveTabUiThemeUtilsClassName =
-            "org/chromium/chrome/browser/tab_ui/BraveTabUiThemeUtils";
+    static String sLuxxleTabUiThemeUtilsClassName =
+            "org/chromium/chrome/browser/tab_ui/LuxxleTabUiThemeUtils";
 
-    public BraveTabUiThemeUtilsClassAdapter(ClassVisitor visitor) {
+    public LuxxleTabUiThemeUtilsClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         changeMethodOwner(
-                sTabUiThemeUtilsClassName, "getTitleTextColor", sBraveTabUiThemeUtilsClassName);
+                sTabUiThemeUtilsClassName, "getTitleTextColor", sLuxxleTabUiThemeUtilsClassName);
 
         changeMethodOwner(
                 sTabUiThemeUtilsClassName,
                 "getCardViewBackgroundColor",
-                sBraveTabUiThemeUtilsClassName);
+                sLuxxleTabUiThemeUtilsClassName);
     }
 }

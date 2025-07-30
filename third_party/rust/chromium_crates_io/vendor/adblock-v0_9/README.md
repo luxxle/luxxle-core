@@ -3,12 +3,12 @@
 [![crates.io](https://img.shields.io/crates/v/adblock.svg)](https://crates.io/crates/adblock)
 [![npmjs.com](https://img.shields.io/npm/v/adblock-rs.svg)](https://www.npmjs.com/package/adblock-rs)
 [![docs.rs](https://docs.rs/adblock/badge.svg)](https://docs.rs/adblock)
-![Build Status](https://github.com/brave/adblock-rust/actions/workflows/ci.yml/badge.svg)
+![Build Status](https://github.com/luxxle/adblock-rust/actions/workflows/ci.yml/badge.svg)
 [![License](https://img.shields.io/badge/License-MPL--2.0-blue)](LICENSE)
 
 ### _Putting you back in control of your browsing experience._
 
-`adblock-rust` is the engine powering [Brave](https://brave.com)'s native adblocker, available as a library for anyone to use. It features:
+`adblock-rust` is the engine powering [Luxxle](https://luxxle.com)'s native adblocker, available as a library for anyone to use. It features:
 
 - Network blocking
 - Cosmetic filtering

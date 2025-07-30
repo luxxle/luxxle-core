@@ -12,9 +12,9 @@
 
 #include "base/strings/stringprintf.h"
 #include "luxxle/browser/playlist/playlist_service_factory.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/browser/ui/playlist/playlist_browser_finder.h"
-#include "luxxle/browser/ui/views/location_bar/brave_location_bar_view.h"
+#include "luxxle/browser/ui/views/location_bar/luxxle_location_bar_view.h"
 #include "luxxle/browser/ui/views/playlist/playlist_bubbles_controller.h"
 #include "luxxle/browser/ui/views/playlist/thumbnail_view.h"
 #include "luxxle/browser/ui/views/side_panel/playlist/playlist_side_panel_coordinator.h"
@@ -68,7 +68,7 @@ class TiledItemsView : public views::BoxLayoutView {
 
     SetPreferredSize(gfx::Size(464, 72));
     SetBorder(views::CreateRoundedRectBorder(
-        /*thickness=*/1, kCornerRadius, kColorBravePlaylistListBorder));
+        /*thickness=*/1, kCornerRadius, kColorLuxxlePlaylistListBorder));
     SetInsideBorderInsets(gfx::Insets(8));
     SetBetweenChildSpacing(16);
 
@@ -227,7 +227,7 @@ void ShowPlaylistSettings(content::WebContents* contents) {
   auto* browser_view = FindBrowserViewFromWebContents(contents);
   CHECK(browser_view);
   ShowSingletonTab(browser_view->browser(),
-                   GURL("brave://settings/braveContent#playlist-section"));
+                   GURL("luxxle://settings/luxxleContent#playlist-section"));
 }
 
 void ShowPlaylistAddBubble(content::WebContents* contents) {
@@ -241,7 +241,7 @@ void ShowPlaylistAddBubble(content::WebContents* contents) {
     return;
   }
 
-  static_cast<BraveLocationBarView*>(browser_view->GetLocationBarView())
+  static_cast<LuxxleLocationBarView*>(browser_view->GetLocationBarView())
       ->ShowPlaylistBubble(PlaylistBubblesController::BubbleType::kAdd);
 }
 
@@ -264,7 +264,7 @@ class PlaylistLabelButton : public views::LabelButton {
   PlaylistLabelButton(views::Button::PressedCallback callback = {},
                       const std::u16string& text = std::u16string())
       : LabelButton(std::move(callback), text) {
-    SetEnabledTextColors(kColorBravePlaylistTextInteractive);
+    SetEnabledTextColors(kColorLuxxlePlaylistTextInteractive);
     const int size_diff = 13 - label()->font_list().GetFontSize();
     label()->SetFontList(label()->font_list().Derive(
         size_diff, gfx::Font::FontStyle::NORMAL, gfx::Font::Weight::SEMIBOLD));
@@ -343,7 +343,7 @@ PlaylistNewPlaylistDialog::PlaylistNewPlaylistDialog(
 
   auto* name_field_container = AddChildView(
       create_container(this, IDS_PLAYLIST_NEW_PLAYLIST_DIALOG_NAME_TEXTFIELD,
-                       kColorBravePlaylistNewPlaylistDialogNameLabel,
+                       kColorLuxxlePlaylistNewPlaylistDialogNameLabel,
                        /* container_label_font_size=*/13));
   name_textfield_ = name_field_container->AddChildView(
       std::make_unique<BoundedTextfield>(/* max_length= */ 30u));
@@ -361,7 +361,7 @@ PlaylistNewPlaylistDialog::PlaylistNewPlaylistDialog(
   if (movable_items.size()) {
     auto* items_list_view_container = AddChildView(create_container(
         this, IDS_PLAYLIST_NEW_PLAYLIST_DIALOG_SELECTABLE_ITEMS,
-        kColorBravePlaylistNewPlaylistDialogItemsLabel,
+        kColorLuxxlePlaylistNewPlaylistDialogItemsLabel,
         /* container_label_font_size=*/14));
 
     auto* scroll_view = items_list_view_container->AddChildView(
@@ -370,7 +370,7 @@ PlaylistNewPlaylistDialog::PlaylistNewPlaylistDialog(
     scroll_view->SetDrawOverflowIndicator(false);
     scroll_view->SetBorder(views::CreateRoundedRectBorder(
         /*thickness=*/1,
-        /*corner_radius=*/4.f, kColorBravePlaylistListBorder));
+        /*corner_radius=*/4.f, kColorLuxxlePlaylistListBorder));
 
     items_list_view_ =
         scroll_view->SetContents(std::make_unique<SelectableItemsView>(
@@ -550,7 +550,7 @@ void PlaylistMoveDialog::EnterChoosePlaylistMode() {
   auto* description = contents_container_->AddChildView(
       std::make_unique<views::Label>(l10n_util::GetStringUTF16(
           IDS_PLAYLIST_MOVE_MEDIA_DIALOG_DESCRIPTION)));
-  description->SetEnabledColor(kColorBravePlaylistMoveDialogDescription);
+  description->SetEnabledColor(kColorLuxxlePlaylistMoveDialogDescription);
   description->SetPreferredSize(gfx::Size(kContentsWidth, 17));
   description->SetHorizontalAlignment(gfx::HorizontalAlignment::ALIGN_LEFT);
 
@@ -560,7 +560,7 @@ void PlaylistMoveDialog::EnterChoosePlaylistMode() {
   scroll_view->SetDrawOverflowIndicator(false);
   scroll_view->SetBorder(views::CreateRoundedRectBorder(
       /*thickness=*/1,
-      /*corner_radius=*/4.f, kColorBravePlaylistListBorder));
+      /*corner_radius=*/4.f, kColorLuxxlePlaylistListBorder));
   list_view_ =
       scroll_view->SetContents(std::make_unique<SelectablePlaylistsView>(
           thumbnail_provider_.get(),
@@ -616,7 +616,7 @@ void PlaylistMoveDialog::EnterCreatePlaylistMode() {
       std::make_unique<views::Label>(l10n_util::GetStringUTF16(
           IDS_PLAYLIST_MOVE_MEDIA_DIALOG_PLAYLIST_NAME)));
   title->SetEnabledColor(
-      kColorBravePlaylistMoveDialogCreatePlaylistAndMoveTitle);
+      kColorLuxxlePlaylistMoveDialogCreatePlaylistAndMoveTitle);
   title->SetHorizontalAlignment(gfx::HorizontalAlignment::ALIGN_LEFT);
 
   new_playlist_name_textfield_ =

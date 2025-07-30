@@ -6,7 +6,7 @@
 #include "luxxle/browser/misc_metrics/profile_misc_metrics_service.h"
 
 #include "base/metrics/histogram_macros.h"
-#include "luxxle/browser/brave_stats/first_run_util.h"
+#include "luxxle/browser/luxxle_stats/first_run_util.h"
 #include "luxxle/browser/misc_metrics/profile_new_tab_metrics.h"
 #include "luxxle/browser/misc_metrics/theme_metrics.h"
 #include "luxxle/components/ai_chat/core/browser/ai_chat_metrics.h"
@@ -26,7 +26,7 @@
 #include "content/public/browser/browser_context.h"
 
 #if BUILDFLAG(IS_ANDROID)
-#include "luxxle/browser/brave_browser_process.h"
+#include "luxxle/browser/luxxle_browser_process.h"
 #include "luxxle/browser/misc_metrics/misc_android_metrics.h"
 #include "luxxle/browser/search_engines/search_engine_tracker.h"
 #else
@@ -58,14 +58,14 @@ ProfileMiscMetricsService::ProfileMiscMetricsService(
     page_metrics_ = std::make_unique<PageMetrics>(
         local_state, profile_prefs_, host_content_settings_map, history_service,
         bookmark_model,
-        base::BindRepeating(&brave_stats::GetFirstRunTime,
+        base::BindRepeating(&luxxle_stats::GetFirstRunTime,
                             base::Unretained(local_state)));
   }
 #if BUILDFLAG(IS_ANDROID)
   auto* search_engine_tracker =
       SearchEngineTrackerFactory::GetInstance()->GetForBrowserContext(context);
   misc_android_metrics_ = std::make_unique<MiscAndroidMetrics>(
-      g_brave_browser_process->process_misc_metrics(), search_engine_tracker);
+      g_luxxle_browser_process->process_misc_metrics(), search_engine_tracker);
 #else
   extensions::ExtensionRegistry* extension_registry =
       extensions::ExtensionRegistryFactory::GetForBrowserContext(context);

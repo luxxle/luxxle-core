@@ -1,4 +1,4 @@
-// Copyright (c) 2025 The Brave Authors. All rights reserved.
+// Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -11,7 +11,7 @@ import {
   AuthenticationStatus,
   EmailAliasesServiceInterface,
   EmailAliasesServiceObserverInterface,
-} from 'gen/brave/components/email_aliases/email_aliases.mojom.m'
+} from 'gen/luxxle/components/email_aliases/email_aliases.mojom.m'
 
 jest.mock('$web-common/locale', () => ({
   getLocale: (key: string) => {
@@ -61,7 +61,7 @@ const createBindObserver =
       return () => { }
     }
 
-const mockEmail = 'test@brave.com'
+const mockEmail = 'test@luxxle.com'
 
 describe('ManagePageConnected', () => {
   beforeEach(() => {
@@ -80,7 +80,7 @@ describe('ManagePageConnected', () => {
       expect(document.querySelector('leo-progressring'))
         .toBeInTheDocument()
       expect(screen.getByText(
-        'emailAliasesConnectingToBraveAccount')).toBeInTheDocument()
+        'emailAliasesConnectingToLuxxleAccount')).toBeInTheDocument()
     })
   })
 
@@ -128,7 +128,7 @@ describe('ManagePageConnected', () => {
 
     await waitFor(() => {
       expect(screen.getByText(mockEmail)).toBeInTheDocument()
-      expect(screen.getByText('emailAliasesBraveAccount'))
+      expect(screen.getByText('emailAliasesLuxxleAccount'))
         .toBeInTheDocument()
       expect(screen.getByText('emailAliasesSignOut')).toBeInTheDocument()
     })
@@ -182,35 +182,35 @@ describe('ManagePageConnected', () => {
     // Add an alias
     await act(() => {
       mockEmailAliasesService.notifyObserverAliasesUpdated([{
-        email: 'alias1@brave.com',
+        email: 'alias1@luxxle.com',
         name: 'Test Alias 1'
       }])
     })
 
     await waitFor(() => {
-      expect(screen.queryByText('alias1@brave.com')).toBeInTheDocument()
-      expect(screen.queryByText('alias2@brave.com')).not.toBeInTheDocument()
-      expect(screen.queryByText('alias3@brave.com')).not.toBeInTheDocument()
+      expect(screen.queryByText('alias1@luxxle.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias2@luxxle.com')).not.toBeInTheDocument()
+      expect(screen.queryByText('alias3@luxxle.com')).not.toBeInTheDocument()
     })
 
     // Add more aliases
     await act(() => {
       mockEmailAliasesService.notifyObserverAliasesUpdated([{
-        email: 'alias1@brave.com',
+        email: 'alias1@luxxle.com',
         name: 'Test Alias 1'
       }, {
-        email: 'alias2@brave.com',
+        email: 'alias2@luxxle.com',
         name: 'Test Alias 2'
       }, {
-        email: 'alias3@brave.com',
+        email: 'alias3@luxxle.com',
         name: 'Test Alias 3'
       }])
     })
 
     await waitFor(() => {
-      expect(screen.queryByText('alias1@brave.com')).toBeInTheDocument()
-      expect(screen.queryByText('alias2@brave.com')).toBeInTheDocument()
-      expect(screen.queryByText('alias3@brave.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias1@luxxle.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias2@luxxle.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias3@luxxle.com')).toBeInTheDocument()
     })
   })
 
@@ -235,35 +235,35 @@ describe('ManagePageConnected', () => {
     // Add aliases
     await act(() => {
       mockEmailAliasesService.notifyObserverAliasesUpdated([{
-        email: 'alias1@brave.com',
+        email: 'alias1@luxxle.com',
         name: 'Test Alias 1'
       }, {
-        email: 'alias2@brave.com',
+        email: 'alias2@luxxle.com',
         name: 'Test Alias 2'
       }, {
-        email: 'alias3@brave.com',
+        email: 'alias3@luxxle.com',
         name: 'Test Alias 3'
       }])
     })
 
     await waitFor(() => {
-      expect(screen.queryByText('alias1@brave.com')).toBeInTheDocument()
-      expect(screen.queryByText('alias2@brave.com')).toBeInTheDocument()
-      expect(screen.queryByText('alias3@brave.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias1@luxxle.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias2@luxxle.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias3@luxxle.com')).toBeInTheDocument()
     })
 
     // remove first and last alias
     await act(() => {
       mockEmailAliasesService.notifyObserverAliasesUpdated([{
-        email: 'alias2@brave.com',
+        email: 'alias2@luxxle.com',
         name: 'Test Alias 2'
       }])
     })
 
     await waitFor(() => {
-      expect(screen.queryByText('alias1@brave.com')).not.toBeInTheDocument()
-      expect(screen.queryByText('alias2@brave.com')).toBeInTheDocument()
-      expect(screen.queryByText('alias3@brave.com')).not.toBeInTheDocument()
+      expect(screen.queryByText('alias1@luxxle.com')).not.toBeInTheDocument()
+      expect(screen.queryByText('alias2@luxxle.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias3@luxxle.com')).not.toBeInTheDocument()
     })
   })
 
@@ -288,33 +288,33 @@ describe('ManagePageConnected', () => {
     // Add aliases
     await act(() => {
       mockEmailAliasesService.notifyObserverAliasesUpdated([{
-        email: 'alias1@brave.com',
+        email: 'alias1@luxxle.com',
         name: 'Test Alias 1'
       }, {
-        email: 'alias2@brave.com',
+        email: 'alias2@luxxle.com',
         name: 'Test Alias 2'
       }, {
-        email: 'alias3@brave.com',
+        email: 'alias3@luxxle.com',
         name: 'Test Alias 3'
       }])
     })
 
     await waitFor(() => {
-      expect(screen.queryByText('alias1@brave.com')).toBeInTheDocument()
-      expect(screen.queryByText('alias2@brave.com')).toBeInTheDocument()
-      expect(screen.queryByText('alias3@brave.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias1@luxxle.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias2@luxxle.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias3@luxxle.com')).toBeInTheDocument()
     })
 
     // swap first/last alias and rename second alias
     await act(() => {
       mockEmailAliasesService.notifyObserverAliasesUpdated([{
-        email: 'alias3@brave.com',
+        email: 'alias3@luxxle.com',
         name: 'Test Alias 3'
       }, {
-        email: '2.alias@brave.com',
+        email: '2.alias@luxxle.com',
         name: 'Test Alias 2'
       }, {
-        email: 'alias1@brave.com',
+        email: 'alias1@luxxle.com',
         name: 'Test Alias 1'
       }])
     })
@@ -322,10 +322,10 @@ describe('ManagePageConnected', () => {
     // Note: We don't actually care about ordering so we don't check that the
     // order of first/last was swapped.
     await waitFor(() => {
-      expect(screen.queryByText('alias1@brave.com')).toBeInTheDocument()
-      expect(screen.queryByText('alias2@brave.com')).not.toBeInTheDocument()
-      expect(screen.queryByText('2.alias@brave.com')).toBeInTheDocument()
-      expect(screen.queryByText('alias3@brave.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias1@luxxle.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias2@luxxle.com')).not.toBeInTheDocument()
+      expect(screen.queryByText('2.alias@luxxle.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias3@luxxle.com')).toBeInTheDocument()
     })
   })
 
@@ -350,21 +350,21 @@ describe('ManagePageConnected', () => {
     // Add aliases
     await act(() => {
       mockEmailAliasesService.notifyObserverAliasesUpdated([{
-        email: 'alias1@brave.com',
+        email: 'alias1@luxxle.com',
         name: 'Test Alias 1'
       }, {
-        email: 'alias2@brave.com',
+        email: 'alias2@luxxle.com',
         name: 'Test Alias 2'
       }, {
-        email: 'alias3@brave.com',
+        email: 'alias3@luxxle.com',
         name: 'Test Alias 3'
       }])
     })
 
     await waitFor(() => {
-      expect(screen.queryByText('alias1@brave.com')).toBeInTheDocument()
-      expect(screen.queryByText('alias2@brave.com')).toBeInTheDocument()
-      expect(screen.queryByText('alias3@brave.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias1@luxxle.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias2@luxxle.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias3@luxxle.com')).toBeInTheDocument()
     })
 
     // clear aliases
@@ -373,9 +373,9 @@ describe('ManagePageConnected', () => {
     })
 
     await waitFor(() => {
-      expect(screen.queryByText('alias1@brave.com')).not.toBeInTheDocument()
-      expect(screen.queryByText('alias2@brave.com')).not.toBeInTheDocument()
-      expect(screen.queryByText('alias3@brave.com')).not.toBeInTheDocument()
+      expect(screen.queryByText('alias1@luxxle.com')).not.toBeInTheDocument()
+      expect(screen.queryByText('alias2@luxxle.com')).not.toBeInTheDocument()
+      expect(screen.queryByText('alias3@luxxle.com')).not.toBeInTheDocument()
     })
   })
 
@@ -392,18 +392,18 @@ describe('ManagePageConnected', () => {
     // Notify of aliases, while not logged in.
     await act(() => {
       mockEmailAliasesService.notifyObserverAliasesUpdated([{
-        email: 'alias1@brave.com',
+        email: 'alias1@luxxle.com',
         name: 'Test Alias 1'
       }, {
-        email: 'alias2@brave.com',
+        email: 'alias2@luxxle.com',
         name: 'Test Alias 2'
       }])
     })
 
     // Shouldn't show the aliases in the UI.
     await waitFor(() => {
-      expect(screen.queryByText('alias1@brave.com')).not.toBeInTheDocument()
-      expect(screen.queryByText('alias2@brave.com')).not.toBeInTheDocument()
+      expect(screen.queryByText('alias1@luxxle.com')).not.toBeInTheDocument()
+      expect(screen.queryByText('alias2@luxxle.com')).not.toBeInTheDocument()
     })
   })
 
@@ -428,10 +428,10 @@ describe('ManagePageConnected', () => {
     // Notify of aliases
     await act(() => {
       mockEmailAliasesService.notifyObserverAliasesUpdated([{
-        email: 'alias1@brave.com',
+        email: 'alias1@luxxle.com',
         name: 'Test Alias 1'
       }, {
-        email: 'alias2@brave.com',
+        email: 'alias2@luxxle.com',
         name: 'Test Alias 2'
       }])
     })
@@ -446,8 +446,8 @@ describe('ManagePageConnected', () => {
 
     // Shouldn't be showing the aliases in the UI - we're logged out.
     await waitFor(() => {
-      expect(screen.queryByText('alias1@brave.com')).not.toBeInTheDocument()
-      expect(screen.queryByText('alias2@brave.com')).not.toBeInTheDocument()
+      expect(screen.queryByText('alias1@luxxle.com')).not.toBeInTheDocument()
+      expect(screen.queryByText('alias2@luxxle.com')).not.toBeInTheDocument()
     })
   })
 
@@ -463,10 +463,10 @@ describe('ManagePageConnected', () => {
 
     await act(() => {
       mockEmailAliasesService.notifyObserverAliasesUpdated([{
-        email: 'alias1@brave.com',
+        email: 'alias1@luxxle.com',
         name: 'Test Alias 1'
       }, {
-        email: 'alias2@brave.com',
+        email: 'alias2@luxxle.com',
         name: 'Test Alias 2'
       }])
     })
@@ -479,8 +479,8 @@ describe('ManagePageConnected', () => {
     })
 
     await waitFor(() => {
-      expect(screen.queryByText('alias1@brave.com')).not.toBeInTheDocument()
-      expect(screen.queryByText('alias2@brave.com')).not.toBeInTheDocument()
+      expect(screen.queryByText('alias1@luxxle.com')).not.toBeInTheDocument()
+      expect(screen.queryByText('alias2@luxxle.com')).not.toBeInTheDocument()
     })
   })
 
@@ -505,17 +505,17 @@ describe('ManagePageConnected', () => {
     // Notify of aliases.
     await act(() => {
       mockEmailAliasesService.notifyObserverAliasesUpdated([{
-        email: 'alias1@brave.com',
+        email: 'alias1@luxxle.com',
         name: 'Test Alias 1'
       }, {
-        email: 'alias2@brave.com',
+        email: 'alias2@luxxle.com',
         name: 'Test Alias 2'
       }])
     })
 
     await waitFor(() => {
-      expect(screen.queryByText('alias1@brave.com')).toBeInTheDocument()
-      expect(screen.queryByText('alias2@brave.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias1@luxxle.com')).toBeInTheDocument()
+      expect(screen.queryByText('alias2@luxxle.com')).toBeInTheDocument()
     })
 
     // Log out
@@ -536,8 +536,8 @@ describe('ManagePageConnected', () => {
 
     // We shouldn't be showing the aliases from the previous login
     await waitFor(() => {
-      expect(screen.queryByText('alias1@brave.com')).not.toBeInTheDocument()
-      expect(screen.queryByText('alias2@brave.com')).not.toBeInTheDocument()
+      expect(screen.queryByText('alias1@luxxle.com')).not.toBeInTheDocument()
+      expect(screen.queryByText('alias2@luxxle.com')).not.toBeInTheDocument()
     })
   })
 })

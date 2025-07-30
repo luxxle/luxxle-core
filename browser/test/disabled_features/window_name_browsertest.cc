@@ -7,7 +7,7 @@
 
 #include "base/path_service.h"
 #include "base/strings/utf_string_conversions.h"
-#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/constants/luxxle_paths.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
@@ -27,16 +27,16 @@ constexpr char kLinkID[] = "clickme";
 
 }  // namespace
 
-class BraveWindowNameBrowserTest : public InProcessBrowserTest {
+class LuxxleWindowNameBrowserTest : public InProcessBrowserTest {
  public:
-  BraveWindowNameBrowserTest()
+  LuxxleWindowNameBrowserTest()
       : https_server_(net::EmbeddedTestServer::TYPE_HTTPS) {}
 
-  BraveWindowNameBrowserTest(const BraveWindowNameBrowserTest&) = delete;
-  BraveWindowNameBrowserTest& operator=(const BraveWindowNameBrowserTest&) =
+  LuxxleWindowNameBrowserTest(const LuxxleWindowNameBrowserTest&) = delete;
+  LuxxleWindowNameBrowserTest& operator=(const LuxxleWindowNameBrowserTest&) =
       delete;
 
-  ~BraveWindowNameBrowserTest() override = default;
+  ~LuxxleWindowNameBrowserTest() override = default;
 
   void SetUpOnMainThread() override {
     InProcessBrowserTest::SetUpOnMainThread();
@@ -74,7 +74,7 @@ class BraveWindowNameBrowserTest : public InProcessBrowserTest {
   }
 };
 
-IN_PROC_BROWSER_TEST_F(BraveWindowNameBrowserTest, SameOrigin) {
+IN_PROC_BROWSER_TEST_F(LuxxleWindowNameBrowserTest, SameOrigin) {
   GURL url1 =
       https_server_.GetURL("a.test", "/set_window_name_same_origin.html");
   EXPECT_TRUE(ui_test_utils::NavigateToURL(browser(), url1));
@@ -84,7 +84,7 @@ IN_PROC_BROWSER_TEST_F(BraveWindowNameBrowserTest, SameOrigin) {
   EXPECT_EQ("foo", EvalJs(web_contents(), kWindowNameScript));
 }
 
-IN_PROC_BROWSER_TEST_F(BraveWindowNameBrowserTest, CrossOrigin) {
+IN_PROC_BROWSER_TEST_F(LuxxleWindowNameBrowserTest, CrossOrigin) {
   GURL url1 = https_server_.GetURL("a.test", "/set_window_name.html");
   GURL url2 = https_server_.GetURL("b.test", "/get_window_name.html");
 
@@ -97,7 +97,7 @@ IN_PROC_BROWSER_TEST_F(BraveWindowNameBrowserTest, CrossOrigin) {
   EXPECT_EQ("", EvalJs(web_contents(), kWindowNameScript));
 }
 
-IN_PROC_BROWSER_TEST_F(BraveWindowNameBrowserTest, CrossOriginAndBack) {
+IN_PROC_BROWSER_TEST_F(LuxxleWindowNameBrowserTest, CrossOriginAndBack) {
   GURL url1 = https_server_.GetURL("a.test", "/set_window_name.html");
   GURL url2 = https_server_.GetURL("b.test", "/get_window_name.html");
 

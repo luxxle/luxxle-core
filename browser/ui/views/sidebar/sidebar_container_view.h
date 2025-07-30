@@ -13,7 +13,7 @@
 #include "base/timer/timer.h"
 #include "luxxle/browser/ui/sidebar/sidebar.h"
 #include "luxxle/browser/ui/sidebar/sidebar_model.h"
-#include "luxxle/browser/ui/views/side_panel/brave_side_panel.h"
+#include "luxxle/browser/ui/views/side_panel/luxxle_side_panel.h"
 #include "luxxle/browser/ui/views/sidebar/sidebar_control_view.h"
 #include "luxxle/browser/ui/views/sidebar/sidebar_show_options_event_detect_widget.h"
 #include "luxxle/components/sidebar/browser/sidebar_service.h"
@@ -34,7 +34,7 @@ namespace sidebar {
 class SidebarBrowserTest;
 }  // namespace sidebar
 
-class BraveBrowser;
+class LuxxleBrowser;
 class SidePanelEntry;
 
 // This view is the parent view of all sidebar ui.
@@ -59,7 +59,7 @@ class SidebarContainerView
  public:
   SidebarContainerView(Browser* browser,
                        SidePanelCoordinator* side_panel_coordinator,
-                       std::unique_ptr<BraveSidePanel> side_panel);
+                       std::unique_ptr<LuxxleSidePanel> side_panel);
   ~SidebarContainerView() override;
 
   SidebarContainerView(const SidebarContainerView&) = delete;
@@ -72,7 +72,7 @@ class SidebarContainerView
 
   bool IsSidebarVisible() const;
 
-  BraveSidePanel* side_panel() { return side_panel_; }
+  LuxxleSidePanel* side_panel() { return side_panel_; }
 
   // Need to know this showing comes from deregistering current entry
   // or not. We're observing contextual/global panel entries when panel is
@@ -185,16 +185,16 @@ class SidebarContainerView
 
   void StartObservingContextualSidePanelEntry(content::WebContents* contents);
 
-  // Casts |browser_| to BraveBrowser, as storing it as BraveBrowser would cause
+  // Casts |browser_| to LuxxleBrowser, as storing it as LuxxleBrowser would cause
   // a precocious downcast.
-  BraveBrowser* GetBraveBrowser() const;
+  LuxxleBrowser* GetLuxxleBrowser() const;
 
   void AddSidePanelEntryObservation(SidePanelEntry* entry);
   void RemoveSidePanelEntryObservation(SidePanelEntry* entry);
 
   raw_ptr<Browser> browser_ = nullptr;
   raw_ptr<SidePanelCoordinator> side_panel_coordinator_ = nullptr;
-  raw_ptr<BraveSidePanel> side_panel_ = nullptr;
+  raw_ptr<LuxxleSidePanel> side_panel_ = nullptr;
   raw_ptr<sidebar::SidebarModel> sidebar_model_ = nullptr;
   raw_ptr<SidebarControlView> sidebar_control_view_ = nullptr;
   bool initialized_ = false;

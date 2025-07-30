@@ -9,13 +9,13 @@
 #include "luxxle/browser/speedreader/speedreader_tab_helper.h"
 #include "luxxle/components/speedreader/speedreader_service.h"
 #include "luxxle/components/speedreader/speedreader_util.h"
-#include "chrome/android/chrome_jni_headers/BraveSpeedReaderUtils_jni.h"
+#include "chrome/android/chrome_jni_headers/LuxxleSpeedReaderUtils_jni.h"
 #include "chrome/browser/android/tab_android.h"
 #include "content/public/browser/web_contents.h"
 
 namespace speedreader {
 
-static void JNI_BraveSpeedReaderUtils_ToggleEnabledForWebContent(
+static void JNI_LuxxleSpeedReaderUtils_ToggleEnabledForWebContent(
     JNIEnv* env,
     const base::android::JavaParamRef<jobject>& jweb_contents,
     jboolean enabled) {
@@ -31,7 +31,7 @@ static void JNI_BraveSpeedReaderUtils_ToggleEnabledForWebContent(
   speedreader->EnableForSite(web_contents, enabled);
 }
 
-static jboolean JNI_BraveSpeedReaderUtils_TabProbablyReadable(
+static jboolean JNI_LuxxleSpeedReaderUtils_TabProbablyReadable(
     JNIEnv* env,
     const base::android::JavaParamRef<jobject>& tab) {
   TabAndroid* tab_android = TabAndroid::GetNativeTab(env, tab);
@@ -55,7 +55,7 @@ static jboolean JNI_BraveSpeedReaderUtils_TabProbablyReadable(
          !speedreader->IsEnabledForSite(web_contents);
 }
 
-static jboolean JNI_BraveSpeedReaderUtils_TabStateIsDistilled(
+static jboolean JNI_LuxxleSpeedReaderUtils_TabStateIsDistilled(
     JNIEnv* env,
     const base::android::JavaParamRef<jobject>& tab) {
   TabAndroid* tab_android = TabAndroid::GetNativeTab(env, tab);
@@ -72,7 +72,7 @@ static jboolean JNI_BraveSpeedReaderUtils_TabStateIsDistilled(
   return DistillStates::IsDistilled(tab_helper->PageDistillState());
 }
 
-static jboolean JNI_BraveSpeedReaderUtils_TabSupportsDistillation(
+static jboolean JNI_LuxxleSpeedReaderUtils_TabSupportsDistillation(
     JNIEnv* env,
     const base::android::JavaParamRef<jobject>& tab) {
   TabAndroid* tab_android = TabAndroid::GetNativeTab(env, tab);
@@ -95,7 +95,7 @@ static jboolean JNI_BraveSpeedReaderUtils_TabSupportsDistillation(
   return DistillStates::IsDistillable(tab_helper->PageDistillState());
 }
 
-static void JNI_BraveSpeedReaderUtils_SingleShotSpeedreaderForWebContent(
+static void JNI_LuxxleSpeedReaderUtils_SingleShotSpeedreaderForWebContent(
     JNIEnv* env,
     const base::android::JavaParamRef<jobject>& jweb_contents) {
   content::WebContents* web_contents =

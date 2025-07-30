@@ -5,18 +5,18 @@
 
 #include "luxxle/browser/ui/views/sidebar/sidebar_control_view.h"
 
-#include "luxxle/app/brave_command_ids.h"
-#include "luxxle/browser/ui/brave_browser.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/app/luxxle_command_ids.h"
+#include "luxxle/browser/ui/luxxle_browser.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/browser/ui/sidebar/sidebar_controller.h"
 #include "luxxle/browser/ui/sidebar/sidebar_service_factory.h"
 #include "luxxle/browser/ui/sidebar/sidebar_utils.h"
-#include "luxxle/browser/ui/views/frame/brave_contents_view_util.h"
+#include "luxxle/browser/ui/views/frame/luxxle_contents_view_util.h"
 #include "luxxle/browser/ui/views/sidebar/sidebar_item_add_button.h"
 #include "luxxle/browser/ui/views/sidebar/sidebar_items_scroll_view.h"
 #include "luxxle/components/sidebar/browser/sidebar_service.h"
 #include "luxxle/components/vector_icons/vector_icons.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser_command_controller.h"
 #include "chrome/browser/ui/browser_window/public/browser_window_features.h"
@@ -64,7 +64,7 @@ bool IsSidebarOnLeft(Browser* browser) {
 }  // namespace
 
 SidebarControlView::SidebarControlView(Delegate* delegate,
-                                       BraveBrowser* browser)
+                                       LuxxleBrowser* browser)
     : delegate_(delegate), browser_(browser) {
   set_context_menu_controller(this);
 
@@ -90,7 +90,7 @@ void SidebarControlView::UpdateBackgroundAndBorder() {
     SetBackground(
         views::CreateSolidBackground(color_provider->GetColor(kColorToolbar)));
     int border_thickness =
-        1 - BraveContentsViewUtil::GetRoundedCornersWebViewMargin(browser_);
+        1 - LuxxleContentsViewUtil::GetRoundedCornersWebViewMargin(browser_);
     SetBorder(views::CreateEmptyBorder(
         gfx::Insets::TLBR(0, sidebar_on_left_ ? 0 : border_thickness, 0,
                           sidebar_on_left_ ? border_thickness : 0)));
@@ -201,7 +201,7 @@ void SidebarControlView::OnButtonPressed(views::View* view) {
   if (view == sidebar_settings_view_) {
     ShowSingletonTabOverwritingNTP(
         browser_,
-        GURL("brave://settings?search=" +
+        GURL("luxxle://settings?search=" +
              l10n_util::GetStringUTF8(
                  IDS_SETTINGS_APPEARNCE_SETTINGS_SIDEBAR_PART_TITLE)));
   }

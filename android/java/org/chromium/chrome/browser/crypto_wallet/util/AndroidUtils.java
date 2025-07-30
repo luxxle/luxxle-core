@@ -44,7 +44,7 @@ public class AndroidUtils {
     // Views
     public static TextView makeHeaderTv(Context context) {
         TextView textView = new TextView(context);
-        textView.setTextAppearance(R.style.BraveWalletTextViewTitle);
+        textView.setTextAppearance(R.style.LuxxleWalletTextViewTitle);
         textView.setTypeface(null, Typeface.BOLD);
         textView.setId(View.generateViewId());
         return textView;
@@ -52,7 +52,7 @@ public class AndroidUtils {
 
     public static TextView makeSubHeaderTv(Context context) {
         TextView textView = new TextView(context);
-        textView.setTextAppearance(R.style.BraveWalletTextViewSubTitle);
+        textView.setTextAppearance(R.style.LuxxleWalletTextViewSubTitle);
         textView.setId(View.generateViewId());
         return textView;
     }
@@ -130,7 +130,7 @@ public class AndroidUtils {
     public static SpannableString createClickableSpanString(
             Context context, @StringRes int id, Callback listener) {
         ChromeClickableSpan chromeClickableSpan =
-                new ChromeClickableSpan(context.getColor(R.color.brave_link), listener);
+                new ChromeClickableSpan(context.getColor(R.color.luxxle_link), listener);
         SpannableString spannableString = new SpannableString(context.getString(id));
         spannableString.setSpan(chromeClickableSpan, 0, spannableString.length(), 0);
         return spannableString;

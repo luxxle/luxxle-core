@@ -1,5 +1,5 @@
 # Copyright (c) 2024 The Luxxle Authors. All rights reserved.
 
 # Stripped down GCM driver - minimal functionality
-brave_browser_gcm_driver_sources = []
-brave_browser_gcm_driver_deps = []
+luxxle_browser_gcm_driver_sources = []
+luxxle_browser_gcm_driver_deps = []

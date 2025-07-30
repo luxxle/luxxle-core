@@ -3,39 +3,39 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveNewTabPageClassAdapter extends BraveClassVisitor {
+public class LuxxleNewTabPageClassAdapter extends LuxxleClassVisitor {
     static String sNewTabPageClassName = "org/chromium/chrome/browser/ntp/NewTabPage";
-    static String sBraveNewTabPageClassName = "org/chromium/chrome/browser/ntp/BraveNewTabPage";
+    static String sLuxxleNewTabPageClassName = "org/chromium/chrome/browser/ntp/LuxxleNewTabPage";
 
-    public BraveNewTabPageClassAdapter(ClassVisitor visitor) {
+    public LuxxleNewTabPageClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sNewTabPageClassName, sBraveNewTabPageClassName);
+        redirectConstructor(sNewTabPageClassName, sLuxxleNewTabPageClassName);
 
-        deleteField(sBraveNewTabPageClassName, "mBrowserControlsStateProvider");
+        deleteField(sLuxxleNewTabPageClassName, "mBrowserControlsStateProvider");
         makeProtectedField(sNewTabPageClassName, "mBrowserControlsStateProvider");
 
-        deleteField(sBraveNewTabPageClassName, "mNewTabPageLayout");
+        deleteField(sLuxxleNewTabPageClassName, "mNewTabPageLayout");
         makeProtectedField(sNewTabPageClassName, "mNewTabPageLayout");
 
-        deleteField(sBraveNewTabPageClassName, "mFeedSurfaceProvider");
+        deleteField(sLuxxleNewTabPageClassName, "mFeedSurfaceProvider");
         makeProtectedField(sNewTabPageClassName, "mFeedSurfaceProvider");
 
-        deleteField(sBraveNewTabPageClassName, "mToolbarSupplier");
+        deleteField(sLuxxleNewTabPageClassName, "mToolbarSupplier");
         makeProtectedField(sNewTabPageClassName, "mToolbarSupplier");
 
-        deleteField(sBraveNewTabPageClassName, "mBottomSheetController");
+        deleteField(sLuxxleNewTabPageClassName, "mBottomSheetController");
         makeProtectedField(sNewTabPageClassName, "mBottomSheetController");
 
-        deleteField(sBraveNewTabPageClassName, "mTabStripHeightSupplier");
+        deleteField(sLuxxleNewTabPageClassName, "mTabStripHeightSupplier");
         makeProtectedField(sNewTabPageClassName, "mTabStripHeightSupplier");
 
         makePublicMethod(sNewTabPageClassName, "updateSearchProviderHasLogo");
         addMethodAnnotation(
-                sBraveNewTabPageClassName, "updateSearchProviderHasLogo", "Ljava/lang/Override;");
+                sLuxxleNewTabPageClassName, "updateSearchProviderHasLogo", "Ljava/lang/Override;");
     }
 }

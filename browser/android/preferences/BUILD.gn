@@ -6,24 +6,24 @@
 import("//build/config/android/rules.gni")
 
 source_set("preferences") {
-  sources = [ "brave_pref_service_bridge.cc" ]
+  sources = [ "luxxle_pref_service_bridge.cc" ]
 
   deps = [
     "//base",
     "//luxxle/build/android:jni_headers",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_adaptive_captcha",
+    # "//luxxle/components/luxxle_adaptive_captcha",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_news/common",
+    # "//luxxle/components/luxxle_news/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_perf_predictor/common",
+    # "//luxxle/components/luxxle_perf_predictor/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_referrals/common",
+    # "//luxxle/components/luxxle_referrals/common",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/core",
+    # "//luxxle/components/luxxle_rewards/core",
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:prefs",
+    # "//luxxle/components/luxxle_sync:prefs",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/constants",
     "//chrome/browser:browser_process",
@@ -47,9 +47,9 @@ java_cpp_strings("java_pref_names_srcjar") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/ai_chat/core/common/pref_names.h",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_adaptive_captcha/pref_names.h",
+    # "//luxxle/components/luxxle_adaptive_captcha/pref_names.h",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_rewards/core/pref_names.h",
+    # "//luxxle/components/luxxle_rewards/core/pref_names.h",
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -65,9 +65,9 @@ java_cpp_strings("java_pref_names_srcjar") {
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/ntp_background_images/common/pref_names.h",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/omnibox/browser/brave_omnibox_prefs.cc",
+    # "//luxxle/components/omnibox/browser/luxxle_omnibox_prefs.cc",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/omnibox/browser/brave_omnibox_prefs.h",
+    # "//luxxle/components/omnibox/browser/luxxle_omnibox_prefs.h",
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//luxxle/components/request_otr/common/pref_names.h",
@@ -78,5 +78,5 @@ java_cpp_strings("java_pref_names_srcjar") {
   ]
 
   template =
-      "//luxxle/browser/preferences/android/java_templates/BravePref.java.tmpl"
+      "//luxxle/browser/preferences/android/java_templates/LuxxlePref.java.tmpl"
 }

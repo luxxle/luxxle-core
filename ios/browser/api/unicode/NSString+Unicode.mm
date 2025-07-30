@@ -1,4 +1,4 @@
-// Copyright (c) 2024 The Brave Authors. All rights reserved.
+// Copyright (c) 2024 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -6,7 +6,7 @@
 #include <string>
 
 #include "base/strings/sys_string_conversions.h"
-#include "brave/ios/browser/api/unicode/NSString+Unicode.h"
+#include "luxxle/ios/browser/api/unicode/NSString+Unicode.h"
 #include "third_party/icu/source/common/unicode/ubidi.h"
 
 @implementation NSString (Unicode)

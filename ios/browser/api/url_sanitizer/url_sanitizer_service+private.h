@@ -10,7 +10,7 @@
 
 #include "base/memory/raw_ptr.h"
 #include "luxxle/components/url_sanitizer/browser/url_sanitizer_service.h"
-#include "brave/ios/browser/api/url_sanitizer/url_sanitizer_service.h"
+#include "luxxle/ios/browser/api/url_sanitizer/url_sanitizer_service.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

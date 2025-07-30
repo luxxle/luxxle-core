@@ -12,7 +12,7 @@ import subprocess
 import sys
 import tarfile
 
-import brave_chromium_utils
+import luxxle_chromium_utils
 
 CONFIG_TOML_TEMPLATE = 'config.toml.template'
 TOOLS_RUST = '//tools/rust'
@@ -24,8 +24,8 @@ WASM32_UNKNOWN_UNKNOWN = 'wasm32-unknown-unknown'
 def restore_config_toml_template():
     args = [
         'git', '-C',
-        brave_chromium_utils.get_src_dir(), 'checkout', '--',
-        os.path.join(brave_chromium_utils.wspath(TOOLS_RUST),
+        luxxle_chromium_utils.get_src_dir(), 'checkout', '--',
+        os.path.join(luxxle_chromium_utils.wspath(TOOLS_RUST),
                      CONFIG_TOML_TEMPLATE)
     ]
     subprocess.check_call(args)
@@ -43,7 +43,7 @@ def prepare_run_xpy():
 
 
 def run_xpy():
-    with brave_chromium_utils.sys_path(TOOLS_RUST):
+    with luxxle_chromium_utils.sys_path(TOOLS_RUST):
         import build_rust
         target_triple = build_rust.RustTargetTriple()
 
@@ -66,13 +66,13 @@ def package_name():
     else:
         platform_prefix = 'linux-x64'
 
-    with brave_chromium_utils.sys_path(TOOLS_RUST):
+    with luxxle_chromium_utils.sys_path(TOOLS_RUST):
         import package_rust
         return f'{platform_prefix}-{package_rust.RUST_TOOLCHAIN_PACKAGE_NAME}'
 
 
 def create_archive():
-    with brave_chromium_utils.sys_path(TOOLS_RUST):
+    with luxxle_chromium_utils.sys_path(TOOLS_RUST):
         import build_rust
         target_triple = build_rust.RustTargetTriple()
         stage1_output_path = os.path.join(build_rust.RUST_BUILD_DIR,
@@ -95,7 +95,7 @@ def main():
     args = parser.parse_args()
     Path(args.out_dir).mkdir(parents=True, exist_ok=True)
 
-    os.chdir(brave_chromium_utils.wspath(TOOLS_RUST))
+    os.chdir(luxxle_chromium_utils.wspath(TOOLS_RUST))
     restore_config_toml_template()
     edit_config_toml_template()
     prepare_run_xpy()

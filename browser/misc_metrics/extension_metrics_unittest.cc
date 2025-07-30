@@ -8,7 +8,7 @@
 #include <memory>
 
 #include "base/test/metrics/histogram_tester.h"
-#include "luxxle/browser/ui/webui/settings/brave_extensions_manifest_v2_handler.h"
+#include "luxxle/browser/ui/webui/settings/luxxle_extensions_manifest_v2_handler.h"
 #include "content/public/test/browser_task_environment.h"
 #include "extensions/browser/extension_registry.h"
 #include "extensions/browser/uninstall_reason.h"

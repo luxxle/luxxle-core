@@ -1,0 +1,42 @@
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at https://mozilla.org/MPL/2.0/.
+
+# Commented out: transpile_web_ui and pack_web_resources functions require Luxxle components that have been removed
+# Components-based new tab page refresh disabled for Luxxle minimal build
+# Will use Chromium's default new tab page instead
+
+# import("//luxxle/components/common/typescript.gni")
+# import("//ui/webui/resources/tools/generate_grd.gni")
+
+assert(!is_android)
+
+# transpile_web_ui("resources") {
+#   entry_points = [ [
+#         "luxxle_new_tab_page",
+#         rebase_path("luxxle_new_tab_page.tsx"),
+#       ] ]
+#   resource_name = "luxxle_new_tab_page_refresh"
+#   output_module = true
+#   deps = [
+#     "//luxxle/browser/ui/webui/luxxle_new_tab_page_refresh:mojom_js",
+#     # Commented out: removed components dependency - using Chromium defaults instead
+#     # "//luxxle/components/luxxle_ads/core/mojom:mojom_js",
+#     # Commented out: removed components dependency - using Chromium defaults instead
+#     # "//luxxle/components/luxxle_news/common:mojom_js",
+#     # Commented out: removed components dependency - using Chromium defaults instead
+#     # "//luxxle/components/luxxle_rewards/core/mojom:webui_js",
+#     # Commented out: removed components dependency - using Chromium defaults instead
+#     # Commented out: removed components dependency - using Chromium defaults instead
+#     # "//luxxle/components/ntp_background_images/browser/mojom:mojom_js",
+#     "//ui/webui/resources/cr_components/searchbox:mojo_bindings_js",
+#   ]
+# }
+
+# pack_web_resources("generated_resources") {
+#   resource_name = "luxxle_new_tab_page_refresh"
+#   output_dir =
+#       "$root_gen_dir/luxxle/browser/resources/luxxle_new_tab_page_refresh"
+#   deps = [ ":resources" ]
+# }

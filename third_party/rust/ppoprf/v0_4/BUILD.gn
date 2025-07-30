@@ -25,7 +25,7 @@ cargo_crate("lib") {
   edition = "2021"
   cargo_pkg_version = "0.4.2"
   cargo_pkg_authors =
-      "Alex Davidson <coela@alxdavids.xyz>, Ralph Ankele <rankele@brave.com>"
+      "Alex Davidson <coela@alxdavids.xyz>, Ralph Ankele <rankele@luxxle.com>"
   cargo_pkg_name = "ppoprf"
   cargo_pkg_description =
       "Puncturable Partially-Oblivious Pseudo-Random Function"

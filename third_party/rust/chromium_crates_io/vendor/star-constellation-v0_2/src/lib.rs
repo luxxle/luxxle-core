@@ -1,6 +1,6 @@
 //! The `star-constellation` crate implements the Constellation
 //! aggregation mechanism: a modification of the original
-//! [STAR](https://github.com/brave/sta-rs) protocol to allow
+//! [STAR](https://github.com/luxxle/sta-rs) protocol to allow
 //! clients to submit ordered, granular data at the highest
 //! resolution that is possible, whilst maintaining crowd-based
 //! anonymity.

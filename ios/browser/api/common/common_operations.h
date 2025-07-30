@@ -25,7 +25,7 @@ typedef void (^BATNetworkCompletionBlock)(
 
 /// A set of common operations that accept and return C++ types
 OBJC_EXPORT
-@interface BraveCommonOperations : NSObject
+@interface LuxxleCommonOperations : NSObject
 
 - (instancetype)initWithStoragePath:(nullable NSString*)storagePath;
 - (instancetype)initWithStoragePath:(nullable NSString*)storagePath

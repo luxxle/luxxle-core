@@ -15,7 +15,7 @@
 #include "base/values.h"
 #include "luxxle/browser/search_engines/pref_names.h"
 #include "luxxle/components/l10n/common/locale_util.h"
-#include "luxxle/components/search_engines/brave_prepopulated_engines.h"
+#include "luxxle/components/search_engines/luxxle_prepopulated_engines.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/search_engines/template_url_prepopulate_data_resolver_factory.h"
 #include "chrome/browser/search_engines/template_url_service_factory.h"
@@ -37,13 +37,13 @@ constexpr auto kTargetCountriesForEnableSearchSuggestionsByDefault =
                                               "MX", "US"});
 }
 
-void SetBraveAsDefaultPrivateSearchProvider(Profile& profile) {
+void SetLuxxleAsDefaultPrivateSearchProvider(Profile& profile) {
   auto& prefs = *profile.GetPrefs();
   auto* prepopulate_data_resolver =
       TemplateURLPrepopulateData::ResolverFactory::GetForProfile(&profile);
   const auto template_url_data =
       prepopulate_data_resolver->GetPrepopulatedEngine(
-          TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_BRAVE);
+          TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_LUXXLE);
   DCHECK(template_url_data);
   prefs.SetString(prefs::kSyncedDefaultPrivateSearchProviderGUID,
                   template_url_data->sync_guid);
@@ -61,8 +61,8 @@ void UpdateDefaultPrivateSearchProviderData(Profile& profile) {
 
   if (private_provider_guid.empty()) {
     // This can happen while resetting whole settings.
-    // In this case, set brave as a default search provider.
-    SetBraveAsDefaultPrivateSearchProvider(profile);
+    // In this case, set luxxle as a default search provider.
+    SetLuxxleAsDefaultPrivateSearchProvider(profile);
     return;
   }
 
@@ -76,8 +76,8 @@ void UpdateDefaultPrivateSearchProviderData(Profile& profile) {
 
   // When user delete current private search provder from provider list in
   // settings page, |private_provider_guid| will not be existed in the list. Use
-  // Brave.
-  SetBraveAsDefaultPrivateSearchProvider(profile);
+  // Luxxle.
+  SetLuxxleAsDefaultPrivateSearchProvider(profile);
 }
 
 void PrepareDefaultPrivateSearchProviderDataIfNeeded(Profile& profile) {
@@ -94,9 +94,9 @@ void PrepareDefaultPrivateSearchProviderDataIfNeeded(Profile& profile) {
   const std::string private_provider_guid =
       prefs.GetString(prefs::kSyncedDefaultPrivateSearchProviderGUID);
 
-  // Set Brave as a private window's initial search provider.
+  // Set Luxxle as a private window's initial search provider.
   if (private_provider_guid.empty()) {
-    SetBraveAsDefaultPrivateSearchProvider(profile);
+    SetLuxxleAsDefaultPrivateSearchProvider(profile);
     return;
   }
 
@@ -108,10 +108,10 @@ void PrepareDefaultPrivateSearchProviderDataIfNeeded(Profile& profile) {
       prefs.SetDict(prefs::kSyncedDefaultPrivateSearchProviderData,
                     TemplateURLDataToDictionary(url->data()));
     } else {
-      // This could happen with update default provider list when brave is not
+      // This could happen with update default provider list when luxxle is not
       // updated for longtime. So it doesn't have any chance to cache url data.
-      // Set Brave as default private search provider.
-      SetBraveAsDefaultPrivateSearchProvider(profile);
+      // Set Luxxle as default private search provider.
+      SetLuxxleAsDefaultPrivateSearchProvider(profile);
     }
     return;
   }
@@ -142,7 +142,7 @@ void PrepareSearchSuggestionsConfig(PrefService& local_state, bool first_run) {
   }
 
   const std::string default_country_code =
-      brave_l10n::GetDefaultISOCountryCodeString();
+      luxxle_l10n::GetDefaultISOCountryCodeString();
 
   const bool enable_search_suggestions_default_value =
       kTargetCountriesForEnableSearchSuggestionsByDefault.count(
@@ -162,4 +162,4 @@ void UpdateDefaultSearchSuggestionsPrefs(PrefService& local_state,
                                     base::Value(true));
 }
 
-}  // namespace brave
+}  // namespace luxxle

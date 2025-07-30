@@ -3,19 +3,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveShareDelegateImplClassAdapter extends BraveClassVisitor {
+public class LuxxleShareDelegateImplClassAdapter extends LuxxleClassVisitor {
     static String sShareDelegateImplClassName =
             "org/chromium/chrome/browser/share/ShareDelegateImpl";
-    static String sBraveShareDelegateImplClassName =
-            "org/chromium/chrome/browser/share/BraveShareDelegateImpl";
+    static String sLuxxleShareDelegateImplClassName =
+            "org/chromium/chrome/browser/share/LuxxleShareDelegateImpl";
 
-    public BraveShareDelegateImplClassAdapter(ClassVisitor visitor) {
+    public LuxxleShareDelegateImplClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sShareDelegateImplClassName, sBraveShareDelegateImplClassName);
+        redirectConstructor(sShareDelegateImplClassName, sLuxxleShareDelegateImplClassName);
     }
 }

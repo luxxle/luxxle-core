@@ -34,7 +34,7 @@ pub struct BlockerResult {
     /// and no further checking is neccesary--the request should be blocked
     /// (empty body or cancelled).
     ///
-    /// Brave Browser keeps multiple instances of [`Blocker`], so `important`
+    /// Luxxle Browser keeps multiple instances of [`Blocker`], so `important`
     /// here is used to correct behaviour between them: checking should stop
     /// instead of moving to the next instance iff an `important` rule matched.
     pub important: bool,
@@ -1726,9 +1726,9 @@ mod blocker_tests {
         assert!(!result.matched);
     }
 
-    /// Tests ported from the previous query parameter stripping logic in brave-core
+    /// Tests ported from the previous query parameter stripping logic in luxxle-core
     #[test]
-    fn removeparam_brave_core_tests() {
+    fn removeparam_luxxle_core_tests() {
         let testcases = [
             // (original url, expected url after filtering)
             ("https://example.com/?fbclid=1234", "https://example.com/"),
@@ -1891,13 +1891,13 @@ fn test_removeparam_same_tokens() {
             "adv$tag=stuff",
             "somelongpath/test$tag=stuff",
             "||brianbondy.com/$tag=brian",
-            "||brave.com$tag=brian",
+            "||luxxle.com$tag=brian",
         ];
         let url_results = [
             ("http://example.com/advert.html", true),
             ("http://example.com/somelongpath/test/2.html", true),
             ("https://brianbondy.com/about", false),
-            ("https://brave.com/about", false),
+            ("https://luxxle.com/about", false),
         ];
 
         let request_expectations: Vec<_> = url_results
@@ -1935,13 +1935,13 @@ fn test_removeparam_same_tokens() {
             "adv$tag=stuff",
             "somelongpath/test$tag=stuff",
             "||brianbondy.com/$tag=brian",
-            "||brave.com$tag=brian",
+            "||luxxle.com$tag=brian",
         ];
         let url_results = [
             ("http://example.com/advert.html", true),
             ("http://example.com/somelongpath/test/2.html", true),
             ("https://brianbondy.com/about", true),
-            ("https://brave.com/about", true),
+            ("https://luxxle.com/about", true),
         ];
 
         let request_expectations: Vec<_> = url_results
@@ -1980,13 +1980,13 @@ fn test_removeparam_same_tokens() {
             "adv$tag=stuff",
             "somelongpath/test$tag=stuff",
             "||brianbondy.com/$tag=brian",
-            "||brave.com$tag=brian",
+            "||luxxle.com$tag=brian",
         ];
         let url_results = [
             ("http://example.com/advert.html", false),
             ("http://example.com/somelongpath/test/2.html", false),
             ("https://brianbondy.com/about", true),
-            ("https://brave.com/about", true),
+            ("https://luxxle.com/about", true),
         ];
 
         let request_expectations: Vec<_> = url_results
@@ -2082,13 +2082,13 @@ fn test_removeparam_same_tokens() {
         blocker.add_filter(NetworkFilter::parse("adv$tag=stuff", true, Default::default()).unwrap()).unwrap();
         blocker.add_filter(NetworkFilter::parse("somelongpath/test$tag=stuff", true, Default::default()).unwrap()).unwrap();
         blocker.add_filter(NetworkFilter::parse("||brianbondy.com/$tag=brian", true, Default::default()).unwrap()).unwrap();
-        blocker.add_filter(NetworkFilter::parse("||brave.com$tag=brian", true, Default::default()).unwrap()).unwrap();
+        blocker.add_filter(NetworkFilter::parse("||luxxle.com$tag=brian", true, Default::default()).unwrap()).unwrap();
 
         let url_results = [
             ("http://example.com/advert.html", false),
             ("http://example.com/somelongpath/test/2.html", false),
             ("https://brianbondy.com/about", true),
-            ("https://brave.com/about", true),
+            ("https://luxxle.com/about", true),
         ];
 
         let request_expectations: Vec<_> = url_results
@@ -2205,9 +2205,9 @@ mod legacy_rule_parsing_tests {
     // ublockUnbreak = { 4, 8, 0, 94 };
     // differences in counts explained by client.hostAnchoredExceptionHashSet->GetSize() underreporting when compared to client.numHostAnchoredExceptionFilters
     const UBLOCK_UNBREAK: ListCounts = ListCounts { filters: 4, cosmetic_filters: 8, exceptions: 98, duplicates: 0 };
-    // braveUnbreak = { 31, 0, 0, 4 };
+    // luxxleUnbreak = { 31, 0, 0, 4 };
     // differences in counts explained by client.hostAnchoredHashSet->GetSize() underreporting when compared to client.numHostAnchoredFilters
-    const BRAVE_UNBREAK: ListCounts = ListCounts { filters: 32, cosmetic_filters: 0, exceptions: 4, duplicates: 0 };
+    const LUXXLE_UNBREAK: ListCounts = ListCounts { filters: 32, cosmetic_filters: 0, exceptions: 4, duplicates: 0 };
     // disconnectSimpleMalware = { 2450, 0, 0, 0 };
     const DISCONNECT_SIMPLE_MALWARE: ListCounts = ListCounts { filters: 2450, cosmetic_filters: 0, exceptions: 0, duplicates: 0 };
     // spam404MainBlacklist = { 5629, 166, 0, 0 };
@@ -2263,12 +2263,12 @@ mod legacy_rule_parsing_tests {
     }
 
     #[test]
-    fn parse_brave_unbreak() {
-        check_list_counts(["./data/test/brave-unbreak.txt"], FilterFormat::Standard, BRAVE_UNBREAK);
+    fn parse_luxxle_unbreak() {
+        check_list_counts(["./data/test/luxxle-unbreak.txt"], FilterFormat::Standard, LUXXLE_UNBREAK);
     }
 
     #[test]
-    fn parse_brave_disconnect_simple_malware() {
+    fn parse_luxxle_disconnect_simple_malware() {
         check_list_counts(["./data/test/disconnect-simple-malware.txt"], FilterFormat::Standard, DISCONNECT_SIMPLE_MALWARE);
     }
 
@@ -2294,13 +2294,13 @@ mod legacy_rule_parsing_tests {
 
     #[test]
     fn parse_multilist() {
-        let expectation = EASY_LIST + EASY_PRIVACY + UBLOCK_UNBREAK + BRAVE_UNBREAK;
+        let expectation = EASY_LIST + EASY_PRIVACY + UBLOCK_UNBREAK + LUXXLE_UNBREAK;
         check_list_counts(
             [
                 "./data/easylist.to/easylist/easylist.txt",
                 "./data/easylist.to/easylist/easyprivacy.txt",
                 "./data/test/ublock-unbreak.txt",
-                "./data/test/brave-unbreak.txt",
+                "./data/test/luxxle-unbreak.txt",
             ],
             FilterFormat::Standard,
             expectation,

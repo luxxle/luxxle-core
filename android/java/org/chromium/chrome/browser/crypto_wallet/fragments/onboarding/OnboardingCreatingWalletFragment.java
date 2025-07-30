@@ -16,20 +16,20 @@ import androidx.annotation.Nullable;
 import org.chromium.base.Log;
 import org.chromium.base.task.PostTask;
 import org.chromium.base.task.TaskTraits;
-import org.chromium.brave_wallet.mojom.BraveWalletP3a;
-import org.chromium.brave_wallet.mojom.JsonRpcService;
-import org.chromium.brave_wallet.mojom.KeyringService;
-import org.chromium.brave_wallet.mojom.NetworkInfo;
-import org.chromium.brave_wallet.mojom.OnboardingAction;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletP3a;
+import org.chromium.luxxle_wallet.mojom.JsonRpcService;
+import org.chromium.luxxle_wallet.mojom.KeyringService;
+import org.chromium.luxxle_wallet.mojom.NetworkInfo;
+import org.chromium.luxxle_wallet.mojom.OnboardingAction;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.app.BraveActivity;
+import org.chromium.chrome.browser.app.LuxxleActivity;
 import org.chromium.chrome.browser.app.domain.KeyringModel;
 import org.chromium.chrome.browser.crypto_wallet.util.Utils;
 import org.chromium.ui.widget.Toast;
 
 import java.util.Set;
 
-/** Onboarding fragment for Brave Wallet which shows the spinner while wallet is created/restored */
+/** Onboarding fragment for Luxxle Wallet which shows the spinner while wallet is created/restored */
 public class OnboardingCreatingWalletFragment extends BaseOnboardingWalletFragment {
 
     private static final String TAG = "CreatingWalletFrag";
@@ -98,9 +98,9 @@ public class OnboardingCreatingWalletFragment extends BaseOnboardingWalletFragme
 
     private void setupWalletModel() {
         try {
-            BraveActivity activity = BraveActivity.getBraveActivity();
+            LuxxleActivity activity = LuxxleActivity.getLuxxleActivity();
             activity.setupWalletModel();
-        } catch (BraveActivity.BraveActivityNotFoundException e) {
+        } catch (LuxxleActivity.LuxxleActivityNotFoundException e) {
             Log.e(TAG, "setupWalletModel", e);
         }
     }
@@ -141,7 +141,7 @@ public class OnboardingCreatingWalletFragment extends BaseOnboardingWalletFragme
     }
 
     private void createWallet(@NonNull final KeyringModel keyringModel) {
-        BraveWalletP3a braveWalletP3A = getBraveWalletP3A();
+        LuxxleWalletP3a luxxleWalletP3A = getLuxxleWalletP3A();
         JsonRpcService jsonRpcService = getJsonRpcService();
 
         if (jsonRpcService != null) {
@@ -153,8 +153,8 @@ public class OnboardingCreatingWalletFragment extends BaseOnboardingWalletFragme
                     selectedNetworks,
                     jsonRpcService,
                     recoveryPhrases -> {
-                        if (braveWalletP3A != null) {
-                            braveWalletP3A.reportOnboardingAction(OnboardingAction.RECOVERY_SETUP);
+                        if (luxxleWalletP3A != null) {
+                            luxxleWalletP3A.reportOnboardingAction(OnboardingAction.RECOVERY_SETUP);
                         }
 
                         Utils.setCryptoOnboarding(false);

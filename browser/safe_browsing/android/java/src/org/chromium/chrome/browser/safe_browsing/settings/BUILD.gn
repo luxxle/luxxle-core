@@ -6,9 +6,9 @@
 import("//build/config/android/rules.gni")
 
 android_library("java") {
-  sources = [ "BraveRadioButtonGroupSafeBrowsingPreference.java" ]
+  sources = [ "LuxxleRadioButtonGroupSafeBrowsingPreference.java" ]
   deps = [
-    "//luxxle/build/android:android_brave_strings_grd",
+    "//luxxle/build/android:android_luxxle_strings_grd",
     "//chrome/browser/safe_browsing/android:java",
     "//chrome/browser/safe_browsing/android:java_resources",
     # Commented out: removed components dependency - using Chromium defaults instead

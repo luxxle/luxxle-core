@@ -9,7 +9,7 @@
 #include <optional>
 #include <vector>
 
-#include "luxxle/components/brave_wayback_machine/buildflags/buildflags.h"
+#include "luxxle/components/luxxle_wayback_machine/buildflags/buildflags.h"
 #include "luxxle/components/commander/common/buildflags/buildflags.h"
 #include "luxxle/components/playlist/common/buildflags/buildflags.h"
 #include "chrome/browser/ui/tabs/tab_model.h"
@@ -33,10 +33,10 @@ void ShowWalletBubble(Browser* browser);
 void ShowApproveWalletBubble(Browser* browser);
 void CloseWalletBubble(Browser* browser);
 void MaybeDistillAndShowSpeedreaderBubble(Browser* browser);
-void ShowBraveVPNBubble(Browser* browser);
-void ToggleBraveVPNButton(Browser* browser);
-void ToggleBraveVPNTrayIcon();
-void OpenBraveVPNUrls(Browser* browser, int command_id);
+void ShowLuxxleVPNBubble(Browser* browser);
+void ToggleLuxxleVPNButton(Browser* browser);
+void ToggleLuxxleVPNTrayIcon();
+void OpenLuxxleVPNUrls(Browser* browser, int command_id);
 // Copies an url sanitized by URLSanitizerService.
 void CopySanitizedURL(Browser* browser, const GURL& url);
 // Copies an url cleared through:
@@ -65,7 +65,7 @@ void ToggleCommander(Browser* browser);
 void ShowPlaylistBubble(Browser* browser);
 #endif
 
-#if BUILDFLAG(ENABLE_BRAVE_WAYBACK_MACHINE)
+#if BUILDFLAG(ENABLE_LUXXLE_WAYBACK_MACHINE)
 void ShowWaybackMachineBubble(Browser* browser);
 #endif
 
@@ -129,6 +129,6 @@ bool IsTabsTiled(Browser* browser, const std::vector<int>& indices = {});
 bool CanTileTabs(Browser* browser, const std::vector<int>& indices = {});
 void SwapTabsInTile(Browser* browser);
 
-}  // namespace brave
+}  // namespace luxxle
 
 #endif  // LUXXLE_BROWSER_UI_BROWSER_COMMANDS_H_

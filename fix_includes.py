@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script to fix #include statements and header guards that reference Brave paths.
+Script to fix #include statements and header guards that reference Luxxle paths.
 Converts them to appropriate Luxxle or Chromium equivalents.
 """
 
@@ -8,41 +8,41 @@ import os
 import re
 import argparse
 
-# Include path mappings (brave -> luxxle)
+# Include path mappings (luxxle -> luxxle)
 INCLUDE_MAPPINGS = {
-    r'#include "brave/browser/': '#include "luxxle/browser/',
-    r'#include "brave/components/': '#include "luxxle/components/',
-    r'#include "brave/common/': '#include "luxxle/common/',
-    r'#include "brave/net/': '#include "luxxle/net/',
-    r'#include "brave/ui/': '#include "luxxle/ui/',
-    r'#include "brave/app/': '#include "luxxle/app/',
-    r'#include "brave/third_party/': '#include "luxxle/third_party/',
+    r'#include "luxxle/browser/': '#include "luxxle/browser/',
+    r'#include "luxxle/components/': '#include "luxxle/components/',
+    r'#include "luxxle/common/': '#include "luxxle/common/',
+    r'#include "luxxle/net/': '#include "luxxle/net/',
+    r'#include "luxxle/ui/': '#include "luxxle/ui/',
+    r'#include "luxxle/app/': '#include "luxxle/app/',
+    r'#include "luxxle/third_party/': '#include "luxxle/third_party/',
 }
 
-# Header guard mappings (BRAVE_ -> LUXXLE_)
+# Header guard mappings (LUXXLE_ -> LUXXLE_)
 HEADER_GUARD_MAPPINGS = {
-    r'#ifndef BRAVE_': '#ifndef LUXXLE_',
-    r'#define BRAVE_': '#define LUXXLE_',
-    r'#endif  // BRAVE_': '#endif  // LUXXLE_',
+    r'#ifndef LUXXLE_': '#ifndef LUXXLE_',
+    r'#define LUXXLE_': '#define LUXXLE_',
+    r'#endif  // LUXXLE_': '#endif  // LUXXLE_',
 }
 
 # Namespace mappings
 NAMESPACE_MAPPINGS = {
-    r'namespace brave::': 'namespace luxxle::',
-    r'namespace brave {': 'namespace luxxle {',
-    r'brave::': 'luxxle::',
+    r'namespace luxxle::': 'namespace luxxle::',
+    r'namespace luxxle {': 'namespace luxxle {',
+    r'luxxle::': 'luxxle::',
 }
 
-# Includes to remove completely (brave-specific components that don't exist in luxxle)
+# Includes to remove completely (luxxle-specific components that don't exist in luxxle)
 INCLUDES_TO_REMOVE = [
-    r'#include "brave/browser/brave_ads/.*"',
-    r'#include "brave/browser/brave_rewards/.*"',
-    r'#include "brave/browser/brave_wallet/.*"',
-    r'#include "brave/browser/brave_vpn/.*"',
-    r'#include "brave/components/brave_ads/.*"',
-    r'#include "brave/components/brave_rewards/.*"',
-    r'#include "brave/components/brave_wallet/.*"',
-    r'#include "brave/components/brave_vpn/.*"',
+    r'#include "luxxle/browser/luxxle_ads/.*"',
+    r'#include "luxxle/browser/luxxle_rewards/.*"',
+    r'#include "luxxle/browser/luxxle_wallet/.*"',
+    r'#include "luxxle/browser/luxxle_vpn/.*"',
+    r'#include "luxxle/components/luxxle_ads/.*"',
+    r'#include "luxxle/components/luxxle_rewards/.*"',
+    r'#include "luxxle/components/luxxle_wallet/.*"',
+    r'#include "luxxle/components/luxxle_vpn/.*"',
 ]
 
 def should_skip_file(filepath):

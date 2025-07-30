@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /// The code required to enter the developer menu in official builds
-OBJC_EXPORT NSString* const kBraveDeveloperOptionsCode;
+OBJC_EXPORT NSString* const kLuxxleDeveloperOptionsCode;
 
 NS_ASSUME_NONNULL_END
 

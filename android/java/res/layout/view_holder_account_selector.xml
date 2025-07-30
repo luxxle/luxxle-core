@@ -98,6 +98,6 @@
         app:srcCompat="@drawable/ic_check"
         android:contentDescription="@null"
         android:visibility="gone"
-        app:tint="@color/brave_blue_tint_color" />
+        app:tint="@color/luxxle_blue_tint_color" />
 
 </LinearLayout>

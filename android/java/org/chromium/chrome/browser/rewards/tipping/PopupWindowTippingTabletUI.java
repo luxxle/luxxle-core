@@ -27,7 +27,7 @@ import android.widget.TextView;
 import androidx.fragment.app.DialogFragment;
 
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.BraveRewardsHelper;
+import org.chromium.chrome.browser.LuxxleRewardsHelper;
 import org.chromium.chrome.browser.util.ConfigurationUtils;
 
 public class PopupWindowTippingTabletUI extends DialogFragment {
@@ -92,10 +92,10 @@ public class PopupWindowTippingTabletUI extends DialogFragment {
         Resources res = getResources();
         TextView proceedTextView = view.findViewById(R.id.proceed_terms_of_service);
         proceedTextView.setMovementMethod(LinkMovementMethod.getInstance());
-        String termsOfServiceText = String.format(res.getString(R.string.brave_rewards_tos_text),
+        String termsOfServiceText = String.format(res.getString(R.string.luxxle_rewards_tos_text),
                 res.getString(R.string.terms_of_service), res.getString(R.string.privacy_policy));
 
-        SpannableString spannableString = BraveRewardsHelper.tosSpannableString(
+        SpannableString spannableString = LuxxleRewardsHelper.tosSpannableString(
                 termsOfServiceText, R.color.terms_of_service_text_color);
         proceedTextView.setText(spannableString);
     }

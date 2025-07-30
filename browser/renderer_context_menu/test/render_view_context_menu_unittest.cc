@@ -7,7 +7,7 @@
 
 #include <optional>
 
-#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/app/luxxle_command_ids.h"
 #include "luxxle/components/ai_chat/core/common/pref_names.h"
 #include "chrome/browser/autocomplete/autocomplete_classifier_factory.h"
 #include "chrome/browser/autocomplete/chrome_autocomplete_provider_client.h"
@@ -58,9 +58,9 @@ std::unique_ptr<KeyedService> BuildProtocolHandlerRegistry(
 
 }  // namespace
 
-class BraveRenderViewContextMenuMock : public BraveRenderViewContextMenu {
+class LuxxleRenderViewContextMenuMock : public LuxxleRenderViewContextMenu {
  public:
-  using BraveRenderViewContextMenu::BraveRenderViewContextMenu;
+  using LuxxleRenderViewContextMenu::LuxxleRenderViewContextMenu;
 
   void Show() override {}
 
@@ -70,25 +70,25 @@ class BraveRenderViewContextMenuMock : public BraveRenderViewContextMenu {
     if (browser_) {
       return browser_;
     }
-    return BraveRenderViewContextMenu::GetBrowser();
+    return LuxxleRenderViewContextMenu::GetBrowser();
   }
 
  private:
   raw_ptr<Browser> browser_ = nullptr;
 };
 
-class BraveRenderViewContextMenuTest : public testing::Test {
+class LuxxleRenderViewContextMenuTest : public testing::Test {
  protected:
-  BraveRenderViewContextMenuTest()
+  LuxxleRenderViewContextMenuTest()
       : testing_local_state_(TestingBrowserProcess::GetGlobal()) {}
   content::WebContents* GetWebContents() { return web_contents_.get(); }
 
   // Returns a test context menu.
-  std::unique_ptr<BraveRenderViewContextMenuMock> CreateContextMenu(
+  std::unique_ptr<LuxxleRenderViewContextMenuMock> CreateContextMenu(
       content::WebContents* web_contents,
       content::ContextMenuParams params,
       bool is_pwa_browser = false) {
-    auto menu = std::make_unique<BraveRenderViewContextMenuMock>(
+    auto menu = std::make_unique<LuxxleRenderViewContextMenuMock>(
         *web_contents->GetPrimaryMainFrame(), params);
 
     Browser::CreateParams create_params(
@@ -149,7 +149,7 @@ class BraveRenderViewContextMenuTest : public testing::Test {
   std::unique_ptr<content::WebContents> web_contents_;
 };
 
-TEST_F(BraveRenderViewContextMenuTest, MenuForPlainText) {
+TEST_F(LuxxleRenderViewContextMenuTest, MenuForPlainText) {
   content::ContextMenuParams params = CreateSelectedTextParams(u"plain text");
   auto context_menu = CreateContextMenu(GetWebContents(), params);
   EXPECT_TRUE(context_menu);
@@ -158,8 +158,8 @@ TEST_F(BraveRenderViewContextMenuTest, MenuForPlainText) {
   EXPECT_FALSE(clean_link_index.has_value());
 }
 
-TEST_F(BraveRenderViewContextMenuTest, MenuForSelectedUrl) {
-  content::ContextMenuParams params = CreateSelectedTextParams(u"brave.com");
+TEST_F(LuxxleRenderViewContextMenuTest, MenuForSelectedUrl) {
+  content::ContextMenuParams params = CreateSelectedTextParams(u"luxxle.com");
   auto context_menu = CreateContextMenu(GetWebContents(), params);
   EXPECT_TRUE(context_menu);
   std::optional<size_t> clean_link_index =
@@ -168,9 +168,9 @@ TEST_F(BraveRenderViewContextMenuTest, MenuForSelectedUrl) {
   EXPECT_TRUE(context_menu->IsCommandIdEnabled(IDC_COPY_CLEAN_LINK));
 }
 
-TEST_F(BraveRenderViewContextMenuTest, MenuForLink) {
+TEST_F(LuxxleRenderViewContextMenuTest, MenuForLink) {
   content::ContextMenuParams params =
-      CreateLinkParams(GURL("https://brave.com"));
+      CreateLinkParams(GURL("https://luxxle.com"));
   auto context_menu = CreateContextMenu(GetWebContents(), params);
   EXPECT_TRUE(context_menu);
   std::optional<size_t> clean_link_index =
@@ -179,11 +179,11 @@ TEST_F(BraveRenderViewContextMenuTest, MenuForLink) {
   EXPECT_TRUE(context_menu->IsCommandIdEnabled(IDC_COPY_CLEAN_LINK));
 }
 
-TEST_F(BraveRenderViewContextMenuTest, MenuForAIChat) {
+TEST_F(LuxxleRenderViewContextMenuTest, MenuForAIChat) {
   content::ContextMenuParams params = CreateSelectedTextParams(u"hello");
 
   for (auto enabled : {true, false}) {
-    GetPrefs()->SetBoolean(ai_chat::prefs::kBraveAIChatContextMenuEnabled,
+    GetPrefs()->SetBoolean(ai_chat::prefs::kLuxxleAIChatContextMenuEnabled,
                            enabled);
     auto context_menu = CreateContextMenu(GetWebContents(), params);
     EXPECT_TRUE(context_menu);
@@ -196,10 +196,10 @@ TEST_F(BraveRenderViewContextMenuTest, MenuForAIChat) {
   }
 }
 
-TEST_F(BraveRenderViewContextMenuTest, MenuForAIChat_PWA) {
+TEST_F(LuxxleRenderViewContextMenuTest, MenuForAIChat_PWA) {
   content::ContextMenuParams params = CreateSelectedTextParams(u"hello");
 
-  GetPrefs()->SetBoolean(ai_chat::prefs::kBraveAIChatContextMenuEnabled, true);
+  GetPrefs()->SetBoolean(ai_chat::prefs::kLuxxleAIChatContextMenuEnabled, true);
   auto context_menu = CreateContextMenu(GetWebContents(), params, true);
   EXPECT_TRUE(context_menu);
   std::optional<size_t> ai_chat_index =

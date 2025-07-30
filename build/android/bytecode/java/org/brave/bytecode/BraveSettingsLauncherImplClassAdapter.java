@@ -3,19 +3,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveSettingsLauncherImplClassAdapter extends BraveClassVisitor {
+public class LuxxleSettingsLauncherImplClassAdapter extends LuxxleClassVisitor {
     static String sSettingsNavigationImplClassName =
             "org/chromium/chrome/browser/settings/SettingsNavigationImpl";
-    static String sBraveSettingsLauncherImplClassName =
-            "org/chromium/chrome/browser/settings/BraveSettingsLauncherImpl";
+    static String sLuxxleSettingsLauncherImplClassName =
+            "org/chromium/chrome/browser/settings/LuxxleSettingsLauncherImpl";
 
-    public BraveSettingsLauncherImplClassAdapter(ClassVisitor visitor) {
+    public LuxxleSettingsLauncherImplClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sSettingsNavigationImplClassName, sBraveSettingsLauncherImplClassName);
+        redirectConstructor(sSettingsNavigationImplClassName, sLuxxleSettingsLauncherImplClassName);
     }
 }

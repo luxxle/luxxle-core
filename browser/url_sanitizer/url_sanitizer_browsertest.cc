@@ -8,9 +8,9 @@
 #include "base/path_service.h"
 #include "base/strings/string_util.h"
 #include "base/test/scoped_feature_list.h"
-#include "luxxle/browser/brave_browser_features.h"
+#include "luxxle/browser/luxxle_browser_features.h"
 #include "luxxle/browser/url_sanitizer/url_sanitizer_service_factory.h"
-#include "luxxle/components/constants/brave_paths.h"
+#include "luxxle/components/constants/luxxle_paths.h"
 #include "luxxle/components/url_sanitizer/browser/url_sanitizer_service.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
@@ -59,9 +59,9 @@ class URLSanitizerTestBase : public InProcessBrowserTest {
  public:
   explicit URLSanitizerTestBase(bool enable_feature) {
     if (enable_feature) {
-      feature_list_.InitAndEnableFeature(features::kBraveCopyCleanLinkFromJs);
+      feature_list_.InitAndEnableFeature(features::kLuxxleCopyCleanLinkFromJs);
     } else {
-      feature_list_.InitAndDisableFeature(features::kBraveCopyCleanLinkFromJs);
+      feature_list_.InitAndDisableFeature(features::kLuxxleCopyCleanLinkFromJs);
     }
   }
 
@@ -179,7 +179,7 @@ class URLSanitizerTestBase : public InProcessBrowserTest {
     };
 
     const bool should_sanitize =
-        base::FeatureList::IsEnabled(features::kBraveCopyCleanLinkFromJs);
+        base::FeatureList::IsEnabled(features::kLuxxleCopyCleanLinkFromJs);
 
     const std::string sanitized = "https://youtu.be/B";
     const std::string unsanitized = "hTtPs://Youtu.Be/B?si=oLb865I64uJlLRJX";

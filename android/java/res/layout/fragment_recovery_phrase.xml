@@ -76,12 +76,12 @@
             android:clickable="true"
             android:focusable="true"
             android:padding="16dp"
-            android:text="@string/brave_wallet_click_to_copy"
+            android:text="@string/luxxle_wallet_click_to_copy"
             android:textSize="16sp"
             android:textColor="@color/text_interactive" />
 
         <androidx.appcompat.widget.AppCompatButton
-            style="@style/BraveWalletOnboardingButton"
+            style="@style/LuxxleWalletOnboardingButton"
             android:id="@+id/button_recovery_phrase_continue"
             android:layout_above="@+id/skip"
             android:layout_width="match_parent"

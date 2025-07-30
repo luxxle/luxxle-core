@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#ifndef LUXXLE_BROWSER_BRAVE_BROWSER_FEATURES_H_
-#define LUXXLE_BROWSER_BRAVE_BROWSER_FEATURES_H_
+#ifndef LUXXLE_BROWSER_LUXXLE_BROWSER_FEATURES_H_
+#define LUXXLE_BROWSER_LUXXLE_BROWSER_FEATURES_H_
 
 #include <string>
 
@@ -13,19 +13,19 @@
 
 namespace features {
 
-BASE_DECLARE_FEATURE(kBraveNewTabPageRefreshEnabled);
-BASE_DECLARE_FEATURE(kBraveCleanupSessionCookiesOnSessionRestore);
-BASE_DECLARE_FEATURE(kBraveCopyCleanLinkByDefault);
-BASE_DECLARE_FEATURE(kBraveCopyCleanLinkFromJs);
-BASE_DECLARE_FEATURE(kBraveOverrideDownloadDangerLevel);
-BASE_DECLARE_FEATURE(kBraveWebViewRoundedCorners);
-BASE_DECLARE_FEATURE(kBraveDayZeroExperiment);
+BASE_DECLARE_FEATURE(kLuxxleNewTabPageRefreshEnabled);
+BASE_DECLARE_FEATURE(kLuxxleCleanupSessionCookiesOnSessionRestore);
+BASE_DECLARE_FEATURE(kLuxxleCopyCleanLinkByDefault);
+BASE_DECLARE_FEATURE(kLuxxleCopyCleanLinkFromJs);
+BASE_DECLARE_FEATURE(kLuxxleOverrideDownloadDangerLevel);
+BASE_DECLARE_FEATURE(kLuxxleWebViewRoundedCorners);
+BASE_DECLARE_FEATURE(kLuxxleDayZeroExperiment);
 #if BUILDFLAG(IS_ANDROID)
 BASE_DECLARE_FEATURE(kNewAndroidOnboarding);
 #endif  // BUILDFLAG(IS_ANDROID)
 
-extern const base::FeatureParam<std::string> kBraveDayZeroExperimentVariant;
+extern const base::FeatureParam<std::string> kLuxxleDayZeroExperimentVariant;
 
 }  // namespace features
 
-#endif  // LUXXLE_BROWSER_BRAVE_BROWSER_FEATURES_H_
+#endif  // LUXXLE_BROWSER_LUXXLE_BROWSER_FEATURES_H_

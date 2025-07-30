@@ -12,7 +12,7 @@
 #include "base/strings/string_util.h"
 #include "base/strings/utf_string_conversions.h"
 #include "luxxle/browser/luxxle_browser_process.h"
-#include "luxxle/components/brave_shields/content/browser/ad_block_service.h"
+#include "luxxle/components/luxxle_shields/content/browser/ad_block_service.h"
 #include "luxxle/grit/luxxle_generated_resources.h"
 #include "content/public/browser/browser_context.h"
 #include "content/public/browser/web_contents.h"

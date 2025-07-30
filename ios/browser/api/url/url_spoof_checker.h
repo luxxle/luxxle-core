@@ -13,41 +13,41 @@ NS_ASSUME_NONNULL_BEGIN
 /// The |SkeletonType| and |TopDomainEntry| are mirrored in trie_entry.h. These
 /// are used to insert and read nodes from the Trie.
 /// The type of skeleton in the trie node.
-typedef NSInteger BraveSpoofCheckerSkeletonType NS_TYPED_ENUM
+typedef NSInteger LuxxleSpoofCheckerSkeletonType NS_TYPED_ENUM
     NS_SWIFT_NAME(URLSpoofChecker.SkeletonType);
-OBJC_EXPORT BraveSpoofCheckerSkeletonType const
-    BraveSpoofCheckerSkeletonTypeFull;
-OBJC_EXPORT BraveSpoofCheckerSkeletonType const
-    BraveSpoofCheckerSkeletonTypeSeparatorsRemoved;
+OBJC_EXPORT LuxxleSpoofCheckerSkeletonType const
+    LuxxleSpoofCheckerSkeletonTypeFull;
+OBJC_EXPORT LuxxleSpoofCheckerSkeletonType const
+    LuxxleSpoofCheckerSkeletonTypeSeparatorsRemoved;
 
-typedef NSInteger BraveSpoofCheckerLookalikeURLMatchType NS_TYPED_ENUM
+typedef NSInteger LuxxleSpoofCheckerLookalikeURLMatchType NS_TYPED_ENUM
     NS_SWIFT_NAME(URLSpoofChecker.LookalikeURLMatchType);
 
-OBJC_EXPORT BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeNone;
-OBJC_EXPORT BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeSkeletonMatchSiteEngagement;
-OBJC_EXPORT BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeEditDistance;
-OBJC_EXPORT BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeEditDistanceSiteEngagement;
-OBJC_EXPORT BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeTargetEmbedding;
-OBJC_EXPORT BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeSkeletonMatchTop500;
-OBJC_EXPORT BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeSkeletonMatchTop5k;
-OBJC_EXPORT BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeTargetEmbeddingForSafetyTips;
+OBJC_EXPORT LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeNone;
+OBJC_EXPORT LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeSkeletonMatchSiteEngagement;
+OBJC_EXPORT LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeEditDistance;
+OBJC_EXPORT LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeEditDistanceSiteEngagement;
+OBJC_EXPORT LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeTargetEmbedding;
+OBJC_EXPORT LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeSkeletonMatchTop500;
+OBJC_EXPORT LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeSkeletonMatchTop5k;
+OBJC_EXPORT LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeTargetEmbeddingForSafetyTips;
 /// The domain name failed IDN spoof checks but didn't match a safe hostname.
 /// As a result, there is no URL to suggest to the user in the form of "Did
 /// you mean <url>?".
-OBJC_EXPORT BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeFailedSpoofChecks;
-OBJC_EXPORT BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeCharacterSwapSiteEngagement;
-OBJC_EXPORT BraveSpoofCheckerLookalikeURLMatchType const
-    BraveSpoofCheckerLookalikeURLMatchTypeCharacterSwapTop500;
+OBJC_EXPORT LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeFailedSpoofChecks;
+OBJC_EXPORT LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeCharacterSwapSiteEngagement;
+OBJC_EXPORT LuxxleSpoofCheckerLookalikeURLMatchType const
+    LuxxleSpoofCheckerLookalikeURLMatchTypeCharacterSwapTop500;
 
 OBJC_EXPORT
 NS_SWIFT_NAME(URLSpoofChecker.TopDomainEntry)
@@ -58,27 +58,27 @@ NS_SWIFT_NAME(URLSpoofChecker.TopDomainEntry)
 /// True if the domain is in the top 1000 bucket.
 @property(nonatomic, readonly) bool isTopBucket;
 /// Type of the skeleton stored in the trie node.
-@property(nonatomic, readonly) BraveSpoofCheckerSkeletonType skeletonType;
+@property(nonatomic, readonly) LuxxleSpoofCheckerSkeletonType skeletonType;
 @end
 
 OBJC_EXPORT
 NS_SWIFT_NAME(URLSpoofChecker.Result)
-@interface BraveURLSpoofCheckerResult : NSObject
+@interface LuxxleURLSpoofCheckerResult : NSObject
 - (instancetype)init NS_UNAVAILABLE;
 @property(nonatomic, readonly)
-    BraveSpoofCheckerLookalikeURLMatchType urlMatchType;
+    LuxxleSpoofCheckerLookalikeURLMatchType urlMatchType;
 @property(nonatomic, readonly, nullable) NSURL* suggestedURL;
 @end
 
 OBJC_EXPORT
 NS_SWIFT_NAME(URLSpoofChecker)
-@interface BraveURLSpoofChecker : NSObject
+@interface LuxxleURLSpoofChecker : NSObject
 - (instancetype)init NS_UNAVAILABLE;
 + (URLSpoofCheckerTopDomainEntry*)getSimilarTopDomain:(NSString*)hostname;
 + (URLSpoofCheckerTopDomainEntry*)lookupSkeletonInTopDomains:
     (NSString*)hostname;
 + (NSArray<NSString*>*)getSkeletons:(NSString*)url;
-+ (BraveURLSpoofCheckerResult*)isLookalikeURL:(NSString*)url;
++ (LuxxleURLSpoofCheckerResult*)isLookalikeURL:(NSString*)url;
 @end
 
 NS_ASSUME_NONNULL_END

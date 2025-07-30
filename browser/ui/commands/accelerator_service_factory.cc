@@ -9,7 +9,7 @@
 #include <utility>
 
 #include "base/no_destructor.h"
-#include "luxxle/browser/ui/brave_browser_window.h"
+#include "luxxle/browser/ui/luxxle_browser_window.h"
 #include "luxxle/browser/ui/commands/accelerator_service.h"
 #include "luxxle/browser/ui/commands/default_accelerators.h"
 #include "luxxle/components/commands/browser/accelerator_pref_manager.h"

@@ -35,7 +35,7 @@ namespace views {
 class WebView;
 }  // namespace views
 
-class BraveBrowserView;
+class LuxxleBrowserView;
 class Browser;
 class ContentsWebView;
 class DevToolsContentsResizingStrategy;
@@ -54,7 +54,7 @@ class SplitView : public views::View,
                   public SplitViewBrowserDataObserver {
   METADATA_HEADER(SplitView, views::View)
  public:
-  using BrowserViewKey = base::PassKey<BraveBrowserView>;
+  using BrowserViewKey = base::PassKey<LuxxleBrowserView>;
 
   static constexpr int kInactiveBorderThickness = 1;
   static constexpr int kBorderThickness = 2;

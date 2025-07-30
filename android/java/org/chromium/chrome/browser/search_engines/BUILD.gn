@@ -9,12 +9,12 @@ import("//third_party/jni_zero/jni_zero.gni")
 android_library("java") {
   srcjar_deps = [ ":jni_headers" ]
   sources = [
-    "settings/BraveBaseSearchEngineAdapter.java",
-    "settings/BravePrivateSearchEnginePreference.java",
-    "settings/BraveSearchEngineAdapter.java",
-    "settings/BraveSearchEnginePrefHelper.java",
-    "settings/BraveSearchEnginePreference.java",
-    "settings/BraveStandardSearchEnginePreference.java",
+    "settings/LuxxleBaseSearchEngineAdapter.java",
+    "settings/LuxxlePrivateSearchEnginePreference.java",
+    "settings/LuxxleSearchEngineAdapter.java",
+    "settings/LuxxleSearchEnginePrefHelper.java",
+    "settings/LuxxleSearchEnginePreference.java",
+    "settings/LuxxleStandardSearchEnginePreference.java",
   ]
   deps = [
     ":java_resources",
@@ -35,12 +35,12 @@ android_library("java") {
 }
 
 generate_jni("jni_headers") {
-  sources = [ "settings/BraveSearchEnginePrefHelper.java" ]
+  sources = [ "settings/LuxxleSearchEnginePrefHelper.java" ]
 }
 
 android_resources("java_resources") {
   deps = [
-    "//luxxle/build/android:android_brave_strings_grd",
+    "//luxxle/build/android:android_luxxle_strings_grd",
     "//chrome/browser/search_engines/android:java_resources",
   ]
 }

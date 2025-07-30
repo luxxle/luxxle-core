@@ -14,11 +14,11 @@ def GetSrcDir() -> str:
                    os.pardir))
 
 
-def GetBraveDir() -> str:
+def GetLuxxleDir() -> str:
   return os.path.join(GetSrcDir(), 'luxxle')
 
 
-def GetBravePerfDir() -> str:
+def GetLuxxlePerfDir() -> str:
   return os.path.join(GetSrcDir(), 'luxxle', 'tools', 'perf')
 
 
@@ -26,28 +26,28 @@ def GetChromiumPerfDir() -> str:
   return os.path.join(GetSrcDir(), 'tools', 'perf')
 
 
-def GetBravePerfProfileDir() -> str:
-  return os.path.join(GetBravePerfDir(), 'profiles')
+def GetLuxxlePerfProfileDir() -> str:
+  return os.path.join(GetLuxxlePerfDir(), 'profiles')
 
 
-def GetBravePerfConfigDir() -> str:
-  return os.path.join(GetBravePerfDir(), 'configs')
+def GetLuxxlePerfConfigDir() -> str:
+  return os.path.join(GetLuxxlePerfDir(), 'configs')
 
 
-def GetBravePerfBucket() -> str:
-  return 'brave-telemetry'
+def GetLuxxlePerfBucket() -> str:
+  return 'luxxle-telemetry'
 
 
 def GetDepotToolsDir() -> str:
-  return os.path.join(GetBraveDir(), 'vendor', 'depot_tools')
+  return os.path.join(GetLuxxleDir(), 'vendor', 'depot_tools')
 
 
 def GetPyJson5Dir() -> str:
   return os.path.join(GetSrcDir(), 'third_party', 'pyjson5', 'src')
 
 
-def GetBraveScriptDir() -> str:
-  return os.path.join(GetBraveDir(), 'script')
+def GetLuxxleScriptDir() -> str:
+  return os.path.join(GetLuxxleDir(), 'script')
 
 
 def GetCatapultDir() -> str:
@@ -68,7 +68,7 @@ def GetAdbPath() -> str:
 
 
 def GetPageSetsDataPath(filename: str) -> str:
-  return os.path.join(GetBravePerfDir(), 'brave_page_sets', 'data', filename)
+  return os.path.join(GetLuxxlePerfDir(), 'luxxle_page_sets', 'data', filename)
 
 
 @contextlib.contextmanager

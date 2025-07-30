@@ -3,23 +3,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveStatusBarColorControllerClassAdapter extends BraveClassVisitor {
+public class LuxxleStatusBarColorControllerClassAdapter extends LuxxleClassVisitor {
     static String sStatusBarColorControllerClassName =
             "org/chromium/chrome/browser/ui/system/StatusBarColorController";
-    static String sBraveStatusBarColorControllerClassName =
-            "org/chromium/chrome/browser/ui/system/BraveStatusBarColorController";
+    static String sLuxxleStatusBarColorControllerClassName =
+            "org/chromium/chrome/browser/ui/system/LuxxleStatusBarColorController";
 
-    public BraveStatusBarColorControllerClassAdapter(ClassVisitor visitor) {
+    public LuxxleStatusBarColorControllerClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         redirectConstructor(
-                sStatusBarColorControllerClassName, sBraveStatusBarColorControllerClassName);
+                sStatusBarColorControllerClassName, sLuxxleStatusBarColorControllerClassName);
 
-        deleteField(sBraveStatusBarColorControllerClassName, "mBackgroundColorForNtp");
+        deleteField(sLuxxleStatusBarColorControllerClassName, "mBackgroundColorForNtp");
         makeProtectedField(sStatusBarColorControllerClassName, "mBackgroundColorForNtp");
     }
 }

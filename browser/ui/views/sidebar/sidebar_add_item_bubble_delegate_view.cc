@@ -10,13 +10,13 @@
 
 #include "base/memory/raw_ptr.h"
 #include "base/strings/utf_string_conversions.h"
-#include "luxxle/browser/ui/brave_browser.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
+#include "luxxle/browser/ui/luxxle_browser.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
 #include "luxxle/browser/ui/sidebar/sidebar_controller.h"
 #include "luxxle/browser/ui/sidebar/sidebar_service_factory.h"
 #include "luxxle/browser/ui/sidebar/sidebar_utils.h"
 #include "luxxle/components/sidebar/browser/sidebar_service.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "chrome/browser/ui/browser_window/public/browser_window_features.h"
 #include "chrome/browser/ui/tabs/tab_strip_model.h"
 #include "chrome/browser/ui/views/chrome_layout_provider.h"
@@ -104,7 +104,7 @@ END_METADATA
 
 // static
 views::Widget* SidebarAddItemBubbleDelegateView::Create(
-    BraveBrowser* browser,
+    LuxxleBrowser* browser,
     views::View* anchor_view) {
   auto* delegate = new SidebarAddItemBubbleDelegateView(browser, anchor_view);
   auto* bubble = views::BubbleDialogDelegateView::CreateBubble(delegate);
@@ -121,7 +121,7 @@ views::Widget* SidebarAddItemBubbleDelegateView::Create(
 }
 
 SidebarAddItemBubbleDelegateView::SidebarAddItemBubbleDelegateView(
-    BraveBrowser* browser,
+    LuxxleBrowser* browser,
     views::View* anchor_view)
     : BubbleDialogDelegateView(anchor_view,
                                views::BubbleBorder::LEFT_TOP,

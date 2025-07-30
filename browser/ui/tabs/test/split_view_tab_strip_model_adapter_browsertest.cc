@@ -26,7 +26,7 @@
 class SplitViewTabStripModelAdapterBrowserTest : public InProcessBrowserTest {
  public:
   SplitViewTabStripModelAdapterBrowserTest()
-      : feature_list_(tabs::features::kBraveSplitView) {}
+      : feature_list_(tabs::features::kLuxxleSplitView) {}
   ~SplitViewTabStripModelAdapterBrowserTest() override = default;
 
   TabStripModel* tab_strip_model() const {

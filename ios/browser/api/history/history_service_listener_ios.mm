@@ -1,15 +1,15 @@
-/* Copyright (c) 2021 The Brave Authors. All rights reserved.
+/* Copyright (c) 2021 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/ios/browser/api/history/history_service_listener_ios.h"
+#include "luxxle/ios/browser/api/history/history_service_listener_ios.h"
 
 #include "base/check.h"
 #include "base/memory/raw_ptr.h"
 #include "base/strings/sys_string_conversions.h"
-#include "brave/ios/browser/api/history/brave_history_api.h"
-#include "brave/ios/browser/api/history/brave_history_observer.h"
+#include "luxxle/ios/browser/api/history/luxxle_history_api.h"
+#include "luxxle/ios/browser/api/history/luxxle_history_observer.h"
 #include "components/history/core/browser/history_service.h"
 #include "components/history/core/browser/history_service_observer.h"
 #include "net/base/apple/url_conversions.h"
@@ -111,7 +111,7 @@ void HistoryServiceListenerIOS::OnHistoryDeletions(
 }
 
 }  // namespace ios
-}  // namespace brave
+}  // namespace luxxle
 
 @interface HistoryServiceListenerImpl () {
   std::unique_ptr<luxxle::ios::HistoryServiceListenerIOS> observer_;

@@ -14,16 +14,16 @@
 # import("//luxxle/components/web_discovery/buildflags/buildflags.gni")
 import("//third_party/widevine/cdm/widevine.gni")
 
-brave_chrome_renderer_sources = [
-  "//luxxle/renderer/brave_content_renderer_client.cc",
-  "//luxxle/renderer/brave_content_renderer_client.h",
-  "//luxxle/renderer/brave_render_frame_observer.cc",
-  "//luxxle/renderer/brave_render_frame_observer.h",
-  "//luxxle/renderer/brave_render_thread_observer.cc",
-  "//luxxle/renderer/brave_render_thread_observer.h",
+luxxle_chrome_renderer_sources = [
+  "//luxxle/renderer/luxxle_content_renderer_client.cc",
+  "//luxxle/renderer/luxxle_content_renderer_client.h",
+  "//luxxle/renderer/luxxle_render_frame_observer.cc",
+  "//luxxle/renderer/luxxle_render_frame_observer.h",
+  "//luxxle/renderer/luxxle_render_thread_observer.cc",
+  "//luxxle/renderer/luxxle_render_thread_observer.h",
 ]
 
-brave_chrome_renderer_deps = [
+luxxle_chrome_renderer_deps = [
   "//luxxle/common:mojo_bindings",
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/ai_chat/core/common",
@@ -60,35 +60,35 @@ brave_chrome_renderer_deps = [
 
 # Commented out: enable_tor flag not defined - using Chromium defaults instead
 # if (enable_tor) {
-#   brave_chrome_renderer_deps += [ "//luxxle/components/tor/renderer" ]
+#   luxxle_chrome_renderer_deps += [ "//luxxle/components/tor/renderer" ]
 # }
 
   # Commented out: removed components dependency - using Chromium defaults instead
-  # brave_chrome_renderer_deps += [
+  # luxxle_chrome_renderer_deps += [
   #   # component dependencies would go here
   # ]
 
 # Commented out: enable_ai_rewriter flag not defined - using Chromium defaults instead
 # if (enable_ai_rewriter) {
-#   brave_chrome_renderer_deps += [ "//luxxle/components/ai_rewriter/renderer" ]
+#   luxxle_chrome_renderer_deps += [ "//luxxle/components/ai_rewriter/renderer" ]
 # }
 
 if (is_android) {
-  brave_chrome_renderer_deps += [
+  luxxle_chrome_renderer_deps += [
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_mobile_subscription/renderer/android:android",
+    # "//luxxle/components/luxxle_mobile_subscription/renderer/android:android",
   ]
 }
 
 # Commented out: enable_web_discovery_native flag not defined - using Chromium defaults instead
 # if (enable_web_discovery_native) {
-#   brave_chrome_renderer_deps += [
+#   luxxle_chrome_renderer_deps += [
 #     "//luxxle/components/web_discovery/common",
 #     "//luxxle/components/web_discovery/renderer",
 #   ]
 # }
 
-brave_chrome_renderer_deps += [ "//third_party/widevine/cdm:headers" ]
+luxxle_chrome_renderer_deps += [ "//third_party/widevine/cdm:headers" ]
 
 # do not add anything else here
-brave_chrome_renderer_public_deps = []
+luxxle_chrome_renderer_public_deps = []

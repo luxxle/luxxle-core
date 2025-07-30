@@ -10,7 +10,7 @@
 
 #include "base/functional/bind.h"
 #include "luxxle/app/vector_icons/vector_icons.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "chrome/browser/ui/views/chrome_layout_provider.h"
 #include "ui/base/l10n/l10n_util.h"
 #include "ui/base/metadata/metadata_impl_macros.h"

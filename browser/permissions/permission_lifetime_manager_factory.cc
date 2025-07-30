@@ -52,7 +52,7 @@ PermissionLifetimeManagerFactory::BuildServiceInstanceForBrowserContext(
   }
   std::unique_ptr<permissions::PermissionOriginLifetimeMonitor>
       permission_origin_lifetime_monitor;
-  if (base::FeatureList::IsEnabled(net::features::kBraveEphemeralStorage)) {
+  if (base::FeatureList::IsEnabled(net::features::kLuxxleEphemeralStorage)) {
     permission_origin_lifetime_monitor =
         std::make_unique<permissions::PermissionOriginLifetimeMonitorImpl>(
             context);

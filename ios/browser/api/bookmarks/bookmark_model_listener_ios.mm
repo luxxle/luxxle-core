@@ -1,9 +1,9 @@
-/* Copyright (c) 2020 The Brave Authors. All rights reserved.
+/* Copyright (c) 2020 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/ios/browser/api/bookmarks/bookmark_model_listener_ios.h"
+#include "luxxle/ios/browser/api/bookmarks/bookmark_model_listener_ios.h"
 
 #include <memory>
 
@@ -11,7 +11,7 @@
 #include "base/compiler_specific.h"
 #include "base/memory/raw_ptr.h"
 #include "base/notreached.h"
-#include "brave/ios/browser/api/bookmarks/brave_bookmarks_api.h"
+#include "luxxle/ios/browser/api/bookmarks/luxxle_bookmarks_api.h"
 #include "components/bookmarks/browser/bookmark_model.h"
 #include "components/bookmarks/browser/bookmark_model_observer.h"
 
@@ -142,7 +142,7 @@ void BookmarkModelListener::BookmarkAllUserNodesRemoved(
   }
 }
 }  // namespace ios
-}  // namespace brave
+}  // namespace luxxle
 
 @interface BookmarkModelListenerImpl () {
   std::unique_ptr<luxxle::ios::BookmarkModelListener> observer_;

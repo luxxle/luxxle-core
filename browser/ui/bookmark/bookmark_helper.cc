@@ -36,4 +36,4 @@ void SetBookmarkState(BookmarkBarState state, PrefService* prefs) {
   }
 }
 
-}  // namespace brave
+}  // namespace luxxle

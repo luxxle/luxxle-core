@@ -10,10 +10,10 @@
 #include "base/feature_list.h"
 #include "base/metrics/histogram_macros.h"
 #include "base/strings/utf_string_conversions.h"
-#include "luxxle/browser/brave_browser_features.h"
+#include "luxxle/browser/luxxle_browser_features.h"
 #include "luxxle/common/importer/importer_constants.h"
-#include "luxxle/components/brave_education/education_urls.h"
-#include "luxxle/components/brave_education/features.h"
+#include "luxxle/components/luxxle_education/education_urls.h"
+#include "luxxle/components/luxxle_education/features.h"
 #include "luxxle/components/constants/pref_names.h"
 #include "luxxle/components/p3a/pref_names.h"
 #include "luxxle/components/web_discovery/buildflags/buildflags.h"
@@ -36,7 +36,7 @@ constexpr char16_t kChromeDevMacBrowserName[] = u"Chrome Dev";
 constexpr char16_t kChromeBetaLinuxBrowserName[] = u"Google Chrome (beta)";
 constexpr char16_t kChromeDevLinuxBrowserName[] = u"Google Chrome (unstable)";
 constexpr char kP3AOnboardingHistogramName[] =
-    "Brave.Welcome.InteractionStatus.2";
+    "Luxxle.Welcome.InteractionStatus.2";
 constexpr size_t kMaxP3AOnboardingPhases = 3;
 
 // What was the last screen that you viewed during the browser onboarding
@@ -66,22 +66,22 @@ bool IsChromeDev(const std::u16string& browser_name) {
 }
 
 bool ShouldRedirectToGettingStartedPage() {
-  if (base::FeatureList::IsEnabled(features::kBraveDayZeroExperiment) &&
-      features::kBraveDayZeroExperimentVariant.Get() == "c") {
+  if (base::FeatureList::IsEnabled(features::kLuxxleDayZeroExperiment) &&
+      features::kLuxxleDayZeroExperimentVariant.Get() == "c") {
     return true;
   }
   return base::FeatureList::IsEnabled(
-      brave_education::features::kShowGettingStartedPage);
+      luxxle_education::features::kShowGettingStartedPage);
 }
 
 }  // namespace
 
 WelcomeDOMHandler::WelcomeDOMHandler(Profile* profile)
     : profile_(profile),
-      brave_education_server_checker_(*profile->GetPrefs(),
+      luxxle_education_server_checker_(*profile->GetPrefs(),
                                       profile->GetURLLoaderFactory()) {
   base::MakeRefCounted<shell_integration::DefaultSchemeClientWorker>(
-      GURL("https://browser-education.brave.com"))
+      GURL("https://browser-education.luxxle.com"))
       ->StartCheckIsDefaultAndGetDefaultClientName(
           base::BindOnce(&WelcomeDOMHandler::OnGetDefaultBrowser,
                          weak_ptr_factory_.GetWeakPtr()));
@@ -171,7 +171,7 @@ void WelcomeDOMHandler::HandleOpenSettingsPage(const base::Value::List& args) {
   Browser* browser = chrome::FindBrowserWithProfile(profile_);
   if (browser) {
     content::OpenURLParams open_params(
-        GURL("brave://settings/privacy"), content::Referrer(),
+        GURL("luxxle://settings/privacy"), content::Referrer(),
         WindowOpenDisposition::NEW_BACKGROUND_TAB,
         ui::PAGE_TRANSITION_AUTO_TOPLEVEL, false);
     browser->OpenURL(open_params, /*navigation_handle_callback=*/{});
@@ -206,8 +206,8 @@ void WelcomeDOMHandler::HandleGetWelcomeCompleteURL(
     OnGettingStartedServerCheck(callback_id, /* available */ false);
     return;
   }
-  brave_education_server_checker_.IsServerPageAvailable(
-      brave_education::EducationPageType::kGettingStarted,
+  luxxle_education_server_checker_.IsServerPageAvailable(
+      luxxle_education::EducationPageType::kGettingStarted,
       base::BindOnce(&WelcomeDOMHandler::OnGettingStartedServerCheck,
                      weak_ptr_factory_.GetWeakPtr(), callback_id));
 }
@@ -220,8 +220,8 @@ void WelcomeDOMHandler::OnGettingStartedServerCheck(
   }
   GURL url;
   if (available) {
-    url = brave_education::GetEducationPageBrowserURL(
-        brave_education::EducationPageType::kGettingStarted);
+    url = luxxle_education::GetEducationPageBrowserURL(
+        luxxle_education::EducationPageType::kGettingStarted);
   } else {
     url = GURL(chrome::kChromeUINewTabURL);
   }

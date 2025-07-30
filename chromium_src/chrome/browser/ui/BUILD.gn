@@ -1,0 +1,28 @@
+# Copyright (c) 2020 The Luxxle Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/.
+
+import("//luxxle/components/luxxle_webtorrent/browser/buildflags/buildflags.gni")
+import("//build/config/ui.gni")
+
+group("ui") {
+  deps = [ "//luxxle/components/luxxle_vpn/common/buildflags" ]
+
+  if (is_mac) {
+    deps += [ "//luxxle/browser:mac_features" ]
+  }
+
+  if (toolkit_views) {
+    deps += [
+      "//luxxle/components/ai_chat/content/browser",
+      "//luxxle/components/ai_chat/core/browser",
+      "//luxxle/components/ai_chat/core/common",
+      "//luxxle/components/sidebar/browser",
+    ]
+  }
+
+  if (enable_luxxle_webtorrent) {
+    deps += [ "//luxxle/components/luxxle_webtorrent/browser" ]
+  }
+}

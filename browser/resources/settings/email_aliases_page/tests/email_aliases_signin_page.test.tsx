@@ -1,4 +1,4 @@
-// Copyright (c) 2025 The Brave Authors. All rights reserved.
+// Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -10,7 +10,7 @@ import { MainEmailEntryForm } from '../content/email_aliases_signin_page'
 import {
   EmailAliasesServiceInterface,
   AuthenticationStatus
-} from 'gen/brave/components/email_aliases/email_aliases.mojom.m'
+} from 'gen/luxxle/components/email_aliases/email_aliases.mojom.m'
 import { clickLeoButton } from './test_utils'
 
 const mockEmailAliasesService: EmailAliasesServiceInterface = {

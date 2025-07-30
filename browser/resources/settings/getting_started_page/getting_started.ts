@@ -16,9 +16,9 @@ import '../pin_shortcut_page/pin_shortcut_page.js'
 // </if>
 
 
-export class BraveSettingsGettingStarted extends PolymerElement {
+export class LuxxleSettingsGettingStarted extends PolymerElement {
   static get is() {
-    return 'brave-settings-getting-started'
+    return 'luxxle-settings-getting-started'
   }
 
   static get template() {
@@ -26,4 +26,4 @@ export class BraveSettingsGettingStarted extends PolymerElement {
   }
 }
 
-customElements.define(BraveSettingsGettingStarted.is, BraveSettingsGettingStarted);
+customElements.define(LuxxleSettingsGettingStarted.is, LuxxleSettingsGettingStarted);

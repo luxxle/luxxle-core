@@ -1,16 +1,16 @@
-/* Copyright (c) 2022 The Brave Authors. All rights reserved.
+/* Copyright (c) 2022 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "brave/build/ios/mojom/public/base/base_values.h"
+#include "luxxle/build/ios/mojom/public/base/base_values.h"
 
 #include <optional>
 
 #include "base/json/json_reader.h"
 #include "base/json/json_writer.h"
 #include "base/strings/sys_string_conversions.h"
-#include "brave/build/ios/mojom/public/base/base_values+private.h"
+#include "luxxle/build/ios/mojom/public/base/base_values+private.h"
 
 #if !defined(__has_feature) || !__has_feature(objc_arc)
 #error "This file requires ARC support."
@@ -374,4 +374,4 @@ base::Value::Dict BaseValueDictFromNSDictionary(
   return dict;
 }
 
-}  // namespace brave
+}  // namespace luxxle

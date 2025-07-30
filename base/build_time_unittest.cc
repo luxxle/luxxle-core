@@ -29,7 +29,7 @@ TEST(BuildTime, InThePast) {
   EXPECT_LT(base::GetBuildTime(), base::Time::NowFromSystemTime());
 }
 
-// Brave-specific tests:
+// Luxxle-specific tests:
 
 TEST(BuildTime, TimestampIsNotZero) {
   EXPECT_NE(base::GetBuildTime(), base::Time::FromTimeT(0));

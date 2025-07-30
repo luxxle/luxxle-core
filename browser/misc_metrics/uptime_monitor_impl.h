@@ -24,7 +24,7 @@ class UsageClock;
 #endif
 
 inline constexpr char kBrowserOpenTimeHistogramName[] =
-    "Brave.Uptime.BrowserOpenTime.2";
+    "Luxxle.Uptime.BrowserOpenTime.2";
 
 class UptimeMonitorImpl : public UptimeMonitor {
  public:

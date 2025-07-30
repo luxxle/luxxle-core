@@ -16,9 +16,9 @@ import subprocess
 import sys
 import toml
 
-import brave_chromium_utils
+import luxxle_chromium_utils
 
-with brave_chromium_utils.sys_path('//tools/rust'):
+with luxxle_chromium_utils.sys_path('//tools/rust'):
     import update_rust
     CARGO = os.path.join(update_rust.RUST_TOOLCHAIN_OUT_DIR, 'bin',
                          'cargo' + ('.exe' if sys.platform == 'win32' else ''))

@@ -4,8 +4,8 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 # We have to do via sources to avoid circular dependencies.
-brave_browser_bookmarks_android_sources = [
-  "//luxxle/browser/bookmarks/android/java/src/org/chromium/chrome/browser/bookmarks/BraveBookmarkDelegate.java",
-  "//luxxle/browser/bookmarks/android/java/src/org/chromium/chrome/browser/bookmarks/BraveBookmarkModel.java",
-  "//luxxle/browser/bookmarks/android/java/src/org/chromium/chrome/browser/bookmarks/BraveBookmarkUiPrefs.java",
+luxxle_browser_bookmarks_android_sources = [
+  "//luxxle/browser/bookmarks/android/java/src/org/chromium/chrome/browser/bookmarks/LuxxleBookmarkDelegate.java",
+  "//luxxle/browser/bookmarks/android/java/src/org/chromium/chrome/browser/bookmarks/LuxxleBookmarkModel.java",
+  "//luxxle/browser/bookmarks/android/java/src/org/chromium/chrome/browser/bookmarks/LuxxleBookmarkUiPrefs.java",
 ]

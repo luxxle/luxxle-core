@@ -60,7 +60,7 @@ class SplitViewSeparator : public views::ResizeArea,
 
  private:
   FRIEND_TEST_ALL_PREFIXES(SideBySideEnabledBrowserTest,
-                           BraveMultiContentsViewTest);
+                           LuxxleMultiContentsViewTest);
   FRIEND_TEST_ALL_PREFIXES(SideBySideEnabledBrowserTest, SelectTabTest);
   FRIEND_TEST_ALL_PREFIXES(SplitViewBrowserTest,
                            TilingTwoTabsMakesSecondaryWebViewVisible);

@@ -5,9 +5,9 @@
 
 package org.chromium.chrome.browser.crypto_wallet.util;
 
-import org.chromium.brave_wallet.mojom.BraveWalletConstants;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.TransactionType;
+import org.chromium.luxxle_wallet.mojom.LuxxleWalletConstants;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.TransactionType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,16 +26,16 @@ public final class WalletConstants {
     // Android
     public static final String LINE_SEPARATOR = "line.separator";
 
-    // Brave
+    // Luxxle
     public static final String URL_SIGN_TRANSACTION_REQUEST =
-            "https://support.brave.com/hc/en-us/articles/4409513799693";
+            "https://support.luxxle.com/hc/en-us/articles/4409513799693";
 
     // NFT Auto Discovery
     public static final String NFT_DISCOVERY_LEARN_MORE_LINK =
-            "https://github.com/luxxle/brave-browser/wiki/NFT-Discovery";
+            "https://github.com/luxxle/luxxle-browser/wiki/NFT-Discovery";
 
     public static final String WALLET_HELP_CENTER =
-            "https://support.brave.com/hc/en-us/categories/360001059151-Brave-Wallet";
+            "https://support.luxxle.com/hc/en-us/categories/360001059151-Luxxle-Wallet";
 
     // Regex
     public static final String REGX_ANY_ETH_ADDRESS = ".*(0x[a-fA-F0-9]{40}).*";
@@ -54,7 +54,7 @@ public final class WalletConstants {
             "advance-tx-setting-intent-tx-nonce";
     public static final String ADVANCE_TX_SETTING_INTENT_RESULT_NONCE =
             "advance-tx-setting-intent-result-nonce";
-    // BraveWalletAddNetworksFragment
+    // LuxxleWalletAddNetworksFragment
     public static final String ADD_NETWORK_FRAGMENT_ARG_ACTIVE_NETWORK = "activeNetwork";
     public static final String ADD_NETWORK_FRAGMENT_ARG_CHAIN_ID = "chainId";
 
@@ -62,14 +62,14 @@ public final class WalletConstants {
     public static final String PREF_SHOW_BRIDGE_INFO_DIALOG = "pref_show_bridge_info_dialog";
 
     // To clear prefs while resetting wallet
-    public static final String[] BRAVE_WALLET_PREFS = {PREF_SHOW_BRIDGE_INFO_DIALOG};
+    public static final String[] LUXXLE_WALLET_PREFS = {PREF_SHOW_BRIDGE_INFO_DIALOG};
 
     public static List<String> SUPPORTED_TOP_LEVEL_CHAIN_IDS =
             Arrays.asList(
-                    BraveWalletConstants.MAINNET_CHAIN_ID,
-                    BraveWalletConstants.SOLANA_MAINNET,
-                    BraveWalletConstants.FILECOIN_MAINNET,
-                    BraveWalletConstants.BITCOIN_MAINNET);
+                    LuxxleWalletConstants.MAINNET_CHAIN_ID,
+                    LuxxleWalletConstants.SOLANA_MAINNET,
+                    LuxxleWalletConstants.FILECOIN_MAINNET,
+                    LuxxleWalletConstants.BITCOIN_MAINNET);
 
     // Solana
     public static final String SOL = "SOL";
@@ -95,8 +95,8 @@ public final class WalletConstants {
                     TransactionType.SOLANA_DAPP_SIGN_AND_SEND_TRANSACTION);
 
     // Solana instruction types
-    public static final String SOL_INS_SYSTEM = BraveWalletConstants.SOLANA_SYSTEM_PROGRAM_ID;
-    public static final String SOL_INS_TOKEN = BraveWalletConstants.SOLANA_TOKEN_PROGRAM_ID;
+    public static final String SOL_INS_SYSTEM = LuxxleWalletConstants.SOLANA_SYSTEM_PROGRAM_ID;
+    public static final String SOL_INS_TOKEN = LuxxleWalletConstants.SOLANA_TOKEN_PROGRAM_ID;
     public static final String SOL_INS_CONFIG = "Config1111111111111111111111111111111111111";
     public static final String SOL_INS_STAKE = "Stake11111111111111111111111111111111111111";
     public static final String SOL_INS_VOTE = "Vote111111111111111111111111111111111111111";
@@ -106,13 +106,13 @@ public final class WalletConstants {
 
     public static final Map<String, Integer> KNOWN_TEST_CHAINS_MAP =
             Map.of(
-                    BraveWalletConstants.SEPOLIA_CHAIN_ID, CoinType.ETH, //
-                    BraveWalletConstants.LOCALHOST_CHAIN_ID, CoinType.ETH, //
-                    BraveWalletConstants.SOLANA_TESTNET, CoinType.SOL, //
-                    BraveWalletConstants.SOLANA_DEVNET, CoinType.SOL, //
-                    BraveWalletConstants.FILECOIN_TESTNET, CoinType.FIL, //
-                    BraveWalletConstants.FILECOIN_ETHEREUM_TESTNET_CHAIN_ID, CoinType.ETH, //
-                    BraveWalletConstants.BITCOIN_TESTNET, CoinType.BTC); //
+                    LuxxleWalletConstants.SEPOLIA_CHAIN_ID, CoinType.ETH, //
+                    LuxxleWalletConstants.LOCALHOST_CHAIN_ID, CoinType.ETH, //
+                    LuxxleWalletConstants.SOLANA_TESTNET, CoinType.SOL, //
+                    LuxxleWalletConstants.SOLANA_DEVNET, CoinType.SOL, //
+                    LuxxleWalletConstants.FILECOIN_TESTNET, CoinType.FIL, //
+                    LuxxleWalletConstants.FILECOIN_ETHEREUM_TESTNET_CHAIN_ID, CoinType.ETH, //
+                    LuxxleWalletConstants.BITCOIN_TESTNET, CoinType.BTC); //
 
     public static final List<String> KNOWN_TEST_CHAIN_IDS =
             new ArrayList<>(KNOWN_TEST_CHAINS_MAP.keySet());

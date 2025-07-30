@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-#include "brave/sandbox/win/src/module_file_name_interception.h"
+#include "luxxle/sandbox/win/src/module_file_name_interception.h"
 
 #include <string.h>
 
@@ -29,32 +29,32 @@ void ReplaceAt(wchar_t* dest, size_t dest_size, std::wstring_view src) {
 }
 
 template <typename CharT>
-struct BraveToChrome;
+struct LuxxleToChrome;
 
 template <>
-struct BraveToChrome<char> {
-  static constexpr const std::string_view kBrave = "brave.exe";
+struct LuxxleToChrome<char> {
+  static constexpr const std::string_view kLuxxle = "luxxle.exe";
   static constexpr const std::string_view kChrome = "chrome.exe";
 };
 
 template <>
-struct BraveToChrome<wchar_t> {
-  static constexpr const std::wstring_view kBrave = L"brave.exe";
+struct LuxxleToChrome<wchar_t> {
+  static constexpr const std::wstring_view kLuxxle = L"luxxle.exe";
   static constexpr const std::wstring_view kChrome = L"chrome.exe";
 };
 
 template <typename CharT>
-struct TestBraveToChrome;
+struct TestLuxxleToChrome;
 
 template <>
-struct TestBraveToChrome<char> {
-  static constexpr const std::string_view kBrave = "brave_browser_tests.exe";
+struct TestLuxxleToChrome<char> {
+  static constexpr const std::string_view kLuxxle = "luxxle_browser_tests.exe";
   static constexpr const std::string_view kChrome = "chrome_browser_tests.exe";
 };
 
 template <>
-struct TestBraveToChrome<wchar_t> {
-  static constexpr const std::wstring_view kBrave = L"brave_browser_tests.exe";
+struct TestLuxxleToChrome<wchar_t> {
+  static constexpr const std::wstring_view kLuxxle = L"luxxle_browser_tests.exe";
   static constexpr const std::wstring_view kChrome =
       L"chrome_browser_tests.exe";
 };
@@ -64,20 +64,20 @@ std::optional<DWORD> PatchFilenameImpl(CharT* filename,
                                        DWORD length,
                                        DWORD size) {
   if (!base::EndsWith(std::basic_string_view<CharT>(filename, length),
-                      FromTo<CharT>::kBrave,
+                      FromTo<CharT>::kLuxxle,
                       base::CompareCase::INSENSITIVE_ASCII)) {
     return std::nullopt;
   }
 
-  constexpr DWORD kBraveLen = FromTo<CharT>::kBrave.length();
+  constexpr DWORD kLuxxleLen = FromTo<CharT>::kLuxxle.length();
   constexpr DWORD kChromeLen = FromTo<CharT>::kChrome.length();
-  static_assert(kBraveLen <= kChromeLen);
-  constexpr DWORD kLenDiff = kChromeLen - kBraveLen;
+  static_assert(kLuxxleLen <= kChromeLen);
+  constexpr DWORD kLenDiff = kChromeLen - kLuxxleLen;
 
   --size;  // space for null-terminator
 
-  const size_t brave_pos = length - kBraveLen;
-  ReplaceAt(UNSAFE_TODO(filename + brave_pos), size - brave_pos,
+  const size_t luxxle_pos = length - kLuxxleLen;
+  ReplaceAt(UNSAFE_TODO(filename + luxxle_pos), size - luxxle_pos,
             FromTo<CharT>::kChrome);
   if (size < length + kLenDiff) {
     ::SetLastError(ERROR_INSUFFICIENT_BUFFER);
@@ -89,10 +89,10 @@ std::optional<DWORD> PatchFilenameImpl(CharT* filename,
 
 template <typename CharT>
 DWORD PatchFilename(CharT* filename, DWORD length, DWORD size) {
-  if (auto r = PatchFilenameImpl<BraveToChrome>(filename, length, size)) {
+  if (auto r = PatchFilenameImpl<LuxxleToChrome>(filename, length, size)) {
     return *r;
   }
-  if (auto r = PatchFilenameImpl<TestBraveToChrome>(filename, length, size)) {
+  if (auto r = PatchFilenameImpl<TestLuxxleToChrome>(filename, length, size)) {
     return *r;
   }
   return length;

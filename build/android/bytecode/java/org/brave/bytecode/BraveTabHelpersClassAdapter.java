@@ -3,17 +3,17 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveTabHelpersClassAdapter extends BraveClassVisitor {
+public class LuxxleTabHelpersClassAdapter extends LuxxleClassVisitor {
     static String sTabHelpersClassName = "org/chromium/chrome/browser/tab/TabHelpers";
-    static String sBraveTabHelpersClassName = "org/chromium/chrome/browser/tab/BraveTabHelpers";
+    static String sLuxxleTabHelpersClassName = "org/chromium/chrome/browser/tab/LuxxleTabHelpers";
 
-    public BraveTabHelpersClassAdapter(ClassVisitor visitor) {
+    public LuxxleTabHelpersClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        changeMethodOwner(sTabHelpersClassName, "initTabHelpers", sBraveTabHelpersClassName);
+        changeMethodOwner(sTabHelpersClassName, "initTabHelpers", sLuxxleTabHelpersClassName);
     }
 }

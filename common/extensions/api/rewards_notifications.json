@@ -7,7 +7,7 @@
     "namespace": "rewardsNotifications",
     "description": "Use the <code>chrome.rewardsNotifications</code> API to receive rewards notifications.",
     "compiler_options": {
-      "implemented_in": "brave/browser/extensions/api/rewards_notifications_api.h"
+      "implemented_in": "luxxle/browser/extensions/api/rewards_notifications_api.h"
     },
     "events": [
       {

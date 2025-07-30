@@ -11,12 +11,12 @@
 namespace preferences {
 namespace features {
 
-BASE_FEATURE(kBraveBackgroundVideoPlayback,
-             "BraveBackgroundVideoPlayback",
+BASE_FEATURE(kLuxxleBackgroundVideoPlayback,
+             "LuxxleBackgroundVideoPlayback",
              base::FEATURE_ENABLED_BY_DEFAULT);
 
-BASE_FEATURE(kBravePictureInPictureForYouTubeVideos,
-             "BravePictureInPictureForYouTubeVideos",
+BASE_FEATURE(kLuxxlePictureInPictureForYouTubeVideos,
+             "LuxxlePictureInPictureForYouTubeVideos",
              base::FEATURE_ENABLED_BY_DEFAULT);
 
 }  // namespace features

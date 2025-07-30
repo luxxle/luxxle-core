@@ -27,13 +27,13 @@ def main():
         '@FRAMEWORK_DIR@': args.app_dir_name + '/' +
         args.framework_dir_in_app_dir,
         '@SHEBANG_GUARD@': '',
-        'GoogleUpdater': 'BraveUpdater',
+        'GoogleUpdater': 'LuxxleUpdater',
         'KSProductID': 'CFBundleIdentifier',
         'KSVersion': 'CFBundleShortVersionString',
         '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/'
-        'Contents/MacOS/ksadmin': '/Library/Application Support/BraveSoftware'
-        '/BraveUpdater/Current/BraveUpdater.app/'
-        'Contents/Helpers/BraveSoftwareUpdate.bundle/'
+        'Contents/MacOS/ksadmin': '/Library/Application Support/LuxxleSoftware'
+        '/LuxxleUpdater/Current/LuxxleUpdater.app/'
+        'Contents/Helpers/LuxxleSoftwareUpdate.bundle/'
         'Contents/Helpers/ksadmin'
     }
     for key, value in replacements.items():

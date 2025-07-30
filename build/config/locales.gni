@@ -7,9 +7,9 @@
 # locales that are not shipped on Desktop platforms. Browser UI cannot be
 # displayed in these languages in Chromium. We want to support some of these
 # locales, so the list below is used to reduce the |extended_locales| list.
-brave_extended_locales_exclusions = []
+luxxle_extended_locales_exclusions = []
 if (!is_ios) {
-  brave_extended_locales_exclusions += [
+  luxxle_extended_locales_exclusions += [
     "az",
     "ka",
     "km",

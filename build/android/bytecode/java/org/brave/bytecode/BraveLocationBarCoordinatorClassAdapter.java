@@ -3,25 +3,25 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveLocationBarCoordinatorClassAdapter extends BraveClassVisitor {
+public class LuxxleLocationBarCoordinatorClassAdapter extends LuxxleClassVisitor {
     static String sLocationBarCoordinator =
             "org/chromium/chrome/browser/omnibox/LocationBarCoordinator";
-    static String sBraveLocationBarCoordinator =
-            "org/chromium/chrome/browser/omnibox/BraveLocationBarCoordinator";
+    static String sLuxxleLocationBarCoordinator =
+            "org/chromium/chrome/browser/omnibox/LuxxleLocationBarCoordinator";
 
-    public BraveLocationBarCoordinatorClassAdapter(ClassVisitor visitor) {
+    public LuxxleLocationBarCoordinatorClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        redirectConstructor(sLocationBarCoordinator, sBraveLocationBarCoordinator);
+        redirectConstructor(sLocationBarCoordinator, sLuxxleLocationBarCoordinator);
 
-        deleteField(sBraveLocationBarCoordinator, "mLocationBarMediator");
+        deleteField(sLuxxleLocationBarCoordinator, "mLocationBarMediator");
         makeProtectedField(sLocationBarCoordinator, "mLocationBarMediator");
 
-        deleteField(sBraveLocationBarCoordinator, "mUrlBar");
+        deleteField(sLuxxleLocationBarCoordinator, "mUrlBar");
         makeProtectedField(sLocationBarCoordinator, "mUrlBar");
     }
 }

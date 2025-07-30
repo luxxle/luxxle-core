@@ -7,22 +7,22 @@
 
 #include "base/memory/ptr_util.h"
 #include "base/notreached.h"
-#include "luxxle/browser/ui/brave_browser_window.h"
+#include "luxxle/browser/ui/luxxle_browser_window.h"
 #include "luxxle/browser/ui/sidebar/sidebar_controller.h"
 #include "luxxle/browser/ui/sidebar/sidebar_utils.h"
 #include "luxxle/browser/ui/tabs/features.h"
 #include "luxxle/browser/ui/tabs/split_view_browser_data.h"
-// REMOVED: #include "luxxle/components/brave_vpn/.*"
+// REMOVED: #include "luxxle/components/luxxle_vpn/.*"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_window/public/browser_window_interface.h"
 
-#if BUILDFLAG(ENABLE_BRAVE_VPN)
-#include "luxxle/browser/ui/brave_vpn/brave_vpn_controller.h"
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
+#include "luxxle/browser/ui/luxxle_vpn/luxxle_vpn_controller.h"
 #endif
 
-#if !BUILDFLAG(ENABLE_BRAVE_VPN)
+#if !BUILDFLAG(ENABLE_LUXXLE_VPN)
 // Use stub class to avoid incomplete type build error.
-class BraveVPNController {};
+class LuxxleVPNController {};
 #endif
 
 // static
@@ -42,9 +42,9 @@ void BrowserWindowFeatures::ReplaceBrowserWindowFeaturesForTesting(
 BrowserWindowFeatures::BrowserWindowFeatures() = default;
 BrowserWindowFeatures::~BrowserWindowFeatures() = default;
 
-BraveVPNController* BrowserWindowFeatures::brave_vpn_controller() {
-#if BUILDFLAG(ENABLE_BRAVE_VPN)
-  return brave_vpn_controller_.get();
+LuxxleVPNController* BrowserWindowFeatures::luxxle_vpn_controller() {
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
+  return luxxle_vpn_controller_.get();
 #else
   NOTREACHED();
 #endif
@@ -53,7 +53,7 @@ BraveVPNController* BrowserWindowFeatures::brave_vpn_controller() {
 void BrowserWindowFeatures::Init(BrowserWindowInterface* browser) {
   BrowserWindowFeatures_ChromiumImpl::Init(browser);
 
-  if (tabs::features::IsBraveSplitViewEnabled()) {
+  if (tabs::features::IsLuxxleSplitViewEnabled()) {
     split_view_browser_data_ = std::make_unique<SplitViewBrowserData>(browser);
   }
 }
@@ -63,8 +63,8 @@ void BrowserWindowFeatures::InitPostBrowserViewConstruction(
   BrowserWindowFeatures_ChromiumImpl::InitPostBrowserViewConstruction(
       browser_view);
 
-#if BUILDFLAG(ENABLE_BRAVE_VPN)
-  brave_vpn_controller_ = std::make_unique<BraveVPNController>(browser_view);
+#if BUILDFLAG(ENABLE_LUXXLE_VPN)
+  luxxle_vpn_controller_ = std::make_unique<LuxxleVPNController>(browser_view);
 #endif
 }
 

@@ -3,4 +3,4 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
-brave_web_view_public_headers = [ "//luxxle/ios/browser/api/web_view/brave_web_view.h" ]
+luxxle_web_view_public_headers = [ "//luxxle/ios/browser/api/web_view/luxxle_web_view.h" ]

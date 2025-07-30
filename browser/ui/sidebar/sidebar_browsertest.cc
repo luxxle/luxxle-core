@@ -15,7 +15,7 @@
 #include "base/test/bind.h"
 #include "base/test/run_until.h"
 #include "base/test/scoped_feature_list.h"
-#include "luxxle/app/brave_command_ids.h"
+#include "luxxle/app/luxxle_command_ids.h"
 #include "luxxle/browser/ui/browser_commands.h"
 #include "luxxle/browser/ui/sidebar/sidebar_controller.h"
 #include "luxxle/browser/ui/sidebar/sidebar_model.h"
@@ -23,18 +23,18 @@
 #include "luxxle/browser/ui/sidebar/sidebar_utils.h"
 #include "luxxle/browser/ui/tabs/features.h"
 #include "luxxle/browser/ui/tabs/split_view_browser_data.h"
-#include "luxxle/browser/ui/views/frame/brave_browser_view.h"
-#include "luxxle/browser/ui/views/side_panel/brave_side_panel.h"
-#include "luxxle/browser/ui/views/side_panel/brave_side_panel_resize_widget.h"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_view.h"
+#include "luxxle/browser/ui/views/side_panel/luxxle_side_panel.h"
+#include "luxxle/browser/ui/views/side_panel/luxxle_side_panel_resize_widget.h"
 #include "luxxle/browser/ui/views/sidebar/sidebar_container_view.h"
 #include "luxxle/browser/ui/views/sidebar/sidebar_control_view.h"
 #include "luxxle/browser/ui/views/sidebar/sidebar_items_contents_view.h"
 #include "luxxle/browser/ui/views/sidebar/sidebar_items_scroll_view.h"
 #include "luxxle/browser/ui/views/tabs/vertical_tab_utils.h"
-#include "luxxle/browser/ui/views/toolbar/brave_toolbar_view.h"
+#include "luxxle/browser/ui/views/toolbar/luxxle_toolbar_view.h"
 #include "luxxle/browser/ui/views/toolbar/side_panel_button.h"
 #include "luxxle/components/ai_chat/core/common/features.h"
-#include "luxxle/components/constants/brave_switches.h"
+#include "luxxle/components/constants/luxxle_switches.h"
 #include "luxxle/components/playlist/common/features.h"
 #include "luxxle/components/sidebar/browser/constants.h"
 #include "luxxle/components/sidebar/browser/pref_names.h"
@@ -73,7 +73,7 @@ namespace sidebar {
 
 class SidebarBrowserTest : public InProcessBrowserTest {
  public:
-  SidebarBrowserTest() : scoped_features_(tabs::features::kBraveSplitView) {}
+  SidebarBrowserTest() : scoped_features_(tabs::features::kLuxxleSplitView) {}
   ~SidebarBrowserTest() override = default;
 
   void PreRunTestOnMainThread() override {
@@ -94,14 +94,14 @@ class SidebarBrowserTest : public InProcessBrowserTest {
   }
 
   SidePanelButton* GetSidePanelToolbarButton() const {
-    return static_cast<BraveToolbarView*>(
+    return static_cast<LuxxleToolbarView*>(
                BrowserView::GetBrowserViewForBrowser(browser())->toolbar())
         ->side_panel_button();
   }
 
   views::View* GetVerticalTabsContainer() const {
     auto* view = BrowserView::GetBrowserViewForBrowser(browser());
-    return static_cast<BraveBrowserView*>(view)->vertical_tab_strip_host_view_;
+    return static_cast<LuxxleBrowserView*>(view)->vertical_tab_strip_host_view_;
   }
 
   views::Widget* GetEventDetectWidget() {
@@ -168,7 +168,7 @@ class SidebarBrowserTest : public InProcessBrowserTest {
     EXPECT_FALSE(GetSidebarContainerView()->operation_from_active_tab_change_);
   }
 
-  BraveSidePanel* GetSidePanel() const {
+  LuxxleSidePanel* GetSidePanel() const {
     return GetSidebarContainerView()->side_panel_;
   }
 
@@ -357,7 +357,7 @@ IN_PROC_BROWSER_TEST_F(SidebarBrowserTest, BasicTest) {
   EXPECT_TRUE(CanAddCurrentActiveTabToSidebar(browser()));
 
   // If current active tab is NTP, we can't add current url to sidebar.
-  ASSERT_TRUE(ui_test_utils::NavigateToURL(browser(), GURL("brave://newtab/")));
+  ASSERT_TRUE(ui_test_utils::NavigateToURL(browser(), GURL("luxxle://newtab/")));
   EXPECT_FALSE(CanAddCurrentActiveTabToSidebar(browser()));
 
   // Check |BrowserView::find_bar_host_view_| is the last child view.
@@ -375,7 +375,7 @@ IN_PROC_BROWSER_TEST_F(SidebarBrowserTest, WebTypePanelTest) {
 
   // Add an item
   ASSERT_TRUE(
-      ui_test_utils::NavigateToURL(browser(), GURL("brave://settings/")));
+      ui_test_utils::NavigateToURL(browser(), GURL("luxxle://settings/")));
   int current_tab_index = tab_model()->active_index();
   EXPECT_EQ(0, current_tab_index);
   EXPECT_TRUE(CanAddCurrentActiveTabToSidebar(browser()));
@@ -385,13 +385,13 @@ IN_PROC_BROWSER_TEST_F(SidebarBrowserTest, WebTypePanelTest) {
 
   // Load NTP in a new tab and activate it. (tab index 1)
   ASSERT_TRUE(ui_test_utils::NavigateToURLWithDisposition(
-      browser(), GURL("brave://newtab/"),
+      browser(), GURL("luxxle://newtab/"),
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP));
   current_tab_index = tab_model()->active_index();
   EXPECT_EQ(1, current_tab_index);
 
-  // Activate sidebar item(brave://settings) and check existing first tab is
+  // Activate sidebar item(luxxle://settings) and check existing first tab is
   // activated.
   auto items = model()->GetAllSidebarItems();
   auto iter =
@@ -430,7 +430,7 @@ IN_PROC_BROWSER_TEST_F(SidebarBrowserTest, IterateBuiltInWebTypeTest) {
 
   // Create NTP and click wallet item. Then wallet tab(index 0) is activated.
   ASSERT_TRUE(ui_test_utils::NavigateToURLWithDisposition(
-      browser(), GURL("brave://newtab/"),
+      browser(), GURL("luxxle://newtab/"),
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP));
   // NTP is active tab.
@@ -443,7 +443,7 @@ IN_PROC_BROWSER_TEST_F(SidebarBrowserTest, IterateBuiltInWebTypeTest) {
 
   // Create NTP.
   ASSERT_TRUE(ui_test_utils::NavigateToURLWithDisposition(
-      browser(), GURL("brave://newtab/"),
+      browser(), GURL("luxxle://newtab/"),
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP));
   // NTP is active tab and load wallet on it.
@@ -579,7 +579,7 @@ IN_PROC_BROWSER_TEST_F(SidebarBrowserTest, EventDetectWidgetTest) {
   auto* service = SidebarServiceFactory::GetForProfile(browser()->profile());
   auto* browser_view = BrowserView::GetBrowserViewForBrowser(browser());
   auto* contents_container =
-      BraveBrowserView::From(browser_view)->GetContentsBoundingView();
+      LuxxleBrowserView::From(browser_view)->GetContentsBoundingView();
   auto* prefs = browser()->profile()->GetPrefs();
   auto* sidebar_container = GetSidebarContainerView();
 
@@ -887,7 +887,7 @@ IN_PROC_BROWSER_TEST_F(SidebarBrowserTest,
 IN_PROC_BROWSER_TEST_F(SidebarBrowserTest, TabSpecificAndGlobalPanelsTest) {
   // Create another tab.
   ASSERT_TRUE(ui_test_utils::NavigateToURLWithDisposition(
-      browser(), GURL("brave://newtab/"),
+      browser(), GURL("luxxle://newtab/"),
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP));
 
@@ -1045,7 +1045,7 @@ IN_PROC_BROWSER_TEST_P(SidebarBrowserTestWithkSidebarShowAlwaysOnStable,
   search_test_utils::WaitForTemplateURLServiceToLoad(service);
 
   ASSERT_TRUE(ui_test_utils::NavigateToURLWithDisposition(
-      browser(), GURL("https://www.brave.com/"),
+      browser(), GURL("https://www.luxxle.com/"),
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP));
 
@@ -1065,7 +1065,7 @@ IN_PROC_BROWSER_TEST_P(SidebarBrowserTestWithkSidebarShowAlwaysOnStable,
   // Check one shot panel is not opened anymore.
   EXPECT_CALL(observer_, OnActiveIndexChanged(testing::_, testing::_)).Times(0);
   ASSERT_TRUE(ui_test_utils::NavigateToURLWithDisposition(
-      browser(), GURL("https://www.brave.com/"),
+      browser(), GURL("https://www.luxxle.com/"),
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP));
   EXPECT_FALSE(panel_ui->IsSidePanelShowing());
@@ -1137,7 +1137,7 @@ IN_PROC_BROWSER_TEST_F(SidebarBrowserTestWithAIChat, TabSpecificPanel) {
   ASSERT_TRUE(tab_specific_item_index.has_value());
 
   ASSERT_TRUE(ui_test_utils::NavigateToURLWithDisposition(
-      browser(), GURL("brave://newtab/"),
+      browser(), GURL("luxxle://newtab/"),
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP));
   ASSERT_EQ(tab_model()->GetTabCount(), 2);
@@ -1154,11 +1154,11 @@ IN_PROC_BROWSER_TEST_F(SidebarBrowserTestWithAIChat, TabSpecificPanel) {
 
   // Create two more tab for test below.
   ASSERT_TRUE(ui_test_utils::NavigateToURLWithDisposition(
-      browser(), GURL("brave://newtab/"),
+      browser(), GURL("luxxle://newtab/"),
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP));
   ASSERT_TRUE(ui_test_utils::NavigateToURLWithDisposition(
-      browser(), GURL("brave://newtab/"),
+      browser(), GURL("luxxle://newtab/"),
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP));
   ASSERT_EQ(tab_model()->GetTabCount(), 3);
@@ -1196,11 +1196,11 @@ IN_PROC_BROWSER_TEST_F(SidebarBrowserTestWithAIChat,
   ASSERT_TRUE(tab_specific_item_index.has_value());
   // Open 2 more tabs
   ASSERT_TRUE(ui_test_utils::NavigateToURLWithDisposition(
-      browser(), GURL("brave://newtab/"),
+      browser(), GURL("luxxle://newtab/"),
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP));
   ASSERT_TRUE(ui_test_utils::NavigateToURLWithDisposition(
-      browser(), GURL("brave://newtab/"),
+      browser(), GURL("luxxle://newtab/"),
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP));
   ASSERT_EQ(tab_model()->GetTabCount(), 3);
@@ -1266,11 +1266,11 @@ IN_PROC_BROWSER_TEST_F(SidebarBrowserTestWithAIChat,
   ASSERT_TRUE(tab_specific_item_index.has_value());
   // Open 2 more tabs
   ASSERT_TRUE(ui_test_utils::NavigateToURLWithDisposition(
-      browser(), GURL("brave://newtab/"),
+      browser(), GURL("luxxle://newtab/"),
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP));
   ASSERT_TRUE(ui_test_utils::NavigateToURLWithDisposition(
-      browser(), GURL("brave://newtab/"),
+      browser(), GURL("luxxle://newtab/"),
       WindowOpenDisposition::NEW_FOREGROUND_TAB,
       ui_test_utils::BROWSER_TEST_WAIT_FOR_LOAD_STOP));
   ASSERT_EQ(tab_model()->GetTabCount(), 3);

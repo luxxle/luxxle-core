@@ -5,7 +5,7 @@
 
 # import("//luxxle/browser/ai_chat/android/sources.gni")
 import("//luxxle/browser/autocomplete/sources.gni")
-# import("//luxxle/browser/brave_referrals/sources.gni")
+# import("//luxxle/browser/luxxle_referrals/sources.gni")
 import("//luxxle/browser/browsing_data/sources.gni")
 import("//luxxle/browser/cosmetic_filters/sources.gni")
 import("//luxxle/browser/debounce/sources.gni")
@@ -36,7 +36,7 @@ import("//luxxle/build/config.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # import("//luxxle/components/ai_rewriter/common/buildflags/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
-# import("//luxxle/components/brave_education/buildflags.gni")
+# import("//luxxle/components/luxxle_education/buildflags.gni")
 # Commented out: removed components dependency - using Chromium defaults instead
 # Commented out: removed components dependency - using Chromium defaults instead
 # Commented out: removed components dependency - using Chromium defaults instead
@@ -51,13 +51,13 @@ import("//luxxle/build/config.gni")
 import("//chrome/browser/buildflags.gni")
 import("//extensions/buildflags/buildflags.gni")
 
-brave_chrome_browser_visibility = [
+luxxle_chrome_browser_visibility = [
   "//luxxle/browser/*",
   "//luxxle/test:*",
 
   # Chrome does not yet define a visibility list by itself, meaning we can't
   # append our list to them and that what we have here will become law not just
-  # for Brave, but also for the rest of chrome. Thus, we need to provide our own
+  # for Luxxle, but also for the rest of chrome. Thus, we need to provide our own
   # permissive list for chrome here too, to be removed in the future if Chrome
   # ever provides it's own list (at which point we'll append instead of set).
   "//chrome:dependencies",
@@ -66,55 +66,55 @@ brave_chrome_browser_visibility = [
   "//extensions/*",
 ]
 
-brave_chrome_browser_sources = [
-  "//luxxle/browser/brave_browser_features.cc",
-  "//luxxle/browser/brave_browser_features.h",
-  "//luxxle/browser/brave_browser_main_extra_parts.cc",
-  "//luxxle/browser/brave_browser_main_extra_parts.h",
-  "//luxxle/browser/brave_browser_main_parts.cc",
-  "//luxxle/browser/brave_browser_main_parts.h",
-  "//luxxle/browser/brave_browser_process.cc",
-  "//luxxle/browser/brave_browser_process_impl.cc",
-  "//luxxle/browser/brave_browser_process_impl.h",
-  "//luxxle/browser/brave_content_browser_client.cc",
-  "//luxxle/browser/brave_content_browser_client.h",
-  "//luxxle/browser/brave_features_internal_names.h",
-  "//luxxle/browser/brave_local_state_prefs.cc",
-  "//luxxle/browser/brave_local_state_prefs.h",
-  "//luxxle/browser/brave_profile_prefs.cc",
-  "//luxxle/browser/brave_profile_prefs.h",
-  "//luxxle/browser/brave_shell_integration.cc",
-  "//luxxle/browser/brave_shell_integration.h",
-  "//luxxle/browser/brave_tab_helpers.cc",
-  "//luxxle/browser/brave_tab_helpers.h",
+luxxle_chrome_browser_sources = [
+  "//luxxle/browser/luxxle_browser_features.cc",
+  "//luxxle/browser/luxxle_browser_features.h",
+  "//luxxle/browser/luxxle_browser_main_extra_parts.cc",
+  "//luxxle/browser/luxxle_browser_main_extra_parts.h",
+  "//luxxle/browser/luxxle_browser_main_parts.cc",
+  "//luxxle/browser/luxxle_browser_main_parts.h",
+  "//luxxle/browser/luxxle_browser_process.cc",
+  "//luxxle/browser/luxxle_browser_process_impl.cc",
+  "//luxxle/browser/luxxle_browser_process_impl.h",
+  "//luxxle/browser/luxxle_content_browser_client.cc",
+  "//luxxle/browser/luxxle_content_browser_client.h",
+  "//luxxle/browser/luxxle_features_internal_names.h",
+  "//luxxle/browser/luxxle_local_state_prefs.cc",
+  "//luxxle/browser/luxxle_local_state_prefs.h",
+  "//luxxle/browser/luxxle_profile_prefs.cc",
+  "//luxxle/browser/luxxle_profile_prefs.h",
+  "//luxxle/browser/luxxle_shell_integration.cc",
+  "//luxxle/browser/luxxle_shell_integration.h",
+  "//luxxle/browser/luxxle_tab_helpers.cc",
+  "//luxxle/browser/luxxle_tab_helpers.h",
   "//luxxle/browser/browser_context_keyed_service_factories.cc",
   "//luxxle/browser/browser_context_keyed_service_factories.h",
-  "//luxxle/browser/geolocation/brave_geolocation_permission_context_delegate.cc",
-  "//luxxle/browser/geolocation/brave_geolocation_permission_context_delegate.h",
-  "//luxxle/browser/metrics/brave_metrics_service_accessor.cc",
-  "//luxxle/browser/metrics/brave_metrics_service_accessor.h",
+  "//luxxle/browser/geolocation/luxxle_geolocation_permission_context_delegate.cc",
+  "//luxxle/browser/geolocation/luxxle_geolocation_permission_context_delegate.h",
+  "//luxxle/browser/metrics/luxxle_metrics_service_accessor.cc",
+  "//luxxle/browser/metrics/luxxle_metrics_service_accessor.h",
   "//luxxle/browser/metrics/metrics_reporting_util.cc",
   "//luxxle/browser/metrics/metrics_reporting_util.h",
-  "//luxxle/browser/policy/brave_simple_policy_map.h",
-  "//luxxle/browser/prefs/brave_pref_service_incognito_allowlist.cc",
-  "//luxxle/browser/prefs/brave_pref_service_incognito_allowlist.h",
-  "//luxxle/browser/translate/brave_translate_prefs_migration.cc",
-  "//luxxle/browser/translate/brave_translate_prefs_migration.h",
-  "//luxxle/browser/translate/brave_translate_utils.cc",
-  "//luxxle/browser/translate/brave_translate_utils.h",
+  "//luxxle/browser/policy/luxxle_simple_policy_map.h",
+  "//luxxle/browser/prefs/luxxle_pref_service_incognito_allowlist.cc",
+  "//luxxle/browser/prefs/luxxle_pref_service_incognito_allowlist.h",
+  "//luxxle/browser/translate/luxxle_translate_prefs_migration.cc",
+  "//luxxle/browser/translate/luxxle_translate_prefs_migration.h",
+  "//luxxle/browser/translate/luxxle_translate_utils.cc",
+  "//luxxle/browser/translate/luxxle_translate_utils.h",
   "//luxxle/browser/update_util.cc",
   "//luxxle/browser/update_util.h",
   "//luxxle/chromium_src/chrome/browser/notifications/notification_handler_impl.h",
 ]
 
-brave_chrome_browser_deps = [
+luxxle_chrome_browser_deps = [
   "//base",
-  "//luxxle/app:brave_generated_resources_grit",
+  "//luxxle/app:luxxle_generated_resources_grit",
   "//luxxle/browser:browser_process",
   "//luxxle/browser:sparkle_buildflags",
   "//luxxle/browser/ai_chat",
-  "//luxxle/browser/brave_adaptive_captcha",
-  "//luxxle/browser/brave_adaptive_captcha:impl",
+  "//luxxle/browser/luxxle_adaptive_captcha",
+  "//luxxle/browser/luxxle_adaptive_captcha:impl",
   "//luxxle/browser/component_updater",
   "//luxxle/browser/metrics/buildflags",
   "//luxxle/browser/misc_metrics",
@@ -140,54 +140,54 @@ brave_chrome_browser_deps = [
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/body_sniffer",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_account/core/mojom",
+  # "//luxxle/components/luxxle_account/core/mojom",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_adaptive_captcha",
+  # "//luxxle/components/luxxle_adaptive_captcha",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_ads/browser",
+  # "//luxxle/components/luxxle_ads/browser",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_ads/core",
+  # "//luxxle/components/luxxle_ads/core",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_component_updater/browser",
+  # "//luxxle/components/luxxle_component_updater/browser",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_education:buildflags",
+  # "//luxxle/components/luxxle_education:buildflags",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_new_tab_ui:mojom",
+  # "//luxxle/components/luxxle_new_tab_ui:mojom",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_news/common:mojom",
+  # "//luxxle/components/luxxle_news/common:mojom",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_perf_predictor/browser",
+  # "//luxxle/components/luxxle_perf_predictor/browser",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_private_new_tab_ui/common",
+  # "//luxxle/components/luxxle_private_new_tab_ui/common",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_private_new_tab_ui/common:mojom",
+  # "//luxxle/components/luxxle_private_new_tab_ui/common:mojom",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_referrals/browser",
+  # "//luxxle/components/luxxle_referrals/browser",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_rewards/core",
+  # "//luxxle/components/luxxle_rewards/core",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_rewards/core:features",
+  # "//luxxle/components/luxxle_rewards/core:features",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_rewards/core/buildflags",
+  # "//luxxle/components/luxxle_rewards/core/buildflags",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_rewards/core/mojom",
+  # "//luxxle/components/luxxle_rewards/core/mojom",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_rewards/core/mojom:webui",
-  # Commented out: removed components dependency - using Chromium defaults instead
-  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/luxxle_rewards/core/mojom:webui",
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_sync",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_sync:features",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_sync:network_time_helper",
+  # "//luxxle/components/luxxle_sync",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_sync:prefs",
+  # "//luxxle/components/luxxle_sync:features",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_user_agent/browser",
+  # "//luxxle/components/luxxle_sync:network_time_helper",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/luxxle_sync:prefs",
+  # Commented out: removed components dependency - using Chromium defaults instead
+  # "//luxxle/components/luxxle_user_agent/browser",
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead
   # Commented out: removed components dependency - using Chromium defaults instead
@@ -353,8 +353,8 @@ brave_chrome_browser_deps = [
 if (!is_android) {
   # Already included on android by upstream
 
-  # Including v2 back into brave build as we make use of `feed::FetchRssLinks` in `brave_news_tab_helper.cc`.
-  brave_chrome_browser_sources += [
+  # Including v2 back into luxxle build as we make use of `feed::FetchRssLinks` in `luxxle_news_tab_helper.cc`.
+  luxxle_chrome_browser_sources += [
     "feed/feed_service_factory.cc",
     "feed/feed_service_factory.h",
     "feed/rss_links_fetcher.cc",
@@ -369,11 +369,11 @@ if (!is_android) {
     "feed/web_feed_util.h",
   ]
 
-  brave_chrome_browser_deps += [
+  luxxle_chrome_browser_deps += [
     "//luxxle/browser/ui/ai_chat",
     "//luxxle/browser/ui/tabs:impl",
-    "//luxxle/browser/ui/webui/brave_new_tab_page_refresh",
-    "//luxxle/browser/ui/webui/brave_new_tab_page_refresh:mojom",
+    "//luxxle/browser/ui/webui/luxxle_new_tab_page_refresh",
+    "//luxxle/browser/ui/webui/luxxle_new_tab_page_refresh:mojom",
     "//luxxle/browser/user_education:features",
     "//chrome/browser/regional_capabilities",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -387,24 +387,24 @@ if (!is_android) {
   ]
 }
 
-if (enable_brave_education) {
-  brave_chrome_browser_deps += [ "//luxxle/browser/ui/webui/brave_education" ]
+if (enable_luxxle_education) {
+  luxxle_chrome_browser_deps += [ "//luxxle/browser/ui/webui/luxxle_education" ]
 }
 
 if (is_android) {
-  brave_chrome_browser_sources += brave_browser_ai_chat_android_sources
-  brave_chrome_browser_deps += brave_browser_ai_chat_android_deps
+  luxxle_chrome_browser_sources += luxxle_browser_ai_chat_android_sources
+  luxxle_chrome_browser_deps += luxxle_browser_ai_chat_android_deps
 }
 
 # Removed: containers feature stripped
 # if (enable_containers) {
 #   # Commented out: removed components dependency - using Chromium defaults instead
-#   # brave_chrome_browser_deps += [ "//luxxle/components/containers/core/common" ]
+#   # luxxle_chrome_browser_deps += [ "//luxxle/components/containers/core/common" ]
 # }
 
 # Removed: commander feature stripped  
 # if (enable_commander) {
-#   brave_chrome_browser_deps += [
+#   luxxle_chrome_browser_deps += [
 #     # Commented out: removed components dependency - using Chromium defaults instead
 #     # "//luxxle/components/commander/browser",
 #     # Commented out: removed components dependency - using Chromium defaults instead
@@ -415,19 +415,19 @@ if (is_android) {
 # }
 
 if (is_mac) {
-  brave_chrome_browser_sources += [
+  luxxle_chrome_browser_sources += [
     "//luxxle/browser/luxxle_app_controller_mac.h",
     "//luxxle/browser/luxxle_app_controller_mac.mm",
     "//luxxle/browser/luxxle_browser_main_parts_mac.h",
     "//luxxle/browser/luxxle_browser_main_parts_mac.mm",
-    "//luxxle/browser/brave_shell_integration_mac.h",
-    "//luxxle/browser/brave_shell_integration_mac.mm",
+    "//luxxle/browser/luxxle_shell_integration_mac.h",
+    "//luxxle/browser/luxxle_shell_integration_mac.mm",
     "//luxxle/browser/mac/keystone_glue.h",
     "//luxxle/browser/mac/keystone_glue.mm",
     "//luxxle/browser/mac/keystone_registration.h",
     "//luxxle/browser/mac/keystone_registration.mm",
   ]
-  brave_chrome_browser_deps += [
+  luxxle_chrome_browser_deps += [
     "//luxxle/app:command_ids",
     "//luxxle/browser:sparkle_buildflags",
     "//chrome:strings",
@@ -437,7 +437,7 @@ if (is_mac) {
 }
 
 if (enable_sparkle) {
-  brave_chrome_browser_sources += [
+  luxxle_chrome_browser_sources += [
     "//luxxle/browser/mac/sparkle_glue.h",
     "//luxxle/browser/mac/sparkle_glue.mm",
     "//luxxle/browser/mac/su_updater.h",
@@ -445,25 +445,25 @@ if (enable_sparkle) {
 }
 
   # Commented out: removed components dependency - using Chromium defaults instead
-  # brave_chrome_browser_deps += [
+  # luxxle_chrome_browser_deps += [
   #   # component dependencies would go here
   # ]
 
 # Removed: request_otr feature stripped
 # if (enable_request_otr) {
 #   # Commented out: removed components dependency - using Chromium defaults instead
-#   # brave_chrome_browser_deps += [ "//luxxle/components/request_otr/common" ]
+#   # luxxle_chrome_browser_deps += [ "//luxxle/components/request_otr/common" ]
 # }
 
 # Removed: ai_rewriter feature stripped
 # if (enable_ai_rewriter) {
 #   # Commented out: removed components dependency - using Chromium defaults instead
-#   # brave_chrome_browser_deps += [ "//luxxle/components/ai_rewriter/common" ]
+#   # luxxle_chrome_browser_deps += [ "//luxxle/components/ai_rewriter/common" ]
 # }
 
 # Removed: web_discovery_native feature stripped
 # if (enable_web_discovery_native) {
-#   brave_chrome_browser_deps += [
+#   luxxle_chrome_browser_deps += [
 #     "//luxxle/browser/web_discovery",
 #     # Commented out: removed components dependency - using Chromium defaults instead
 #     # "//luxxle/components/web_discovery/browser",
@@ -473,22 +473,22 @@ if (enable_sparkle) {
 # }
 
   # Commented out: removed components dependency - using Chromium defaults instead
-  # brave_chrome_browser_deps += [
+  # luxxle_chrome_browser_deps += [
   #   # component dependencies would go here
   # ]
 
 if (is_android) {
-  brave_chrome_browser_sources += [
-    "//luxxle/browser/android/brave_init_android.cc",
+  luxxle_chrome_browser_sources += [
+    "//luxxle/browser/android/luxxle_init_android.cc",
     "//chrome/browser/bookmarks/bookmark_html_writer.cc",
     "//chrome/browser/bookmarks/bookmark_html_writer.h",
     "//chrome/browser/importer/profile_writer.cc",
     "//chrome/browser/importer/profile_writer.h",
   ]
 
-  brave_chrome_browser_sources += brave_browser_misc_metrics_android_sources
+  luxxle_chrome_browser_sources += luxxle_browser_misc_metrics_android_sources
 
-  brave_chrome_browser_deps += [
+  luxxle_chrome_browser_deps += [
     "//luxxle/browser/android:android_browser_process",
     "//luxxle/browser/android:tab_features",
     "//luxxle/browser/android/preferences",
@@ -500,19 +500,19 @@ if (is_android) {
     "//luxxle/browser/ui/webui/new_tab_takeover/android:new_tab_takeover",
     "//luxxle/build/android:jni_headers",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:sync_service_impl_helper",
+    # "//luxxle/components/luxxle_sync:sync_service_impl_helper",
     "//chrome/android:jni_headers",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//components/sync_device_info",
   ]
 } else {
-  brave_chrome_browser_sources += [
-    "//luxxle/browser/profile_resetter/brave_profile_resetter.cc",
-    "//luxxle/browser/profile_resetter/brave_profile_resetter.h",
+  luxxle_chrome_browser_sources += [
+    "//luxxle/browser/profile_resetter/luxxle_profile_resetter.cc",
+    "//luxxle/browser/profile_resetter/luxxle_profile_resetter.h",
   ]
 
-  brave_chrome_browser_deps += [
-    "//luxxle/app:brave_generated_resources_grit",
+  luxxle_chrome_browser_deps += [
+    "//luxxle/app:luxxle_generated_resources_grit",
     "//luxxle/browser/importer",
     # Commented out: removed components dependency - using Chromium defaults instead
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -523,15 +523,15 @@ if (is_android) {
 }
 
 if (toolkit_views) {
-  brave_chrome_browser_sources += brave_browser_onboarding_sources
+  luxxle_chrome_browser_sources += luxxle_browser_onboarding_sources
 
-  brave_chrome_browser_deps += brave_browser_onboarding_deps
+  luxxle_chrome_browser_deps += luxxle_browser_onboarding_deps
   # Commented out: removed components dependency - using Chromium defaults instead
-  # brave_chrome_browser_deps += [ "//luxxle/components/sidebar/browser" ]
+  # luxxle_chrome_browser_deps += [ "//luxxle/components/sidebar/browser" ]
 }
 
 if (enable_extensions) {
-  brave_chrome_browser_deps += [
+  luxxle_chrome_browser_deps += [
     "//luxxle/browser/extensions",
     "//chrome/browser/extensions",
     "//extensions/browser",
@@ -539,13 +539,13 @@ if (enable_extensions) {
   ]
 
   # Commented out: removed components dependency - using Chromium defaults instead
-  # brave_chrome_browser_deps += [
+  # luxxle_chrome_browser_deps += [
   #   # extension dependencies would go here
   # ]
 }
 
 if (enable_tor) {
-  brave_chrome_browser_deps += [
+  luxxle_chrome_browser_deps += [
     "//luxxle/browser/tor",
     "//luxxle/browser/tor:impl",
     # Commented out: removed components dependency - using Chromium defaults instead
@@ -559,35 +559,35 @@ if (enable_tor) {
 
 # Removed: widevine feature stripped
 # if (enable_widevine) {
-#   brave_chrome_browser_sources += [
-#     "//luxxle/browser/brave_drm_tab_helper.cc",
-#     "//luxxle/browser/brave_drm_tab_helper.h",
+#   luxxle_chrome_browser_sources += [
+#     "//luxxle/browser/luxxle_drm_tab_helper.cc",
+#     "//luxxle/browser/luxxle_drm_tab_helper.h",
 #   ]
-#   brave_chrome_browser_deps += [
+#   luxxle_chrome_browser_deps += [
 #     "//luxxle/browser/widevine",
 #     # Commented out: removed components dependency - using Chromium defaults instead
-#     # "//luxxle/components/brave_drm",
+#     # "//luxxle/components/luxxle_drm",
 #     # Commented out: removed components dependency - using Chromium defaults instead
 #     # "//luxxle/components/widevine:constants",
 #   ]
 # }
 
 if (is_win) {
-  brave_chrome_browser_sources += [
-    "//luxxle/browser/brave_shell_integration_win.cc",
-    "//luxxle/browser/brave_shell_integration_win.h",
+  luxxle_chrome_browser_sources += [
+    "//luxxle/browser/luxxle_shell_integration_win.cc",
+    "//luxxle/browser/luxxle_shell_integration_win.h",
     "//luxxle/browser/default_protocol_handler_utils_win.cc",
     "//luxxle/browser/default_protocol_handler_utils_win.h",
   ]
 
-  brave_chrome_browser_deps += [
+  luxxle_chrome_browser_deps += [
     "//chrome/install_static:install_static_util",
     "//chrome/installer/util:with_no_strings",
   ]
 }
 
 if (is_win || is_android) {
-  brave_chrome_browser_sources += [
+  luxxle_chrome_browser_sources += [
     "//luxxle/browser/day_zero_browser_ui_expt/day_zero_browser_ui_expt_manager.cc",
     "//luxxle/browser/day_zero_browser_ui_expt/day_zero_browser_ui_expt_manager.h",
     "//luxxle/browser/day_zero_browser_ui_expt/pref_names.h",
@@ -595,7 +595,7 @@ if (is_win || is_android) {
 }
 
 if (is_win && is_official_build) {
-  brave_chrome_browser_sources += [
+  luxxle_chrome_browser_sources += [
     "//chrome/browser/google/google_update_win.cc",
     "//chrome/browser/google/google_update_win.h",
     "//chrome/browser/google/switches.cc",
@@ -603,129 +603,129 @@ if (is_win && is_official_build) {
   ]
 }
 
-brave_chrome_browser_public_deps = [
+luxxle_chrome_browser_public_deps = [
   "//luxxle/app/vector_icons",
   "//luxxle/browser:browser_process",
   "//luxxle/common/importer:interfaces",
   # Commented out: removed components dependency - using Chromium defaults instead
-  # "//luxxle/components/brave_sync:constants",
+  # "//luxxle/components/luxxle_sync:constants",
   # Commented out: removed components dependency - using Chromium defaults instead
   # "//luxxle/components/variations",
 ]
 
 if (is_mac) {
-  brave_chrome_framework_public_deps = [ "//luxxle:framework_bundle_data" ]
-brave_chrome_framework_bundle_deps = [ "//luxxle:framework_bundle_data" ]
-  brave_chrome_framework_contents = [ "Frameworks" ]
-  brave_chrome_framework_configs = [ "//luxxle/build/rust:strip_rust_symbols" ]
+  luxxle_chrome_framework_public_deps = [ "//luxxle:framework_bundle_data" ]
+luxxle_chrome_framework_bundle_deps = [ "//luxxle:framework_bundle_data" ]
+  luxxle_chrome_framework_contents = [ "Frameworks" ]
+  luxxle_chrome_framework_configs = [ "//luxxle/build/rust:strip_rust_symbols" ]
 }
 
-brave_chrome_browser_sources += brave_browser_profiles_sources
-brave_chrome_browser_sources += brave_browser_autocomplete_sources
-# brave_chrome_browser_sources += brave_browser_brave_referrals_sources  # Removed: component stripped
-brave_chrome_browser_sources += brave_browser_browsing_data_sources
-brave_chrome_browser_sources += brave_browser_cosmetic_filters_sources
-brave_chrome_browser_sources += brave_browser_debounce_sources
-brave_chrome_browser_sources += brave_browser_download_sources
-# brave_chrome_browser_sources += brave_browser_ephemeral_storage_sources  # Removed: component stripped
-brave_chrome_browser_sources += brave_browser_gcm_driver_sources
-brave_chrome_browser_sources += brave_browser_infobar_sources
-brave_chrome_browser_sources += brave_browser_misc_metrics_sources
-brave_chrome_browser_sources += brave_browser_net_sources
-# brave_chrome_browser_sources += brave_browser_new_tab_sources  # Removed: component stripped
-brave_chrome_browser_sources += brave_browser_notifications_sources
-brave_chrome_browser_sources += brave_browser_perf_sources
-brave_chrome_browser_sources += brave_browser_permissions_sources
-brave_chrome_browser_sources += brave_browser_renderer_context_menu_sources
-# brave_chrome_browser_sources += brave_browser_request_otr_sources  # Removed: component stripped
-brave_chrome_browser_sources += brave_browser_search_engines_sources
-brave_chrome_browser_sources += brave_browser_sync_sources
-brave_chrome_browser_sources += brave_browser_themes_sources
-brave_chrome_browser_sources += brave_browser_url_sanitizer_sources
-# brave_chrome_browser_sources += brave_browser_web_discovery_sources  # Removed: component stripped
-brave_chrome_browser_sources += brave_browser_webcompat_reporter_sources
+luxxle_chrome_browser_sources += luxxle_browser_profiles_sources
+luxxle_chrome_browser_sources += luxxle_browser_autocomplete_sources
+# luxxle_chrome_browser_sources += luxxle_browser_luxxle_referrals_sources  # Removed: component stripped
+luxxle_chrome_browser_sources += luxxle_browser_browsing_data_sources
+luxxle_chrome_browser_sources += luxxle_browser_cosmetic_filters_sources
+luxxle_chrome_browser_sources += luxxle_browser_debounce_sources
+luxxle_chrome_browser_sources += luxxle_browser_download_sources
+# luxxle_chrome_browser_sources += luxxle_browser_ephemeral_storage_sources  # Removed: component stripped
+luxxle_chrome_browser_sources += luxxle_browser_gcm_driver_sources
+luxxle_chrome_browser_sources += luxxle_browser_infobar_sources
+luxxle_chrome_browser_sources += luxxle_browser_misc_metrics_sources
+luxxle_chrome_browser_sources += luxxle_browser_net_sources
+# luxxle_chrome_browser_sources += luxxle_browser_new_tab_sources  # Removed: component stripped
+luxxle_chrome_browser_sources += luxxle_browser_notifications_sources
+luxxle_chrome_browser_sources += luxxle_browser_perf_sources
+luxxle_chrome_browser_sources += luxxle_browser_permissions_sources
+luxxle_chrome_browser_sources += luxxle_browser_renderer_context_menu_sources
+# luxxle_chrome_browser_sources += luxxle_browser_request_otr_sources  # Removed: component stripped
+luxxle_chrome_browser_sources += luxxle_browser_search_engines_sources
+luxxle_chrome_browser_sources += luxxle_browser_sync_sources
+luxxle_chrome_browser_sources += luxxle_browser_themes_sources
+luxxle_chrome_browser_sources += luxxle_browser_url_sanitizer_sources
+# luxxle_chrome_browser_sources += luxxle_browser_web_discovery_sources  # Removed: component stripped
+luxxle_chrome_browser_sources += luxxle_browser_webcompat_reporter_sources
 
-brave_chrome_browser_deps += brave_browser_autocomplete_deps
-# brave_chrome_browser_deps += brave_browser_brave_referrals_deps  # Removed: component stripped
-brave_chrome_browser_deps += brave_browser_browsing_data_deps
-brave_chrome_browser_deps += brave_browser_cosmetic_filters_deps
-brave_chrome_browser_deps += brave_browser_debounce_deps
-brave_chrome_browser_deps += brave_browser_download_deps
-# brave_chrome_browser_deps += brave_browser_ephemeral_storage_deps  # Removed: component stripped
-brave_chrome_browser_deps += brave_browser_gcm_driver_deps
-brave_chrome_browser_deps += brave_browser_infobar_deps
-brave_chrome_browser_deps += brave_browser_misc_metrics_deps
-brave_chrome_browser_deps += brave_browser_net_deps
-# brave_chrome_browser_deps += brave_browser_new_tab_deps  # Removed: component stripped
-brave_chrome_browser_deps += brave_browser_notifications_deps
-brave_chrome_browser_deps += brave_browser_perf_deps
-brave_chrome_browser_deps += brave_browser_permissions_deps
-brave_chrome_browser_deps += brave_browser_renderer_context_menu_deps
-# brave_chrome_browser_deps += brave_browser_request_otr_deps  # Removed: component stripped
-brave_chrome_browser_deps += brave_browser_search_engines_deps
-brave_chrome_browser_deps += brave_browser_sync_deps
-brave_chrome_browser_deps += brave_browser_themes_deps
-brave_chrome_browser_deps += brave_browser_url_sanitizer_deps
-# brave_chrome_browser_deps += brave_browser_web_discovery_deps  # Removed: component stripped
-brave_chrome_browser_deps += brave_browser_webcompat_reporter_deps
-brave_chrome_browser_deps += brave_chromium_src_chrome_browser_deps
-brave_chrome_browser_deps += brave_chromium_src_chrome_browser_prefs_deps
+luxxle_chrome_browser_deps += luxxle_browser_autocomplete_deps
+# luxxle_chrome_browser_deps += luxxle_browser_luxxle_referrals_deps  # Removed: component stripped
+luxxle_chrome_browser_deps += luxxle_browser_browsing_data_deps
+luxxle_chrome_browser_deps += luxxle_browser_cosmetic_filters_deps
+luxxle_chrome_browser_deps += luxxle_browser_debounce_deps
+luxxle_chrome_browser_deps += luxxle_browser_download_deps
+# luxxle_chrome_browser_deps += luxxle_browser_ephemeral_storage_deps  # Removed: component stripped
+luxxle_chrome_browser_deps += luxxle_browser_gcm_driver_deps
+luxxle_chrome_browser_deps += luxxle_browser_infobar_deps
+luxxle_chrome_browser_deps += luxxle_browser_misc_metrics_deps
+luxxle_chrome_browser_deps += luxxle_browser_net_deps
+# luxxle_chrome_browser_deps += luxxle_browser_new_tab_deps  # Removed: component stripped
+luxxle_chrome_browser_deps += luxxle_browser_notifications_deps
+luxxle_chrome_browser_deps += luxxle_browser_perf_deps
+luxxle_chrome_browser_deps += luxxle_browser_permissions_deps
+luxxle_chrome_browser_deps += luxxle_browser_renderer_context_menu_deps
+# luxxle_chrome_browser_deps += luxxle_browser_request_otr_deps  # Removed: component stripped
+luxxle_chrome_browser_deps += luxxle_browser_search_engines_deps
+luxxle_chrome_browser_deps += luxxle_browser_sync_deps
+luxxle_chrome_browser_deps += luxxle_browser_themes_deps
+luxxle_chrome_browser_deps += luxxle_browser_url_sanitizer_deps
+# luxxle_chrome_browser_deps += luxxle_browser_web_discovery_deps  # Removed: component stripped
+luxxle_chrome_browser_deps += luxxle_browser_webcompat_reporter_deps
+luxxle_chrome_browser_deps += luxxle_chromium_src_chrome_browser_deps
+luxxle_chrome_browser_deps += luxxle_chromium_src_chrome_browser_prefs_deps
 
-brave_chrome_browser_ui_allow_circular_includes_from = [ "//luxxle/browser/ui" ]
-brave_chrome_browser_ui_allow_circular_includes_from +=
-    brave_ui_allow_circular_includes_from
+luxxle_chrome_browser_ui_allow_circular_includes_from = [ "//luxxle/browser/ui" ]
+luxxle_chrome_browser_ui_allow_circular_includes_from +=
+    luxxle_ui_allow_circular_includes_from
 
-brave_chrome_browser_allow_circular_includes_from = [
+luxxle_chrome_browser_allow_circular_includes_from = [
   "//luxxle/browser/ui",
   "//luxxle/browser/ntp_background",
 ]
 
 if (toolkit_views) {
-  brave_chrome_browser_deps += [ "//luxxle/browser/ui/sidebar" ]
-  brave_chrome_browser_allow_circular_includes_from +=
+  luxxle_chrome_browser_deps += [ "//luxxle/browser/ui/sidebar" ]
+  luxxle_chrome_browser_allow_circular_includes_from +=
       [ "//luxxle/browser/ui/sidebar" ]
 }
 
-# https://github.com/luxxle/brave-browser/issues/41418
+# https://github.com/luxxle/luxxle-browser/issues/41418
 if (enable_extensions) {
-  brave_chrome_browser_deps +=
-      [ "//luxxle/browser/extensions:brave_prefs_util_impl" ]
-  brave_chrome_browser_allow_circular_includes_from +=
-      [ "//luxxle/browser/extensions:brave_prefs_util_impl" ]
+  luxxle_chrome_browser_deps +=
+      [ "//luxxle/browser/extensions:luxxle_prefs_util_impl" ]
+  luxxle_chrome_browser_allow_circular_includes_from +=
+      [ "//luxxle/browser/extensions:luxxle_prefs_util_impl" ]
 }
 
-# https://github.com/luxxle/brave-browser/issues/41464
+# https://github.com/luxxle/luxxle-browser/issues/41464
 if (enable_tor) {
-  brave_chrome_browser_deps += [ "//luxxle/browser/tor:util" ]
-  brave_chrome_browser_allow_circular_includes_from +=
+  luxxle_chrome_browser_deps += [ "//luxxle/browser/tor:util" ]
+  luxxle_chrome_browser_allow_circular_includes_from +=
       [ "//luxxle/browser/tor:util" ]
 }
 
-# https://github.com/luxxle/brave-browser/issues/10644
+# https://github.com/luxxle/luxxle-browser/issues/10644
 # Removed: widevine feature stripped
 # if (enable_widevine) {
-#   brave_chrome_browser_deps += [ "//luxxle/browser/widevine" ]
-#   brave_chrome_browser_allow_circular_includes_from +=
+#   luxxle_chrome_browser_deps += [ "//luxxle/browser/widevine" ]
+#   luxxle_chrome_browser_allow_circular_includes_from +=
 #       [ "//luxxle/browser/widevine" ]
 # }
 
-# https://github.com/luxxle/brave-browser/issues/41486
+# https://github.com/luxxle/luxxle-browser/issues/41486
 if (is_android) {
-  brave_chrome_browser_allow_circular_includes_from += [
+  luxxle_chrome_browser_allow_circular_includes_from += [
     "//luxxle/browser/android:android_browser_process",
     "//luxxle/browser/android/preferences",
     "//luxxle/browser/android:tab_features",
   ]
 }
 
-# TODO(https://github.com/luxxle/brave-browser/issues/43310):
-# brave_new_tab_page_ui.cc includes some headers (e.g. from
+# TODO(https://github.com/luxxle/luxxle-browser/issues/43310):
+# luxxle_new_tab_page_ui.cc includes some headers (e.g. from
 # //luxxle/browser/new_tab) that are currently in the //chrome/browser target.
 if (!is_android) {
-  brave_chrome_browser_allow_circular_includes_from +=
-      [ "//luxxle/browser/ui/webui/brave_new_tab_page_refresh" ]
+  luxxle_chrome_browser_allow_circular_includes_from +=
+      [ "//luxxle/browser/ui/webui/luxxle_new_tab_page_refresh" ]
 }
 
 if (target_os == "mac") {
-  brave_chrome_browser_deps += [ "//luxxle/browser:mac_features" ]
+  luxxle_chrome_browser_deps += [ "//luxxle/browser:mac_features" ]
 }

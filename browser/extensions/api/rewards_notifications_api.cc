@@ -8,14 +8,14 @@
 #include <memory>
 #include <optional>
 
-// REMOVED: #include "luxxle/browser/brave_rewards/.*"
+// REMOVED: #include "luxxle/browser/luxxle_rewards/.*"
 #include "luxxle/common/extensions/api/rewards_notifications.h"
-// REMOVED: #include "luxxle/components/brave_rewards/.*"
-// REMOVED: #include "luxxle/components/brave_rewards/.*"
+// REMOVED: #include "luxxle/components/luxxle_rewards/.*"
+// REMOVED: #include "luxxle/components/luxxle_rewards/.*"
 #include "chrome/browser/profiles/profile.h"
 
-using brave_rewards::RewardsNotificationService;
-using brave_rewards::RewardsServiceFactory;
+using luxxle_rewards::RewardsNotificationService;
+using luxxle_rewards::RewardsServiceFactory;
 
 namespace extensions::api {
 

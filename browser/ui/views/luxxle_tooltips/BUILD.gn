@@ -1,0 +1,36 @@
+# Copyright (c) 2021 The Luxxle Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/.
+
+import("//build/config/features.gni")
+import("//build/config/ui.gni")
+import("//ui/base/ui_features.gni")
+
+assert(is_win || is_linux || is_mac)
+
+source_set("luxxle_tooltips") {
+  sources = [
+    "luxxle_tooltip_label_button.cc",
+    "luxxle_tooltip_label_button.h",
+    "luxxle_tooltip_popup.cc",
+    "luxxle_tooltip_popup.h",
+    "luxxle_tooltip_popup_handler.cc",
+    "luxxle_tooltip_view.cc",
+    "luxxle_tooltip_view.h",
+  ]
+
+  deps = [
+    "//base",
+    "//luxxle/app:luxxle_generated_resources_grit",
+    "//luxxle/app/vector_icons",
+    "//luxxle/browser/ui/luxxle_tooltips",
+    "//ui/accessibility",
+    "//ui/base",
+    "//ui/compositor",
+    "//ui/display",
+    "//ui/gfx",
+    "//ui/native_theme",
+    "//ui/views",
+  ]
+}

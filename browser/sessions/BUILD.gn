@@ -7,7 +7,7 @@ source_set("browser_tests") {
   testonly = true
   if (!is_android) {
     defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]
-    sources = [ "brave_session_restore_browsertest.cc" ]
+    sources = [ "luxxle_session_restore_browsertest.cc" ]
 
     deps = [
       "//base/test:test_support",

@@ -13,7 +13,7 @@ import com.wireguard.config.Interface;
 import com.wireguard.config.Peer;
 
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.vpn.utils.BraveVpnPrefUtils;
+import org.chromium.chrome.browser.vpn.utils.LuxxleVpnPrefUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class WireguardUtils {
         builder.parseDnsServers("1.1.1.1, 1.0.0.1");
         builder.parseListenPort("51821");
         builder.parsePrivateKey(clientPrivateKey);
-        builder.excludeApplications(BraveVpnPrefUtils.getExcludedPackages());
+        builder.excludeApplications(LuxxleVpnPrefUtils.getExcludedPackages());
         return builder.build();
     }
 
@@ -37,7 +37,7 @@ public class WireguardUtils {
         builder.parseDnsServers("1.1.1.1, 1.0.0.1");
         builder.parseListenPort("51821");
         builder.parsePrivateKey(existingInterface.getKeyPair().getPrivateKey().toBase64());
-        builder.excludeApplications(BraveVpnPrefUtils.getExcludedPackages());
+        builder.excludeApplications(LuxxleVpnPrefUtils.getExcludedPackages());
         return builder.build();
     }
 

@@ -9,11 +9,11 @@
 
 #include "luxxle/browser/misc_metrics/profile_misc_metrics_service.h"
 #include "luxxle/browser/misc_metrics/profile_misc_metrics_service_factory.h"
-#include "luxxle/browser/ui/brave_pages.h"
+#include "luxxle/browser/ui/luxxle_pages.h"
 #include "luxxle/components/ai_chat/core/browser/ai_chat_metrics.h"
 #include "luxxle/components/ai_chat/core/common/pref_names.h"
 #include "luxxle/components/vector_icons/vector_icons.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
 #include "components/prefs/pref_service.h"
@@ -41,13 +41,13 @@ class AIChatButtonMenuModel : public ui::SimpleMenuModel,
 
   void Build() {
     AddItemWithStringId(ContextMenuCommand::kHideAIChatButton,
-                        IDS_HIDE_BRAVE_AI_CHAT_ICON_ON_TOOLBAR);
+                        IDS_HIDE_LUXXLE_AI_CHAT_ICON_ON_TOOLBAR);
   }
 
   // ui::SimpleMenuModel::Delegate:
   void ExecuteCommand(int command_id, int event_flags) override {
     if (command_id == ContextMenuCommand::kHideAIChatButton) {
-      prefs_->SetBoolean(ai_chat::prefs::kBraveAIChatShowToolbarButton, false);
+      prefs_->SetBoolean(ai_chat::prefs::kLuxxleAIChatShowToolbarButton, false);
     }
   }
 
@@ -62,7 +62,7 @@ AIChatButton::AIChatButton(Browser* browser)
       browser_(*browser) {
   auto* prefs = browser->profile()->GetOriginalProfile()->GetPrefs();
   SetMenuModel(std::make_unique<AIChatButtonMenuModel>(prefs));
-  SetVectorIcon(kLeoProductBraveLeoIcon);
+  SetVectorIcon(kLeoProductLuxxleLeoIcon);
 
   // Visibility is managed by |ToolbarView|.
   SetVisible(false);

@@ -5,9 +5,9 @@
 
 package org.chromium.chrome.browser.crypto_wallet.observers;
 
-import org.chromium.brave_wallet.mojom.AccountInfo;
-import org.chromium.brave_wallet.mojom.CoinType;
-import org.chromium.brave_wallet.mojom.KeyringServiceObserver;
+import org.chromium.luxxle_wallet.mojom.AccountInfo;
+import org.chromium.luxxle_wallet.mojom.CoinType;
+import org.chromium.luxxle_wallet.mojom.KeyringServiceObserver;
 import org.chromium.mojo.system.MojoException;
 
 import java.lang.ref.WeakReference;

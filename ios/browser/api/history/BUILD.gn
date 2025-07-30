@@ -8,10 +8,10 @@ import("//ios/build/config.gni")
 
 source_set("history") {
   sources = [
-    "brave_history_api+private.h",
-    "brave_history_api.h",
-    "brave_history_api.mm",
-    "brave_history_observer.h",
+    "luxxle_history_api+private.h",
+    "luxxle_history_api.h",
+    "luxxle_history_api.mm",
+    "luxxle_history_observer.h",
     "history_driver_ios.h",
     "history_driver_ios.mm",
     "history_service_listener_ios.h",

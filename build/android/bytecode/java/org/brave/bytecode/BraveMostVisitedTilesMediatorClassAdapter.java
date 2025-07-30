@@ -3,27 +3,27 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveMostVisitedTilesMediatorClassAdapter extends BraveClassVisitor {
+public class LuxxleMostVisitedTilesMediatorClassAdapter extends LuxxleClassVisitor {
     static String sMostVisitedTilesMediatorClassName =
             "org/chromium/chrome/browser/suggestions/tile/MostVisitedTilesMediator";
-    static String sBraveMostVisitedTilesMediatorClassName =
-            "org/chromium/chrome/browser/suggestions/tile/BraveMostVisitedTilesMediator";
+    static String sLuxxleMostVisitedTilesMediatorClassName =
+            "org/chromium/chrome/browser/suggestions/tile/LuxxleMostVisitedTilesMediator";
 
-    public BraveMostVisitedTilesMediatorClassAdapter(ClassVisitor visitor) {
+    public LuxxleMostVisitedTilesMediatorClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
         redirectConstructor(
-                sMostVisitedTilesMediatorClassName, sBraveMostVisitedTilesMediatorClassName);
+                sMostVisitedTilesMediatorClassName, sLuxxleMostVisitedTilesMediatorClassName);
 
         makePublicMethod(sMostVisitedTilesMediatorClassName, "updateTilePlaceholderVisibility");
-        addMethodAnnotation(sBraveMostVisitedTilesMediatorClassName,
+        addMethodAnnotation(sLuxxleMostVisitedTilesMediatorClassName,
                 "updateTilePlaceholderVisibility", "Ljava/lang/Override;");
 
-        deleteField(sBraveMostVisitedTilesMediatorClassName, "mTileGroup");
+        deleteField(sLuxxleMostVisitedTilesMediatorClassName, "mTileGroup");
         makeProtectedField(sMostVisitedTilesMediatorClassName, "mTileGroup");
     }
 }

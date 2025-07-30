@@ -221,7 +221,7 @@ public class OnboardingV2Fragment extends Fragment {
 
 	private void updateActionText() {
 		if (mAction != null) {
-			if (OnboardingPrefManager.getInstance().isBraveStatsEnabled()) {
+			if (OnboardingPrefManager.getInstance().isLuxxleStatsEnabled()) {
 				mAction.setText(mContext.getResources().getString(R.string.next));
 				if (mIndicator4 != null)
 					mIndicator4.setVisibility(View.GONE);

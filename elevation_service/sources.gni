@@ -6,4 +6,4 @@
 # Commented out: removed components dependency - using Chromium defaults instead
 
 # Define empty elevation service variables to use Chromium defaults
-brave_elevation_service_lib_deps = []
+luxxle_elevation_service_lib_deps = []

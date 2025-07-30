@@ -7,7 +7,7 @@
 
 #include "base/check_is_test.h"
 #include "base/command_line.h"
-#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
+#include "luxxle/browser/ui/tabs/luxxle_tab_prefs.h"
 #include "luxxle/browser/ui/views/tabs/switches.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
@@ -22,7 +22,7 @@
 #endif
 
 #if BUILDFLAG(IS_LINUX)
-#include "luxxle/browser/ui/views/frame/brave_browser_frame_view_linux_native.h"
+#include "luxxle/browser/ui/views/frame/luxxle_browser_frame_view_linux_native.h"
 #include "chrome/browser/themes/theme_service.h"
 #include "chrome/browser/themes/theme_service_factory.h"
 #include "chrome/browser/ui/layout_constants.h"
@@ -56,7 +56,7 @@ bool ShouldShowVerticalTabs(const Browser* browser) {
   }
 
   return browser->profile()->GetPrefs()->GetBoolean(
-      brave_tabs::kVerticalTabsEnabled);
+      luxxle_tabs::kVerticalTabsEnabled);
 }
 
 bool ShouldShowWindowTitleForVerticalTabs(const Browser* browser) {
@@ -65,7 +65,7 @@ bool ShouldShowWindowTitleForVerticalTabs(const Browser* browser) {
   }
 
   return browser->profile()->GetPrefs()->GetBoolean(
-      brave_tabs::kVerticalTabsShowTitleOnWindow);
+      luxxle_tabs::kVerticalTabsShowTitleOnWindow);
 }
 
 bool IsFloatingVerticalTabsEnabled(const Browser* browser) {
@@ -74,12 +74,12 @@ bool IsFloatingVerticalTabsEnabled(const Browser* browser) {
   }
 
   return browser->profile()->GetPrefs()->GetBoolean(
-      brave_tabs::kVerticalTabsFloatingEnabled);
+      luxxle_tabs::kVerticalTabsFloatingEnabled);
 }
 
 bool IsVerticalTabOnRight(const Browser* browser) {
   return browser->profile()->GetPrefs()->GetBoolean(
-      brave_tabs::kVerticalTabsOnRight);
+      luxxle_tabs::kVerticalTabsOnRight);
 }
 
 std::pair<int, int> GetLeadingTrailingCaptionButtonWidth(
@@ -118,7 +118,7 @@ std::pair<int, int> GetLeadingTrailingCaptionButtonWidth(
   // When using gtk-provided caption buttons, buttons' size and spacing is
   // decided by system. So we can't help but peeking the actual caption button's
   // position.
-  auto* frame_view = views::AsViewClass<BraveBrowserFrameViewLinuxNative>(
+  auto* frame_view = views::AsViewClass<LuxxleBrowserFrameViewLinuxNative>(
       frame->GetFrameView());
   if (!frame_view) {
     // We could be in the middle of transition to GTK theme frame.

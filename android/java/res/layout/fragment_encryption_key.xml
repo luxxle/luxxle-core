@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (c) 2022 The Brave Authors. All rights reserved.
+<!-- Copyright (c) 2022 The Luxxle Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -36,12 +36,12 @@
         android:innerRadius="0dp"
         android:shape="ring"
         android:thicknessRatio="1.9"
-        app:cardBackgroundColor="@color/brave_theme_color"
+        app:cardBackgroundColor="@color/luxxle_theme_color"
         app:cardCornerRadius="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fragment_encryption_msg_tv_network_name"
-        app:strokeColor="@color/brave_white"
+        app:strokeColor="@color/luxxle_white"
         app:strokeWidth="2dp">
 
         <ImageView
@@ -53,7 +53,7 @@
             android:layout_centerHorizontal="true"
             android:contentDescription="@string/accessibility_wallet_dapp_panel_account"
             app:cardBackgroundColor="@android:color/transparent"
-            tools:srcCompat="@drawable/ic_brave_logo" />
+            tools:srcCompat="@drawable/ic_luxxle_logo" />
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
@@ -63,13 +63,13 @@
         android:layout_marginTop="4dp"
         android:layout_marginBottom="12dp"
         android:gravity="center"
-        android:textColor="@color/brave_wallet_dapp_text_color"
+        android:textColor="@color/luxxle_wallet_dapp_text_color"
         android:textSize="15sp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fragment_encryption_msg_cv_account_image_container"
-        tools:text="brave.com" />
+        tools:text="luxxle.com" />
 
     <TextView
         android:id="@+id/fragment_encryption_msg_tv_account_name"
@@ -78,7 +78,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="4dp"
         android:gravity="center"
-        android:textColor="@color/brave_wallet_dapp_text_color"
+        android:textColor="@color/luxxle_wallet_dapp_text_color"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,8 +92,8 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
         android:gravity="center"
-        android:text="@string/brave_wallet_provide_encryption_key_title"
-        android:textColor="@color/brave_wallet_dapp_text_color"
+        android:text="@string/luxxle_wallet_provide_encryption_key_title"
+        android:textColor="@color/luxxle_wallet_dapp_text_color"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/fragment_encryption_msg_title"
@@ -109,7 +109,7 @@
         android:layout_marginBottom="8dp"
         android:gravity="center"
         android:text="@string/message"
-        android:textColor="@color/brave_text_button_color"
+        android:textColor="@color/luxxle_text_button_color"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -143,7 +143,7 @@
             android:id="@+id/fragment_encryption_msg_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/brave_wallet_dapp_text_color"
+            android:textColor="@color/luxxle_wallet_dapp_text_color"
             android:textSize="16sp"
             tools:text="Some long message" />
     </ScrollView>
@@ -153,8 +153,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/brave_wallet_read_encrypted_message_decrypt_button"
-        android:textColor="@color/brave_action_color"
+        android:text="@string/luxxle_wallet_read_encrypted_message_decrypt_button"
+        android:textColor="@color/luxxle_action_color"
         android:textSize="16sp"
         android:textStyle="bold"
         android:visibility="gone"
@@ -173,26 +173,26 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/fragment_encryption_msg_btn_cancel"
-            style="@style/BraveWalletButtonHollow"
+            style="@style/LuxxleWalletButtonHollow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
             android:layout_weight="1"
-            android:text="@string/brave_cancel"
+            android:text="@string/luxxle_cancel"
             android:textSize="16sp"
             tools:ignore="DuplicateSpeakableTextCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/fragment_encryption_msg_btn_provide_allow"
-            style="@style/BraveWalletButton"
+            style="@style/LuxxleWalletButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
             android:layout_weight="1"
-            android:text="@string/brave_wallet_provide_encryption_key_button" />
+            android:text="@string/luxxle_wallet_provide_encryption_key_button" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

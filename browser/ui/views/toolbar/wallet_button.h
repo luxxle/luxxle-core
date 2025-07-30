@@ -51,7 +51,7 @@ class WalletButton : public ToolbarButton {
   raw_ptr<views::MenuButtonController> menu_button_controller_ = nullptr;
   raw_ptr<views::View> backup_anchor_view_ = nullptr;
 
-  std::unique_ptr<brave_wallet::WalletButtonNotificationSource>
+  std::unique_ptr<luxxle_wallet::WalletButtonNotificationSource>
       notification_source_;
 
   size_t counter_ = 0;

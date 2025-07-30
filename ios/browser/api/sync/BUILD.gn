@@ -8,25 +8,25 @@ import("//ios/build/config.gni")
 
 source_set("sync") {
   sources = [
-    "brave_sync_api.h",
-    "brave_sync_api.mm",
-    "brave_sync_worker.cc",
-    "brave_sync_worker.h",
+    "luxxle_sync_api.h",
+    "luxxle_sync_api.mm",
+    "luxxle_sync_worker.cc",
+    "luxxle_sync_worker.h",
   ]
 
   deps = [
     "driver",
     "//base",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync",
+    # "//luxxle/components/luxxle_sync",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:crypto",
+    # "//luxxle/components/luxxle_sync:crypto",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:prefs",
+    # "//luxxle/components/luxxle_sync:prefs",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:sync_service_impl_helper",
+    # "//luxxle/components/luxxle_sync:sync_service_impl_helper",
     # Commented out: removed components dependency - using Chromium defaults instead
-    # "//luxxle/components/brave_sync:time_limited_codes",
+    # "//luxxle/components/luxxle_sync:time_limited_codes",
     # Commented out: removed components dependency - using Chromium defaults instead
     # "//components/sync/base",
     # Commented out: removed components dependency - using Chromium defaults instead

@@ -37,7 +37,7 @@ source_set("unit_tests") {
   sources = [ "//luxxle/browser/profiles/profile_attributes_entry_unittest.cc" ]
   deps = [
     "//base",
-    "//luxxle/app:brave_generated_resources_grit_grit",
+    "//luxxle/app:luxxle_generated_resources_grit_grit",
     "//chrome/browser/profiles",
     "//chrome/test:test_support",
     "//testing/gtest",

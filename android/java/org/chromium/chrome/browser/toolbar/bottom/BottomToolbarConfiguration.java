@@ -10,7 +10,7 @@ import android.graphics.Point;
 import android.view.Display;
 
 import org.chromium.base.ApplicationStatus;
-import org.chromium.base.BravePreferenceKeys;
+import org.chromium.base.LuxxlePreferenceKeys;
 import org.chromium.base.ContextUtils;
 import org.chromium.chrome.browser.app.ChromeActivity;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
@@ -22,7 +22,7 @@ public class BottomToolbarConfiguration {
     private static final int SMALL_SCREEN_WIDTH = 360;
     private static final int SMALL_SCREEN_HEIGHT = 640;
 
-    public static boolean isBraveBottomControlsEnabled() {
+    public static boolean isLuxxleBottomControlsEnabled() {
         // We do not use the bottom controls on tablets.
         if (DeviceFormFactor.isNonMultiDisplayContextOnTablet(
                 ContextUtils.getApplicationContext())) {
@@ -33,18 +33,18 @@ public class BottomToolbarConfiguration {
             return false;
         }
         if (ChromeSharedPreferences.getInstance()
-                .readBoolean(BravePreferenceKeys.BRAVE_BOTTOM_TOOLBAR_SET_KEY, false)) {
+                .readBoolean(LuxxlePreferenceKeys.LUXXLE_BOTTOM_TOOLBAR_SET_KEY, false)) {
             return ChromeSharedPreferences.getInstance()
-                    .readBoolean(BravePreferenceKeys.BRAVE_BOTTOM_TOOLBAR_ENABLED_KEY, true);
+                    .readBoolean(LuxxlePreferenceKeys.LUXXLE_BOTTOM_TOOLBAR_ENABLED_KEY, true);
         } else {
             ChromeSharedPreferences.getInstance()
-                    .writeBoolean(BravePreferenceKeys.BRAVE_BOTTOM_TOOLBAR_SET_KEY, true);
+                    .writeBoolean(LuxxlePreferenceKeys.LUXXLE_BOTTOM_TOOLBAR_SET_KEY, true);
             boolean enable = true;
             if (isSmallScreen()) {
                 enable = false;
             }
             ChromeSharedPreferences.getInstance()
-                    .writeBoolean(BravePreferenceKeys.BRAVE_BOTTOM_TOOLBAR_ENABLED_KEY, enable);
+                    .writeBoolean(LuxxlePreferenceKeys.LUXXLE_BOTTOM_TOOLBAR_ENABLED_KEY, enable);
 
             return enable;
         }

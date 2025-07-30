@@ -3,48 +3,48 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-package org.brave.bytecode;
+package org.luxxle.bytecode;
 
 import org.objectweb.asm.ClassVisitor;
 
-public class BraveNewTabPageLayoutClassAdapter extends BraveClassVisitor {
+public class LuxxleNewTabPageLayoutClassAdapter extends LuxxleClassVisitor {
     static String sNewTabPageLayoutClassName = "org/chromium/chrome/browser/ntp/NewTabPageLayout";
-    static String sBraveNewTabPageLayoutClassName =
-            "org/chromium/chrome/browser/ntp/BraveNewTabPageLayout";
+    static String sLuxxleNewTabPageLayoutClassName =
+            "org/chromium/chrome/browser/ntp/LuxxleNewTabPageLayout";
     static String sNewTabPageLayoutSuperClassName = "android/widget/FrameLayout";
 
-    public BraveNewTabPageLayoutClassAdapter(ClassVisitor visitor) {
+    public LuxxleNewTabPageLayoutClassAdapter(ClassVisitor visitor) {
         super(visitor);
 
-        deleteField(sBraveNewTabPageLayoutClassName, "mMvTilesContainerLayout");
+        deleteField(sLuxxleNewTabPageLayoutClassName, "mMvTilesContainerLayout");
         makeProtectedField(sNewTabPageLayoutClassName, "mMvTilesContainerLayout");
 
-        deleteField(sBraveNewTabPageLayoutClassName, "mLogoCoordinator");
+        deleteField(sLuxxleNewTabPageLayoutClassName, "mLogoCoordinator");
         makeProtectedField(sNewTabPageLayoutClassName, "mLogoCoordinator");
 
-        deleteField(sBraveNewTabPageLayoutClassName, "mInitialTileNum");
+        deleteField(sLuxxleNewTabPageLayoutClassName, "mInitialTileNum");
         makeProtectedField(sNewTabPageLayoutClassName, "mInitialTileNum");
 
-        deleteField(sBraveNewTabPageLayoutClassName, "mProfile");
+        deleteField(sLuxxleNewTabPageLayoutClassName, "mProfile");
         makeProtectedField(sNewTabPageLayoutClassName, "mProfile");
 
         makePublicMethod(sNewTabPageLayoutClassName, "insertSiteSectionView");
         addMethodAnnotation(
-                sBraveNewTabPageLayoutClassName, "insertSiteSectionView", "Ljava/lang/Override;");
+                sLuxxleNewTabPageLayoutClassName, "insertSiteSectionView", "Ljava/lang/Override;");
 
         makePublicMethod(sNewTabPageLayoutClassName, "setSearchProviderTopMargin");
         addMethodAnnotation(
-                sBraveNewTabPageLayoutClassName,
+                sLuxxleNewTabPageLayoutClassName,
                 "setSearchProviderTopMargin",
                 "Ljava/lang/Override;");
 
         makePublicMethod(sNewTabPageLayoutClassName, "setSearchProviderBottomMargin");
         addMethodAnnotation(
-                sBraveNewTabPageLayoutClassName,
+                sLuxxleNewTabPageLayoutClassName,
                 "setSearchProviderBottomMargin",
                 "Ljava/lang/Override;");
 
-        deleteMethod(sBraveNewTabPageLayoutClassName, "getLogoMargin");
+        deleteMethod(sLuxxleNewTabPageLayoutClassName, "getLogoMargin");
         makePublicMethod(sNewTabPageLayoutClassName, "getLogoMargin");
 
         changeSuperName(sNewTabPageLayoutClassName, sNewTabPageLayoutSuperClassName);

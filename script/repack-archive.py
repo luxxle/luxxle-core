@@ -16,7 +16,7 @@ def main():
                         'relative to this directory', default='.')
     args = parser.parse_args()
 
-    temp_dir = tempdir('brave_archive')
+    temp_dir = tempdir('luxxle_archive')
     cmd = [get_lzma_exec(), 'x', args.input, '-y', '-o' + temp_dir]
     subprocess.check_call(cmd, stdout=subprocess.PIPE, shell=False)
     with scoped_cwd(os.path.join(temp_dir, args.target_dir)):

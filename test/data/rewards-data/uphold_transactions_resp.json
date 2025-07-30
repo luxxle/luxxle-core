@@ -36,7 +36,7 @@
     "CardId": "c5fd7219-6586-4fe1-b947-0cbd25040ca8",
     "commission": "0.00",
     "currency": "BAT",
-    "description": "Brave Software International",
+    "description": "Luxxle Software International",
     "fee": "0.00",
     "isMember": true,
     "node": {
@@ -44,13 +44,13 @@
       "type": "card",
       "user": {
         "id": "f5e37294-68f1-49ae-89e2-b24b64aedd37",
-        "username": "braveintl"
+        "username": "luxxleintl"
       }
     },
     "rate": "1",
     "sources": [],
     "type": "card",
-    "username": "braveintl"
+    "username": "luxxleintl"
   },
   "destination": {
     "amount": "0.95",
@@ -58,7 +58,7 @@
     "CardId": "26430608-eb7a-4d0a-a524-7029f2bc97ed",
     "commission": "0.00",
     "currency": "BAT",
-    "description": "Brave Software International",
+    "description": "Luxxle Software International",
     "fee": "0.00",
     "isMember": true,
     "node": {
@@ -66,11 +66,11 @@
       "type": "card",
       "user": {
         "id": "f5e37294-68f1-49ae-89e2-b24b64aedd37",
-        "username": "braveintl"
+        "username": "luxxleintl"
       }
     },
     "rate": "1",
     "type": "card",
-    "username": "braveintl"
+    "username": "luxxleintl"
   }
 }

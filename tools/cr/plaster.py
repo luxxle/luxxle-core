@@ -18,10 +18,10 @@ from incendiary_error_handler import IncendiaryErrorHandler
 import repository
 from repository import Repository
 
-# The path to the directory containing overlay files in brave-core.
-OVERLAY_FILES_PATH = repository.BRAVE_CORE_PATH / 'rewrite'
+# The path to the directory containing overlay files in luxxle-core.
+OVERLAY_FILES_PATH = repository.LUXXLE_CORE_PATH / 'rewrite'
 
-# The path to the directory where patch files are stored in brave-core.
+# The path to the directory where patch files are stored in luxxle-core.
 PATCHES_PATH = Path('patches/')
 
 
@@ -32,7 +32,7 @@ class PlasterFile:
     """
 
     # The path to the overlay file. This path is relative to
-    # BRAVE_CORE_PATH.
+    # LUXXLE_CORE_PATH.
     path: Path
 
     # The source file path. This path is relative to the source's own
@@ -40,20 +40,20 @@ class PlasterFile:
     source: Path = field(init=False)
 
     def __post_init__(self):
-        # TODO(https://github.com/luxxle/brave-browser/issues/45052): For now
+        # TODO(https://github.com/luxxle/luxxle-browser/issues/45052): For now
         # there's only support for `src`, but eventually there's going to be
         # the need to support other repositories as well.
         object.__setattr__(
             self, 'source',
             self.path.relative_to(OVERLAY_FILES_PATH).with_suffix(''))
 
-        # This is made as a path validation, as the path has to be under brave
+        # This is made as a path validation, as the path has to be under luxxle
         # to have its own path used as a reference.
-        self.path = self.path.relative_to(repository.BRAVE_CORE_PATH)
+        self.path = self.path.relative_to(repository.LUXXLE_CORE_PATH)
 
     @property
     def patchfile(self) -> Path:
-        """ Returns the path to the patch file in brave-core.
+        """ Returns the path to the patch file in luxxle-core.
         """
         return PATCHES_PATH / f'{str(self.source).replace("/", "-")}.patch'
 
@@ -112,7 +112,7 @@ class PlasterFile:
             logging.debug('Saving: %s', path)
             path.write_text(content, encoding='utf-8')
 
-        save_if_has_changes(Path(repository.chromium.from_brave(self.source)),
+        save_if_has_changes(Path(repository.chromium.from_luxxle(self.source)),
                             contents)
 
         patch_content = (repository.chromium.run_git('diff',

@@ -14,14 +14,14 @@
 #include "base/functional/bind.h"
 #include "base/strings/string_split.h"
 #include "luxxle/app/vector_icons/vector_icons.h"
-#include "luxxle/browser/ui/brave_browser.h"
-#include "luxxle/browser/ui/color/brave_color_id.h"
-#include "luxxle/browser/ui/tabs/brave_tab_prefs.h"
-#include "luxxle/browser/ui/views/brave_tab_search_bubble_host.h"
-#include "luxxle/browser/ui/views/frame/brave_contents_view_util.h"
-#include "luxxle/browser/ui/views/tabs/brave_new_tab_button.h"
-#include "luxxle/browser/ui/views/tabs/brave_tab_search_button.h"
-#include "luxxle/browser/ui/views/tabs/brave_tab_strip_layout_helper.h"
+#include "luxxle/browser/ui/luxxle_browser.h"
+#include "luxxle/browser/ui/color/luxxle_color_id.h"
+#include "luxxle/browser/ui/tabs/luxxle_tab_prefs.h"
+#include "luxxle/browser/ui/views/luxxle_tab_search_bubble_host.h"
+#include "luxxle/browser/ui/views/frame/luxxle_contents_view_util.h"
+#include "luxxle/browser/ui/views/tabs/luxxle_new_tab_button.h"
+#include "luxxle/browser/ui/views/tabs/luxxle_tab_search_button.h"
+#include "luxxle/browser/ui/views/tabs/luxxle_tab_strip_layout_helper.h"
 #include "luxxle/browser/ui/views/tabs/vertical_tab_utils.h"
 #include "luxxle/components/constants/pref_names.h"
 #include "luxxle/components/vector_icons/vector_icons.h"
@@ -102,7 +102,7 @@ class ToggleButton : public ToolbarButton {
     if (GetState() == views::Button::STATE_NORMAL) {
       // Double check highlight state after changing state to normal. Dragging
       // the button can make the highlight effect hidden.
-      // https://github.com/luxxle/brave-browser/issues/31421
+      // https://github.com/luxxle/luxxle-browser/issues/31421
       SetHighlighted(region_view_->state() ==
                      VerticalTabStripRegionView::State::kExpanded);
     }
@@ -126,8 +126,8 @@ class ToggleButton : public ToolbarButton {
 BEGIN_METADATA(ToggleButton)
 END_METADATA
 
-class VerticalTabSearchButton : public BraveTabSearchButton {
-  METADATA_HEADER(VerticalTabSearchButton, BraveTabSearchButton)
+class VerticalTabSearchButton : public LuxxleTabSearchButton {
+  METADATA_HEADER(VerticalTabSearchButton, LuxxleTabSearchButton)
  public:
   VerticalTabSearchButton(VerticalTabStripRegionView* region_view,
                           TabStripController* tab_strip_controller,
@@ -135,7 +135,7 @@ class VerticalTabSearchButton : public BraveTabSearchButton {
                           Edge fixed_flat_edge,
                           Edge animated_flat_edge,
                           TabStrip* tab_strip)
-      : BraveTabSearchButton(tab_strip_controller,
+      : LuxxleTabSearchButton(tab_strip_controller,
                              browser_window_interface,
                              fixed_flat_edge,
                              animated_flat_edge,
@@ -149,13 +149,13 @@ class VerticalTabSearchButton : public BraveTabSearchButton {
     // We can have this host here because this bubble is only used in vertical
     // tab mode. BrowserView::tab_search_bubble_host_ is used for horizontal
     // mode.
-    tab_search_bubble_host_ = std::make_unique<BraveTabSearchBubbleHost>(
+    tab_search_bubble_host_ = std::make_unique<LuxxleTabSearchBubbleHost>(
         this, browser_window_interface, tab_strip->AsWeakPtr());
   }
 
   ~VerticalTabSearchButton() override = default;
 
-  BraveTabSearchBubbleHost* tab_search_bubble_host() {
+  LuxxleTabSearchBubbleHost* tab_search_bubble_host() {
     return tab_search_bubble_host_.get();
   }
 
@@ -163,9 +163,9 @@ class VerticalTabSearchButton : public BraveTabSearchButton {
     tab_search_bubble_host_->SetBubbleArrow(arrow);
   }
 
-  // BraveTabSearchButton:
+  // LuxxleTabSearchButton:
   void UpdateColors() override {
-    BraveTabSearchButton::UpdateColors();
+    LuxxleTabSearchButton::UpdateColors();
 
     // Override images set from UpdateIcon().
     constexpr int kIconSize = 16;
@@ -178,7 +178,7 @@ class VerticalTabSearchButton : public BraveTabSearchButton {
   }
 
   void OnThemeChanged() override {
-    BraveTabSearchButton::OnThemeChanged();
+    LuxxleTabSearchButton::OnThemeChanged();
     ConfigureInkDropForToolbar(this);
   }
 
@@ -201,12 +201,12 @@ class VerticalTabSearchButton : public BraveTabSearchButton {
   }
 
   void StateChanged(ButtonState old_state) override {
-    BraveTabSearchButton::StateChanged(old_state);
+    LuxxleTabSearchButton::StateChanged(old_state);
     UpdateColors();
   }
 
  private:
-  std::unique_ptr<BraveTabSearchBubbleHost> tab_search_bubble_host_;
+  std::unique_ptr<LuxxleTabSearchBubbleHost> tab_search_bubble_host_;
 };
 
 BEGIN_METADATA(VerticalTabSearchButton)
@@ -238,9 +238,9 @@ class ShortcutBox : public views::View {
     const auto shortcut_font = shortcut_part->font_list();
     shortcut_part->SetFontList(shortcut_font.DeriveWithSizeDelta(
         kFontSize - shortcut_font.GetFontSize()));
-    shortcut_part->SetEnabledColor(kColorBraveVerticalTabNTBShortcutTextColor);
+    shortcut_part->SetEnabledColor(kColorLuxxleVerticalTabNTBShortcutTextColor);
     shortcut_part->SetBorder(views::CreateRoundedRectBorder(
-        /*thickness*/ 1, /*radius*/ 4, kColorBraveVerticalTabSeparator));
+        /*thickness*/ 1, /*radius*/ 4, kColorLuxxleVerticalTabSeparator));
 
     // Give padding and set minimum to width.
     auto preferred_size = shortcut_part->GetPreferredSize();
@@ -254,13 +254,13 @@ class ShortcutBox : public views::View {
 BEGIN_METADATA(ShortcutBox)
 END_METADATA
 
-class VerticalTabNewTabButton : public BraveNewTabButton {
-  METADATA_HEADER(VerticalTabNewTabButton, BraveNewTabButton)
+class VerticalTabNewTabButton : public LuxxleNewTabButton {
+  METADATA_HEADER(VerticalTabNewTabButton, LuxxleNewTabButton)
  public:
   VerticalTabNewTabButton(TabStrip* tab_strip,
                           PressedCallback callback,
                           const std::u16string& shortcut_text)
-      : BraveNewTabButton(tab_strip, std::move(callback)) {
+      : LuxxleNewTabButton(tab_strip, std::move(callback)) {
     // Turn off inkdrop to have same bg color with tab's.
     views::InkDrop::Get(this)->SetMode(views::InkDropHost::InkDropMode::OFF);
 
@@ -284,7 +284,7 @@ class VerticalTabNewTabButton : public BraveNewTabButton {
     plus_icon_->SetHorizontalAlignment(views::ImageView::Alignment::kCenter);
     plus_icon_->SetVerticalAlignment(views::ImageView::Alignment::kCenter);
     plus_icon_->SetImage(ui::ImageModel::FromVectorIcon(
-        kLeoPlusAddIcon, kColorBraveVerticalTabNTBIconColor,
+        kLeoPlusAddIcon, kColorLuxxleVerticalTabNTBIconColor,
         /* icon_size= */ 16));
     plus_icon_->SetProperty(
         views::kFlexBehaviorKey,
@@ -309,7 +309,7 @@ class VerticalTabNewTabButton : public BraveNewTabButton {
     const auto text_font = text_->font_list();
     text_->SetFontList(
         text_font.DeriveWithSizeDelta(kFontSize - text_font.GetFontSize()));
-    text_->SetEnabledColor(kColorBraveVerticalTabNTBTextColor);
+    text_->SetEnabledColor(kColorLuxxleVerticalTabNTBTextColor);
 
     auto* spacer = AddChildView(std::make_unique<views::View>());
     spacer->SetProperty(
@@ -334,7 +334,7 @@ class VerticalTabNewTabButton : public BraveNewTabButton {
 
   ~VerticalTabNewTabButton() override = default;
 
-  // BraveNewTabButton:
+  // LuxxleNewTabButton:
   SkPath GetBorderPath(const gfx::Point& origin,
                        bool extend_to_top) const override {
     auto contents_bounds = GetContentsBounds();
@@ -368,13 +368,13 @@ class VerticalTabNewTabButton : public BraveNewTabButton {
   }
 
   void StateChanged(ButtonState old_state) override {
-    BraveNewTabButton::StateChanged(old_state);
+    LuxxleNewTabButton::StateChanged(old_state);
 
     int bg_color_id = kColorToolbar;
     if (GetState() == views::Button::STATE_PRESSED) {
-      bg_color_id = kColorBraveVerticalTabActiveBackground;
+      bg_color_id = kColorLuxxleVerticalTabActiveBackground;
     } else if (GetState() == views::Button::STATE_HOVERED) {
-      bg_color_id = kColorBraveVerticalTabHoveredBackground;
+      bg_color_id = kColorLuxxleVerticalTabHoveredBackground;
     }
 
     SetBackground(
@@ -467,7 +467,7 @@ class VerticalTabStripRegionView::HeaderView : public views::View {
     UpdateTabSearchButtonVisibility();
 
     vertical_tab_on_right_.Init(
-        brave_tabs::kVerticalTabsOnRight,
+        luxxle_tabs::kVerticalTabsOnRight,
         region_view_->browser()->profile()->GetPrefs(),
         base::BindRepeating(&HeaderView::OnVerticalTabPositionChanged,
                             base::Unretained(this)));
@@ -602,7 +602,7 @@ VerticalTabStripRegionView::VerticalTabStripRegionView(
   header_view_->toggle_button()->SetHighlighted(state_ == State::kExpanded);
   separator_ = AddChildView(std::make_unique<views::View>());
   separator_->SetBackground(
-      views::CreateSolidBackground(kColorBraveVerticalTabSeparator));
+      views::CreateSolidBackground(kColorLuxxleVerticalTabSeparator));
   new_tab_button_ = AddChildView(std::make_unique<VerticalTabNewTabButton>(
       original_region_view_->tab_strip_,
       base::BindRepeating(&TabStrip::NewTabButtonPressed,
@@ -620,33 +620,33 @@ VerticalTabStripRegionView::VerticalTabStripRegionView(
                           base::Unretained(this)));
 
   expanded_width_pref_.Init(
-      brave_tabs::kVerticalTabsExpandedWidth, prefs,
+      luxxle_tabs::kVerticalTabsExpandedWidth, prefs,
       base::BindRepeating(
           &VerticalTabStripRegionView::OnExpandedWidthPrefChanged,
           base::Unretained(this)));
   OnExpandedWidthPrefChanged();
 
   show_vertical_tabs_.Init(
-      brave_tabs::kVerticalTabsEnabled, prefs,
+      luxxle_tabs::kVerticalTabsEnabled, prefs,
       base::BindRepeating(
           &VerticalTabStripRegionView::OnShowVerticalTabsPrefChanged,
           base::Unretained(this)));
   UpdateLayout();
 
   collapsed_pref_.Init(
-      brave_tabs::kVerticalTabsCollapsed, prefs,
+      luxxle_tabs::kVerticalTabsCollapsed, prefs,
       base::BindRepeating(&VerticalTabStripRegionView::OnCollapsedPrefChanged,
                           base::Unretained(this)));
   OnCollapsedPrefChanged();
 
   expanded_state_per_window_pref_.Init(
-      brave_tabs::kVerticalTabsExpandedStatePerWindow, prefs,
+      luxxle_tabs::kVerticalTabsExpandedStatePerWindow, prefs,
       base::BindRepeating(
           &VerticalTabStripRegionView::OnExpandedStatePerWindowPrefChanged,
           base::Unretained(this)));
 
   floating_mode_pref_.Init(
-      brave_tabs::kVerticalTabsFloatingEnabled, prefs,
+      luxxle_tabs::kVerticalTabsFloatingEnabled, prefs,
       base::BindRepeating(
           &VerticalTabStripRegionView::OnFloatingModePrefChanged,
           base::Unretained(this)));
@@ -659,7 +659,7 @@ VerticalTabStripRegionView::VerticalTabStripRegionView(
 #endif
 
   vertical_tab_on_right_.Init(
-      brave_tabs::kVerticalTabsOnRight, browser()->profile()->GetPrefs(),
+      luxxle_tabs::kVerticalTabsOnRight, browser()->profile()->GetPrefs(),
       base::BindRepeating(&VerticalTabStripRegionView::OnBrowserPanelsMoved,
                           base::Unretained(this)));
 
@@ -1097,7 +1097,7 @@ void VerticalTabStripRegionView::OnBoundsChanged(
       // During/After the drag and drop session, tab strip container might have
       // ignored Layout() request. As the container bounds changed, we should
       // force it to layout.
-      // https://github.com/luxxle/brave-browser/issues/29941
+      // https://github.com/luxxle/luxxle-browser/issues/29941
       tab_strip()->tab_container_->InvalidateIdealBounds();
       tab_strip()->tab_container_->CompleteAnimationAndLayout();
     }
@@ -1110,7 +1110,7 @@ void VerticalTabStripRegionView::OnBoundsChanged(
     CHECK_GE(
         width,
         tabs::kVerticalTabMinWidth + tabs::kMarginForVerticalTabContainers * 2 -
-            BraveContentsViewUtil::GetRoundedCornersWebViewMargin(browser_));
+            LuxxleContentsViewUtil::GetRoundedCornersWebViewMargin(browser_));
   }
 #endif
 }
@@ -1194,7 +1194,7 @@ int VerticalTabStripRegionView::GetTabStripViewportMaxHeight() const {
 
 void VerticalTabStripRegionView::ResetExpandedWidth() {
   auto* prefs = browser_->profile()->GetPrefs();
-  prefs->ClearPref(brave_tabs::kVerticalTabsExpandedWidth);
+  prefs->ClearPref(luxxle_tabs::kVerticalTabsExpandedWidth);
 
   PreferredSizeChanged();
 }
@@ -1215,7 +1215,7 @@ void VerticalTabStripRegionView::UpdateBorder() {
       return false;
     }
 
-    if (!BraveBrowser::ShouldUseBraveWebViewRoundedCorners(browser_)) {
+    if (!LuxxleBrowser::ShouldUseLuxxleWebViewRoundedCorners(browser_)) {
       return true;
     }
 
@@ -1238,7 +1238,7 @@ void VerticalTabStripRegionView::UpdateBorder() {
       1 -
       (sidebar_on_same_side
            ? 0
-           : BraveContentsViewUtil::GetRoundedCornersWebViewMargin(browser_));
+           : LuxxleContentsViewUtil::GetRoundedCornersWebViewMargin(browser_));
   gfx::Insets border_insets =
       (is_on_right)
           ? gfx::Insets::TLBR(0, inset, tabs::kVerticalTabsSpacing, 0)
@@ -1247,7 +1247,7 @@ void VerticalTabStripRegionView::UpdateBorder() {
   if (show_visible_border()) {
     SetBorder(views::CreateSolidSidedBorder(
         border_insets,
-        GetColorProvider()->GetColor(kColorBraveVerticalTabSeparator)));
+        GetColorProvider()->GetColor(kColorLuxxleVerticalTabSeparator)));
   } else {
     SetBorder(views::CreateEmptyBorder(border_insets));
   }

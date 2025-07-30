@@ -67,7 +67,7 @@
     }
   ],
   "options": {
-    "cwd": "${workspaceFolder}/brave",
+    "cwd": "${workspaceFolder}/luxxle",
     "env": {
       "PATH": "${workspaceFolder}/luxxle/vendor/depot_tools:${env:PATH}"
     }
@@ -83,7 +83,7 @@
     {
       "type": "pickString",
       "id": "chromeOutputDir",
-      "description": "Brave build config:",
+      "description": "Luxxle build config:",
       "options": [
         "Component",
         "Static",
@@ -156,7 +156,7 @@
           ],
           "pattern": [
             {
-              "regexp": "^Brave\\sBrowser\\sSync\\sERROR"
+              "regexp": "^Luxxle\\sBrowser\\sSync\\sERROR"
             },
             {
               "regexp": "^(.*)$",
@@ -240,18 +240,18 @@
     //     "command": "${workspaceFolder}/tools/autotest.py -C ${config:chrome.outputDir} --run-all ${fileDirname}"
     //   },
     {
-      "label": "brave_unit_tests",
+      "label": "luxxle_unit_tests",
       "type": "shell",
       "group": "test",
-      "command": "npm run test -- brave_unit_tests -C ${config:chrome.outputDir}",
+      "command": "npm run test -- luxxle_unit_tests -C ${config:chrome.outputDir}",
       "presentation": {
         "group": "test",
         "reveal": "never"
       },
-      "detail": "npm run test -- brave_unit_tests",
+      "detail": "npm run test -- luxxle_unit_tests",
       "problemMatcher": [
         {
-          "owner": "brave_unit_tests",
+          "owner": "luxxle_unit_tests",
           "fileLocation": [
             "relative",
             "${config:chrome.outputDir}"
@@ -270,7 +270,7 @@
           ]
         },
         {
-          "owner": "brave_unit_tests",
+          "owner": "luxxle_unit_tests",
           "fileLocation": [
             "relative",
             "${config:chrome.outputDir}"
@@ -292,18 +292,18 @@
       ]
     },
     {
-      "label": "brave_browser_tests",
+      "label": "luxxle_browser_tests",
       "type": "shell",
       "group": "test",
-      "command": "npm run test -- brave_browser_tests -C ${config:chrome.outputDir}",
+      "command": "npm run test -- luxxle_browser_tests -C ${config:chrome.outputDir}",
       "presentation": {
         "group": "test",
         "reveal": "never"
       },
-      "detail": "npm run test -- brave_browser_tests",
+      "detail": "npm run test -- luxxle_browser_tests",
       "problemMatcher": [
         {
-          "owner": "brave_browser_tests",
+          "owner": "luxxle_browser_tests",
           "fileLocation": [
             "relative",
             "${config:chrome.outputDir}"
@@ -322,7 +322,7 @@
           ]
         },
         {
-          "owner": "brave_browser_tests",
+          "owner": "luxxle_browser_tests",
           "fileLocation": [
             "relative",
             "${config:chrome.outputDir}"

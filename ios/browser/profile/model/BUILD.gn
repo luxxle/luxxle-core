@@ -8,14 +8,14 @@ import("//ios/build/config.gni")
 
 source_set("model") {
   sources = [
-    "brave_keyed_service_factories.h",
-    "brave_keyed_service_factories.mm",
+    "luxxle_keyed_service_factories.h",
+    "luxxle_keyed_service_factories.mm",
   ]
   deps = [
     "//base",
     "//luxxle/ios/browser/api/ai_chat",
     "//luxxle/ios/browser/api/webcompat_reporter",
-    "//luxxle/ios/browser/brave_ads",
+    "//luxxle/ios/browser/luxxle_ads",
     "//luxxle/ios/browser/debounce",
     "//luxxle/ios/browser/favicon",
     "//luxxle/ios/browser/skus",

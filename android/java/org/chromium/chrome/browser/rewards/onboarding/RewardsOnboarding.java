@@ -29,15 +29,15 @@ import androidx.core.content.res.ResourcesCompat;
 import org.chromium.base.BuildInfo;
 import org.chromium.build.annotations.NullMarked;
 import org.chromium.chrome.R;
-import org.chromium.chrome.browser.BraveRewardsHelper;
-import org.chromium.chrome.browser.BraveRewardsNativeWorker;
-import org.chromium.chrome.browser.BraveRewardsObserver;
+import org.chromium.chrome.browser.LuxxleRewardsHelper;
+import org.chromium.chrome.browser.LuxxleRewardsNativeWorker;
+import org.chromium.chrome.browser.LuxxleRewardsObserver;
 import org.chromium.chrome.browser.ChromeTabbedActivity;
 import org.chromium.chrome.browser.customtabs.CustomTabActivity;
-import org.chromium.chrome.browser.notifications.BraveNotificationWarningDialog;
-import org.chromium.chrome.browser.notifications.BravePermissionUtils;
-import org.chromium.chrome.browser.rewards.BraveRewardsPanel;
-import org.chromium.chrome.browser.util.BraveTouchUtils;
+import org.chromium.chrome.browser.notifications.LuxxleNotificationWarningDialog;
+import org.chromium.chrome.browser.notifications.LuxxlePermissionUtils;
+import org.chromium.chrome.browser.rewards.LuxxleRewardsPanel;
+import org.chromium.chrome.browser.util.LuxxleTouchUtils;
 import org.chromium.chrome.browser.util.TabUtils;
 import org.chromium.ui.text.ChromeClickableSpan;
 
@@ -49,7 +49,7 @@ import java.util.TreeMap;
 
 /** This class is used to show rewards onBoarding UI */
 @NullMarked
-public class RewardsOnboarding implements BraveRewardsObserver {
+public class RewardsOnboarding implements LuxxleRewardsObserver {
     private final View mAnchorView;
     private final PopupWindow mPopupWindow;
     private View mPopupView;
@@ -62,7 +62,7 @@ public class RewardsOnboarding implements BraveRewardsObserver {
     private Spinner mCountrySpinner;
     private TextView mContinueButton;
 
-    private BraveRewardsNativeWorker mBraveRewardsNativeWorker;
+    private LuxxleRewardsNativeWorker mLuxxleRewardsNativeWorker;
 
     private ChromeTabbedActivity mActivity;
 
@@ -79,7 +79,7 @@ public class RewardsOnboarding implements BraveRewardsObserver {
             mPopupWindow.setElevation(20);
         }
 
-        mActivity = BraveRewardsHelper.getChromeTabbedActivity();
+        mActivity = LuxxleRewardsHelper.getChromeTabbedActivity();
 
         setUpViews(deviceWidth);
     }
@@ -93,7 +93,7 @@ public class RewardsOnboarding implements BraveRewardsObserver {
         mMainLayout = mPopupView.findViewById(R.id.rewards_onboarding_layout_id);
         View startUsingButton = mMainLayout.findViewById(R.id.start_using_rewards_button);
         startUsingButton.setOnClickListener(v -> {
-            mBraveRewardsNativeWorker.getAvailableCountries();
+            mLuxxleRewardsNativeWorker.getAvailableCountries();
             mLocationChooseLayout.setVisibility(View.VISIBLE);
             mMainLayout.setVisibility(View.GONE);
         });
@@ -101,16 +101,16 @@ public class RewardsOnboarding implements BraveRewardsObserver {
         howDoseItWorkMainButton.setOnClickListener(v -> { showRewardsTour(); });
 
         mCountrySpinner = mPopupView.findViewById(R.id.country_spinner);
-        BraveTouchUtils.ensureMinTouchTarget(mCountrySpinner);
+        LuxxleTouchUtils.ensureMinTouchTarget(mCountrySpinner);
 
         String termsOfServiceText = String.format(
-                mPopupView.getContext().getString(R.string.brave_rewards_onboarding_tos_text),
+                mPopupView.getContext().getString(R.string.luxxle_rewards_onboarding_tos_text),
                 mPopupView.getContext().getString(R.string.terms_of_service),
                 mPopupView.getContext().getString(R.string.privacy_policy));
         TextView tosText = mMainLayout.findViewById(R.id.tos_text);
         tosText.setMovementMethod(LinkMovementMethod.getInstance());
-        tosText.setText(BraveRewardsHelper.tosSpannableString(
-                termsOfServiceText, R.color.brave_rewards_modal_theme_color));
+        tosText.setText(LuxxleRewardsHelper.tosSpannableString(
+                termsOfServiceText, R.color.luxxle_rewards_modal_theme_color));
 
         // Location choose layout views
         mLocationChooseLayout =
@@ -122,7 +122,7 @@ public class RewardsOnboarding implements BraveRewardsObserver {
         View doneButton = mAllSetLayout.findViewById(R.id.all_set_done_button);
         doneButton.setOnClickListener(v -> {
             mPopupWindow.dismiss();
-            TabUtils.openUrlInNewTab(false, BraveRewardsPanel.REWARDS_TOUR_URL);
+            TabUtils.openUrlInNewTab(false, LuxxleRewardsPanel.REWARDS_TOUR_URL);
         });
         View howDoseItWorkAllSetButton = mAllSetLayout.findViewById(R.id.how_does_it_work_all_set);
         howDoseItWorkAllSetButton.setOnClickListener(v -> { showRewardsTour(); });
@@ -131,7 +131,7 @@ public class RewardsOnboarding implements BraveRewardsObserver {
         mErrorLayout = mPopupView.findViewById(R.id.rewards_onboarding_error_layout_id);
         View responseActionButton = mErrorLayout.findViewById(R.id.response_action_btn);
         responseActionButton.setOnClickListener(v -> {
-            mBraveRewardsNativeWorker.getAvailableCountries();
+            mLuxxleRewardsNativeWorker.getAvailableCountries();
             mLocationChooseLayout.setVisibility(View.VISIBLE);
             mErrorLayout.setVisibility(View.GONE);
         });
@@ -142,8 +142,8 @@ public class RewardsOnboarding implements BraveRewardsObserver {
                 new PopupWindow.OnDismissListener() {
                     @Override
                     public void onDismiss() {
-                        if (mBraveRewardsNativeWorker != null) {
-                            mBraveRewardsNativeWorker.removeObserver(RewardsOnboarding.this);
+                        if (mLuxxleRewardsNativeWorker != null) {
+                            mLuxxleRewardsNativeWorker.removeObserver(RewardsOnboarding.this);
                         }
                     }
                 });
@@ -151,8 +151,8 @@ public class RewardsOnboarding implements BraveRewardsObserver {
         mPopupWindow.setWidth(deviceWidth);
         mPopupWindow.setContentView(mPopupView);
 
-        mBraveRewardsNativeWorker = BraveRewardsNativeWorker.getInstance();
-        mBraveRewardsNativeWorker.addObserver(this);
+        mLuxxleRewardsNativeWorker = LuxxleRewardsNativeWorker.getInstance();
+        mLuxxleRewardsNativeWorker.addObserver(this);
     }
 
     public void showLikePopDownMenu() {
@@ -164,7 +164,7 @@ public class RewardsOnboarding implements BraveRewardsObserver {
 
     private void showRewardsTour() {
         mPopupWindow.dismiss();
-        TabUtils.openUrlInNewTab(false, BraveRewardsPanel.REWARDS_TOUR_URL);
+        TabUtils.openUrlInNewTab(false, LuxxleRewardsPanel.REWARDS_TOUR_URL);
     }
 
     @Override
@@ -178,8 +178,8 @@ public class RewardsOnboarding implements BraveRewardsObserver {
     private void updateCountryList(String[] countries) {
         shouldShowContinueProgress(false);
         mContinueButton.setText(mActivity.getResources().getString(R.string.continue_text));
-        String defaultCountry = mBraveRewardsNativeWorker.getCountryCode() != null
-                ? new Locale("", mBraveRewardsNativeWorker.getCountryCode()).getDisplayCountry()
+        String defaultCountry = mLuxxleRewardsNativeWorker.getCountryCode() != null
+                ? new Locale("", mLuxxleRewardsNativeWorker.getCountryCode()).getDisplayCountry()
                 : null;
 
         TreeMap<String, String> sortedCountryMap = new TreeMap<String, String>();
@@ -220,15 +220,15 @@ public class RewardsOnboarding implements BraveRewardsObserver {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (!BravePermissionUtils.hasPermission(
+                        if (!LuxxlePermissionUtils.hasPermission(
                                         mAnchorView.getContext(),
                                         Manifest.permission.POST_NOTIFICATIONS)
-                                || BravePermissionUtils.isBraveAdsNotificationPermissionBlocked(
+                                || LuxxlePermissionUtils.isLuxxleAdsNotificationPermissionBlocked(
                                         mAnchorView.getContext())) {
                             requestNotificationPermission();
                         }
                         if (mCountrySpinner != null) {
-                            mBraveRewardsNativeWorker.createRewardsWallet(
+                            mLuxxleRewardsNativeWorker.createRewardsWallet(
                                     sortedCountryMap.get(
                                             mCountrySpinner.getSelectedItem().toString()));
                             shouldShowContinueProgress(true);
@@ -262,7 +262,7 @@ public class RewardsOnboarding implements BraveRewardsObserver {
         TextView responseErrorText = mPopupView.findViewById(R.id.response_error_text);
 
         String actionText = mPopupView.getContext().getString(R.string.retry_text);
-        if (errorMessage.equals(BraveRewardsPanel.WALLET_GENERATION_DISABLED_ERROR)) {
+        if (errorMessage.equals(LuxxleRewardsPanel.WALLET_GENERATION_DISABLED_ERROR)) {
             String title =
                     mPopupView
                             .getContext()
@@ -285,16 +285,16 @@ public class RewardsOnboarding implements BraveRewardsObserver {
     }
 
     private SpannableString learnMoreSpannableString(Context context, String text) {
-        Spanned textToAgree = BraveRewardsHelper.spannedFromHtmlString(text);
+        Spanned textToAgree = LuxxleRewardsHelper.spannedFromHtmlString(text);
 
         SpannableString ss = new SpannableString(textToAgree.toString());
 
         ChromeClickableSpan clickableSpan =
                 new ChromeClickableSpan(
-                        context.getColor(R.color.brave_rewards_modal_theme_color),
+                        context.getColor(R.color.luxxle_rewards_modal_theme_color),
                         (textView) -> {
                             CustomTabActivity.showInfoPage(
-                                    context, BraveRewardsPanel.NEW_SIGNUP_DISABLED_URL);
+                                    context, LuxxleRewardsPanel.NEW_SIGNUP_DISABLED_URL);
                         });
         int learnMoreIndex = text.indexOf(context.getResources().getString(R.string.learn_more));
 
@@ -307,7 +307,7 @@ public class RewardsOnboarding implements BraveRewardsObserver {
     }
 
     private void requestNotificationPermission() {
-        if (BravePermissionUtils.isBraveAdsNotificationPermissionBlocked(mAnchorView.getContext())
+        if (LuxxlePermissionUtils.isLuxxleAdsNotificationPermissionBlocked(mAnchorView.getContext())
                 || mActivity.shouldShowRequestPermissionRationale(
                         Manifest.permission.POST_NOTIFICATIONS)
                 || (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU
@@ -324,11 +324,11 @@ public class RewardsOnboarding implements BraveRewardsObserver {
     }
 
     private void showNotificationWarningDialog() {
-        BraveNotificationWarningDialog notificationWarningDialog =
-                BraveNotificationWarningDialog.newInstance(
-                        BraveNotificationWarningDialog.FROM_LAUNCHED_BRAVE_PANEL);
+        LuxxleNotificationWarningDialog notificationWarningDialog =
+                LuxxleNotificationWarningDialog.newInstance(
+                        LuxxleNotificationWarningDialog.FROM_LAUNCHED_LUXXLE_PANEL);
         notificationWarningDialog.setCancelable(false);
         notificationWarningDialog.show(mActivity.getSupportFragmentManager(),
-                BraveNotificationWarningDialog.NOTIFICATION_WARNING_DIALOG_TAG);
+                LuxxleNotificationWarningDialog.NOTIFICATION_WARNING_DIALOG_TAG);
     }
 }

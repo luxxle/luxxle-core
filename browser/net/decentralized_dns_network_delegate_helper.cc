@@ -9,10 +9,10 @@
 #include <utility>
 #include <vector>
 
-// REMOVED: #include "luxxle/browser/brave_wallet/.*"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
-// REMOVED: #include "luxxle/components/brave_wallet/.*"
+// REMOVED: #include "luxxle/browser/luxxle_wallet/.*"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
+// REMOVED: #include "luxxle/components/luxxle_wallet/.*"
 #include "luxxle/components/decentralized_dns/core/constants.h"
 #include "luxxle/components/decentralized_dns/core/utils.h"
 #include "luxxle/components/ipfs/ipfs_utils.h"
@@ -24,7 +24,7 @@ namespace decentralized_dns {
 
 int OnBeforeURLRequest_DecentralizedDnsPreRedirectWork(
     const luxxle::ResponseCallback& next_callback,
-    std::shared_ptr<luxxle::BraveRequestInfo> ctx) {
+    std::shared_ptr<luxxle::LuxxleRequestInfo> ctx) {
   DCHECK(!next_callback.is_null());
 
   if (!ctx->browser_context || ctx->browser_context->IsOffTheRecord() ||
@@ -32,14 +32,14 @@ int OnBeforeURLRequest_DecentralizedDnsPreRedirectWork(
     return net::OK;
   }
 
-  auto* brave_wallet_service =
-      brave_wallet::BraveWalletServiceFactory::GetServiceForContext(
+  auto* luxxle_wallet_service =
+      luxxle_wallet::LuxxleWalletServiceFactory::GetServiceForContext(
           ctx->browser_context);
-  if (!brave_wallet_service) {
+  if (!luxxle_wallet_service) {
     return net::OK;
   }
 
-  auto* json_rpc_service = brave_wallet_service->json_rpc_service();
+  auto* json_rpc_service = luxxle_wallet_service->json_rpc_service();
   CHECK(json_rpc_service);
 
   if (IsUnstoppableDomainsTLD(ctx->request_url.host_piece()) &&
@@ -78,14 +78,14 @@ int OnBeforeURLRequest_DecentralizedDnsPreRedirectWork(
 
 void OnBeforeURLRequest_EnsRedirectWork(
     const luxxle::ResponseCallback& next_callback,
-    std::shared_ptr<luxxle::BraveRequestInfo> ctx,
+    std::shared_ptr<luxxle::LuxxleRequestInfo> ctx,
     const std::vector<uint8_t>& content_hash,
     bool require_offchain_consent,
-    brave_wallet::mojom::ProviderError error,
+    luxxle_wallet::mojom::ProviderError error,
     const std::string& error_message) {
   DCHECK(!next_callback.is_null());
 
-  if (error != brave_wallet::mojom::ProviderError::kSuccess) {
+  if (error != luxxle_wallet::mojom::ProviderError::kSuccess) {
     next_callback.Run();
     return;
   }
@@ -108,11 +108,11 @@ void OnBeforeURLRequest_EnsRedirectWork(
 
 void OnBeforeURLRequest_SnsRedirectWork(
     const luxxle::ResponseCallback& next_callback,
-    std::shared_ptr<luxxle::BraveRequestInfo> ctx,
+    std::shared_ptr<luxxle::LuxxleRequestInfo> ctx,
     const std::optional<GURL>& url,
-    brave_wallet::mojom::SolanaProviderError error,
+    luxxle_wallet::mojom::SolanaProviderError error,
     const std::string& error_message) {
-  if (error == brave_wallet::mojom::SolanaProviderError::kSuccess && url &&
+  if (error == luxxle_wallet::mojom::SolanaProviderError::kSuccess && url &&
       url->is_valid()) {
     ctx->new_url_spec = url->spec();
   }
@@ -124,11 +124,11 @@ void OnBeforeURLRequest_SnsRedirectWork(
 
 void OnBeforeURLRequest_UnstoppableDomainsRedirectWork(
     const luxxle::ResponseCallback& next_callback,
-    std::shared_ptr<luxxle::BraveRequestInfo> ctx,
+    std::shared_ptr<luxxle::LuxxleRequestInfo> ctx,
     const std::optional<GURL>& url,
-    brave_wallet::mojom::ProviderError error,
+    luxxle_wallet::mojom::ProviderError error,
     const std::string& error_message) {
-  if (error == brave_wallet::mojom::ProviderError::kSuccess && url &&
+  if (error == luxxle_wallet::mojom::ProviderError::kSuccess && url &&
       url->is_valid()) {
     ctx->new_url_spec = url->spec();
   }

@@ -120,10 +120,10 @@ TEST_F(OnboardingTest, HelperCreationTestForNonFirstRun) {
   MaybeCreateForWebContentsAndWaitTillGetResult(web_contents.get());
   tab_helper = OnboardingTabHelper::FromWebContents(web_contents.get());
   ASSERT_TRUE(tab_helper);
-  ASSERT_TRUE(tab_helper->CanHighlightBraveShields());
+  ASSERT_TRUE(tab_helper->CanHighlightLuxxleShields());
 
   // Check exiting tab doesn't give highlight when 7 days passed.
   OnboardingTabHelper::s_time_now_for_testing_ =
       base::Time::Now() + base::Days(7);
-  EXPECT_FALSE(tab_helper->CanHighlightBraveShields());
+  EXPECT_FALSE(tab_helper->CanHighlightLuxxleShields());
 }

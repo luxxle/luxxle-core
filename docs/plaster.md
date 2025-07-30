@@ -1,6 +1,6 @@
 # 🩹 Plaster and semantical patching
 
-Plaster is an experimental tool being introduced in Brave to allow us to apply
+Plaster is an experimental tool being introduced in Luxxle to allow us to apply
 changes to upstream sources files, by relying on regex transformations for to
 search for patterns and apply substitutions.
 
@@ -9,7 +9,7 @@ search for patterns and apply substitutions.
 The two traditional approaches to introduce changes to Chromium have been `git`
 patches (i.e. `patches/`), and language overrides (i.e. `chromium_src/`). The
 use of patches is in general avoided whenever possible, as they tend to easily
-run into conflicts when rebasing Brave onto a newer Chromium version. With
+run into conflicts when rebasing Luxxle onto a newer Chromium version. With
 language overrides, although more flexible than patches, they tend to be
 invisible in the source code target, hard to interpret, and lead to many cases
 of unintended replacements.
@@ -36,9 +36,9 @@ For example, imagine you want to add changes to
 `chrome/browser/autocomplete/autocomplete_classifier_factory.cc`. You would
 care about the following files.
 
- * **Plaster file:** `brave/rewrite/chrome/browser/autocomplete/autocomplete_classifier_factory.cc.toml`
+ * **Plaster file:** `luxxle/rewrite/chrome/browser/autocomplete/autocomplete_classifier_factory.cc.toml`
  * **Source file:** `chrome/browser/autocomplete/autocomplete_classifier_factory.cc`
- * **Patch file** `brave/patches/chrome-browser-autocomplete-autocomplete_classifier_factory.cc.patch`
+ * **Patch file** `luxxle/patches/chrome-browser-autocomplete-autocomplete_classifier_factory.cc.patch`
 
 ### Creating a plaster file
 
@@ -55,24 +55,24 @@ code rewrite/chrome/browser/autocomplete/autocomplete_classifier_factory.cc.toml
 This file below has two substitutions to be applied on its source: The first
 adds a header to the list of headers in the source. The second one replaces all
 occurrences of `ChromeAutocompleteSchemeClassifier` with
-`BraveAutocompleteSchemeClassifier`.
+`LuxxleAutocompleteSchemeClassifier`.
 
 ```toml
-# Copyright (c) 2025 The Brave Authors. All rights reserved.
+# Copyright (c) 2025 The Luxxle Authors. All rights reserved.
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 [[substitutions]]
-description = 'Adding header for BraveAutocompleteSchemeClassifier'
+description = 'Adding header for LuxxleAutocompleteSchemeClassifier'
 pattern = '#include "extensions/buildflags/buildflags.h"'
 re_pattern = '''#include "extensions/buildflags/buildflags.h"
-#include "brave/browser/autocomplete/brave_autocomplete_scheme_classifier.h"'''
+#include "luxxle/browser/autocomplete/luxxle_autocomplete_scheme_classifier.h"'''
 
 [[substitutions]]
-description = 'Patching in BraveAutocompleteSchemeClassifier'
+description = 'Patching in LuxxleAutocompleteSchemeClassifier'
 re_pattern = 'ChromeAutocompleteSchemeClassifier'
-replace = 'BraveAutocompleteSchemeClassifier'
+replace = 'LuxxleAutocompleteSchemeClassifier'
 ```
 
 The basic format for a `[[substitution]]` entry is as follow:
@@ -112,7 +112,7 @@ index 00000000000..63703e6940b
 + #include "components/omnibox/browser/autocomplete_classifier.h"
 + #include "components/omnibox/browser/autocomplete_controller.h"
 + #include "extensions/buildflags/buildflags.h"
-++#include "brave/browser/autocomplete/brave_autocomplete_scheme_classifier.h"
+++#include "luxxle/browser/autocomplete/luxxle_autocomplete_scheme_classifier.h"
 +
 + #if BUILDFLAG(ENABLE_EXTENSIONS)
 + #include "extensions/browser/extension_system_provider.h"
@@ -121,7 +121,7 @@ index 00000000000..63703e6940b
 +           std::make_unique<ChromeAutocompleteProviderClient>(profile),
 +           AutocompleteClassifier::DefaultOmniboxProviders()),
 +-      std::make_unique<ChromeAutocompleteSchemeClassifier>(profile));
-++      std::make_unique<BraveAutocompleteSchemeClassifier>(profile));
+++      std::make_unique<LuxxleAutocompleteSchemeClassifier>(profile));
 + }
 +
 + AutocompleteClassifierFactory::AutocompleteClassifierFactory()

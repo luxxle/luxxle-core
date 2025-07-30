@@ -1,0 +1,13 @@
+from luxxle_chromium_utils import inline_file
+inline_file("//chrome/renderer/DEPS", globals(), locals())
+
+include_rules += [
+  "+luxxle/components/ai_chat/core/common",
+  "+luxxle/components/ai_chat/renderer",
+  "+luxxle/components/body_sniffer",
+  "+luxxle/components/luxxle_shields/core/common",
+  "+luxxle/components/content_settings/renderer",
+  "+luxxle/components/tor/buildflags",
+  "+luxxle/components/tor/renderer",
+  "+luxxle/renderer",
+]

@@ -12,8 +12,8 @@
 
 #include "base/functional/bind.h"
 #include "luxxle/browser/ui/views/page_action/wayback_machine_action_icon_view.h"
-#include "luxxle/components/brave_wayback_machine/brave_wayback_machine_tab_helper.h"
-#include "brave/grit/brave_generated_resources.h"
+#include "luxxle/components/luxxle_wayback_machine/luxxle_wayback_machine_tab_helper.h"
+#include "luxxle/grit/luxxle_generated_resources.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/tabs/tab_strip_model.h"
 #include "chrome/browser/ui/views/chrome_layout_provider.h"
@@ -26,12 +26,12 @@
 
 namespace {
 
-BraveWaybackMachineTabHelper* GetTabHelper(content::WebContents* web_contents) {
+LuxxleWaybackMachineTabHelper* GetTabHelper(content::WebContents* web_contents) {
   if (!web_contents) {
     return nullptr;
   }
 
-  return BraveWaybackMachineTabHelper::FromWebContents(web_contents);
+  return LuxxleWaybackMachineTabHelper::FromWebContents(web_contents);
 }
 
 gfx::FontList GetFont(int font_size, gfx::Font::Weight weight) {
@@ -90,15 +90,15 @@ WaybackMachineBubbleView::WaybackMachineBubbleView(
   auto* label =
       AddChildView(std::make_unique<views::Label>(l10n_util::GetStringUTF16(
           need_checking
-              ? IDS_BRAVE_WAYBACK_MACHINE_BUBBLE_SORRY_HEADER_TEXT
-              : IDS_BRAVE_WAYBACK_MACHINE_BUBBLE_CANT_FIND_HEADER_TEXT)));
+              ? IDS_LUXXLE_WAYBACK_MACHINE_BUBBLE_SORRY_HEADER_TEXT
+              : IDS_LUXXLE_WAYBACK_MACHINE_BUBBLE_CANT_FIND_HEADER_TEXT)));
   label->SetFontList(GetFont(/*font_size*/ 16, gfx::Font::Weight::SEMIBOLD));
   label->SetHorizontalAlignment(gfx::ALIGN_LEFT);
 
   // Contents label.
   label = AddChildView(std::make_unique<views::Label>(l10n_util::GetStringUTF16(
-      need_checking ? IDS_BRAVE_WAYBACK_MACHINE_BUBBLE_ASK_ABOUT_CHECK_TEXT
-                    : IDS_BRAVE_WAYBACK_MACHINE_BUBBLE_NOT_AVAILABLE_TEXT)));
+      need_checking ? IDS_LUXXLE_WAYBACK_MACHINE_BUBBLE_ASK_ABOUT_CHECK_TEXT
+                    : IDS_LUXXLE_WAYBACK_MACHINE_BUBBLE_NOT_AVAILABLE_TEXT)));
   label->SetFontList(GetFont(/*font_size*/ 14, gfx::Font::Weight::SEMIBOLD));
   label->SetMultiLine(true);
   label->SetHorizontalAlignment(gfx::ALIGN_LEFT);
@@ -113,10 +113,10 @@ WaybackMachineBubbleView::WaybackMachineBubbleView(
              static_cast<int>(ui::mojom::DialogButton::kCancel));
   SetButtonLabel(ui::mojom::DialogButton::kOk,
                  l10n_util::GetStringUTF16(
-                     IDS_BRAVE_WAYBACK_MACHINE_BUBBLE_CHECK_BUTTON_TEXT));
+                     IDS_LUXXLE_WAYBACK_MACHINE_BUBBLE_CHECK_BUTTON_TEXT));
   SetButtonLabel(ui::mojom::DialogButton::kCancel,
                  l10n_util::GetStringUTF16(
-                     IDS_BRAVE_WAYBACK_MACHINE_BUBBLE_DISMISS_BUTTON_TEXT));
+                     IDS_LUXXLE_WAYBACK_MACHINE_BUBBLE_DISMISS_BUTTON_TEXT));
 
   // Unretained is safe beaause this button is owned by this class.
   SetAcceptCallback(base::BindRepeating(&WaybackMachineBubbleView::OnAccepted,

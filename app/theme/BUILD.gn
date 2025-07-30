@@ -4,33 +4,33 @@
 # You can obtain one at https://mozilla.org/MPL/2.0/.
 
 # Commented out: removed components dependency - using Chromium defaults instead
-import("//luxxle/resources/brave_grit.gni")
+import("//luxxle/resources/luxxle_grit.gni")
 import("//chrome/common/features.gni")
 
 assert(!is_android)
 
-brave_grit("brave_theme_resources") {
-  source = "brave_theme_resources.grd"
+luxxle_grit("luxxle_theme_resources") {
+  source = "luxxle_theme_resources.grd"
   defines = chrome_grit_defines
   outputs = [
-    "grit/brave_theme_resources.h",
-    "grit/brave_theme_resources_map.cc",
-    "grit/brave_theme_resources_map.h",
-    "brave_theme_resources_100_percent.pak",
-    "brave_theme_resources_200_percent.pak",
-    "brave_theme_resources_300_percent.pak",
+    "grit/luxxle_theme_resources.h",
+    "grit/luxxle_theme_resources_map.cc",
+    "grit/luxxle_theme_resources_map.h",
+    "luxxle_theme_resources_100_percent.pak",
+    "luxxle_theme_resources_200_percent.pak",
+    "luxxle_theme_resources_300_percent.pak",
   ]
 
-  output_dir = "$root_gen_dir/brave"
+  output_dir = "$root_gen_dir/luxxle"
 }
 
-brave_grit("brave_unscaled_resources") {
-  source = "brave_unscaled_resources.grd"
+luxxle_grit("luxxle_unscaled_resources") {
+  source = "luxxle_unscaled_resources.grd"
   defines = chrome_grit_defines
   outputs = [
-    "grit/brave_unscaled_resources.h",
-    "brave_unscaled_resources.pak",
+    "grit/luxxle_unscaled_resources.h",
+    "luxxle_unscaled_resources.pak",
   ]
 
-  output_dir = "$root_gen_dir/brave"
+  output_dir = "$root_gen_dir/luxxle"
 }
