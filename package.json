@@ -10,6 +10,7 @@
     "delete_string_translations": "node ./build/commands/scripts/commands.js delete_string_translations",
     "create_dist": "node ./build/commands/scripts/commands.js build --target=create_dist",
     "sync": "node ./build/commands/scripts/sync.js",
+    "apply_mods": "node ./build/commands/scripts/apply_mods.js",
     "gclient": "node ./build/commands/scripts/gclient.js",
     "build": "node ./build/commands/scripts/commands.js build",
     "build_chromium_release": "node ./build/commands/scripts/commands.js build_chromium_release",
