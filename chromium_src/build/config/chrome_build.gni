@@ -1,0 +1,17 @@
+# Copyright (c) 2023 The Luxxle Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at https://mozilla.org/MPL/2.0/.
+
+# Import the original chrome_build.gni first
+import("//build/config/chrome_build.gni")
+
+# Override branding configuration for Luxxle
+declare_args() {
+  # Override the branding path product to use luxxle instead of chromium
+  branding_path_component = "luxxle"
+  branding_path_product = "luxxle"
+}
+
+# Override the branding file path
+branding_file_path = "//chrome/app/theme/luxxle/BRANDING"
