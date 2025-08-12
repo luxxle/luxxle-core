@@ -5,6 +5,7 @@
 
 #include "chrome/browser/profiles/pref_service_builder_utils.h"
 
+#include "luxxle/browser/luxxle_profile_prefs.h"
 #include "luxxle/components/constants/pref_names.h"
 #include "build/build_config.h"
 #include "chrome/common/pref_names.h"
@@ -21,6 +22,9 @@ void RegisterProfilePrefs(bool is_signin_profile,
                           const std::string& locale,
                           user_prefs::PrefRegistrySyncable* registry) {
   RegisterProfilePrefs_ChromiumImpl(is_signin_profile, locale, registry);
+
+  // Register Luxxle-specific profile preferences
+  luxxle::RegisterProfilePrefs(registry);
 
   // Change default pref values that are registered by keyed services
 

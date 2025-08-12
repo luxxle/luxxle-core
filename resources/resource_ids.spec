@@ -62,6 +62,9 @@
   "luxxle/components/resources/luxxle_components_strings.grd": {
     "messages": [30410],
   },
+  "components/components_luxxle_strings.grd": {
+    "messages": [30450],
+  },
   # This file is generated during the build.
   "<(SHARED_INTERMEDIATE_DIR)/luxxle/web-ui-luxxle_wallet_page/luxxle_wallet_page.grd": {
     "META": {"sizes": {"includes": [200]}},

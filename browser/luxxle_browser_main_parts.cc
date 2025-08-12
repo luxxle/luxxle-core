@@ -10,17 +10,17 @@
 
 #include "base/command_line.h"
 #include "base/path_service.h"
-// Removed Luxxle-specific includes - using Chromium defaults
-// #include "luxxle/browser/browsing_data/luxxle_clear_browsing_data.h"
-// #include "luxxle/components/luxxle_component_updater/browser/luxxle_on_demand_updater.h"
-// // REMOVED: #include "luxxle/components/luxxle_rewards/.*"
-// // REMOVED: #include "luxxle/components/luxxle_rewards/.*"
-// #include "luxxle/components/luxxle_sync/features.h"
-// #include "luxxle/components/constants/luxxle_constants.h"
-// #include "luxxle/components/constants/pref_names.h"
-// #include "luxxle/components/ipfs/buildflags/buildflags.h"
-// #include "luxxle/components/speedreader/common/buildflags/buildflags.h"
-// #include "luxxle/components/tor/buildflags/buildflags.h"
+#include "luxxle/browser/search_engines/search_engine_provider_service_factory.h"
+#include "luxxle/browser/search_engines/luxxle_search_engine_initializer.h"
+#include "luxxle/components/luxxle_component_updater/browser/luxxle_on_demand_updater.h"
+// REMOVED: #include "luxxle/components/luxxle_rewards/.*"
+// REMOVED: #include "luxxle/components/luxxle_rewards/.*"
+#include "luxxle/components/luxxle_sync/features.h"
+#include "luxxle/components/constants/luxxle_constants.h"
+#include "luxxle/components/constants/pref_names.h"
+#include "luxxle/components/ipfs/buildflags/buildflags.h"
+#include "luxxle/components/speedreader/common/buildflags/buildflags.h"
+#include "luxxle/components/tor/buildflags/buildflags.h"
 #include "build/build_config.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/profiles/profile.h"
@@ -85,6 +85,10 @@ void ChromeBrowserMainParts::PreShutdown() {
 
 void ChromeBrowserMainParts::PreProfileInit() {
   ChromeBrowserMainParts_ChromiumImpl::PreProfileInit();
+  
+  // Ensure SearchEngineProviderServiceFactory is registered
+  SearchEngineProviderServiceFactory::GetInstance();
+  
   // Removed Luxxle sync feature check - using Chromium defaults
   // #if !BUILDFLAG(IS_ANDROID)
   //   auto* command_line = base::CommandLine::ForCurrentProcess();
@@ -101,6 +105,11 @@ void ChromeBrowserMainParts::PostProfileInit(Profile* profile,
                                              bool is_initial_profile) {
   ChromeBrowserMainParts_ChromiumImpl::PostProfileInit(profile,
                                                        is_initial_profile);
+
+  // Initialize Luxxle search engine as default for new profiles
+  if (is_initial_profile && profile->IsRegularProfile()) {
+    luxxle::InitializeDefaultSearchEngine(profile);
+  }
 
   // Removed Luxxle background video playback - using Chromium defaults
   // #if BUILDFLAG(IS_ANDROID)

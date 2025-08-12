@@ -173,4 +173,25 @@
     </if>
   <if expr="is_chromeos">
     </if>
+
+  <!-- Missing security settings strings -->
+  <message name="IDS_SETTINGS_SECURITY_V8_LINK_TITLE" desc="Title for V8 security link in settings">
+    V8 Security
+  </message>
+  <message name="IDS_SETTINGS_SECURITY_V8_LINK_DESCRIPTION" desc="Description text for V8 security link in settings">
+    Learn more about V8 security features
+  </message>
+  <message name="IDS_SETTINGS_MANAGE_DEVICE_CERTIFICATES" desc="Label for manage device certificates option in settings">
+    Manage device certificates
+  </message>
+  <message name="IDS_SETTINGS_MANAGE_DEVICE_CERTIFICATES_DESCRIPTION" desc="Description for manage device certificates option in settings">
+    Manage certificates installed on your device
+  </message>
+  <message name="IDS_SETTINGS_CHROME_CERTIFICATES" desc="Label for Chrome certificates section in settings">
+    Luxxle Certificates
+  </message>
+  <message name="IDS_SETTINGS_CHROME_CERTIFICATES_DESCRIPTION" desc="Description for Chrome certificates section in settings">
+    Manage certificates used by Luxxle for secure connections
+  </message>
+
   </grit-part>

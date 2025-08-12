@@ -68,7 +68,24 @@
 #define IDS_SETTINGS_THIRD_PARTY_COOKIES_LINK_ROW_LABEL \
   IDS_SETTINGS_LUXXLE_BLOCK_COOKIES_LINK_ROW_LABEL
 
+// Override the AddLocalizedStrings function to add Luxxle-specific strings
+#define AddLocalizedStrings AddLocalizedStrings_ChromiumImpl
 #include "src/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc"
+#undef AddLocalizedStrings
+
+namespace settings {
+
+void AddLocalizedStrings(content::WebUIDataSource* html_source,
+                         Profile* profile,
+                         content::WebContents* web_contents) {
+  // Call the original Chromium implementation
+  AddLocalizedStrings_ChromiumImpl(html_source, profile, web_contents);
+  
+  // Add Luxxle-specific strings
+  LuxxleAddLocalizedStrings(html_source, profile);
+}
+
+}  // namespace settings
 #undef IDS_SETTINGS_THIRD_PARTY_COOKIES_LINK_ROW_LABEL
 #undef IDS_SETTINGS_UI_FEATURE_ALIGN_RIGHT
 #undef IDS_SETTINGS_UI_FEATURE_ALIGN_LEFT

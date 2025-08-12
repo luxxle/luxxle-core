@@ -1,0 +1,24 @@
+diff --git a/tools/gritsettings/resource_ids.spec b/tools/gritsettings/resource_ids.spec
+index f78fa04ff6bfc43d2554ea833945e89b08e8ec14..88c45f32bcc25a1894514eda564ffae586b26293 100644
+--- a/tools/gritsettings/resource_ids.spec
++++ b/tools/gritsettings/resource_ids.spec
+@@ -38,6 +38,9 @@
+   "chrome/app/chromium_strings.grd": {
+     "messages": [800],
+   },
++  "chrome/app/luxxle_strings.grd": {
++    "messages": [800],
++  },
+   "chrome/app/google_chrome_strings.grd": {
+     "messages": [800],
+   },
+@@ -978,6 +981,9 @@
+     # Big alignment at start of section.
+     "messages": [7020],
+   },
++  "components/components_luxxle_strings.grd": {
++    "messages": [7020],
++  },
+   "components/components_google_chrome_strings.grd": {
+     "messages": [7020],
+   },

@@ -1,0 +1,20 @@
+diff --git a/chrome/installer/util/BUILD.gn b/chrome/installer/util/BUILD.gn
+index 2e936294f026cbb37fc79ba08e90b91c4e7beecd..0c51e2c5a1b20a19e284f28625e9b183da1c265d 100644
+--- a/chrome/installer/util/BUILD.gn
++++ b/chrome/installer/util/BUILD.gn
+@@ -200,6 +200,7 @@ static_library("with_no_strings") {
+       "initial_preferences.h",
+     ]
+   }
++  import("//luxxle/chromium_src/chrome/installer/util/sources.gni") deps += luxxle_chromium_src_chrome_installer_util_deps sources += luxxle_chromium_src_chrome_installer_util_sources
+ }
+ 
+ # Use this version of installer_util to link to the generated strings in .rc
+@@ -232,6 +232,7 @@ generate_embedded_i18n("generate_strings") {
+   output_file_name_base = "installer_util_strings"
+ 
+   branding = branding_path_product
++  sources = [ "//chrome/app/luxxle_strings.grd" ] import("//luxxle/installer/util/sources.gni") extractor_datafile = luxxle_installer_util_generate_strings_extractor_datafile
+ }
+ 
+ # Compile the generated .rc file.

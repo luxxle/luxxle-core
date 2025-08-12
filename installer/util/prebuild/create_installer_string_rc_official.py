@@ -10,35 +10,35 @@ inline_file("//chrome/installer/util/prebuild/create_installer_string_rc.py",
 
 MODE_SPECIFIC_STRINGS = {
     'IDS_APP_SHORTCUTS_SUBDIR_NAME': {
+        'chromium': [
+            'IDS_APP_SHORTCUTS_SUBDIR_NAME',
+        ],
         'luxxle': [
             'IDS_APP_SHORTCUTS_SUBDIR_NAME',
-            'IDS_APP_SHORTCUTS_SUBDIR_NAME_BETA',
-            'IDS_APP_SHORTCUTS_SUBDIR_NAME_DEV',
-            'IDS_APP_SHORTCUTS_SUBDIR_NAME_CANARY',
         ],
     },
     'IDS_INBOUND_MDNS_RULE_DESCRIPTION': {
+        'chromium': [
+            'IDS_INBOUND_MDNS_RULE_DESCRIPTION',
+        ],
         'luxxle': [
             'IDS_INBOUND_MDNS_RULE_DESCRIPTION',
-            'IDS_INBOUND_MDNS_RULE_DESCRIPTION_BETA',
-            'IDS_INBOUND_MDNS_RULE_DESCRIPTION_DEV',
-            'IDS_INBOUND_MDNS_RULE_DESCRIPTION_CANARY',
         ],
     },
     'IDS_INBOUND_MDNS_RULE_NAME': {
+        'chromium': [
+            'IDS_INBOUND_MDNS_RULE_NAME',
+        ],
         'luxxle': [
             'IDS_INBOUND_MDNS_RULE_NAME',
-            'IDS_INBOUND_MDNS_RULE_NAME_BETA',
-            'IDS_INBOUND_MDNS_RULE_NAME_DEV',
-            'IDS_INBOUND_MDNS_RULE_NAME_CANARY',
         ],
     },
     'IDS_PRODUCT_NAME': {
+        'chromium': [
+            'IDS_PRODUCT_NAME',
+        ],
         'luxxle': [
             'IDS_PRODUCT_NAME',
-            'IDS_SHORTCUT_NAME_BETA',
-            'IDS_SHORTCUT_NAME_DEV',
-            'IDS_SXS_SHORTCUT_NAME',
         ],
     },
 }

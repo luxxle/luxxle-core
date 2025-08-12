@@ -26,7 +26,7 @@ namespace TemplateURLPrepopulateData {
 // For more info, see:
 // ComputeMergeEnginesRequirements in components/search_engines/util.cc;
 
-inline constexpr int kLuxxleCurrentDataVersion = 33;
+inline constexpr int kLuxxleCurrentDataVersion = 34;
 
 // DO NOT CHANGE THIS ONE. Used for backfilling kLuxxleDefaultSearchVersion.
 inline constexpr int kLuxxleFirstTrackedDataVersion = 6;

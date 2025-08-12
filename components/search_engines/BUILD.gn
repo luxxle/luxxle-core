@@ -1,4 +1,4 @@
-# Copyright (c) 2021 The Brave Authors. All rights reserved.
+# Copyright (c) 2021 The Luxxle Authors. All rights reserved.
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at https://mozilla.org/MPL/2.0/.
@@ -10,10 +10,10 @@ group("search_engines") {
 source_set("unit_tests") {
   testonly = true
 
-  sources = [ "brave_prepopulated_engines_unittest.cc" ]
+  sources = [ "luxxle_prepopulated_engines_unittest.cc" ]
 
   deps = [
-    "//brave/components/search_engines",
+    "//luxxle/components/search_engines",
     "//components/search_engines",
     "//components/search_engines:test_support",
     "//testing/gtest",

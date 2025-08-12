@@ -1315,6 +1315,12 @@ void LuxxleAddLocalizedStrings(content::WebUIDataSource* html_source,
                          l10n_util::GetStringUTF16(
                              IDS_SETTINGS_PLAYLIST_CACHE_BY_DEFAULT_SUB_LABEL));
 #endif
+
+  // Override Chrome certificate strings with Luxxle-specific text
+  html_source->AddString("chromeCertificates", 
+                         l10n_util::GetStringUTF16(IDS_SETTINGS_LUXXLE_CERTIFICATES));
+  html_source->AddString("chromeCertificatesDescription",
+                         l10n_util::GetStringUTF16(IDS_SETTINGS_LUXXLE_CERTIFICATES_DESCRIPTION));
 }
 
 }  // namespace settings
